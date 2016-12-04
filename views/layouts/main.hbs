@@ -4,30 +4,31 @@
 		{{> head }}
   </head>
   <body class="BlueGrey">
-    
-    {{> hbs-header categories }}
+    <div class="animsition">
+      {{> hbs-header categories }}
   	
-    <div class="container-fluid my-3">
+      <div class="container-fluid my-3">
 
-  		<div class="row">
-  			
-        <div class="col-lg-2 hidden-md-down">
-          {{> hbs-left-nav categories }}
-        </div>
-  			
-        <div class="col-lg-8">
-          {{> hbs-breadcrumb }}
-          {{{ body }}}
-        </div>
-        
-        <div class="col-lg-2">
-          {{> hbs-sidebar }}
-        </div>
+    		<div class="row">
+    			
+          <div class="col-lg-2 hidden-md-down">
+            {{> hbs-left-nav categories }}
+          </div>
+    			
+          <div class="col-lg-8">
+            {{> hbs-breadcrumb }}
+            {{{ body }}}
+          </div>
+          
+          <div class="col-lg-2">
+            {{> hbs-sidebar }}
+          </div>
 
-  		</div>
-
-		</div>
+    		</div>
+      </div>
+		
     {{> footer }}
+    </div>
 		{{> scripts }}
   </body>
 </html>

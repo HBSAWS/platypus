@@ -56,6 +56,7 @@ module.exports = {
       slug            : slug,
       intro           : req.body.intro,
       body            : req.body.body,
+      fiddle          : req.body.fiddle,
       published       : req.body.published ? true : false }, function(err, article){
         if(err) {
           return next(err);
@@ -114,6 +115,7 @@ module.exports = {
       slug            : slug,
       intro           : req.body.intro,
       body            : req.body.body,
+      fiddle          : req.body.fiddle,
       published       : req.body.published ? true : false 
     };
 

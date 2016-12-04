@@ -15,7 +15,6 @@ var jsFiles = [
         'vendor/waves/waves-0.7.5.min.js',
         'vendor/jasny-bootstrap/jasny-bootstrap-3.1.3.min.js',
         'vendor/summernote/summernote-0.8.1.min.js',
-        'vendor/animsition/animsition-4.0.2.min.js',
         'public/js/main.js',
     ],  
     jsDest = 'public/js';
@@ -26,7 +25,6 @@ var cssFiles = [
         'vendor/waves/waves-0.7.5.min.css',
         'vendor/jasny-bootstrap/jasny-bootstrap-3.1.3.min.css',
         'vendor/summernote/summernote-0.8.1.min.css',
-        'vendor/animsition/animsition-4.0.2.min.css',
         'public/css/styles.css',
     ],  
     cssDest = 'public/css';    

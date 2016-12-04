@@ -18,19 +18,20 @@
         </a>
         <ul aria-expanded="true">
           {{#each articles }}
-            <li><a href="/articles/{{slug}}" class="animsition-link">{{title}}</a></li>
+            <li><a href="/articles/{{slug}}">{{title}}</a></li>
           {{/each}}
-            <a href="/articles/new">
-              <span class="sidebar-nav-item-icon fa fa-plus"></span>
-              New Article
-            </a>
-          </li>
+            <li>
+              <a href="/articles/new">
+                <span class="sidebar-nav-item-icon fa fa-plus"></span>
+                New Article
+              </a>
+            </li>
         </ul>
       </li>    
     {{/each}}
     
     <li>
-      <a href="/categories/new" class="animsition-link">
+      <a href="/categories/new">
         <span class="sidebar-nav-item-icon fa fa-plus"></span>
         New Category
       </a>
