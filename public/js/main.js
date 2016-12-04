@@ -28,6 +28,11 @@ $(function() {
 		    ['height', ['']],
 		    ['misc', ['codeview','fullscreen', 'undo','redo']]
 		  ],
+      popover: {
+        image: [],
+        link: [],
+        air: []
+      },
       callbacks : {
         onInit : function(){},
         onBlur : function() {
