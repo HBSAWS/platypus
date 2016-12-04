@@ -24,13 +24,25 @@ header {
     padding-left: 0;
     list-style-type: none;
     & > li {
-      a {
+      & > a {
         text-decoration: none;
         padding: 10px 15px;
         display: block;
         width: 100%;
-        &:hover {
+        &:hover {}
+        &::after {
+          content: '\f105';
+          font-family: 'FontAwesome';
+          position: absolute;
+          right: 15px;
+        }
       }
+      &.active {}
+      & > ul {
+        li {
+          a { 
+          }
+        }
       }
     }
   }

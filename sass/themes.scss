@@ -45,7 +45,7 @@ $themes: (
   $left-nav-bg-hover:       palette(map-get($map, color), 600);
   $left-nav-active:         palette(map-get($map, color), 800);
 
-  $off-canvas-bg:           palette(map-get($map, color), 800);
+  $off-canvas-bg:           palette(map-get($map, color), 900);
 
   $btn-primary-bg:          palette(map-get($map, color), 600);
   $btn-primary-text:        set-text-color($btn-primary-bg);
@@ -104,10 +104,9 @@ $themes: (
         & > li {
           background-color: $left-nav-bg;
           &.active {
-            background-color: $left-nav-active;
+            a {background-color: $left-nav-active;}
           }
           a {
-            background-color: transparent;
             color: set-text-color($left-nav-bg);
             &:hover {
               background-color: $left-nav-bg-hover;
