@@ -1,0 +1,67 @@
+<!-- Desktop Navigation -->
+<nav class="navbar hidden-md-down">
+    <a class="navbar-brand" href="/">HBS AWS Framework</a>
+    <ul class="nav navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Dropdown</a>
+      <div class="dropdown-menu" aria-labelledby="supportedContentDropdown">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+      </div>
+    </li>
+    </ul>
+    <ul class="nav navbar-nav float-lg-right">
+      <li class="nav-item">
+        <a href="#" class="btn btn-primary">Found a bug?</a>
+      </li>
+      <li class="nav-item">
+        <div class="btn-group">
+          <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            <i class="fa fa-user"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Logout</a>
+          </div>
+        </div>
+      </li>
+    </ul>
+</nav>
+
+<!-- Mobile Navigation -->
+<nav class="navbar hidden-lg-up">
+  <a class="navbar-brand" href="/">HBS AWS Framework</a>
+  <ul class="nav navbar-nav float-xs-right">
+  <li class="nav-item">
+    <a class="btn" data-toggle="collapse" href="#search-container" aria-expanded="false" aria-controls="search-container"><i class="fa fa-search"></i></a>
+  </div>
+  <li class="nav-item">
+    <a class="navbar-toggle btn pull-right" data-toggle="offcanvas" data-target="#off-canvas-nav" data-canvas="body"><i class="fa fa-navicon"></i></a>
+  </div>
+  </ul>
+</nav>
+
+<div class="collapse" id="search-container">
+  <div class="input-group">
+    <input type="text" class="form-control" placeholder="Search" autofocus>
+    <span class="input-group-btn">
+      <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
+    </span>
+  </div>
+</div>
+
+
+{{> off-canvas this }}

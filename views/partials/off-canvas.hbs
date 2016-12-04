@@ -1,0 +1,28 @@
+<!-- Offcanvas Navigation-->
+
+<nav id="off-canvas-nav" class="navmenu navmenu-default navmenu-fixed-right offcanvas" role="navigation">
+  <a class="navbar-brand" href="/">HBS AWS Framework</a>
+  <ul class="nav navmenu-nav">
+    
+    {{#each this }}
+      <li>
+        <a href="#">
+          <span class="sidebar-nav-item-icon fa fa-{{icon}}"></span>
+          {{title}}
+        </a>
+        <ul>
+          {{#each articles }}
+            <li><a href="/articles/{{slug}}">{{title}}</a></li>
+          {{/each}}
+          <li>
+            <a href="/articles/new">
+              <span class="sidebar-nav-item-icon fa fa-plus"></span>
+              New Article
+            </a>
+          </li>
+        </ul>
+      </li>    
+    {{/each}}
+
+  </ul>
+</nav>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+		{{> head }}
+  </head>
+  <body class="BlueGrey">
+    
+    {{> hbs-header categories }}
+  	
+    <div class="container-fluid my-3">
+
+  		<div class="row">
+  			
+        <div class="col-lg-2 hidden-md-down">
+          {{> hbs-left-nav categories }}
+        </div>
+  			
+        <div class="col-lg-10">
+          {{> hbs-breadcrumb }}
+          {{{ body }}}
+        </div>
+        
+  		</div>
+
+		</div>
+    {{> footer }}
+		{{> scripts }}
+  </body>
+</html>

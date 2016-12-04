@@ -1,0 +1,9 @@
+.btn, .navbar {
+	border: 0;
+	border-radius: 0;
+}
+
+input.form-control {
+	&:focus {outline: none;}
+	border-radius: 0;
+}

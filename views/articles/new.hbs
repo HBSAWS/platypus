@@ -1,0 +1,76 @@
+<form action="/articles/create" method="post" data-parsley-validate>
+  
+  <div class="row form-group">
+	  <div class="col-md-3 text-md-right">
+	    <label for="title">Title</label>
+	  </div>
+	  <div class="col-md-9">
+	  	<input name="title" type="text" class="form-control" autofocus required>
+	  </div>
+	</div><!--/.row-->
+
+	<div class="row form-group">
+	  <div class="col-md-3 text-md-right">
+	    <label for="slug">Slug</label>
+	  </div>
+	  <div class="col-md-9">
+	  	<input name="slug" type="text" class="form-control">
+	  </div>
+	</div><!--/.row-->
+
+	<div class="row form-group">
+	  <div class="col-md-3 text-md-right">
+	    <label for="_category">Category</label>
+	  </div>
+	  <div class="col-md-9">
+	  	<select name="_category" class="form-control select2" required>
+			  {{#categories}}
+			  	<option value="{{_id}}">{{title}}</option>
+			  {{/categories}}
+			</select>
+	  </div>
+	</div><!--/.row-->
+
+	<div class="row form-group">
+	  <div class="col-md-3 text-md-right">
+	    <label for="intro">Intro</label>
+	  </div>
+	  <div class="col-md-9">
+	  	<input name="intro" type="text" class="form-control">
+		</div>
+	</div><!--/.row-->	
+
+	<div class="row form-group">
+	  <div class="col-md-3 text-md-right">
+    	<label for="body">Body</label>
+	  </div>
+	  <div class="col-md-9">
+	  	<textarea name="body" class="form-control summernote" required></textarea>
+	  </div>
+	</div><!--/.row-->	
+		
+  <div class="row form-group">
+  	<div class="col-md-3 text-md-right">
+  	</div>
+	  <div class="col-md-9">
+		 	<div class="checkbox">
+		    <label>
+		      <input name="published" type="checkbox" checked> Published?
+		    </label>
+		  </div>
+	  </div> 
+ 	</div><!--/.row-->	
+	
+  <div class="row form-group">
+  	<div class="col-md-3 text-md-right">
+  	</div>
+	  <div class="col-md-9">
+		 	<div class="checkbox">
+		    <label>
+		      <button type="submit" class="btn btn-default btn-primary">Create</button>
+		    </label>
+		  </div>
+	  </div> 
+ 	</div><!--/.row-->	
+
+</form>
