@@ -1,0 +1,1014 @@
+header #search-container {
+  padding: 15px; }
+
+#hbs-left-nav ul, #off-canvas-nav ul {
+  margin-left: 0;
+  padding-left: 0;
+  list-style-type: none; }
+  #hbs-left-nav ul > li a, #off-canvas-nav ul > li a {
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+    width: 100%; }
+
+#off-canvas-nav .navbar-brand {
+  display: block;
+  float: none;
+  padding: 12px;
+  text-align: center; }
+
+.theme-BlueGrey {
+  background-color: #607D8B;
+  color: #607D8B; }
+
+.BlueGrey header {
+  background-color: #90A4AE; }
+  .BlueGrey header .navbar {
+    background-color: #455A64; }
+    .BlueGrey header .navbar .navbar-brand {
+      color: #ffffff; }
+    .BlueGrey header .navbar .nav-item a {
+      color: #ffffff; }
+    .BlueGrey header .navbar .nav-item .dropdown-menu a {
+      color: initial; }
+  .BlueGrey header .page-title {
+    color: #000000; }
+  .BlueGrey header #search-container {
+    background-color: #607D8B; }
+
+.BlueGrey .breadcrumb {
+  background-color: #ECEFF1; }
+
+.BlueGrey #hbs-left-nav ul > li, .BlueGrey #off-canvas-nav ul > li {
+  background-color: #78909C; }
+  .BlueGrey #hbs-left-nav ul > li a, .BlueGrey #off-canvas-nav ul > li a {
+    color: #ffffff; }
+    .BlueGrey #hbs-left-nav ul > li a:hover, .BlueGrey #off-canvas-nav ul > li a:hover {
+      background-color: #546E7A; }
+
+.BlueGrey #off-canvas-nav {
+  background-color: #37474F; }
+  .BlueGrey #off-canvas-nav .navbar-brand {
+    color: #ffffff; }
+
+.BlueGrey .btn-primary {
+  color: #ffffff;
+  background-color: #546E7A; }
+  .BlueGrey .btn-primary:hover {
+    color: #ffffff;
+    background-color: #37474F; }
+
+.BlueGrey .btn-secondary {
+  color: #000000;
+  background-color: #CFD8DC; }
+  .BlueGrey .btn-secondary:hover {
+    color: #000000;
+    background-color: #90A4AE; }
+
+.BlueGrey footer {
+  background-color: #ECEFF1; }
+
+.theme-Teal {
+  background-color: #009688;
+  color: #009688; }
+
+.Teal header {
+  background-color: #4DB6AC; }
+  .Teal header .navbar {
+    background-color: #00796B; }
+    .Teal header .navbar .navbar-brand {
+      color: #ffffff; }
+    .Teal header .navbar .nav-item a {
+      color: #ffffff; }
+    .Teal header .navbar .nav-item .dropdown-menu a {
+      color: initial; }
+  .Teal header .page-title {
+    color: #ffffff; }
+  .Teal header #search-container {
+    background-color: #009688; }
+
+.Teal .breadcrumb {
+  background-color: #E0F2F1; }
+
+.Teal #hbs-left-nav ul > li, .Teal #off-canvas-nav ul > li {
+  background-color: #26A69A; }
+  .Teal #hbs-left-nav ul > li a, .Teal #off-canvas-nav ul > li a {
+    color: #ffffff; }
+    .Teal #hbs-left-nav ul > li a:hover, .Teal #off-canvas-nav ul > li a:hover {
+      background-color: #00897B; }
+
+.Teal #off-canvas-nav {
+  background-color: #00695C; }
+  .Teal #off-canvas-nav .navbar-brand {
+    color: #ffffff; }
+
+.Teal .btn-primary {
+  color: #ffffff;
+  background-color: #00897B; }
+  .Teal .btn-primary:hover {
+    color: #ffffff;
+    background-color: #00695C; }
+
+.Teal .btn-secondary {
+  color: #000000;
+  background-color: #B2DFDB; }
+  .Teal .btn-secondary:hover {
+    color: #000000;
+    background-color: #4DB6AC; }
+
+.Teal footer {
+  background-color: #E0F2F1; }
+
+.theme-Red {
+  background-color: #F44336;
+  color: #F44336; }
+
+.Red header {
+  background-color: #E57373; }
+  .Red header .navbar {
+    background-color: #D32F2F; }
+    .Red header .navbar .navbar-brand {
+      color: #ffffff; }
+    .Red header .navbar .nav-item a {
+      color: #ffffff; }
+    .Red header .navbar .nav-item .dropdown-menu a {
+      color: initial; }
+  .Red header .page-title {
+    color: #000000; }
+  .Red header #search-container {
+    background-color: #F44336; }
+
+.Red .breadcrumb {
+  background-color: #FFEBEE; }
+
+.Red #hbs-left-nav ul > li, .Red #off-canvas-nav ul > li {
+  background-color: #EF5350; }
+  .Red #hbs-left-nav ul > li a, .Red #off-canvas-nav ul > li a {
+    color: #000000; }
+    .Red #hbs-left-nav ul > li a:hover, .Red #off-canvas-nav ul > li a:hover {
+      background-color: #E53935; }
+
+.Red #off-canvas-nav {
+  background-color: #C62828; }
+  .Red #off-canvas-nav .navbar-brand {
+    color: #000000; }
+
+.Red .btn-primary {
+  color: #ffffff;
+  background-color: #E53935; }
+  .Red .btn-primary:hover {
+    color: #ffffff;
+    background-color: #C62828; }
+
+.Red .btn-secondary {
+  color: #000000;
+  background-color: #FFCDD2; }
+  .Red .btn-secondary:hover {
+    color: #000000;
+    background-color: #E57373; }
+
+.Red footer {
+  background-color: #FFEBEE; }
+
+.theme-Pink {
+  background-color: #E91E63;
+  color: #E91E63; }
+
+.Pink header {
+  background-color: #F06292; }
+  .Pink header .navbar {
+    background-color: #C2185B; }
+    .Pink header .navbar .navbar-brand {
+      color: #ffffff; }
+    .Pink header .navbar .nav-item a {
+      color: #ffffff; }
+    .Pink header .navbar .nav-item .dropdown-menu a {
+      color: initial; }
+  .Pink header .page-title {
+    color: #000000; }
+  .Pink header #search-container {
+    background-color: #E91E63; }
+
+.Pink .breadcrumb {
+  background-color: #FCE4EC; }
+
+.Pink #hbs-left-nav ul > li, .Pink #off-canvas-nav ul > li {
+  background-color: #EC407A; }
+  .Pink #hbs-left-nav ul > li a, .Pink #off-canvas-nav ul > li a {
+    color: #ffffff; }
+    .Pink #hbs-left-nav ul > li a:hover, .Pink #off-canvas-nav ul > li a:hover {
+      background-color: #D81B60; }
+
+.Pink #off-canvas-nav {
+  background-color: #AD1457; }
+  .Pink #off-canvas-nav .navbar-brand {
+    color: #ffffff; }
+
+.Pink .btn-primary {
+  color: #ffffff;
+  background-color: #D81B60; }
+  .Pink .btn-primary:hover {
+    color: #ffffff;
+    background-color: #AD1457; }
+
+.Pink .btn-secondary {
+  color: #000000;
+  background-color: #F8BBD0; }
+  .Pink .btn-secondary:hover {
+    color: #000000;
+    background-color: #F06292; }
+
+.Pink footer {
+  background-color: #FCE4EC; }
+
+.theme-Purple {
+  background-color: #9C27B0;
+  color: #9C27B0; }
+
+.Purple header {
+  background-color: #BA68C8; }
+  .Purple header .navbar {
+    background-color: #7B1FA2; }
+    .Purple header .navbar .navbar-brand {
+      color: #ffffff; }
+    .Purple header .navbar .nav-item a {
+      color: #ffffff; }
+    .Purple header .navbar .nav-item .dropdown-menu a {
+      color: initial; }
+  .Purple header .page-title {
+    color: #ffffff; }
+  .Purple header #search-container {
+    background-color: #9C27B0; }
+
+.Purple .breadcrumb {
+  background-color: #F3E5F5; }
+
+.Purple #hbs-left-nav ul > li, .Purple #off-canvas-nav ul > li {
+  background-color: #AB47BC; }
+  .Purple #hbs-left-nav ul > li a, .Purple #off-canvas-nav ul > li a {
+    color: #ffffff; }
+    .Purple #hbs-left-nav ul > li a:hover, .Purple #off-canvas-nav ul > li a:hover {
+      background-color: #8E24AA; }
+
+.Purple #off-canvas-nav {
+  background-color: #6A1B9A; }
+  .Purple #off-canvas-nav .navbar-brand {
+    color: #ffffff; }
+
+.Purple .btn-primary {
+  color: #ffffff;
+  background-color: #8E24AA; }
+  .Purple .btn-primary:hover {
+    color: #ffffff;
+    background-color: #6A1B9A; }
+
+.Purple .btn-secondary {
+  color: #000000;
+  background-color: #E1BEE7; }
+  .Purple .btn-secondary:hover {
+    color: #000000;
+    background-color: #BA68C8; }
+
+.Purple footer {
+  background-color: #F3E5F5; }
+
+.theme-DeepPurple {
+  background-color: #673AB7;
+  color: #673AB7; }
+
+.DeepPurple header {
+  background-color: #9575CD; }
+  .DeepPurple header .navbar {
+    background-color: #512DA8; }
+    .DeepPurple header .navbar .navbar-brand {
+      color: #ffffff; }
+    .DeepPurple header .navbar .nav-item a {
+      color: #ffffff; }
+    .DeepPurple header .navbar .nav-item .dropdown-menu a {
+      color: initial; }
+  .DeepPurple header .page-title {
+    color: #000000; }
+  .DeepPurple header #search-container {
+    background-color: #673AB7; }
+
+.DeepPurple .breadcrumb {
+  background-color: #EDE7F6; }
+
+.DeepPurple #hbs-left-nav ul > li, .DeepPurple #off-canvas-nav ul > li {
+  background-color: #7E57C2; }
+  .DeepPurple #hbs-left-nav ul > li a, .DeepPurple #off-canvas-nav ul > li a {
+    color: #ffffff; }
+    .DeepPurple #hbs-left-nav ul > li a:hover, .DeepPurple #off-canvas-nav ul > li a:hover {
+      background-color: #5E35B1; }
+
+.DeepPurple #off-canvas-nav {
+  background-color: #4527A0; }
+  .DeepPurple #off-canvas-nav .navbar-brand {
+    color: #ffffff; }
+
+.DeepPurple .btn-primary {
+  color: #ffffff;
+  background-color: #5E35B1; }
+  .DeepPurple .btn-primary:hover {
+    color: #ffffff;
+    background-color: #4527A0; }
+
+.DeepPurple .btn-secondary {
+  color: #000000;
+  background-color: #D1C4E9; }
+  .DeepPurple .btn-secondary:hover {
+    color: #000000;
+    background-color: #9575CD; }
+
+.DeepPurple footer {
+  background-color: #EDE7F6; }
+
+.theme-Indigo {
+  background-color: #3F51B5;
+  color: #3F51B5; }
+
+.Indigo header {
+  background-color: #7986CB; }
+  .Indigo header .navbar {
+    background-color: #303F9F; }
+    .Indigo header .navbar .navbar-brand {
+      color: #ffffff; }
+    .Indigo header .navbar .nav-item a {
+      color: #ffffff; }
+    .Indigo header .navbar .nav-item .dropdown-menu a {
+      color: initial; }
+  .Indigo header .page-title {
+    color: #000000; }
+  .Indigo header #search-container {
+    background-color: #3F51B5; }
+
+.Indigo .breadcrumb {
+  background-color: #E8EAF6; }
+
+.Indigo #hbs-left-nav ul > li, .Indigo #off-canvas-nav ul > li {
+  background-color: #5C6BC0; }
+  .Indigo #hbs-left-nav ul > li a, .Indigo #off-canvas-nav ul > li a {
+    color: #ffffff; }
+    .Indigo #hbs-left-nav ul > li a:hover, .Indigo #off-canvas-nav ul > li a:hover {
+      background-color: #3949AB; }
+
+.Indigo #off-canvas-nav {
+  background-color: #283593; }
+  .Indigo #off-canvas-nav .navbar-brand {
+    color: #ffffff; }
+
+.Indigo .btn-primary {
+  color: #ffffff;
+  background-color: #3949AB; }
+  .Indigo .btn-primary:hover {
+    color: #ffffff;
+    background-color: #283593; }
+
+.Indigo .btn-secondary {
+  color: #000000;
+  background-color: #C5CAE9; }
+  .Indigo .btn-secondary:hover {
+    color: #000000;
+    background-color: #7986CB; }
+
+.Indigo footer {
+  background-color: #E8EAF6; }
+
+.theme-Blue {
+  background-color: #2196F3;
+  color: #2196F3; }
+
+.Blue header {
+  background-color: #64B5F6; }
+  .Blue header .navbar {
+    background-color: #1976D2; }
+    .Blue header .navbar .navbar-brand {
+      color: #ffffff; }
+    .Blue header .navbar .nav-item a {
+      color: #ffffff; }
+    .Blue header .navbar .nav-item .dropdown-menu a {
+      color: initial; }
+  .Blue header .page-title {
+    color: #000000; }
+  .Blue header #search-container {
+    background-color: #2196F3; }
+
+.Blue .breadcrumb {
+  background-color: #E3F2FD; }
+
+.Blue #hbs-left-nav ul > li, .Blue #off-canvas-nav ul > li {
+  background-color: #42A5F5; }
+  .Blue #hbs-left-nav ul > li a, .Blue #off-canvas-nav ul > li a {
+    color: #000000; }
+    .Blue #hbs-left-nav ul > li a:hover, .Blue #off-canvas-nav ul > li a:hover {
+      background-color: #1E88E5; }
+
+.Blue #off-canvas-nav {
+  background-color: #1565C0; }
+  .Blue #off-canvas-nav .navbar-brand {
+    color: #000000; }
+
+.Blue .btn-primary {
+  color: #ffffff;
+  background-color: #1E88E5; }
+  .Blue .btn-primary:hover {
+    color: #ffffff;
+    background-color: #1565C0; }
+
+.Blue .btn-secondary {
+  color: #000000;
+  background-color: #BBDEFB; }
+  .Blue .btn-secondary:hover {
+    color: #000000;
+    background-color: #64B5F6; }
+
+.Blue footer {
+  background-color: #E3F2FD; }
+
+.theme-Lightblue {
+  background-color: #03A9F4;
+  color: #03A9F4; }
+
+.Lightblue header {
+  background-color: #4FC3F7; }
+  .Lightblue header .navbar {
+    background-color: #0288D1; }
+    .Lightblue header .navbar .navbar-brand {
+      color: #ffffff; }
+    .Lightblue header .navbar .nav-item a {
+      color: #ffffff; }
+    .Lightblue header .navbar .nav-item .dropdown-menu a {
+      color: initial; }
+  .Lightblue header .page-title {
+    color: #000000; }
+  .Lightblue header #search-container {
+    background-color: #03A9F4; }
+
+.Lightblue .breadcrumb {
+  background-color: #E1F5FE; }
+
+.Lightblue #hbs-left-nav ul > li, .Lightblue #off-canvas-nav ul > li {
+  background-color: #29B6F6; }
+  .Lightblue #hbs-left-nav ul > li a, .Lightblue #off-canvas-nav ul > li a {
+    color: #ffffff; }
+    .Lightblue #hbs-left-nav ul > li a:hover, .Lightblue #off-canvas-nav ul > li a:hover {
+      background-color: #039BE5; }
+
+.Lightblue #off-canvas-nav {
+  background-color: #0277BD; }
+  .Lightblue #off-canvas-nav .navbar-brand {
+    color: #ffffff; }
+
+.Lightblue .btn-primary {
+  color: #ffffff;
+  background-color: #039BE5; }
+  .Lightblue .btn-primary:hover {
+    color: #ffffff;
+    background-color: #0277BD; }
+
+.Lightblue .btn-secondary {
+  color: #000000;
+  background-color: #B3E5FC; }
+  .Lightblue .btn-secondary:hover {
+    color: #000000;
+    background-color: #4FC3F7; }
+
+.Lightblue footer {
+  background-color: #E1F5FE; }
+
+.theme-Cyan {
+  background-color: #00BCD4;
+  color: #00BCD4; }
+
+.Cyan header {
+  background-color: #4DD0E1; }
+  .Cyan header .navbar {
+    background-color: #0097A7; }
+    .Cyan header .navbar .navbar-brand {
+      color: #ffffff; }
+    .Cyan header .navbar .nav-item a {
+      color: #ffffff; }
+    .Cyan header .navbar .nav-item .dropdown-menu a {
+      color: initial; }
+  .Cyan header .page-title {
+    color: #ffffff; }
+  .Cyan header #search-container {
+    background-color: #00BCD4; }
+
+.Cyan .breadcrumb {
+  background-color: #E0F7FA; }
+
+.Cyan #hbs-left-nav ul > li, .Cyan #off-canvas-nav ul > li {
+  background-color: #26C6DA; }
+  .Cyan #hbs-left-nav ul > li a, .Cyan #off-canvas-nav ul > li a {
+    color: #ffffff; }
+    .Cyan #hbs-left-nav ul > li a:hover, .Cyan #off-canvas-nav ul > li a:hover {
+      background-color: #00ACC1; }
+
+.Cyan #off-canvas-nav {
+  background-color: #00838F; }
+  .Cyan #off-canvas-nav .navbar-brand {
+    color: #ffffff; }
+
+.Cyan .btn-primary {
+  color: #ffffff;
+  background-color: #00ACC1; }
+  .Cyan .btn-primary:hover {
+    color: #ffffff;
+    background-color: #00838F; }
+
+.Cyan .btn-secondary {
+  color: #000000;
+  background-color: #B2EBF2; }
+  .Cyan .btn-secondary:hover {
+    color: #000000;
+    background-color: #4DD0E1; }
+
+.Cyan footer {
+  background-color: #E0F7FA; }
+
+.theme-Green {
+  background-color: #4CAF50;
+  color: #4CAF50; }
+
+.Green header {
+  background-color: #81C784; }
+  .Green header .navbar {
+    background-color: #388E3C; }
+    .Green header .navbar .navbar-brand {
+      color: #ffffff; }
+    .Green header .navbar .nav-item a {
+      color: #ffffff; }
+    .Green header .navbar .nav-item .dropdown-menu a {
+      color: initial; }
+  .Green header .page-title {
+    color: #000000; }
+  .Green header #search-container {
+    background-color: #4CAF50; }
+
+.Green .breadcrumb {
+  background-color: #E8F5E9; }
+
+.Green #hbs-left-nav ul > li, .Green #off-canvas-nav ul > li {
+  background-color: #66BB6A; }
+  .Green #hbs-left-nav ul > li a, .Green #off-canvas-nav ul > li a {
+    color: #ffffff; }
+    .Green #hbs-left-nav ul > li a:hover, .Green #off-canvas-nav ul > li a:hover {
+      background-color: #43A047; }
+
+.Green #off-canvas-nav {
+  background-color: #2E7D32; }
+  .Green #off-canvas-nav .navbar-brand {
+    color: #ffffff; }
+
+.Green .btn-primary {
+  color: #ffffff;
+  background-color: #43A047; }
+  .Green .btn-primary:hover {
+    color: #ffffff;
+    background-color: #2E7D32; }
+
+.Green .btn-secondary {
+  color: #000000;
+  background-color: #C8E6C9; }
+  .Green .btn-secondary:hover {
+    color: #000000;
+    background-color: #81C784; }
+
+.Green footer {
+  background-color: #E8F5E9; }
+
+.theme-LightGreen {
+  background-color: #8BC34A;
+  color: #8BC34A; }
+
+.LightGreen header {
+  background-color: #AED581; }
+  .LightGreen header .navbar {
+    background-color: #689F38; }
+    .LightGreen header .navbar .navbar-brand {
+      color: #ffffff; }
+    .LightGreen header .navbar .nav-item a {
+      color: #ffffff; }
+    .LightGreen header .navbar .nav-item .dropdown-menu a {
+      color: initial; }
+  .LightGreen header .page-title {
+    color: #000000; }
+  .LightGreen header #search-container {
+    background-color: #8BC34A; }
+
+.LightGreen .breadcrumb {
+  background-color: #F1F8E9; }
+
+.LightGreen #hbs-left-nav ul > li, .LightGreen #off-canvas-nav ul > li {
+  background-color: #9CCC65; }
+  .LightGreen #hbs-left-nav ul > li a, .LightGreen #off-canvas-nav ul > li a {
+    color: #ffffff; }
+    .LightGreen #hbs-left-nav ul > li a:hover, .LightGreen #off-canvas-nav ul > li a:hover {
+      background-color: #7CB342; }
+
+.LightGreen #off-canvas-nav {
+  background-color: #558B2F; }
+  .LightGreen #off-canvas-nav .navbar-brand {
+    color: #ffffff; }
+
+.LightGreen .btn-primary {
+  color: #ffffff;
+  background-color: #7CB342; }
+  .LightGreen .btn-primary:hover {
+    color: #ffffff;
+    background-color: #558B2F; }
+
+.LightGreen .btn-secondary {
+  color: #000000;
+  background-color: #DCEDC8; }
+  .LightGreen .btn-secondary:hover {
+    color: #000000;
+    background-color: #AED581; }
+
+.LightGreen footer {
+  background-color: #F1F8E9; }
+
+.theme-Lime {
+  background-color: #CDDC39;
+  color: #CDDC39; }
+
+.Lime header {
+  background-color: #DCE775; }
+  .Lime header .navbar {
+    background-color: #AFB42B; }
+    .Lime header .navbar .navbar-brand {
+      color: #ffffff; }
+    .Lime header .navbar .nav-item a {
+      color: #ffffff; }
+    .Lime header .navbar .nav-item .dropdown-menu a {
+      color: initial; }
+  .Lime header .page-title {
+    color: #000000; }
+  .Lime header #search-container {
+    background-color: #CDDC39; }
+
+.Lime .breadcrumb {
+  background-color: #F9FBE7; }
+
+.Lime #hbs-left-nav ul > li, .Lime #off-canvas-nav ul > li {
+  background-color: #D4E157; }
+  .Lime #hbs-left-nav ul > li a, .Lime #off-canvas-nav ul > li a {
+    color: #000000; }
+    .Lime #hbs-left-nav ul > li a:hover, .Lime #off-canvas-nav ul > li a:hover {
+      background-color: #C0CA33; }
+
+.Lime #off-canvas-nav {
+  background-color: #9E9D24; }
+  .Lime #off-canvas-nav .navbar-brand {
+    color: #000000; }
+
+.Lime .btn-primary {
+  color: #ffffff;
+  background-color: #C0CA33; }
+  .Lime .btn-primary:hover {
+    color: #ffffff;
+    background-color: #9E9D24; }
+
+.Lime .btn-secondary {
+  color: #000000;
+  background-color: #F0F4C3; }
+  .Lime .btn-secondary:hover {
+    color: #000000;
+    background-color: #DCE775; }
+
+.Lime footer {
+  background-color: #F9FBE7; }
+
+.theme-Yellow {
+  background-color: #FFEB3B;
+  color: #FFEB3B; }
+
+.Yellow header {
+  background-color: #FFF176; }
+  .Yellow header .navbar {
+    background-color: #FBC02D; }
+    .Yellow header .navbar .navbar-brand {
+      color: #ffffff; }
+    .Yellow header .navbar .nav-item a {
+      color: #ffffff; }
+    .Yellow header .navbar .nav-item .dropdown-menu a {
+      color: initial; }
+  .Yellow header .page-title {
+    color: #000000; }
+  .Yellow header #search-container {
+    background-color: #FFEB3B; }
+
+.Yellow .breadcrumb {
+  background-color: #FFFDE7; }
+
+.Yellow #hbs-left-nav ul > li, .Yellow #off-canvas-nav ul > li {
+  background-color: #FFEE58; }
+  .Yellow #hbs-left-nav ul > li a, .Yellow #off-canvas-nav ul > li a {
+    color: #000000; }
+    .Yellow #hbs-left-nav ul > li a:hover, .Yellow #off-canvas-nav ul > li a:hover {
+      background-color: #FDD835; }
+
+.Yellow #off-canvas-nav {
+  background-color: #F9A825; }
+  .Yellow #off-canvas-nav .navbar-brand {
+    color: #000000; }
+
+.Yellow .btn-primary {
+  color: #ffffff;
+  background-color: #FDD835; }
+  .Yellow .btn-primary:hover {
+    color: #ffffff;
+    background-color: #F9A825; }
+
+.Yellow .btn-secondary {
+  color: #000000;
+  background-color: #FFF9C4; }
+  .Yellow .btn-secondary:hover {
+    color: #000000;
+    background-color: #FFF176; }
+
+.Yellow footer {
+  background-color: #FFFDE7; }
+
+.theme-Amber {
+  background-color: #FFC107;
+  color: #FFC107; }
+
+.Amber header {
+  background-color: #FFD54F; }
+  .Amber header .navbar {
+    background-color: #FFA000; }
+    .Amber header .navbar .navbar-brand {
+      color: #ffffff; }
+    .Amber header .navbar .nav-item a {
+      color: #ffffff; }
+    .Amber header .navbar .nav-item .dropdown-menu a {
+      color: initial; }
+  .Amber header .page-title {
+    color: #000000; }
+  .Amber header #search-container {
+    background-color: #FFC107; }
+
+.Amber .breadcrumb {
+  background-color: #FFF8E1; }
+
+.Amber #hbs-left-nav ul > li, .Amber #off-canvas-nav ul > li {
+  background-color: #FFCA28; }
+  .Amber #hbs-left-nav ul > li a, .Amber #off-canvas-nav ul > li a {
+    color: #ffffff; }
+    .Amber #hbs-left-nav ul > li a:hover, .Amber #off-canvas-nav ul > li a:hover {
+      background-color: #FFB300; }
+
+.Amber #off-canvas-nav {
+  background-color: #FF8F00; }
+  .Amber #off-canvas-nav .navbar-brand {
+    color: #ffffff; }
+
+.Amber .btn-primary {
+  color: #ffffff;
+  background-color: #FFB300; }
+  .Amber .btn-primary:hover {
+    color: #ffffff;
+    background-color: #FF8F00; }
+
+.Amber .btn-secondary {
+  color: #000000;
+  background-color: #FFECB3; }
+  .Amber .btn-secondary:hover {
+    color: #000000;
+    background-color: #FFD54F; }
+
+.Amber footer {
+  background-color: #FFF8E1; }
+
+.theme-Orange {
+  background-color: #FF9800;
+  color: #FF9800; }
+
+.Orange header {
+  background-color: #FFB74D; }
+  .Orange header .navbar {
+    background-color: #F57C00; }
+    .Orange header .navbar .navbar-brand {
+      color: #ffffff; }
+    .Orange header .navbar .nav-item a {
+      color: #ffffff; }
+    .Orange header .navbar .nav-item .dropdown-menu a {
+      color: initial; }
+  .Orange header .page-title {
+    color: #000000; }
+  .Orange header #search-container {
+    background-color: #FF9800; }
+
+.Orange .breadcrumb {
+  background-color: #FFF3E0; }
+
+.Orange #hbs-left-nav ul > li, .Orange #off-canvas-nav ul > li {
+  background-color: #FFA726; }
+  .Orange #hbs-left-nav ul > li a, .Orange #off-canvas-nav ul > li a {
+    color: #ffffff; }
+    .Orange #hbs-left-nav ul > li a:hover, .Orange #off-canvas-nav ul > li a:hover {
+      background-color: #FB8C00; }
+
+.Orange #off-canvas-nav {
+  background-color: #EF6C00; }
+  .Orange #off-canvas-nav .navbar-brand {
+    color: #ffffff; }
+
+.Orange .btn-primary {
+  color: #ffffff;
+  background-color: #FB8C00; }
+  .Orange .btn-primary:hover {
+    color: #ffffff;
+    background-color: #EF6C00; }
+
+.Orange .btn-secondary {
+  color: #000000;
+  background-color: #FFE0B2; }
+  .Orange .btn-secondary:hover {
+    color: #000000;
+    background-color: #FFB74D; }
+
+.Orange footer {
+  background-color: #FFF3E0; }
+
+.theme-DeepOrange {
+  background-color: #FF5722;
+  color: #FF5722; }
+
+.DeepOrange header {
+  background-color: #FF8A65; }
+  .DeepOrange header .navbar {
+    background-color: #E64A19; }
+    .DeepOrange header .navbar .navbar-brand {
+      color: #ffffff; }
+    .DeepOrange header .navbar .nav-item a {
+      color: #ffffff; }
+    .DeepOrange header .navbar .nav-item .dropdown-menu a {
+      color: initial; }
+  .DeepOrange header .page-title {
+    color: #000000; }
+  .DeepOrange header #search-container {
+    background-color: #FF5722; }
+
+.DeepOrange .breadcrumb {
+  background-color: #FBE9E7; }
+
+.DeepOrange #hbs-left-nav ul > li, .DeepOrange #off-canvas-nav ul > li {
+  background-color: #FF7043; }
+  .DeepOrange #hbs-left-nav ul > li a, .DeepOrange #off-canvas-nav ul > li a {
+    color: #000000; }
+    .DeepOrange #hbs-left-nav ul > li a:hover, .DeepOrange #off-canvas-nav ul > li a:hover {
+      background-color: #F4511E; }
+
+.DeepOrange #off-canvas-nav {
+  background-color: #D84315; }
+  .DeepOrange #off-canvas-nav .navbar-brand {
+    color: #000000; }
+
+.DeepOrange .btn-primary {
+  color: #ffffff;
+  background-color: #F4511E; }
+  .DeepOrange .btn-primary:hover {
+    color: #ffffff;
+    background-color: #D84315; }
+
+.DeepOrange .btn-secondary {
+  color: #000000;
+  background-color: #FFCCBC; }
+  .DeepOrange .btn-secondary:hover {
+    color: #000000;
+    background-color: #FF8A65; }
+
+.DeepOrange footer {
+  background-color: #FBE9E7; }
+
+.theme-Brown {
+  background-color: #795548;
+  color: #795548; }
+
+.Brown header {
+  background-color: #A1887F; }
+  .Brown header .navbar {
+    background-color: #5D4037; }
+    .Brown header .navbar .navbar-brand {
+      color: #ffffff; }
+    .Brown header .navbar .nav-item a {
+      color: #ffffff; }
+    .Brown header .navbar .nav-item .dropdown-menu a {
+      color: initial; }
+  .Brown header .page-title {
+    color: #ffffff; }
+  .Brown header #search-container {
+    background-color: #795548; }
+
+.Brown .breadcrumb {
+  background-color: #EFEBE9; }
+
+.Brown #hbs-left-nav ul > li, .Brown #off-canvas-nav ul > li {
+  background-color: #8D6E63; }
+  .Brown #hbs-left-nav ul > li a, .Brown #off-canvas-nav ul > li a {
+    color: #ffffff; }
+    .Brown #hbs-left-nav ul > li a:hover, .Brown #off-canvas-nav ul > li a:hover {
+      background-color: #6D4C41; }
+
+.Brown #off-canvas-nav {
+  background-color: #4E342E; }
+  .Brown #off-canvas-nav .navbar-brand {
+    color: #ffffff; }
+
+.Brown .btn-primary {
+  color: #ffffff;
+  background-color: #6D4C41; }
+  .Brown .btn-primary:hover {
+    color: #ffffff;
+    background-color: #4E342E; }
+
+.Brown .btn-secondary {
+  color: #000000;
+  background-color: #D7CCC8; }
+  .Brown .btn-secondary:hover {
+    color: #000000;
+    background-color: #A1887F; }
+
+.Brown footer {
+  background-color: #EFEBE9; }
+
+.theme-Grey {
+  background-color: #9E9E9E;
+  color: #9E9E9E; }
+
+.Grey header {
+  background-color: #E0E0E0; }
+  .Grey header .navbar {
+    background-color: #616161; }
+    .Grey header .navbar .navbar-brand {
+      color: #ffffff; }
+    .Grey header .navbar .nav-item a {
+      color: #ffffff; }
+    .Grey header .navbar .nav-item .dropdown-menu a {
+      color: initial; }
+  .Grey header .page-title {
+    color: #000000; }
+  .Grey header #search-container {
+    background-color: #9E9E9E; }
+
+.Grey .breadcrumb {
+  background-color: #FAFAFA; }
+
+.Grey #hbs-left-nav ul > li, .Grey #off-canvas-nav ul > li {
+  background-color: #BDBDBD; }
+  .Grey #hbs-left-nav ul > li a, .Grey #off-canvas-nav ul > li a {
+    color: #000000; }
+    .Grey #hbs-left-nav ul > li a:hover, .Grey #off-canvas-nav ul > li a:hover {
+      background-color: #757575; }
+
+.Grey #off-canvas-nav {
+  background-color: #424242; }
+  .Grey #off-canvas-nav .navbar-brand {
+    color: #000000; }
+
+.Grey .btn-primary {
+  color: #ffffff;
+  background-color: #757575; }
+  .Grey .btn-primary:hover {
+    color: #ffffff;
+    background-color: #424242; }
+
+.Grey .btn-secondary {
+  color: #000000;
+  background-color: #F5F5F5; }
+  .Grey .btn-secondary:hover {
+    color: #000000;
+    background-color: #E0E0E0; }
+
+.Grey footer {
+  background-color: #FAFAFA; }
+
+.navmenu-fixed-right {
+  left: auto !important; }
+
+.navbar-toggle {
+  left: auto !important; }
+
+body.canvas-sliding, body.canvas-slid {
+  left: auto !important; }
+
+nav#hbs-left-nav > li > a {
+  display: block;
+  width: 100%; }
+  nav#hbs-left-nav > li > a:after {
+    content: '\f105';
+    font-family: 'FontAwesome';
+    position: absolute;
+    right: 0; }
+
+.btn, .navbar {
+  border: 0;
+  border-radius: 0; }
+
+input.form-control {
+  border-radius: 0; }
+  input.form-control:focus {
+    outline: none; }
