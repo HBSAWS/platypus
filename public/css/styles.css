@@ -1,3 +1,6 @@
+header .navbar .navbar-brand {
+  float: none; }
+
 header #search-container {
   padding: 15px; }
 
