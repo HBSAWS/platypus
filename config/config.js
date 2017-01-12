@@ -1,33 +1,57 @@
-var express     = require('express');
-  logger        = require('morgan');
-  handlebars    = require("express-handlebars");
-  path          = require('path');
-  bodyParser    = require('body-parser');
+var express     = require('express'),
+    logger        = require('morgan'),
+    handlebars    = require("express-handlebars"),
+    path          = require('path'),
+    bodyParser    = require('body-parser');
+
+// Navigation
+require('./models/Category');
+require('./models/Article');
+var mongoose = require('mongoose'),
+    Category = mongoose.model('Category');
+    Article = mongoose.model('Article');
   
 module.exports = function(app, envConfig){
 
-  // view engine setup
-  app.set('views', path.join(envConfig.rootPath, 'views'));
-  app.engine('.hbs', handlebars({
+    // view engine setup
+    app.set('views', path.join(envConfig.rootPath, 'views'));
+    app.engine('.hbs', handlebars({
     extname: '.hbs',
     defaultLayout: 'main', 
     layoutsDir: path.join(envConfig.rootPath,'views/layouts'),
     partialsDir: path.join(envConfig.rootPath, 'views/partials')
-  }));
-  app.set('view engine', '.hbs');
+    }));
+    app.set('view engine', '.hbs');
 
-  app.use(logger('dev'));
-  app.use(bodyParser.json());
-  app.use(bodyParser.urlencoded({extended: true}));
+    app.use(logger('dev'));
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({extended: true}));
 
-  app.use(express.static(path.join(envConfig.rootPath, 'public')));
+    app.use(express.static(path.join(envConfig.rootPath, 'public')));
 
 
-  app.use(function(req, res, next) {
-    console.log("************************ Setting app.local vars ************************");
-    res.locals.themes = ['BlueGrey', 'Teal', 'Red', 'Pink', 'Purple', 'DeepPurple', 'Indigo', 'Blue', 'Lightblue', 'Cyan', 'Green', 'LightGreen', 'Lime', 'Yellow', 'Amber', 'Orange', 'DeepOrange', 'Brown', 'Grey'];
-    return next();
-  });
+    app.use(function(req, res, next) {
+        Category.find({})
+            .lean()
+            .exec(function(err, categories) {
+              if(err) return next(err);
+
+                async.map(categories, function(category, done) {
+                    Article.find({_category: category._id})
+                    .lean()
+                    .exec(function(err, a){
+                        if(err) return next(err);
+                        category.articles = a;
+                        done(null, categories);  
+              });
+            }, function(err, result) {
+                if(err) return next(err);
+                //res.status(200).json(result);  
+                res.locals.nav = result[0];
+            })
+        });
+        return next();
+    });
 
   
 };

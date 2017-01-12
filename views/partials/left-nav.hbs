@@ -1,6 +1,21 @@
 <aside class="sidebar">
     <nav class="sidebar-nav">
         <ul class="metismenu">
+
+        {{#nav}}
+            <li>
+                <a class="has-arrow" href="#" aria-expanded="false">
+                    <span class="sidebar-nav-item-icon fa fa-{{icon}}"></span>
+                    <span class="sidebar-nav-item">{{title}}</span>
+                </a>
+                <ul aria-expanded="false" class="collapse">
+                    {{#each articles}}
+                        <li><a href="/articles/{{slug}}">{{title}}</a></li>
+                    {{/each}}
+                </ul>
+            </li>
+        {{/nav}}
+            {{!--             
             <li>
                 <a class="has-arrow" href="#" aria-expanded="false">
                     <span class="sidebar-nav-item-icon fa fa-home"></span>
@@ -82,7 +97,8 @@
                 <ul aria-expanded="false" class="collapse">
                     <li><a href="ui-patterns.html">UI Patterns</a></li>
                 </ul>
-            </li>                                                                
+            </li>     
+            --}}                                                            
         </ul>
     </nav>
 </aside>

@@ -8,6 +8,7 @@ module.exports = {
 
   index: function(req, res, next) {
     Category.find({}, function(err, categories) {
+      if(err) return next(err);
       res.render('categories/index', { 
         layout : 'main',
         categories: categories,
@@ -87,7 +88,7 @@ module.exports = {
 
     Category.findOneAndUpdate({ _id: req.params.id }, update_attrs, function(err, category){
         if(err) return next(err);
-        res.redirect('/');
+        res.redirect('/categories');
     });
   }
 };

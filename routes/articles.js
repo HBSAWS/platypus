@@ -79,7 +79,7 @@ module.exports = {
           .populate('_category')
           .exec(function(err, article) {
             if(err) res.render('error', { flash: { error: 'Error populating category id into article :('}})
-            res.redirect('/');
+            res.redirect('/articles');
           });
         }
     
@@ -139,7 +139,7 @@ module.exports = {
 
     Article.findOneAndUpdate({ _id: req.params.id }, update_attrs, function(err, article){
         if(err) return next(err);
-        res.redirect('/');
+        res.redirect('/articles');
     });
   },
 
