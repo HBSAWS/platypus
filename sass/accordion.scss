@@ -1,0 +1,10 @@
+// Accordions
+.accordion a:after {
+    font-family: 'FontAwesome';  
+    content: "\f107";    
+    float: right;       
+    color: white;      
+}
+.accordion a.collapsed:after {
+    content: "\f106";    
+}

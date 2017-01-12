@@ -1,32 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-		{{> head }}
-  </head>
-  <body class="BlueGrey">
-    
-    <div class="animsition">
-      {{> hbs-header categories }}
-    	
-      <div class="container-fluid my-3">
+    <head>
+        {{> head }}
+    </head>
+    <body>
+        {{> navbar }}
 
-    		<div class="row">
-    			
-          <div class="col-lg-2 hidden-md-down">
-            {{> hbs-left-nav categories }}
-          </div>
-    			
-          <div class="col-lg-10">
-            {{> hbs-breadcrumb }}
-            {{{ body }}}
-          </div>
-          
-    		</div>
+        <div class="row no-gutters">
+            <div class="col-lg-2 hidden-md-down p-0 palette-bg-blue-grey-500">
+                 {{> left-nav }}
+            </div>
+            <div class="col-lg-10 p-2">
+                
+                <ol class="breadcrumb">
+                    <li><a href="index.html"><i class="fa fa-home"></i> Home</a></li>
+                    <li><a href="styles.html">Styles</a></li>
+                    <li class="active">Icons</li>
+                </ol>
 
-      </div>
-		
-      {{> footer }}
-    </div>
-		{{> scripts }}
-  </body>
+                {{{body}}}
+
+            </div>           
+        </div>
+        
+
+        {{> footer }}
+        {{> scripts }}
+        
+    </body>
 </html>
+
+

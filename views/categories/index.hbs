@@ -1,0 +1,14 @@
+<ul class="list-group">
+	{{#categories}}
+	<li class="list-group-item">{{ title }} 
+
+		<span class="float-xs-right">
+			<a href="/categories/edit/{{id}}#" class="btn"><i class="fa fa-edit"></i></a>
+			<form class="d-inline" action="/categories/destroy/{{id}}" method="post">
+				<button href="#" class="btn"><i class="fa fa-trash"></i></button>
+			</form>
+		</span>
+
+	 </li>	
+	{{/categories}}
+</ul>

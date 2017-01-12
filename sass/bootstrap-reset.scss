@@ -1,9 +1,4 @@
-.btn, .navbar {
-	border: 0;
-	border-radius: 0;
+.btn, button, input, select, textarea, .custom-file-control, .input-group-addon, .form-control {
+	border-radius: 0 !important;
 }
 
-input.form-control {
-	&:focus {outline: none;}
-	border-radius: 0;
-}

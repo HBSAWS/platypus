@@ -1,0 +1,41 @@
+/* Tabs */
+.slick-initialized .swipe-tab-content {
+    position: relative;
+    /*min-height: 365px;*/
+}
+/*        
+@media screen and (min-width: 767px) {
+    .slick-initialized .swipe-tab-content {
+        min-height: 500px;
+    }
+}
+*/
+.slick-initialized .swipe-tab {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    height: 50px;
+    background: none;
+    border: 0;
+    color: #757575;
+    cursor: pointer;
+    text-align: center;
+    border-bottom: 2px solid transparent;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    border-bottom: 1px solid rgba(0,0,0,.5);
+}
+.slick-initialized .swipe-tab:hover {
+    color: #000;
+}
+.slick-initialized .swipe-tab.active-tab {
+    border-bottom: 5px solid rgba(0,0,0,1);
+    color: #000;
+    font-weight: bold;
+}

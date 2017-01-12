@@ -1,29 +1,32 @@
 {{#article}}
-<form action="/articles/create" method="post" data-parsley-validate>
+<form action="/articles/update/{{id}}" method="post" data-parsley-validate>
   
   <div class="row form-group">
-	  <div class="col-md-3 text-md-right">
+	  <div class="col-md-4 hidden-sm-down text-xs-right">
 	    <label for="title">Title</label>
 	  </div>
-	  <div class="col-md-9">
+	  <div class="col-md-8">
+	  	<label class="hidden-md-up d-block" for="title">Title</label>
 	  	<input name="title" type="text" class="form-control" value="{{title}}" autofocus required>
 	  </div>
 	</div><!--/.row-->
 
 	<div class="row form-group">
-	  <div class="col-md-3 text-md-right">
+	  <div class="col-md-4 hidden-sm-down text-xs-right">
 	    <label for="slug">Slug</label>
 	  </div>
-	  <div class="col-md-9">
+	  <div class="col-md-8">
+	  	<label class="hidden-md-up d-block" for="slug">Slug</label>
 	  	<input name="slug" type="text" class="form-control" value="{{slug}}" >
 	  </div>
 	</div><!--/.row-->
 
 	<div class="row form-group">
-	  <div class="col-md-3 text-md-right">
+	  <div class="col-md-4 hidden-sm-down text-xs-right">
 	    <label for="_category">Category</label>
 	  </div>
-	  <div class="col-md-9">
+	  <div class="col-md-8">
+	  	<label class="hidden-md-up d-block" for="_category">Category</label>
 	  	<select name="_category" class="form-control select2" required>
 				{{#each ../categories}}
 			  	<option value="{{_id}}" {{#compare title ../_category.title}} selected="selected"{{/compare}}>{{title}}</option>
@@ -33,36 +36,39 @@
 	</div><!--/.row-->
 
 	<div class="row form-group">
-	  <div class="col-md-3 text-md-right">
+	  <div class="col-md-4 hidden-sm-down text-xs-right">
 	    <label for="intro">Intro</label>
 	  </div>
-	  <div class="col-md-9">
+	  <div class="col-md-8">
+	  	<label class="hidden-md-up d-block" for="intro">Intro</label>
 	  	<input name="intro" type="text" class="form-control" value="{{intro}}" >
 		</div>
 	</div><!--/.row-->	
 
 	<div class="row form-group">
-	  <div class="col-md-3 text-md-right">
+	  <div class="col-md-4 hidden-sm-down text-xs-right">
     	<label for="body">Body</label>
 	  </div>
-	  <div class="col-md-9">
+	  <div class="col-md-8">
+	  	<label class="hidden-md-up d-block" for="body">Body</label>
 	  	<textarea name="body" class="form-control summernote" required>{{body}}</textarea>
 	  </div>
 	</div><!--/.row-->	
 
   <div class="row form-group">
-	  <div class="col-md-3 text-md-right">
+	  <div class="col-md-4 hidden-sm-down text-xs-right">
 	    <label for="fiddle">Fiddle</label>
 	  </div>
-	  <div class="col-md-9">
+	  <div class="col-md-8">
+	  	<label class="hidden-md-up d-block" for="fiddle">Fiddle</label>
 	  	<input name="fiddle" type="text" class="form-control" value="{{fiddle}}">
 		</div>
 	</div><!--/.row-->	
 
   <div class="row form-group">
-  	<div class="col-md-3 text-md-right">
+  	<div class="col-md-4 hidden-sm-down text-xs-right">
   	</div>
-	  <div class="col-md-9">
+	  <div class="col-md-8">
 		 	<div class="checkbox">
 		    <label>
 		      <input name="published" type="checkbox" {{#compare published true}}checked{{/compare}}> Published?
@@ -72,15 +78,15 @@
  	</div><!--/.row-->	
 	
   <div class="row form-group">
-  	<div class="col-md-3 text-md-right">
+  	<div class="col-md-4 hidden-sm-down text-xs-right">
   	</div>
-	  <div class="col-md-9">
+	  <div class="col-md-8">
 		 	<div class="checkbox">
-		    <label>
-		      <button type="submit" class="btn btn-default btn-primary">Create</button>
-		    </label>
-		  </div>
-	  </div> 
+		    	<label>
+		      		<button type="submit" class="btn btn-default btn-primary ladda-button">Update</button>
+		    	</label>
+		  	</div>
+	  	</div> 
  	</div><!--/.row-->	
 
 </form>

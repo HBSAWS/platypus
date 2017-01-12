@@ -1,0 +1,57 @@
+{{#category}}
+<form action="/categories/update/{{id}}" method="post" data-parsley-validate>
+  
+  <div class="row form-group">
+	  <div class="col-md-3 text-md-right">
+	    <label for="title">Title</label>
+	  </div>
+	  <div class="col-md-9">
+	  	<input name="title" type="text" class="form-control" value="{{title}}" autofocus required>
+	  </div>
+	</div><!--/.row-->
+
+	<div class="row form-group">
+	  <div class="col-md-3 text-md-right">
+	    <label for="slug">Slug</label>
+	  </div>
+	  <div class="col-md-9">
+	  	<input name="slug" type="text" class="form-control" value="{{slug}}" >
+	  </div>
+	</div><!--/.row-->
+
+	<div class="row form-group">
+	  <div class="col-md-3 text-md-right">
+	    <label for="icon">Icon</label>
+	  </div>
+	  <div class="col-md-9">
+	  	<input name="icon" type="text" class="form-control" value="{{icon}}" >
+		</div>
+	</div><!--/.row-->	
+
+
+  <div class="row form-group">
+  	<div class="col-md-3 text-md-right">
+  	</div>
+	  <div class="col-md-9">
+		 	<div class="checkbox">
+		    <label>
+		      <input name="published" type="checkbox" {{#compare published true}}checked{{/compare}}> Published?
+		    </label>
+		  </div>
+	  </div> 
+ 	</div><!--/.row-->	
+	
+  <div class="row form-group">
+  	<div class="col-md-3 text-md-right">
+  	</div>
+	  <div class="col-md-9">
+		 	<div class="checkbox">
+		    <label>
+		      <button type="submit" class="btn btn-default btn-primary">Update</button>
+		    </label>
+		  </div>
+	  </div> 
+ 	</div><!--/.row-->	
+
+</form>
+{{/category}}

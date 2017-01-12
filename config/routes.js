@@ -12,6 +12,7 @@ module.exports = function(app){
   app.use('/articles',      articlesRouter);
   app.use('/categories',    categoriesRouter);  	
 
+  articlesRouter.get('/',                 articles.index);
   articlesRouter.get('/new',              articles.new);
   articlesRouter.post('/create',          articles.create);
   articlesRouter.get('/:slug',            articles.show);
@@ -19,6 +20,7 @@ module.exports = function(app){
   articlesRouter.get('/edit/:id',         articles.edit);
   articlesRouter.post('/update/:id',      articles.update);
 
+  categoriesRouter.get('/',               categories.index);
   categoriesRouter.get('/new',            categories.new);
   categoriesRouter.post('/create',        categories.create);
   categoriesRouter.post('/destroy/:id',   categories.destroy);

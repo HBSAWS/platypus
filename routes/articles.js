@@ -6,6 +6,19 @@ var mongoose = require('mongoose'),
 
 module.exports = {
 
+  index: function(req, res, next) {
+    Article.find({}, function(err, articles) {
+      res.render('articles/index', { 
+        layout : 'main',
+        articles: articles,
+        page_title: 'Test',
+        helpers: {
+          compare: helpers.compare,
+        } 
+      });
+    });
+  },
+
   new: function(req, res, next){  
     // Load associated categories to populate dropdown field.
     Category.find({}, function(err, categories){
