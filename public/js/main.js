@@ -1,4 +1,4 @@
-(function($, document, blueimp){
+;(function($){
 	var AWSFramework = {
     	ondomready: function() {
 		    AWSFramework.btnSubmitAnimate();
@@ -367,7 +367,7 @@
             });
 		},
 		slimScroll: function() {
-			$('body, .sidebar').slimScroll({
+			$('.sidebar').slimScroll({
 		        height: '100%'
 		    });
 		},
@@ -421,4 +421,4 @@
 	
 	window.AWSFramework = AWSFramework;
 
-})(jQuery, document, blueimp)
+})(jQuery)
