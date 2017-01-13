@@ -1,4 +1,4 @@
-;(function($){
+(function($, document, blueimp){
 	var AWSFramework = {
     	ondomready: function() {
 		    AWSFramework.btnSubmitAnimate();
@@ -20,6 +20,7 @@
 		    AWSFramework.slider();
 		    AWSFramework.formRendering();
 		    AWSFramework.slimScroll();
+		    AWSFramework.gallery();
 		    AWSFramework.toolTip();
 		    AWSFramework.popOver();		    
 	  	},
@@ -370,8 +371,54 @@
 		        height: '100%'
 		    });
 		},
+		gallery: function() {
+
+
+			if( $('#links').length ) {
+				document.getElementById('links').onclick = function (event) {
+					event = event || window.event;
+					var target = event.target || event.srcElement,
+					link = target.src ? target.parentNode : target,
+					options = {index: link, event: event, hidePageScrollbars: false},
+					links = this.getElementsByTagName('a');
+					blueimp.Gallery(links, options);
+				};
+			}
+
+		  // Blueimp mock
+		  // $.ajax({
+		  //   url: 'https://api.flickr.com/services/rest/',
+		  //   data: {
+		  //   	format: 'json',
+		  //   	method: 'flickr.interestingness.getList',
+		  //     api_key: '7617adae70159d09ba78cfec73c13be3' // jshint ignore:line
+		  //   },
+		  //   dataType: 'jsonp',
+		  //   jsonp: 'jsoncallback'
+		  // }).done(function (result) {
+		  // 	var linksContainer = $('#links')
+		  // 	var baseUrl
+		  //   // Add the demo images as links with thumbnails to the page:
+		  //   $.each(result.photos.photo, function (index, photo) {
+		  //   	if(index < 20) {
+		  //   		baseUrl = 'https://farm' + photo.farm + '.static.flickr.com/' +
+			 //    	photo.server + '/' + photo.id + '_' + photo.secret
+			 //    	$('<a/>')
+			 //    	.append($('<img>').prop('src', baseUrl + '_s.jpg'))
+			 //    	.prop('href', baseUrl + '_b.jpg')
+			 //    	.prop('title', photo.title)
+			 //    	.attr('data-gallery', '')
+			 //    	.appendTo(linksContainer);
+			 //    }
+		  //   })
+		  // });
+
+		},
 		last: ''
 	}
+
 	$(document).ready(AWSFramework.ondomready);
+	
 	window.AWSFramework = AWSFramework;
-})(jQuery)
+
+})(jQuery, document, blueimp)
