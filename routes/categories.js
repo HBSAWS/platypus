@@ -1,6 +1,5 @@
 var mongoose = require('mongoose'),
     Category = mongoose.model('Category'),
-    Article = mongoose.model('Article'),
     page_title = 'Categories',
     helpers = require('../config/handlebar-helpers.js').helpers;
 
@@ -44,6 +43,46 @@ module.exports = {
       published     : req.body.published ? true : false }, function(err, category){
       if(err) return next(err);
       res.redirect('/');
+    });
+  },
+
+  show: function(req, res, next){
+    Category.findOne({ slug: req.params.slug })
+    .exec(function(err, category){
+
+
+
+      Category.find({slug: req.params.slug})
+            .lean()
+            .exec(function(err, category) {
+              if(err) return next(err);
+
+                async.map(category, function(cat, done) {
+                    Article.find({_category: cat._id})
+                    .lean()
+                    .exec(function(err, a){
+                        if(err) return next(err);
+                        cat.articles = a;
+                        done(null, category);  
+              });
+            }, function(err, result) {
+                if(err) return next(err);
+                //res.status(200).json(result);  
+
+                res.render('categories/show', { 
+                  category: result[0], 
+                  section_title : 'Categories',
+                  layout : 'main',
+                  page_title : category.title,
+                  helpers: {
+                    compare: helpers.compare,
+                    dateFormat: helpers.dateFormat
+                  }
+                })
+
+            })
+        });
+
     });
   },
 

@@ -23,6 +23,7 @@ module.exports = function(app){
   categoriesRouter.get('/',               categories.index);
   categoriesRouter.get('/new',            categories.new);
   categoriesRouter.post('/create',        categories.create);
+  categoriesRouter.get('/:slug',          categories.show);
   categoriesRouter.post('/destroy/:id',   categories.destroy);
   categoriesRouter.get('/edit/:id',       categories.edit);
   categoriesRouter.post('/update/:id',    categories.update);

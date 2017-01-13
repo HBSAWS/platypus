@@ -25,7 +25,10 @@ module.exports = function(app, envConfig){
 
     app.use(logger('dev'));
     app.use(bodyParser.json());
-    app.use(bodyParser.urlencoded({extended: true}));
+    app.use(bodyParser.urlencoded({
+        limit: '50mb',
+        extended: true
+    }));
 
     app.use(express.static(path.join(envConfig.rootPath, 'public')));
 
@@ -48,9 +51,10 @@ module.exports = function(app, envConfig){
                 if(err) return next(err);
                 //res.status(200).json(result);  
                 res.locals.nav = result[0];
+                return next();
             })
         });
-        return next();
+        
     });
 
   

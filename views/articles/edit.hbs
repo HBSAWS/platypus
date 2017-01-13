@@ -21,6 +21,17 @@
 	  </div>
 	</div><!--/.row-->
 
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="type">Type</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="type">Type</label>
+            <select name="type" class="form-control" id="select-single">
+                <option value="core">Core</option>
+                <option value="addon">Addon</option>
+            </select>
+        </div>
+    </div>
+
 	<div class="row form-group">
 	  <div class="col-md-4 hidden-sm-down text-xs-right">
 	    <label for="_category">Category</label>
@@ -53,6 +64,26 @@
 	  	<label class="hidden-md-up d-block" for="body">Body</label>
 	  	<textarea name="body" class="form-control summernote" required>{{body}}</textarea>
 	  </div>
+	</div><!--/.row-->	
+
+	<div class="row form-group">
+	  <div class="col-md-4 text-md-right">
+	    <label for="markup">Markup</label>
+	  </div>
+	  <div class="col-md-8">
+	  	<label class="hidden-md-up d-block" for="markup">Markup</label>
+	  	<textarea name="markup" class="form-control">{{markup}}</textarea>
+		</div>
+	</div><!--/.row-->		
+
+	<div class="row form-group">
+	  <div class="col-md-4 text-md-right">
+	    <label for="js">Javascript</label>
+	  </div>
+	  <div class="col-md-8">
+	  	<label class="hidden-md-up d-block" for="js">Javascript</label>
+	  	<textarea name="js" class="form-control">{{js}}</textarea>
+		</div>
 	</div><!--/.row-->	
 
   <div class="row form-group">

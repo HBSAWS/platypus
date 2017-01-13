@@ -1,0 +1,20 @@
+{{#category}}
+<h2 class="display-4 text-truncate">{{title}} <a href="/categories/edit/{{_id}}"></a></h2>
+
+<hr>
+
+<div class="row">
+    {{#each articles}}
+        <div class="col-xs-6 col-sm-3 col-lg-3 col-lg-4 col-xl-2 text-xs-center">
+        	<a href="/articles/{{slug}}" class="palette-text-black-darker">
+	        	<div class="palette-bg-blue-grey-100 p-2 mb-2">
+	        		<img src="/images/{{slug}}.png" class="img-fluid">
+	        		<h5 class="text-truncate mt-1">{{title}}</h5>
+	        	</div>
+        	</a>
+        </div>
+    {{/each}}
+</div>
+{{/category}}
+<hr>
+<a href="#" class="btn btn-primary"><i class="fa fa-angle-double-left"></i> Back</a>

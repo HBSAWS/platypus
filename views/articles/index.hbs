@@ -1,6 +1,7 @@
 <ul class="list-group">
 	{{#articles}}
-	<li class="list-group-item">{{ title }} 
+	<li class="list-group-item">
+		<a href="/articles/{{slug}}#">{{ title }}</a>
 
 		<span class="float-xs-right">
 			<a href="/articles/edit/{{id}}#" class="btn"><i class="fa fa-edit"></i></a>
@@ -12,3 +13,5 @@
 	 </li>	
 	{{/articles}}
 </ul>
+<hr>
+<a class="btn btn-primary" href="/articles/new">New</a>

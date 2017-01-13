@@ -10,7 +10,7 @@
                 </a>
                 <ul aria-expanded="false" class="collapse">
                     {{#each articles}}
-                        <li><a href="/articles/{{slug}}">{{title}}</a></li>
+                        <li><a href="/articles/{{slug}}">{{title}} <span class="tag palette-bg-teal-500 float-xs-right">{{type}}</span></a></li>
                     {{/each}}
                 </ul>
             </li>

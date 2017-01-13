@@ -39,8 +39,6 @@ module.exports = {
     .populate('_category')
     .exec(function(err, article){
 
-      console.log(article);
-
       res.render('articles/show', { 
         article: article, 
         section_title : 'Articles',
@@ -67,8 +65,11 @@ module.exports = {
       _category       : req.body._category,
       title           : req.body.title,
       slug            : slug,
+      type            : req.body.type,
       intro           : req.body.intro,
       body            : req.body.body,
+      markup          : req.body.markup,
+      js              : req.body.js,
       fiddle          : req.body.fiddle,
       published       : req.body.published ? true : false }, function(err, article){
         if(err) {
@@ -126,8 +127,11 @@ module.exports = {
       _category       : req.body._category,
       title           : req.body.title,
       slug            : slug,
+      type            : req.body.type,
       intro           : req.body.intro,
       body            : req.body.body,
+      markup          : req.body.markup,
+      js              : req.body.js,      
       fiddle          : req.body.fiddle,
       published       : req.body.published ? true : false 
     };

@@ -1,5 +1,7 @@
+{{#with this}}
 <ol class="breadcrumb">
     <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
-    <li><a href="styles.html">Styles</a></li>
-    <li class="active">Icons</li>
+    <li><a href="/categories/{{_category.slug}}">{{_category.title}}</a></li>
+    <li class="active">{{title}}</li>
 </ol>
+{{/with}}
