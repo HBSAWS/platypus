@@ -4021,7 +4021,6 @@ body.canvas-slid .fa.fa-navicon::before {
   display: block;
   float: left;
   width: 100%;
-  background: #333;
   text-shadow: 0; }
 
 .content {
@@ -4158,6 +4157,9 @@ div.dataTables_wrapper div.dataTables_filter input {
   border-bottom: 5px solid black;
   color: #000;
   font-weight: bold; }
+
+.footer {
+  position: relative; }
 
 .sticky-footer {
   position: absolute;
@@ -4605,13 +4607,16 @@ html {
   position: relative;
   min-height: 100%; }
 
-.no-gutters {
-  margin-right: 0;
-  margin-left: 0; }
-  .no-gutters > .col,
-  .no-gutters > [class*="col-"] {
-    padding-right: 0;
-    padding-left: 0; }
+.row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap; }
+
+.row > [class*='col-'] {
+  display: flex;
+  flex-direction: column; }
 
 /*
 .row {

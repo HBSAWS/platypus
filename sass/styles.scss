@@ -16,18 +16,32 @@
 @import 'wysiwyg';
 
 html {
-position: relative;
+  position: relative;
   min-height: 100%;
 }
-.no-gutters {
-  margin-right: 0;
-  margin-left: 0;
-  > .col,
-  > [class*="col-"] {
-    padding-right: 0;
-    padding-left: 0;
-  }
+
+// .no-gutters {
+//   margin-right: 0;
+//   margin-left: 0;
+//   > .col,
+//   > [class*="col-"] {
+//     padding-right: 0;
+//     padding-left: 0;
+//   }
+// }
+
+.row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+  flex-wrap: wrap;
 }
+.row > [class*='col-'] {
+  display: flex;
+  flex-direction: column;
+}
+
 
 
 /*
