@@ -23,9 +23,9 @@ module.exports = {
 
         
 			// res.status(200).json(result);        
-        res.render('main', { 
+        res.render('home', { 
 	    		categories: result,
-	      	layout : 'main',
+	      	layout : 'home',
 	      	helpers:  {}
 	    	});
           

@@ -3,18 +3,13 @@
     <head>
         {{> head }}
     </head>
-    <body>
+    <body style="background: url(images/bg-hbs-1.png) top left no-repeat;">
         {{> gallery-controls }}
         {{> navbar }}
 
         <div class="row no-gutters">
-            <div class="col-lg-2 hidden-md-down p-0 palette-bg-blue-grey-500">
-                 {{> left-nav }}
-            </div>
-            <div class="col-lg-10 p-2">
+            <div class="col-lg-12 p-2">
                 
-                {{> breadcrumbs article }}
-
                 {{{body}}}
 
             </div>           
