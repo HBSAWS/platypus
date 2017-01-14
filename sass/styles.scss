@@ -13,22 +13,13 @@
 @import 'loaders';
 @import 'typography';
 @import 'progress-bar';
+@import 'azlist';
 @import 'wysiwyg';
 
 html {
   position: relative;
   min-height: 100%;
 }
-
-// .no-gutters {
-//   margin-right: 0;
-//   margin-left: 0;
-//   > .col,
-//   > [class*="col-"] {
-//     padding-right: 0;
-//     padding-left: 0;
-//   }
-// }
 
 .row {
   display: -webkit-box;
@@ -41,18 +32,3 @@ html {
   display: flex;
   flex-direction: column;
 }
-
-
-
-/*
-.row {
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display:  flex;	
-}
-.row > [class*='col-'] {
-	display: flex;
-	flex-direction: column;
-}
-*/

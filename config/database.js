@@ -5,6 +5,7 @@ module.exports = function(envConfig){
   require('./models/Category');
   
   // Connect to database
+  mongoose.Promise = global.Promise;
   mongoose.connect(envConfig.database, function(error){
     if(error) throw error;
     console.log('Connected to database.')
