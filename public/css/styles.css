@@ -4638,14 +4638,3 @@ div.dataTables_wrapper div.dataTables_filter input {
 html {
   position: relative;
   min-height: 100%; }
-
-.row {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  flex-wrap: wrap; }
-
-.row > [class*='col-'] {
-  display: flex;
-  flex-direction: column; }
