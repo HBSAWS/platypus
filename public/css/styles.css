@@ -4159,6 +4159,11 @@ div.dataTables_wrapper div.dataTables_filter input {
   color: #000;
   font-weight: bold; }
 
+.sticky-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%; }
+
 .load-container {
   border: 1px solid rgba(255, 255, 255, 0.2);
   width: 240px;
@@ -4595,6 +4600,10 @@ div.dataTables_wrapper div.dataTables_filter input {
   .note-toolbar .btn {
     border: 1px solid #ccc;
     background: white; }
+
+html {
+  position: relative;
+  min-height: 100%; }
 
 .no-gutters {
   margin-right: 0;

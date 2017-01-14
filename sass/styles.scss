@@ -9,12 +9,16 @@
 @import 'carousel';
 @import 'datatables';
 @import 'tabs';
+@import 'footer';
 @import 'loaders';
 @import 'typography';
 @import 'progress-bar';
 @import 'wysiwyg';
 
-
+html {
+position: relative;
+  min-height: 100%;
+}
 .no-gutters {
   margin-right: 0;
   margin-left: 0;
