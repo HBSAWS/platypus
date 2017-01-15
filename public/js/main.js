@@ -23,6 +23,7 @@
 		    AWSFramework.gallery();
 		    AWSFramework.AZList();
 		    AWSFramework.calendar();
+		    AWSFramework.rotatingBg();
 		    AWSFramework.modal();
 		    AWSFramework.toolTip();
 		    AWSFramework.popOver();		    
@@ -497,6 +498,9 @@
 		},
 		modal: function() {
 			// global modal options 
+		},
+		rotatingBg: function() {
+			$('.rotating-bg').css('background-image', 'url("/images/bg-hbs-'+_.random(1, 4)+'.png")');
 		},
 		last: ''
 	}

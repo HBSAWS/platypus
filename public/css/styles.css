@@ -4027,6 +4027,9 @@ span.btn-label.btn-label-right {
 .fa {
   width: 1em; }
 
+.rotating-bg {
+  background-size: cover; }
+
 /* Left Nav */
 aside[style] {
   width: 100% !important; }
