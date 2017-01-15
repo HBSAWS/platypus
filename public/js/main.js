@@ -22,6 +22,7 @@
 		    AWSFramework.slimScroll();
 		    AWSFramework.gallery();
 		    AWSFramework.AZList();
+		    AWSFramework.calendar();
 		    AWSFramework.toolTip();
 		    AWSFramework.popOver();		    
 	  	},
@@ -383,35 +384,6 @@
 					blueimp.Gallery(links, options);
 				};
 			}
-
-		  // Blueimp mock
-		  // $.ajax({
-		  //   url: 'https://api.flickr.com/services/rest/',
-		  //   data: {
-		  //   	format: 'json',
-		  //   	method: 'flickr.interestingness.getList',
-		  //     api_key: '7617adae70159d09ba78cfec73c13be3' // jshint ignore:line
-		  //   },
-		  //   dataType: 'jsonp',
-		  //   jsonp: 'jsoncallback'
-		  // }).done(function (result) {
-		  // 	var linksContainer = $('#links')
-		  // 	var baseUrl
-		  //   // Add the demo images as links with thumbnails to the page:
-		  //   $.each(result.photos.photo, function (index, photo) {
-		  //   	if(index < 20) {
-		  //   		baseUrl = 'https://farm' + photo.farm + '.static.flickr.com/' +
-			 //    	photo.server + '/' + photo.id + '_' + photo.secret
-			 //    	$('<a/>')
-			 //    	.append($('<img>').prop('src', baseUrl + '_s.jpg'))
-			 //    	.prop('href', baseUrl + '_b.jpg')
-			 //    	.prop('title', photo.title)
-			 //    	.attr('data-gallery', '')
-			 //    	.appendTo(linksContainer);
-			 //    }
-		  //   })
-		  // });
-
 		},
 		AZList: function() {
 			$('#azList').listnav({
@@ -430,6 +402,58 @@
 			    prefixes: [],          // Set an array of prefixes that should be counted for the prefix and the first word after the prefix ex: ['the', 'a', 'my']
 			    filterSelector: ''     // Set the filter to a CSS selector rather than the first text letter for each item
 			});
+		},
+		calendar: function() {
+$('#calendar').fullCalendar({
+			header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,agendaWeek,agendaDay'
+			},
+			defaultDate: '2014-06-12',
+			defaultView: 'month',
+			editable: true,
+			events: [
+				{
+					title: 'All Day Event',
+					start: '2014-06-01'
+				},
+				{
+					title: 'Long Event',
+					start: '2014-06-07',
+					end: '2014-06-10'
+				},
+				{
+					id: 999,
+					title: 'Repeating Event',
+					start: '2014-06-09T16:00:00'
+				},
+				{
+					id: 999,
+					title: 'Repeating Event',
+					start: '2014-06-16T16:00:00'
+				},
+				{
+					title: 'Meeting',
+					start: '2014-06-12T10:30:00',
+					end: '2014-06-12T12:30:00'
+				},
+				{
+					title: 'Lunch',
+					start: '2014-06-12T12:00:00'
+				},
+				{
+					title: 'Birthday Party',
+					start: '2014-06-13T07:00:00'
+				},
+				{
+					title: 'Click for Google',
+					url: 'http://google.com/',
+					start: '2014-06-28'
+				}
+			]
+		});
+
 		},
 		last: ''
 	}
