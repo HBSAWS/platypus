@@ -11,6 +11,9 @@
 .accordion a.collapsed:after {
   content: "\f106"; }
 
+.palette-bg-white {
+  background-color: white; }
+
 /*!
  *  Material Design Color Palette by Sergey Kupletsky (@zavoloklom) - http://zavoloklom.github.io/material-design-color-palette/
  *  License - https://github.com/zavoloklom/material-design-color-palette/blob/master/License (MIT license)
@@ -4020,6 +4023,9 @@ span.btn-label.btn-label-right {
 .parsley-errors-list.filled {
   list-style-type: none;
   padding-left: 0; }
+
+.fa {
+  width: 1em; }
 
 /* Left Nav */
 aside[style] {
