@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans");
-.btn, button, input, select, textarea, .custom-file-control, .input-group-addon, .form-control {
+.btn, button, input, select, textarea, .custom-file-control, .input-group-addon, .form-control, .tag {
   border-radius: 0 !important; }
 
 .accordion a:after {
@@ -3948,6 +3948,17 @@ a.palette-text-black-dark:focus {
 a.palette-text-black-darker:hover,
 a.palette-text-black-darker:focus {
   color: black; }
+
+.fc-event {
+  position: relative;
+  display: block;
+  font-size: .85em;
+  line-height: 1.3;
+  border-radius: 0;
+  border: 1px solid #009688;
+  color: white !important; }
+  .fc-event .fc-time {
+    opacity: .5; }
 
 .breadcrumb {
   padding: 8px 15px;

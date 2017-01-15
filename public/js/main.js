@@ -23,6 +23,7 @@
 		    AWSFramework.gallery();
 		    AWSFramework.AZList();
 		    AWSFramework.calendar();
+		    AWSFramework.modal();
 		    AWSFramework.toolTip();
 		    AWSFramework.popOver();		    
 	  	},
@@ -404,56 +405,98 @@
 			});
 		},
 		calendar: function() {
-$('#calendar').fullCalendar({
-			header: {
-				left: 'prev,next today',
-				center: 'title',
-				right: 'month,agendaWeek,agendaDay'
-			},
-			defaultDate: '2014-06-12',
-			defaultView: 'month',
-			editable: true,
-			events: [
-				{
-					title: 'All Day Event',
-					start: '2014-06-01'
+			$('#calendar').fullCalendar({
+				header: {
+					left: 'prev,next today',
+					center: 'title',
+					right: 'month,agendaWeek,agendaDay'
 				},
-				{
-					title: 'Long Event',
-					start: '2014-06-07',
-					end: '2014-06-10'
-				},
-				{
-					id: 999,
-					title: 'Repeating Event',
-					start: '2014-06-09T16:00:00'
-				},
-				{
-					id: 999,
-					title: 'Repeating Event',
-					start: '2014-06-16T16:00:00'
-				},
-				{
-					title: 'Meeting',
-					start: '2014-06-12T10:30:00',
-					end: '2014-06-12T12:30:00'
-				},
-				{
-					title: 'Lunch',
-					start: '2014-06-12T12:00:00'
-				},
-				{
-					title: 'Birthday Party',
-					start: '2014-06-13T07:00:00'
-				},
-				{
-					title: 'Click for Google',
-					url: 'http://google.com/',
-					start: '2014-06-28'
-				}
-			]
-		});
+				defaultDate: moment().format('YYYY-MM-DD'),
+				defaultView: 'month',
+				editable: true,
+				events: [
+					{
+						title: 'All Day Event',
+						category: 'Meetings',
+						start: moment(),
+						description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam nulla unde, sint ipsa dolorum quas cupiditate, voluptate voluptatum laboriosam, ducimus, in praesentium nisi error repudiandae. Provident dolorem aliquam amet ut.',
+						location: '1 Main St. Cambridge, MA 02141',
+					},
+					{
+						title: 'Long Event',
+						category: 'Personal',						
+						start: moment().add(1, 'day'),
+						end: moment().add(1, 'day'),
+						description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam nulla unde, sint ipsa dolorum quas cupiditate, voluptate voluptatum laboriosam, ducimus, in praesentium nisi error repudiandae. Provident dolorem aliquam amet ut.',
+						location: '1 Main St. Cambridge, MA 02141',
 
+					},
+					{
+						id: 999,
+						title: 'Another Event',
+						category: 'Meetings',						
+						start: moment().add(2, 'day'),
+						end: moment().add(2, 'day'),
+						description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam nulla unde, sint ipsa dolorum quas cupiditate, voluptate voluptatum laboriosam, ducimus, in praesentium nisi error repudiandae. Provident dolorem aliquam amet ut.',
+						location: '1 Main St. Cambridge, MA 02141',
+					},
+					{
+						id: 123,
+						title: 'Yet Another Event',
+						category: 'Vacation',						
+						start: moment().add(3, 'day'),
+						end: moment().add(3, 'day'),
+						description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam nulla unde, sint ipsa dolorum quas cupiditate, voluptate voluptatum laboriosam, ducimus, in praesentium nisi error repudiandae. Provident dolorem aliquam amet ut.',
+						location: '1 Main St. Cambridge, MA 02141',
+					},
+					{
+						title: 'Meeting',
+						category: 'Meetings',						
+						start: moment().add(4, 'day'),
+						end: moment().add(4, 'day'),
+						description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam nulla unde, sint ipsa dolorum quas cupiditate, voluptate voluptatum laboriosam, ducimus, in praesentium nisi error repudiandae. Provident dolorem aliquam amet ut.',
+						location: '1 Main St. Cambridge, MA 02141',						
+					},
+					{
+						title: 'Lunch',
+						category: 'Meetings',						
+						start: moment().add(5, 'day'),
+						description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam nulla unde, sint ipsa dolorum quas cupiditate, voluptate voluptatum laboriosam, ducimus, in praesentium nisi error repudiandae. Provident dolorem aliquam amet ut.',
+						location: '1 Main St. Cambridge, MA 02141',						
+					},
+					{
+						title: 'Birthday Party',
+						category: 'Meetings',						
+						start: moment().add(6, 'day'),
+						description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam nulla unde, sint ipsa dolorum quas cupiditate, voluptate voluptatum laboriosam, ducimus, in praesentium nisi error repudiandae. Provident dolorem aliquam amet ut.',
+						location: '1 Main St. Cambridge, MA 02141',						
+					},
+					{
+						title: 'Some Event',
+						category: 'Personal',						
+						url: '#',
+						start: moment().add(7, 'day'),
+						description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam nulla unde, sint ipsa dolorum quas cupiditate, voluptate voluptatum laboriosam, ducimus, in praesentium nisi error repudiandae. Provident dolorem aliquam amet ut.',
+						location: '1 Main St. Cambridge, MA 02141',						
+					}
+				],
+				eventClick:  function(event, jsEvent, view) {
+		            $('#event-modal .modal-body .event-title').html(event.title);
+		            $('#event-modal .modal-body .event-category').html(event.category);
+		            $('#event-modal .modal-body .event-description').html(event.description);
+					$('#event-modal .modal-body .event-starts').html(moment(event.start).format("MMM DD YYYY"));	       
+					$('#event-modal .modal-body .event-ends').html(moment(event.end).format("MMM DD YYYY"));		            
+					$('#event-modal .modal-body .event-location').html(event.location);		            
+					$('#event-modal .modal-body .event-start-month').html(moment(event.start).format("MMM"));		            
+					$('#event-modal .modal-body .event-start-day').html(moment(event.start).format("DD"));		
+		            $('#event-modal #event-url').attr('href',event.url);					            
+		            $('#event-modal').modal();
+		        }
+			});
+
+		},
+		modal: function() {
+			// global modal options 
 		},
 		last: ''
 	}

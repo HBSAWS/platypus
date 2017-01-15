@@ -143,7 +143,7 @@ module.exports = {
 
     Article.findOneAndUpdate({ _id: req.params.id }, update_attrs, function(err, article){
         if(err) return next(err);
-        res.redirect('/articles');
+        res.redirect('/articles/'+article.slug);
     });
   },
 

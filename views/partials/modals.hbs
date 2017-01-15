@@ -1,0 +1,33 @@
+<div id="event-modal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">close</span></button>
+                <h4>Event Details</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-2 text-xs-center">
+                        <div class="event-start-month tag tag-primary d-block text-uppercase">Jan</div>
+                        <div class="event-start-day day display-4 border-1">22</div>
+                    </div>
+                    <div class="col-xs-10">
+                        <h3 class="event-title font-weight-bold"></h3> 
+                        <span class="tag tag-default event-category"></span>
+                        <ul class="list-unstyled">
+                            <li><span class="event-starts"></span> - <span class="event-ends"></span></li>
+                            <li><i class="fa fa-map-marker"></i> <a href="#" target="_blank"><span class="event-location"></span></a></li>
+                        </ul>
+                        <div class="event-description"></div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="modal-footer">
+                {{!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> --}}
+                <button class="btn btn-secondary"><a href="#">Download to Calendar</a></button>
+                <button class="btn btn-primary"><a id="event-url" target="_blank">Event Details</a></button>
+            </div>
+        </div>
+    </div>
+</div>
