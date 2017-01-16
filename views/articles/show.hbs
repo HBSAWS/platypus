@@ -1,21 +1,15 @@
 {{#article}}
-<h2 class="display-4">{{title}} <a href="/articles/edit/{{_id}}"><i class="fa fa-edit pull-right"></i></a></h2>
-<p class="lead">{{intro}}</p>
-<div>{{{body}}}</div>
+	<h2 class="display-4">{{title}} <a href="/articles/edit/{{_id}}" class="btn btn-primary pull-right"><i class="fa fa-edit"></i></a></h2>
+	<p class="lead">{{intro}}</p>
+	<div>{{{body}}}</div>
 
-<h4>Example</h4>
-{{{markup}}}
+	<h4>Example</h4>
+	{{{markup}}}
 
-<hr>
+	<hr>
 
-<h4>Markup</h4>
-<pre class="pre-scrollable">
-<code class="html">{{markup}}</code>
-</pre>
-
-<div class="mb-2">
-	{{{body}}}
-</div>
+	<h4>Markup</h4>
+	<pre class="pre-scrollable"><code class="html">{{markup}}</code></pre>
 
 {{/article}}
 
