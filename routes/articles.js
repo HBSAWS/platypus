@@ -149,9 +149,23 @@ module.exports = {
   },
 
   search: function(req, res, next){
-    Article.find({}, function(err, articles) {
+    Article.find({})
+      .lean()
+      .exec(function(err, articles) {
         if(err) return next(err);
-        res.status(200).json(_.map(articles, 'title'));  
+        
+        res.status(200).json(_.map(articles, 'title'));   
+        
+        // var data = [];
+        // _.map(articles, function(article, index){
+        //   data.push({
+        //     title: article.title,
+        //     slug: article.slug,
+        //     intro: article.intro
+        //   });
+        // })
+        
+        // res.status(200).json(data);   
     });
   },
 

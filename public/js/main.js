@@ -508,23 +508,29 @@
 			    input: ".js-typeahead",
 			    order: "asc",
 			    source: {
-			        groupName: {
+			        articles: {
 			            ajax: {
-			                url: "/articles/search"
+			                url: "/articles/search",
 			            }
 			        }
 			    },
 			    emptyTemplate: "no result for {{query}}",
+			    highlight: true,
+			    highlight: false,
+    			hint: true,
+			    backdrop: {
+			        "background-color": "#000"
+			    },
 			    callback: {
 					onInit: function (node) {
 			            console.log('Typeahead Initiated on ' + node.selector);
 			        },
 					onClick: function (node, a, item, event) {
-					 
-					            // You can do a simple window.location of the item.href
-					            alert(JSON.stringify(item)); 
+			            // You can do a simple window.location of the item.href
+			            alert(JSON.stringify(item)); 
 					},			        
-			    }
+			    },
+			    debug: true
 			});
 		},
 		last: ''
