@@ -2,6 +2,7 @@ var mongoose = require('mongoose'),
   Article = mongoose.model('Article');
   Category = mongoose.model('Category'),
   page_title = 'Articles',
+  _ = require('lodash'),
   helpers = require('../config/handlebar-helpers.js').helpers;
 
 module.exports = {
@@ -26,7 +27,7 @@ module.exports = {
       res.render('articles/new', { 
         categories: categories, 
         layout : 'main' ,
-        page_title : page_title,
+        page_title : 'New content',
         helpers: {
           compare: helpers.compare,
         }
@@ -124,16 +125,16 @@ module.exports = {
       .replace(/-+$/, '');   
 
     var update_attrs = {
-      _category       : req.body._category,
-      title           : req.body.title,
-      slug            : slug,
-      type            : req.body.type,
-      intro           : req.body.intro,
-      body            : req.body.body,
-      markup          : req.body.markup,
-      js              : req.body.js,      
-      fiddle          : req.body.fiddle,
-      published       : req.body.published ? true : false 
+        _category       : req.body._category,
+        title           : req.body.title,
+        slug            : slug,
+        type            : req.body.type,
+        intro           : req.body.intro,
+        body            : req.body.body,
+        markup          : req.body.markup,
+        js              : req.body.js,      
+        fiddle          : req.body.fiddle,
+        published       : req.body.published ? true : false 
     };
 
     // cover attachment present?
@@ -147,5 +148,11 @@ module.exports = {
     });
   },
 
+  search: function(req, res, next){
+    Article.find({}, function(err, articles) {
+        if(err) return next(err);
+        res.status(200).json(_.map(articles, 'title'));  
+    });
+  },
 
 };

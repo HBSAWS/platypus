@@ -25,6 +25,7 @@
 		    AWSFramework.calendar();
 		    AWSFramework.rotatingBg();
 		    AWSFramework.modal();
+		    AWSFramework.search();
 		    AWSFramework.toolTip();
 		    AWSFramework.popOver();		    
 	  	},
@@ -501,6 +502,30 @@
 		},
 		rotatingBg: function() {
 			$('.rotating-bg').css('background-image', 'url("/images/bg-hbs-'+_.random(1, 4)+'.png")');
+		},
+		search: function() {
+			$.typeahead({
+			    input: ".js-typeahead",
+			    order: "asc",
+			    source: {
+			        groupName: {
+			            ajax: {
+			                url: "/articles/search"
+			            }
+			        }
+			    },
+			    emptyTemplate: "no result for {{query}}",
+			    callback: {
+					onInit: function (node) {
+			            console.log('Typeahead Initiated on ' + node.selector);
+			        },
+					onClick: function (node, a, item, event) {
+					 
+					            // You can do a simple window.location of the item.href
+					            alert(JSON.stringify(item)); 
+					},			        
+			    }
+			});
 		},
 		last: ''
 	}

@@ -12,7 +12,16 @@
             </div>
             <div class="col-xs-2 col-sm-3 col-xl-2">
                 <ul class="list-unstyled list-inline text-xs-right">
-                    <li class="d-inline"><a  href="#search-container" class="btn" data-toggle="collapse" href="#search-container" aria-expanded="false" aria-controls="search-container"><i class="fa fa-search text-white"></i></a></li>
+                    <li class="d-inline">
+                        <a  href="#search-container" class="btn" data-toggle="collapse" aria-expanded="false" aria-controls="search-container">
+                            <i class="fa fa-search text-white"></i>
+                        </a>
+                    </li>
+                    <li class="d-inline">
+                        <a href="/articles/new" class="btn">
+                            <i class="fa fa-plus text-white"></i>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -20,13 +29,40 @@
 
     <div class="collapse palette-bg-teal-700" id="search-container">
         <div class="p-2">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search" autofocus>
-                <span class="input-group-btn">
-                    <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
-                </span>
-            </div>            
+            {{!-- 
+            <form action="/articles/search" method="post">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" autofocus>
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
+                    </span>
+                </div> 
+            </form>  
+             --}}         
+
+
+            <form>
+                <div class="typeahead__container">
+                    <div class="typeahead__field">
+             
+                        <span class="typeahead__query">
+                            <input class="js-typeahead"
+                                   name="q"
+                                   type="search"
+                                   autocomplete="off">
+                        </span>
+                        <span class="typeahead__button">
+                            <button type="submit">
+                                <span class="typeahead__search-icon"></span>
+                            </button>
+                        </span>
+             
+                    </div>
+                </div>
+            </form>
+    
         </div>
+
     </div>
 
 </header>

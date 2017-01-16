@@ -15,6 +15,7 @@ module.exports = function(app){
   articlesRouter.get('/',                 articles.index);
   articlesRouter.get('/new',              articles.new);
   articlesRouter.post('/create',          articles.create);
+  articlesRouter.get('/search',           articles.search);
   articlesRouter.get('/:slug',            articles.show);
   articlesRouter.post('/destroy/:id',     articles.destroy);
   articlesRouter.get('/edit/:id',         articles.edit);
