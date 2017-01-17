@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600");
 .btn, button, input, select, textarea, .custom-file-control, .input-group-addon, .form-control, .tag {
   border-radius: 0 !important; }
 
@@ -4628,8 +4628,8 @@ div.dataTables_wrapper div.dataTables_filter input {
   font-family: 'Open Sans', sans-serif;
   font-weight: 400; }
 
-strong {
-  font-weight: 700; }
+strong, .font-weight-bold {
+  font-weight: 600; }
 
 .progress .progress-bar {
   height: 5px; }
@@ -4665,6 +4665,21 @@ strong {
   line-height: 1;
   margin-bottom: 1px;
   color: black; }
+
+#toast-container > div {
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none; }
+  #toast-container > div:hover {
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none; }
 
 .typeahead__list > li > a {
   clear: none; }

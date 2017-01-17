@@ -504,6 +504,8 @@
 			$('.rotating-bg').css('background-image', 'url("/images/bg-hbs-'+_.random(1, 4)+'.png")');
 		},
 		search: function() {
+			
+			// Works
 			$.typeahead({
 			    input: ".js-typeahead",
 			    order: "asc",
@@ -519,18 +521,16 @@
 			            ajax: {
 			                url: '/articles/search/ui-components',
 			            },
-			            template: '<div clas="row d-flex align-items-stretch bd-highlight"><div class="col-xs-1 p-2 bg-info"><img src="/images/{{slug}}.png" class="img-fluid"></div><div class="col-xs-11"><h5>{{title}}</h5>{{intro}}</div></div>'
+			            template: '<div clas="row"><div class="col-xs-1 p-2 bg-info"><img src="/images/{{slug}}.png" class="img-fluid"></div><div class="col-xs-11"><h5>{{title}}</h5>{{intro}}</div></div>'
 			        },
 			        resources: {
 			        	ajax: {
 			        		url: '/articles/search/resources',
 			        	},
-			        	template: '<div clas="row d-flex align-items-stretch bd-highlight"><div class="col-xs-12"><h5>{{title}}</h5>{{intro}}</div></div>'
+			        	template: '<div clas="row"><div class="col-xs-12"><h5>{{title}}</h5>{{intro}}</div></div>'
 			        }
 			    },
 			    emptyTemplate: "no result for {{query}}",
-			 	// template: '<div clas="row"><div class="col-xs-1 p-2 bg-info"><img src="/images/{{slug}}.png" class="img-fluid"></div><div class="col-xs-11"><h5>{{title}}</h5>{{intro}}</div></div>',
-				// groupTemplate: "<table><tr><td>{{group}}</td></tr></table>",
 			    hint: true,
 			    backdrop: {
 			        "background-color": "#000"
@@ -541,11 +541,32 @@
 			        },
 					onClick: function (node, a, item, event) {
 			            window.location(item.href);
-			            //console.log(JSON.stringify(item)); 
 					},			        
+			    },
+			    selector: {
+			        container: "typeahead__container",
+			        result: "typeahead__result",
+			        list: "typeahead__list",
+			        group: "typeahead__group",
+			        item: "typeahead__item",
+			        empty: "typeahead__empty",
+			        display: "typeahead__display",
+			        query: "typeahead__query",
+			        filter: "typeahead__filter",
+			        filterButton: "typeahead__filter-button",
+			        dropdown: "typeahead__dropdown",
+			        dropdownItem: "typeahead__dropdown-item",
+			        button: "typeahead__button",
+			        backdrop: "typeahead__backdrop",
+			        hint: "typeahead__hint",
+			        cancelButton: "typeahead__cancel-button"
 			    },
 			    debug: true
 			});
+
+
+
+
 		},
 		last: ''
 	}
