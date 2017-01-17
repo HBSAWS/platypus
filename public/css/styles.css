@@ -4666,8 +4666,15 @@ strong {
   margin-bottom: 1px;
   color: black; }
 
-li.typeahead__item > a {
-  min-height: 100px; }
+.typeahead__list > li > a {
+  clear: none; }
+  .typeahead__list > li > a:hover {
+    background-color: transparent; }
+
+.typeahead__list > li {
+  clear: both; }
+  .typeahead__list > li:hover {
+    background-color: transparent; }
 
 .note-toolbar {
   background-color: #f5f5f5;

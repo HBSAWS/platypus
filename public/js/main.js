@@ -515,22 +515,22 @@
 			        }
     			},
 			    source: {
-			        articles: {
+			        ui_components: {
 			            ajax: {
 			                url: '/articles/search/ui-components',
-			                //path: ""
 			            },
-			            template: '<div clas="row"><div class="col-xs-1 p-2 bg-info"><img src="/images/{{slug}}.png" class="img-fluid"></div><div class="col-xs-11"><h5>{{title}}</h5>{{intro}}</div></div>'
+			            template: '<div clas="row d-flex align-items-stretch bd-highlight"><div class="col-xs-1 p-2 bg-info"><img src="/images/{{slug}}.png" class="img-fluid"></div><div class="col-xs-11"><h5>{{title}}</h5>{{intro}}</div></div>'
 			        },
 			        resources: {
 			        	ajax: {
 			        		url: '/articles/search/resources',
-			        		//path: ""
 			        	},
-			        	template: '<div clas="row"><div class="col-xs-12"><h5>{{title}}</h5>{{intro}}</div></div>'
+			        	template: '<div clas="row d-flex align-items-stretch bd-highlight"><div class="col-xs-12"><h5>{{title}}</h5>{{intro}}</div></div>'
 			        }
 			    },
 			    emptyTemplate: "no result for {{query}}",
+			 	// template: '<div clas="row"><div class="col-xs-1 p-2 bg-info"><img src="/images/{{slug}}.png" class="img-fluid"></div><div class="col-xs-11"><h5>{{title}}</h5>{{intro}}</div></div>',
+				// groupTemplate: "<table><tr><td>{{group}}</td></tr></table>",
 			    hint: true,
 			    backdrop: {
 			        "background-color": "#000"

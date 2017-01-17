@@ -1,5 +1,12 @@
-li.typeahead__item {
-	& > a {
-		min-height: 100px;
+.typeahead__list>li>a {
+	clear: none;
+	&:hover {
+		background-color: transparent;
+	}
+}
+.typeahead__list>li {
+	clear: both;
+	&:hover {
+		background-color: transparent;
 	}
 }
