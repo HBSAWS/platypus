@@ -507,17 +507,31 @@
 			$.typeahead({
 			    input: ".js-typeahead",
 			    order: "asc",
+			    display: ["title", "intro"],
+			    href: "/articles/{{slug}}",
+				group: {
+			        template: function (item) {
+			            return 'Found in ' + item._category.title;
+			        }
+    			},
 			    source: {
 			        articles: {
 			            ajax: {
-			                url: "/articles/search",
-			            }
+			                url: '/articles/search/ui-components',
+			                //path: ""
+			            },
+			            template: '<div clas="row"><div class="col-xs-1 p-2 bg-info"><img src="/images/{{slug}}.png" class="img-fluid"></div><div class="col-xs-11"><h5>{{title}}</h5>{{intro}}</div></div>'
+			        },
+			        resources: {
+			        	ajax: {
+			        		url: '/articles/search/resources',
+			        		//path: ""
+			        	},
+			        	template: '<div clas="row"><div class="col-xs-12"><h5>{{title}}</h5>{{intro}}</div></div>'
 			        }
 			    },
 			    emptyTemplate: "no result for {{query}}",
-			    highlight: true,
-			    highlight: false,
-    			hint: true,
+			    hint: true,
 			    backdrop: {
 			        "background-color": "#000"
 			    },
@@ -526,8 +540,8 @@
 			            console.log('Typeahead Initiated on ' + node.selector);
 			        },
 					onClick: function (node, a, item, event) {
-			            // You can do a simple window.location of the item.href
-			            alert(JSON.stringify(item)); 
+			            window.location(item.href);
+			            //console.log(JSON.stringify(item)); 
 					},			        
 			    },
 			    debug: true

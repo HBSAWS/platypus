@@ -149,24 +149,23 @@ module.exports = {
   },
 
   search: function(req, res, next){
-    Article.find({})
+    Category.findOne({'slug': req.params.cat_slug}, function(err, category){
+      if(err) return next(err);
+
+      console.log(category);
+    
+      Article.find({'_category': category._id})
+      .populate('_category')
       .lean()
       .exec(function(err, articles) {
+
+        console.log(articles);
+
         if(err) return next(err);
-        
-        res.status(200).json(_.map(articles, 'title'));   
-        
-        // var data = [];
-        // _.map(articles, function(article, index){
-        //   data.push({
-        //     title: article.title,
-        //     slug: article.slug,
-        //     intro: article.intro
-        //   });
-        // })
-        
-        // res.status(200).json(data);   
-    });
+        res.status(200).json(articles);   
+      });
+
+    })
   },
 
 };
