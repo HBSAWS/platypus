@@ -42,7 +42,6 @@ module.exports = {
 
       res.render('articles/show', { 
         article: article, 
-        section_title : 'Articles',
         layout : 'main',
         page_title : article._category.title,
         helpers: {
@@ -167,5 +166,22 @@ module.exports = {
 
     })
   },
+
+  mock: function(req, res, next){
+    Article.findOne({ slug: req.params.slug })
+    .populate('_category')
+    .exec(function(err, article){
+
+      res.render('articles/mock', { 
+        article: article, 
+        viewport: req.params.viewport,
+        layout : 'mock',
+        helpers: {
+          compare: helpers.compare,
+          dateFormat: helpers.dateFormat
+        }
+      })
+    });
+  },  
 
 };
