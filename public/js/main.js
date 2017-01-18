@@ -50,55 +50,49 @@
 		},
 		breadCrumbs: function() {
 			$('.breadcrumb').asBreadcrumbs({
-			  	namespace: 'breadcrumb',
-			  	overflow: "left",
+				namespace: 'breadcrumb',
+				overflow: "left",
 				responsive: true,
-		 	  	ellipsisText: "&#8230;",
+				ellipsisText: "&#8230;",
 				ellipsisClass: null,
 				hiddenClass: 'is-hidden',
-		 	    dropdownClass: null,
+				dropdownClass: null,
 				dropdownMenuClass: null,
 				dropdownItemClass: null,
 				dropdownItemDisableClass: 'disabled',
-		 	  	toggleClass: 'dropdown-toggle',
+				toggleClass: 'dropdown-toggle',
 				toggleIconClass: 'caret',
-				getItems: function($parent) {
+				getItems: function getItems($parent) {
 					return $parent.children();
 				},
-				getItemLink: function($item) {
+				getItemLink: function getItemLink($item) {
 					return $item.find('a');
 				},
-				// templates
-				ellipsis: function(classes, label) {
-				    return `<li class="${classes.ellipsisClass}">${label}</li>`;
+				ellipsis: function ellipsis(classes, label) {
+					return '<li class="' + classes.ellipsisClass + '">' + label + '</li>';
 				},
 
-				dropdown: function(classes) {
-				    const dropdownClass = 'dropdown';  // was 'dropdown'
-				    let dropdownMenuClass = 'dropdown-menu';
+				dropdown: function dropdown(classes) {
+					var dropdownClass = 'dropdown'; // was 'dropdown'
+					var dropdownMenuClass = 'dropdown-menu';
 
-				    if (this.options.overflow === 'right') {
-				      dropdownMenuClass += ' dropdown-menu-right';
-				    }
+					if (this.options.overflow === 'right') {
+						dropdownMenuClass += ' dropdown-menu-right';
+					}
 
-				    return `<li class="${dropdownClass} ${classes.dropdownClass}">
-				      <a href="javascript:void(0);" class="${classes.toggleClass}" data-toggle="dropdown">
-				        <i class="${classes.toggleIconClass}"></i>
-				      </a>
-				      <ul class="${dropdownMenuClass} ${classes.dropdownMenuClass}"></ul>
-				    </li>`;
-				  },
+					return '<li class="' + dropdownClass + ' ' + classes.dropdownClass + '">\n\t\t\t\t      <a href="javascript:void(0);" class="' + classes.toggleClass + '" data-toggle="dropdown">\n\t\t\t\t        <i class="' + classes.toggleIconClass + '"></i>\n\t\t\t\t      </a>\n\t\t\t\t      <ul class="' + dropdownMenuClass + ' ' + classes.dropdownMenuClass + '"></ul>\n\t\t\t\t    </li>';
+				},
 
-				  dropdownItem: function(classes, label, href) {
-				    if(!href) {
-				    	return `<li class="${classes.dropdownItemClass} ${classes.dropdownItemDisableClass}"><a href="#">${label}</a></li>`;
-				    }
-				    return `<li class="${classes.dropdownItemClass}"><a href="${href}">${label}</a></li>`;
-				  },
-				  // callbacks
-				  onInit: null,
-				  onReady: null
-			});			
+				dropdownItem: function dropdownItem(classes, label, href) {
+					if (!href) {
+						return '<li class="' + classes.dropdownItemClass + ' ' + classes.dropdownItemDisableClass + '"><a href="#">' + label + '</a></li>';
+					}
+					return '<li class="' + classes.dropdownItemClass + '"><a href="' + href + '">' + label + '</a></li>';
+				},
+				// callbacks
+				onInit: null,
+				onReady: null
+			});
 		},
 		leftMenu: function() {
 			$(".metismenu").metisMenu({ 
@@ -537,7 +531,7 @@
 			    },
 			    callback: {
 					onInit: function (node) {
-			            console.log('Typeahead Initiated on ' + node.selector);
+			            // console.log('Typeahead Initiated on ' + node.selector);
 			        },
 					onClick: function (node, a, item, event) {
 			            window.location(item.href);
