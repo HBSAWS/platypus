@@ -1,0 +1,1622 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)http://localhost:3000/articles/basic-form -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <title>Platypus</title>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <link rel="stylesheet" href="./device-mock.scss_files/bootstrap.min.css">
+        <link rel="stylesheet" href="./device-mock.scss_files/jasny-bootstrap.min.css">
+        <link rel="stylesheet" href="./device-mock.scss_files/font-awesome.min.css">
+        <link rel="stylesheet" href="./device-mock.scss_files/bootstrap-datetimepicker.min.css">
+        <link rel="stylesheet" href="./device-mock.scss_files/bootstrap-slider.min.css">
+        <link rel="stylesheet" href="./device-mock.scss_files/bootstrap-toggle.min.css">
+        <link rel="stylesheet" href="./device-mock.scss_files/metisMenu.min.css">
+        <link rel="stylesheet" href="./device-mock.scss_files/slick.css">
+        <link rel="stylesheet" href="./device-mock.scss_files/slick-theme.min.css">
+        <link rel="stylesheet" href="./device-mock.scss_files/dataTables.bootstrap.min.css">
+        <link rel="stylesheet" href="./device-mock.scss_files/dataTables.bootstrap4.min.css">
+        <link rel="stylesheet" href="./device-mock.scss_files/responsive.dataTables.min.css">
+        <link rel="stylesheet" href="./device-mock.scss_files/sweetalert2.min.css">
+        <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/sweetalert2/6.3.0/sweetalert2.min.css"/> -->
+        <link rel="stylesheet" href="./device-mock.scss_files/summernote.css"> 
+        <link rel="stylesheet" href="./device-mock.scss_files/waves.min.css">
+        <link rel="stylesheet" href="./device-mock.scss_files/ladda.min.css">
+        <link rel="stylesheet" href="./device-mock.scss_files/select2.min.css">
+        <link rel="stylesheet" href="./device-mock.scss_files/select2-bootstrap.min.css">
+        <link rel="stylesheet" href="./device-mock.scss_files/daterangepicker.css">
+        <link rel="stylesheet" href="./device-mock.scss_files/fuelux.min.css">
+        <link rel="stylesheet" href="./device-mock.scss_files/toastr.min.css">
+        <link rel="stylesheet" href="./device-mock.scss_files/blueimp-gallery.min.css">
+        <link rel="stylesheet" href="./device-mock.scss_files/fullcalendar.min.css">
+        <link rel="stylesheet" href="./device-mock.scss_files/fullcalendar.print.css" media="print">
+        
+        <link rel="stylesheet" href="./device-mock.scss_files/jquery.typeahead.min.css">
+        <link rel="stylesheet" href="./device-mock.scss_files/styles.css">
+        
+        <!-- Do not include -->
+        <link rel="stylesheet" href="./device-mock.scss_files/device-mockups2.min.css">
+        <link rel="stylesheet" href="./device-mock.scss_files/rainbow.min.css">    <style type="text/css"></style></head>
+    <body>
+        
+        
+        <!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
+        <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" data-use-bootstrap-modal="false">
+          <!-- The container for the modal slides -->
+          <div class="slides"></div>
+          <!-- Controls for the borderless lightbox -->
+          <h3 class="title"></h3>
+          <a class="prev">‹</a>
+          <a class="next">›</a>
+          <a class="close">×</a>
+          <a class="play-pause"></a>
+          <ol class="indicator"></ol>
+          <!-- The modal dialog, which will be used to wrap the lightbox content -->
+          <div class="modal fade">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" aria-hidden="true">×</button>
+                  <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body next"></div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default pull-left prev waves-effect">
+                    <i class="glyphicon glyphicon-chevron-left"></i>
+                    Previous
+                  </button>
+                  <button type="button" class="btn btn-primary next waves-effect">
+                    Next
+                    <i class="glyphicon glyphicon-chevron-right"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>        <header>
+            <div class="container-fluid palette-bg-teal-500 text-white">
+                <div class="row pt-1">
+                    <div class="col-xs-2 col-sm-3 col-xl-2">
+                        <a href="http://localhost:3000/" class="btn text-xs-left hidden-md-down waves-effect"><i class="fa fa-shield text-white"></i> <span class="hidden-sm-down text-white"> Platypus</span></a>
+                        <ul class="list-unstyled list-inline">
+                            <li class="d-inline hidden-lg-up"><a href="http://localhost:3000/articles/basic-form#" class="btn waves-effect" data-toggle="offcanvas" data-target="#off-canvas-nav" data-canvas="body"><i class="fa fa-navicon text-white"></i> </a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-8 col-sm-6 col-xl-8 text-xs-center text-sm-center">
+                        <a href="http://localhost:3000/" class="btn waves-effect"><span class="hidden-lg-up text-white"><i class="fa fa-shield text-white"></i> Platypus</span></a>
+                    </div>
+                    <div class="col-xs-2 col-sm-3 col-xl-2">
+                        <ul class="list-unstyled list-inline text-xs-right">
+                            <li class="d-inline">
+                                <a href="http://localhost:3000/articles/basic-form#search-container" class="btn waves-effect" data-toggle="collapse" aria-expanded="false" aria-controls="search-container">
+                                    <i class="fa fa-search text-white"></i>
+                                </a>
+                            </li>
+                            <li class="d-inline">
+                                <a href="http://localhost:3000/articles/new" class="btn waves-effect">
+                                    <i class="fa fa-plus text-white"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="collapse palette-bg-teal-700" id="search-container">
+                <div class="p-2">
+        
+        
+                    <form>
+                        <div class="typeahead__container">
+                            <div class="typeahead__field">
+                     
+                                <span class="typeahead__query">
+                                    <span class="typeahead__cancel-button"></span><input class="js-typeahead" name="q" type="search" autocomplete="off" autofocus="">
+                                </span>
+                                <span class="typeahead__button">
+                                    <button type="submit"><span class="ladda-label">
+                                        <span class="typeahead__search-icon"></span>
+                                    </span><span class="ladda-spinner"></span></button>
+                                </span>
+                     
+                            </div>
+                        </div>
+                    </form>
+            
+                </div>
+        
+            </div>
+        
+        </header>
+        
+        <nav id="off-canvas-nav" class="navmenu navmenu-default navmenu-fixed-left offcanvas palette-bg-blue-grey-500" role="navigation">
+            <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 100%;"><aside class="sidebar" style="overflow: hidden; width: auto; height: 100%;">
+                <nav class="sidebar-nav">
+                    <ul class="metismenu">
+            
+                        <li>
+                            <a class="has-arrow" href="http://localhost:3000/articles/basic-form#" aria-expanded="false">
+                                <span class="sidebar-nav-item-icon fa fa-cube"></span>
+                                <span class="sidebar-nav-item">UI Components</span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse">
+                                    <li><a href="http://localhost:3000/articles/basic-form">Basic Form <span class="tag palette-bg-teal-500 float-xs-right">core</span></a></li>
+                                    <li><a href="http://localhost:3000/articles/alerts">Alerts <span class="tag palette-bg-teal-500 float-xs-right">core</span></a></li>
+                                    <li><a href="http://localhost:3000/articles/notifications">Notifications <span class="tag palette-bg-teal-500 float-xs-right">core</span></a></li>
+                                    <li><a href="http://localhost:3000/articles/carousel">Carousel <span class="tag palette-bg-teal-500 float-xs-right">core</span></a></li>
+                                    <li><a href="http://localhost:3000/articles/datatables">DataTables <span class="tag palette-bg-teal-500 float-xs-right">core</span></a></li>
+                                    <li><a href="http://localhost:3000/articles/footer">Footer <span class="tag palette-bg-teal-500 float-xs-right">core</span></a></li>
+                                    <li><a href="http://localhost:3000/articles/date-range-picker">Date Range Picker <span class="tag palette-bg-teal-500 float-xs-right">core</span></a></li>
+                                    <li><a href="http://localhost:3000/articles/select2">Select2 <span class="tag palette-bg-teal-500 float-xs-right">core</span></a></li>
+                                    <li><a href="http://localhost:3000/articles/gauges">Gauges <span class="tag palette-bg-teal-500 float-xs-right">core</span></a></li>
+                                    <li><a href="http://localhost:3000/articles/off-canvas-nav">Off-canvas Nav <span class="tag palette-bg-teal-500 float-xs-right">core</span></a></li>
+                                    <li><a href="http://localhost:3000/articles/loaders">Loaders <span class="tag palette-bg-teal-500 float-xs-right">core</span></a></li>
+                                    <li><a href="http://localhost:3000/articles/login-widget">Login Widget <span class="tag palette-bg-teal-500 float-xs-right">core</span></a></li>
+                                    <li><a href="http://localhost:3000/articles/navbar">Navbar <span class="tag palette-bg-teal-500 float-xs-right">core</span></a></li>
+                                    <li><a href="http://localhost:3000/articles/progress-bar">Progress Bar <span class="tag palette-bg-teal-500 float-xs-right">core</span></a></li>
+                                    <li><a href="http://localhost:3000/articles/toasts">Toasts <span class="tag palette-bg-teal-500 float-xs-right">core</span></a></li>
+                                    <li><a href="http://localhost:3000/articles/wizard">Wizard <span class="tag palette-bg-teal-500 float-xs-right">core</span></a></li>
+                                    <li><a href="http://localhost:3000/articles/wysiwyg">WYSIWYG <span class="tag palette-bg-teal-500 float-xs-right">core</span></a></li>
+                                    <li><a href="http://localhost:3000/articles/buttons">Buttons <span class="tag palette-bg-teal-500 float-xs-right">core</span></a></li>
+                                    <li><a href="http://localhost:3000/articles/gallery">Gallery <span class="tag palette-bg-teal-500 float-xs-right">core</span></a></li>
+                                    <li><a href="http://localhost:3000/articles/az-list">AZ List <span class="tag palette-bg-teal-500 float-xs-right">core</span></a></li>
+                                    <li><a href="http://localhost:3000/articles/calendar">Calendar <span class="tag palette-bg-teal-500 float-xs-right">core</span></a></li>
+                                    <li><a href="http://localhost:3000/articles/video-widget">Video Widget <span class="tag palette-bg-teal-500 float-xs-right">core</span></a></li>
+                                    <li><a href="http://localhost:3000/articles/typeahead">Typeahead <span class="tag palette-bg-teal-500 float-xs-right">Core</span></a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow" href="http://localhost:3000/articles/basic-form#" aria-expanded="false">
+                                <span class="sidebar-nav-item-icon fa fa-paint-brush"></span>
+                                <span class="sidebar-nav-item">Styles</span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse">
+                                    <li><a href="http://localhost:3000/articles/icons">Icons <span class="tag palette-bg-teal-500 float-xs-right">core</span></a></li>
+                                    <li><a href="http://localhost:3000/articles/branding">Branding <span class="tag palette-bg-teal-500 float-xs-right"></span></a></li>
+                                    <li><a href="http://localhost:3000/articles/palette">Palette <span class="tag palette-bg-teal-500 float-xs-right"></span></a></li>
+                                    <li><a href="http://localhost:3000/articles/typography">Typography <span class="tag palette-bg-teal-500 float-xs-right"></span></a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow" href="http://localhost:3000/articles/basic-form#" aria-expanded="false">
+                                <span class="sidebar-nav-item-icon fa fa-home"></span>
+                                <span class="sidebar-nav-item">Getting Started</span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse">
+                                    <li><a href="http://localhost:3000/articles/quick-start">Quick Start <span class="tag palette-bg-teal-500 float-xs-right">core</span></a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow" href="http://localhost:3000/articles/basic-form#" aria-expanded="false">
+                                <span class="sidebar-nav-item-icon fa fa-user-o"></span>
+                                <span class="sidebar-nav-item">UX Components</span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse">
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow" href="http://localhost:3000/articles/basic-form#" aria-expanded="false">
+                                <span class="sidebar-nav-item-icon fa fa-trophy"></span>
+                                <span class="sidebar-nav-item">Best Practices</span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse">
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow" href="http://localhost:3000/articles/basic-form#" aria-expanded="false">
+                                <span class="sidebar-nav-item-icon fa fa-bookmark"></span>
+                                <span class="sidebar-nav-item">Resources</span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse in">
+                                    <li class="active"><a href="http://localhost:3000/articles/ui-patterns">UI Patterns <span class="tag palette-bg-teal-500 float-xs-right"></span></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </aside><div class="slimScrollBar" style="background: rgb(0, 0, 0); width: 7px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px;"></div><div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+            
+            
+        </nav>
+        <div class="row">
+            <div class="col-lg-2 hidden-md-down pr-0 palette-bg-blue-grey-500">
+                 <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 100%;"><aside class="sidebar" style="overflow: hidden; width: auto; height: 100%;">
+                     <nav class="sidebar-nav">
+                         <ul class="metismenu">
+                 
+                             <li>
+                                 <a class="has-arrow" href="http://localhost:3000/articles/basic-form#" aria-expanded="false">
+                                     <span class="sidebar-nav-item-icon fa fa-cube"></span>
+                                     <span class="sidebar-nav-item">UI Components</span>
+                                 </a>
+                                 <ul aria-expanded="false" class="collapse">
+                                         <li><a href="http://localhost:3000/articles/basic-form">Basic Form <span class="tag palette-bg-teal-500 float-xs-right">core</span></a></li>
+                                         <li><a href="http://localhost:3000/articles/alerts">Alerts <span class="tag palette-bg-teal-500 float-xs-right">core</span></a></li>
+                                         <li><a href="http://localhost:3000/articles/notifications">Notifications <span class="tag palette-bg-teal-500 float-xs-right">core</span></a></li>
+                                         <li><a href="http://localhost:3000/articles/carousel">Carousel <span class="tag palette-bg-teal-500 float-xs-right">core</span></a></li>
+                                         <li><a href="http://localhost:3000/articles/datatables">DataTables <span class="tag palette-bg-teal-500 float-xs-right">core</span></a></li>
+                                         <li><a href="http://localhost:3000/articles/footer">Footer <span class="tag palette-bg-teal-500 float-xs-right">core</span></a></li>
+                                         <li><a href="http://localhost:3000/articles/date-range-picker">Date Range Picker <span class="tag palette-bg-teal-500 float-xs-right">core</span></a></li>
+                                         <li><a href="http://localhost:3000/articles/select2">Select2 <span class="tag palette-bg-teal-500 float-xs-right">core</span></a></li>
+                                         <li><a href="http://localhost:3000/articles/gauges">Gauges <span class="tag palette-bg-teal-500 float-xs-right">core</span></a></li>
+                                         <li><a href="http://localhost:3000/articles/off-canvas-nav">Off-canvas Nav <span class="tag palette-bg-teal-500 float-xs-right">core</span></a></li>
+                                         <li><a href="http://localhost:3000/articles/loaders">Loaders <span class="tag palette-bg-teal-500 float-xs-right">core</span></a></li>
+                                         <li><a href="http://localhost:3000/articles/login-widget">Login Widget <span class="tag palette-bg-teal-500 float-xs-right">core</span></a></li>
+                                         <li><a href="http://localhost:3000/articles/navbar">Navbar <span class="tag palette-bg-teal-500 float-xs-right">core</span></a></li>
+                                         <li><a href="http://localhost:3000/articles/progress-bar">Progress Bar <span class="tag palette-bg-teal-500 float-xs-right">core</span></a></li>
+                                         <li><a href="http://localhost:3000/articles/toasts">Toasts <span class="tag palette-bg-teal-500 float-xs-right">core</span></a></li>
+                                         <li><a href="http://localhost:3000/articles/wizard">Wizard <span class="tag palette-bg-teal-500 float-xs-right">core</span></a></li>
+                                         <li><a href="http://localhost:3000/articles/wysiwyg">WYSIWYG <span class="tag palette-bg-teal-500 float-xs-right">core</span></a></li>
+                                         <li><a href="http://localhost:3000/articles/buttons">Buttons <span class="tag palette-bg-teal-500 float-xs-right">core</span></a></li>
+                                         <li><a href="http://localhost:3000/articles/gallery">Gallery <span class="tag palette-bg-teal-500 float-xs-right">core</span></a></li>
+                                         <li><a href="http://localhost:3000/articles/az-list">AZ List <span class="tag palette-bg-teal-500 float-xs-right">core</span></a></li>
+                                         <li><a href="http://localhost:3000/articles/calendar">Calendar <span class="tag palette-bg-teal-500 float-xs-right">core</span></a></li>
+                                         <li><a href="http://localhost:3000/articles/video-widget">Video Widget <span class="tag palette-bg-teal-500 float-xs-right">core</span></a></li>
+                                         <li><a href="http://localhost:3000/articles/typeahead">Typeahead <span class="tag palette-bg-teal-500 float-xs-right">Core</span></a></li>
+                                 </ul>
+                             </li>
+                             <li>
+                                 <a class="has-arrow" href="http://localhost:3000/articles/basic-form#" aria-expanded="false">
+                                     <span class="sidebar-nav-item-icon fa fa-paint-brush"></span>
+                                     <span class="sidebar-nav-item">Styles</span>
+                                 </a>
+                                 <ul aria-expanded="false" class="collapse">
+                                         <li><a href="http://localhost:3000/articles/icons">Icons <span class="tag palette-bg-teal-500 float-xs-right">core</span></a></li>
+                                         <li><a href="http://localhost:3000/articles/branding">Branding <span class="tag palette-bg-teal-500 float-xs-right"></span></a></li>
+                                         <li><a href="http://localhost:3000/articles/palette">Palette <span class="tag palette-bg-teal-500 float-xs-right"></span></a></li>
+                                         <li><a href="http://localhost:3000/articles/typography">Typography <span class="tag palette-bg-teal-500 float-xs-right"></span></a></li>
+                                 </ul>
+                             </li>
+                             <li>
+                                 <a class="has-arrow" href="http://localhost:3000/articles/basic-form#" aria-expanded="false">
+                                     <span class="sidebar-nav-item-icon fa fa-home"></span>
+                                     <span class="sidebar-nav-item">Getting Started</span>
+                                 </a>
+                                 <ul aria-expanded="false" class="collapse">
+                                         <li><a href="http://localhost:3000/articles/quick-start">Quick Start <span class="tag palette-bg-teal-500 float-xs-right">core</span></a></li>
+                                 </ul>
+                             </li>
+                             <li>
+                                 <a class="has-arrow" href="http://localhost:3000/articles/basic-form#" aria-expanded="false">
+                                     <span class="sidebar-nav-item-icon fa fa-user-o"></span>
+                                     <span class="sidebar-nav-item">UX Components</span>
+                                 </a>
+                                 <ul aria-expanded="false" class="collapse">
+                                 </ul>
+                             </li>
+                             <li>
+                                 <a class="has-arrow" href="http://localhost:3000/articles/basic-form#" aria-expanded="false">
+                                     <span class="sidebar-nav-item-icon fa fa-trophy"></span>
+                                     <span class="sidebar-nav-item">Best Practices</span>
+                                 </a>
+                                 <ul aria-expanded="false" class="collapse">
+                                 </ul>
+                             </li>
+                             <li>
+                                 <a class="has-arrow" href="http://localhost:3000/articles/basic-form#" aria-expanded="false">
+                                     <span class="sidebar-nav-item-icon fa fa-bookmark"></span>
+                                     <span class="sidebar-nav-item">Resources</span>
+                                 </a>
+                                 <ul aria-expanded="false" class="collapse in">
+                                         <li class="active"><a href="http://localhost:3000/articles/ui-patterns">UI Patterns <span class="tag palette-bg-teal-500 float-xs-right"></span></a></li>
+                                 </ul>
+                             </li>
+                         </ul>
+                     </nav>
+                 </aside><div class="slimScrollBar" style="background: rgb(0, 0, 0); width: 7px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 316px;"></div><div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+                 
+                 
+            </div>
+            <div class="col-lg-8 p-2">
+                
+                <ol class="breadcrumb breadcrumb-left"><li class="dropdown breadcrumb-dropdown is-hidden">
+				      <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+				        <i class="caret"></i>
+				      </a>
+				      <ul class="dropdown-menu breadcrumb-dropdown-menu"><li class="disabled is-hidden"><a href="http://localhost:3000/articles/basic-form#">Basic Form</a></li><li class="is-hidden"><a href="http://localhost:3000/categories/ui-components">UI Components</a></li><li class="is-hidden"><a href="http://localhost:3000/"> Home</a></li></ul>
+				    </li><li class="breadcrumb-ellipsis is-hidden">…</li>
+                    <li><a href="http://localhost:3000/"><i class="fa fa-home"></i> Home</a></li>
+                    <li><a href="http://localhost:3000/categories/ui-components">UI Components</a></li>
+                    <li class="active">Basic Form</li>
+                </ol>
+
+                	<h2 class="display-4">Basic Form <a href="http://localhost:3000/articles/edit/586ebd5a6271450ed9bb9652" class="btn btn-primary pull-right waves-effect"><i class="fa fa-edit"></i></a></h2>
+	<p class="lead">Basic form controls</p>
+	<div><p>.</p></div>
+
+
+
+		<h4>Examples</h4>
+
+
+		
+		<!-- Nav tabs -->
+		<ul class="nav nav-tabs" role="tablist">
+			<li class="nav-item">
+				<a class="nav-link active" data-toggle="tab" href="http://localhost:3000/articles/basic-form#xs" role="tab" aria-expanded="true">XS - Mobile (&lt;576px)</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" data-toggle="tab" href="http://localhost:3000/articles/basic-form#sm" role="tab" aria-expanded="false">SM - Phablet (≥576px)</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" data-toggle="tab" href="http://localhost:3000/articles/basic-form#md" role="tab" aria-expanded="false">MD - Tablet (≥768px)</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" data-toggle="tab" href="http://localhost:3000/articles/basic-form#lg" role="tab" aria-expanded="false">LG - Laptop (≥992px)</a>
+			</li>	
+			<li class="nav-item">
+				<a class="nav-link" data-toggle="tab" href="http://localhost:3000/articles/basic-form#xl" role="tab" aria-expanded="false">XL - Desktop (≥1200px)</a>
+			</li>				
+		</ul>
+
+		<!-- Tab panes -->
+		<div class="tab-content">
+			<div class="tab-pane mt-2 active" id="xs" role="tabpanel" aria-expanded="true">
+				
+				<div class="row">
+	      			<div class="col-xs-10 offset-xs-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4 col-xl-4 offset-xl-4 palette-bg-white">
+	      				
+	      				<div class="device-mockup" data-device="iphone6" data-orientation="portrait" data-color="white">
+						    <div class="device">
+						        <div class="screen palette-bg-white p-1">
+						            <form> 
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="email">Email address <span class="float-xs-right text-danger">*</span></label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="email">Email address <a href="http://localhost:3000/articles/basic-form#" class="" data-toggle="tooltip" data-placement="right" title="" data-original-title="We&#39;ll never share your email with anyone else."><i class="fa fa-question-circle-o"></i></a> <span class="float-xs-right text-danger">*</span></label>
+            <input type="email" class="form-control" id="email" placeholder="Enter email" data-parsley-trigger="keyup" required="">
+            <small class="form-text text-muted hidden-sm-down">We'll never share your email with anyone else.</small>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="password">Password <span class="float-xs-right text-danger">*</span></label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="password">Password <span class="float-xs-right text-danger">*</span></label>
+            <input type="password" class="form-control" id="password" placeholder="Password" data-parsley-trigger="keyup" data-parsley-minlength="9" required="">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="masks">Social Security Number</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="masks">Social Security Number <a href="http://localhost:3000/articles/basic-form#" class="" data-toggle="tooltip" data-placement="right" title="" data-original-title="Use HTML5 data-mask attribute"><i class="fa fa-question-circle-o"></i></a></label>
+            <input type="text" class="form-control" data-mask="999-99-9999">
+            <small class="form-text text-muted hidden-sm-down">Use HTML5 data-mask attribute</small>
+        </div>
+    </div>                
+    
+    
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="select-single">Example select</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="select-single">Example select</label>
+            <select class="form-control" id="select-single">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="select-multiple">Example multiple select</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="select-multiple">Example multiple select</label>
+            <select multiple="" class="form-control" id="select-multiple">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="textarea">Example textarea</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="textarea">Example textarea</label>
+            <textarea class="form-control" id="textarea" rows="5" maxlength="100"></textarea>
+        </div>
+    </div>
+    
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="file">File input</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="file">File input <a href="http://localhost:3000/articles/basic-form#" class="" data-toggle="tooltip" data-placement="right" title="" data-original-title="This is some placeholder block-level help text for the above input. It&#39;s a bit lighter and easily wraps to a new line."><i class="fa fa-question-circle-o"></i></a></label>
+            <label class="custom-file d-block">
+                <input type="file" id="file" class="custom-file-input">
+                <span class="custom-file-control"></span>
+             <a href="http://localhost:3000/articles/basic-form#" class="" data-toggle="tooltip" data-placement="right" title="" data-original-title="This is some placeholder block-level help text for the above input. It&#39;s a bit lighter and easily wraps to a new line."><i class="fa fa-question-circle-o"></i></a></label>
+            <small class="form-text text-muted hidden-sm-down">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+        </div>
+    </div>
+
+    <fieldset class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="radio">Radio Buttons</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="radio">Radio Buttons</label>
+            <div class="custom-controls-stacked">
+                <label class="custom-control custom-radio">
+                    <input id="radioStacked1" name="radio-stacked" type="radio" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">Toggle this custom radio</span>
+                </label>
+                <label class="custom-control custom-radio">
+                    <input id="radioStacked2" name="radio-stacked" type="radio" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">Or toggle this other custom radio</span>
+                </label>
+            </div>
+        </div>
+    </fieldset>
+    
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="checkboxes">Checkboxes</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="checkboxes">Checkboxes</label>
+            <label class="custom-control custom-checkbox">
+                <input name="checkbox" type="checkbox" class="custom-control-input">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">Check this custom checkbox</span>
+            </label>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="datetime">Date &amp; Time</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="datetime">Date &amp; Time</label>
+            <div class="input-group">
+                <input type="datetime-local" class="form-control">
+                <span class="input-group-addon">
+                    <span class="fa fa-calendar"></span>
+                </span>
+            </div>                        
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="time">Time</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="time">Time</label>
+            <div class="input-group">
+                <input type="time" class="form-control">
+                <span class="input-group-addon">
+                    <span class="fa fa-clock-o"></span>
+                </span>
+            </div>                        
+        </div>
+    </div>                
+    
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="number">Number</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="number">Number</label>
+            <input type="number" class="form-control">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="slider">Slider</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="slider">Slider</label>
+            <div class="slider slider-horizontal" id="ex1Slider"><div class="slider-track"><div class="slider-track-low" style="left: 0px; width: 0%;"></div><div class="slider-selection" style="left: 0%; width: 52%;"></div><div class="slider-track-high" style="right: 0px; width: 48%;"></div></div><div class="tooltip tooltip-main top" role="presentation" style="left: 52%; margin-left: -16px;"><div class="tooltip-arrow"></div><div class="tooltip-inner">52</div></div><div class="tooltip tooltip-min top" role="presentation" style="display: none;"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div><div class="tooltip tooltip-max top" role="presentation" style="display: none;"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div><div class="slider-handle min-slider-handle round" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="52" tabindex="0" style="left: 52%;"></div><div class="slider-handle max-slider-handle round hide" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0" style="left: 0%;"></div></div><input name="slider" id="slider-example" data-slider-id="ex1Slider" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="50" data-value="52" value="52" style="display: none;">               
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="toggler">Toggler</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="toggler">Toggler</label>
+            <div class="toggle btn waves-effect btn-success" data-toggle="toggle" style="width: 74.3125px; height: 38px;"><input name="toggler" type="checkbox" checked="" data-toggle="toggle" data-on="On" data-off="Off" data-onstyle="success" data-offstyle="secondary"><div class="toggle-group"><label class="btn btn-success toggle-on waves-effect">On</label><label class="btn btn-secondary active toggle-off waves-effect">Off</label><span class="toggle-handle btn btn-default waves-effect"></span></div></div>               
+        </div>
+    </div>                   
+
+    <div class="form-group row">
+        <div class="col-md-4 hidden-sm-down"></div>
+        <div class="col-md-8">
+            <button type="submit" class="btn btn-primary ladda-button waves-effect"><span class="ladda-label">Submit</span><span class="ladda-spinner"></span></button>
+        </div>
+    </div>
+
+</form>
+						        </div>
+						        <div class="button">
+						            <!-- You can hook the "home button" to some JavaScript events or just remove it -->
+						        </div>
+						    </div>
+						</div>
+
+	      			</div>
+				</div>
+
+
+
+			</div>
+			<div class="tab-pane mt-2" id="sm" role="tabpanel" aria-expanded="false">
+				
+				<div class="row">
+	      			<div class="col-xs-10 offset-xs-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4 col-xl-4 offset-xl-4 palette-bg-white">
+	      				
+	      				<div class="device-mockup" data-device="nexus7" data-orientation="portrait" data-color="black">
+						    <div class="device">
+						        <div class="screen palette-bg-white p-1">
+						            <form> 
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="email">Email address</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="email">Email address <a href="http://localhost:3000/articles/basic-form#" class="" data-toggle="tooltip" data-placement="right" title="" data-original-title="We&#39;ll never share your email with anyone else."><i class="fa fa-question-circle-o"></i></a></label>
+            <input type="email" class="form-control" id="email" placeholder="Enter email" data-parsley-trigger="keyup" required="">
+            <small class="form-text text-muted hidden-sm-down">We'll never share your email with anyone else.</small>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="password">Password</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="password">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Password" data-parsley-trigger="keyup" data-parsley-minlength="9" required="">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="masks">Social Security Number</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="masks">Social Security Number <a href="http://localhost:3000/articles/basic-form#" class="" data-toggle="tooltip" data-placement="right" title="" data-original-title="Use HTML5 data-mask attribute"><i class="fa fa-question-circle-o"></i></a></label>
+            <input type="text" class="form-control" data-mask="999-99-9999">
+            <small class="form-text text-muted hidden-sm-down">Use HTML5 data-mask attribute</small>
+        </div>
+    </div>                
+    
+    
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="select-single">Example select</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="select-single">Example select</label>
+            <select class="form-control" id="select-single">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="select-multiple">Example multiple select</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="select-multiple">Example multiple select</label>
+            <select multiple="" class="form-control" id="select-multiple">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="textarea">Example textarea</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="textarea">Example textarea</label>
+            <textarea class="form-control" id="textarea" rows="5" maxlength="100"></textarea>
+        </div>
+    </div>
+    
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="file">File input</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="file">File input <a href="http://localhost:3000/articles/basic-form#" class="" data-toggle="tooltip" data-placement="right" title="" data-original-title="This is some placeholder block-level help text for the above input. It&#39;s a bit lighter and easily wraps to a new line."><i class="fa fa-question-circle-o"></i></a></label>
+            <label class="custom-file d-block">
+                <input type="file" id="file" class="custom-file-input">
+                <span class="custom-file-control"></span>
+             <a href="http://localhost:3000/articles/basic-form#" class="" data-toggle="tooltip" data-placement="right" title="" data-original-title="This is some placeholder block-level help text for the above input. It&#39;s a bit lighter and easily wraps to a new line."><i class="fa fa-question-circle-o"></i></a></label>
+            <small class="form-text text-muted hidden-sm-down">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+        </div>
+    </div>
+
+    <fieldset class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="radio">Radio Buttons</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="radio">Radio Buttons</label>
+            <div class="custom-controls-stacked">
+                <label class="custom-control custom-radio">
+                    <input id="radioStacked1" name="radio-stacked" type="radio" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">Toggle this custom radio</span>
+                </label>
+                <label class="custom-control custom-radio">
+                    <input id="radioStacked2" name="radio-stacked" type="radio" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">Or toggle this other custom radio</span>
+                </label>
+            </div>
+        </div>
+    </fieldset>
+    
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="checkboxes">Checkboxes</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="checkboxes">Checkboxes</label>
+            <label class="custom-control custom-checkbox">
+                <input name="checkbox" type="checkbox" class="custom-control-input">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">Check this custom checkbox</span>
+            </label>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="datetime">Date &amp; Time</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="datetime">Date &amp; Time</label>
+            <div class="input-group">
+                <input type="datetime-local" class="form-control">
+                <span class="input-group-addon">
+                    <span class="fa fa-calendar"></span>
+                </span>
+            </div>                        
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="time">Time</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="time">Time</label>
+            <div class="input-group">
+                <input type="time" class="form-control">
+                <span class="input-group-addon">
+                    <span class="fa fa-clock-o"></span>
+                </span>
+            </div>                        
+        </div>
+    </div>                
+    
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="number">Number</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="number">Number</label>
+            <input type="number" class="form-control">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="slider">Slider</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="slider">Slider</label>
+            <div class="slider slider-horizontal" id="ex1Slider"><div class="slider-track"><div class="slider-track-low" style="left: 0px; width: 0%;"></div><div class="slider-selection" style="left: 0%; width: 50%;"></div><div class="slider-track-high" style="right: 0px; width: 50%;"></div></div><div class="tooltip tooltip-main top" role="presentation" style="left: 50%; margin-left: 0px;"><div class="tooltip-arrow"></div><div class="tooltip-inner">50</div></div><div class="tooltip tooltip-min top" role="presentation"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div><div class="tooltip tooltip-max top" role="presentation"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div><div class="slider-handle min-slider-handle round" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0" style="left: 50%;"></div><div class="slider-handle max-slider-handle round hide" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0" style="left: 0%;"></div></div><input name="slider" id="slider-example" data-slider-id="ex1Slider" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="50" data-value="50" value="50" style="display: none;">               
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="toggler">Toggler</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="toggler">Toggler</label>
+            <div class="toggle btn btn-success waves-effect" data-toggle="toggle" style="width: 0px; height: 0px;"><input name="toggler" type="checkbox" checked="" data-toggle="toggle" data-on="On" data-off="Off" data-onstyle="success" data-offstyle="secondary"><div class="toggle-group"><label class="btn btn-success toggle-on waves-effect">On</label><label class="btn btn-secondary active toggle-off waves-effect">Off</label><span class="toggle-handle btn btn-default waves-effect"></span></div></div>               
+        </div>
+    </div>                   
+
+    <div class="form-group row">
+        <div class="col-md-4 hidden-sm-down"></div>
+        <div class="col-md-8">
+            <button type="submit" class="btn btn-primary ladda-button waves-effect"><span class="ladda-label">Submit</span><span class="ladda-spinner"></span></button>
+        </div>
+    </div>
+
+</form>
+						        </div>
+						        <div class="button">
+						            <!-- You can hook the "home button" to some JavaScript events or just remove it -->
+						        </div>
+						    </div>
+						</div>
+
+	      			</div>
+				</div>
+
+			</div>
+			<div class="tab-pane mt-2" id="md" role="tabpanel" aria-expanded="false">
+				
+				<div class="row">
+	      			<div class="col-xs-12 palette-bg-white">
+	      				
+	      				<div class="device-mockup" data-device="ipad_air_2" data-orientation="portrait" data-color="black">
+						    <div class="device">
+						        <div class="screen palette-bg-white p-1">
+						            <form> 
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="email">Email address</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="email">Email address <a href="http://localhost:3000/articles/basic-form#" class="" data-toggle="tooltip" data-placement="right" title="" data-original-title="We&#39;ll never share your email with anyone else."><i class="fa fa-question-circle-o"></i></a></label>
+            <input type="email" class="form-control" id="email" placeholder="Enter email" data-parsley-trigger="keyup" required="">
+            <small class="form-text text-muted hidden-sm-down">We'll never share your email with anyone else.</small>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="password">Password</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="password">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Password" data-parsley-trigger="keyup" data-parsley-minlength="9" required="">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="masks">Social Security Number</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="masks">Social Security Number <a href="http://localhost:3000/articles/basic-form#" class="" data-toggle="tooltip" data-placement="right" title="" data-original-title="Use HTML5 data-mask attribute"><i class="fa fa-question-circle-o"></i></a></label>
+            <input type="text" class="form-control" data-mask="999-99-9999">
+            <small class="form-text text-muted hidden-sm-down">Use HTML5 data-mask attribute</small>
+        </div>
+    </div>                
+    
+    
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="select-single">Example select</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="select-single">Example select</label>
+            <select class="form-control" id="select-single">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="select-multiple">Example multiple select</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="select-multiple">Example multiple select</label>
+            <select multiple="" class="form-control" id="select-multiple">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="textarea">Example textarea</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="textarea">Example textarea</label>
+            <textarea class="form-control" id="textarea" rows="5" maxlength="100"></textarea>
+        </div>
+    </div>
+    
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="file">File input</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="file">File input <a href="http://localhost:3000/articles/basic-form#" class="" data-toggle="tooltip" data-placement="right" title="" data-original-title="This is some placeholder block-level help text for the above input. It&#39;s a bit lighter and easily wraps to a new line."><i class="fa fa-question-circle-o"></i></a></label>
+            <label class="custom-file d-block">
+                <input type="file" id="file" class="custom-file-input">
+                <span class="custom-file-control"></span>
+             <a href="http://localhost:3000/articles/basic-form#" class="" data-toggle="tooltip" data-placement="right" title="" data-original-title="This is some placeholder block-level help text for the above input. It&#39;s a bit lighter and easily wraps to a new line."><i class="fa fa-question-circle-o"></i></a></label>
+            <small class="form-text text-muted hidden-sm-down">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+        </div>
+    </div>
+
+    <fieldset class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="radio">Radio Buttons</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="radio">Radio Buttons</label>
+            <div class="custom-controls-stacked">
+                <label class="custom-control custom-radio">
+                    <input id="radioStacked1" name="radio-stacked" type="radio" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">Toggle this custom radio</span>
+                </label>
+                <label class="custom-control custom-radio">
+                    <input id="radioStacked2" name="radio-stacked" type="radio" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">Or toggle this other custom radio</span>
+                </label>
+            </div>
+        </div>
+    </fieldset>
+    
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="checkboxes">Checkboxes</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="checkboxes">Checkboxes</label>
+            <label class="custom-control custom-checkbox">
+                <input name="checkbox" type="checkbox" class="custom-control-input">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">Check this custom checkbox</span>
+            </label>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="datetime">Date &amp; Time</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="datetime">Date &amp; Time</label>
+            <div class="input-group">
+                <input type="datetime-local" class="form-control">
+                <span class="input-group-addon">
+                    <span class="fa fa-calendar"></span>
+                </span>
+            </div>                        
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="time">Time</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="time">Time</label>
+            <div class="input-group">
+                <input type="time" class="form-control">
+                <span class="input-group-addon">
+                    <span class="fa fa-clock-o"></span>
+                </span>
+            </div>                        
+        </div>
+    </div>                
+    
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="number">Number</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="number">Number</label>
+            <input type="number" class="form-control">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="slider">Slider</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="slider">Slider</label>
+            <div class="slider slider-horizontal" id="ex1Slider"><div class="slider-track"><div class="slider-track-low" style="left: 0px; width: 0%;"></div><div class="slider-selection" style="left: 0%; width: 50%;"></div><div class="slider-track-high" style="right: 0px; width: 50%;"></div></div><div class="tooltip tooltip-main top" role="presentation" style="left: 50%; margin-left: 0px;"><div class="tooltip-arrow"></div><div class="tooltip-inner">50</div></div><div class="tooltip tooltip-min top" role="presentation"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div><div class="tooltip tooltip-max top" role="presentation"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div><div class="slider-handle min-slider-handle round" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0" style="left: 50%;"></div><div class="slider-handle max-slider-handle round hide" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0" style="left: 0%;"></div></div><input name="slider" id="slider-example" data-slider-id="ex1Slider" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="50" data-value="50" value="50" style="display: none;">               
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="toggler">Toggler</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="toggler">Toggler</label>
+            <div class="toggle btn btn-success waves-effect" data-toggle="toggle" style="width: 0px; height: 0px;"><input name="toggler" type="checkbox" checked="" data-toggle="toggle" data-on="On" data-off="Off" data-onstyle="success" data-offstyle="secondary"><div class="toggle-group"><label class="btn btn-success toggle-on waves-effect">On</label><label class="btn btn-secondary active toggle-off waves-effect">Off</label><span class="toggle-handle btn btn-default waves-effect"></span></div></div>               
+        </div>
+    </div>                   
+
+    <div class="form-group row">
+        <div class="col-md-4 hidden-sm-down"></div>
+        <div class="col-md-8">
+            <button type="submit" class="btn btn-primary ladda-button waves-effect"><span class="ladda-label">Submit</span><span class="ladda-spinner"></span></button>
+        </div>
+    </div>
+
+</form>
+						        </div>
+						        <div class="button">
+						            <!-- You can hook the "home button" to some JavaScript events or just remove it -->
+						        </div>
+						    </div>
+						</div>
+
+	      			</div>
+				</div>
+
+			</div>
+			<div class="tab-pane mt-2" id="lg" role="tabpanel" aria-expanded="false">
+				
+				<div class="row">
+	      			<div class="col-xs-12 palette-bg-white">
+	      				
+	      				<div class="device-mockup" data-device="macbook_2015" data-orientation="portrait" data-color="black">
+						    <div class="device">
+						        <div class="screen palette-bg-white p-1">
+						            <form> 
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="email">Email address</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="email">Email address <a href="http://localhost:3000/articles/basic-form#" class="" data-toggle="tooltip" data-placement="right" title="" data-original-title="We&#39;ll never share your email with anyone else."><i class="fa fa-question-circle-o"></i></a></label>
+            <input type="email" class="form-control" id="email" placeholder="Enter email" data-parsley-trigger="keyup" required="">
+            <small class="form-text text-muted hidden-sm-down">We'll never share your email with anyone else.</small>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="password">Password</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="password">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Password" data-parsley-trigger="keyup" data-parsley-minlength="9" required="">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="masks">Social Security Number</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="masks">Social Security Number <a href="http://localhost:3000/articles/basic-form#" class="" data-toggle="tooltip" data-placement="right" title="" data-original-title="Use HTML5 data-mask attribute"><i class="fa fa-question-circle-o"></i></a></label>
+            <input type="text" class="form-control" data-mask="999-99-9999">
+            <small class="form-text text-muted hidden-sm-down">Use HTML5 data-mask attribute</small>
+        </div>
+    </div>                
+    
+    
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="select-single">Example select</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="select-single">Example select</label>
+            <select class="form-control" id="select-single">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="select-multiple">Example multiple select</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="select-multiple">Example multiple select</label>
+            <select multiple="" class="form-control" id="select-multiple">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="textarea">Example textarea</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="textarea">Example textarea</label>
+            <textarea class="form-control" id="textarea" rows="5" maxlength="100"></textarea>
+        </div>
+    </div>
+    
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="file">File input</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="file">File input <a href="http://localhost:3000/articles/basic-form#" class="" data-toggle="tooltip" data-placement="right" title="" data-original-title="This is some placeholder block-level help text for the above input. It&#39;s a bit lighter and easily wraps to a new line."><i class="fa fa-question-circle-o"></i></a></label>
+            <label class="custom-file d-block">
+                <input type="file" id="file" class="custom-file-input">
+                <span class="custom-file-control"></span>
+             <a href="http://localhost:3000/articles/basic-form#" class="" data-toggle="tooltip" data-placement="right" title="" data-original-title="This is some placeholder block-level help text for the above input. It&#39;s a bit lighter and easily wraps to a new line."><i class="fa fa-question-circle-o"></i></a></label>
+            <small class="form-text text-muted hidden-sm-down">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+        </div>
+    </div>
+
+    <fieldset class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="radio">Radio Buttons</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="radio">Radio Buttons</label>
+            <div class="custom-controls-stacked">
+                <label class="custom-control custom-radio">
+                    <input id="radioStacked1" name="radio-stacked" type="radio" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">Toggle this custom radio</span>
+                </label>
+                <label class="custom-control custom-radio">
+                    <input id="radioStacked2" name="radio-stacked" type="radio" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">Or toggle this other custom radio</span>
+                </label>
+            </div>
+        </div>
+    </fieldset>
+    
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="checkboxes">Checkboxes</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="checkboxes">Checkboxes</label>
+            <label class="custom-control custom-checkbox">
+                <input name="checkbox" type="checkbox" class="custom-control-input">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">Check this custom checkbox</span>
+            </label>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="datetime">Date &amp; Time</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="datetime">Date &amp; Time</label>
+            <div class="input-group">
+                <input type="datetime-local" class="form-control">
+                <span class="input-group-addon">
+                    <span class="fa fa-calendar"></span>
+                </span>
+            </div>                        
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="time">Time</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="time">Time</label>
+            <div class="input-group">
+                <input type="time" class="form-control">
+                <span class="input-group-addon">
+                    <span class="fa fa-clock-o"></span>
+                </span>
+            </div>                        
+        </div>
+    </div>                
+    
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="number">Number</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="number">Number</label>
+            <input type="number" class="form-control">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="slider">Slider</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="slider">Slider</label>
+            <div class="slider slider-horizontal" id="ex1Slider"><div class="slider-track"><div class="slider-track-low" style="left: 0px; width: 0%;"></div><div class="slider-selection" style="left: 0%; width: 50%;"></div><div class="slider-track-high" style="right: 0px; width: 50%;"></div></div><div class="tooltip tooltip-main top" role="presentation" style="left: 50%; margin-left: 0px;"><div class="tooltip-arrow"></div><div class="tooltip-inner">50</div></div><div class="tooltip tooltip-min top" role="presentation"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div><div class="tooltip tooltip-max top" role="presentation"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div><div class="slider-handle min-slider-handle round" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0" style="left: 50%;"></div><div class="slider-handle max-slider-handle round hide" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0" style="left: 0%;"></div></div><input name="slider" id="slider-example" data-slider-id="ex1Slider" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="50" data-value="50" value="50" style="display: none;">               
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="toggler">Toggler</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="toggler">Toggler</label>
+            <div class="toggle btn btn-success waves-effect" data-toggle="toggle" style="width: 0px; height: 0px;"><input name="toggler" type="checkbox" checked="" data-toggle="toggle" data-on="On" data-off="Off" data-onstyle="success" data-offstyle="secondary"><div class="toggle-group"><label class="btn btn-success toggle-on waves-effect">On</label><label class="btn btn-secondary active toggle-off waves-effect">Off</label><span class="toggle-handle btn btn-default waves-effect"></span></div></div>               
+        </div>
+    </div>                   
+
+    <div class="form-group row">
+        <div class="col-md-4 hidden-sm-down"></div>
+        <div class="col-md-8">
+            <button type="submit" class="btn btn-primary ladda-button waves-effect"><span class="ladda-label">Submit</span><span class="ladda-spinner"></span></button>
+        </div>
+    </div>
+
+</form>
+						        </div>
+						        <div class="button">
+						            <!-- You can hook the "home button" to some JavaScript events or just remove it -->
+						        </div>
+						    </div>
+						</div>
+
+	      			</div>
+				</div>
+
+			</div>
+			<div class="tab-pane mt-2" id="xl" role="tabpanel" aria-expanded="false">
+				
+				<div class="row">
+	      			<div class="col-xs-12 palette-bg-white">
+	      				
+	      				<div class="device-mockup" data-device="imac" data-orientation="portrait" data-color="black">
+						    <div class="device">
+						        <div class="screen palette-bg-white p-1">
+						            <form> 
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="email">Email address</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="email">Email address <a href="http://localhost:3000/articles/basic-form#" class="" data-toggle="tooltip" data-placement="right" title="" data-original-title="We&#39;ll never share your email with anyone else."><i class="fa fa-question-circle-o"></i></a></label>
+            <input type="email" class="form-control" id="email" placeholder="Enter email" data-parsley-trigger="keyup" required="">
+            <small class="form-text text-muted hidden-sm-down">We'll never share your email with anyone else.</small>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="password">Password</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="password">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Password" data-parsley-trigger="keyup" data-parsley-minlength="9" required="">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="masks">Social Security Number</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="masks">Social Security Number <a href="http://localhost:3000/articles/basic-form#" class="" data-toggle="tooltip" data-placement="right" title="" data-original-title="Use HTML5 data-mask attribute"><i class="fa fa-question-circle-o"></i></a></label>
+            <input type="text" class="form-control" data-mask="999-99-9999">
+            <small class="form-text text-muted hidden-sm-down">Use HTML5 data-mask attribute</small>
+        </div>
+    </div>                
+    
+    
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="select-single">Example select</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="select-single">Example select</label>
+            <select class="form-control" id="select-single">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="select-multiple">Example multiple select</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="select-multiple">Example multiple select</label>
+            <select multiple="" class="form-control" id="select-multiple">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="textarea">Example textarea</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="textarea">Example textarea</label>
+            <textarea class="form-control" id="textarea" rows="5" maxlength="100"></textarea>
+        </div>
+    </div>
+    
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="file">File input</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="file">File input <a href="http://localhost:3000/articles/basic-form#" class="" data-toggle="tooltip" data-placement="right" title="" data-original-title="This is some placeholder block-level help text for the above input. It&#39;s a bit lighter and easily wraps to a new line."><i class="fa fa-question-circle-o"></i></a></label>
+            <label class="custom-file d-block">
+                <input type="file" id="file" class="custom-file-input">
+                <span class="custom-file-control"></span>
+             <a href="http://localhost:3000/articles/basic-form#" class="" data-toggle="tooltip" data-placement="right" title="" data-original-title="This is some placeholder block-level help text for the above input. It&#39;s a bit lighter and easily wraps to a new line."><i class="fa fa-question-circle-o"></i></a></label>
+            <small class="form-text text-muted hidden-sm-down">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+        </div>
+    </div>
+
+    <fieldset class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="radio">Radio Buttons</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="radio">Radio Buttons</label>
+            <div class="custom-controls-stacked">
+                <label class="custom-control custom-radio">
+                    <input id="radioStacked1" name="radio-stacked" type="radio" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">Toggle this custom radio</span>
+                </label>
+                <label class="custom-control custom-radio">
+                    <input id="radioStacked2" name="radio-stacked" type="radio" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">Or toggle this other custom radio</span>
+                </label>
+            </div>
+        </div>
+    </fieldset>
+    
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="checkboxes">Checkboxes</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="checkboxes">Checkboxes</label>
+            <label class="custom-control custom-checkbox">
+                <input name="checkbox" type="checkbox" class="custom-control-input">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">Check this custom checkbox</span>
+            </label>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="datetime">Date &amp; Time</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="datetime">Date &amp; Time</label>
+            <div class="input-group">
+                <input type="datetime-local" class="form-control">
+                <span class="input-group-addon">
+                    <span class="fa fa-calendar"></span>
+                </span>
+            </div>                        
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="time">Time</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="time">Time</label>
+            <div class="input-group">
+                <input type="time" class="form-control">
+                <span class="input-group-addon">
+                    <span class="fa fa-clock-o"></span>
+                </span>
+            </div>                        
+        </div>
+    </div>                
+    
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="number">Number</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="number">Number</label>
+            <input type="number" class="form-control">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="slider">Slider</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="slider">Slider</label>
+            <div class="slider slider-horizontal" id="ex1Slider"><div class="slider-track"><div class="slider-track-low" style="left: 0px; width: 0%;"></div><div class="slider-selection" style="left: 0%; width: 50%;"></div><div class="slider-track-high" style="right: 0px; width: 50%;"></div></div><div class="tooltip tooltip-main top" role="presentation" style="left: 50%; margin-left: 0px;"><div class="tooltip-arrow"></div><div class="tooltip-inner">50</div></div><div class="tooltip tooltip-min top" role="presentation"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div><div class="tooltip tooltip-max top" role="presentation"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div><div class="slider-handle min-slider-handle round" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0" style="left: 50%;"></div><div class="slider-handle max-slider-handle round hide" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0" style="left: 0%;"></div></div><input name="slider" id="slider-example" data-slider-id="ex1Slider" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="50" data-value="50" value="50" style="display: none;">               
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-md-4 hidden-sm-down text-xs-right" for="toggler">Toggler</label>
+        <div class="col-md-8">
+            <label class="hidden-md-up d-block" for="toggler">Toggler</label>
+            <div class="toggle btn btn-success waves-effect" data-toggle="toggle" style="width: 0px; height: 0px;"><input name="toggler" type="checkbox" checked="" data-toggle="toggle" data-on="On" data-off="Off" data-onstyle="success" data-offstyle="secondary"><div class="toggle-group"><label class="btn btn-success toggle-on waves-effect">On</label><label class="btn btn-secondary active toggle-off waves-effect">Off</label><span class="toggle-handle btn btn-default waves-effect"></span></div></div>               
+        </div>
+    </div>                   
+
+    <div class="form-group row">
+        <div class="col-md-4 hidden-sm-down"></div>
+        <div class="col-md-8">
+            <button type="submit" class="btn btn-primary ladda-button waves-effect"><span class="ladda-label">Submit</span><span class="ladda-spinner"></span></button>
+        </div>
+    </div>
+
+</form>
+						        </div>
+						        <div class="button">
+						            <!-- You can hook the "home button" to some JavaScript events or just remove it -->
+						        </div>
+						    </div>
+						</div>
+
+	      			</div>
+				</div>
+
+			</div>		
+
+		</div>
+	
+	<hr>
+
+	<h4>Markup</h4>
+	<pre class="pre-scrollable"><code class="html hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">form</span>&gt;</span> 
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-group row"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-md-4 hidden-sm-down text-xs-right"</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"email"</span>&gt;</span>Email address<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-md-8"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"hidden-md-up d-block"</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"email"</span>&gt;</span>Email address<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"email"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-control"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"email"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"Enter email"</span> <span class="hljs-attr">data-parsley-trigger</span>=<span class="hljs-string">"keyup"</span> <span class="hljs-attr">required</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">small</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-text text-muted hidden-sm-down"</span>&gt;</span>We'll never share your email with anyone else.<span class="hljs-tag">&lt;/<span class="hljs-name">small</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-group row"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-md-4 hidden-sm-down text-xs-right"</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"password"</span>&gt;</span>Password<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-md-8"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"hidden-md-up d-block"</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"password"</span>&gt;</span>Password<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"password"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-control"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"password"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"Password"</span> <span class="hljs-attr">data-parsley-trigger</span>=<span class="hljs-string">"keyup"</span> <span class="hljs-attr">data-parsley-minlength</span>=<span class="hljs-string">"9"</span> <span class="hljs-attr">required</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-group row"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-md-4 hidden-sm-down text-xs-right"</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"masks"</span>&gt;</span>Social Security Number<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-md-8"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"hidden-md-up d-block"</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"masks"</span>&gt;</span>Social Security Number<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-control"</span> <span class="hljs-attr">data-mask</span>=<span class="hljs-string">"999-99-9999"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">small</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-text text-muted hidden-sm-down"</span>&gt;</span>Use HTML5 data-mask attribute<span class="hljs-tag">&lt;/<span class="hljs-name">small</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>                
+    
+    
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-group row"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-md-4 hidden-sm-down text-xs-right"</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"select-single"</span>&gt;</span>Example select<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-md-8"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"hidden-md-up d-block"</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"select-single"</span>&gt;</span>Example select<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-control"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"select-single"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>2<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>3<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>4<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>5<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-group row"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-md-4 hidden-sm-down text-xs-right"</span>  <span class="hljs-attr">for</span>=<span class="hljs-string">"select-multiple"</span>&gt;</span>Example multiple select<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-md-8"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"hidden-md-up d-block"</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"select-multiple"</span>&gt;</span>Example multiple select<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">multiple</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-control"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"select-multiple"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>2<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>3<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>4<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>5<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-group row"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-md-4 hidden-sm-down text-xs-right"</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"textarea"</span>&gt;</span>Example textarea<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-md-8"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"hidden-md-up d-block"</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"textarea"</span>&gt;</span>Example textarea<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">textarea</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-control"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"textarea"</span> <span class="hljs-attr">rows</span>=<span class="hljs-string">"5"</span> <span class="hljs-attr">maxlength</span>=<span class="hljs-string">"100"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">textarea</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-group row"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-md-4 hidden-sm-down text-xs-right"</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"file"</span>&gt;</span>File input<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-md-8"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"hidden-md-up d-block"</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"file"</span>&gt;</span>File input<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"custom-file d-block"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"file"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"file"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"custom-file-input"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"custom-file-control"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">small</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-text text-muted hidden-sm-down"</span>&gt;</span>This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.<span class="hljs-tag">&lt;/<span class="hljs-name">small</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">fieldset</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-group row"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-md-4 hidden-sm-down text-xs-right"</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"radio"</span>&gt;</span>Radio Buttons<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-md-8"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"hidden-md-up d-block"</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"radio"</span>&gt;</span>Radio Buttons<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"custom-controls-stacked"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"custom-control custom-radio"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"radioStacked1"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"radio-stacked"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"radio"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"custom-control-input"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"custom-control-indicator"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"custom-control-description"</span>&gt;</span>Toggle this custom radio<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"custom-control custom-radio"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"radioStacked2"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"radio-stacked"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"radio"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"custom-control-input"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"custom-control-indicator"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"custom-control-description"</span>&gt;</span>Or toggle this other custom radio<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">fieldset</span>&gt;</span>
+    
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-group row"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-md-4 hidden-sm-down text-xs-right"</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"checkboxes"</span>&gt;</span>Checkboxes<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-md-8"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"hidden-md-up d-block"</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"checkboxes"</span>&gt;</span>Checkboxes<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"custom-control custom-checkbox"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"custom-control-input"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"custom-control-indicator"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"custom-control-description"</span>&gt;</span>Check this custom checkbox<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-group row"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-md-4 hidden-sm-down text-xs-right"</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"datetime"</span>&gt;</span>Date &amp;amp; Time<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-md-8"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"hidden-md-up d-block"</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"datetime"</span>&gt;</span>Date &amp;amp; Time<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">'input-group'</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">'datetime-local'</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-control"</span> /&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"input-group-addon"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"fa fa-calendar"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>                        
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-group row"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-md-4 hidden-sm-down text-xs-right"</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"time"</span>&gt;</span>Time<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-md-8"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"hidden-md-up d-block"</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"time"</span>&gt;</span>Time<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">'input-group'</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">'time'</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-control"</span> /&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"input-group-addon"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"fa fa-clock-o"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>                        
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>                
+    
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-group row"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-md-4 hidden-sm-down text-xs-right"</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"number"</span>&gt;</span>Number<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-md-8"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"hidden-md-up d-block"</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"number"</span>&gt;</span>Number<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"number"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-control"</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-group row"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-md-4 hidden-sm-down text-xs-right"</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"slider"</span>&gt;</span>Slider<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-md-8"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"hidden-md-up d-block"</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"slider"</span>&gt;</span>Slider<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"slider"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"slider-example"</span> <span class="hljs-attr">data-slider-id</span>=<span class="hljs-string">'ex1Slider'</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">data-slider-min</span>=<span class="hljs-string">"0"</span> <span class="hljs-attr">data-slider-max</span>=<span class="hljs-string">"100"</span> <span class="hljs-attr">data-slider-step</span>=<span class="hljs-string">"1"</span> <span class="hljs-attr">data-slider-value</span>=<span class="hljs-string">"50"</span>/&gt;</span>               
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-group row"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-md-4 hidden-sm-down text-xs-right"</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"toggler"</span>&gt;</span>Toggler<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-md-8"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"hidden-md-up d-block"</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"toggler"</span>&gt;</span>Toggler<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"toggler"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">checked</span> <span class="hljs-attr">data-toggle</span>=<span class="hljs-string">"toggle"</span> <span class="hljs-attr">data-on</span>=<span class="hljs-string">"On"</span> <span class="hljs-attr">data-off</span>=<span class="hljs-string">"Off"</span> <span class="hljs-attr">data-onstyle</span>=<span class="hljs-string">"success"</span> <span class="hljs-attr">data-offstyle</span>=<span class="hljs-string">"secondary"</span>&gt;</span>               
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>                   
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-group row"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-md-4 hidden-sm-down"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-md-8"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-primary ladda-button"</span>&gt;</span>Submit<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span></code></pre>
+
+
+	
+
+
+
+<a href="http://localhost:3000/articles/basic-form#" onclick="window.history.back()" class="btn btn-primary waves-effect"><i class="fa fa-angle-double-left"></i> Back</a>
+
+
+
+
+
+            </div>
+            <div class="col-lg-2 pt-2 pr-2">
+                <div id="accordion" role="tablist" aria-multiselectable="true">
+                  <div class="card">
+                    <div class="card-header" role="tab" id="headingOne">
+                      <h5 class="mb-0">
+                        <a data-toggle="collapse" data-parent="#accordion" href="http://localhost:3000/articles/basic-form#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          Best Practices
+                        </a>
+                      </h5>
+                    </div>
+                
+                    <div id="collapseOne" class="collapse in" role="tabpanel" aria-labelledby="headingOne">
+                      <div class="card-block">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-header" role="tab" id="headingTwo">
+                      <h5 class="mb-0">
+                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="http://localhost:3000/articles/basic-form#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                          Avoid
+                        </a>
+                      </h5>
+                    </div>
+                    <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+                      <div class="card-block">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-header" role="tab" id="headingThree">
+                      <h5 class="mb-0">
+                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="http://localhost:3000/articles/basic-form#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                          Resources
+                        </a>
+                      </h5>
+                    </div>
+                    <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+                      <div class="card-block">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                      </div>
+                    </div>
+                  </div>
+                </div>            </div>            
+       </div>
+        
+        <footer class="footer palette-bg-blue-grey-500">
+            <div class="container-fluid small">
+            	<div class="row py-1">
+            		<div class="col-md-4">
+            			Copyright © President &amp; Fellows of Harvard College
+            		</div>
+            		<div class="col-md-4 text-xs-center">
+            			<span class="hidden-sm-up">XS</span>
+            			<span class="hidden-xs-down hidden-md-up">SM</span>
+            			<span class="hidden-sm-down hidden-lg-up">MD</span>
+            			<span class="hidden-md-down hidden-xl-up">LG</span>
+            			<span class="hidden-lg-down">XL</span>
+            		</div>
+            		<div class="col-md-4 text-xs-right d-inline">
+            			<i class="fa fa-circle text-success" aria-hidden="true"></i> Stable
+            		</div>
+            	</div>
+            </div>
+            
+        
+        <div id="event-modal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">close</span></button>
+                        <h4>Event Details</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-xs-2 event text-xs-center">
+                                <div class="event-start-month tag tag-default d-block text-uppercase">Jan</div>
+                                <div class="event-start-day day display-4 border-1">22</div>
+                            </div>
+                            <div class="col-xs-10">
+                                <h3 class="event-title font-weight-bold"></h3> 
+                                <span class="tag tag-default event-category"></span>
+                                <ul class="list-unstyled">
+                                    <li><span class="event-starts"></span> - <span class="event-ends"></span></li>
+                                    <li><i class="fa fa-map-marker"></i> <a href="http://localhost:3000/articles/basic-form#" target="_blank"><span class="event-location"></span></a></li>
+                                </ul>
+                                <div class="event-description"></div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary waves-effect"><a href="http://localhost:3000/articles/basic-form#">Download to Calendar</a></button>
+                        <button class="btn btn-primary waves-effect"><a id="event-url" target="_blank">Event Details</a></button>
+                    </div>
+                </div>
+            </div>
+        </div>        
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+        
+        
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+        
+        <script src="./device-mock.scss_files/jquery.min.js"></script>
+        <script src="./device-mock.scss_files/tether.min.js"></script>
+        <script src="./device-mock.scss_files/bootstrap.min.js"></script>
+        <script src="./device-mock.scss_files/jasny-bootstrap.min.js"></script>
+        <script src="./device-mock.scss_files/moment-with-locales.min.js"></script>
+        <script src="./device-mock.scss_files/bootstrap-datetimepicker.min.js"></script>
+        <script src="./device-mock.scss_files/bootstrap-slider.min.js"></script>
+        <script src="./device-mock.scss_files/bootstrap-toggle.min.js"></script>
+        <script src="./device-mock.scss_files/parsley.min.js"></script>
+        <script src="./device-mock.scss_files/metisMenu.min.js"></script>
+        <script src="./device-mock.scss_files/slick.min.js"></script>
+        
+        <script src="./device-mock.scss_files/es6-promise.auto.min.js"></script>
+        <!-- <script src="//cdn.jsdelivr.net/sweetalert2/6.3.0/sweetalert2.js"></script> -->
+        <script src="./device-mock.scss_files/sweetalert2.min.js"></script>
+        <script src="./device-mock.scss_files/jquery.dataTables.min.js"></script>
+        <script src="./device-mock.scss_files/dataTables.bootstrap4.min.js"></script>
+        <script src="./device-mock.scss_files/dataTables.responsive.min.js"></script>
+        <script src="./device-mock.scss_files/lodash.min.js"></script>
+        <script src="./device-mock.scss_files/waves.min.js"></script>
+        <script src="./device-mock.scss_files/summernote.js"></script> 
+        <script src="./device-mock.scss_files/bootstrap-maxlength.min.js"></script> 
+        <script src="./device-mock.scss_files/spin.min.js"></script> 
+        <script src="./device-mock.scss_files/ladda.min.js"></script> 
+        <script src="./device-mock.scss_files/select2.min.js"></script> 
+        <script src="./device-mock.scss_files/daterangepicker.js"></script>
+        <script src="./device-mock.scss_files/jquery.knob.min.js"></script>
+        <script src="./device-mock.scss_files/fuelux.min.js"></script>
+        <script src="./device-mock.scss_files/toastr.min.js"></script>
+        <script src="./device-mock.scss_files/jquery.slimscroll.min.js"></script>
+        <script src="./device-mock.scss_files/jquery.blueimp-gallery.min.js"></script>
+        <script src="./device-mock.scss_files/fullcalendar.min.js"></script>
+        <script src="./device-mock.scss_files/jquery-asBreadcrumbs.min.js"></script>
+        <script src="./device-mock.scss_files/jquery.listnav.min-2.1.js"></script>
+        <script src="./device-mock.scss_files/jquery.typeahead.min.js"></script>
+        <script src="./device-mock.scss_files/main.js"></script>
+        
+        <!-- exlcuded libs -->
+        <script src="./device-mock.scss_files/demo.js"></script>
+        <script src="./device-mock.scss_files/faker.min.js"></script>
+        <script src="./device-mock.scss_files/highlight.min.js"></script>
+        
+        
+    
+
+
+
+</footer><div class="swal2-container"><div class="swal2-overlay" tabindex="-1"></div><div class="swal2-modal" style="display: none; margin-top: -360px;" tabindex="-1"><div class="swal2-icon swal2-error"><span class="x-mark"><span class="line left"></span><span class="line right"></span></span></div><div class="swal2-icon swal2-question">?</div><div class="swal2-icon swal2-warning">!</div><div class="swal2-icon swal2-info">i</div><div class="swal2-icon swal2-success"><span class="line tip"></span> <span class="line long"></span><div class="placeholder"></div> <div class="fix"></div></div><img class="swal2-image"><h2></h2><div class="swal2-content"></div><input class="swal2-input"><select class="swal2-select"></select><div class="swal2-radio"></div><label for="swal2-checkbox" class="swal2-checkbox"><input type="checkbox" id="swal2-checkbox"></label><textarea class="swal2-textarea"></textarea><div class="swal2-validationerror"></div><hr class="swal2-spacer"><button class="swal2-confirm">OK</button><button class="swal2-cancel">Cancel</button><span class="swal2-close">×</span></div></div><div id="window-resizer-tooltip" style="display: block;"><a href="http://localhost:3000/articles/basic-form#" title="Edit settings"></a><span class="tooltipTitle">Window size: </span><span class="tooltipWidth" id="winWidth">1824</span> x <span class="tooltipHeight" id="winHeight">1177</span><br><span class="tooltipTitle">Viewport size: </span><span class="tooltipWidth" id="vpWidth">1824</span> x <span class="tooltipHeight" id="vpHeight">1059</span></div><span class="bootstrap-maxlength tag-success tag" style="display: block; position: absolute; white-space: nowrap; z-index: 1099; top: 404.125px; left: 925.683px;">0 / 100</span></body></html>

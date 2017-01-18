@@ -3,14 +3,152 @@
 	<p class="lead">{{intro}}</p>
 	<div>{{{body}}}</div>
 
-	<h4>Example</h4>
-	{{{markup}}}
 
+	{{#compare _category.title "UI Components"}}
+
+		<h4>Examples</h4>
+
+
+		
+		<!-- Nav tabs -->
+		<ul class="nav nav-tabs" role="tablist">
+			<li class="nav-item">
+				<a class="nav-link active" data-toggle="tab" href="#xs" role="tab">XS - Mobile (<576px)</a>
+			</li>
+			<li class="nav-item  hidden-xs-down">
+				<a class="nav-link" data-toggle="tab" href="#sm" role="tab">SM - Phablet (≥576px)</a>
+			</li>
+			<li class="nav-item  hidden-sm-down">
+				<a class="nav-link" data-toggle="tab" href="#md" role="tab">MD - Tablet (≥768px)</a>
+			</li>
+			<li class="nav-item  hidden-md-down">
+				<a class="nav-link" data-toggle="tab" href="#lg" role="tab">LG - Laptop (≥992px)</a>
+			</li>	
+			<li class="nav-item hidden-lg-down">
+				<a class="nav-link" data-toggle="tab" href="#xl" role="tab">XL - Desktop (≥1200px)</a>
+			</li>				
+		</ul>
+
+		<!-- Tab panes -->
+		<div class="tab-content">
+			<div class="tab-pane active mt-2" id="xs" role="tabpanel">
+				
+				<div class="row">
+	      			<div class="col-xs-10 offset-xs-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4 col-xl-4 offset-xl-4 palette-bg-white">
+	      				
+	      				<div class="device-mockup" data-device="iphone6" data-orientation="portrait" data-color="white">
+						    <div class="device">
+						        <div class="screen palette-bg-white p-1">
+						            {{{markup}}}
+						        </div>
+						        <div class="button">
+						            <!-- You can hook the "home button" to some JavaScript events or just remove it -->
+						        </div>
+						    </div>
+						</div>
+
+	      			</div>
+				</div>
+
+
+
+			</div>
+			<div class="tab-pane hidden-xs-down mt-2" id="sm" role="tabpanel">
+				
+				<div class="row">
+	      			<div class="col-xs-10 offset-xs-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4 col-xl-6 offset-xl-3 palette-bg-white">
+	      				
+	      				<div class="device-mockup" data-device="nexus7" data-orientation="portrait" data-color="black">
+						    <div class="device">
+						        <div class="screen palette-bg-white p-1">
+						            {{{markup}}}
+						        </div>
+						        <div class="button">
+						            <!-- You can hook the "home button" to some JavaScript events or just remove it -->
+						        </div>
+						    </div>
+						</div>
+
+	      			</div>
+				</div>
+
+			</div>
+			<div class="tab-pane hidden-sm-down mt-2" id="md" role="tabpanel">
+				
+				<div class="row">
+	      			<div class="col-xs-10 offset-xs-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4 col-xl-8 offset-xl-2 palette-bg-white">
+	      				
+	      				<div class="device-mockup" data-device="ipad_air_2" data-orientation="portrait" data-color="black">
+						    <div class="device">
+						        <div class="screen palette-bg-white p-1">
+						            {{{markup}}}
+						        </div>
+						        <div class="button">
+						            <!-- You can hook the "home button" to some JavaScript events or just remove it -->
+						        </div>
+						    </div>
+						</div>
+
+	      			</div>
+				</div>
+
+			</div>
+			<div class="tab-pane hidden-md-down mt-2" id="lg" role="tabpanel">
+				
+				<div class="row">
+	      			<div class="col-xs-10 offset-xs-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4 col-xl-10 offset-xl-1 palette-bg-white">
+	      				
+	      				<div class="device-mockup" data-device="macbook_2015" data-orientation="portrait" data-color="black">
+						    <div class="device">
+						        <div class="screen palette-bg-white p-1">
+						            {{{markup}}}
+						        </div>
+						        <div class="button">
+						            <!-- You can hook the "home button" to some JavaScript events or just remove it -->
+						        </div>
+						    </div>
+						</div>
+
+	      			</div>
+				</div>
+
+			</div>
+			<div class="tab-pane hidden-lg-down mt-2" id="xl" role="tabpanel">
+				
+				<div class="row">
+	      			<div class="col-xs-12 palette-bg-white">
+	      				
+	      				<div class="device-mockup" data-device="imac" data-orientation="portrait" data-color="black">
+						    <div class="device">
+						        <div class="screen palette-bg-white p-1">
+						            {{{markup}}}
+						        </div>
+						        <div class="button">
+						            <!-- You can hook the "home button" to some JavaScript events or just remove it -->
+						        </div>
+						    </div>
+						</div>
+
+	      			</div>
+				</div>
+
+			</div>		
+
+		</div>
+	
 	<hr>
 
 	<h4>Markup</h4>
 	<pre class="pre-scrollable"><code class="html">{{markup}}</code></pre>
 
-{{/article}}
+	{{/compare}}
+
+	
+
+
 
 <a href="#" onclick="window.history.back()" class="btn btn-primary"><i class="fa fa-angle-double-left"></i> Back</a>
+
+
+
+{{/article}}
