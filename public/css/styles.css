@@ -4643,19 +4643,6 @@ strong, .font-weight-bold {
   height: 5px; }
 
 /* AZ List */
-#azList-nav {
-  padding: 5px 0;
-  position: relative;
-  margin: 20px 0; }
-
-.ln-letter-count {
-  top: 10px;
-  text-align: center;
-  font-size: 0.8em;
-  line-height: 1;
-  margin-bottom: 1px;
-  color: black; }
-
 #toast-container > div {
   -moz-border-radius: 0;
   -webkit-border-radius: 0;
