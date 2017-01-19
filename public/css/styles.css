@@ -4647,27 +4647,9 @@ strong, .font-weight-bold {
   padding: 5px 0;
   position: relative;
   margin: 20px 0; }
-  #azList-nav .ln-letters {
-    margin-top: 25px;
-    display: table;
-    width: 100%;
-    border: 1px solid #000; }
-    #azList-nav .ln-letters a {
-      position: relative;
-      width: 1%;
-      display: table-cell;
-      text-align: center;
-      padding: 12px 0;
-      color: #000;
-      text-decoration: none;
-      border-right: 1px solid #000; }
-      #azList-nav .ln-letters a:last-child {
-        border-right: none; }
-      #azList-nav .ln-letters a:hover {
-        background-color: #000;
-        color: white; }
 
 .ln-letter-count {
+  top: 10px;
   text-align: center;
   font-size: 0.8em;
   line-height: 1;

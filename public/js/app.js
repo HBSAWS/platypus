@@ -10194,8 +10194,8 @@ for(i=0;i<s.length;i++)r=s[i],r.event=e,r.eventStartMS=+t.start,r.eventDurationM
 				});
 			}
 			function createLettersHtml() {
-				var html = []; for (var i = 1; i < letters.length; i++) { if (html.length == 0) html.push('<a class="all" href="#">ALL</a><a class="_" href="#">0-9</a>'); html.push('<a class="' + letters[i] + '" href="#">' + ((letters[i] == '-') ? '...' : letters[i].toUpperCase()) + '</a>'); }
-				return '<div class="ln-letters">' + html.join('') + '</div>' + ((opts.showCounts) ? '<div class="ln-letter-count" style="display:none; position:absolute; top:0; left:0; width:20px;">0</div>' : '');
+				var html = []; for (var i = 1; i < letters.length; i++) { if (html.length == 0) html.push('<a class="all btn btn-secondary" href="#">ALL</a><a class="_ btn btn-secondary" href="#">0-9</a>'); html.push('<a class="' + letters[i] + ' btn btn-secondary" href="#">' + ((letters[i] == '-') ? '...' : letters[i].toUpperCase()) + '</a>'); }
+				return '<div class="btn-toolbar ln-letters"><div class="btn-group">' + html.join('') + '</div></div>' + ((opts.showCounts) ? '<div class="ln-letter-count" style="display:none; position:absolute; top:0; left:0; width:20px;">0</div>' : '');
 			}
 			init();
 		});

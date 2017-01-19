@@ -5387,37 +5387,6 @@ strong, .font-weight-bold {
   height: 5px; }
 
 /* AZ List */
-#azList-nav {
-  padding: 5px 0;
-  position: relative;
-  margin: 20px 0; }
-  #azList-nav .ln-letters {
-    margin-top: 25px;
-    display: table;
-    width: 100%;
-    border: 1px solid #000; }
-    #azList-nav .ln-letters a {
-      position: relative;
-      width: 1%;
-      display: table-cell;
-      text-align: center;
-      padding: 12px 0;
-      color: #000;
-      text-decoration: none;
-      border-right: 1px solid #000; }
-      #azList-nav .ln-letters a:last-child {
-        border-right: none; }
-      #azList-nav .ln-letters a:hover {
-        background-color: #000;
-        color: white; }
-
-.ln-letter-count {
-  text-align: center;
-  font-size: 0.8em;
-  line-height: 1;
-  margin-bottom: 1px;
-  color: black; }
-
 #toast-container > div {
   -moz-border-radius: 0;
   -webkit-border-radius: 0;

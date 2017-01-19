@@ -35,18 +35,19 @@ module.exports = function(app, envConfig){
 
     app.use(function(req, res, next) {
         Category.find({})
-            .lean()
-            .exec(function(err, categories) {
+        .lean()
+        .exec(function(err, categories) {
               if(err) return next(err);
 
                 async.map(categories, function(category, done) {
                     Article.find({_category: category._id})
-                    .lean()
-                    .exec(function(err, a){
-                        if(err) return next(err);
-                        category.articles = a;
-                        done(null, categories);  
-              });
+			.lean()
+			.sort('title')
+			.exec(function(err, a){
+				if(err) return next(err);
+				category.articles = a;
+				done(null, categories);  
+		   });
             }, function(err, result) {
                 if(err) return next(err);
                 //res.status(200).json(result);  
