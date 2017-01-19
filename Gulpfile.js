@@ -79,7 +79,7 @@ var cssFiles = [
 ],  
 cssDest = 'public/css';    
 
-gulp.task('scripts', function() {  
+gulp.task('js', function() {  
     return gulp.src(jsFiles)
         .pipe(concat('app.js'))
         .pipe(gulp.dest(jsDest))
@@ -88,7 +88,7 @@ gulp.task('scripts', function() {
         .pipe(gulp.dest(jsDest));
 });
 
-gulp.task('stylesheets', function() {  
+gulp.task('css', function() {  
     return gulp.src(cssFiles)
         .pipe(concat('app.css'))
         .pipe(gulp.dest(cssDest))

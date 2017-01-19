@@ -2,6 +2,10 @@
 .btn, button, input, select, textarea, .custom-file-control, .input-group-addon, .form-control, .tag {
   border-radius: 0 !important; }
 
+.swal2-container .swal2-modal h2 {
+  font-weight: normal;
+  line-height: 1.2; }
+
 .accordion a:after {
   font-family: 'FontAwesome';
   content: "\f107";
