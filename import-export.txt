@@ -1,0 +1,7 @@
+// Export from local
+mongoexport --db hbs-aws-framework-dev --collection categories --out categories.json
+mongoexport --db hbs-aws-framework-dev --collection articles --out articles.json
+
+// Import into DigitalOcean
+mongoimport --db hbs-aws-framework-dev --collection categories --file categories.json
+mongoimport --db hbs-aws-framework-dev --collection articles --file articles.json
