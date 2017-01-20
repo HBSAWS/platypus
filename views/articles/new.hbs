@@ -1,118 +1,178 @@
-<h2 class="display-4">New content</h2>
-
-<hr>
+{{> breadcrumbs this }}
+<div class="page-header palette-bg-blue-grey-100 p-1 mb-2">
+	<div class="row">
+		<div class="col-xs-8">
+			<h2 class="display-4">New Content</h2>
+		</div>
+		<div class="col-xs-4">
+			<div class="btn-group float-xs-right">
+				<a href="/articles/edit/{{_id}}" class="btn btn-secondary"><i class="fa fa-edit"></i><span class="hidden-sm-down"> Edit</span></a>
+				<a href="https://hbs-itg.atlassian.net/secure/CreateIssue!default.jspa" class="btn btn-secondary" target="_blank"><i class="fa fa-bug"></i><span class="hidden-sm-down"> Report Bug</span></a>
+			</div>
+		</div>
+	</div>
+</div>
 
 <form action="/articles/create" method="post" data-parsley-validate>
-  
-  <div class="row form-group">
-	  <div class="col-md-3 text-md-right">
-	    <label for="title">Title</label>
-	  </div>
-	  <div class="col-md-9">
-	  	<input name="title" type="text" class="form-control" autofocus required>
-	  </div>
+	<div class="row form-group">
+		<div class="col-md-4 hidden-sm-down text-xs-right">
+			<label for="title">Title</label>
+		</div>
+		<div class="col-md-8">
+			<label class="hidden-md-up d-block" for="title">Title</label>
+			<input name="title" type="text" class="form-control" autofocus required>
+		</div>
 	</div><!--/.row-->
-
-	<div class="row form-group">
-	  <div class="col-md-3 text-md-right">
-	    <label for="slug">Slug</label>
-	  </div>
-	  <div class="col-md-9">
-	  	<input name="slug" type="text" class="form-control">
-	  </div>
-	</div><!--/.row-->
-
-    <div class="form-group row">
-        <label class="col-md-3 hidden-sm-down text-xs-right" for="type">Type</label>
-        <div class="col-md-9">
-            <label class="hidden-md-up d-block" for="type">Type</label>
-            <select name="type" class="form-control" id="select-single">
-                <option>Core</option>
-                <option>Addon</option>
-            </select>
-        </div>
-    </div>
-
-	<div class="row form-group">
-	  <div class="col-md-3 text-md-right">
-	    <label for="_category">Category</label>
-	  </div>
-	  <div class="col-md-9">
-	  	<select name="_category" class="form-control select2" required>
-			  {{#categories}}
-			  	<option value="{{_id}}">{{title}}</option>
-			  {{/categories}}
-			</select>
-	  </div>
-	</div><!--/.row-->
-
-	<div class="row form-group">
-	  <div class="col-md-3 text-md-right">
-	    <label for="intro">Intro</label>
-	  </div>
-	  <div class="col-md-9">
-	  	<input name="intro" type="text" class="form-control">
-		</div>
-	</div><!--/.row-->	
-
-	<div class="row form-group">
-	  <div class="col-md-3 text-md-right">
-    	<label for="body">Body</label>
-	  </div>
-	  <div class="col-md-9">
-	  	<textarea name="body" class="form-control summernote" required></textarea>
-	  </div>
-	</div><!--/.row-->	
-
-	<div class="row form-group">
-	  <div class="col-md-3 text-md-right">
-	    <label for="markup">Markup</label>
-	  </div>
-	  <div class="col-md-9">
-	  	<textarea name="markup" class="form-control"></textarea>
-		</div>
-	</div><!--/.row-->		
-
-	<div class="row form-group">
-	  <div class="col-md-3 text-md-right">
-	    <label for="js">Javascript</label>
-	  </div>
-	  <div class="col-md-9">
-	  	<input name="js" type="text" class="form-control">
-		</div>
-	</div><!--/.row-->		
-		
-  <div class="row form-group">
-	  <div class="col-md-3 text-md-right">
-	    <label for="fiddle">Fiddle</label>
-	  </div>
-	  <div class="col-md-9">
-	  	<input name="fiddle" type="text" class="form-control">
-		</div>
-	</div><!--/.row-->	
-
-	<div class="row form-group">
-  	<div class="col-md-3 text-md-right">
-  	</div>
-	  <div class="col-md-9">
-		 	<div class="checkbox">
-		    <label>
-		      <input name="published" type="checkbox" checked> Published?
-		    </label>
-		  </div>
-	  </div> 
- 	</div><!--/.row-->	
 	
-  <div class="row form-group">
-  	<div class="col-md-3 text-md-right">
-  	</div>
-	  <div class="col-md-9">
-		 	<div class="checkbox">
-		    <label>
-		      <button type="submit" class="btn btn-default btn-primary">Create</button>
-		    </label>
-		  </div>
-	  </div> 
- 	</div><!--/.row-->	
+	<div class="row form-group">
+		<div class="col-md-4 hidden-sm-down text-xs-right">
+			<label for="slug">Slug</label>
+		</div>
+		<div class="col-md-8">
+			<label class="hidden-md-up d-block" for="slug">Slug</label>
+			<input name="slug" type="text" class="form-control">
+		</div>
+	</div><!--/.row-->
+	
+	<div class="form-group row">
+		<label class="col-md-4 hidden-sm-down text-xs-right" for="status">Status</label>
+		<div class="col-md-8">
+			<label class="hidden-md-up d-block" for="status">Status</label>
+			<select name="status" class="form-control" id="select-single">
+				<option value="experimental">Experimental</option>
+				<option value="production">Production</option>
+				<option value="deprecated">Deprecated</option>
+			</select>
+		</div>
+	</div><!--/.row-->
+
+	<div class="form-group row">
+		<label class="col-md-4 hidden-sm-down text-xs-right" for="type">Type</label>
+		<div class="col-md-8">
+			<label class="hidden-md-up d-block" for="type">Type</label>
+			<select name="type" class="form-control" id="select-single">
+				<option value="core">Core</option>
+				<option value="addon">Addon</option>
+			</select>
+		</div>
+	</div><!--/.row-->
+	
+	<div class="row form-group">
+		<div class="col-md-4 hidden-sm-down text-xs-right">
+			<label for="_category">Category</label>
+		</div>
+		<div class="col-md-8">
+			<label class="hidden-md-up d-block" for="_category">Category</label>
+			<select name="_category" class="form-control select2" required>
+				{{#categories}}
+				<option value="{{_id}}">{{title}}</option>
+				{{/categories}}
+			</select>
+		</div>
+	</div><!--/.row-->
+	
+	<div class="row form-group">
+		<div class="col-md-4 hidden-sm-down text-xs-right">
+			<label for="intro">Intro</label>
+		</div>
+		<div class="col-md-8">
+			<label class="hidden-md-up d-block" for="intro">Intro</label>
+			<input name="intro" type="text" class="form-control">
+		</div>
+	</div><!--/.row-->	
+	
+	<div class="row form-group">
+		<div class="col-md-4 hidden-sm-down text-xs-right">
+			<label for="body">Body</label>
+		</div>
+		<div class="col-md-8">	
+			<label class="hidden-md-up d-block" for="body">Body</label>
+			<textarea name="body" class="form-control summernote" required></textarea>
+		</div>
+	</div><!--/.row-->	
+	
+	<div class="row form-group">
+		<div class="col-md-4 hidden-sm-down text-xs-right">
+			<label for="markup">Markup</label>
+		</div>
+		<div class="col-md-8">
+			<label class="hidden-md-up d-block" for="markup">Markup</label>
+			<textarea name="markup" class="form-control"></textarea>
+		</div>
+	</div><!--/.row-->		
+	
+	<div class="row form-group">
+		<div class="col-md-4 hidden-sm-down text-xs-right">
+			<label for="js">Javascript</label>
+		</div>
+		<div class="col-md-8">
+			<label class="hidden-md-up d-block" for="js">Javascript</label>
+			<input name="js" type="text" class="form-control">
+		</div>
+	</div><!--/.row-->	
+
+	<div class="row form-group">
+		<div class="col-md-4 hidden-sm-down text-xs-right">
+			<label for="fiddle">Fiddle</label>
+		</div>
+		<div class="col-md-8">
+			<label class="hidden-md-up d-block" for="fiddle">Fiddle</label>
+			<input name="fiddle" type="text" class="form-control">
+		</div>
+	</div><!--/.row-->	
+
+	<div class="row form-group">
+		<div class="col-md-4 hidden-sm-down text-xs-right">
+			<label for="best_practices">Best Practices</label>
+		</div>
+		<div class="col-md-8">
+			<label class="hidden-md-up d-block" for="best_practices">Best Practices</label>
+			<textarea name="best_practices" class="form-control summernote"></textarea>
+		</div>
+	</div><!--/.row-->		
+
+	<div class="row form-group">
+		<div class="col-md-4 hidden-sm-down text-xs-right">
+			<label for="avoid">Avoid</label>
+		</div>
+		<div class="col-md-8">
+			<label class="hidden-md-up d-block" for="avoid">Avoid</label>
+			<textarea name="avoid" class="form-control summernote"></textarea>
+		</div>
+	</div><!--/.row-->	
+
+	<div class="row form-group">
+		<div class="col-md-4 hidden-sm-down text-xs-right">
+			<label for="resources">Resources</label>
+		</div>
+		<div class="col-md-8">
+			<label class="hidden-md-up d-block" for="resources">Resources</label>
+			<textarea name="resources" class="form-control summernote"></textarea>
+		</div>
+	</div><!--/.row-->			
+
+	<div class="row form-group">
+		<div class="col-md-4 hidden-sm-down text-xs-right">
+		</div>
+		<div class="col-md-8">
+			<div class="checkbox">
+				<label>
+				<input name="published" type="checkbox" checked> Published?
+				</label>
+			</div>
+		</div>
+	</div><!--/.row-->	
+
+	<div class="row form-group">
+		<div class="col-md-4 hidden-sm-down text-xs-right">
+		</div>
+		<div class="col-md-8">
+			<div class="checkbox">
+				<label>
+				<button type="submit" class="btn btn-default btn-primary">Create</button>
+				</label>
+			</div>
+		</div>
+	</div><!--/.row-->	
 
 </form>

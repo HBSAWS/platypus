@@ -31,6 +31,18 @@
 	  </div>
 	</div><!--/.row-->
 
+	<div class="form-group row">
+		<label class="col-md-4 hidden-sm-down text-xs-right" for="status">Status</label>
+		<div class="col-md-8">
+			<label class="hidden-md-up d-block" for="status">Status</label>
+			<select name="status" class="form-control" id="select-single">
+				<option value="Experimental" {{#compare status "experimental"}}selected{{/compare}}>Experimental</option>
+				<option value="production" {{#compare status "production"}}selected{{/compare}}>Production</option>
+				<option value="deprecated" {{#compare status "deprecated"}}selected{{/compare}}>Deprecated</option>
+			</select>
+		</div>
+	</div><!--/.row-->
+
     <div class="form-group row">
         <label class="col-md-4 hidden-sm-down text-xs-right" for="type">Type</label>
         <div class="col-md-8">
@@ -40,8 +52,8 @@
                 <option value="addon">Addon</option>
             </select>
         </div>
-    </div>
-
+    </div><!--/.row-->
+	
 	<div class="row form-group">
 	  <div class="col-md-4 hidden-sm-down text-xs-right">
 	    <label for="_category">Category</label>
@@ -96,7 +108,7 @@
 		</div>
 	</div><!--/.row-->	
 
-  <div class="row form-group">
+  	<div class="row form-group">
 	  <div class="col-md-4 hidden-sm-down text-xs-right">
 	    <label for="fiddle">Fiddle</label>
 	  </div>
@@ -117,6 +129,36 @@
 		  </div>
 	  </div> 
  	</div><!--/.row-->	
+
+	<div class="row form-group">
+		<div class="col-md-4 hidden-sm-down text-xs-right">
+			<label for="best_practices">Best Practices</label>
+		</div>
+		<div class="col-md-8">
+			<label class="hidden-md-up d-block" for="best_practices">Best Practices</label>
+			<textarea name="best_practices" class="form-control summernote">{{best_practices}}</textarea>
+		</div>
+	</div><!--/.row-->		
+
+	<div class="row form-group">
+		<div class="col-md-4 hidden-sm-down text-xs-right">
+			<label for="avoid">Avoid</label>
+		</div>
+		<div class="col-md-8">
+			<label class="hidden-md-up d-block" for="avoid">Avoid</label>
+			<textarea name="avoid" class="form-control summernote">{{avoid}}</textarea>
+		</div>
+	</div><!--/.row-->	
+
+	<div class="row form-group">
+		<div class="col-md-4 hidden-sm-down text-xs-right">
+			<label for="resources">Resources</label>
+		</div>
+		<div class="col-md-8">
+			<label class="hidden-md-up d-block" for="resources">Resources</label>
+			<textarea name="resources" class="form-control summernote">{{resources}}</textarea>
+		</div>
+	</div><!--/.row-->	 	
 	
   <div class="row form-group">
   	<div class="col-md-4 hidden-sm-down text-xs-right">
