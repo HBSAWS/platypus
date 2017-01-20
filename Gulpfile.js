@@ -58,7 +58,7 @@ var cssFiles = [
     'public/vendor/bootstrap-toggle/bootstrap-toggle.min.css',
     'public/vendor/metisMenu/metisMenu.min.css',
     'public/vendor/slick/slick.css',
-    'public/vendor/slick/slick-theme.min.css',
+    'public/vendor/slick/slick-theme.css',
     'public/vendor/dataTables/dataTables.bootstrap.min.css',
     'public/vendor/dataTables/dataTables.bootstrap4.min.css',
     'public/vendor/dataTables/responsive.dataTables.min.css',

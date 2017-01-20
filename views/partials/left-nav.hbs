@@ -2,103 +2,24 @@
     <nav class="sidebar-nav">
         <ul class="metismenu">
 
-        {{#nav}}
-            <li>
-                <a class="has-arrow" href="#" aria-expanded="false">
-                    <span class="sidebar-nav-item-icon fa fa-{{icon}}"></span>
-                    <span class="sidebar-nav-item">{{title}}</span>
-                </a>
-                <ul aria-expanded="false" class="collapse">
-                    {{#each articles}}
-                        <li><a href="/articles/{{slug}}">{{title}} <span class="tag palette-bg-teal-500 float-xs-right">{{type}}</span></a></li>
-                    {{/each}}
-                </ul>
-            </li>
-        {{/nav}}
-            {{!--             
-            <li>
-                <a class="has-arrow" href="#" aria-expanded="false">
-                    <span class="sidebar-nav-item-icon fa fa-home"></span>
-                    <span class="sidebar-nav-item">Getting Started</span>
-                </a>
-                <ul aria-expanded="false" class="collapse">
-                    <li><a href="quick-start.html">Quick Start</a></li>
-                </ul>
-            </li>
-            <li>
-                <a class="has-arrow" href="#" aria-expanded="false">
-                    <span class="sidebar-nav-item-icon fa fa-cube"></span>
-                    <span class="sidebar-nav-item">UI Components</span>
-                </a>
-                <ul aria-expanded="false" class="collapse">
-                    <li><a href="alerts.html">Alerts<span class="tag palette-bg-teal-500 float-xs-right">Core</span></a></li>
-                    <li><a href="notifications.html">Notifications<span class="tag palette-bg-teal-500 float-xs-right">Core</span></a></li>
-                    <li><a href="carousel.html">Carousel<span class="tag palette-bg-grey-500 float-xs-right">Add-on</span></a></li>
-                    <li><a href="breadcrumbs.html">Breadcrumbs<span class="tag palette-bg-teal-500 float-xs-right">Core</span></a></li>
-                    <li><a href="buttons.html">Buttons<span class="tag palette-bg-teal-500 float-xs-right">Core</span></a></li>
-                    <li><a href="datatables.html">DataTables</a></li>
-                    <li><a href="navbar.html">Navbar<span class="tag palette-bg-teal-500 float-xs-right">Core</span></a></li>
-                    <li><a href="tabs.html">Tabs<span class="tag palette-bg-teal-500 float-xs-right">Core</span></a></li>
-                    <li>
-                        <a class="has-arrow" href="#" aria-expanded="false">Forms</a>
-                        <ul aria-expanded="false" class="collapse">
-                            <li><a href="forms.html">Basic Form</a></li>
-                            <li><a href="wizard.html">Wizard</a></li>
-                            <li><a href="validation.html">Validation</a></li>
-                            <li><a href="form-select2.html">Select2</a></li>
-                            <li><a href="form-date-range.html">Date Range</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="left-nav.html">Left Navigation<span class="tag palette-bg-teal-500 float-xs-right">Core</span></a></li>
-                    <li><a href="login.html">Login Widget</a></li>
-                    <li><a href="off-canvas.html">Off-Canvas Nav<span class="tag palette-bg-teal-500 float-xs-right">Core</span></a></li>
-                    <li><a href="wysiwyg.html">WYSIWYG Editor<span class="tag palette-bg-grey-500 float-xs-right">Add-on</span></a></li>
-                    <li><a href="loaders.html">Loaders<span class="tag palette-bg-teal-500 float-xs-right">Core</span></a></li>
-                    <li><a href="progress-bar.html">Progress Bar<span class="tag palette-bg-teal-500 float-xs-right">Core</span></a></li>
-                    <li><a href="tour.html">Tour<span class="tag palette-bg-grey-500 float-xs-right">Add-on</span></a></li>
-                    <li><a href="gauges.html">Gauges<span class="tag palette-bg-grey-500 float-xs-right">Add-on</span></a></li>
-                    <li><a href="toasts.html">Toasts<span class="tag palette-bg-teal-500 float-xs-right">Core</span></a></li>
-                    <li><a href="cards.html">Cards<span class="tag palette-bg-teal-500 float-xs-right">Core</span></a></li>
-                </ul>
-            </li>
-            <li>
-                <a class="has-arrow" href="#" aria-expanded="false">
-                    <span class="sidebar-nav-item-icon fa fa-paint-brush"></span>
-                    <span class="sidebar-nav-item">Styles</span>
-                </a>
-                <ul aria-expanded="false" class="collapse">
-                    <li><a href="typography.html">Typography<span class="tag palette-bg-teal-500 float-xs-right">Core</span></a></li>
-                    <li><a href="palette.html">Palette<span class="tag palette-bg-teal-500 float-xs-right">Core</span></a></li>
-                    <li><a href="icons.html">Icons<span class="tag palette-bg-teal-500 float-xs-right">Core</span></a></li>
-                </ul>
-            </li>
-            <li>
-                <a class="has-arrow" href="#" aria-expanded="false">
-                    <span class="sidebar-nav-item-icon fa fa-user-o"></span>
-                    <span class="sidebar-nav-item">UX Components</span>
-                </a>
-                <ul aria-expanded="false" class="collapse">
-                    <li><a href="#">Interviews</a></li>
-                </ul>
-            </li><li>
-                <a class="has-arrow" href="#" aria-expanded="false">
-                    <span class="sidebar-nav-item-icon fa fa-trophy"></span>
-                    <span class="sidebar-nav-item">Best Practices</span>
-                </a>
-                <ul aria-expanded="false" class="collapse">
-                    <li><a href="best-practices.html">Best Practices</a></li>
-                </ul>
-            </li>
-            <li>
-                <a class="has-arrow" href="#" aria-expanded="false">
-                    <span class="sidebar-nav-item-icon fa fa-bookmark"></span>
-                    <span class="sidebar-nav-item">Resources</span>
-                </a>
-                <ul aria-expanded="false" class="collapse">
-                    <li><a href="ui-patterns.html">UI Patterns</a></li>
-                </ul>
-            </li>     
-            --}}                                                            
+            {{#nav}}
+                <li>
+                    <a class="has-arrow" href="#" aria-expanded="false">
+                        <span class="sidebar-nav-item-icon fa fa-{{icon}}"></span>
+                        <span class="sidebar-nav-item">{{title}}</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        {{#each articles}}
+                            <li>
+                                <a href="/articles/{{slug}}">{{title}}
+                                    <span class="tag palette-bg-teal-500 float-xs-right">{{type}}</span>
+                                </a>
+                            </li>
+                        {{/each}}
+                    </ul>
+                </li>
+            {{/nav}}
+                                                           
         </ul>
     </nav>
 </aside>
