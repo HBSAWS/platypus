@@ -1,33 +1,33 @@
 ;(function($){
-	var AWSFramework = {
+	var Platypus = {
     	ondomready: function() {
-		    AWSFramework.btnSubmitAnimate();
-		    AWSFramework.inputMaxLength();
-		    AWSFramework.highlightJS();
-		    AWSFramework.waveEffect();
-		    AWSFramework.breadCrumbs();
-		    AWSFramework.leftMenu();
-		    AWSFramework.carousel();
-		    AWSFramework.tabs();
-		    AWSFramework.dataTables();
-		    AWSFramework.select2();
-		    AWSFramework.dateRange();
-		    AWSFramework.wysiwyg();
-		    AWSFramework.gauges();
-		    AWSFramework.wizard();
-		    AWSFramework.toasts();
-		    AWSFramework.dateTimePickers();
-		    AWSFramework.slider();
-		    AWSFramework.formRendering();
-		    AWSFramework.slimScroll();
-		    AWSFramework.gallery();
-		    AWSFramework.AZList();
-		    AWSFramework.calendar();
-		    AWSFramework.rotatingBg();
-		    AWSFramework.modal();
-		    AWSFramework.search();
-		    AWSFramework.toolTip();
-		    AWSFramework.popOver();		    
+		    Platypus.btnSubmitAnimate();
+		    Platypus.inputMaxLength();
+		    Platypus.highlightJS();
+		    Platypus.waveEffect();
+		    Platypus.breadCrumbs();
+		    Platypus.leftMenu();
+		    Platypus.carousel();
+		    Platypus.tabs();
+		    Platypus.dataTables();
+		    Platypus.select2();
+		    Platypus.dateRange();
+		    Platypus.wysiwyg();
+		    Platypus.gauges();
+		    Platypus.wizard();
+		    Platypus.toasts();
+		    Platypus.dateTimePickers();
+		    Platypus.slider();
+		    Platypus.formRendering();
+		    Platypus.slimScroll();
+		    Platypus.gallery();
+		    Platypus.AZList();
+		    Platypus.calendar();
+		    Platypus.rotatingBg();
+		    Platypus.modal();
+		    Platypus.search();
+		    Platypus.toolTip();
+		    Platypus.popOver();		    
 	  	},
 		btnSubmitAnimate: function() {
 			Ladda.bind( 'button[type=submit]');
@@ -371,16 +371,14 @@
 		    });
 		},
 		gallery: function() {
-			if( $('#links').length ) {
-				document.getElementById('links').onclick = function (event) {
-					event = event || window.event;
-					var target = event.target || event.srcElement,
-					link = target.src ? target.parentNode : target,
-					options = {index: link, event: event, hidePageScrollbars: false},
-					links = this.getElementsByTagName('a');
-					blueimp.Gallery(links, options);
-				};
-			}
+			$('.gallery').click(function (event) {
+				event = event || window.event;
+				var target = event.target || event.srcElement,
+				link = target.src ? target.parentNode : target,
+				options = {index: link, event: event, hidePageScrollbars: false},
+				links = this.getElementsByTagName('a');
+				blueimp.Gallery(links, options);
+			});
 		},
 		AZList: function() {
 			$('#azList').listnav({
@@ -495,7 +493,7 @@
 			// global modal options 
 		},
 		rotatingBg: function() {
-			$('.rotating-bg').css('background-image', 'url("/images/bg-hbs-'+_.random(1, 4)+'.png")');
+			$('.rotating-bg').css('background-image', 'url("/images/rotating-bg-hbs/bg-hbs-'+_.random(1, 4)+'.png")');
 		},
 		search: function() {
 			
@@ -565,8 +563,8 @@
 		last: ''
 	}
 
-	$(document).ready(AWSFramework.ondomready);
+	$(document).ready(Platypus.ondomready);
 	
-	window.AWSFramework = AWSFramework;
+	window.Platypus = Platypus;
 
 })(jQuery)

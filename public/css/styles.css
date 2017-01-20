@@ -4135,6 +4135,9 @@ body.canvas-slid .fa.fa-navicon::before {
 .slick-dots li button::before {
   font-size: 10px; }
 
+.gallery a {
+  font-size: 0; }
+
 /* DataTables */
 div.dataTables_wrapper div.dataTables_filter {
   text-align: left; }
