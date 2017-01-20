@@ -10765,7 +10765,7 @@ e}},showLayout:function(){if(!this.container.hasClass("result")&&(this.result.le
 			});
 		},
 		calendar: function() {
-			$('#calendar').fullCalendar({
+			$('.full-calendar').fullCalendar({
 				header: {
 					left: 'prev,next today',
 					center: 'title',
