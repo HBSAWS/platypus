@@ -1,8 +1,14 @@
-<h2 class="display-4">Edit content</h2>
-
-<hr>
-
 {{#article}}
+
+	{{> breadcrumbs this }}
+	<div class="page-header palette-bg-blue-grey-50 p-1 mb-2">
+		<div class="row">
+			<div class="col-xs-12">
+				<h2 class="display-4">Edit</h2>
+			</div>
+		</div>
+	</div>
+
 <form action="/articles/update/{{id}}" method="post" data-parsley-validate>
   
   <div class="row form-group">
