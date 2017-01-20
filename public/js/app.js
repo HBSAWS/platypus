@@ -10253,7 +10253,7 @@ for(i=0;i<s.length;i++)r=s[i],r.event=e,r.eventStartMS=+t.start,r.eventDurationM
 
             function addDisabledClass() {
                 for (var i = 0; i < letters.length; i++) {
-                    if (counts[letters[i]] == undefined) $('.' + letters[i], $letters).addClass('ln-disabled');
+                    if (counts[letters[i]] == undefined) $('.' + letters[i], $letters).addClass('ln-disabled disabled');
                 }
             }
 
@@ -10859,7 +10859,7 @@ e}},showLayout:function(){if(!this.container.hasClass("result")&&(this.result.le
 			// global modal options 
 		},
 		rotatingBg: function() {
-			$('.rotating-bg').css('background-image', 'url("/images/bg-hbs-'+_.random(1, 4)+'.png")');
+			$('.rotating-bg').css('background-image', 'url("/images/rotating-bg-hbs/bg-hbs-'+_.random(1, 4)+'.png")');
 		},
 		search: function() {
 			

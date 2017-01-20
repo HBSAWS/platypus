@@ -1,5 +1,11 @@
 {{#article}}
-	<h2 class="display-4">{{title}} <a href="/articles/edit/{{_id}}" class="btn btn-primary pull-right"><i class="fa fa-edit"></i></a></h2>
+	
+	{{> breadcrumbs this }}
+	<div class="page-header palette-bg-blue-grey-50 p-1 mb-2">
+		<h2 class="display-4">{{title}} <a href="/articles/edit/{{_id}}" class="btn btn-primary pull-right"><i class="fa fa-edit"></i></a></h2>
+	</div>
+
+	
 	<p class="lead">{{intro}}</p>
 	<div>{{{body}}}</div>
 

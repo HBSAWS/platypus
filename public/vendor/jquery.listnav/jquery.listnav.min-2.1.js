@@ -107,7 +107,7 @@
 
             function addDisabledClass() {
                 for (var i = 0; i < letters.length; i++) {
-                    if (counts[letters[i]] == undefined) $('.' + letters[i], $letters).addClass('ln-disabled');
+                    if (counts[letters[i]] == undefined) $('.' + letters[i], $letters).addClass('ln-disabled disabled');
                 }
             }
 
