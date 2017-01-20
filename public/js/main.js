@@ -399,7 +399,7 @@
 			});
 		},
 		calendar: function() {
-			$('#calendar').fullCalendar({
+			$('.full-calendar').fullCalendar({
 				header: {
 					left: 'prev,next today',
 					center: 'title',
