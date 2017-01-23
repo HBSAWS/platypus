@@ -1,7 +1,8 @@
 {{#article}}
 	
 	{{> breadcrumbs this }}
-	<div class="page-header palette-bg-blue-grey-100 p-1 mb-2">
+	
+	<div class="page-header palette-bg-blue-grey-100 p-1 mb-1">
 		<div class="row">
 			<div class="col-xs-8">
 				<h2 class="display-4">{{title}}</h2>
@@ -15,155 +16,186 @@
 		</div>
 	</div>
 
-	
-	<p class="lead">{{intro}}</p>
-	<div>{{{body}}}</div>
+	<div id="mainbody" class="">
 
-	{{!-- {{{markup}}} --}}
-	
-	{{#compare _category.title "UI Components"}}
+		{{#compare _category.title "UI Components"}}
 
-		<h4>Examples</h4>
+			<div id="main-panels" role="tablist" aria-multiselectable="true">
+			  <div class="card">
+			    <div class="card-header" role="tab" id="headingOne">
+			      <h5 class="mb-0">
+			        <a data-toggle="collapse" {{!-- data-parent="#main-panels" --}} href="#description" aria-expanded="true" aria-controls="description">
+			          Description
+			        </a>
+			      </h5>
+			    </div>
 
-		<!-- Nav tabs -->
-		<ul class="nav nav-tabs" role="tablist">
-			<li class="nav-item">
-				<a class="nav-link active" data-toggle="tab" href="#xs" role="tab">XS - Mobile (&lt;576px)</a>
-			</li>
-			<li class="nav-item  hidden-xs-down">
-				<a class="nav-link" data-toggle="tab" href="#sm" role="tab">SM - Phablet (≥576px)</a>
-			</li>
-			<li class="nav-item  hidden-sm-down">
-				<a class="nav-link" data-toggle="tab" href="#md" role="tab">MD - Tablet (≥768px)</a>
-			</li>
-			<li class="nav-item  hidden-md-down">
-				<a class="nav-link" data-toggle="tab" href="#lg" role="tab">LG - Laptop (≥992px)</a>
-			</li>	
-			<li class="nav-item hidden-lg-down">
-				<a class="nav-link" data-toggle="tab" href="#xl" role="tab">XL - Desktop (≥1200px)</a>
-			</li>				
-		</ul>
+			    <div id="description" class="collapse in" role="tabpanel" aria-labelledby="headingOne">
+				    <div class="card-block">
+						<p class="lead">{{intro}}</p>
+						<div>{{{body}}}</div>
+				    </div>
+			    </div>
+			  </div>
+			  <div class="card">
+			    <div class="card-header" role="tab" id="headingTwo">
+			      <h5 class="mb-0">
+			        <a class="collapsed" data-toggle="collapse" {{!-- data-parent="#main-panels" --}} href="#examples" aria-expanded="false" aria-controls="examples">
+			          Examples
+			        </a>
+			      </h5>
+			    </div>
+			    <div id="examples" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+			      <div class="card-block">
 
-		<!-- Tab panes -->
-		<div class="tab-content">
-			<div class="tab-pane active mt-2" id="xs" role="tabpanel">
-				
-				<div class="row">
-	      				<div class="d-block mx-auto palette-bg-white" style="width: 523px;">
-	      				
-						<div class="device-mockup" data-device="iphone6" data-orientation="portrait" data-color="white">
-						    <div class="device">
-							<div class="screen palette-bg-white">
-							    <iframe src="/articles/mock/{{slug}}/480" height="100%" width="100%" frameborder="0" scrolling="yes">You need an iframes capable browser to view this content.</iframe>
+
+					<!-- Nav tabs -->
+					<ul class="nav nav-tabs" role="tablist">
+						<li class="nav-item">
+							<a class="nav-link active" data-toggle="tab" href="#xs" role="tab">XS - Mobile (&lt;576px)</a>
+						</li>
+						<li class="nav-item  hidden-xs-down">
+							<a class="nav-link" data-toggle="tab" href="#sm" role="tab">SM - Phablet (≥576px)</a>
+						</li>
+						<li class="nav-item  hidden-sm-down">
+							<a class="nav-link" data-toggle="tab" href="#md" role="tab">MD - Tablet (≥768px)</a>
+						</li>
+						<li class="nav-item  hidden-md-down">
+							<a class="nav-link" data-toggle="tab" href="#lg" role="tab">LG - Laptop (≥992px)</a>
+						</li>	
+						<li class="nav-item hidden-lg-down">
+							<a class="nav-link" data-toggle="tab" href="#xl" role="tab">XL - Desktop (≥1200px)</a>
+						</li>				
+					</ul>
+
+					<!-- Tab panes -->
+					<div class="tab-content">
+						<div class="tab-pane active mt-2" id="xs" role="tabpanel">
+							
+							<div class="row">
+				      			<div class="d-block mx-auto palette-bg-white" style="width: 523px;">
+				      				
+									<div class="device-mockup" data-device="iphone6" data-orientation="portrait" data-color="white">
+									    <div class="device">
+										<div class="screen palette-bg-white">
+										    <iframe src="/articles/mock/{{slug}}/480" height="100%" width="100%" frameborder="0" scrolling="yes">You need an iframes capable browser to view this content.</iframe>
+										</div>
+										<div class="button">
+										    <!-- You can hook the "home button" to some JavaScript events or just remove it -->
+										</div>
+									    </div>
+									</div>
+
+				      			</div>
 							</div>
-							<div class="button">
-							    <!-- You can hook the "home button" to some JavaScript events or just remove it -->
+
+						</div>
+						<div class="tab-pane hidden-xs-down mt-2" id="sm" role="tabpanel">
+							
+							<div class="row">
+				      			<div class="d-block mx-auto palette-bg-white" style="width:829px;">
+				      				
+				      				<div class="device-mockup" data-device="nexus7" data-orientation="portrait" data-color="black">
+									    <div class="device">
+									        <div class="screen palette-bg-white">
+										    <iframe src="/articles/mock/{{slug}}/600" height="100%" width="100%" frameborder="0" scrolling="yes">You need an iframes capable browser to view this content.</iframe>
+									        </div>
+									        <div class="button">
+									            <!-- You can hook the "home button" to some JavaScript events or just remove it -->
+									        </div>
+									    </div>
+									</div>
+
+				      			</div>
 							</div>
-						    </div>
+
 						</div>
+						<div class="tab-pane hidden-sm-down mt-2" id="md" role="tabpanel">
+							
+							<div class="row">
+				      			<div class="d-block mx-auto palette-bg-white" style="width: 875px;" >
+				      				
+				      				<div class="device-mockup" data-device="ipad_air_2" data-orientation="portrait" data-color="black">
+									    <div class="device">
+									        <div class="screen palette-bg-white">
+										    <iframe src="/articles/mock/{{slug}}/768" height="100%" width="100%" frameborder="0" scrolling="yes">You need an iframes capable browser to view this content.</iframe>
+									        </div>
+									        <div class="button">
+									            <!-- You can hook the "home button" to some JavaScript events or just remove it -->
+									        </div>
+									    </div>
+									</div>
 
-	      				</div>
-				</div>
+				      			</div>
+							</div>
 
-
-
-			</div>
-			<div class="tab-pane hidden-xs-down mt-2" id="sm" role="tabpanel">
-				
-				<div class="row">
-	      			<div class="d-block mx-auto palette-bg-white" style="width:829px;">
-	      				
-	      				<div class="device-mockup" data-device="nexus7" data-orientation="portrait" data-color="black">
-						    <div class="device">
-						        <div class="screen palette-bg-white">
-							    <iframe src="/articles/mock/{{slug}}/600" height="100%" width="100%" frameborder="0" scrolling="yes">You need an iframes capable browser to view this content.</iframe>
-						        </div>
-						        <div class="button">
-						            <!-- You can hook the "home button" to some JavaScript events or just remove it -->
-						        </div>
-						    </div>
 						</div>
+						<div class="tab-pane hidden-md-down mt-2" id="lg" role="tabpanel">
+							
+							<div class="row">
+								<div class="d-block mx-auto palette-bg-white">
+				      				
+				      				<div class="device-mockup" data-device="macbook_2015" data-orientation="portrait" data-color="black">
+									 <div class="device">
+									        <div class="screen palette-bg-white">
+										    <iframe src="/articles/mock/{{slug}}/1024" height="100%" width="100%" frameborder="0" scrolling="yes">You need an iframes capable browser to view this content.</iframe>
+									        </div>
+								        <div class="button">
+								            <!-- You can hook the "home button" to some JavaScript events or just remove it -->
+								        </div>
+								    </div>
+								</div>
 
-	      			</div>
-				</div>
+								</div>
+							</div>
 
-			</div>
-			<div class="tab-pane hidden-sm-down mt-2" id="md" role="tabpanel">
-				
-				<div class="row">
-	      			<div class="d-block mx-auto palette-bg-white" style="width: 875px;" >
-	      				
-	      				<div class="device-mockup" data-device="ipad_air_2" data-orientation="portrait" data-color="black">
-						    <div class="device">
-						        <div class="screen palette-bg-white">
-							    <iframe src="/articles/mock/{{slug}}/768" height="100%" width="100%" frameborder="0" scrolling="yes">You need an iframes capable browser to view this content.</iframe>
-						        </div>
-						        <div class="button">
-						            <!-- You can hook the "home button" to some JavaScript events or just remove it -->
-						        </div>
-						    </div>
 						</div>
+						<div class="tab-pane hidden-lg-down mt-2" id="xl" role="tabpanel">
+							
+							<div class="row">
+				      			<div class="col-xs-12 palette-bg-white">
+				      				
+				      				<div class="device-mockup" data-device="imac" data-orientation="portrait" data-color="black">
+									    <div class="device">
+									        <div class="screen palette-bg-white">
+										    <iframe src="/articles/mock/{{slug}}/1200" height="100%" width="100%" frameborder="0" scrolling="yes">You need an iframes capable browser to view this content.</iframe>
+									        </div>
+									        <div class="button">
+									            <!-- You can hook the "home button" to some JavaScript events or just remove it -->
+									        </div>
+									    </div>
+									</div>
 
-	      			</div>
-				</div>
+				      			</div>
+							</div>
 
-			</div>
-			<div class="tab-pane hidden-md-down mt-2" id="lg" role="tabpanel">
-				
-				<div class="row">
-					<div class="d-block mx-auto palette-bg-white">
-	      				
-	      				<div class="device-mockup" data-device="macbook_2015" data-orientation="portrait" data-color="black">
-						 <div class="device">
-						        <div class="screen palette-bg-white">
-							    <iframe src="/articles/mock/{{slug}}/1024" height="100%" width="100%" frameborder="0" scrolling="yes">You need an iframes capable browser to view this content.</iframe>
-						        </div>
-					        <div class="button">
-					            <!-- You can hook the "home button" to some JavaScript events or just remove it -->
-					        </div>
-					    </div>
+						</div>		
 					</div>
 
-					</div>
-				</div>
-
+			      </div>
+			    </div>
+			  </div>
+			  <div class="card">
+			    <div class="card-header" role="tab" id="headingThree">
+			      <h5 class="mb-0">
+			        <a class="collapsed" data-toggle="collapse" {{!-- data-parent="#main-panels" --}} href="#markup" aria-expanded="false" aria-controls="markup">
+			          Markup
+			        </a>
+			      </h5>
+			    </div>
+			    <div id="markup" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+			      <div class="card-block">
+					<pre class="pre-scrollable"><code class="html">{{markup}}</code></pre>
+			      </div>
+			    </div>
+			  </div>
 			</div>
-			<div class="tab-pane hidden-lg-down mt-2" id="xl" role="tabpanel">
-				
-				<div class="row">
-	      			<div class="col-xs-12 palette-bg-white">
-	      				
-	      				<div class="device-mockup" data-device="imac" data-orientation="portrait" data-color="black">
-						    <div class="device">
-						        <div class="screen palette-bg-white">
-							    <iframe src="/articles/mock/{{slug}}/1200" height="100%" width="100%" frameborder="0" scrolling="yes">You need an iframes capable browser to view this content.</iframe>
-						        </div>
-						        <div class="button">
-						            <!-- You can hook the "home button" to some JavaScript events or just remove it -->
-						        </div>
-						    </div>
-						</div>
 
-	      			</div>
-				</div>
+		{{/compare}}
 
-			</div>		
+		{{!-- <a href="#" onclick="window.history.back()" class="btn btn-primary"><i class="fa fa-angle-double-left"></i> Back</a> --}}
 
-		</div>
-	
-	<hr>
-
-	<h4>Markup</h4>
-	<pre class="pre-scrollable"><code class="html">{{markup}}</code></pre>
-
-	{{/compare}}
-
-	
-
-
-
-<a href="#" onclick="window.history.back()" class="btn btn-primary"><i class="fa fa-angle-double-left"></i> Back</a>
-
+	</div><!--/#mainbody-->
 
 
 {{/article}}

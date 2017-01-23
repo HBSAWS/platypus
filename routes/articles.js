@@ -28,7 +28,7 @@ module.exports = {
             if (err) return next(err);
             res.render('articles/new', {
                 categories: categories,
-                layout: 'main',
+                layout: '2col',
                 page_title: 'New content',
                 helpers: {
                     compare: helpers.compare,

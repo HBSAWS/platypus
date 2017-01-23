@@ -5,26 +5,21 @@
     </head>
     <body>
         {{> gallery-controls }}
-        {{> navbar }}
-
-        <div class="row">
-            <div class="col-lg-2 hidden-md-down pr-0 palette-bg-blue-grey-500">
-                 {{> left-nav }}
+        <div class="container-fluid p-0 m-0">
+            {{> navbar }}
+            <div class="row p-0 m-0">
+                <div class="col-lg-2 p-0 hidden-md-down palette-bg-blue-grey-500">
+                     {{> left-nav }}
+                </div>
+                <div class="col-lg-10 p-0">
+                    {{{body}}}
+                </div>           
             </div>
-            <div class="col-lg-10 p-2">
-
-                {{{body}}}
-
-            </div>           
-        </div>
-        
-
-        <footer class="footer palette-bg-blue-grey-500">
-            {{> footer }}
-        </div>
-
+            <footer class="footer palette-bg-blue-grey-500">
+                {{> footer }}
+            </div>
+        </div><!--/.container-fluid-->
         {{> scripts }}
-        
     </body>
 </html>
 

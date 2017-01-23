@@ -9,168 +9,171 @@
 		</div>
 	</div>
 
-<form action="/articles/update/{{id}}" method="post" data-parsley-validate>
-  
-  <div class="row form-group">
-	  <div class="col-md-4 hidden-sm-down text-xs-right">
-	    <label for="title">Title</label>
-	  </div>
-	  <div class="col-md-8">
-	  	<label class="hidden-md-up d-block" for="title">Title</label>
-	  	<input name="title" type="text" class="form-control" value="{{title}}" autofocus required>
-	  </div>
-	</div><!--/.row-->
+	<div id="mainbody" class="m-2">
 
-	<div class="row form-group">
-	  <div class="col-md-4 hidden-sm-down text-xs-right">
-	    <label for="slug">Slug</label>
-	  </div>
-	  <div class="col-md-8">
-	  	<label class="hidden-md-up d-block" for="slug">Slug</label>
-	  	<input name="slug" type="text" class="form-control" value="{{slug}}" >
-	  </div>
-	</div><!--/.row-->
+		<form action="/articles/update/{{id}}" method="post" data-parsley-validate>
+		  
+		  <div class="row form-group">
+			  <div class="col-md-4 hidden-sm-down text-xs-right">
+			    <label for="title">Title</label>
+			  </div>
+			  <div class="col-md-8">
+			  	<label class="hidden-md-up d-block" for="title">Title</label>
+			  	<input name="title" type="text" class="form-control" value="{{title}}" autofocus required>
+			  </div>
+			</div><!--/.row-->
 
-	<div class="form-group row">
-		<label class="col-md-4 hidden-sm-down text-xs-right" for="status">Status</label>
-		<div class="col-md-8">
-			<label class="hidden-md-up d-block" for="status">Status</label>
-			<select name="status" class="form-control" id="select-single">
-				<option value="Experimental" {{#compare status "experimental"}}selected{{/compare}}>Experimental</option>
-				<option value="production" {{#compare status "production"}}selected{{/compare}}>Production</option>
-				<option value="deprecated" {{#compare status "deprecated"}}selected{{/compare}}>Deprecated</option>
-			</select>
-		</div>
-	</div><!--/.row-->
+			<div class="row form-group">
+			  <div class="col-md-4 hidden-sm-down text-xs-right">
+			    <label for="slug">Slug</label>
+			  </div>
+			  <div class="col-md-8">
+			  	<label class="hidden-md-up d-block" for="slug">Slug</label>
+			  	<input name="slug" type="text" class="form-control" value="{{slug}}" >
+			  </div>
+			</div><!--/.row-->
 
-    <div class="form-group row">
-        <label class="col-md-4 hidden-sm-down text-xs-right" for="type">Type</label>
-        <div class="col-md-8">
-            <label class="hidden-md-up d-block" for="type">Type</label>
-            <select name="type" class="form-control" id="select-single">
-                <option value="core">Core</option>
-                <option value="addon">Addon</option>
-            </select>
-        </div>
-    </div><!--/.row-->
-	
-	<div class="row form-group">
-	  <div class="col-md-4 hidden-sm-down text-xs-right">
-	    <label for="_category">Category</label>
-	  </div>
-	  <div class="col-md-8">
-	  	<label class="hidden-md-up d-block" for="_category">Category</label>
-	  	<select name="_category" class="form-control select2" required>
-				{{#each ../categories}}
-			  	<option value="{{_id}}" {{#compare title ../_category.title}} selected="selected"{{/compare}}>{{title}}</option>
-			  {{/each}}
-			</select>
-	  </div>
-	</div><!--/.row-->
+			<div class="form-group row">
+				<label class="col-md-4 hidden-sm-down text-xs-right" for="status">Status</label>
+				<div class="col-md-8">
+					<label class="hidden-md-up d-block" for="status">Status</label>
+					<select name="status" class="form-control" id="select-single">
+						<option value="Experimental" {{#compare status "experimental"}}selected{{/compare}}>Experimental</option>
+						<option value="production" {{#compare status "production"}}selected{{/compare}}>Production</option>
+						<option value="deprecated" {{#compare status "deprecated"}}selected{{/compare}}>Deprecated</option>
+					</select>
+				</div>
+			</div><!--/.row-->
 
-	<div class="row form-group">
-	  <div class="col-md-4 hidden-sm-down text-xs-right">
-	    <label for="intro">Intro</label>
-	  </div>
-	  <div class="col-md-8">
-	  	<label class="hidden-md-up d-block" for="intro">Intro</label>
-	  	<input name="intro" type="text" class="form-control" value="{{intro}}" >
-		</div>
-	</div><!--/.row-->	
+		    <div class="form-group row">
+		        <label class="col-md-4 hidden-sm-down text-xs-right" for="type">Type</label>
+		        <div class="col-md-8">
+		            <label class="hidden-md-up d-block" for="type">Type</label>
+		            <select name="type" class="form-control" id="select-single">
+		                <option value="core">Core</option>
+		                <option value="addon">Addon</option>
+		            </select>
+		        </div>
+		    </div><!--/.row-->
+			
+			<div class="row form-group">
+			  <div class="col-md-4 hidden-sm-down text-xs-right">
+			    <label for="_category">Category</label>
+			  </div>
+			  <div class="col-md-8">
+			  	<label class="hidden-md-up d-block" for="_category">Category</label>
+			  	<select name="_category" class="form-control select2" required>
+						{{#each ../categories}}
+					  	<option value="{{_id}}" {{#compare title ../_category.title}} selected="selected"{{/compare}}>{{title}}</option>
+					  {{/each}}
+					</select>
+			  </div>
+			</div><!--/.row-->
 
-	<div class="row form-group">
-	  <div class="col-md-4 hidden-sm-down text-xs-right">
-    	<label for="body">Body</label>
-	  </div>
-	  <div class="col-md-8">
-	  	<label class="hidden-md-up d-block" for="body">Body</label>
-	  	<textarea name="body" class="form-control summernote" required>{{body}}</textarea>
-	  </div>
-	</div><!--/.row-->	
+			<div class="row form-group">
+			  <div class="col-md-4 hidden-sm-down text-xs-right">
+			    <label for="intro">Intro</label>
+			  </div>
+			  <div class="col-md-8">
+			  	<label class="hidden-md-up d-block" for="intro">Intro</label>
+			  	<input name="intro" type="text" class="form-control" value="{{intro}}" >
+				</div>
+			</div><!--/.row-->	
 
-	<div class="row form-group">
-	  <div class="col-md-4 text-md-right">
-	    <label for="markup">Markup</label>
-	  </div>
-	  <div class="col-md-8">
-	  	<label class="hidden-md-up d-block" for="markup">Markup</label>
-	  	<textarea name="markup" class="form-control">{{markup}}</textarea>
-		</div>
-	</div><!--/.row-->		
+			<div class="row form-group">
+			  <div class="col-md-4 hidden-sm-down text-xs-right">
+		    	<label for="body">Body</label>
+			  </div>
+			  <div class="col-md-8">
+			  	<label class="hidden-md-up d-block" for="body">Body</label>
+			  	<textarea name="body" class="form-control summernote" required>{{body}}</textarea>
+			  </div>
+			</div><!--/.row-->	
 
-	<div class="row form-group">
-	  <div class="col-md-4 text-md-right">
-	    <label for="js">Javascript</label>
-	  </div>
-	  <div class="col-md-8">
-	  	<label class="hidden-md-up d-block" for="js">Javascript</label>
-	  	<textarea name="js" class="form-control">{{js}}</textarea>
-		</div>
-	</div><!--/.row-->	
+			<div class="row form-group">
+			  <div class="col-md-4 text-md-right">
+			    <label for="markup">Markup</label>
+			  </div>
+			  <div class="col-md-8">
+			  	<label class="hidden-md-up d-block" for="markup">Markup</label>
+			  	<textarea name="markup" class="form-control">{{markup}}</textarea>
+				</div>
+			</div><!--/.row-->		
 
-  	<div class="row form-group">
-	  <div class="col-md-4 hidden-sm-down text-xs-right">
-	    <label for="fiddle">Fiddle</label>
-	  </div>
-	  <div class="col-md-8">
-	  	<label class="hidden-md-up d-block" for="fiddle">Fiddle</label>
-	  	<input name="fiddle" type="text" class="form-control" value="{{fiddle}}">
-		</div>
-	</div><!--/.row-->	
+			<div class="row form-group">
+			  <div class="col-md-4 text-md-right">
+			    <label for="js">Javascript</label>
+			  </div>
+			  <div class="col-md-8">
+			  	<label class="hidden-md-up d-block" for="js">Javascript</label>
+			  	<textarea name="js" class="form-control">{{js}}</textarea>
+				</div>
+			</div><!--/.row-->	
 
-  <div class="row form-group">
-  	<div class="col-md-4 hidden-sm-down text-xs-right">
-  	</div>
-	  <div class="col-md-8">
-		 	<div class="checkbox">
-		    <label>
-		      <input name="published" type="checkbox" {{#compare published true}}checked{{/compare}}> Published?
-		    </label>
-		  </div>
-	  </div> 
- 	</div><!--/.row-->	
+		  	<div class="row form-group">
+			  <div class="col-md-4 hidden-sm-down text-xs-right">
+			    <label for="fiddle">Fiddle</label>
+			  </div>
+			  <div class="col-md-8">
+			  	<label class="hidden-md-up d-block" for="fiddle">Fiddle</label>
+			  	<input name="fiddle" type="text" class="form-control" value="{{fiddle}}">
+				</div>
+			</div><!--/.row-->	
 
-	<div class="row form-group">
-		<div class="col-md-4 hidden-sm-down text-xs-right">
-			<label for="best_practices">Best Practices</label>
-		</div>
-		<div class="col-md-8">
-			<label class="hidden-md-up d-block" for="best_practices">Best Practices</label>
-			<textarea name="best_practices" class="form-control summernote">{{best_practices}}</textarea>
-		</div>
-	</div><!--/.row-->		
-
-	<div class="row form-group">
-		<div class="col-md-4 hidden-sm-down text-xs-right">
-			<label for="avoid">Avoid</label>
-		</div>
-		<div class="col-md-8">
-			<label class="hidden-md-up d-block" for="avoid">Avoid</label>
-			<textarea name="avoid" class="form-control summernote">{{avoid}}</textarea>
-		</div>
-	</div><!--/.row-->	
-
-	<div class="row form-group">
-		<div class="col-md-4 hidden-sm-down text-xs-right">
-			<label for="resources">Resources</label>
-		</div>
-		<div class="col-md-8">
-			<label class="hidden-md-up d-block" for="resources">Resources</label>
-			<textarea name="resources" class="form-control summernote">{{resources}}</textarea>
-		</div>
-	</div><!--/.row-->	 	
-	
-  <div class="row form-group">
-  	<div class="col-md-4 hidden-sm-down text-xs-right">
-  	</div>
-	  <div class="col-md-8">
-		 	<div class="checkbox">
-		    	<label>
-		      		<button type="submit" class="btn btn-default btn-primary ladda-button">Update</button>
-		    	</label>
+		  <div class="row form-group">
+		  	<div class="col-md-4 hidden-sm-down text-xs-right">
 		  	</div>
-	  	</div> 
- 	</div><!--/.row-->	
+			  <div class="col-md-8">
+				 	<div class="checkbox">
+				    <label>
+				      <input name="published" type="checkbox" {{#compare published true}}checked{{/compare}}> Published?
+				    </label>
+				  </div>
+			  </div> 
+		 	</div><!--/.row-->	
 
-</form>
+			<div class="row form-group">
+				<div class="col-md-4 hidden-sm-down text-xs-right">
+					<label for="best_practices">Best Practices</label>
+				</div>
+				<div class="col-md-8">
+					<label class="hidden-md-up d-block" for="best_practices">Best Practices</label>
+					<textarea name="best_practices" class="form-control summernote">{{best_practices}}</textarea>
+				</div>
+			</div><!--/.row-->		
+
+			<div class="row form-group">
+				<div class="col-md-4 hidden-sm-down text-xs-right">
+					<label for="avoid">Avoid</label>
+				</div>
+				<div class="col-md-8">
+					<label class="hidden-md-up d-block" for="avoid">Avoid</label>
+					<textarea name="avoid" class="form-control summernote">{{avoid}}</textarea>
+				</div>
+			</div><!--/.row-->	
+
+			<div class="row form-group">
+				<div class="col-md-4 hidden-sm-down text-xs-right">
+					<label for="resources">Resources</label>
+				</div>
+				<div class="col-md-8">
+					<label class="hidden-md-up d-block" for="resources">Resources</label>
+					<textarea name="resources" class="form-control summernote">{{resources}}</textarea>
+				</div>
+			</div><!--/.row-->	 	
+			
+		  <div class="row form-group">
+		  	<div class="col-md-4 hidden-sm-down text-xs-right">
+		  	</div>
+			  <div class="col-md-8">
+				 	<div class="checkbox">
+				    	<label>
+				      		<button type="submit" class="btn btn-default btn-primary ladda-button">Update</button>
+				    	</label>
+				  	</div>
+			  	</div> 
+		 	</div><!--/.row-->	
+
+		</form>
+	</div><!--/#mainbody-->	
 {{/article}}
