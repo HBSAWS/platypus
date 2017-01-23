@@ -1,9 +1,11 @@
 {{#article}}
-    <div id="side-panels" role="tablist" aria-multiselectable="true">
-        <div class="card">
+
+    <div id="side-panels" class="p-1" role="tablist" aria-multiselectable="true">
+        <div class="card panel">
             <div class="card-header" role="tab" id="headingOne">
                 <h5 class="mb-0">
-                    <a data-toggle="collapse" data-parent="#side-panels" href="#best_practices" aria-expanded="true" aria-controls="best_practices">Best Practices
+                    <a class="text-truncate" data-toggle="collapse" {{!-- data-parent="#side-panels" --}} href="#best_practices" aria-expanded="true" aria-controls="best_practices">
+                    <i class="fa fa-fw fa-trophy mr-1"></i>Best Practices
                     </a>
                 </h5>
             </div>
@@ -13,11 +15,11 @@
           </div>
         </div>
         </div>
-        <div class="card">
+        <div class="card panel">
           <div class="card-header" role="tab" id="headingTwo">
             <h5 class="mb-0">
-              <a class="collapsed" data-toggle="collapse" data-parent="#side-panels" href="#avoid" aria-expanded="false" aria-controls="avoid">
-                Avoid
+              <a class="collapsed text-truncate" data-toggle="collapse" {{!-- data-parent="#side-panels" --}} href="#avoid" aria-expanded="false" aria-controls="avoid">
+                <i class="fa fa-fw fa-close mr-1"></i>Avoid
             </a>
         </h5>
         </div>
@@ -27,11 +29,11 @@
           </div>
         </div>
         </div>
-        <div class="card">
+        <div class="card panel">
           <div class="card-header" role="tab" id="headingThree">
             <h5 class="mb-0">
-              <a class="collapsed" data-toggle="collapse" data-parent="#side-panels" href="#resources" aria-expanded="false" aria-controls="resources">
-                Resources
+              <a class="collapsed text-truncate" data-toggle="collapse" {{!-- data-parent="#side-panels" --}} href="#resources" aria-expanded="false" aria-controls="resources">
+                <i class="fa fa-fw fa-bookmark mr-1"></i>Resources
             </a>
         </h5>
         </div>

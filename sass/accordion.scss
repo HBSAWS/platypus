@@ -1,10 +1,33 @@
-// Accordions
-.accordion a:after {
-    font-family: 'FontAwesome';  
-    content: "\f107";    
-    float: right;       
-    color: white;      
+@media (max-width: 575px) { 
+	.card.panel {
+		border: 0;
+		margin: 0px;
+		.card-block {
+			padding: 15px 0;;
+		}		
+	}
 }
-.accordion a.collapsed:after {
-    content: "\f106";    
+
+
+// Accordions
+.panel { 
+	h5 {
+		width: 90%;
+		a {
+			width: 100%; 
+			display: block;
+			&[data-toggle="collapse"]:after {
+		    	font-family: 'FontAwesome';  
+		    	content: "\f106";    
+		    	float: right;       
+		    	color: black;   
+		    	position: absolute;
+		    	top: 12px;
+		    	right: 20px;   
+			}
+			&[data-toggle="collapse"].collapsed:after {
+	    		content: "\f107";    
+			}
+		}
+	}
 }

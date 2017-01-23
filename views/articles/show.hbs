@@ -4,44 +4,68 @@
 	
 	<div class="page-header palette-bg-blue-grey-100 p-1 mb-1">
 		<div class="row">
-			<div class="col-xs-8">
-				<h2 class="display-4">{{title}}</h2>
+			<div class="col-sm-7">
+				<h2 class="display-4 text-truncated">{{title}}</h2>
 			</div>
-			<div class="col-xs-4">
+			<div class="col-sm-5">
 				<div class="btn-group float-xs-right">
-					<a href="/articles/edit/{{_id}}" class="btn btn-secondary"><i class="fa fa-edit"></i><span class="hidden-sm-down"> Edit</span></a>
-					<a href="https://hbs-itg.atlassian.net/secure/CreateIssue!default.jspa" class="btn btn-secondary" target="_blank"><i class="fa fa-bug"></i><span class="hidden-sm-down"> Report Bug</span></a>
+					 <div class="btn-group btn-group-justified-xs" role="group" aria-label="Justified button group">
+					   	<a class="btn btn-secondary" href="/articles/edit/{{_id}}" role="button"><i class="fa fa-edit"></i><span class="hidden-sm-down"> Edit</span></a>
+					   	<a class="btn btn-secondary" href="https://hbs-itg.atlassian.net/secure/CreateIssue!default.jspa" role="button"><i class="fa fa-bug"></i><span class="hidden-sm-down"> Report Bug</span></a>
+					 </div>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<div id="mainbody" class="">
+	<div id="mainbody" class="p-1">
 
 		{{#compare _category.title "UI Components"}}
 
 			<div id="main-panels" role="tablist" aria-multiselectable="true">
-			  <div class="card">
+			  <div class="card panel">
 			    <div class="card-header" role="tab" id="headingOne">
 			      <h5 class="mb-0">
-			        <a data-toggle="collapse" {{!-- data-parent="#main-panels" --}} href="#description" aria-expanded="true" aria-controls="description">
-			          Description
+			        <a class="text-truncate" data-toggle="collapse" {{!-- data-parent="#main-panels" --}} href="#description" aria-expanded="true" aria-controls="description">
+			          <i class="fa fa-fw fa-info-circle mr-1"></i>Description
 			        </a>
 			      </h5>
 			    </div>
 
 			    <div id="description" class="collapse in" role="tabpanel" aria-labelledby="headingOne">
 				    <div class="card-block">
-						<p class="lead">{{intro}}</p>
-						<div>{{{body}}}</div>
+				    	<div class="row">
+				    		<div class="col-md-9">
+				    			<p class="lead">{{intro}}</p>
+								<div>{{{body}}}</div>
+				    		</div>
+				    		<div class="col-md-3">
+					    		<h6>Status: <span class="font-weight-bold">{{status}}</span></h6>
+					    		<hr>
+				    			<h6 class="mb-1">Tested on</h6>
+				    			<div class="row mb-1 text-xs-center">
+				    				<div class="col-xs-3"><i class="fa fa-2x fa-chrome text-primary" data-toggle="tooltip" title="9+"></i></div>
+				    				<div class="col-xs-3"><i class="fa fa-2x fa-safari text-muted" data-toggle="tooltip" title="Not tested"></i></div>
+				    				<div class="col-xs-3"><i class="fa fa-2x fa-firefox text-muted" data-toggle="tooltip" title="Not tested"></i></div>
+				    				<div class="col-xs-3"><i class="fa fa-2x fa-internet-explorer text-muted" data-toggle="tooltip" title="Not tested"></i></div>
+				    			</div>
+				    			<div class="row text-xs-center">
+				    				<div class="col-xs-3"><i class="fa fa-2x fa-opera text-muted" data-toggle="tooltip" title="Not tested"></i></div>
+				    				<div class="col-xs-3"><i class="fa fa-2x fa-android text-muted" data-toggle="tooltip" title="Not tested"></i></div>
+				    				<div class="col-xs-3"><i class="fa fa-2x fa-apple text-muted" data-toggle="tooltip" title="Not tested"></i></div>
+				    				<div class="col-xs-3"><i class="fa fa-2x fa-windows text-muted" data-toggle="tooltip" title="Not tested"></i></div>
+				    			</div>
+				    		</div>
+				    	</div>
+						
 				    </div>
 			    </div>
 			  </div>
-			  <div class="card">
+			  <div class="card panel">
 			    <div class="card-header" role="tab" id="headingTwo">
 			      <h5 class="mb-0">
-			        <a class="collapsed" data-toggle="collapse" {{!-- data-parent="#main-panels" --}} href="#examples" aria-expanded="false" aria-controls="examples">
-			          Examples
+			        <a class="collapsed text-truncate" data-toggle="collapse" {{!-- data-parent="#main-panels" --}} href="#examples" aria-expanded="false" aria-controls="examples">
+			          <i class="fa fa-fw fa-mouse-pointer mr-1"></i>Examples
 			        </a>
 			      </h5>
 			    </div>
@@ -175,11 +199,11 @@
 			      </div>
 			    </div>
 			  </div>
-			  <div class="card">
+			  <div class="card panel">
 			    <div class="card-header" role="tab" id="headingThree">
 			      <h5 class="mb-0">
-			        <a class="collapsed" data-toggle="collapse" {{!-- data-parent="#main-panels" --}} href="#markup" aria-expanded="false" aria-controls="markup">
-			          Markup
+			        <a class="collapsed text-truncate" data-toggle="collapse" {{!-- data-parent="#main-panels" --}} href="#markup" aria-expanded="false" aria-controls="markup">
+			          <i class="fa fa-fw fa-code mr-1"></i>Markup
 			        </a>
 			      </h5>
 			    </div>

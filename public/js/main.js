@@ -513,7 +513,7 @@
 			            ajax: {
 			                url: '/articles/search/ui-components',
 			            },
-			            template: '<div clas="row"><div class="col-xs-1 p-2 bg-info"><img src="/images/{{slug}}.png" class="img-fluid"></div><div class="col-xs-11"><h5>{{title}}</h5>{{intro}}</div></div>'
+			            template: '<div clas="row"><div class="col-xs-1 p-2 bg-info"><img src="/images/ui-components-thumbs/{{slug}}.png" class="img-fluid"></div><div class="col-xs-11"><h5>{{title}}</h5>{{intro}}</div></div>'
 			        },
 			        resources: {
 			        	ajax: {

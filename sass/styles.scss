@@ -24,3 +24,14 @@
 @import 'search';
 @import 'wysiwyg';
 
+@media (max-width: 575px) { 
+	#mainbody {
+		margin-bottom: 0px !important;
+		padding-bottom: 0px !important;
+	}
+	#side-panels {
+		margin-top: 0 !important;
+		padding-top: 0 !important;
+		margin-bottom: 20px;
+	}
+}
