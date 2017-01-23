@@ -4702,6 +4702,9 @@ strong, .font-weight-bold {
     -webkit-box-shadow: none;
     box-shadow: none; }
 
+.page-header hr {
+  margin-bottom: 0; }
+
 .typeahead__list > li > a {
   clear: none; }
   .typeahead__list > li > a:hover {

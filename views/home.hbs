@@ -1,21 +1,62 @@
 <div id="mainbody" class="p-1">
 	
-	<div class="row my-3">
-		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-2 col-xl-2 offset-xl-2">
-			<img src="/images/branding/platypus.svg" class="img-fluid mx-auto d-block">
+	<div class="container">
+
+		<div class="row my-3">
+			<div class="col-md-3">
+				<img src="/images/branding/platypus.svg" class="img-fluid mx-auto d-block">
+			</div>
+			<div class="col-md-9">
+				<h1 class="display-4 hidden-md-down">HBS Admin App Dev <br><span class="font-weight-bold">UI/UX Framework</span></h1>
+				<h1 class="hidden-lg-up text-sm-center text-md-left my-2">HBS Admin App Dev<br><span class="font-weight-bold">UI/UX Framework</span></h1>
+				<p class="">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+				<a href="/articles/quick-start" class="btn btn-primary">Get Started</a>
+			</div>
 		</div>
-		<div class="col-xs-12 col-sm-12 col-md-8 col-lg-9 col-xl-6">
-			<h1 class="display-4 hidden-md-down">HBS Admin App Dev <br><span class="font-weight-bold">UI/UX Framework</span></h1>
-			<h1 class="hidden-lg-up text-sm-center text-md-left my-2">HBS Admin App Dev<br><span class="font-weight-bold">UI/UX Framework</span></h1>
-			<p class="">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
-			<a href="/articles/quick-start" class="btn btn-primary">Get Started</a>
-
-		</div>
-
-	</div>
-
+		<h2 class="text-xs-center">Explore Components</h2>
+		<hr>
+		
+		
+			{{#each categories}}
+				{{#grouped_each 4 articles}}
+					<div class="card-deck">
+						{{#each this}}
+					    	<div class="card">
+							  	<div class="palette-bg-teal-100 p-2">
+							  		<img class="card-img-top img-fluid" src="/images/ui-components-thumbs/{{slug}}.png" alt="Card image cap">
+							  	</div>
+							  	<div class="card-block">
+							    	<h4 class="card-title">{{title}}</h4>
+							    	<p class="card-text">{{intro}}</p>
+							    	
+							  	</div>
+							  	{{!-- <div class="card-footer">
+							      	<a href="/articles/{{slug}}" class="btn btn-block btn-primary">Learn more</a>
+							    </div> --}}
+							</div>	
+						{{/each}}
+					</div>
+				{{/grouped_each}}
+			{{/each}}			
+		
+	</div><!--/.container-->
 </div><!--/#mainbody-->
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+	

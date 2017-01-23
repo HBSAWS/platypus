@@ -47,12 +47,8 @@ module.exports = {
   },
 
   show: function(req, res, next){
-    Category.findOne({ slug: req.params.slug })
-    .exec(function(err, category){
 
-
-
-      Category.find({slug: req.params.slug})
+      Category.find({ slug: req.params.slug })
             .lean()
             .exec(function(err, category) {
               if(err) return next(err);
@@ -70,17 +66,16 @@ module.exports = {
                 //res.status(200).json(result);  
 
                 res.render('categories/show', { 
-                  category: result[0], 
-                  section_title : 'Categories',
-                  layout : 'main',
-                  page_title : category.title,
-                  helpers: {
-                    compare: helpers.compare,
-                    dateFormat: helpers.dateFormat
-                  }
-                })
-
+                    category: result[0], 
+                    section_title : 'Categories',
+                    layout : '2col',
+                    page_title : category.title,
+                    helpers: {
+                        compare: helpers.compare,
+                        dateFormat: helpers.dateFormat
+                }
             })
+
         });
 
     });

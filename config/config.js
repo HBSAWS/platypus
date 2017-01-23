@@ -2,7 +2,8 @@ var express     = require('express'),
     logger        = require('morgan'),
     handlebars    = require("express-handlebars"),
     path          = require('path'),
-    bodyParser    = require('body-parser');
+    bodyParser    = require('body-parser'),
+    async         = require('async');
 
 // Navigation
 require('./models/Category');

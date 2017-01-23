@@ -45,7 +45,7 @@
 			$('pre code').each(function(i, e) {hljs.highlightBlock(e)});
 		},
 		waveEffect: function() {
-			Waves.attach('.btn, #hbs-left-nav li a');
+			Waves.attach('.btn, .sidebar-nav li a');
 			Waves.init();
 		},
 		breadCrumbs: function() {
