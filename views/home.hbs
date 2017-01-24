@@ -36,29 +36,31 @@
 		<hr>
 		
 		
-			{{#each categories}}
-				{{#grouped_each 4 articles}}
-					<div class="card-deck">
-						{{#each this}}
-				    		<div class="card mx-0 px-0">
-				    			<a href="/articles/{{slug}}">
-							  	<div class="palette-bg-teal-100 p-2">
-							  		<img class="card-img-top img-fluid" src="/images/ui-components-thumbs/{{slug}}.png" alt="Card image cap">
-							  	</div>
-							  	<div class="card-block">
-							    	<h4 class="card-title">{{title}}</h4>
-							    	<p class="card-text">{{intro}}</p>
-							    	
-							  	</div>
-							  	{{!-- <div class="card-footer">
-							      	<a href="/articles/{{slug}}" class="btn btn-block btn-primary">Learn more</a>
-							    </div> --}}
-							    </a>
-							</div>	
-						{{/each}}
-					</div>
-				{{/grouped_each}}
-			{{/each}}			
+		{{#each categories}}
+			{{#grouped_each 4 articles}}
+				<div class="card-deck">
+					{{#each this}}
+			    		<div class="card">
+			    			<a href="/articles/{{slug}}">
+						  	<div class="palette-bg-teal-100 p-2">
+						  		<img class="card-img-top img-fluid" src="/images/ui-components-thumbs/{{slug}}.png" alt="Card image cap">
+						  	</div>
+						  	<div class="card-block">
+						    	<h4 class="card-title">{{title}}</h4>
+						    	<p class="card-text">{{intro}}</p>
+						    	
+						  	</div>
+						  	{{!-- <div class="card-footer">
+						      	<a href="/articles/{{slug}}" class="btn btn-block btn-primary">Learn more</a>
+						    </div> --}}
+						    </a>
+						</div>	
+					{{/each}}
+				</div>
+			{{/grouped_each}}
+		{{/each}}		
+
+		<a href=	
 		
 	</div><!--/.container-->
 </div><!--/#mainbody-->

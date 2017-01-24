@@ -352,7 +352,7 @@
 
             $('form *:input[type!=hidden]:first').focus();
 
-            $('input,textarea,select').filter('[required]:visible').each(function(){
+            $('input,textarea,select').filter('[required]').each(function(){
                 $(this).closest('.form-group').find('label').append(" <span class='float-xs-right text-danger'>*</span>");
             });
 

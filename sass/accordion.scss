@@ -3,7 +3,7 @@
 		border: 0;
 		margin: 0px;
 		.card-block {
-			padding: 15px 0;;
+			// padding: 15px 0;
 		}		
 	}
 }
@@ -29,5 +29,8 @@
 	    		content: "\f107";    
 			}
 		}
+	}
+	ul {
+		padding-left: 1em;
 	}
 }

@@ -1,6 +1,8 @@
-.card > a {
-	color: black;
-	&:hover {
-		text-decoration: none;
+.card-deck {
+	.card > a {
+		color: black;
+		&:hover {
+			text-decoration: none;
+		}
 	}
 }

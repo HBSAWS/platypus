@@ -11,7 +11,9 @@ module.exports = {
       if(err) return next(err);
 
 		async.map(categories, function(category, done) {
-            Article.find({'_category': category._id}, function(err, articles) {
+            Article.find({'_category': category._id})
+            .limit(16)
+            .exec(function(err, articles) {
                 if (err) done(err);
                 var cat = category.toObject();
                 cat.articles = articles;

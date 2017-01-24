@@ -19,9 +19,7 @@ textarea,
 @media (max-width: 575px) {
   .card.panel {
     border: 0;
-    margin: 0px; }
-    .card.panel .card-block {
-      padding: 15px 0; } }
+    margin: 0px; } }
 
 .panel h5 {
   width: 90%; }
@@ -38,6 +36,9 @@ textarea,
       right: 20px; }
     .panel h5 a[data-toggle="collapse"].collapsed:after {
       content: "\f107"; }
+
+.panel ul {
+  padding-left: 1em; }
 
 .palette-bg-white {
   background-color: white; }
@@ -4007,9 +4008,9 @@ a.palette-text-black-darker:focus {
   .fc-event .fc-time {
     opacity: .5; }
 
-.card > a {
+.card-deck .card > a {
   color: black; }
-  .card > a:hover {
+  .card-deck .card > a:hover {
     text-decoration: none; }
 
 .breadcrumb {
@@ -4073,6 +4074,23 @@ span.btn-label {
 
 span.btn-label.btn-label-right {
   right: -16px; }
+
+.btn-group-justified {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: separate; }
+  .btn-group-justified .btn,
+  .btn-group-justified .btn-group {
+    float: none;
+    display: table-cell;
+    width: 1%; }
+    .btn-group-justified .btn .btn,
+    .btn-group-justified .btn-group .btn {
+      width: 100%; }
+    .btn-group-justified .btn .dropdown-menu,
+    .btn-group-justified .btn-group .dropdown-menu {
+      left: auto; }
 
 /* Ladda buttons */
 .ladda-button {
@@ -4206,46 +4224,6 @@ div.dataTables_wrapper div.dataTables_filter input {
   width: 100%; }
 
 /* Tabs */
-.slick-initialized .swipe-tab-content {
-  position: relative;
-  /*min-height: 365px;*/ }
-
-/*        
-@media screen and (min-width: 767px) {
-    .slick-initialized .swipe-tab-content {
-        min-height: 500px;
-    }
-}
-*/
-.slick-initialized .swipe-tab {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  height: 50px;
-  background: none;
-  border: 0;
-  color: #757575;
-  cursor: pointer;
-  text-align: center;
-  border-bottom: 2px solid transparent;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.5); }
-
-.slick-initialized .swipe-tab:hover {
-  color: #000; }
-
-.slick-initialized .swipe-tab.active-tab {
-  border-bottom: 5px solid black;
-  color: #000;
-  font-weight: bold; }
-
 html {
   position: relative;
   min-height: 100%; }
