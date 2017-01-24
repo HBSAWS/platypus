@@ -18,7 +18,21 @@
 			</div>
 		</div>
 
-		<h2 class="text-xs-center">Explore Components</h2>
+		<div class="mb-3">&nbsp;</div>
+
+		<hr>
+		<h2 class="">Explore Components
+			<div class="btn-group float-xs-right">
+				 <div class="btn-group btn-group-justified-xs" role="group" aria-label="Justified button group">
+				   	<a class="btn btn-secondary" href="#" role="button">
+				   		<i class="fa fa-list"></i><span class="hidden-sm-down"> List</span>
+				   	</a>
+				   	<a class="btn btn-secondary" href="#" role="button">
+				   		<i class="fa fa-th"></i><span class="hidden-sm-down"> Grid</span>
+				   	</a>
+				 </div>
+			</div>
+		</h2>
 		<hr>
 		
 		
@@ -26,7 +40,8 @@
 				{{#grouped_each 4 articles}}
 					<div class="card-deck">
 						{{#each this}}
-					    	<div class="card">
+				    		<div class="card mx-0 px-0">
+				    			<a href="/articles/{{slug}}">
 							  	<div class="palette-bg-teal-100 p-2">
 							  		<img class="card-img-top img-fluid" src="/images/ui-components-thumbs/{{slug}}.png" alt="Card image cap">
 							  	</div>
@@ -38,6 +53,7 @@
 							  	{{!-- <div class="card-footer">
 							      	<a href="/articles/{{slug}}" class="btn btn-block btn-primary">Learn more</a>
 							    </div> --}}
+							    </a>
 							</div>	
 						{{/each}}
 					</div>

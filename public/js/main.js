@@ -26,6 +26,7 @@
 		    Platypus.rotatingBg();
 		    Platypus.modal();
 		    Platypus.search();
+		    Platypus.gridList();
 		    Platypus.toolTip();
 		    Platypus.popOver();		    
 	  	},
@@ -556,9 +557,9 @@
 			    debug: true
 			});
 
-
-
-
+		},
+		gridList: function(){
+			
 		},
 		last: ''
 	}

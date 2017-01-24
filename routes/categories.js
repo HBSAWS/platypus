@@ -1,6 +1,7 @@
 var mongoose = require('mongoose'),
     Category = mongoose.model('Category'),
     page_title = 'Categories',
+    async = require('async'),
     helpers = require('../config/handlebar-helpers.js').helpers;
 
 module.exports = {

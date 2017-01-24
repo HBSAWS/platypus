@@ -4007,6 +4007,11 @@ a.palette-text-black-darker:focus {
   .fc-event .fc-time {
     opacity: .5; }
 
+.card > a {
+  color: black; }
+  .card > a:hover {
+    text-decoration: none; }
+
 .breadcrumb {
   padding: 8px 15px;
   margin-bottom: 0px;
@@ -4087,7 +4092,8 @@ span.btn-label.btn-label-right {
 
 /* Icons */
 .rotating-bg {
-  background-size: cover; }
+  background-position: bottom;
+  background-repeat: no-repeat; }
 
 /* Left Nav */
 aside[style] {
