@@ -4,7 +4,7 @@
         <div class="card panel">
             <div class="card-header" role="tab" id="headingOne">
                 <h5 class="mb-0">
-                    <a class="text-truncate" data-toggle="collapse" {{!-- data-parent="#side-panels" --}} href="#best_practices" aria-expanded="true" aria-controls="best_practices">
+                    <a class="text-truncate" data-toggle="collapse" href="#best_practices" aria-expanded="true" aria-controls="best_practices">
                     <i class="fa fa-fw fa-trophy mr-1"></i>Best Practices
                     </a>
                 </h5>
@@ -18,12 +18,12 @@
         <div class="card panel">
           <div class="card-header" role="tab" id="headingTwo">
             <h5 class="mb-0">
-              <a class="collapsed text-truncate" data-toggle="collapse" {{!-- data-parent="#side-panels" --}} href="#avoid" aria-expanded="false" aria-controls="avoid">
+              <a class="collapsed text-truncate" data-toggle="collapse" href="#avoid" aria-expanded="true" aria-controls="avoid">
                 <i class="fa fa-fw fa-close mr-1"></i>Avoid
             </a>
         </h5>
         </div>
-        <div id="avoid" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+        <div id="avoid" class="collapse in" role="tabpanel" aria-labelledby="headingTwo">
             <div class="card-block">
               {{{avoid}}}
           </div>
@@ -32,12 +32,12 @@
         <div class="card panel">
           <div class="card-header" role="tab" id="headingThree">
             <h5 class="mb-0">
-              <a class="collapsed text-truncate" data-toggle="collapse" {{!-- data-parent="#side-panels" --}} href="#resources" aria-expanded="false" aria-controls="resources">
+              <a class="collapsed text-truncate" data-toggle="collapse" href="#resources" aria-expanded="true" aria-controls="resources">
                 <i class="fa fa-fw fa-bookmark mr-1"></i>Resources
             </a>
         </h5>
         </div>
-        <div id="resources" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+        <div id="resources" class="collapse in" role="tabpanel" aria-labelledby="headingThree">
             <div class="card-block">
               {{{resources}}}
           </div>

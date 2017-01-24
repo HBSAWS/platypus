@@ -28,6 +28,8 @@
 		    Platypus.modal();
 		    Platypus.search();
 		    Platypus.gridList();
+		    Platypus.externalLinks();
+		    Platypus.toolTip();
 		    Platypus.toolTip();
 		    Platypus.popOver();		    
 	  	},
@@ -578,6 +580,11 @@
 		},
 		gridList: function(){
 			
+		},
+		externalLinks: function() {
+			$('a').filter(function() {
+			   return this.hostname && this.hostname !== location.hostname;
+			}).addClass("external");
 		},
 		last: ''
 	}

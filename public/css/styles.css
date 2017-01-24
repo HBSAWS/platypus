@@ -4673,6 +4673,33 @@ html {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg); } }
 
+a.external::after {
+  font-family: 'FontAwesome';
+  content: '\f14c';
+  display: inline-block;
+  margin-left: 5px;
+  vertical-align: super;
+  font-size: 60%;
+  text-decoration: none !important; }
+
+a.external[href$=".pdf"]::after {
+  content: '\f1c1'; }
+
+a.external[href$=".doc"]::after {
+  content: '\f1c2'; }
+
+a.external[href$=".ppt"]::after {
+  content: '\f1c4'; }
+
+a.external[href$=".xls"]::after {
+  content: '\f1c3'; }
+
+a.external[href$=".mp4"]::after {
+  content: '\f1c8'; }
+
+a.external[href$=".wav"]::after {
+  content: '\f1c7'; }
+
 * {
   font-family: 'Open Sans', sans-serif;
   font-weight: 400; }

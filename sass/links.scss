@@ -1,0 +1,23 @@
+a {
+	&.external {
+		&::after {
+			font-family: 'FontAwesome';
+			content: '\f14c';
+			display: inline-block;
+			margin-left: 5px;
+			vertical-align: super;
+		    font-size: 60%;
+		    text-decoration: none !important;
+		}
+		&[href$=".pdf"]::after { content: '\f1c1'; }
+		&[href$=".doc"]::after { content: '\f1c2'; }
+		&[href$=".ppt"]::after { content: '\f1c4'; }
+		&[href$=".xls"]::after { content: '\f1c3'; }
+		&[href$=".mp4"]::after { content: '\f1c8'; }
+		&[href$=".wav"]::after { content: '\f1c7'; }
+	}
+}
+
+
+
+
