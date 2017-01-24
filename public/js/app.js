@@ -10392,6 +10392,7 @@ e}},showLayout:function(){if(!this.container.hasClass("result")&&(this.result.le
 		    Platypus.rotatingBg();
 		    Platypus.modal();
 		    Platypus.search();
+		    Platypus.gridList();
 		    Platypus.toolTip();
 		    Platypus.popOver();		    
 	  	},
@@ -10411,7 +10412,7 @@ e}},showLayout:function(){if(!this.container.hasClass("result")&&(this.result.le
 			$('pre code').each(function(i, e) {hljs.highlightBlock(e)});
 		},
 		waveEffect: function() {
-			Waves.attach('.btn, #hbs-left-nav li a');
+			Waves.attach('.btn, .sidebar-nav li a');
 			Waves.init();
 		},
 		breadCrumbs: function() {
@@ -10717,7 +10718,7 @@ e}},showLayout:function(){if(!this.container.hasClass("result")&&(this.result.le
 
             $('form *:input[type!=hidden]:first').focus();
 
-            $('input,textarea,select').filter('[required]:visible').each(function(){
+            $('input,textarea,select').filter('[required]').each(function(){
                 $(this).closest('.form-group').find('label').append(" <span class='float-xs-right text-danger'>*</span>");
             });
 
@@ -10879,7 +10880,7 @@ e}},showLayout:function(){if(!this.container.hasClass("result")&&(this.result.le
 			            ajax: {
 			                url: '/articles/search/ui-components',
 			            },
-			            template: '<div clas="row"><div class="col-xs-1 p-2 bg-info"><img src="/images/{{slug}}.png" class="img-fluid"></div><div class="col-xs-11"><h5>{{title}}</h5>{{intro}}</div></div>'
+			            template: '<div clas="row"><div class="col-xs-1 p-2 bg-info"><img src="/images/ui-components-thumbs/{{slug}}.png" class="img-fluid"></div><div class="col-xs-11"><h5>{{title}}</h5>{{intro}}</div></div>'
 			        },
 			        resources: {
 			        	ajax: {
@@ -10922,9 +10923,9 @@ e}},showLayout:function(){if(!this.container.hasClass("result")&&(this.result.le
 			    debug: true
 			});
 
-
-
-
+		},
+		gridList: function(){
+			
 		},
 		last: ''
 	}

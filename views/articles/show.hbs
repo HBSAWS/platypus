@@ -80,17 +80,8 @@
 							<a class="nav-link active" data-toggle="tab" href="#xs" role="tab">XL - Desktop (≥1200px)</a>
 						</li>
 						<li class="nav-item  hidden-xs-down">
-							<a class="nav-link" data-toggle="tab" href="#sm" role="tab">Other Devices{{!-- SM - Phablet (≥576px) --}}</a>
-						</li>
-						{{!-- <li class="nav-item  hidden-sm-down">
-							<a class="nav-link" data-toggle="tab" href="#md" role="tab">MD - Tablet (≥768px)</a>
-						</li>
-						<li class="nav-item  hidden-md-down">
-							<a class="nav-link" data-toggle="tab" href="#lg" role="tab">LG - Laptop (≥992px)</a>
-						</li>	
-						<li class="nav-item hidden-lg-down">
-							<a class="nav-link" data-toggle="tab" href="#xl" role="tab">XL - Desktop (≥1200px)</a>
-						</li>	 --}}			
+							<a class="nav-link" data-toggle="tab" href="#sm" role="tab">Other Devices</a>
+						</li>		
 					</ul> 
 
 					<!-- Tab panes -->
@@ -139,85 +130,8 @@
 						   		</a>
 						 	</div>
 
-
-							{{!-- <div class="row">
-				      			<div class="d-block mx-auto palette-bg-white" style="width:829px;">
-				      				
-				      				<div class="device-mockup" data-device="nexus7" data-orientation="portrait" data-color="black">
-									    <div class="device">
-									        <div class="screen palette-bg-white">
-										    <iframe src="/articles/mock/{{slug}}/600" height="100%" width="100%" frameborder="0" scrolling="yes">You need an iframes capable browser to view this content.</iframe>
-									        </div>
-									        <div class="button">
-									            <!-- You can hook the "home button" to some JavaScript events or just remove it -->
-									        </div>
-									    </div>
-									</div>
-
-				      			</div>
-							</div> --}}
-
 						</div>
-						{{!-- <div class="tab-pane hidden-sm-down mt-2" id="md" role="tabpanel">
-							
-							<div class="row">
-				      			<div class="d-block mx-auto palette-bg-white" style="width: 875px;" >
-				      				
-				      				<div class="device-mockup" data-device="ipad_air_2" data-orientation="portrait" data-color="black">
-									    <div class="device">
-									        <div class="screen palette-bg-white">
-										    <iframe src="/articles/mock/{{slug}}/768" height="100%" width="100%" frameborder="0" scrolling="yes">You need an iframes capable browser to view this content.</iframe>
-									        </div>
-									        <div class="button">
-									            <!-- You can hook the "home button" to some JavaScript events or just remove it -->
-									        </div>
-									    </div>
-									</div>
 
-				      			</div>
-							</div>
-
-						</div>
-						<div class="tab-pane hidden-md-down mt-2" id="lg" role="tabpanel">
-							
-							<div class="row">
-								<div class="d-block mx-auto palette-bg-white">
-				      				
-				      				<div class="device-mockup" data-device="macbook_2015" data-orientation="portrait" data-color="black">
-									 <div class="device">
-									        <div class="screen palette-bg-white">
-										    <iframe src="/articles/mock/{{slug}}/1024" height="100%" width="100%" frameborder="0" scrolling="yes">You need an iframes capable browser to view this content.</iframe>
-									        </div>
-								        <div class="button">
-								            <!-- You can hook the "home button" to some JavaScript events or just remove it -->
-								        </div>
-								    </div>
-								</div>
-
-								</div>
-							</div>
-
-						</div>
-						<div class="tab-pane hidden-lg-down mt-2" id="xl" role="tabpanel">
-							
-							<div class="row">
-				      			<div class="col-xs-12 palette-bg-white">
-				      				
-				      				<div class="device-mockup" data-device="imac" data-orientation="portrait" data-color="black">
-									    <div class="device">
-									        <div class="screen palette-bg-white">
-										    <iframe src="/articles/mock/{{slug}}/1200" height="100%" width="100%" frameborder="0" scrolling="yes">You need an iframes capable browser to view this content.</iframe>
-									        </div>
-									        <div class="button">
-									            <!-- You can hook the "home button" to some JavaScript events or just remove it -->
-									        </div>
-									    </div>
-									</div>
-
-				      			</div>
-							</div>
-
-						</div> --}}		
 					</div> 
 
 			      </div>
@@ -233,7 +147,40 @@
 			    </div>
 			    <div id="markup" class="collapse in" role="tabpanel" aria-labelledby="headingThree">
 			      <div class="card-block">
-					<pre class="pre-scrollable"><code class="html">{{markup}}</code></pre>
+					
+					<!-- Nav tabs -->
+					<ul class="nav nav-tabs" role="tablist">
+					  	{{#if markup}}
+					  	<li class="nav-item">
+					    	<a class="nav-link active" data-toggle="tab" href="#html_markup" role="tab"><i class="fa fa-fw fa-html5"></i> HTML</a>
+					  	</li>
+					  	{{/if}}
+					  	{{#if js}}
+					  	<li class="nav-item">
+					    	<a class="nav-link" data-toggle="tab" href="#js" role="tab"><i class="fa fa-fw fa-html5"></i>JavaScript</a>
+					  	</li>
+					  	{{/if}}
+					  	{{#if fiddle}}
+					  	<li class="nav-item">
+					    	<a class="nav-link" data-toggle="tab" href="#jsfiddle" role="tab"><i class="fa fa-fw fa-html5"></i>JsFiddle</a>
+					  	</li>
+					  	{{/if}}					  	
+					</ul>
+
+					<!-- Tab panes -->
+					<div class="tab-content">
+					  	<div class="tab-pane active" id="html_markup" role="tabpanel">
+					  		<pre class="pre-scrollable"><code class="html">{{markup}}</code></pre>
+					  	</div>
+					  	<div class="tab-pane" id="js" role="tabpanel">
+					  		<pre class="pre-scrollable"><code class="javascript">{{js}}</code></pre>
+					  	</div>
+					  	<div class="tab-pane" id="jsfiddle" role="tabpanel">
+					  		<script async src="//jsfiddle.net/HBSAWS/{{fiddle}}/embed/js,html,css,result/dark/"></script>
+					  		{{!-- <iframe width="100%" height="300" src="//jsfiddle.net/HBSAWS/{{fiddle}}/embedded/js,html,css,result/dark/" allowfullscreen="allowfullscreen" frameborder="0"></iframe> --}}
+					  	</div>					  	
+					</div>
+					
 			      </div>
 			    </div>
 			  </div>

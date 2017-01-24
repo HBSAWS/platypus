@@ -3,7 +3,6 @@
     	ondomready: function() {
 		    Platypus.btnSubmitAnimate();
 		    Platypus.inputMaxLength();
-		    Platypus.backToTop();
 		    Platypus.highlightJS();
 		    Platypus.waveEffect();
 		    Platypus.breadCrumbs();
@@ -42,23 +41,6 @@
 		      	limitReachedClass: "tag tag-danger",
 		      	// placement: 'top-right'
 			});
-		},
-		backToTop: function(){
-			$(window).scroll(function () {
-            	if ($(this).scrollTop() > 50) {
-                	$('#back-to-top').fadeIn();
-            	} else {
-                	$('#back-to-top').fadeOut();
-            	}
-        	});
-	        $('#back-to-top').click(function () {
-	            $('#back-to-top').tooltip('hide');
-	            $('body,html').animate({
-	                scrollTop: 0
-	            }, 800);
-	            return false;
-	        });
-	        //$('#back-to-top').tooltip('show');
 		},
 		highlightJS: function() {
 			$('pre code').each(function(i, e) {hljs.highlightBlock(e)});
