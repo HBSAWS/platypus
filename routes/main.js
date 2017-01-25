@@ -12,7 +12,7 @@ module.exports = {
 
 		async.map(categories, function(category, done) {
             Article.find({'_category': category._id})
-            .limit(16)
+            .limit(28)
             .exec(function(err, articles) {
                 if (err) done(err);
                 var cat = category.toObject();

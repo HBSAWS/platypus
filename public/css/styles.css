@@ -4249,6 +4249,11 @@ html {
   bottom: 0;
   width: 100%; }
 
+.list-group-item {
+  border: 0;
+  border-top: 1px solid #ddd;
+  padding: .75rem 0; }
+
 .load-container {
   border: 1px solid rgba(255, 255, 255, 0.2);
   width: 240px;

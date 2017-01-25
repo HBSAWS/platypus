@@ -93,7 +93,7 @@ module.exports = {
                                 error: 'Error populating category id into article :('
                             }
                         })
-                        res.redirect('/articles');
+                        res.redirect('/articles/'+article.slug);
                     });
             }
 
