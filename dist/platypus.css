@@ -978,6 +978,19 @@ textarea,
 .panel ul {
   padding-left: 1em; }
 
+.back-to-top {
+  cursor: pointer;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: none;
+  width: 50px;
+  height: 50px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px !important; }
+
 .palette-bg-white {
   background-color: white; }
 
@@ -5597,6 +5610,35 @@ html {
   100% {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg); } }
+
+._after, a.external::after, a.lock::after {
+  font-family: 'FontAwesome';
+  display: inline-block;
+  margin-left: 5px;
+  vertical-align: super;
+  font-size: 60%;
+  text-decoration: none !important; }
+
+a.external[href$=".pdf"]::after {
+  content: '\f1c1'; }
+
+a.external[href$=".doc"]::after {
+  content: '\f1c2'; }
+
+a.external[href$=".ppt"]::after, a.external[href$=".pptx"]::after {
+  content: '\f1c4'; }
+
+a.external[href$=".xls"]::after, a.external[href$=".xlsx"]::after {
+  content: '\f1c3'; }
+
+a.external[href$=".mp4"]::after, a.external[href$=".mpeg"]::after {
+  content: '\f1c8'; }
+
+a.external[href$=".wav"]::after, a.external[href$=".mp3"]::after {
+  content: '\f1c7'; }
+
+a.lock::after {
+  content: '\f023'; }
 
 * {
   font-family: 'Open Sans', sans-serif;

@@ -45,7 +45,7 @@ var jsFiles = [
     'public/vendor/highlight/highlight.min.js',
     'public/js/main.js',
 ],  
-jsDest = 'public/js';
+jsDest = 'dist';
 
 console.log(jsFiles);
 
@@ -77,22 +77,22 @@ var cssFiles = [
     'public/vendor/jquery-typeahead/jquery.typeahead.min.css',
     'public/css/styles.css',
 ],  
-cssDest = 'public/css';    
+cssDest = 'dist';    
 
 gulp.task('js', function() {  
     return gulp.src(jsFiles)
-        .pipe(concat('app.js'))
+        .pipe(concat('platypus.js'))
         .pipe(gulp.dest(jsDest))
-        .pipe(rename('app.min.js'))
+        .pipe(rename('platypus.min.js'))
         .pipe(uglify())
         .pipe(gulp.dest(jsDest));
 });
 
 gulp.task('css', function() {  
     return gulp.src(cssFiles)
-        .pipe(concat('app.css'))
+        .pipe(concat('platypus.css'))
         .pipe(gulp.dest(cssDest))
-        .pipe(rename('app.min.css'))
+        .pipe(rename('platypus.min.css'))
         .pipe(cleanCSS({compatibility: 'ie8'}))
         .pipe(gulp.dest(cssDest));
 });

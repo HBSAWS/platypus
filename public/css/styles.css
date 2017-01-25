@@ -4673,9 +4673,8 @@ html {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg); } }
 
-a.external::after {
+._after, a.external::after, a.lock::after {
   font-family: 'FontAwesome';
-  content: '\f14c';
   display: inline-block;
   margin-left: 5px;
   vertical-align: super;
@@ -4688,17 +4687,20 @@ a.external[href$=".pdf"]::after {
 a.external[href$=".doc"]::after {
   content: '\f1c2'; }
 
-a.external[href$=".ppt"]::after {
+a.external[href$=".ppt"]::after, a.external[href$=".pptx"]::after {
   content: '\f1c4'; }
 
-a.external[href$=".xls"]::after {
+a.external[href$=".xls"]::after, a.external[href$=".xlsx"]::after {
   content: '\f1c3'; }
 
-a.external[href$=".mp4"]::after {
+a.external[href$=".mp4"]::after, a.external[href$=".mpeg"]::after {
   content: '\f1c8'; }
 
-a.external[href$=".wav"]::after {
+a.external[href$=".wav"]::after, a.external[href$=".mp3"]::after {
   content: '\f1c7'; }
+
+a.lock::after {
+  content: '\f023'; }
 
 * {
   font-family: 'Open Sans', sans-serif;
