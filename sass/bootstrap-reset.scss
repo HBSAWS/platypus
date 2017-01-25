@@ -8,7 +8,8 @@
 	.form-control, 
 	.tag,
 	.card,
-	.card-header {
+	.card-header,
+	.list-group-item:first-child {
 	border-radius: 0 !important;
 }
 

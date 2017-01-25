@@ -1,5 +1,8 @@
-.list-group-item {
-	border: 0;
-	border-top: 1px solid #ddd;
-	padding: .75rem 0;
+.list-group {
+	padding-left: 0 !important;
+	.list-group-item {
+		border: 0;
+		border-top: 1px solid #ddd;
+		padding: .75rem 0;
+	}
 }

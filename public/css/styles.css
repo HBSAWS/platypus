@@ -9,7 +9,8 @@ textarea,
 .form-control,
 .tag,
 .card,
-.card-header {
+.card-header,
+.list-group-item:first-child {
   border-radius: 0 !important; }
 
 .swal2-container .swal2-modal h2 {
@@ -4249,10 +4250,12 @@ html {
   bottom: 0;
   width: 100%; }
 
-.list-group-item {
-  border: 0;
-  border-top: 1px solid #ddd;
-  padding: .75rem 0; }
+.list-group {
+  padding-left: 0 !important; }
+  .list-group .list-group-item {
+    border: 0;
+    border-top: 1px solid #ddd;
+    padding: .75rem 0; }
 
 .load-container {
   border: 1px solid rgba(255, 255, 255, 0.2);
