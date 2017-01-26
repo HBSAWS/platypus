@@ -601,17 +601,26 @@
 				e.preventDefault();
 				var pillVal = $(this).val();
 
+				// Show spinner
+    			function showSpinner(){
+					var el = $('<div>').appendTo('#results').spin();
+				 	setTimeout(function() { 
+				 		el.spin(false).remove()
+				 	}, 1000);
+			 	}
+			 	
 				if(this.checked) {	
 					$('#searchPills').pillbox('addItems', -1, [{ text: pillVal}]);
+					showSpinner();
     			} else {
     				$('#searchPills').pillbox('removeByText', pillVal);
+    				showSpinner();
     			}
 
     			$('#searchPills').on('removed.fu.pillbox', function (evt, item) {
-				  	console.log(item);
 				  	$('#facets input[value="'+item.value+'"]').prop('checked', false);
+				  	showSpinner();
 				});
-
 				
 			});
 

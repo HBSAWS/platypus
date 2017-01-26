@@ -10,7 +10,8 @@ textarea,
 .tag,
 .card,
 .card-header,
-.list-group-item:first-child {
+.list-group-item:first-child,
+.nav-tabs .nav-link {
   border-radius: 0 !important; }
 
 .swal2-container .swal2-modal h2 {

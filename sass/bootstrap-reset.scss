@@ -9,7 +9,8 @@
 	.tag,
 	.card,
 	.card-header,
-	.list-group-item:first-child {
+	.list-group-item:first-child,
+	.nav-tabs .nav-link {
 	border-radius: 0 !important;
 }
 
