@@ -29,6 +29,7 @@
 		    Platypus.search();
 		    Platypus.gridList();
 		    Platypus.externalLinks();
+		    Platypus.getSpinnerOpts();
 		    Platypus.searchPills();
 		    Platypus.toolTip();
 		    Platypus.toolTip();
@@ -587,6 +588,31 @@
 			   return this.hostname && this.hostname !== location.hostname;
 			}).addClass("external");
 		},
+		getSpinnerOpts: function(){
+			return {
+				lines: 13, 
+				length: 0, 
+				width: 14, 
+				radius: 42, 
+				scale: 1, 
+				corners: 1, 
+				color: '#000', 
+				opacity: 0.25, 
+				rotate: 0, 
+				direction: 1, 
+				speed: 1, 
+				trail: 60, 
+				fps: 20, 
+				zIndex: 2e9, 
+				className: 'spinner', 
+				top: '50%', 
+				left: '50%', 
+				shadow: false, 
+				hwaccel: false, 
+				position: 'absolute'
+			}
+
+		},
 		searchPills: function() {
 			
 			// Initialize pillBox
@@ -603,12 +629,12 @@
 
 				// Show spinner
     			function showSpinner(){
-					var el = $('<div>').appendTo('#results').spin();
+					var el = $('<div class="d-block mt-3 p-3">').appendTo('#results').spin(Platypus.getSpinnerOpts());
 				 	setTimeout(function() { 
 				 		el.spin(false).remove()
 				 	}, 1000);
 			 	}
-			 	
+
 				if(this.checked) {	
 					$('#searchPills').pillbox('addItems', -1, [{ text: pillVal}]);
 					showSpinner();

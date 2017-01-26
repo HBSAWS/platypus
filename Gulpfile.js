@@ -48,8 +48,6 @@ var jsFiles = [
 ],  
 jsDest = 'dist';
 
-console.log(jsFiles);
-
 var cssFiles = [
     'public/vendor/bootstrap/bootstrap.min.css',
     'public/vendor/jasny-bootstrap/jasny-bootstrap.min.css',
@@ -104,9 +102,18 @@ gulp.task('styles', function() {
         .pipe(gulp.dest('./public/css/'))
 });
 
+gulp.task('transpile', function() {
+    return gulp.src([
+        'public/js/main.js',
+        'public/js/demo.js'
+    ])
+    .pipe(babel())
+    .pipe(gulp.dest("public/js"));
+});
+
 //Watch task
 gulp.task('default',function() {
-    gulp.watch('sass/**/*.scss',['styles']);
+    gulp.watch('sass/**/*.scss',['styles','transpile']);
     nodemon({
     	script: 'server.js', ext: 'js html hbs', env: { 'NODE_ENV': 'development' }
   });

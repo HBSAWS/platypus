@@ -5,6 +5,7 @@
 		    AWSFrameworkDemo.sweetAlertDemo();    
 		    AWSFrameworkDemo.validation();    
 		    AWSFrameworkDemo.icons();    
+		    AWSFrameworkDemo.search();    
 	  	},
 	  	toastDemo: function(){
 	  		$('#toastr-demo button').click(function(e) {
@@ -250,6 +251,31 @@
 	  			location.reload();
 	  			return false;  		
 	  		})
+	  	},
+	  	search: function() {
+	  		$.ajax('/api/staff/10', {
+		    	success: function(data) {
+					data.forEach(function(item){
+						console.log(item);
+						$('#results').append(`
+							<div class="col-md-3">
+								<div class="card">
+									<img class="card-img-top img-fluid" src="${item.photo}" alt="Photo">
+								<div class="card-block">
+									<h4 class="card-title text-truncate">${item.first_name} ${item.last_name}</h4>
+									<p class="card-text">${item.department}</p>
+									<p class="card-text">${item.phone}</p>
+									<p class="card-text">${item.email}</p>
+								</div>
+							</div>
+						</div>`
+						);
+					})
+		      	},
+		      	error: function() {
+		        	console.log("erorr getting data");
+		      	}
+		   });
 	  	},
 		last: ''
 	}
