@@ -34,6 +34,7 @@ module.exports  = function(app){
   categoriesRouter.post('/update/:id',          categories.update);
 
   apiRouter.get('/staff/:num?',                  api.staff);
+  apiRouter.get('/student/:num?',                api.student);
 
   app.get('/', main.index);
 

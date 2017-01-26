@@ -9,7 +9,6 @@
 		    Platypus.breadCrumbs();
 		    Platypus.leftMenu();
 		    Platypus.carousel();
-		    Platypus.tabs();
 		    Platypus.dataTables();
 		    Platypus.select2();
 		    Platypus.dateRange();
@@ -168,107 +167,70 @@
 				arrows: false,
 			});			
 		},
-		tabs: function() {
-			var $swipeTabsContainer = $('.swipe-tabs'),
-			    $swipeTabs = $('.swipe-tab'),
-			    $swipeTabsContentContainer = $('.swipe-tabs-container'),
-			    currentIndex = 0,
-			    activeTabClassName = 'active-tab';
-
-			$swipeTabsContainer.on('init', function(event, slick) {
-			    $swipeTabsContentContainer.removeClass('invisible');
-			    $swipeTabsContainer.removeClass('invisible');
-
-			    currentIndex = slick.getCurrent();
-			    $swipeTabs.removeClass(activeTabClassName);
-			    $('.swipe-tab[data-slick-index=' + currentIndex + ']').addClass(activeTabClassName);
-			});
-
-			$swipeTabsContainer.slick({
-			    //slidesToShow: 3.25,
-			    slidesToShow: 3,
-			    slidesToScroll: 1,
-			    arrows: false,
-			    infinite: false,
-			    swipeToSlide: true,
-			    touchThreshold: 10
-			});
-
-			$swipeTabsContentContainer.slick({
-			    asNavFor: $swipeTabsContainer,
-			    slidesToShow: 1,
-			    slidesToScroll: 1,
-			    arrows: false,
-			    infinite: false,
-			    swipeToSlide: true,
-			    draggable: false,
-			    touchThreshold: 10
-			});
-
-			$swipeTabs.on('click', function(event) {
-			    // gets index of clicked tab
-			    currentIndex = $(this).data('slick-index');
-			    $swipeTabs.removeClass(activeTabClassName);
-			    $('.swipe-tab[data-slick-index=' + currentIndex +']').addClass(activeTabClassName);
-			    $swipeTabsContainer.slick('slickGoTo', currentIndex);
-			    $swipeTabsContentContainer.slick('slickGoTo', currentIndex);
-			});
-
-			//initializes slick navigation tabs swipe handler
-			$swipeTabsContentContainer.on('swipe', function(event, slick, direction) {
-			    currentIndex = $(this).slick('slickCurrentSlide');
-			    $swipeTabs.removeClass(activeTabClassName);
-			    $('.swipe-tab[data-slick-index=' + currentIndex + ']').addClass(activeTabClassName);
-			});
-		},
 		dataTables: function() {
-		    var dataSet = [];
-		    for(i=0; i<100; i++) {
-		        dataSet.push({
-		            first_name : faker.name.firstName(),
-		            last_name  : faker.name.lastName(),
-		            address    : faker.address.streetAddress(),
-		            city       : faker.address.city(),
-		            state      : faker.address.state(),
-		            zip        : faker.address.zipCode(),
-		            phone      : faker.phone.phoneNumber(),
-		            email      : faker.internet.email(),
-		            amount_due : faker.finance.amount(), 
-		        });
-		    }
+		    // var dataSet = [];
+		    // for(i=0; i<100; i++) {
+		    //     dataSet.push({
+		    //         first_name : faker.name.firstName(),
+		    //         last_name  : faker.name.lastName(),
+		    //         address    : faker.address.streetAddress(),
+		    //         city       : faker.address.city(),
+		    //         state      : faker.address.state(),
+		    //         zip        : faker.address.zipCode(),
+		    //         phone      : faker.phone.phoneNumber(),
+		    //         email      : faker.internet.email(),
+		    //         amount_due : faker.finance.amount(), 
+		    //         null : null, 
+		    //     });
+		    // }
 
-		    $('.datatable').DataTable( {
-		        data: dataSet,
-		        columns: [
-		            { "data": "first_name" },
-		            { "data": "last_name" },
-		            { "data": "address" },
-		            { "data": "city" },
-		            { "data": "state" },
-		            { "data": "zip" },
-		            { "data": "phone" },
-		            { "data": "email" },
-		            { "data": "amount_due" },
-		        ],
-		        responsive: {
-		            details: {
-		                type: 'column',
-		                 target: -1
-		            }
-		        },
-		        columnDefs: [
-		          { className: 'control', orderable: false, targets:   -1 }
-		        ],
-		        dom:
-		              "<'row'<'col-xs-11 text-xs-left'f><'col-xs-1 text-xs-right'l>>" +
-		              "<'row'<'col-xs-12'tr>>" +
-		              "<'row'<'col-xs-6'i><'col-xs-6'p>>",  
-		        "oLanguage": {
-		            sSearch: "",
-		            sSearchPlaceholder: "Filter records",
-		            sLengthMenu: "_MENU_",
-		        }
-		    });			
+		    $.ajax('/api/student/100', {
+		    	success: function(data) {
+					data.forEach(function(item){
+						//console.log(item);
+						$('table.datatable tbody').append(`
+						<tr>
+							<td class="text-nowrap"><img src="${item.photo}" class="img-fluid"></td>
+							<td class="text-nowrap">${item.first_name}</td>
+							<td class="text-nowrap">${item.last_name}</td>
+							<td class="text-nowrap">${item.interests}</td>
+							<td class="text-nowrap">${item.year}</td>
+							<td class="text-nowrap">${item.section}</td>
+							<td class="text-nowrap">${item.phone}</td>
+							<td class="text-nowrap">${item.email}</td>
+							<td class="text-nowrap"></td>
+						</tr>`
+						);
+					});
+
+
+					$('.datatable').DataTable({
+				        responsive: {
+				            details: {
+				                type: 'column',
+				                 target: -1
+				            }
+				        },
+				        columnDefs: [
+				          { className: 'control', orderable: false, targets:   -1 }
+				        ],
+				        dom:
+				              "<'row'<'col-xs-11 text-xs-left'f><'col-xs-1 text-xs-right'l>>" +
+				              "<'row'<'col-xs-12'tr>>" +
+				              "<'row'<'col-xs-6'i><'col-xs-6'p>>",  
+				        "oLanguage": {
+				            sSearch: "",
+				            sSearchPlaceholder: "Filter records",
+				            sLengthMenu: "_MENU_",
+				        }
+				    });
+
+		      	},
+		      	error: function() {
+		        	console.log("erorr getting data");
+		      	}
+		   });
+			
 		},
 		toolTip: function() {
 			$('[data-toggle="tooltip"]').tooltip();
