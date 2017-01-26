@@ -273,7 +273,11 @@
 					})
 		      	},
 		      	error: function() {
-		        	console.log("erorr getting data");
+		        	swal(
+					   'Error',
+					   'Cannot retrieve sample data.',
+					   'error'
+					)
 		      	}
 		   });
 	  	},

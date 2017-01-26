@@ -168,21 +168,6 @@
 			});			
 		},
 		dataTables: function() {
-		    // var dataSet = [];
-		    // for(i=0; i<100; i++) {
-		    //     dataSet.push({
-		    //         first_name : faker.name.firstName(),
-		    //         last_name  : faker.name.lastName(),
-		    //         address    : faker.address.streetAddress(),
-		    //         city       : faker.address.city(),
-		    //         state      : faker.address.state(),
-		    //         zip        : faker.address.zipCode(),
-		    //         phone      : faker.phone.phoneNumber(),
-		    //         email      : faker.internet.email(),
-		    //         amount_due : faker.finance.amount(), 
-		    //         null : null, 
-		    //     });
-		    // }
 
 		    $.ajax('/api/student/100', {
 		    	success: function(data) {
@@ -227,7 +212,11 @@
 
 		      	},
 		      	error: function() {
-		        	console.log("erorr getting data");
+		        	swal(
+					   'Error',
+					   'Cannot retrieve sample data.',
+					   'error'
+					)
 		      	}
 		   });
 			
