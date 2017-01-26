@@ -29,6 +29,7 @@
 		    Platypus.search();
 		    Platypus.gridList();
 		    Platypus.externalLinks();
+		    Platypus.searchPills();
 		    Platypus.toolTip();
 		    Platypus.toolTip();
 		    Platypus.popOver();		    
@@ -518,8 +519,7 @@
 			$('.rotating-bg').css('background-image', 'url("/images/rotating-bg-hbs/bg-hbs-'+_.random(1, 4)+'.png")');
 		},
 		search: function() {
-			
-			// Works
+
 			$.typeahead({
 			    input: ".js-typeahead",
 			    order: "asc",
@@ -586,6 +586,35 @@
 			$('a').filter(function() {
 			   return this.hostname && this.hostname !== location.hostname;
 			}).addClass("external");
+		},
+		searchPills: function() {
+			
+			// Initialize pillBox
+			$('#searchPills').pillbox({
+				readonly: false,
+				edit: false,
+			});
+
+
+			// Mock functionality
+			$('#facets input[type="checkbox"]').change(function(e){
+				e.preventDefault();
+				var pillVal = $(this).val();
+
+				if(this.checked) {	
+					$('#searchPills').pillbox('addItems', -1, [{ text: pillVal}]);
+    			} else {
+    				$('#searchPills').pillbox('removeByText', pillVal);
+    			}
+
+    			$('#searchPills').on('removed.fu.pillbox', function (evt, item) {
+				  	console.log(item);
+				  	$('#facets input[value="'+item.value+'"]').prop('checked', false);
+				});
+
+				
+			});
+
 		},
 		last: ''
 	}

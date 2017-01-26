@@ -3,5 +3,5 @@ mongoexport --db hbs-aws-framework-dev --collection categories --out categories.
 mongoexport --db hbs-aws-framework-dev --collection articles --out articles.json
 
 // Import into DigitalOcean
-mongoimport --db hbs-aws-framework-dev --collection --drop categories --file categories.json
-mongoimport --db hbs-aws-framework-dev --collection --drop articles --file articles.json
+mongoimport --db hbs-aws-framework-dev --collection categories --file categories.json --drop
+mongoimport --db hbs-aws-framework-dev --collection articles --file articles.json --drop
