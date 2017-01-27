@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var babel = require('gulp-babel');
 var sass = require('gulp-sass');
 var nodemon = require('gulp-nodemon');
 var concat = require('gulp-concat');  
@@ -103,17 +104,17 @@ gulp.task('styles', function() {
 });
 
 gulp.task('transpile', function() {
-    return gulp.src([
-        'public/js/main.js',
-        'public/js/demo.js'
-    ])
+    return gulp.src('public/js/src/*.js')
     .pipe(babel())
     .pipe(gulp.dest("public/js"));
 });
 
 //Watch task
 gulp.task('default',function() {
-    gulp.watch('sass/**/*.scss',['styles','transpile']);
+    gulp.watch([
+        'sass/**/*.scss',
+        'public/js/src/*.js'
+    ],['styles','transpile']);
     nodemon({
     	script: 'server.js', ext: 'js html hbs', env: { 'NODE_ENV': 'development' }
   });

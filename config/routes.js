@@ -33,8 +33,7 @@ module.exports  = function(app){
   categoriesRouter.get('/edit/:id',             categories.edit);
   categoriesRouter.post('/update/:id',          categories.update);
 
-  apiRouter.get('/staff/:num?',                  api.staff);
-  apiRouter.get('/student/:num?',                api.student);
+  apiRouter.get('/:resource/:num?',              api.resource);
 
   app.get('/', main.index);
 

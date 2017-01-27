@@ -12,9 +12,9 @@ module.exports = {
             .sort('title')
             .exec(function(err, articles) {
                 res.render('articles/index', {
-                    layout: 'main',
+                    layout: '2col',
                     articles: articles,
-                    page_title: 'Test',
+                    page_title: 'Manage Articles',
                     helpers: {
                         compare: helpers.compare,
                     }
@@ -23,7 +23,7 @@ module.exports = {
     },
 
     new: function(req, res, next) {
-        // Load associated categories to populate dropdown field.
+        // Load all categories to populate dropdown field.
         Category.find({}, function(err, categories) {
             if (err) return next(err);
             res.render('articles/new', {
@@ -58,6 +58,8 @@ module.exports = {
 
     create: function(req, res, next) {
 
+        console.log(req.body._category);
+
         var slug = req.body.title.toString().toLowerCase()
             .replace(/\s+/g, '-') // Replace spaces with -
             .replace(/[^\w\-]+/g, '') // Remove all non-word chars
@@ -81,22 +83,8 @@ module.exports = {
             fiddle: req.body.fiddle,
             published: req.body.published ? true : false
         }, function(err, article) {
-            if (err) {
-                return next(err);
-            } else {
-
-                Article.find(article)
-                    .populate('_category')
-                    .exec(function(err, article) {
-                        if (err) res.render('error', {
-                            flash: {
-                                error: 'Error populating category id into article :('
-                            }
-                        })
-                        res.redirect('/articles/'+article.slug);
-                    });
-            }
-
+            if(err) return next(err);
+            res.redirect('/articles/'+article.slug);
         });
     },
 

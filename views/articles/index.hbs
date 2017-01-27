@@ -1,17 +1,29 @@
-<ul class="list-group">
-	{{#articles}}
-	<li class="list-group-item">
-		<a href="/articles/{{slug}}#">{{title}}</a>
+{{> breadcrumbs this }}
+<div class="page-header p-1">
+	<div class="row">
+		<div class="col-xs-12">
+			<h2 class="display-4 text-truncated">{{page_title}}</h2>
+		</div>
+	</div>
+	<hr>
+</div>
 
-		<span class="float-xs-right">
-			<a href="/articles/edit/{{id}}#" class="btn"><i class="fa fa-edit"></i></a>
-			<form class="d-inline" action="/articles/destroy/{{id}}" method="post">
-				<button href="#" class="btn"><i class="fa fa-trash"></i></button>
-			</form>
-		</span>
+<div id="mainbody" class="m-2">
+	<ul class="list-group">
+		{{#articles}}
+		<li class="list-group-item">
+			<a href="/articles/{{slug}}#">{{title}}</a>
 
-	 </li>	
-	{{/articles}}
-</ul>
-<hr>
-<a class="btn btn-primary" href="/articles/new">New</a>
+			<span class="float-xs-right">
+				<a href="/articles/edit/{{id}}#" class="btn"><i class="fa fa-edit"></i></a>
+				<form class="d-inline" action="/articles/destroy/{{id}}" method="post">
+					<button href="#" class="btn"><i class="fa fa-trash"></i></button>
+				</form>
+			</span>
+
+		 </li>	
+		{{/articles}}
+	</ul>
+	<hr>
+	<a class="btn btn-primary" href="/articles/new">New</a>
+</div>

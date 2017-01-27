@@ -217,7 +217,18 @@
 				success: function success(data) {
 					data.forEach(function (item) {
 						console.log(item);
-						$('#results').append('\n\t\t\t\t\t\t\t<div class="col-md-3">\n\t\t\t\t\t\t\t    <div class="card">\n\t\t\t\t\t\t\t        <img class="card-img-top img-fluid" src="' + item.photo + '" alt="Photo">\n\t\t\t\t\t\t\t        <div class="card-block">\n\t\t\t\t\t\t\t            <h4 class="card-title text-truncate">' + item.first_name + ' ' + item.last_name + '</h4>\n\t\t\t\t\t\t\t            <p class="card-text">' + item.department + '</p><p class="card-text">' + item.phone + '</p>\n\t\t\t\t\t\t\t            <p class="card-text">' + item.email + '</p>\n\t\t\t\t\t\t\t        </div>\n\t\t\t\t\t\t\t    </div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t');
+						$('#results').append(`
+							<div class="col-md-3">
+							    <div class="card">
+							        <img class="card-img-top img-fluid" src="${item.photo}" alt="Photo">
+							        <div class="card-block">
+							            <h4 class="card-title text-truncate">${item.first_name} ${item.last_name}</h4>
+							            <p class="card-text">${item.department}</p><p class="card-text">${item.phone}</p>
+							            <p class="card-text">${item.email}</p>
+							        </div>
+							    </div>
+							</div>
+							`);
 					});
 				},
 				error: function error() {
@@ -225,60 +236,62 @@
 				}
 			});
 		},
-		maps: function maps() {
+		maps: function(){
 			$("#map1").googleMap({
-				zoom: 10,
-				coords: [42.365515, -71.122141],
-				type: "ROADMAP"
-			});
-			$("#map2").googleMap({
-				zoom: 10,
-				coords: [42.365515, -71.122141],
-				type: "SATELLITE"
-			});
-			$("#map3").googleMap({
-				zoom: 10,
-				coords: [42.365515, -71.122141],
-				type: "HYBRID"
-			});
-			$("#map4").googleMap({
-				zoom: 10,
-				coords: [42.365515, -71.122141],
-				type: "TERRAIN"
+		      	zoom: 10, 
+		      	coords: [42.365515, -71.122141], 
+		      	type: "ROADMAP"
+		    });
+		    $("#map2").googleMap({
+		      	zoom: 10, 
+		      	coords: [42.365515, -71.122141], 
+		      	type: "SATELLITE"
+		    });
+		    $("#map3").googleMap({
+		      	zoom: 10, 
+		      	coords: [42.365515, -71.122141], 
+		      	type: "HYBRID"
+		    });
+		    $("#map4").googleMap({
+		      	zoom: 10, 
+		      	coords: [42.365515, -71.122141], 
+		      	type: "TERRAIN"
+		    });
+
+		    $("#map5").googleMap();
+		    $("#map5").addMarker({
+		      	coords: [42.365515, -71.122141],
+		      	icon: '/images/branding/hbs-shield.svg', 
+		      	url: 'http://www.hbs.edu'
+		    });
+
+		    $("#map6").googleMap();
+		    $("#map6").addMarker({
+		      	coords: [42.365515, -71.122141], 
+		      	title: '<h4>Harvard Business School<h4>', 
+		      	text:  'test'
+		    });
+
+
+		    $("#map7").googleMap();
+		    $("#map7").addMarker({
+		    	 coords: [42.366704, -71.126751]
+		    });
+		    $("#map7").addMarker({
+		    	 coords: [42.362712, -71.128981]
+		    });
+		    $("#map7").addMarker({
+		        coords: [42.364077, -71.124182]
+		    });
+  
+		    $("#map8").googleMap();
+		    $("#map8").addWay({
+		    	start: "25 Travis St. Allston, MA",
+				end:  [42.374393, -71.116257],
+				route : 'way',
+				langage : 'english' 
 			});
 
-			$("#map5").googleMap();
-			$("#map5").addMarker({
-				coords: [42.365515, -71.122141],
-				icon: '/images/branding/hbs-shield.svg',
-				url: 'http://www.hbs.edu'
-			});
-
-			$("#map6").googleMap();
-			$("#map6").addMarker({
-				coords: [42.365515, -71.122141],
-				title: '<h4>Harvard Business School<h4>',
-				text: 'test'
-			});
-
-			$("#map7").googleMap();
-			$("#map7").addMarker({
-				coords: [42.366704, -71.126751]
-			});
-			$("#map7").addMarker({
-				coords: [42.362712, -71.128981]
-			});
-			$("#map7").addMarker({
-				coords: [42.364077, -71.124182]
-			});
-
-			$("#map8").googleMap();
-			$("#map8").addWay({
-				start: "25 Travis St. Allston, MA",
-				end: [42.374393, -71.116257],
-				route: 'way',
-				langage: 'english'
-			});
 		},
 		last: ''
 	};

@@ -4238,6 +4238,19 @@ div.dataTables_wrapper div.dataTables_filter input {
   margin-left: 0;
   width: 100%; }
 
+table.dataTable.dtr-column > tbody > tr > td.control:before, table.dataTable.dtr-column > tbody > tr > th.control:before {
+  background: black;
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
+  width: 30px;
+  height: 30px;
+  line-height: 30px !important;
+  margin-left: -18px; }
+
+table.dataTable.dtr-column > tbody > tr.parent td.control:before, table.dataTable.dtr-column > tbody > tr.parent th.control:before {
+  background: black; }
+
 /* Tabs */
 html {
   position: relative;
