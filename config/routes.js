@@ -35,6 +35,6 @@ module.exports  = function(app){
 
   apiRouter.get('/:resource/:num?',              api.resource);
 
-  app.get('/', main.index);
+  app.get('/:page?', main.index);
 
 };

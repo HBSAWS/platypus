@@ -7,31 +7,29 @@ var mongoose = require('mongoose'),
 module.exports = {
   index: function(req, res, next) {
 
-  	Category.find({slug: 'ui-components', published: true}, function(err, categories){
+    console.log(req.params.page);
+
+  	Category.findOne({slug: 'ui-components', published: true}, function(err, category){
       if(err) return next(err);
 
-		async.map(categories, function(category, done) {
-            Article.find({'_category': category._id})
-            .limit(28)
-            .sort('title')
-            .exec(function(err, articles) {
-                if (err) done(err);
-                var cat = category.toObject();
-                cat.articles = articles;
-                done(null, cat);         
-            });
-        }, function(err, result) {
-            if(err) return next(err);
-
-			// res.status(200).json(result);        
-            res.render('home', { 
-	    		categories: result,
-	      	    layout : 'home',
-	      	    helpers:  {
-                    grouped_each: helpers.grouped_each
-                }
-	    	});
-          
+            var page = req.params.page ? req.params.page : 1; 
+            var query = {_category: category._id};
+            var options = {
+              sort: { title: 'asc' },
+              populate: '_category',
+              lean: false,
+              page: page,
+              limit: 10
+            };
+            Article.paginate(query, options).then(function(articles) {
+                //res.status(200).json(articles.docs);
+                res.render('home', { 
+                        articles: articles,
+                	    layout : 'home',
+                	    helpers:  {
+                        grouped_each: helpers.grouped_each
+                    }
+                });
             });
         });
     }
