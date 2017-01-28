@@ -36,8 +36,9 @@
 		<hr>
 		
 		
+			<div id="component-container">
 		
-				total:{{articles.total}} | limit:{{ articles.limit}} | page:{{ articles.page}} | pages:{{ articles.pages}} 
+				
 				{{#grouped_each 4 articles.docs}}
 					<div class="card-deck">
 						{{#each this}}
@@ -59,7 +60,13 @@
 						{{/each}}
 					</div>
 				{{/grouped_each}}
-			
+
+			</div><!--/#component-container-->
+
+				
+			<div class="text-xs-center mt-2">
+				<a class="btn btn-primary loadmore" href="#" data-page="{{articles.page}}" data-pages="{{articles.pages}}">Show {{articles.limit}} more</a>
+			</div>
 			
 				
 

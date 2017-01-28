@@ -216,7 +216,7 @@
 			$.ajax('/api/staff/10', {
 				success: function success(data) {
 					data.forEach(function (item) {
-						console.log(item);
+						// console.log(item);
 						$('#results').append('\n\t\t\t\t\t\t\t<div class="col-md-3">\n\t\t\t\t\t\t\t    <div class="card">\n\t\t\t\t\t\t\t        <img class="card-img-top img-fluid" src="' + item.photo + '" alt="Photo">\n\t\t\t\t\t\t\t        <div class="card-block">\n\t\t\t\t\t\t\t            <h4 class="card-title text-truncate">' + item.first_name + ' ' + item.last_name + '</h4>\n\t\t\t\t\t\t\t            <p class="card-text">' + item.department + '</p><p class="card-text">' + item.phone + '</p>\n\t\t\t\t\t\t\t            <p class="card-text">' + item.email + '</p>\n\t\t\t\t\t\t\t        </div>\n\t\t\t\t\t\t\t    </div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t');
 					});
 				},
