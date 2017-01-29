@@ -239,7 +239,22 @@
 			});
 		},
 		wizard: function wizard() {
-			$('#myWizard').wizard();
+
+			var $wizard = $('#myWizard').wizard();
+			var $form = $wizard.closest('form');
+
+			$wizard.on('actionclicked.fu.wizard', function (evt, data) {
+				console.log("wiz action clicked");
+				if (data.direction === 'next' && !$form.parsley().validate('block' + data.step)) {
+					evt.preventDefault();
+					return;
+				}
+			});
+
+			$wizard.on('finished.fu.wizard', function (evt, data) {
+				$form.submit();
+				console.log("submit");
+			});
 		},
 		toasts: function toasts() {
 
@@ -550,6 +565,12 @@
 					// toastr.success('That\'s the end.');
 				}
 			});
+
+			window.onscroll = function (ev) {
+				if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+					console.log("You've reached the bottom of the page.");
+				}
+			};
 		},
 		last: ''
 	};
