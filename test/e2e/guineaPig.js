@@ -1,12 +1,16 @@
 var config = require('../../nightwatch.conf.BASIC.js');
 
-module.exports = { // adapted from: https://git.io/vodU0
-  'Test One': function(browser) {
+module.exports = { 
+  'Back to Top': function(browser) {
     browser
-      .url('https://saucelabs.com/test/guinea-pig')
-      .waitForElementVisible('body')
-      .assert.title('I am a page title - Sauce Labs')
-      .saveScreenshot('./test/guinea-pig-test.png')
-      .end();
+      	.url('http://localhost:3000/back-to-top')
+      	.waitForElementVisible('body')
+      	.execute('scrollTo(0,300)')
+      	.verify.elementPresent('a[id="back-to-top"]')
+      	.moveToElement('a[id="back-to-top"]', 0, 0)
+		.mouseButtonClick(0)
+		.assert.visible('h2')
+      	.saveScreenshot('./test/e2e/back-to-top/back-to-top.png')
+      	.end();
   }
 };
