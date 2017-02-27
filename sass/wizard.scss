@@ -1,0 +1,16 @@
+.wizard {
+	.steps {
+		li {
+			.badge {
+				padding: 0 5px;
+			}
+			&.active, 
+			&.complete {
+				.badge {
+					color: white;
+				}
+			
+			}
+		}
+	}
+}

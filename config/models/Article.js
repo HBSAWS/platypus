@@ -1,5 +1,6 @@
 var mongoose = require('mongoose'),
-  Schema = mongoose.Schema;
+    Schema = mongoose.Schema,
+    mongoosePaginate = require('mongoose-paginate');
 
 var articleSchema = new Schema({
 	_category       : { type: Schema.Types.ObjectId, ref: 'Category' },
@@ -20,5 +21,8 @@ var articleSchema = new Schema({
   },
   { timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' } 
 });
+
+articleSchema.plugin(mongoosePaginate);
+
 
 mongoose.model('Article', articleSchema);

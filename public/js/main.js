@@ -32,6 +32,7 @@
 			Platypus.externalLinks();
 			Platypus.getSpinnerOpts();
 			Platypus.searchPills();
+			Platypus.infiniteLoading();
 			Platypus.toolTip();
 			Platypus.toolTip();
 			Platypus.popOver();
@@ -238,7 +239,22 @@
 			});
 		},
 		wizard: function wizard() {
-			$('#myWizard').wizard();
+
+			var $wizard = $('#myWizard').wizard();
+			var $form = $wizard.closest('form');
+
+			$wizard.on('actionclicked.fu.wizard', function (evt, data) {
+				console.log("wiz action clicked");
+				if (data.direction === 'next' && !$form.parsley().validate('block' + data.step)) {
+					evt.preventDefault();
+					return;
+				}
+			});
+
+			$wizard.on('finished.fu.wizard', function (evt, data) {
+				$form.submit();
+				console.log("submit");
+			});
 		},
 		toasts: function toasts() {
 
@@ -513,6 +529,48 @@
 					showSpinner();
 				});
 			});
+		},
+		infiniteLoading: function infiniteLoading() {
+
+			$('.loadmore').click(function (e) {
+				e.preventDefault();
+
+				var page = parseInt($(this).data('page'));
+				var pages = parseInt($(this).data('pages'));
+				var nextPageUrl = 'loadmore/' + (page + 1);
+				$(this).data('page', page + 1);
+				$(this).attr('data-page', page + 1);
+
+				$.ajax(nextPageUrl, {
+					success: function success(data) {
+
+						data.docs.forEach(function (item, index) {
+
+							if (index === 0 || index % 4 === 0) {
+								$('#component-container').append('<div class="card-deck"></div>');
+							}
+
+							$('#component-container .card-deck:last-child').append('\t\t\t    \t\t\n\t\t\t\t    \t\t\t<div class="card">\n\t\t\t\t    \t\t\t\t<a href="/articles/' + item.slug + '">\n\t\t\t\t\t\t\t\t\t  \t<div class="palette-bg-teal-100 p-2">\n\t\t\t\t\t\t\t\t\t  \t\t<img class="card-img-top img-fluid" src="/images/ui-components-thumbs/' + item.slug + '.png" alt="Card image cap">\n\t\t\t\t\t\t\t\t\t  \t</div>\n\t\t\t\t\t\t\t\t\t  \t<div class="card-block">\n\t\t\t\t\t\t\t\t\t    \t<h4 class="card-title">' + item.title + '</h4>\n\t\t\t\t\t\t\t\t\t    \t<p class="card-text">' + item.intro + '</p>\n\t\t\t\t\t\t\t\t\t    \t\n\t\t\t\t\t\t\t\t\t  \t</div>\n\t\t\t\t\t\t\t\t    </a>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t    \t\t');
+						});
+
+						$('html, body').animate({ scrollTop: $(document).height() }, 'slow');
+					},
+					error: function error() {
+						swal('Error', 'Cannot retrieve sample data.', 'error');
+					}
+				});
+
+				if (page === pages - 1) {
+					$(this).hide();
+					// toastr.success('That\'s the end.');
+				}
+			});
+
+			window.onscroll = function (ev) {
+				if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+					console.log("You've reached the bottom of the page.");
+				}
+			};
 		},
 		last: ''
 	};

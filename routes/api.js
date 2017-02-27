@@ -190,6 +190,7 @@ module.exports = {
                     var future = _.sample([true, false]);
 
                     data.push({
+                        image: 'https://unsplash.it/1024/576?image='+i,
                         title: faker.lorem.words(2),
                         description: faker.lorem.sentences(5),
                         category: _.sample(['Planning', 'Meetings', 'Vacation', 'Personal']),

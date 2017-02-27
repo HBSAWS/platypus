@@ -33,8 +33,9 @@ module.exports  = function(app){
   categoriesRouter.get('/edit/:id',             categories.edit);
   categoriesRouter.post('/update/:id',          categories.update);
 
-  apiRouter.get('/:resource/:num?',              api.resource);
+  apiRouter.get('/:resource/:num?',             api.resource);
 
-  app.get('/', main.index);
+  app.get('/',                                  main.index);
+  app.get('/loadmore/:page?',                          main.loadmore);
 
 };

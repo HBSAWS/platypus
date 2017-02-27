@@ -32,6 +32,7 @@
 			Platypus.externalLinks();
 			Platypus.getSpinnerOpts();
 			Platypus.searchPills();
+			Platypus.infiniteLoading();
 			Platypus.toolTip();
 			Platypus.toolTip();
 			Platypus.popOver();
@@ -238,7 +239,24 @@
 			});
 		},
 		wizard: function wizard() {
-			$('#myWizard').wizard();
+			
+			var $wizard = $('#myWizard').wizard();
+			var $form = $wizard.closest('form');
+
+			$wizard.on('actionclicked.fu.wizard', function (evt, data) {
+				console.log("wiz action clicked");
+				if ( data.direction === 'next' && !$form.parsley().validate('block' + data.step) ) {
+					evt.preventDefault();
+					return;
+				}
+			});
+
+			$wizard.on('finished.fu.wizard', function (evt, data) {
+				$form.submit();
+				console.log("submit");
+			});
+
+
 		},
 		toasts: function toasts() {
 
@@ -535,6 +553,64 @@
 					showSpinner();
 				});
 			});
+		},
+		infiniteLoading: function(){
+			
+			$('.loadmore').click(function(e){
+				e.preventDefault();
+
+				var page = parseInt($(this).data('page'));
+				var pages = parseInt($(this).data('pages'));
+				var nextPageUrl = 'loadmore/'+ (page+1);
+				$(this).data('page', page+1);
+				$(this).attr('data-page', page+1);
+
+				$.ajax(nextPageUrl, {
+					success: function success(data) {
+
+				    	data.docs.forEach(function(item, index){
+
+				    		if(index === 0 || index % 4 === 0) {
+				    			$('#component-container').append(`<div class="card-deck"></div>`)
+				    		}
+
+							$('#component-container .card-deck:last-child').append(`			    		
+				    			<div class="card">
+				    				<a href="/articles/${item.slug}">
+									  	<div class="palette-bg-teal-100 p-2">
+									  		<img class="card-img-top img-fluid" src="/images/ui-components-thumbs/${item.slug}.png" alt="Card image cap">
+									  	</div>
+									  	<div class="card-block">
+									    	<h4 class="card-title">${item.title}</h4>
+									    	<p class="card-text">${item.intro}</p>
+									    	
+									  	</div>
+								    </a>
+								</div>
+				    		`);
+				    	});
+			    
+			    		$('html, body').animate({scrollTop:$(document).height()}, 'slow');
+
+					},
+					error: function error() {
+						swal('Error', 'Cannot retrieve sample data.', 'error');
+					}
+				});
+
+				if( page === pages-1 ) {
+					$(this).hide();
+					// toastr.success('That\'s the end.');
+				}
+			});
+
+
+			window.onscroll = function(ev) {
+			    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+			        console.log("You've reached the bottom of the page.");
+			    }
+			};
+
 		},
 		last: ''
 	};

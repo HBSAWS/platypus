@@ -216,7 +216,7 @@
 			$.ajax('/api/staff/10', {
 				success: function success(data) {
 					data.forEach(function (item) {
-						console.log(item);
+						// console.log(item);
 						$('#results').append(`
 							<div class="col-md-3">
 							    <div class="card">
