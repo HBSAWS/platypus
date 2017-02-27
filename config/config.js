@@ -31,8 +31,8 @@ module.exports = function(app, envConfig){
         extended: true
     }));
 
+    app.use(express.static(path.join(envConfig.rootPath, 'test/e2e')));
     app.use(express.static(path.join(envConfig.rootPath, 'public')));
-
 
     app.use(function(req, res, next) {
         Category.find({})
