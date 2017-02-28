@@ -12,7 +12,7 @@ var gulp = require('gulp'),
     gutil = require('gulp-load-utils')(['env', 'date', 'colors']);
 
 var opts = {
-    // destCDN: ( process.platform === 'darwin' ) ? '/Volumes/nas-prd/prod_webfarm/htdocs/securelib/static/libs/platypus/1.0' : '\\\\nas-prd\\prod_webfarm\\htdocs\\securelib\\static\\libs\\platypus\\1.0',
+    destCDN: ( process.platform === 'darwin' ) ? '/Volumes/prod_webfarm/htdocs/securelib/static/libs/platypus/1.0' : '\\\\nas-prd\\prod_webfarm\\htdocs\\securelib\\static\\libs\\platypus\\1.0',
     dist: './dist',
     jsFiles : [
         'public/vendor/jquery/jquery.min.js',
@@ -113,6 +113,19 @@ gulp.task('transpile', function() {
     .pipe(gulp.dest("public/js"));
 });
 
+gulp.task('copy:cdn', function () {
+    var stream = gulp.src([
+            opts.dist + '/*.js', 
+            opts.dist + '/*.css'
+        ])
+        .pipe(plumber({errorHandler: reportError}))
+        .pipe(gulp.dest( opts.destCDN ));
+    return stream;
+});
+
+gulp.task('deploy:cdn', ['copy:cdn'], function () {
+    gulp.start('copy:cdn');
+});
 
 //Watch task
 gulp.task('default',function() {
@@ -123,7 +136,7 @@ gulp.task('default',function() {
         'sass/**/*.scss',
         'public/js/src/*.js'
     ], function() {
-        runSequence('styles','transpile');
+        runSequence('styles','transpile', 'deploy:cdn');
     }).on('change',log);
 
     nodemon({
