@@ -4215,6 +4215,12 @@ body.canvas-slid .fa.fa-navicon::before {
 .slick-dots li button::before {
   font-size: 10px; }
 
+.carousel {
+  display: none; }
+
+.carousel.slick-initialized {
+  display: block; }
+
 .gallery a {
   font-size: 0; }
 
