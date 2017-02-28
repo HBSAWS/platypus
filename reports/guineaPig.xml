@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="1"
+            failures="0"
+            tests="1">
+
+  <testsuite name="guineaPig"
+    errors="1" failures="0" hostname="" id="" package="guineaPig" skipped="0"
+    tests="1" time="0.01200" timestamp="Mon, 27 Feb 2017 21:57:18 GMT">
+  
+    <testcase name="Back to Top" time="0.01200" assertions="0">
+    </testcase>
+      <system-err>
+          Error while running [Guinea Pig / Back to Top]:
+
+  TypeError: browser.url(...).waitForElementVisible(...).execute(...).verify.elementPresent(...).moveToElement(...).mouseButtonClick(...).expect.element(...).to.be.visible.saveScreenshot is not a function
+    at Object.Back to Top (/Users/rsilva/Desktop/platypus/test/e2e/guineaPig.js:13:9)
+    at Module.call (/Users/rsilva/Desktop/platypus/node_modules/nightwatch/lib/runner/module.js:62:34)
+    at /Users/rsilva/Desktop/platypus/node_modules/nightwatch/lib/runner/testcase.js:70:29
+    at _fulfilled (/Users/rsilva/Desktop/platypus/node_modules/q/q.js:834:54)
+    at self.promiseDispatch.done (/Users/rsilva/Desktop/platypus/node_modules/q/q.js:863:30)
+    at Promise.promise.promiseDispatch (/Users/rsilva/Desktop/platypus/node_modules/q/q.js:796:13)
+    at /Users/rsilva/Desktop/platypus/node_modules/q/q.js:556:49
+    at runSingle (/Users/rsilva/Desktop/platypus/node_modules/q/q.js:137:13)
+    at flush (/Users/rsilva/Desktop/platypus/node_modules/q/q.js:125:13)
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+      </system-err>
+  
+  
+  </testsuite>
+</testsuites>

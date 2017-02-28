@@ -1,31 +1,43 @@
-15:54:15.072 INFO - Launching a standalone Selenium Server
-15:54:15.105 INFO - Java: Oracle Corporation 25.121-b13
-15:54:15.105 INFO - OS: Mac OS X 10.11.6 x86_64
-15:54:15.117 INFO - v2.53.0, with Core v2.53.0. Built from revision 35ae25b
-15:54:15.176 INFO - Driver provider org.openqa.selenium.ie.InternetExplorerDriver registration is skipped:
+17:00:34.198 INFO - Launching a standalone Selenium Server
+17:00:34.241 INFO - Java: Oracle Corporation 25.121-b13
+17:00:34.241 INFO - OS: Mac OS X 10.11.6 x86_64
+17:00:34.258 INFO - v2.53.0, with Core v2.53.0. Built from revision 35ae25b
+17:00:34.329 INFO - Driver provider org.openqa.selenium.ie.InternetExplorerDriver registration is skipped:
 registration capabilities Capabilities [{ensureCleanSession=true, browserName=internet explorer, version=, platform=WINDOWS}] does not match the current platform MAC
-15:54:15.177 INFO - Driver provider org.openqa.selenium.edge.EdgeDriver registration is skipped:
+17:00:34.330 INFO - Driver provider org.openqa.selenium.edge.EdgeDriver registration is skipped:
 registration capabilities Capabilities [{browserName=MicrosoftEdge, version=, platform=WINDOWS}] does not match the current platform MAC
-15:54:15.177 INFO - Driver class not found: com.opera.core.systems.OperaDriver
-15:54:15.177 INFO - Driver provider com.opera.core.systems.OperaDriver is not registered
-15:54:15.179 INFO - Driver class not found: org.openqa.selenium.htmlunit.HtmlUnitDriver
-15:54:15.179 INFO - Driver provider org.openqa.selenium.htmlunit.HtmlUnitDriver is not registered
-15:54:15.253 INFO - RemoteWebDriver instances should connect to: http://127.0.0.1:4444/wd/hub
-15:54:15.253 INFO - Selenium Server is up and running
-15:54:15.502 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, name=Guinea Pig, browserName=chrome, javascriptEnabled=true, platform=ANY}]])
-15:54:15.511 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, name=Guinea Pig, browserName=chrome, javascriptEnabled=true, platform=ANY}]
-Starting ChromeDriver 2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9) on port 15498
+17:00:34.330 INFO - Driver class not found: com.opera.core.systems.OperaDriver
+17:00:34.330 INFO - Driver provider com.opera.core.systems.OperaDriver is not registered
+17:00:34.332 INFO - Driver class not found: org.openqa.selenium.htmlunit.HtmlUnitDriver
+17:00:34.332 INFO - Driver provider org.openqa.selenium.htmlunit.HtmlUnitDriver is not registered
+17:00:34.434 INFO - RemoteWebDriver instances should connect to: http://127.0.0.1:4444/wd/hub
+17:00:34.434 INFO - Selenium Server is up and running
+17:00:34.715 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, name=Guinea Pig, browserName=chrome, javascriptEnabled=true, platform=ANY}]])
+17:00:34.725 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, name=Guinea Pig, browserName=chrome, javascriptEnabled=true, platform=ANY}]
+Starting ChromeDriver 2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9) on port 25243
 Only local connections are allowed.
-15:54:16.853 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, name=Guinea Pig, browserName=chrome, javascriptEnabled=true, platform=ANY}]]
-15:54:16.871 INFO - Executing: [get: https://saucelabs.com/test/guinea-pig])
-15:54:17.409 INFO - Done: [get: https://saucelabs.com/test/guinea-pig]
-15:54:17.423 INFO - Executing: [find elements: By.cssSelector: body])
-15:54:17.483 INFO - Done: [find elements: By.cssSelector: body]
-15:54:17.490 INFO - Executing: [is displayed: 0 [[ChromeDriver: chrome on MAC (d9f8fb68af98598db04be3416c0ccd1e)] -> css selector: body]])
-15:54:17.518 INFO - Done: [is displayed: 0 [[ChromeDriver: chrome on MAC (d9f8fb68af98598db04be3416c0ccd1e)] -> css selector: body]]
-15:54:17.524 INFO - Executing: [get title])
-15:54:17.531 INFO - Done: [get title]
-15:54:17.535 INFO - Executing: [take screenshot])
-15:54:17.875 INFO - Done: [take screenshot]
-15:54:17.889 INFO - Executing: [delete session: 2234d3db-17be-475c-a388-931f3ea80d45])
-15:54:17.991 INFO - Done: [delete session: 2234d3db-17be-475c-a388-931f3ea80d45]
+17:00:36.479 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, name=Guinea Pig, browserName=chrome, javascriptEnabled=true, platform=ANY}]]
+17:00:36.499 INFO - Executing: [get: http://localhost:3000/back-to-top])
+17:00:38.247 INFO - Done: [get: http://localhost:3000/back-to-top]
+17:00:38.264 INFO - Executing: [find elements: By.cssSelector: body])
+17:00:38.363 INFO - Done: [find elements: By.cssSelector: body]
+17:00:38.370 INFO - Executing: [is displayed: 0 [[ChromeDriver: chrome on MAC (0aa3e2e96ffea1de1b3d1de748fe725b)] -> css selector: body]])
+17:00:38.417 INFO - Done: [is displayed: 0 [[ChromeDriver: chrome on MAC (0aa3e2e96ffea1de1b3d1de748fe725b)] -> css selector: body]]
+17:00:38.423 INFO - Executing: [execute script: scrollTo(0,300), []])
+17:00:38.490 INFO - Done: [execute script: scrollTo(0,300), []]
+17:00:38.498 INFO - Executing: [find elements: By.cssSelector: a[id="back-to-top"]])
+17:00:38.549 INFO - Done: [find elements: By.cssSelector: a[id="back-to-top"]]
+17:00:38.559 INFO - Executing: [find element: By.cssSelector: a[id="back-to-top"]])
+17:00:38.590 INFO - Done: [find element: By.cssSelector: a[id="back-to-top"]]
+17:00:38.603 INFO - Executing: [mousemove: 1 true])
+17:00:38.645 INFO - Done: [mousemove: 1 true]
+17:00:38.652 INFO - Executing: [click: nothing])
+17:00:38.664 INFO - Done: [click: nothing]
+17:00:38.673 INFO - Executing: [find element: By.cssSelector: h2])
+17:00:38.721 INFO - Done: [find element: By.cssSelector: h2]
+17:00:38.734 INFO - Executing: [is displayed: 2 [[ChromeDriver: chrome on MAC (0aa3e2e96ffea1de1b3d1de748fe725b)] -> css selector: h2]])
+17:00:38.768 INFO - Done: [is displayed: 2 [[ChromeDriver: chrome on MAC (0aa3e2e96ffea1de1b3d1de748fe725b)] -> css selector: h2]]
+17:00:38.774 INFO - Executing: [take screenshot])
+17:00:39.168 INFO - Done: [take screenshot]
+17:00:39.213 INFO - Executing: [delete session: 1e2ad1ad-f9cc-4bac-93fe-526d7cb68ce5])
+17:00:39.400 INFO - Done: [delete session: 1e2ad1ad-f9cc-4bac-93fe-526d7cb68ce5]

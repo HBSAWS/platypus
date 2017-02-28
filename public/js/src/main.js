@@ -49,7 +49,6 @@
 			});
 		},
 		backToTop: function backToTop() {
-			//$('.container-fluid').append('<a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button" title="Return to the top" data-toggle="tooltip" data-placement="left"><span class="fa fa-chevron-up"></span></a>')
 			$(window).scroll(function () {
 				if ($(this).scrollTop() > 50) {
 					$('#back-to-top').fadeIn();
@@ -64,7 +63,6 @@
 				}, 800);
 				return false;
 			});
-			//$('#back-to-top').tooltip('show');
 		},
 		highlightJS: function highlightJS() {
 			$('pre code').each(function (i, e) {
