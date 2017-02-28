@@ -36,6 +36,7 @@
   "devDependencies": {
     "babel-preset-env": "^1.1.8",
     "gulp-clean-css": "^2.0.13",
+    "gulp-nightwatch": "^0.3.2",
     "selenium-download": "^2.0.9"
   },
   "repository": {

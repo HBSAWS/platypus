@@ -9,6 +9,7 @@ var gulp = require('gulp'),
     runSequence = require('run-sequence'),
     uglify = require('gulp-uglify'),  
     cleanCSS = require('gulp-clean-css'),
+    nightwatch = require('gulp-nightwatch'),
     gutil = require('gulp-load-utils')(['env', 'date', 'colors']);
 
 var opts = {
@@ -125,6 +126,15 @@ gulp.task('copy:cdn', function () {
 
 gulp.task('deploy:cdn', ['copy:cdn'], function () {
     gulp.start('copy:cdn');
+});
+
+
+gulp.task('nightwatch:chrome', function(){
+  return gulp.src('')
+    .pipe(nightwatch({
+      configFile: './nightwatch.conf.BASIC.js',
+      //cliArgs: [ '--env chrome', '--tag sandbox' ]
+    }));
 });
 
 //Watch task
