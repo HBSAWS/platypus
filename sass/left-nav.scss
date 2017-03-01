@@ -3,9 +3,19 @@ aside[style] {
     width: 100% !important; // overrides slimScroll
 }
 
+.hbs-logo {
+    text-align: center;
+    img {
+        display: inline-block;
+        margin: 10px auto;
+        width: 100px;
+    }
+}
+
 body.canvas-slid .fa.fa-navicon::before {
     content: '\f00d';
 }
+
 
 .sidebar {
     display: block;

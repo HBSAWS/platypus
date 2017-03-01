@@ -4132,6 +4132,13 @@ span.btn-label.btn-label-right {
 aside[style] {
   width: 100% !important; }
 
+.hbs-logo {
+  text-align: center; }
+  .hbs-logo img {
+    display: inline-block;
+    margin: 10px auto;
+    width: 100px; }
+
 body.canvas-slid .fa.fa-navicon::before {
   content: '\f00d'; }
 
@@ -4223,6 +4230,13 @@ body.canvas-slid .fa.fa-navicon::before {
 
 .gallery a {
   font-size: 0; }
+
+header a.hbs-logo img {
+  position: absolute;
+  z-index: 1;
+  width: 41px;
+  top: -13px;
+  shape-rendering: auto; }
 
 /* DataTables */
 div.dataTables_wrapper div.dataTables_filter {
