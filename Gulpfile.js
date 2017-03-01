@@ -133,9 +133,26 @@ gulp.task('nightwatch:chrome', function(){
   return gulp.src('')
     .pipe(nightwatch({
       configFile: './nightwatch.conf.BASIC.js',
-      //cliArgs: [ '--env chrome', '--tag sandbox' ]
+        cliArgs: [ '--env chrome' ]
     }));
 });
+
+gulp.task('nightwatch:firefox', function(){
+  return gulp.src('')
+    .pipe(nightwatch({
+      configFile: './nightwatch.conf.BASIC.js',
+        cliArgs: [ '--env firefox' ]
+    }));
+});
+
+gulp.task('nightwatch:safari', function(){
+  return gulp.src('')
+    .pipe(nightwatch({
+      configFile: './nightwatch.conf.BASIC.js',
+        cliArgs: [ '--env safari' ]
+    }));
+});
+
 
 //Watch task
 gulp.task('default',function() {
