@@ -199,4 +199,31 @@ module.exports = {
             });
     },
 
+    version: function(req, res, next) {
+
+        // set initial version
+        // Article.update({}, { version: '0.1' }, { multi: true }, function (err, raw) {
+        //     if (err) return next(err);
+        //     console.log(raw);
+        //     res.redirect('/articles');
+        // });
+        
+        Article.find({'version': req.params.from})
+        .exec(function(err, doc){
+
+            // console.log(doc);
+
+            doc.forEach(function(y){
+                var copy = y;
+                //copy._id = mongoose.Types.ObjectId();
+                copy.version = req.params.to;
+                copy.isNew = true;  // <- important
+                copy.save();
+            });
+
+            res.redirect('/articles');
+
+        });
+    },
+
 };

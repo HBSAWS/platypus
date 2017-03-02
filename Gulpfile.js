@@ -128,7 +128,7 @@ gulp.task('deploy:cdn', ['copy:cdn'], function () {
     gulp.start('copy:cdn');
 });
 
-
+// Test Tasks
 gulp.task('nightwatch:chrome', function(){
   return gulp.src('')
     .pipe(nightwatch({
@@ -161,9 +161,10 @@ gulp.task('default',function() {
 
     gulp.watch([
         'sass/**/*.scss',
-        'public/js/src/*.js'
+        'public/js/src/*.js',
+        'views/**/*.hbs'
     ], function() {
-        runSequence('styles','transpile', 'deploy:cdn');
+        runSequence('styles','transpile', 'css', 'js');
     }).on('change',log);
 
     nodemon({

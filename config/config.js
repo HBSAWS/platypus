@@ -56,6 +56,10 @@ module.exports = function(app, envConfig){
                 return next();
             })
         });
+
+        console.log("################### Setting Globals ###################")
+        res.locals.versions = ['0.1', '0.2', '0.3', '0.4'];
+        res.locals.current = "0.2";
         
     });
 

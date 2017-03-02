@@ -2,27 +2,13 @@ var mongoose = require('mongoose'),
 	Category = mongoose.model('Category'),
 	Article = mongoose.model('Article'),
 	async = require('async'),
-    helpers = require('../config/handlebar-helpers.js').helpers;
+  helpers = require('../config/handlebar-helpers.js').helpers;
 
 module.exports = {
     index: function(req, res, next) {
 
       	Category.findOne({slug: 'ui-components', published: true}, function(err, category){
             if(err) return next(err);
-
-            // Article.find({_category: category._id})
-            // .sort('title')
-            // .limit(8)
-            // .exec(function(err, articles) {
-            //     if(err) return next(err);
-            //     res.render('home', { 
-            //             articles: articles,
-            //     	    layout : 'home',
-            //     	    helpers:  {
-            //             grouped_each: helpers.grouped_each
-            //         }
-            //     });
-            // });
 
             var query = {_category: category._id};
                 var options = {

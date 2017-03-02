@@ -4,6 +4,14 @@
         <img class="mx-auto" src="/images/branding/hbs-shield.svg" alt="">
     </a>
     
+    <div class="p-1">
+        <select class="form-control p-1">
+            {{#versions}}
+                <option value="{{.}}" {{#compare . ../current}}selected{{/compare}}>{{.}}</option>
+            {{/versions}}
+        </select>
+    </div>
+
     <nav class="sidebar-nav">
         <ul class="metismenu">
 

@@ -17,7 +17,8 @@ var articleSchema = new Schema({
     js              : { type: String },
     tested_on       : { type: Array },
     fiddle	        : { type: String },
-    published       : { type: Boolean }
+    published       : { type: Boolean },
+    version         : { type: String }
   },
   { timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' } 
 });

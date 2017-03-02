@@ -12531,34 +12531,24 @@ e}},showLayout:function(){if(!this.container.hasClass("result")&&(this.result.le
 			});
 		},
 		dataTables: function dataTables() {
-
-			$.ajax('/api/student/100', {
-				success: function success(data) {
-					data.forEach(function (item) {
-						//console.log(item);
-						$('table.datatable tbody').append('\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<td class="text-nowrap"><img src="' + item.photo + '" class="img-fluid"></td>\n\t\t\t\t\t\t\t<td class="text-nowrap">' + item.first_name + '</td>\n\t\t\t\t\t\t\t<td class="text-nowrap">' + item.last_name + '</td>\n\t\t\t\t\t\t\t<td class="text-nowrap">' + item.interests + '</td>\n\t\t\t\t\t\t\t<td class="text-nowrap">' + item.year + '</td>\n\t\t\t\t\t\t\t<td class="text-nowrap">' + item.section + '</td>\n\t\t\t\t\t\t\t<td class="text-nowrap">' + item.phone + '</td>\n\t\t\t\t\t\t\t<td class="text-nowrap">' + item.email + '</td>\n\t\t\t\t\t\t\t<td class="text-nowrap"></td>\n\t\t\t\t\t\t</tr>');
-					});
-
-					$('.datatable').DataTable({
-						responsive: {
-							details: {
-								type: 'column',
-								target: -1
-							}
-						},
-						columnDefs: [{ className: 'control', orderable: false, targets: -1 }],
-						dom: "<'row'<'col-xs-11 text-xs-left'f><'col-xs-1 text-xs-right'l>>" + "<'row'<'col-xs-12'tr>>" + "<'row'<'col-xs-6'i><'col-xs-6'p>>",
-						"oLanguage": {
-							sSearch: "",
-							sSearchPlaceholder: "Filter records",
-							sLengthMenu: "_MENU_"
-						}
-					});
+			// Global settings for all datatables
+			$.extend(true, $.fn.dataTable.defaults, {
+				responsive: {
+					details: {
+						type: 'column',
+						target: -1
+					}
 				},
-				error: function error() {
-					swal('Error', 'Cannot retrieve sample data.', 'error');
+				columnDefs: [{ className: 'control', orderable: false, targets: -1 }],
+				dom: "<'row'<'col-xs-11 text-xs-left'f><'col-xs-1 text-xs-right'l>>" + "<'row'<'col-xs-12'tr>>" + "<'row'<'col-xs-6'i><'col-xs-6'p>>",
+				"oLanguage": {
+					sSearch: "",
+					sSearchPlaceholder: "Filter records",
+					sLengthMenu: "_MENU_"
 				}
 			});
+
+			$('.datatable').DataTable();
 		},
 		toolTip: function toolTip() {
 			$('[data-toggle="tooltip"]').tooltip();
