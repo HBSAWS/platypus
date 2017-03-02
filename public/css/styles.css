@@ -4137,7 +4137,8 @@ aside[style] {
   .hbs-logo img {
     display: inline-block;
     margin: 10px auto;
-    width: 100px; }
+    width: 100px;
+    shape-rendering: auto; }
 
 body.canvas-slid .fa.fa-navicon::before {
   content: '\f00d'; }
