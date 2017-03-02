@@ -137,19 +137,19 @@ gulp.task('nightwatch:chrome', function(){
     }));
 });
 
-gulp.task('nightwatch:firefox', function(){
-  return gulp.src('')
-    .pipe(nightwatch({
-      configFile: './nightwatch.conf.BASIC.js',
-        cliArgs: [ '--env firefox' ]
-    }));
-});
-
 gulp.task('nightwatch:safari', function(){
   return gulp.src('')
     .pipe(nightwatch({
       configFile: './nightwatch.conf.BASIC.js',
         cliArgs: [ '--env safari' ]
+    }));
+});
+
+gulp.task('nightwatch:ie', function(){
+  return gulp.src('')
+    .pipe(nightwatch({
+      configFile: './nightwatch.conf.BASIC.js',
+        cliArgs: [ '--env ie' ]
     }));
 });
 
