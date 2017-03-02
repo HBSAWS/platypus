@@ -1,4 +1,4 @@
-git r// https://github.com/dwyl/learn-nightwatch
+// https://github.com/dwyl/learn-nightwatch
 const SCREENSHOT_PATH = "./test/screenshots";
 const BINPATH = './node_modules/nightwatch/bin/';
 
