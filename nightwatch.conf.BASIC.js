@@ -15,7 +15,7 @@ module.exports = {
         "port": 4444, // standard selenium port
         "cli_args": { // chromedriver is downloaded by selenium-download (see readme)
             "webdriver.chrome.driver": "./node_modules/nightwatch/bin/chromedriver",
-            "webdriver.edge.driver" : "./node_modules/nightwatch/bin/IEDriverServer.exe"
+            "webdriver.ie.driver" : "./node_modules/nightwatch/bin/IEDriverServer.exe"
             // Safari: download extension here: http://selenium-release.storage.googleapis.com/index.html?path=2.48/
 
         }
