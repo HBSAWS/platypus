@@ -132,7 +132,7 @@ gulp.task('deploy:cdn', ['copy:cdn'], function () {
 gulp.task('nightwatch:chrome', function(){
   return gulp.src('')
     .pipe(nightwatch({
-      configFile: './nightwatch.conf.BASIC.js',
+      configFile: './nightwatch.conf.js',
         cliArgs: [ '--env chrome' ]
     }));
 });
@@ -140,7 +140,7 @@ gulp.task('nightwatch:chrome', function(){
 gulp.task('nightwatch:safari', function(){
   return gulp.src('')
     .pipe(nightwatch({
-      configFile: './nightwatch.conf.BASIC.js',
+      configFile: './nightwatch.conf.js',
         cliArgs: [ '--env safari' ]
     }));
 });
@@ -148,7 +148,7 @@ gulp.task('nightwatch:safari', function(){
 gulp.task('nightwatch:ie', function(){
   return gulp.src('')
     .pipe(nightwatch({
-      configFile: './nightwatch.conf.BASIC.js',
+      configFile: './nightwatch.conf.js',
         cliArgs: [ '--env ie' ]
     }));
 });
