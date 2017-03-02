@@ -34,8 +34,10 @@ module.exports = {
             "globals": {
                 "waitForConditionTimeout": 5000, // sometimes internet is slow so wait.
                 "javascriptEnabled": true,
-                "acceptSslCerts": true
-
+                "acceptSslCerts": true,
+                "beforeEach": function (browser, done) {
+                        browser.resizeWindow(1280, 800, done);
+                }
             },
             "desiredCapabilities": { // use Chrome as the default browser for tests
                 "browserName": "chrome"

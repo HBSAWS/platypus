@@ -10,9 +10,15 @@ cd platypus && sudo npm install
 ```
 
 ## Running the App
+```shell
+gulp  
+```
 Go to [http://localhost:3000](http://localhost:3000)
 
 **TODO**: Import db dump
+
+## Building
+TODO
 
 ## Testing
 Platypus is setup to use Selenium 2.5.3 for end-to-end testing. The standalone version of Selenium will be automatically downloaded and installed during the node package installation. 

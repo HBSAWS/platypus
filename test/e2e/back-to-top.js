@@ -1,4 +1,4 @@
-var config = require('../../nightwatch.conf.BASIC.js');
+var config = require('../../nightwatch.conf.js');
 
 module.exports = { 
   'Back to Top': function(browser) {

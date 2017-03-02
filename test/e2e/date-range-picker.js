@@ -1,4 +1,4 @@
-var config = require('../../nightwatch.conf.BASIC.js');
+var config = require('../../nightwatch.conf.js');
 
 module.exports = { 
   'Date Range Picker': function(browser) {
