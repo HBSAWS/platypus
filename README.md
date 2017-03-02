@@ -21,9 +21,20 @@ Platypus is setup to use Selenium 2.5.3 for end-to-end testing. The standalone v
 ```shell
 gulp nightwatch:<<browser>> 
 ```
-Available browsers: 'chrome', 'safari'*
+Available browsers: 'chrome', 'safari'*, 'ie'*
 
+##### Safari Setup:
 * Safari requires this [browser extension](http://selenium-release.storage.googleapis.com/index.html?path=2.48/)
+
+##### IE Setup:
+Download the driver [here](http://selenium-release.storage.googleapis.com/index.html?path=2.48/)
+Unzip and save the executable as ./node_modules/nightwatch/bin/IEDriverServer.exe
+
+IE requires the following configuration:
+* Go to Tools > Internet Options > Security
+* Set all zones (Internet, Local intranet, Trusted sites, Restricted sites) to the same protected mode, enabled or disabled should not matter.
+* Finally, set Zoom level to 100% by right clicking on the gear located at the top right corner and enabling the status-bar. Default zoom level is now displayed at the lower right.
+
 
 ## Questions?
 Contact [Rob Silva](mailto:rsilva@hbs.edu)  

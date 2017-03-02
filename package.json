@@ -1,5 +1,5 @@
 {
-  "name": "framework",
+  "name": "platypus",
   "version": "1.0.0",
   "description": "HBS AWS Framework",
   "main": "index.js",

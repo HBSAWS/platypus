@@ -15,6 +15,8 @@ module.exports = {
         "port": 4444, // standard selenium port
         "cli_args": { // chromedriver is downloaded by selenium-download (see readme)
             "webdriver.chrome.driver": "./node_modules/nightwatch/bin/chromedriver",
+            // IE: download the 32 or 64bit versio of the driver from: http://selenium-release.storage.googleapis.com/index.html?path=2.48/
+            // Gotchas: http://heliumhq.com/docs/internet_explorer
             "webdriver.ie.driver" : "./node_modules/nightwatch/bin/IEDriverServer.exe"
             // Safari: download extension here: http://selenium-release.storage.googleapis.com/index.html?path=2.48/
 
@@ -22,7 +24,7 @@ module.exports = {
     },
     "test_settings": {
         "default": {
-            "silent": false,
+            "silent": true,
             "screenshots": {
                 "enabled": true, // if you want to keep screenshots
                 "on_failure": true,
