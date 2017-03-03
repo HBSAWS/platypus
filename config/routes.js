@@ -15,17 +15,19 @@ module.exports  = function(app){
     app.use('/categories',  categoriesRouter);    
     app.use('/api',         apiRouter);  	
 
-    articlesRouter.get('/',                       articles.index);
+    articlesRouter.get('/:version?',              articles.index);
     articlesRouter.get('/new',                    articles.new);
     articlesRouter.post('/create',                articles.create);
-    articlesRouter.get('/search/:cat_slug',       articles.search);
-    articlesRouter.get('/mock/:slug/:viewport',   articles.mock);
-    articlesRouter.get('/:slug/:version?',        articles.show);
+    articlesRouter.get('/version/set/:ver',       articles.version_set);
+    articlesRouter.get('/version/del/:ver'  ,     articles.version_del);
+    articlesRouter.get('/version/cp/:from/:to',   articles.version_cp);
     articlesRouter.post('/destroy/:id',           articles.destroy);
     articlesRouter.get('/edit/:id',               articles.edit);
     articlesRouter.post('/update/:id',            articles.update);
-    articlesRouter.get('/version/:from/:to',      articles.version);
-
+    articlesRouter.get('/search/:cat_slug',       articles.search);
+    articlesRouter.get('/mock/:slug/:viewport',   articles.mock);
+    articlesRouter.get('/:slug/:version?',        articles.show);
+    
     categoriesRouter.get('/',                     categories.index);
     categoriesRouter.get('/new',                  categories.new);
     categoriesRouter.post('/create',              categories.create);

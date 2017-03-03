@@ -46,6 +46,17 @@ Then, open IE and set "Protected Mode" ON for all zones:
 * Set all zones (Internet, Local intranet, Trusted sites, Restricted sites) to the same protected mode, enabled or disabled should not matter.
 * Finally, set Zoom level to 100% by right clicking on the gear located at the top right corner and enabling the status-bar. Default zoom level is now displayed at the lower right.
 
+## Versioning
+To set the default version of documentation, simply change the local variable 'current' in /config/config.js
+```javascript
+res.locals.current = "0.1";
+```
+Versioning documents:
+```javascript
+[GET] /articles/set/:ver // Sets initial version on (all documents)
+[GET] /articles/del/:ver // Deletes all documents with specific version
+[GET] /articles/cp/:from/:to // copy all documents matching :from, updating version tag to :to
+````
 
 ## Questions?
 Contact [Rob Silva](mailto:rsilva@hbs.edu)  

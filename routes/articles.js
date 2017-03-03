@@ -8,13 +8,18 @@ var mongoose = require('mongoose'),
 module.exports = {
 
     index: function(req, res, next) {
-        Article.find({})
+
+        var version = (req.params.version && req.params.version != '') ? req.params.version : res.locals.current
+        
+        Article.find({
+                version: version
+            })
             .sort('title')
             .exec(function(err, articles) {
                 res.render('articles/index', {
                     layout: '2col',
                     articles: articles,
-                    page_title: 'Manage Articles',
+                    page_title: 'Articles',
                     helpers: {
                         compare: helpers.compare,
                     }
@@ -206,25 +211,37 @@ module.exports = {
             });
     },
 
-    version: function(req, res, next) {
+    version_set: function(req, res, next) {
 
-        // set initial version
-        // Article.update({}, { version: '0.1' }, { multi: true }, function (err, raw) {
-        //     if (err) return next(err);
-        //     console.log(raw);
-        //     res.redirect('/articles');
-        // });
-        
-        Article.find({'version': req.params.from})
-        .exec(function(err, doc){
-            // console.log(doc);
-            doc.forEach(function(y){
-                Article.create(y, function(err, article){
-                    console.log("creating copy");
-                });
-            });
+        Article.update({}, { version: req.params.ver }, { multi: true }, function (err, raw) {
+            if (err) return next(err);
+            console.log(raw);
             res.redirect('/articles');
         });
+    },
+
+    version_del: function(req, res, next) {
+        Article.remove({version: req.params.ver}, function(err) {
+            if (err) return next(err);
+            res.redirect('/articles');
+        });
+    },
+    
+    version_cp: function(req, res, next) {
+        Article.find({"version":req.params.from}).exec(
+            function(err, doc) {
+                doc.forEach(function(x,i){
+                    var y = x.toObject();
+                    y._id = mongoose.Types.ObjectId();
+                    y.version = y.version = req.params.to;
+                    Article.create(y, function(err, z){
+                        if(err) return next(err);
+                        console.log("saving z:" + z.title + " | z.slug:" + z.slug);
+                    });
+
+                });
+            res.redirect('/articles');
+        })
     },
 
 };

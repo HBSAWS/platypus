@@ -35,13 +35,22 @@ module.exports = function(app, envConfig){
     app.use(express.static(path.join(envConfig.rootPath, 'public')));
 
     app.use(function(req, res, next) {
+
+        res.locals.versions = ['0.1', '0.2', '0.3', '0.4'];
+        res.locals.current = "0.1";
+
         Category.find({})
         .lean()
         .exec(function(err, categories) {
               if(err) return next(err);
 
                 async.map(categories, function(category, done) {
-                    Article.find({_category: category._id})
+                    Article.find(
+                        {
+                            _category: category._id,
+                            version: res.locals.current
+                        }
+                    )
 			.lean()
 			.sort('title')
 			.exec(function(err, a){
@@ -56,11 +65,7 @@ module.exports = function(app, envConfig){
                 return next();
             })
         });
-
-        console.log("################### Setting Globals ###################")
-        res.locals.versions = ['0.1', '0.2', '0.3', '0.4'];
-        res.locals.current = "0.2";
-        
+       
     });
 
   
