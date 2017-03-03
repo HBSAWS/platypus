@@ -4,9 +4,7 @@
   "description": "HBS AWS Framework",
   "main": "index.js",
   "scripts": {
-    "postinstall": "node nightwatch.conf.BASIC.js && 
-      mongoexport --db platypus-dev --collection categories --out categories.json &&
-      mongoexport --db platypus-dev --collection articles --out articles.json"
+    "postinstall": "node nightwatch.conf.BASIC.js && mongoimport --db platypus-dev --collection categories --file categories.json --drop && mongoimport --db platypus-dev --collection articles --file articles.json --drop"
   },
   "author": "Rob Silva",
   "license": "ISC",
