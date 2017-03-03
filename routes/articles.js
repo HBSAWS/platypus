@@ -38,21 +38,28 @@ module.exports = {
     },
 
     show: function(req, res, next) {
+
         Article.findOne({
-                slug: req.params.slug
+                slug: req.params.slug,
+                version: (req.params.version && req.params.version != '') ? req.params.version : res.locals.current
             })
             .populate('_category')
             .exec(function(err, article) {
 
-                res.render('articles/show', {
-                    article: article,
-                    layout: 'main',
-                    page_title: article._category.title,
-                    helpers: {
-                        compare: helpers.compare,
-                        dateFormat: helpers.dateFormat
-                    }
-                })
+                if(article){
+                    res.render('articles/show', {
+                        article: article,
+                        layout: 'main',
+                        page_title: article._category.title,
+                        helpers: {
+                            compare: helpers.compare,
+                            dateFormat: helpers.dateFormat
+                        }
+                    })
+                } else {
+                    res.send("Version or article not found.");
+                }
+                
             });
     },
 
@@ -210,19 +217,13 @@ module.exports = {
         
         Article.find({'version': req.params.from})
         .exec(function(err, doc){
-
             // console.log(doc);
-
             doc.forEach(function(y){
-                var copy = y;
-                //copy._id = mongoose.Types.ObjectId();
-                copy.version = req.params.to;
-                copy.isNew = true;  // <- important
-                copy.save();
+                Article.create(y, function(err, article){
+                    console.log("creating copy");
+                });
             });
-
             res.redirect('/articles');
-
         });
     },
 

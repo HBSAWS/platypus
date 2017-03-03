@@ -20,7 +20,7 @@ module.exports  = function(app){
     articlesRouter.post('/create',                articles.create);
     articlesRouter.get('/search/:cat_slug',       articles.search);
     articlesRouter.get('/mock/:slug/:viewport',   articles.mock);
-    articlesRouter.get('/:slug',                  articles.show);
+    articlesRouter.get('/:slug/:version?',        articles.show);
     articlesRouter.post('/destroy/:id',           articles.destroy);
     articlesRouter.get('/edit/:id',               articles.edit);
     articlesRouter.post('/update/:id',            articles.update);
