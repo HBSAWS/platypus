@@ -7,7 +7,7 @@
     <div class="p-1">
         <select class="form-control p-1">
             {{#versions}}
-                <option value="{{.}}" {{#compare . ../current}}selected{{/compare}}>{{.}}</option>
+                <option value="{{.}}" {{#compare . "==" ../current}}selected{{/compare}}>{{.}}</option>
             {{/versions}}
         </select>
     </div>

@@ -2,7 +2,8 @@ var mongoose = require('mongoose'),
 	Category = mongoose.model('Category'),
 	Article = mongoose.model('Article'),
 	async = require('async'),
-  helpers = require('../config/handlebar-helpers.js').helpers;
+    helpers = require('../config/handlebar-helpers.js').helpers;
+    // helpers = require('handlebars-helpers')();
 
 module.exports = {
     index: function(req, res, next) {
@@ -25,12 +26,13 @@ module.exports = {
                     articles: articles,
                     layout : 'home',
                     helpers:  {
+                        compare: helpers.compare,
                         grouped_each: helpers.grouped_each
                     }
                     });
                 });
             } else {
-                res.send("Database is empty.");
+                res.send("Database is empty. Run 'sudo npm run postinstall' to import db dump.");
             }
         });
     },
