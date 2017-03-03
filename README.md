@@ -10,8 +10,13 @@ cd platypus && sudo npm install
 ```
 
 ## Running the App
+Start up the MongoDB process
 ```shell
-sudo  
+sudo mongod  
+```
+Run Gulp
+```shell
+gulp  
 ```
 Go to [http://localhost:3000](http://localhost:3000)
 

@@ -10,13 +10,15 @@ module.exports = {
       	Category.findOne({slug: 'ui-components', published: true}, function(err, category){
             if(err) return next(err);
 
-            var query = {_category: category._id};
+            if(category) {
+
+                var query = {_category: category._id};
                 var options = {
-                  sort: { title: 'asc' },
-                  populate: '_category',
-                  lean: false,
-                  page: 1,
-                  limit: 8
+                    sort: { title: 'asc' },
+                    populate: '_category',
+                    lean: false,
+                    page: 1,
+                    limit: 8
                 };
                 Article.paginate(query, options).then(function(articles) {
                     res.render('home', { 
@@ -25,9 +27,11 @@ module.exports = {
                     helpers:  {
                         grouped_each: helpers.grouped_each
                     }
+                    });
                 });
-            });
-
+            } else {
+                res.send("Database is empty.");
+            }
         });
     },
 
