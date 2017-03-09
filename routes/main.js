@@ -37,6 +37,15 @@ module.exports = {
         });
     },
 
+    set_version: function(req, res, next) {
+        delete req.session.ver_selected;
+        req.session.ver_selected = req.params.version;
+        req.session.save(function(err){
+            if (!err) 
+            res.redirect('/');
+        });
+    },
+    
     loadmore: function(req, res, next) {
 
         Category.findOne({slug: 'ui-components', published: true}, function(err, category){

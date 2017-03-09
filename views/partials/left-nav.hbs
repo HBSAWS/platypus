@@ -5,7 +5,7 @@
     </a>
     
     <div class="p-1">
-        <select class="form-control p-1" onchange="location = window.location.href+'/'+this.value;">
+        <select class="form-control p-1" onchange="location = '/version/'+this.value;">
             {{#versions}}
                 <option value="{{.}}" {{#compare . "==" ../current}}selected{{/compare}}>Version {{.}} {{#compare . "==" ../current}}(current){{/compare}}</option>
             {{/versions}}

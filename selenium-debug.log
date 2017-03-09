@@ -1,378 +1,235 @@
-14:16:18.364 INFO - Launching a standalone Selenium Server
-14:16:18.397 INFO - Java: Oracle Corporation 25.121-b13
-14:16:18.398 INFO - OS: Mac OS X 10.11.6 x86_64
-14:16:18.409 INFO - v2.53.0, with Core v2.53.0. Built from revision 35ae25b
-14:16:18.464 INFO - Driver provider org.openqa.selenium.ie.InternetExplorerDriver registration is skipped:
+16:28:25.014 INFO - Launching a standalone Selenium Server
+16:28:25.116 INFO - Java: Oracle Corporation 25.121-b13
+16:28:25.117 INFO - OS: Mac OS X 10.11.6 x86_64
+16:28:25.158 INFO - v2.53.0, with Core v2.53.0. Built from revision 35ae25b
+16:28:25.377 INFO - Driver provider org.openqa.selenium.ie.InternetExplorerDriver registration is skipped:
 registration capabilities Capabilities [{ensureCleanSession=true, browserName=internet explorer, version=, platform=WINDOWS}] does not match the current platform MAC
-14:16:18.465 INFO - Driver provider org.openqa.selenium.edge.EdgeDriver registration is skipped:
+16:28:25.377 INFO - Driver provider org.openqa.selenium.edge.EdgeDriver registration is skipped:
 registration capabilities Capabilities [{browserName=MicrosoftEdge, version=, platform=WINDOWS}] does not match the current platform MAC
-14:16:18.465 INFO - Driver class not found: com.opera.core.systems.OperaDriver
-14:16:18.465 INFO - Driver provider com.opera.core.systems.OperaDriver is not registered
-14:16:18.467 INFO - Driver class not found: org.openqa.selenium.htmlunit.HtmlUnitDriver
-14:16:18.467 INFO - Driver provider org.openqa.selenium.htmlunit.HtmlUnitDriver is not registered
-14:16:18.556 INFO - RemoteWebDriver instances should connect to: http://127.0.0.1:4444/wd/hub
-14:16:18.556 INFO - Selenium Server is up and running
-14:16:18.954 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, name=Alerts, browserName=safari, javascriptEnabled=true, platform=ANY}]])
-14:16:18.964 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, name=Alerts, browserName=safari, javascriptEnabled=true, platform=ANY}]
-14:16:19.173 INFO - Server started on port 34467
-14:16:19.214 INFO - Launching Safari
-14:16:19.234 INFO - Waiting for SafariDriver to connect
-14:16:22.008 INFO - Connection opened
-14:16:22.011 INFO - Driver connected in 2777 ms
-14:16:22.071 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, name=Alerts, browserName=safari, javascriptEnabled=true, platform=ANY}]]
-14:16:22.090 INFO - Executing: [set window size])
-14:16:22.113 INFO - Done: [set window size]
-14:16:22.130 INFO - Executing: [get: http://localhost:3000/alerts])
-14:16:23.873 INFO - Done: [get: http://localhost:3000/alerts]
-14:16:23.886 INFO - Executing: [find elements: By.cssSelector: body])
-14:16:23.980 INFO - Done: [find elements: By.cssSelector: body]
-14:16:23.991 INFO - Executing: [is displayed: 0 [[SafariDriver: safari on MAC (null)] -> css selector: body]])
-14:16:24.023 INFO - Done: [is displayed: 0 [[SafariDriver: safari on MAC (null)] -> css selector: body]]
-14:16:24.031 INFO - Executing: [find elements: By.cssSelector: .swal2-container])
-14:16:24.038 INFO - Done: [find elements: By.cssSelector: .swal2-container]
-14:16:24.043 INFO - Executing: [take screenshot])
-14:16:24.119 INFO - Done: [take screenshot]
-14:16:24.158 INFO - Executing: [delete session: 6cce2e13-ad50-44b3-a7d6-53af003f3a33])
-14:16:24.158 INFO - Shutting down
-14:16:24.158 INFO - Closing connection
-14:16:24.159 INFO - Stopping Safari
-14:16:24.225 INFO - Stopping server
-14:16:24.225 INFO - Stopping server
-14:16:24.235 INFO - Shutdown complete
-14:16:24.235 INFO - Done: [delete session: 6cce2e13-ad50-44b3-a7d6-53af003f3a33]
-14:16:24.269 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, name=Back To Top, browserName=safari, javascriptEnabled=true, platform=ANY}]])
-14:16:24.270 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, name=Back To Top, browserName=safari, javascriptEnabled=true, platform=ANY}]
-14:16:24.275 INFO - Server started on port 29117
-14:16:24.289 INFO - Launching Safari
-14:16:24.290 INFO - Waiting for SafariDriver to connect
-14:16:25.325 INFO - Connection opened
-14:16:25.325 INFO - Driver connected in 1035 ms
-14:16:25.330 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, name=Back To Top, browserName=safari, javascriptEnabled=true, platform=ANY}]]
-14:16:25.339 INFO - Executing: [set window size])
-14:16:25.367 INFO - Done: [set window size]
-14:16:25.384 INFO - Executing: [get: http://localhost:3000/back-to-top])
-14:16:26.403 INFO - Done: [get: http://localhost:3000/back-to-top]
-14:16:26.412 INFO - Executing: [find elements: By.cssSelector: body])
-14:16:26.449 INFO - Done: [find elements: By.cssSelector: body]
-14:16:26.456 INFO - Executing: [is displayed: 0 [[SafariDriver: safari on MAC (null)] -> css selector: body]])
-14:16:26.483 INFO - Done: [is displayed: 0 [[SafariDriver: safari on MAC (null)] -> css selector: body]]
-14:16:26.492 INFO - Executing: [execute script: scrollTo(0,300), []])
-14:16:26.534 INFO - Done: [execute script: scrollTo(0,300), []]
-14:16:26.540 INFO - Executing: [find elements: By.cssSelector: a[id="back-to-top"]])
-14:16:26.556 INFO - Done: [find elements: By.cssSelector: a[id="back-to-top"]]
-14:16:26.567 INFO - Executing: [find element: By.cssSelector: a[id="back-to-top"]])
-14:16:26.572 INFO - Done: [find element: By.cssSelector: a[id="back-to-top"]]
-14:16:26.583 INFO - Executing: [mousemove: 1 true])
-14:16:26.605 WARN - Exception thrown
-org.openqa.selenium.WebDriverException: Unknown command: {"id":"7l2x8jsfh8bl","name":"mouseMoveTo","parameters":{"yoffset":0,"xoffset":0,"element":":wdc:1488482186445"}} (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 17 milliseconds
-Build info: version: '2.53.0', revision: '35ae25b', time: '2016-03-15 17:00:58'
-System info: host: 'rsilva-mba.hbs.edu', ip: '10.228.194.1', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.11.6', java.version: '1.8.0_121'
-Driver info: org.openqa.selenium.safari.SafariDriver
-Capabilities [{browserName=safari, takesScreenshot=true, javascriptEnabled=true, version=10.0.2, cssSelectorsEnabled=true, platform=MAC, secureSsl=true}]
-Session ID: null
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
-	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
-	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:678)
-	at org.openqa.selenium.remote.RemoteExecuteMethod.execute(RemoteExecuteMethod.java:35)
-	at org.openqa.selenium.remote.RemoteMouse.mouseMove(RemoteMouse.java:97)
-	at org.openqa.selenium.support.events.internal.EventFiringMouse.mouseMove(EventFiringMouse.java:62)
-	at org.openqa.selenium.remote.server.handler.interactions.MouseMoveToLocation.call(MouseMoveToLocation.java:57)
-	at org.openqa.selenium.remote.server.handler.interactions.MouseMoveToLocation.call(MouseMoveToLocation.java:1)
-	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
-	at org.openqa.selenium.remote.server.DefaultSession$1.run(DefaultSession.java:176)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
-	at java.lang.Thread.run(Thread.java:745)
-14:16:26.608 WARN - Exception: Unknown command: {"id":"7l2x8jsfh8bl","name":"mouseMoveTo","parameters":{"yoffset":0,"xoffset":0,"element":":wdc:1488482186445"}} (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 17 milliseconds
-Build info: version: '2.53.0', revision: '35ae25b', time: '2016-03-15 17:00:58'
-System info: host: 'rsilva-mba.hbs.edu', ip: '10.228.194.1', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.11.6', java.version: '1.8.0_121'
-Driver info: org.openqa.selenium.safari.SafariDriver
-Capabilities [{browserName=safari, takesScreenshot=true, javascriptEnabled=true, version=10.0.2, cssSelectorsEnabled=true, platform=MAC, secureSsl=true}]
-Session ID: null
-14:16:26.629 INFO - Executing: [click: nothing])
-14:16:26.634 WARN - Exception thrown
-org.openqa.selenium.WebDriverException: Unknown command: {"id":"4qypb524r516","name":"mouseClick","parameters":{"button":0}} (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 5 milliseconds
-Build info: version: '2.53.0', revision: '35ae25b', time: '2016-03-15 17:00:58'
-System info: host: 'rsilva-mba.hbs.edu', ip: '10.228.194.1', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.11.6', java.version: '1.8.0_121'
-Driver info: org.openqa.selenium.safari.SafariDriver
-Capabilities [{browserName=safari, takesScreenshot=true, javascriptEnabled=true, version=10.0.2, cssSelectorsEnabled=true, platform=MAC, secureSsl=true}]
-Session ID: null
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
-	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
-	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:678)
-	at org.openqa.selenium.remote.RemoteExecuteMethod.execute(RemoteExecuteMethod.java:35)
-	at org.openqa.selenium.remote.RemoteMouse.click(RemoteMouse.java:59)
-	at org.openqa.selenium.support.events.internal.EventFiringMouse.click(EventFiringMouse.java:42)
-	at org.openqa.selenium.remote.server.handler.interactions.ClickInSession.call(ClickInSession.java:40)
-	at org.openqa.selenium.remote.server.handler.interactions.ClickInSession.call(ClickInSession.java:1)
-	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
-	at org.openqa.selenium.remote.server.DefaultSession$1.run(DefaultSession.java:176)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
-	at java.lang.Thread.run(Thread.java:745)
-14:16:26.635 WARN - Exception: Unknown command: {"id":"4qypb524r516","name":"mouseClick","parameters":{"button":0}} (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 5 milliseconds
-Build info: version: '2.53.0', revision: '35ae25b', time: '2016-03-15 17:00:58'
-System info: host: 'rsilva-mba.hbs.edu', ip: '10.228.194.1', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.11.6', java.version: '1.8.0_121'
-Driver info: org.openqa.selenium.safari.SafariDriver
-Capabilities [{browserName=safari, takesScreenshot=true, javascriptEnabled=true, version=10.0.2, cssSelectorsEnabled=true, platform=MAC, secureSsl=true}]
-Session ID: null
-14:16:26.646 INFO - Executing: [find element: By.cssSelector: h2])
-14:16:26.658 INFO - Done: [find element: By.cssSelector: h2]
-14:16:26.663 INFO - Executing: [is displayed: 2 [[SafariDriver: safari on MAC (null)] -> css selector: h2]])
-14:16:26.668 INFO - Done: [is displayed: 2 [[SafariDriver: safari on MAC (null)] -> css selector: h2]]
-14:16:26.673 INFO - Executing: [take screenshot])
-14:16:26.786 INFO - Done: [take screenshot]
-14:16:26.818 INFO - Executing: [delete session: 97c9a011-14f1-4f74-8cf5-a14591986e64])
-14:16:26.819 INFO - Shutting down
-14:16:26.819 INFO - Closing connection
-14:16:26.819 INFO - Stopping Safari
-14:16:26.901 INFO - Stopping server
-14:16:26.901 INFO - Stopping server
-14:16:26.904 INFO - Shutdown complete
-14:16:26.904 INFO - Done: [delete session: 97c9a011-14f1-4f74-8cf5-a14591986e64]
-14:16:26.937 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, name=Breadcrumb, browserName=safari, javascriptEnabled=true, platform=ANY}]])
-14:16:26.938 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, name=Breadcrumb, browserName=safari, javascriptEnabled=true, platform=ANY}]
-14:16:26.942 INFO - Server started on port 12031
-14:16:26.974 INFO - Launching Safari
-14:16:26.974 INFO - Waiting for SafariDriver to connect
-14:16:28.176 INFO - Connection opened
-14:16:28.176 INFO - Driver connected in 1202 ms
-14:16:28.182 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, name=Breadcrumb, browserName=safari, javascriptEnabled=true, platform=ANY}]]
-14:16:28.188 INFO - Executing: [set window size])
-14:16:28.220 INFO - Done: [set window size]
-14:16:28.226 INFO - Executing: [get: http://localhost:3000/Breadcrumb])
-14:16:28.825 INFO - Done: [get: http://localhost:3000/Breadcrumb]
-14:16:28.830 INFO - Executing: [find elements: By.cssSelector: body])
-14:16:28.896 INFO - Done: [find elements: By.cssSelector: body]
-14:16:28.901 INFO - Executing: [is displayed: 0 [[SafariDriver: safari on MAC (null)] -> css selector: body]])
-14:16:28.907 INFO - Done: [is displayed: 0 [[SafariDriver: safari on MAC (null)] -> css selector: body]]
-14:16:28.912 INFO - Executing: [find elements: By.cssSelector: ol.breadcrumb])
-14:16:28.917 INFO - Done: [find elements: By.cssSelector: ol.breadcrumb]
-14:16:28.922 INFO - Executing: [set window size])
-14:16:28.934 INFO - Done: [set window size]
-14:16:28.942 INFO - Executing: [find elements: By.cssSelector: ol.breadcrumb li:nth-child(1).dropdown])
-14:16:28.972 INFO - Done: [find elements: By.cssSelector: ol.breadcrumb li:nth-child(1).dropdown]
-14:16:28.976 INFO - Executing: [take screenshot])
-14:16:28.996 INFO - Done: [take screenshot]
-14:16:29.007 INFO - Executing: [delete session: db36de41-f3c1-4b70-b7a2-e0a63b20434c])
-14:16:29.007 INFO - Shutting down
-14:16:29.007 INFO - Closing connection
-14:16:29.008 INFO - Stopping Safari
-14:16:29.076 INFO - Stopping server
-14:16:29.076 INFO - Stopping server
-14:16:29.077 INFO - Shutdown complete
-14:16:29.078 INFO - Done: [delete session: db36de41-f3c1-4b70-b7a2-e0a63b20434c]
-14:16:29.092 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, name=Carousel, browserName=safari, javascriptEnabled=true, platform=ANY}]])
-14:16:29.093 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, name=Carousel, browserName=safari, javascriptEnabled=true, platform=ANY}]
-14:16:29.097 INFO - Server started on port 40649
-14:16:29.118 INFO - Launching Safari
-14:16:29.119 INFO - Waiting for SafariDriver to connect
-14:16:30.249 INFO - Connection opened
-14:16:30.252 INFO - Driver connected in 1132 ms
-14:16:30.258 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, name=Carousel, browserName=safari, javascriptEnabled=true, platform=ANY}]]
-14:16:30.267 INFO - Executing: [set window size])
-14:16:30.292 INFO - Done: [set window size]
-14:16:30.299 INFO - Executing: [get: http://localhost:3000/carousel])
-14:16:30.865 INFO - Done: [get: http://localhost:3000/carousel]
-14:16:30.872 INFO - Executing: [find elements: By.cssSelector: body])
-14:16:30.902 INFO - Done: [find elements: By.cssSelector: body]
-14:16:30.905 INFO - Executing: [is displayed: 0 [[SafariDriver: safari on MAC (null)] -> css selector: body]])
-14:16:30.970 INFO - Done: [is displayed: 0 [[SafariDriver: safari on MAC (null)] -> css selector: body]]
-14:16:30.977 INFO - Executing: [find elements: By.cssSelector: .carousel])
-14:16:31.003 INFO - Done: [find elements: By.cssSelector: .carousel]
-14:16:31.010 INFO - Executing: [find element: By.cssSelector: .slick-dots > li:nth-child(2) > button])
-14:16:31.015 INFO - Done: [find element: By.cssSelector: .slick-dots > li:nth-child(2) > button]
-14:16:31.021 INFO - Executing: [click: 2 [[SafariDriver: safari on MAC (null)] -> css selector: .slick-dots > li:nth-child(2) > button]])
-14:16:31.046 INFO - Done: [click: 2 [[SafariDriver: safari on MAC (null)] -> css selector: .slick-dots > li:nth-child(2) > button]]
-14:16:31.053 INFO - Executing: [take screenshot])
-14:16:31.120 INFO - Done: [take screenshot]
-14:16:31.126 INFO - Executing: [delete session: c3272a85-af73-41df-86e5-78f716f28557])
-14:16:31.127 INFO - Shutting down
-14:16:31.127 INFO - Closing connection
-14:16:31.127 INFO - Stopping Safari
-14:16:31.181 INFO - Stopping server
-14:16:31.181 INFO - Stopping server
-14:16:31.184 INFO - Shutdown complete
-14:16:31.184 INFO - Done: [delete session: c3272a85-af73-41df-86e5-78f716f28557]
-14:16:31.195 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, name=Datatables, browserName=safari, javascriptEnabled=true, platform=ANY}]])
-14:16:31.196 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, name=Datatables, browserName=safari, javascriptEnabled=true, platform=ANY}]
-14:16:31.199 INFO - Server started on port 47587
-14:16:31.222 INFO - Launching Safari
-14:16:31.223 INFO - Waiting for SafariDriver to connect
-14:16:32.231 INFO - Connection opened
-14:16:32.232 INFO - Driver connected in 1008 ms
-14:16:32.238 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, name=Datatables, browserName=safari, javascriptEnabled=true, platform=ANY}]]
-14:16:32.248 INFO - Executing: [set window size])
-14:16:32.281 INFO - Done: [set window size]
-14:16:32.296 INFO - Executing: [get: http://localhost:3000/datatables])
-14:16:32.855 INFO - Done: [get: http://localhost:3000/datatables]
-14:16:32.862 INFO - Executing: [find elements: By.cssSelector: body])
-14:16:32.898 INFO - Done: [find elements: By.cssSelector: body]
-14:16:32.904 INFO - Executing: [is displayed: 0 [[SafariDriver: safari on MAC (null)] -> css selector: body]])
-14:16:32.930 INFO - Done: [is displayed: 0 [[SafariDriver: safari on MAC (null)] -> css selector: body]]
-14:16:32.942 INFO - Executing: [find elements: By.cssSelector: .dataTables_wrapper])
-14:16:33.234 INFO - Done: [find elements: By.cssSelector: .dataTables_wrapper]
-14:16:33.240 INFO - Executing: [take screenshot])
-14:16:33.331 INFO - Done: [take screenshot]
-14:16:33.364 INFO - Executing: [delete session: 32476deb-4183-4d87-adf5-6690bfd4f766])
-14:16:33.364 INFO - Shutting down
-14:16:33.364 INFO - Closing connection
-14:16:33.364 INFO - Stopping Safari
-14:16:33.424 INFO - Stopping server
-14:16:33.424 INFO - Stopping server
-14:16:33.426 INFO - Shutdown complete
-14:16:33.426 INFO - Done: [delete session: 32476deb-4183-4d87-adf5-6690bfd4f766]
-14:16:33.440 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, name=Date Range Picker, browserName=safari, javascriptEnabled=true, platform=ANY}]])
-14:16:33.442 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, name=Date Range Picker, browserName=safari, javascriptEnabled=true, platform=ANY}]
-14:16:33.445 INFO - Server started on port 29920
-14:16:33.462 INFO - Launching Safari
-14:16:33.462 INFO - Waiting for SafariDriver to connect
-14:16:34.518 INFO - Connection opened
-14:16:34.519 INFO - Driver connected in 1056 ms
-14:16:34.540 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, name=Date Range Picker, browserName=safari, javascriptEnabled=true, platform=ANY}]]
-14:16:34.546 INFO - Executing: [set window size])
-14:16:34.580 INFO - Done: [set window size]
-14:16:34.588 INFO - Executing: [get: http://localhost:3000/date-range-picker])
-14:16:35.236 INFO - Done: [get: http://localhost:3000/date-range-picker]
-14:16:35.243 INFO - Executing: [find elements: By.cssSelector: body])
-14:16:35.258 INFO - Done: [find elements: By.cssSelector: body]
-14:16:35.262 INFO - Executing: [is displayed: 0 [[SafariDriver: safari on MAC (null)] -> css selector: body]])
-14:16:35.270 INFO - Done: [is displayed: 0 [[SafariDriver: safari on MAC (null)] -> css selector: body]]
-14:16:35.275 INFO - Executing: [find elements: By.cssSelector: input[name="daterange"]])
-14:16:35.280 INFO - Done: [find elements: By.cssSelector: input[name="daterange"]]
-14:16:35.284 INFO - Executing: [find element: By.cssSelector: input[name="daterange"]])
-14:16:35.289 INFO - Done: [find element: By.cssSelector: input[name="daterange"]]
-14:16:35.292 INFO - Executing: [click: 1 [[SafariDriver: safari on MAC (null)] -> css selector: input[name="daterange"]]])
-14:16:35.354 INFO - Done: [click: 1 [[SafariDriver: safari on MAC (null)] -> css selector: input[name="daterange"]]]
-14:16:35.359 INFO - Executing: [find element: By.cssSelector: .daterangepicker.dropdown-menu])
-14:16:35.374 INFO - Done: [find element: By.cssSelector: .daterangepicker.dropdown-menu]
-14:16:35.378 INFO - Executing: [is displayed: 2 [[SafariDriver: safari on MAC (null)] -> css selector: .daterangepicker.dropdown-menu]])
-14:16:35.384 INFO - Done: [is displayed: 2 [[SafariDriver: safari on MAC (null)] -> css selector: .daterangepicker.dropdown-menu]]
-14:16:35.388 INFO - Executing: [take screenshot])
-14:16:35.453 INFO - Done: [take screenshot]
-14:16:35.466 INFO - Executing: [delete session: 8450857d-c568-432a-9edd-fe965bd034b8])
-14:16:35.466 INFO - Shutting down
-14:16:35.466 INFO - Closing connection
-14:16:35.468 INFO - Stopping Safari
-14:16:35.526 INFO - Stopping server
-14:16:35.526 INFO - Stopping server
-14:16:35.527 INFO - Shutdown complete
-14:16:35.527 INFO - Done: [delete session: 8450857d-c568-432a-9edd-fe965bd034b8]
-14:16:35.539 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, name=Forms, browserName=safari, javascriptEnabled=true, platform=ANY}]])
-14:16:35.540 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, name=Forms, browserName=safari, javascriptEnabled=true, platform=ANY}]
-14:16:35.543 INFO - Server started on port 9659
-14:16:35.566 INFO - Launching Safari
-14:16:35.567 INFO - Waiting for SafariDriver to connect
-14:16:36.557 INFO - Connection opened
-14:16:36.558 INFO - Driver connected in 991 ms
-14:16:36.564 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, name=Forms, browserName=safari, javascriptEnabled=true, platform=ANY}]]
-14:16:36.577 INFO - Executing: [set window size])
-14:16:36.610 INFO - Done: [set window size]
-14:16:36.615 INFO - Executing: [get: http://localhost:3000/forms])
-14:16:37.193 INFO - Done: [get: http://localhost:3000/forms]
-14:16:37.199 INFO - Executing: [find elements: By.cssSelector: body])
-14:16:37.273 INFO - Done: [find elements: By.cssSelector: body]
-14:16:37.277 INFO - Executing: [is displayed: 0 [[SafariDriver: safari on MAC (null)] -> css selector: body]])
-14:16:37.305 INFO - Done: [is displayed: 0 [[SafariDriver: safari on MAC (null)] -> css selector: body]]
-14:16:37.310 INFO - Executing: [find elements: By.cssSelector: form])
-14:16:37.317 INFO - Done: [find elements: By.cssSelector: form]
-14:16:37.325 INFO - Executing: [find element: By.cssSelector: form])
-14:16:37.329 INFO - Done: [find element: By.cssSelector: form]
-14:16:37.333 INFO - Executing: [submit: 1 [[SafariDriver: safari on MAC (null)] -> css selector: form]])
-14:16:37.358 INFO - Done: [submit: 1 [[SafariDriver: safari on MAC (null)] -> css selector: form]]
-14:16:37.363 INFO - Executing: [find element: By.cssSelector: .form-group])
-14:16:37.403 INFO - Done: [find element: By.cssSelector: .form-group]
-14:16:37.406 INFO - Executing: [get element attribute: 2 [[SafariDriver: safari on MAC (null)] -> css selector: .form-group], class])
-14:16:37.411 INFO - Done: [get element attribute: 2 [[SafariDriver: safari on MAC (null)] -> css selector: .form-group], class]
-14:16:37.415 INFO - Executing: [find element: By.cssSelector: input[type=email]])
-14:16:37.423 INFO - Done: [find element: By.cssSelector: input[type=email]]
-14:16:37.427 INFO - Executing: [send keys: 3 [[SafariDriver: safari on MAC (null)] -> css selector: input[type=email]], [t, e, s, t, @, d, o, m, a, i, n, ., c, o, m]])
-14:16:37.502 INFO - Done: [send keys: 3 [[SafariDriver: safari on MAC (null)] -> css selector: input[type=email]], [t, e, s, t, @, d, o, m, a, i, n, ., c, o, m]]
-14:16:37.507 INFO - Executing: [find element: By.cssSelector: .form-group])
-14:16:37.511 INFO - Done: [find element: By.cssSelector: .form-group]
-14:16:37.514 INFO - Executing: [get element attribute: 2 [[SafariDriver: safari on MAC (null)] -> css selector: .form-group], class])
-14:16:37.522 INFO - Done: [get element attribute: 2 [[SafariDriver: safari on MAC (null)] -> css selector: .form-group], class]
-14:16:37.527 INFO - Executing: [set window size])
-14:16:37.543 INFO - Done: [set window size]
-14:16:37.546 INFO - Executing: [find element: By.cssSelector: a[data-toggle="tooltip"] > i])
-14:16:37.574 INFO - Done: [find element: By.cssSelector: a[data-toggle="tooltip"] > i]
-14:16:37.577 INFO - Executing: [get element attribute: 4 [[SafariDriver: safari on MAC (null)] -> css selector: a[data-toggle="tooltip"] > i], class])
-14:16:37.582 INFO - Done: [get element attribute: 4 [[SafariDriver: safari on MAC (null)] -> css selector: a[data-toggle="tooltip"] > i], class]
-14:16:37.588 INFO - Executing: [take screenshot])
-14:16:37.625 INFO - Done: [take screenshot]
-14:16:37.631 INFO - Executing: [delete session: 53c4fc0b-8eba-4810-931b-7a1eb610c85c])
-14:16:37.631 INFO - Shutting down
-14:16:37.631 INFO - Closing connection
-14:16:37.631 INFO - Stopping Safari
-14:16:37.688 INFO - Stopping server
-14:16:37.688 INFO - Stopping server
-14:16:37.691 INFO - Shutdown complete
-14:16:37.692 INFO - Done: [delete session: 53c4fc0b-8eba-4810-931b-7a1eb610c85c]
-14:16:37.707 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, name=Toasts, browserName=safari, javascriptEnabled=true, platform=ANY}]])
-14:16:37.709 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, name=Toasts, browserName=safari, javascriptEnabled=true, platform=ANY}]
-14:16:37.712 INFO - Server started on port 21734
-14:16:37.730 INFO - Launching Safari
-14:16:37.730 INFO - Waiting for SafariDriver to connect
-14:16:38.750 INFO - Connection opened
-14:16:38.750 INFO - Driver connected in 1019 ms
-14:16:38.755 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, name=Toasts, browserName=safari, javascriptEnabled=true, platform=ANY}]]
-14:16:38.759 INFO - Executing: [set window size])
-14:16:38.816 INFO - Done: [set window size]
-14:16:38.823 INFO - Executing: [get: http://localhost:3000/toasts])
-14:16:39.385 INFO - Done: [get: http://localhost:3000/toasts]
-14:16:39.393 INFO - Executing: [find elements: By.cssSelector: body])
-14:16:39.422 INFO - Done: [find elements: By.cssSelector: body]
-14:16:39.426 INFO - Executing: [is displayed: 0 [[SafariDriver: safari on MAC (null)] -> css selector: body]])
-14:16:39.467 INFO - Done: [is displayed: 0 [[SafariDriver: safari on MAC (null)] -> css selector: body]]
-14:16:39.472 INFO - Executing: [find elements: By.cssSelector: #toast-container])
-14:16:39.499 INFO - Done: [find elements: By.cssSelector: #toast-container]
-14:16:39.503 INFO - Executing: [take screenshot])
-14:16:39.575 INFO - Done: [take screenshot]
-14:16:39.585 INFO - Executing: [delete session: 87879511-df17-4a10-90d2-0d8ec859908d])
-14:16:39.585 INFO - Shutting down
-14:16:39.585 INFO - Closing connection
-14:16:39.585 INFO - Stopping Safari
-14:16:39.639 INFO - Stopping server
-14:16:39.639 INFO - Stopping server
-14:16:39.641 INFO - Shutdown complete
-14:16:39.641 INFO - Done: [delete session: 87879511-df17-4a10-90d2-0d8ec859908d]
-14:16:39.654 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, name=Wysiwyg, browserName=safari, javascriptEnabled=true, platform=ANY}]])
-14:16:39.655 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, name=Wysiwyg, browserName=safari, javascriptEnabled=true, platform=ANY}]
-14:16:39.657 INFO - Server started on port 19824
-14:16:39.683 INFO - Launching Safari
-14:16:39.684 INFO - Waiting for SafariDriver to connect
-14:16:40.699 INFO - Connection opened
-14:16:40.700 INFO - Driver connected in 1015 ms
-14:16:40.704 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, name=Wysiwyg, browserName=safari, javascriptEnabled=true, platform=ANY}]]
-14:16:40.708 INFO - Executing: [set window size])
-14:16:40.743 INFO - Done: [set window size]
-14:16:40.758 INFO - Executing: [get: http://localhost:3000/wysiwyg])
-14:16:41.308 INFO - Done: [get: http://localhost:3000/wysiwyg]
-14:16:41.314 INFO - Executing: [find elements: By.cssSelector: body])
-14:16:41.441 INFO - Done: [find elements: By.cssSelector: body]
-14:16:41.447 INFO - Executing: [is displayed: 0 [[SafariDriver: safari on MAC (null)] -> css selector: body]])
-14:16:41.473 INFO - Done: [is displayed: 0 [[SafariDriver: safari on MAC (null)] -> css selector: body]]
-14:16:41.479 INFO - Executing: [find elements: By.cssSelector: .note-editor])
-14:16:41.484 INFO - Done: [find elements: By.cssSelector: .note-editor]
-14:16:41.487 INFO - Executing: [take screenshot])
-14:16:41.549 INFO - Done: [take screenshot]
-14:16:41.559 INFO - Executing: [delete session: 0535e5e4-4f65-44e4-9d27-d3a135283865])
-14:16:41.559 INFO - Shutting down
-14:16:41.559 INFO - Closing connection
-14:16:41.560 INFO - Stopping Safari
-14:16:41.617 INFO - Stopping server
-14:16:41.618 INFO - Stopping server
-14:16:41.620 INFO - Shutdown complete
-14:16:41.620 INFO - Done: [delete session: 0535e5e4-4f65-44e4-9d27-d3a135283865]
+16:28:25.378 INFO - Driver class not found: com.opera.core.systems.OperaDriver
+16:28:25.378 INFO - Driver provider com.opera.core.systems.OperaDriver is not registered
+16:28:25.390 INFO - Driver class not found: org.openqa.selenium.htmlunit.HtmlUnitDriver
+16:28:25.390 INFO - Driver provider org.openqa.selenium.htmlunit.HtmlUnitDriver is not registered
+16:28:25.587 INFO - RemoteWebDriver instances should connect to: http://127.0.0.1:4444/wd/hub
+16:28:25.587 INFO - Selenium Server is up and running
+16:28:26.401 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, name=Alerts, browserName=chrome, javascriptEnabled=true, platform=ANY}]])
+16:28:26.432 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, name=Alerts, browserName=chrome, javascriptEnabled=true, platform=ANY}]
+Starting ChromeDriver 2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9) on port 23320
+Only local connections are allowed.
+16:28:30.049 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, name=Alerts, browserName=chrome, javascriptEnabled=true, platform=ANY}]]
+16:28:30.075 INFO - Executing: [set window size])
+16:28:30.633 INFO - Done: [set window size]
+16:28:30.655 INFO - Executing: [get: http://localhost:3000/alerts])
+16:28:35.928 INFO - Done: [get: http://localhost:3000/alerts]
+16:28:35.942 INFO - Executing: [find elements: By.cssSelector: body])
+16:28:36.128 INFO - Done: [find elements: By.cssSelector: body]
+16:28:36.198 INFO - Executing: [is displayed: 0 [[ChromeDriver: chrome on MAC (94bd7916327869f9826956f9f5b47af9)] -> css selector: body]])
+16:28:36.348 INFO - Done: [is displayed: 0 [[ChromeDriver: chrome on MAC (94bd7916327869f9826956f9f5b47af9)] -> css selector: body]]
+16:28:36.356 INFO - Executing: [find elements: By.cssSelector: .swal2-container])
+16:28:36.411 INFO - Done: [find elements: By.cssSelector: .swal2-container]
+16:28:36.417 INFO - Executing: [take screenshot])
+16:28:36.889 INFO - Done: [take screenshot]
+16:28:36.917 INFO - Executing: [delete session: 9d0e4972-006d-45fa-8a6d-e6c6eb763b3d])
+16:28:37.097 INFO - Done: [delete session: 9d0e4972-006d-45fa-8a6d-e6c6eb763b3d]
+16:28:37.131 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, name=Back To Top, browserName=chrome, javascriptEnabled=true, platform=ANY}]])
+16:28:37.132 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, name=Back To Top, browserName=chrome, javascriptEnabled=true, platform=ANY}]
+Starting ChromeDriver 2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9) on port 24399
+Only local connections are allowed.
+16:28:38.714 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, name=Back To Top, browserName=chrome, javascriptEnabled=true, platform=ANY}]]
+16:28:38.729 INFO - Executing: [set window size])
+16:28:39.086 INFO - Done: [set window size]
+16:28:39.094 INFO - Executing: [get: http://localhost:3000/back-to-top])
+16:28:41.479 INFO - Done: [get: http://localhost:3000/back-to-top]
+16:28:41.487 INFO - Executing: [find elements: By.cssSelector: body])
+16:28:41.538 INFO - Done: [find elements: By.cssSelector: body]
+16:28:41.543 INFO - Executing: [is displayed: 0 [[ChromeDriver: chrome on MAC (8ded64b1e5c3cbc69e92c0482a66ed1f)] -> css selector: body]])
+16:28:41.572 INFO - Done: [is displayed: 0 [[ChromeDriver: chrome on MAC (8ded64b1e5c3cbc69e92c0482a66ed1f)] -> css selector: body]]
+16:28:41.578 INFO - Executing: [execute script: scrollTo(0,300), []])
+16:28:41.663 INFO - Done: [execute script: scrollTo(0,300), []]
+16:28:41.670 INFO - Executing: [find elements: By.cssSelector: a[id="back-to-top"]])
+16:28:41.715 INFO - Done: [find elements: By.cssSelector: a[id="back-to-top"]]
+16:28:41.726 INFO - Executing: [find element: By.cssSelector: a[id="back-to-top"]])
+16:28:41.765 INFO - Done: [find element: By.cssSelector: a[id="back-to-top"]]
+16:28:41.788 INFO - Executing: [mousemove: 1 true])
+16:28:41.824 INFO - Done: [mousemove: 1 true]
+16:28:41.833 INFO - Executing: [click: nothing])
+16:28:41.854 INFO - Done: [click: nothing]
+16:28:41.864 INFO - Executing: [find element: By.cssSelector: h2])
+16:28:41.935 INFO - Done: [find element: By.cssSelector: h2]
+16:28:41.944 INFO - Executing: [is displayed: 2 [[ChromeDriver: chrome on MAC (8ded64b1e5c3cbc69e92c0482a66ed1f)] -> css selector: h2]])
+16:28:42.005 INFO - Done: [is displayed: 2 [[ChromeDriver: chrome on MAC (8ded64b1e5c3cbc69e92c0482a66ed1f)] -> css selector: h2]]
+16:28:42.016 INFO - Executing: [take screenshot])
+16:28:42.511 INFO - Done: [take screenshot]
+16:28:42.695 INFO - Executing: [delete session: 93d0d881-c715-41f6-9359-2069517d04fd])
+16:28:42.848 INFO - Done: [delete session: 93d0d881-c715-41f6-9359-2069517d04fd]
+16:28:42.900 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, name=Breadcrumb, browserName=chrome, javascriptEnabled=true, platform=ANY}]])
+16:28:42.902 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, name=Breadcrumb, browserName=chrome, javascriptEnabled=true, platform=ANY}]
+Starting ChromeDriver 2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9) on port 41394
+Only local connections are allowed.
+16:28:44.723 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, name=Breadcrumb, browserName=chrome, javascriptEnabled=true, platform=ANY}]]
+16:28:44.739 INFO - Executing: [set window size])
+16:28:45.154 INFO - Done: [set window size]
+16:28:45.161 INFO - Executing: [get: http://localhost:3000/Breadcrumb])
+16:28:47.643 INFO - Done: [get: http://localhost:3000/Breadcrumb]
+16:28:47.655 INFO - Executing: [find elements: By.cssSelector: body])
+16:28:47.721 INFO - Done: [find elements: By.cssSelector: body]
+16:28:47.725 INFO - Executing: [is displayed: 0 [[ChromeDriver: chrome on MAC (a283251a6a4d408615c2d33b965dbbd0)] -> css selector: body]])
+16:28:47.746 INFO - Done: [is displayed: 0 [[ChromeDriver: chrome on MAC (a283251a6a4d408615c2d33b965dbbd0)] -> css selector: body]]
+16:28:47.751 INFO - Executing: [find elements: By.cssSelector: ol.breadcrumb])
+16:28:47.773 INFO - Done: [find elements: By.cssSelector: ol.breadcrumb]
+16:28:47.778 INFO - Executing: [set window size])
+16:28:47.950 INFO - Done: [set window size]
+16:28:47.956 INFO - Executing: [find elements: By.cssSelector: ol.breadcrumb li:nth-child(1).dropdown])
+16:28:47.979 INFO - Done: [find elements: By.cssSelector: ol.breadcrumb li:nth-child(1).dropdown]
+16:28:47.984 INFO - Executing: [take screenshot])
+16:28:48.320 INFO - Done: [take screenshot]
+16:28:48.339 INFO - Executing: [delete session: 1c77dc08-373c-43b0-acc8-335331cc2a32])
+16:28:48.493 INFO - Done: [delete session: 1c77dc08-373c-43b0-acc8-335331cc2a32]
+16:28:48.512 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, name=Carousel, browserName=chrome, javascriptEnabled=true, platform=ANY}]])
+16:28:48.513 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, name=Carousel, browserName=chrome, javascriptEnabled=true, platform=ANY}]
+Starting ChromeDriver 2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9) on port 1492
+Only local connections are allowed.
+16:28:50.256 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, name=Carousel, browserName=chrome, javascriptEnabled=true, platform=ANY}]]
+16:28:50.263 INFO - Executing: [set window size])
+16:28:50.607 INFO - Done: [set window size]
+16:28:50.612 INFO - Executing: [get: http://localhost:3000/carousel])
+16:28:52.298 INFO - Done: [get: http://localhost:3000/carousel]
+16:28:52.309 INFO - Executing: [find elements: By.cssSelector: body])
+16:28:52.518 INFO - Done: [find elements: By.cssSelector: body]
+16:28:52.529 INFO - Executing: [is displayed: 0 [[ChromeDriver: chrome on MAC (1c2b591614b79be9bfad55a276770f9c)] -> css selector: body]])
+16:28:52.580 INFO - Done: [is displayed: 0 [[ChromeDriver: chrome on MAC (1c2b591614b79be9bfad55a276770f9c)] -> css selector: body]]
+16:28:52.588 INFO - Executing: [find elements: By.cssSelector: .carousel])
+16:28:52.628 INFO - Done: [find elements: By.cssSelector: .carousel]
+16:28:52.638 INFO - Executing: [find element: By.cssSelector: .slick-dots > li:nth-child(2) > button])
+16:28:52.760 INFO - Done: [find element: By.cssSelector: .slick-dots > li:nth-child(2) > button]
+16:28:52.773 INFO - Executing: [click: 2 [[ChromeDriver: chrome on MAC (1c2b591614b79be9bfad55a276770f9c)] -> css selector: .slick-dots > li:nth-child(2) > button]])
+16:28:53.033 INFO - Done: [click: 2 [[ChromeDriver: chrome on MAC (1c2b591614b79be9bfad55a276770f9c)] -> css selector: .slick-dots > li:nth-child(2) > button]]
+16:28:53.038 INFO - Executing: [take screenshot])
+16:28:53.460 INFO - Done: [take screenshot]
+16:28:53.474 INFO - Executing: [delete session: 63f0ec42-167d-4678-8a59-493f03f17168])
+16:28:53.558 INFO - Done: [delete session: 63f0ec42-167d-4678-8a59-493f03f17168]
+16:28:53.583 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, name=Datatables, browserName=chrome, javascriptEnabled=true, platform=ANY}]])
+16:28:53.593 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, name=Datatables, browserName=chrome, javascriptEnabled=true, platform=ANY}]
+Starting ChromeDriver 2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9) on port 45261
+Only local connections are allowed.
+16:28:55.187 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, name=Datatables, browserName=chrome, javascriptEnabled=true, platform=ANY}]]
+16:28:55.194 INFO - Executing: [set window size])
+16:28:55.566 INFO - Done: [set window size]
+16:28:55.573 INFO - Executing: [get: http://localhost:3000/datatables])
+16:28:58.249 INFO - Done: [get: http://localhost:3000/datatables]
+16:28:58.268 INFO - Executing: [find elements: By.cssSelector: body])
+16:28:58.375 INFO - Done: [find elements: By.cssSelector: body]
+16:28:58.381 INFO - Executing: [is displayed: 0 [[ChromeDriver: chrome on MAC (fa2cd4ef4be01a2a8981f1f609eb53f7)] -> css selector: body]])
+16:28:58.409 INFO - Done: [is displayed: 0 [[ChromeDriver: chrome on MAC (fa2cd4ef4be01a2a8981f1f609eb53f7)] -> css selector: body]]
+16:28:58.415 INFO - Executing: [find elements: By.cssSelector: .dataTables_wrapper])
+16:28:58.440 INFO - Done: [find elements: By.cssSelector: .dataTables_wrapper]
+16:28:58.444 INFO - Executing: [take screenshot])
+16:28:58.867 INFO - Done: [take screenshot]
+16:28:58.881 INFO - Executing: [delete session: 3481f638-26fb-456a-961f-4c02f6ab2f0b])
+16:28:59.038 INFO - Done: [delete session: 3481f638-26fb-456a-961f-4c02f6ab2f0b]
+16:28:59.069 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, name=Date Range Picker, browserName=chrome, javascriptEnabled=true, platform=ANY}]])
+16:28:59.073 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, name=Date Range Picker, browserName=chrome, javascriptEnabled=true, platform=ANY}]
+Starting ChromeDriver 2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9) on port 4961
+Only local connections are allowed.
+16:29:00.716 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, name=Date Range Picker, browserName=chrome, javascriptEnabled=true, platform=ANY}]]
+16:29:00.727 INFO - Executing: [set window size])
+16:29:01.119 INFO - Done: [set window size]
+16:29:01.126 INFO - Executing: [get: http://localhost:3000/date-range-picker])
+16:29:05.637 INFO - Done: [get: http://localhost:3000/date-range-picker]
+16:29:05.661 INFO - Executing: [find elements: By.cssSelector: body])
+16:29:05.718 INFO - Done: [find elements: By.cssSelector: body]
+16:29:05.727 INFO - Executing: [is displayed: 0 [[ChromeDriver: chrome on MAC (4409a88a9c949072b88c244c663270c0)] -> css selector: body]])
+16:29:05.751 INFO - Done: [is displayed: 0 [[ChromeDriver: chrome on MAC (4409a88a9c949072b88c244c663270c0)] -> css selector: body]]
+16:29:05.756 INFO - Executing: [find elements: By.cssSelector: input[name="daterange"]])
+16:29:05.781 INFO - Done: [find elements: By.cssSelector: input[name="daterange"]]
+16:29:05.785 INFO - Executing: [find element: By.cssSelector: input[name="daterange"]])
+16:29:05.814 INFO - Done: [find element: By.cssSelector: input[name="daterange"]]
+16:29:05.818 INFO - Executing: [click: 1 [[ChromeDriver: chrome on MAC (4409a88a9c949072b88c244c663270c0)] -> css selector: input[name="daterange"]]])
+16:29:05.964 INFO - Done: [click: 1 [[ChromeDriver: chrome on MAC (4409a88a9c949072b88c244c663270c0)] -> css selector: input[name="daterange"]]]
+16:29:05.969 INFO - Executing: [find element: By.cssSelector: .daterangepicker.dropdown-menu])
+16:29:05.995 INFO - Done: [find element: By.cssSelector: .daterangepicker.dropdown-menu]
+16:29:05.998 INFO - Executing: [is displayed: 2 [[ChromeDriver: chrome on MAC (4409a88a9c949072b88c244c663270c0)] -> css selector: .daterangepicker.dropdown-menu]])
+16:29:06.033 INFO - Done: [is displayed: 2 [[ChromeDriver: chrome on MAC (4409a88a9c949072b88c244c663270c0)] -> css selector: .daterangepicker.dropdown-menu]]
+16:29:06.041 INFO - Executing: [take screenshot])
+16:29:06.425 INFO - Done: [take screenshot]
+16:29:06.448 INFO - Executing: [delete session: 37c707fa-e426-4384-855a-cc1b99def666])
+16:29:06.537 INFO - Done: [delete session: 37c707fa-e426-4384-855a-cc1b99def666]
+16:29:06.563 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, name=Forms, browserName=chrome, javascriptEnabled=true, platform=ANY}]])
+16:29:06.564 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, name=Forms, browserName=chrome, javascriptEnabled=true, platform=ANY}]
+Starting ChromeDriver 2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9) on port 42657
+Only local connections are allowed.
+16:29:08.444 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, name=Forms, browserName=chrome, javascriptEnabled=true, platform=ANY}]]
+16:29:08.458 INFO - Executing: [set window size])
+16:29:08.650 INFO - Done: [set window size]
+16:29:08.656 INFO - Executing: [get: http://localhost:3000/forms])
+16:29:10.774 INFO - Done: [get: http://localhost:3000/forms]
+16:29:10.788 INFO - Executing: [find elements: By.cssSelector: body])
+16:29:10.895 INFO - Done: [find elements: By.cssSelector: body]
+16:29:10.911 INFO - Executing: [is displayed: 0 [[ChromeDriver: chrome on MAC (9597da247422999203bf0890f57809bc)] -> css selector: body]])
+16:29:10.963 INFO - Done: [is displayed: 0 [[ChromeDriver: chrome on MAC (9597da247422999203bf0890f57809bc)] -> css selector: body]]
+16:29:10.968 INFO - Executing: [find elements: By.cssSelector: form])
+16:29:11.024 INFO - Done: [find elements: By.cssSelector: form]
+16:29:11.031 INFO - Executing: [find element: By.cssSelector: form])
+16:29:11.070 INFO - Done: [find element: By.cssSelector: form]
+16:29:11.083 INFO - Executing: [submit: 1 [[ChromeDriver: chrome on MAC (9597da247422999203bf0890f57809bc)] -> css selector: form]])
+16:29:11.165 INFO - Done: [submit: 1 [[ChromeDriver: chrome on MAC (9597da247422999203bf0890f57809bc)] -> css selector: form]]
+16:29:11.173 INFO - Executing: [find element: By.cssSelector: .form-group])
+16:29:11.207 INFO - Done: [find element: By.cssSelector: .form-group]
+16:29:11.210 INFO - Executing: [get element attribute: 2 [[ChromeDriver: chrome on MAC (9597da247422999203bf0890f57809bc)] -> css selector: .form-group], class])
+16:29:11.224 INFO - Done: [get element attribute: 2 [[ChromeDriver: chrome on MAC (9597da247422999203bf0890f57809bc)] -> css selector: .form-group], class]
+16:29:11.235 INFO - Executing: [find element: By.cssSelector: input[type=email]])
+16:29:11.269 INFO - Done: [find element: By.cssSelector: input[type=email]]
+16:29:11.275 INFO - Executing: [send keys: 3 [[ChromeDriver: chrome on MAC (9597da247422999203bf0890f57809bc)] -> css selector: input[type=email]], [t, e, s, t, @, d, o, m, a, i, n, ., c, o, m]])
+16:29:11.467 INFO - Done: [send keys: 3 [[ChromeDriver: chrome on MAC (9597da247422999203bf0890f57809bc)] -> css selector: input[type=email]], [t, e, s, t, @, d, o, m, a, i, n, ., c, o, m]]
+16:29:11.476 INFO - Executing: [find element: By.cssSelector: .form-group])
+16:29:11.497 INFO - Done: [find element: By.cssSelector: .form-group]
+16:29:11.502 INFO - Executing: [get element attribute: 2 [[ChromeDriver: chrome on MAC (9597da247422999203bf0890f57809bc)] -> css selector: .form-group], class])
+16:29:11.511 INFO - Done: [get element attribute: 2 [[ChromeDriver: chrome on MAC (9597da247422999203bf0890f57809bc)] -> css selector: .form-group], class]
+16:29:11.516 INFO - Executing: [set window size])
+16:29:11.694 INFO - Done: [set window size]
+16:29:11.699 INFO - Executing: [find element: By.cssSelector: a[data-toggle="tooltip"] > i])
+16:29:11.734 INFO - Done: [find element: By.cssSelector: a[data-toggle="tooltip"] > i]
+16:29:11.738 INFO - Executing: [get element attribute: 4 [[ChromeDriver: chrome on MAC (9597da247422999203bf0890f57809bc)] -> css selector: a[data-toggle="tooltip"] > i], class])
+16:29:11.762 INFO - Done: [get element attribute: 4 [[ChromeDriver: chrome on MAC (9597da247422999203bf0890f57809bc)] -> css selector: a[data-toggle="tooltip"] > i], class]
+16:29:11.769 INFO - Executing: [take screenshot])
+16:29:12.102 INFO - Done: [take screenshot]
+16:29:12.109 INFO - Executing: [delete session: dcefa700-5a7f-45bc-ba68-4ff52f13b53b])
+16:29:12.244 INFO - Done: [delete session: dcefa700-5a7f-45bc-ba68-4ff52f13b53b]
+16:29:12.278 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, name=Toasts, browserName=chrome, javascriptEnabled=true, platform=ANY}]])
+16:29:12.284 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, name=Toasts, browserName=chrome, javascriptEnabled=true, platform=ANY}]
+Starting ChromeDriver 2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9) on port 44434
+Only local connections are allowed.
+16:29:14.114 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, name=Toasts, browserName=chrome, javascriptEnabled=true, platform=ANY}]]
+16:29:14.119 INFO - Executing: [set window size])
+16:29:14.550 INFO - Done: [set window size]
+16:29:14.557 INFO - Executing: [get: http://localhost:3000/toasts])
+16:29:17.579 INFO - Done: [get: http://localhost:3000/toasts]
+16:29:17.587 INFO - Executing: [find elements: By.cssSelector: body])
+16:29:17.678 INFO - Done: [find elements: By.cssSelector: body]
+16:29:17.684 INFO - Executing: [is displayed: 0 [[ChromeDriver: chrome on MAC (af77a051612b53bd744a1601455a74ab)] -> css selector: body]])
+16:29:17.739 INFO - Done: [is displayed: 0 [[ChromeDriver: chrome on MAC (af77a051612b53bd744a1601455a74ab)] -> css selector: body]]
+16:29:17.749 INFO - Executing: [find elements: By.cssSelector: #toast-container])
+16:29:17.813 INFO - Done: [find elements: By.cssSelector: #toast-container]
+16:29:17.821 INFO - Executing: [take screenshot])
+16:29:18.268 INFO - Done: [take screenshot]
+16:29:18.277 INFO - Executing: [delete session: ac1eeb4f-42bd-40be-a5c5-bca24b3384cb])
+16:29:18.435 INFO - Done: [delete session: ac1eeb4f-42bd-40be-a5c5-bca24b3384cb]
+16:29:18.457 INFO - Executing: [new session: Capabilities [{acceptSslCerts=true, name=Wysiwyg, browserName=chrome, javascriptEnabled=true, platform=ANY}]])
+16:29:18.459 INFO - Creating a new session for Capabilities [{acceptSslCerts=true, name=Wysiwyg, browserName=chrome, javascriptEnabled=true, platform=ANY}]
+Starting ChromeDriver 2.27.440174 (e97a722caafc2d3a8b807ee115bfb307f7d2cfd9) on port 27611
+Only local connections are allowed.
+16:29:20.220 INFO - Done: [new session: Capabilities [{acceptSslCerts=true, name=Wysiwyg, browserName=chrome, javascriptEnabled=true, platform=ANY}]]
+16:29:20.226 INFO - Executing: [set window size])
+16:29:20.587 INFO - Done: [set window size]
+16:29:20.593 INFO - Executing: [get: http://localhost:3000/wysiwyg])
+16:29:24.777 INFO - Done: [get: http://localhost:3000/wysiwyg]
+16:29:24.797 INFO - Executing: [find elements: By.cssSelector: body])
+16:29:24.863 INFO - Done: [find elements: By.cssSelector: body]
+16:29:24.866 INFO - Executing: [is displayed: 0 [[ChromeDriver: chrome on MAC (950ceafd80ee446c16e8234c3b0859e9)] -> css selector: body]])
+16:29:24.889 INFO - Done: [is displayed: 0 [[ChromeDriver: chrome on MAC (950ceafd80ee446c16e8234c3b0859e9)] -> css selector: body]]
+16:29:24.893 INFO - Executing: [find elements: By.cssSelector: .note-editor])
+16:29:24.913 INFO - Done: [find elements: By.cssSelector: .note-editor]
+16:29:24.916 INFO - Executing: [take screenshot])
+16:29:25.255 INFO - Done: [take screenshot]
+16:29:25.263 INFO - Executing: [delete session: 8cfa127e-fe51-4c67-ab67-19821b5e00fe])
+16:29:25.350 INFO - Done: [delete session: 8cfa127e-fe51-4c67-ab67-19821b5e00fe]

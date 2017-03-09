@@ -9,7 +9,7 @@ module.exports = {
 
     index: function(req, res, next) {
 
-        var version = (req.params.version && req.params.version != '') ? req.params.version : res.locals.current
+        var version = (req.params.version && req.params.version !== '') ? req.params.version : res.locals.current
         
         Article.find({
                 version: version
@@ -46,7 +46,7 @@ module.exports = {
 
         Article.findOne({
                 slug: req.params.slug,
-                version: (req.params.version && req.params.version != '') ? req.params.version : res.locals.current
+                version: (req.params.version && req.params.version !== '') ? req.params.version : res.locals.current
             })
             .populate('_category')
             .exec(function(err, article) {

@@ -15,7 +15,7 @@ module.exports  = function(app){
     app.use('/categories',  categoriesRouter);    
     app.use('/api',         apiRouter);  	
 
-    articlesRouter.get('/:version?',              articles.index);
+    articlesRouter.get('/',                       articles.index);
     articlesRouter.get('/new',                    articles.new);
     articlesRouter.post('/create',                articles.create);
     articlesRouter.get('/version/set/:ver',       articles.version_set);
@@ -39,6 +39,7 @@ module.exports  = function(app){
     apiRouter.get('/:resource/:num?',             api.resource);
 
     app.get('/',                                  main.index);
+    app.get('/version/:version',                  main.set_version);
     app.get('/loadmore/:page?',                   main.loadmore);
 
 };

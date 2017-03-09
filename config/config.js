@@ -2,6 +2,8 @@ var express     = require('express'),
     logger        = require('morgan'),
     handlebars    = require("express-handlebars"),
     path          = require('path'),
+    session       = require('express-session'),
+    cookieParser  = require('cookie-parser'),
     bodyParser    = require('body-parser'),
     async         = require('async');
 
@@ -30,15 +32,29 @@ module.exports = function(app, envConfig){
         limit: '50mb',
         extended: true
     }));
+    app.use(cookieParser());
+    app.use(session({
+        httpOnly: false,  // ajax too
+        secret: '1Temporary2',  // TODO: store in env var
+        resave: false,
+        saveUninitialized: true,
+    }));
 
     app.use(express.static(path.join(envConfig.rootPath, 'test/e2e')));
     app.use(express.static(path.join(envConfig.rootPath, 'public')));
 
     app.use(function(req, res, next) {
 
+        console.log("********************************* Globals *********************************");
         res.locals.versions = ['0.1', '0.2', '0.3', '0.4'];
         res.locals.current = "0.1";
+        res.locals.ver_selected = (req.session.ver_selected && req.session.ver_selected !== '') ? req.session.ver_selected : res.locals.current;
 
+        console.log("res.locals.versions: " + res.locals.versions);
+        console.log("res.locals.current: " + res.locals.current);
+        console.log("res.locals.ver_selected: " + res.locals.ver_selected);
+
+        // Get nav items
         Category.find({})
         .lean()
         .exec(function(err, categories) {
@@ -66,6 +82,11 @@ module.exports = function(app, envConfig){
             })
         });
        
+    });
+
+    app.use(function printSession(req, res, next) {
+        console.log('req.session', req.session);
+        return next();
     });
 
   
