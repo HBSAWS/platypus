@@ -13,7 +13,11 @@ module.exports = {
 
             if(category) {
 
-                var query = {_category: category._id};
+                var query = {
+                    _category: category._id,
+                    version: (res.locals.ver_selected !== res.locals.current ) ? res.locals.ver_selected : res.locals.current
+                };
+
                 var options = {
                     sort: { title: 'asc' },
                     populate: '_category',
@@ -51,20 +55,22 @@ module.exports = {
         Category.findOne({slug: 'ui-components', published: true}, function(err, category){
           if(err) return next(err);
 
-                console.log(req.params.page)
 
-                var query = {_category: category._id};
-                var options = {
-                  sort: { title: 'asc' },
-                  populate: '_category',
-                  lean: false,
-                  page: req.params.page,
-                  limit: 8
-                };
-                Article.paginate(query, options).then(function(articles) {
-                    res.status(200).json(articles);
-                });
+            var query = {
+                _category: category._id, 
+                version: (res.locals.ver_selected !== res.locals.current ) ? res.locals.ver_selected : res.locals.current
+            };
+            var options = {
+              sort: { title: 'asc' },
+              populate: '_category',
+              lean: false,
+              page: req.params.page,
+              limit: 8
+            };
+            Article.paginate(query, options).then(function(articles) {
+                res.status(200).json(articles);
             });
+        });
     }
 
 

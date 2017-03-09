@@ -55,6 +55,9 @@ module.exports = function(app, envConfig){
         console.log("res.locals.ver_selected: " + res.locals.ver_selected);
 
         // Get nav items
+
+        console.log("Query: Build nav");
+
         Category.find({})
         .lean()
         .exec(function(err, categories) {

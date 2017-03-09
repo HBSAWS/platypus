@@ -3,6 +3,7 @@
 ;(function ($) {
 	var Platypus = {
 		ondomready: function ondomready() {
+			Platypus.setupSpinOnAjax();
 			Platypus.btnSubmitAnimate();
 			Platypus.inputMaxLength();
 			Platypus.backToTop();
@@ -24,13 +25,11 @@
 			Platypus.slimScroll();
 			Platypus.gallery();
 			Platypus.AZList();
-			Platypus.calendar();
 			Platypus.rotatingBg();
 			Platypus.modal();
 			Platypus.search();
 			Platypus.gridList();
 			Platypus.externalLinks();
-			Platypus.getSpinnerOpts();
 			Platypus.searchPills();
 			Platypus.infiniteLoading();
 			Platypus.toolTip();
@@ -49,6 +48,7 @@
 			});
 		},
 		backToTop: function backToTop() {
+			$('body').append('<a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button" title="Return to the top" data-toggle="tooltip" data-placement="left"><span class="fa fa-chevron-up"></span></a>');
 			$(window).scroll(function () {
 				if ($(this).scrollTop() > 50) {
 					$('#back-to-top').fadeIn();
@@ -348,45 +348,6 @@
 				filterSelector: '' // Set the filter to a CSS selector rather than the first text letter for each item
 			});
 		},
-		calendar: function calendar() {
-
-			$.ajax('/api/event/20', {
-				success: function success(data) {
-
-					$('.full-calendar').fullCalendar({
-						header: {
-							left: 'prev,next today',
-							center: 'title',
-							right: 'month,agendaWeek,agendaDay'
-						},
-						defaultDate: moment().format('YYYY-MM-DD'),
-						defaultView: 'month',
-						editable: true,
-						events: data,
-						eventClick: function eventClick(event, jsEvent, view) {
-							$('#event-modal .modal-body .event-title').html(event.title);
-							$('#event-modal .modal-body .event-category').html(event.category);
-							$('#event-modal .modal-body .event-description').html(event.description);
-							$('#event-modal .modal-body .event-starts').html(moment(event.start).format("MMM DD YYYY"));
-							$('#event-modal .modal-body .event-ends').html(moment(event.end).format("MMM DD YYYY"));
-							$('#event-modal .modal-body .event-location').html(event.location);
-							$('#event-modal .modal-body .event-start-month').html(moment(event.start).format("MMM"));
-							$('#event-modal .modal-body .event-start-day').html(moment(event.start).format("DD"));
-							$('#event-modal #event-url').attr('href', event.url);
-							$('#event-modal').modal();
-						}
-					});
-
-					data.forEach(function (event) {
-						//console.log(item);
-						$('#event-listing-demo').append('\n\t\t\t\t\t        <div class="row">\n\t\t\t\t\t            <div class="col-xs-1 event text-xs-center">\n\t\t\t\t\t                <div class="event-start-month tag tag-default d-block text-uppercase">' + moment(event.start).format("MMM") + '</div>\n\t\t\t\t\t                <div class="event-start-day day display-4 font-weight-bold">' + moment(event.start).format("DD") + '</div>\n\t\t\t\t\t            </div>\n\t\t\t\t\t            <div class="col-xs-11">\n\t\t\t\t\t                <h3 class="event-title font-weight-bold">' + event.title + '</h3> \n\t\t\t\t\t                <span class="tag tag-default event-category">' + event.category + '</span>\n\t\t\t\t\t                <ul class="list-unstyled">\n\t\t\t\t\t                    <li><span class="event-starts">' + moment(event.start).format("MMM DD YYYY") + '</span> - <span class="event-ends">' + moment(event.end).format("MMM DD YYYY") + '</span></li>\n\t\t\t\t\t                    <li><i class="fa fa-map-marker"></i> <a href="#" target="_blank"><span class="event-location">' + event.location + '</span></a></li>\n\t\t\t\t\t                </ul>\n\t\t\t\t\t                <div class="event-description">\n\t\t\t\t\t                    ' + event.description + '\n\t\t\t\t\t                </div>\n\t\t\t\t\t            </div>\n\t\t\t\t\t        </div>\n\t\t\t\t\t        <hr>\n\t\t\t\t\t\t');
-					});
-				},
-				error: function error() {
-					swal('Error', 'Cannot retrieve sample data.', 'error');
-				}
-			});
-		},
 		modal: function modal() {
 			// global modal options 
 		},
@@ -459,29 +420,47 @@
 				return this.hostname && this.hostname !== location.hostname;
 			}).addClass("external");
 		},
-		getSpinnerOpts: function getSpinnerOpts() {
-			return {
-				lines: 13,
-				length: 0,
-				width: 14,
-				radius: 42,
-				scale: 1,
-				corners: 1,
-				color: '#000',
-				opacity: 0.25,
-				rotate: 0,
-				direction: 1,
-				speed: 1,
-				trail: 60,
-				fps: 20,
-				zIndex: 2e9,
-				className: 'spinner',
-				top: '50%',
-				left: '50%',
-				shadow: false,
-				hwaccel: false,
-				position: 'absolute'
+		setupSpinOnAjax: function setupSpinOnAjax() {
+
+			// setup spinner animation options
+			$.fn.spin = function (opts) {
+				this.each(function () {
+					var $this = $(this),
+					    spinner = $this.data('spinner');
+					if (spinner) spinner.stop();
+					if (opts !== false) {
+						opts = $.extend({ color: $this.css('color') }, opts);
+						spinner = new Spinner(opts).spin(this);
+						$this.data('spinner', spinner);
+					}
+				});
+				return this;
 			};
+
+			// bind spinner to ajax doc events
+			$(document).on({
+				ajaxStart: function ajaxStart() {
+					var el = $('<div class="spinner">').appendTo('body').spin();
+					$('body').append('<div class="overlay"></div>');
+					$(".overlay").fadeIn().append(el);
+					var opts = {
+						lines: 12,
+						length: 5,
+						width: 5,
+						radius: 10,
+						color: '#000',
+						speed: 1,
+						trail: 66,
+						shadow: false
+					};
+					$(el).spin(opts);
+				},
+				ajaxStop: function ajaxStop() {
+					var el = $('.spinner');
+					//el.spin(false).remove();
+					$(".overlay").fadeOut();
+				}
+			});
 		},
 		searchPills: function searchPills() {
 
@@ -496,25 +475,25 @@
 				e.preventDefault();
 				var pillVal = $(this).val();
 
-				// Show spinner
-				function showSpinner() {
-					var el = $('<div class="d-block mt-3 p-3">').appendTo('#results').spin(Platypus.getSpinnerOpts());
-					setTimeout(function () {
-						el.spin(false).remove();
-					}, 1000);
-				}
+				// // Show spinner
+				// function showSpinner() {
+				// 	var el = $('<div class="d-block mt-3 p-3">').appendTo('#results').spin(Platypus.getSpinnerOpts());
+				// 	setTimeout(function () {
+				// 		el.spin(false).remove();
+				// 	}, 1000);
+				// }
 
 				if (this.checked) {
 					$('#searchPills').pillbox('addItems', -1, [{ text: pillVal }]);
-					showSpinner();
+					//showSpinner();
 				} else {
 					$('#searchPills').pillbox('removeByText', pillVal);
-					showSpinner();
+					//showSpinner();
 				}
 
 				$('#searchPills').on('removed.fu.pillbox', function (evt, item) {
 					$('#facets input[value="' + item.value + '"]').prop('checked', false);
-					showSpinner();
+					//showSpinner();
 				});
 			});
 		},

@@ -53,9 +53,9 @@ res.locals.current = "0.1";
 ```
 Versioning documents:
 ```javascript
-[GET] /articles/set/:ver // Sets initial version on (all documents)
-[GET] /articles/del/:ver // Deletes all documents with specific version
-[GET] /articles/cp/:from/:to // copy all documents matching :from, updating version tag to :to
+[GET] /articles/version/set/:ver // Sets initial version on (all documents)
+[GET] /articles/version/del/:ver // Deletes all documents with specific version
+[GET] /articles/version/cp/:from/:to // copy all documents matching :from, updating version tag to :to
 ````
 
 ## Questions?

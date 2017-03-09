@@ -11,7 +11,6 @@ module.exports = {
 
     index: function(req, res, next) {
         
-        console.log("Query here");
         Article.find({
                 version: (res.locals.ver_selected !== res.locals.current ) ? res.locals.ver_selected : res.locals.current
             })
@@ -178,7 +177,8 @@ module.exports = {
             console.log(category);
 
             Article.find({
-                    '_category': category._id
+                    '_category': category._id,
+                    version: (res.locals.ver_selected !== res.locals.current ) ? res.locals.ver_selected : res.locals.current
                 })
                 .populate('_category')
                 .lean()
