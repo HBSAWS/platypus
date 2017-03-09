@@ -5,14 +5,15 @@ var mongoose = require('mongoose'),
     _ = require('lodash'),
     helpers = require('../config/handlebar-helpers.js').helpers;
 
+    mongoose.set('debug', true);
+
 module.exports = {
 
     index: function(req, res, next) {
-
-        var version = (req.params.version && req.params.version !== '') ? req.params.version : res.locals.current
         
+        console.log("Query here");
         Article.find({
-                version: version
+                version: (res.locals.ver_selected !== res.locals.current ) ? res.locals.ver_selected : res.locals.current
             })
             .sort('title')
             .exec(function(err, articles) {
@@ -46,7 +47,7 @@ module.exports = {
 
         Article.findOne({
                 slug: req.params.slug,
-                version: (req.params.version && req.params.version !== '') ? req.params.version : res.locals.current
+                version: (res.locals.ver_selected !== res.locals.current ) ? res.locals.ver_selected : res.locals.current
             })
             .populate('_category')
             .exec(function(err, article) {
@@ -233,7 +234,7 @@ module.exports = {
                 doc.forEach(function(x,i){
                     var y = x.toObject();
                     y._id = mongoose.Types.ObjectId();
-                    y.version = y.version = req.params.to;
+                    y.version = req.params.to;
                     Article.create(y, function(err, z){
                         if(err) return next(err);
                         console.log("saving z:" + z.title + " | z.slug:" + z.slug);

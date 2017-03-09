@@ -42,7 +42,7 @@ module.exports = {
         req.session.ver_selected = req.params.version;
         req.session.save(function(err){
             if (!err) 
-            res.redirect('/');
+            res.redirect(req.header('Referer') || '/');
         });
     },
     

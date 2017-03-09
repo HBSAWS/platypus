@@ -26,7 +26,7 @@ module.exports  = function(app){
     articlesRouter.post('/update/:id',            articles.update);
     articlesRouter.get('/search/:cat_slug',       articles.search);
     articlesRouter.get('/mock/:slug/:viewport',   articles.mock);
-    articlesRouter.get('/:slug/:version?',        articles.show);
+    articlesRouter.get('/:slug',                  articles.show);
     
     categoriesRouter.get('/',                     categories.index);
     categoriesRouter.get('/new',                  categories.new);

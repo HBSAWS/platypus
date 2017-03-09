@@ -45,8 +45,8 @@ module.exports = function(app, envConfig){
 
     app.use(function(req, res, next) {
 
-        console.log("********************************* Globals *********************************");
-        res.locals.versions = ['0.1', '0.2', '0.3', '0.4'];
+        console.log("********************************* Le Globals *********************************");
+        res.locals.versions = ['0.1', '0.2'];
         res.locals.current = "0.1";
         res.locals.ver_selected = (req.session.ver_selected && req.session.ver_selected !== '') ? req.session.ver_selected : res.locals.current;
 
@@ -75,8 +75,7 @@ module.exports = function(app, envConfig){
 				done(null, categories);  
 		   });
             }, function(err, result) {
-                if(err) return next(err);
-                //res.status(200).json(result);  
+                if(err) return next(err); 
                 res.locals.nav = result[0];
                 return next();
             })
@@ -84,8 +83,9 @@ module.exports = function(app, envConfig){
        
     });
 
-    app.use(function printSession(req, res, next) {
-        console.log('req.session', req.session);
+    // Debug session
+    app.use(function(req, res, next) {
+        console.log(req.session);
         return next();
     });
 

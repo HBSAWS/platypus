@@ -7,7 +7,16 @@
     <div class="p-1">
         <select class="form-control p-1" onchange="location = '/version/'+this.value;">
             {{#versions}}
-                <option value="{{.}}" {{#compare . "==" ../current}}selected{{/compare}}>Version {{.}} {{#compare . "==" ../current}}(current){{/compare}}</option>
+            
+                {{#compare ../current "!=" ../ver_selected}}
+                    <option value="{{.}}" {{#compare . "==" ../ver_selected}}selected{{/compare}}>Version {{.}}</option>
+                {{/compare}}
+
+                {{#compare ../current "==" ../ver_selected}}
+                    <option value="{{.}}" {{#compare . "==" ../current}}selected{{/compare}}>Version {{.}} {{#compare . "==" ../current}}(current){{/compare}}</option>
+                {{/compare}}
+
+
             {{/versions}}
         </select>
     </div>
