@@ -50,23 +50,22 @@ module.exports = function(app, envConfig){
         res.locals.current = "0.1";
         res.locals.ver_selected = (req.session.ver_selected && req.session.ver_selected !== '') ? req.session.ver_selected : res.locals.current;
 
-        console.log("res.locals.versions: " + res.locals.versions);
-        console.log("res.locals.current: " + res.locals.current);
-        console.log("res.locals.ver_selected: " + res.locals.ver_selected);
+        // console.log("res.locals.versions: " + res.locals.versions);
+        // console.log("res.locals.current: " + res.locals.current);
+        // console.log("res.locals.ver_selected: " + res.locals.ver_selected);
 
         // Get nav items
-
-        console.log("Query: Build nav");
-
         Category.find({})
         .lean()
+        .populate('_parent')
+        .sort('title')
         .exec(function(err, categories) {
             if(err) return next(err);
 
             async.map(categories, function(category, done) {
                 Article.find({
                     _category: category._id,
-                    version: res.locals.current
+                    version: (res.locals.ver_selected !== res.locals.current ) ? res.locals.ver_selected : res.locals.current
                 })
     			.lean()
     			.sort('title')
@@ -86,10 +85,10 @@ module.exports = function(app, envConfig){
     });
 
     // Debug session
-    app.use(function(req, res, next) {
-        console.log(req.session);
-        return next();
-    });
+    // app.use(function(req, res, next) {
+    //     console.log(req.session);
+    //     return next();
+    // });
 
   
 };
