@@ -19,14 +19,21 @@ module.exports = {
     });
   },
 
-  new: function(req, res, next){
-    res.render('categories/new', { 
-      layout : 'main',
-      helpers: {
-        compare: helpers.compare,
-      } 
-    });
-  },
+    new: function(req, res, next){
+
+        // Find all categories to populate _parent
+        Category.find({}, function(err, categories){
+            if(err) return next(err);
+
+            res.render('categories/new', { 
+                parents : categories,
+                layout : 'main',
+                helpers: {
+                    compare: helpers.compare,
+                } 
+            });
+        });
+    },
 
   create: function(req, res, next){
   
@@ -38,12 +45,13 @@ module.exports = {
       .replace(/-+$/, '');  
 
     Category.create({ 
+      _parent       : (req.body._parent == '') ? null : req.body._parent,
       title         : req.body.title,
       slug          : slug,
       icon          : req.body.icon,
       published     : req.body.published ? true : false }, function(err, category){
       if(err) return next(err);
-      res.redirect('/');
+      res.redirect(req.header('Referer') || '/');
     });
   },
 
@@ -91,17 +99,26 @@ module.exports = {
   },
 
   edit: function(req, res, next){
-    Category.find({ _id: req.params.id }, function(err, category){
-      if(err) return next(err);
-      res.render('categories/edit', { 
-        category: category[0], 
-        layout : 'main',
-        page_title : page_title,
-        helpers: {
-          compare : helpers.compare,
-        }
-      })
+    
+    // Find all categories to populate _parent
+    Category.find({}, function(e, categories){
+        if(e) return next(e);
+    
+        Category.find({ _id: req.params.id }, function(err, category){
+            if(err) return next(err);
+                res.render('categories/edit', { 
+                parents: categories, 
+                category: category[0], 
+                layout : 'main',
+                page_title : page_title,
+                helpers: {
+                    compare : helpers.compare,
+                }
+            })
+        });
+
     });
+
   },
 
   update: function(req, res, next){
@@ -114,6 +131,7 @@ module.exports = {
       .replace(/-+$/, '');  
 
     var update_attrs = {
+      _parent       : (req.body._parent == '') ? null : req.body._parent,
       title         : req.body.title,
       slug          : slug,
       icon          : req.body.icon,

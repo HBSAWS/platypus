@@ -171,6 +171,9 @@ gulp.task('default',function() {
         script: 'server.js', 
         ext: 'js html hbs', 
         env: { 'NODE_ENV': 'development' }
+    }).on('start', function() {
+        console.log('\033[2J');
+        //console.clear();
     });
 
 });

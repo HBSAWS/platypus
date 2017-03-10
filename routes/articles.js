@@ -5,7 +5,7 @@ var mongoose = require('mongoose'),
     _ = require('lodash'),
     helpers = require('../config/handlebar-helpers.js').helpers;
 
-    mongoose.set('debug', true);
+    // mongoose.set('debug', true);
 
 module.exports = {
 

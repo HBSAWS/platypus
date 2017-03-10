@@ -61,25 +61,24 @@ module.exports = function(app, envConfig){
         Category.find({})
         .lean()
         .exec(function(err, categories) {
-              if(err) return next(err);
+            if(err) return next(err);
 
-                async.map(categories, function(category, done) {
-                    Article.find(
-                        {
-                            _category: category._id,
-                            version: res.locals.current
-                        }
-                    )
-			.lean()
-			.sort('title')
-			.exec(function(err, a){
-				if(err) return next(err);
-				category.articles = a;
-				done(null, categories);  
-		   });
+            async.map(categories, function(category, done) {
+                Article.find({
+                    _category: category._id,
+                    version: res.locals.current
+                })
+    			.lean()
+    			.sort('title')
+    			.exec(function(err, a){
+    				if(err) return next(err);
+    				category.articles = a;
+    				done(null, categories);  
+    		    });
             }, function(err, result) {
                 if(err) return next(err); 
                 res.locals.nav = result[0];
+                console.log(res.locals.nav);
                 return next();
             })
         });

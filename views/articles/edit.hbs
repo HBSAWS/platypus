@@ -24,18 +24,6 @@
 			  </div>
 			</div><!--/.row-->
 
-			{{!--
-			<div class="row form-group">
-			  <div class="col-md-4 hidden-sm-down text-xs-right">
-			    <label for="slug">Slug</label>
-			  </div>
-			  <div class="col-md-8">
-			  	<label class="hidden-md-up d-block" for="slug">Slug</label>
-			  	<input name="slug" type="text" class="form-control" value="{{slug}}" >
-			  </div>
-			</div><!--/.row-->
-			--}}
-
 			<div class="form-group row">
 				<label class="col-md-4 hidden-sm-down text-xs-right" for="status">Status</label>
 				<div class="col-md-8">
@@ -67,7 +55,7 @@
 			  	<label class="hidden-md-up d-block" for="_category">Category</label>
 			  	<select name="_category" class="form-control select2" required>
 						{{#each ../categories}}
-					  	<option value="{{_id}}" {{#compare title ../_category.title}} selected="selected"{{/compare}}>{{title}}</option>
+					  	<option value="{{_id}}" {{#compare title ../_category.title}}selected{{/compare}}>{{title}}</option>
 					  {{/each}}
 					</select>
 			  </div>
