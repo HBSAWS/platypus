@@ -4,7 +4,7 @@ var mongoose = require('mongoose'),
 var categorySchema = new Schema({
 	_parent		    : { type: Schema.Types.ObjectId, ref: 'Category' },
   	title			: { type : String, required: true },
-  	slug			: { type : String, unique : true, dropDups: true, required: true },
+  	slug			: { type : String },
   	icon			: { type : String },
   	published	: { type: Boolean }
 	},

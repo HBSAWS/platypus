@@ -26,13 +26,14 @@
 
             {{#nav}}
                 {{!-- Render first level nav --}}
-                {{#compare _parent null}}
+               
                     <li>
                         <a class="has-arrow" href="#" aria-expanded="false">
                             <span class="sidebar-nav-item-icon fa fa-{{icon}}"></span>
                             <span class="sidebar-nav-item">{{title}}</span>
                         </a>
                         <ul aria-expanded="false" class="collapse">
+                            
                             {{#each articles}}
                                 <li>
                                     <a href="/articles/{{slug}}">{{title}}
@@ -43,7 +44,7 @@
 
                         </ul>
                     </li>
-                {{/compare}}
+               
             {{/nav}}
                                                            
         </ul>
