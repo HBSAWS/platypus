@@ -56,7 +56,6 @@ module.exports = function(app, envConfig){
 
         // Get nav items
         Category.find({})
-        .lean()
         .populate('_parent')
         .sort('title')
         .exec(function(err, categories) {
@@ -68,15 +67,12 @@ module.exports = function(app, envConfig){
                     _category: category._id,
                     version: (res.locals.ver_selected !== res.locals.current ) ? res.locals.ver_selected : res.locals.current
                 })
-    			.lean()
     			.sort('title')
     			.exec(function(err, a){
     				if(err) return next(err);
     				category.articles = a;
     				done(null, categories);  
     		    });
-
-
                 
             }, function(err, result) {
                 if(err) return next(err); 
