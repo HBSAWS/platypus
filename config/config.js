@@ -5,7 +5,8 @@ var express     = require('express'),
     session       = require('express-session'),
     cookieParser  = require('cookie-parser'),
     bodyParser    = require('body-parser'),
-    async         = require('async');
+    async         = require('async'),
+    _             = require('lodash');
 
 // Navigation
 require('./models/Category');
@@ -54,10 +55,16 @@ module.exports = function(app, envConfig){
         // console.log("res.locals.current: " + res.locals.current);
         // console.log("res.locals.ver_selected: " + res.locals.ver_selected);
 
+        Category.findRecursive(function(err, tree){
+            if(err) return next(err);
+            res.locals.tree = tree;
+        });
+
         // Get nav items
         Category.find({})
         .populate('_parent')
         .sort('title')
+        .lean()
         .exec(function(err, categories) {
             if(err) return next(err);
 
@@ -68,21 +75,32 @@ module.exports = function(app, envConfig){
                     version: (res.locals.ver_selected !== res.locals.current ) ? res.locals.ver_selected : res.locals.current
                 })
     			.sort('title')
+                .lean()
     			.exec(function(err, a){
     				if(err) return next(err);
     				category.articles = a;
-    				done(null, categories);  
+
+                    var arrResult = _.map(categories, function(obj) {
+                        return _.assign(obj, _.find(res.locals.tree, {
+                            _id: obj._id
+                        }));
+                    });
+
+    				done(null, arrResult);  
     		    });
                 
             }, function(err, result) {
                 if(err) return next(err); 
                 res.locals.nav = result[0];
-                console.log(res.locals.nav);
                 return next();
+                // res.status(200).json(res.locals.nav);
             })
         });
-       
+    
     });
+
+
+       
 
     // Debug session
     // app.use(function(req, res, next) {
