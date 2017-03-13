@@ -68,7 +68,7 @@ module.exports = function(app, envConfig){
         .exec(function(err, categories) {
             if(err) return next(err);
 
-            async.map(categories, function(category, done) {
+            _.map(categories, function(category) {
 
                 Article.find({
                     _category: category._id,
@@ -78,25 +78,23 @@ module.exports = function(app, envConfig){
                 .lean()
     			.exec(function(err, a){
     				if(err) return next(err);
-    				category.articles = a;
-
+    		
+                    category.articles = a;
+                            
                     var arrResult = _.map(categories, function(obj) {
                         return _.assign(obj, _.find(res.locals.tree, {
                             _id: obj._id
                         }));
                     });
 
-    				done(null, arrResult);  
-    		    });
-                
-            }, function(err, result) {
-                if(err) return next(err); 
-                res.locals.nav = result[0];
-                return next();
-                // res.status(200).json(res.locals.nav);
-            })
-        });
+    				res.locals.nav = arrResult;
+                    console.log(res.locals.nav);
+                });
+    		});
+
+            return next();
     
+        });
     });
 
 
