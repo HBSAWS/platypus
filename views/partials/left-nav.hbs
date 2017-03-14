@@ -34,23 +34,6 @@
                         </a>
                         <ul aria-expanded="false" class="collapse">
                             
-                            {{#each sub}}
-                                <li class="bg-info">
-                                    <a href="/articles/{{slug}}" class="has-arrow text-white" aria-expanded="false">{{title}}
-                                        <span class="tag palette-bg-teal-500 float-xs-right">{{type}}</span>
-                                    </a>
-                                    <ul aria-expanded="false">
-                                        {{#each articles}}
-                                            <li>
-                                                <a href="/articles/{{slug}}">{{title}}
-                                                    <span class="tag palette-bg-teal-500 float-xs-right">{{type}}</span>
-                                                </a>
-                                            </li>
-                                        {{/each}}
-                                    </ul>
-                                </li>
-                            {{/each}}
-
                             {{#each articles}}
                                 <li>
                                     <a href="/articles/{{slug}}">{{title}}

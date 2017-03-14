@@ -52,6 +52,7 @@ var opts = {
         'public/vendor/jquery-typeahead/jquery.typeahead.min.js',
         'public/vendor/faker/faker.min.js',
         'public/vendor/highlight/highlight.min.js',
+        'public/vendor/sparkline/jquery.sparkline.min.js',
         'public/js/main.js',
     ], 
     cssFiles : [

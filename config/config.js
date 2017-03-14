@@ -88,7 +88,7 @@ module.exports = function(app, envConfig){
                     });
 
     				res.locals.nav = arrResult;
-                    console.log(res.locals.nav);
+                    // console.log(res.locals.nav);
                 });
     		});
 

@@ -32,6 +32,7 @@
 			Platypus.externalLinks();
 			Platypus.searchPills();
 			Platypus.infiniteLoading();
+			Platypus.sparkLine();
 			Platypus.toolTip();
 			Platypus.toolTip();
 			Platypus.popOver();
@@ -535,9 +536,43 @@
 
 			window.onscroll = function (ev) {
 				if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-					console.log("You've reached the bottom of the page.");
+					console.log("end of page");
 				}
 			};
+		},
+		sparkLine: function sparkLine() {
+			$.fn.sparkline.defaults.common.lineColor = 'white';
+			$.fn.sparkline.defaults.common.width = 'auto';
+			$.fn.sparkline.defaults.common.height = '150px';
+
+			$.fn.sparkline.defaults.line.spotColor = "false";
+			$.fn.sparkline.defaults.line.fillColor = "";
+			$.fn.sparkline.defaults.line.lineWidth = "3";
+			$.fn.sparkline.defaults.line.highlightLineColor = "black";
+
+			$.fn.sparkline.defaults.pie.sliceColors = ["#E0F2F1", "#B2DFDB", "#80CBC4", "#4DB6AC", "#26A69A", "#009688", "#00897B", "#00796B", "#00695C", "#004D40", "#A7FFEB", "#64FFDA", "#1DE9B6", "#00BFA5"];
+
+			$.fn.sparkline.defaults.pie.borderWidth = '0';
+
+			$.fn.sparkline.defaults.bar.barColor = "#E0F2F1";
+			$.fn.sparkline.defaults.bar.negBarColor = "#00897B";
+			$.fn.sparkline.defaults.bar.zeroColor = "#B2DFDB";
+
+			// Draw a sparkline for the #sparkline element
+			$('.sparkline').each(function (item) {
+				var data = $(this).text().split(','),
+				    type = $(this).data('type') || 'bar',
+				    parentWidth = $(this).parent().width(),
+				    valueCount = data.length,
+				    barSpacing = 1,
+				    barWidth = Math.round((parentWidth - (valueCount - 1) * barSpacing) / valueCount);
+
+				$(this).sparkline(data, {
+					type: type,
+					width: type == 'line' ? '100%' : 'auto',
+					barWidth: barWidth
+				});
+			});
 		},
 		last: ''
 	};

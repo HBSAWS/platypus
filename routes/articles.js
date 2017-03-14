@@ -93,6 +93,7 @@ module.exports = {
             resources: req.body.resources,
             js: req.body.js,
             fiddle: req.body.fiddle,
+            version: (res.locals.ver_selected !== res.locals.current ) ? res.locals.ver_selected : res.locals.current,
             published: req.body.published ? true : false
         }, function(err, article) {
             if(err) return next(err);

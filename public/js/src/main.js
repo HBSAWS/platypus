@@ -32,14 +32,15 @@
 			Platypus.externalLinks();
 			Platypus.searchPills();
 			Platypus.infiniteLoading();
+			Platypus.sparkLine();
 			Platypus.toolTip();
 			Platypus.toolTip();
 			Platypus.popOver();
 		},
-		btnSubmitAnimate: function btnSubmitAnimate() {
+		btnSubmitAnimate: function() {
 			Ladda.bind('button[type=submit]');
 		},
-		inputMaxLength: function inputMaxLength() {
+		inputMaxLength: function() {
 			$('input[maxlength], textarea[maxlength]').maxlength({
 				alwaysShow: true,
 				// threshold: 10,
@@ -47,7 +48,7 @@
 				limitReachedClass: "tag tag-danger"
 			});
 		},
-		backToTop: function backToTop() {
+		backToTop: function() {
 			$('body').append('<a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button" title="Return to the top" data-toggle="tooltip" data-placement="left"><span class="fa fa-chevron-up"></span></a>');
 			$(window).scroll(function () {
 				if ($(this).scrollTop() > 50) {
@@ -64,16 +65,16 @@
 				return false;
 			});
 		},
-		highlightJS: function highlightJS() {
+		highlightJS: function() {
 			$('pre code').each(function (i, e) {
 				hljs.highlightBlock(e);
 			});
 		},
-		waveEffect: function waveEffect() {
+		waveEffect: function() {
 			Waves.attach('.btn, .sidebar-nav li a');
 			Waves.init();
 		},
-		breadCrumbs: function breadCrumbs() {
+		breadCrumbs: function() {
 			$('.breadcrumb').asBreadcrumbs({
 				namespace: 'breadcrumb',
 				overflow: "left",
@@ -87,17 +88,17 @@
 				dropdownItemDisableClass: 'disabled',
 				toggleClass: 'dropdown-toggle',
 				toggleIconClass: 'caret',
-				getItems: function getItems($parent) {
+				getItems: function($parent) {
 					return $parent.children();
 				},
-				getItemLink: function getItemLink($item) {
+				getItemLink: function($item) {
 					return $item.find('a');
 				},
-				ellipsis: function ellipsis(classes, label) {
+				ellipsis: function(classes, label) {
 					return '<li class="' + classes.ellipsisClass + '">' + label + '</li>';
 				},
 
-				dropdown: function dropdown(classes) {
+				dropdown: function(classes) {
 					var dropdownClass = 'dropdown'; // was 'dropdown'
 					var dropdownMenuClass = 'dropdown-menu';
 
@@ -108,7 +109,7 @@
 					return '<li class="' + dropdownClass + ' ' + classes.dropdownClass + '">\n\t\t\t\t      <a href="javascript:void(0);" class="' + classes.toggleClass + '" data-toggle="dropdown">\n\t\t\t\t        <i class="' + classes.toggleIconClass + '"></i>\n\t\t\t\t      </a>\n\t\t\t\t      <ul class="' + dropdownMenuClass + ' ' + classes.dropdownMenuClass + '"></ul>\n\t\t\t\t    </li>';
 				},
 
-				dropdownItem: function dropdownItem(classes, label, href) {
+				dropdownItem: function(classes, label, href) {
 					if (!href) {
 						return '<li class="' + classes.dropdownItemClass + ' ' + classes.dropdownItemDisableClass + '"><a href="#">' + label + '</a></li>';
 					}
@@ -119,7 +120,7 @@
 				onReady: null
 			});
 		},
-		leftMenu: function leftMenu() {
+		leftMenu: function() {
 			$(".metismenu").metisMenu({
 				toggle: true
 			});
@@ -161,14 +162,14 @@
 				return "";
 			}
 		},
-		carousel: function carousel() {
+		carousel: function() {
 			$(".carousel").slick({
 				dots: true,
 				infinite: false,
 				arrows: false
 			});
 		},
-		dataTables: function dataTables() {
+		dataTables: function() {
 			// Global settings for all datatables
 			$.extend( true, $.fn.dataTable.defaults, {
 				responsive: {
@@ -189,22 +190,22 @@
 			$('.datatable').DataTable();
 			
 		},
-		toolTip: function toolTip() {
+		toolTip: function() {
 			$('[data-toggle="tooltip"]').tooltip();
 		},
-		popOver: function popOver() {
+		popOver: function() {
 			$('[data-toggle="popover"]').popover();
 		},
-		select2: function select2() {
+		select2: function() {
 			$('.select2').select2({
 				theme: "bootstrap",
 				placeholder: 'Select a month'
 			});
 		},
-		dateRange: function dateRange() {
+		dateRange: function() {
 			$('input[name="daterange"]').daterangepicker();
 		},
-		wysiwyg: function wysiwyg() {
+		wysiwyg: function() {
 			$('.summernote').summernote({
 				height: '200px',
 				airMode: false,
@@ -220,14 +221,14 @@
 				}
 			});
 		},
-		gauges: function gauges() {
+		gauges: function() {
 			$(".dial").each(function () {
 				$(this).knob({
 					fgColor: $(this).data('color') !== '' ? $(this).data('color') : 'green'
 				});
 			});
 		},
-		wizard: function wizard() {
+		wizard: function() {
 			
 			var $wizard = $('#myWizard').wizard();
 			var $form = $wizard.closest('form');
@@ -247,7 +248,7 @@
 
 
 		},
-		toasts: function toasts() {
+		toasts: function() {
 
 			toastr.options = {
 				"closeButton": true,
@@ -267,7 +268,7 @@
 				"hideMethod": "fadeOut"
 			};
 		},
-		dateTimePickers: function dateTimePickers() {
+		dateTimePickers: function() {
 			var customIcons = {
 				time: "fa fa-clock-o",
 				date: "fa fa-calendar",
@@ -288,14 +289,14 @@
 
 			});
 		},
-		slider: function slider() {
+		slider: function() {
 			$('input[name="slider"]').slider({
 				formatter: function formatter(value) {
 					return value;
 				}
 			});
 		},
-		formRendering: function formRendering() {
+		formRendering: function() {
 			$('form small').each(function () {
 				var helpText = $(this).html();
 				var tooltipHelp = ' <a href="#" class="" data-toggle="tooltip" data-placement="right" title="' + helpText + '"><i class="fa fa-question-circle-o"></i></a>';
@@ -318,12 +319,12 @@
 				}
 			});
 		},
-		slimScroll: function slimScroll() {
+		slimScroll: function() {
 			$('.sidebar').slimScroll({
 				height: '100%'
 			});
 		},
-		gallery: function gallery() {
+		gallery: function() {
 			$('.gallery').click(function (event) {
 				event = event || window.event;
 				var target = event.target || event.srcElement,
@@ -333,7 +334,7 @@
 				blueimp.Gallery(links, options);
 			});
 		},
-		AZList: function AZList() {
+		AZList: function() {
 			$('#azList').listnav({
 				initLetter: '', // filter the list to a specific letter on init ('a'-'z', '-' [numbers 0-9], '_' [other])
 				includeAll: true, // Include the ALL button
@@ -351,13 +352,13 @@
 				filterSelector: '' // Set the filter to a CSS selector rather than the first text letter for each item
 			});
 		},
-		modal: function modal() {
+		modal: function() {
 			// global modal options 
 		},
-		rotatingBg: function rotatingBg() {
+		rotatingBg: function() {
 			$('.rotating-bg').css('background-image', 'url("/images/rotating-bg-hbs/bg-hbs-' + _.random(1, 4) + '.png")');
 		},
-		search: function search() {
+		search: function() {
 
 			$.typeahead({
 				input: ".js-typeahead",
@@ -389,10 +390,10 @@
 					"background-color": "#000"
 				},
 				callback: {
-					onInit: function onInit(node) {
+					onInit: function(node) {
 						// console.log('Typeahead Initiated on ' + node.selector);
 					},
-					onClick: function onClick(node, a, item, event) {
+					onClick: function(node, a, item, event) {
 						window.location(item.href);
 					}
 				},
@@ -417,8 +418,8 @@
 				debug: true
 			});
 		},
-		gridList: function gridList() {},
-		externalLinks: function externalLinks() {
+		gridList: function() {},
+		externalLinks: function() {
 			$('a').filter(function () {
 				return this.hostname && this.hostname !== location.hostname;
 			}).addClass("external");
@@ -466,7 +467,7 @@
             });
 
 		},
-		searchPills: function searchPills() {
+		searchPills: function() {
 
 			// Initialize pillBox
 			$('#searchPills').pillbox({
@@ -554,10 +555,47 @@
 
 			window.onscroll = function(ev) {
 			    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-			        console.log("You've reached the bottom of the page.");
+			        console.log("end of page");
 			    }
 			};
 
+		},
+		sparkLine: function(){
+			$.fn.sparkline.defaults.common.lineColor = 'white';
+			$.fn.sparkline.defaults.common.width = 'auto';
+			$.fn.sparkline.defaults.common.height = '150px';
+
+			$.fn.sparkline.defaults.line.spotColor = "false";
+			$.fn.sparkline.defaults.line.fillColor = "";
+			$.fn.sparkline.defaults.line.lineWidth = "3";
+			$.fn.sparkline.defaults.line.highlightLineColor = "black";
+
+			$.fn.sparkline.defaults.pie.sliceColors = ["#E0F2F1","#B2DFDB","#80CBC4","#4DB6AC","#26A69A","#009688","#00897B","#00796B","#00695C","#004D40","#A7FFEB","#64FFDA","#1DE9B6","#00BFA5"];
+
+
+			$.fn.sparkline.defaults.pie.borderWidth = '0';
+			
+			$.fn.sparkline.defaults.bar.barColor = "#E0F2F1";
+			$.fn.sparkline.defaults.bar.negBarColor = "#00897B";
+			$.fn.sparkline.defaults.bar.zeroColor = "#B2DFDB";
+
+
+			// Draw a sparkline for the #sparkline element
+			$('.sparkline').each(function(item) {
+				var data = $(this).text().split(','),
+					type = $(this).data('type') || 'bar',
+					parentWidth = $(this).parent().width(),
+					valueCount = data.length,
+					barSpacing = 1,
+					barWidth = Math.round((parentWidth - ( valueCount - 1 ) * barSpacing ) / valueCount);
+
+				$(this).sparkline(data, {
+					type: type,
+					width: (type == 'line') ? '100%' : 'auto',
+					barWidth: barWidth
+				});
+
+			});
 		},
 		last: ''
 	};

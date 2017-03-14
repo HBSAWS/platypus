@@ -6,3 +6,29 @@
 		padding: .75rem 0;
 	}
 }
+
+ul.leaders {
+    max-width: 40em;
+    padding: 0;
+    overflow-x: hidden;
+    list-style: none}
+ul.leaders li:before {
+    float: left;
+    width: 0;
+    white-space: nowrap;
+    opacity: 0.3;
+    content:
+ ". . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . "
+ ". . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . "
+ ". . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . "
+ ". . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . "
+}
+ul.leaders span:first-child {
+    padding-right: 0.33em;
+    background: white;
+}
+ul.leaders span + span {
+    float: right;
+    padding-left: 0.33em;
+    background: white;
+}

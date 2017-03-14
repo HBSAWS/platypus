@@ -40,10 +40,18 @@
 							<div>{{{body}}}</div>
 			    		</div>
 			    		<div class="col-md-3">
-				    		<h6>Version: <span class="font-weight-bold">{{version}}</span></h6>
-				    		<hr>
-				    		<h6>Status: <span class="font-weight-bold">{{status}}</span></h6>
-				    		<hr>
+								
+							<ul class="leaders">
+								<li>
+									<span>Version</span>
+								 	<span class="font-weight-bold">{{version}}</span>
+								 </li>
+								<li>
+									<span>Status</span>
+								 	<span class="font-weight-bold">{{status}}</span>
+								</li>
+							</ul>
+
 			    			<h6 class="mb-1">Tested on</h6>
 			    			<div class="row mb-1 text-xs-center">
 			    				<div class="col-xs-3"><i class="fa fa-2x fa-chrome text-primary" data-toggle="tooltip" title="9+"></i></div>
@@ -198,10 +206,10 @@
 		</div>
 
 		
-
-		{{!-- <a href="#" onclick="window.history.back()" class="btn btn-primary"><i class="fa fa-angle-double-left"></i> Back</a> --}}
-
 	</div><!--/#mainbody-->
 
 
 {{/article}}
+
+
+
