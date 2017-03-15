@@ -33,7 +33,7 @@ span.btn-label.btn-label-right {
 }
 
 .btn-group-justified {
-  	display: table;
+  	display: table !important;
   	width: 100%;
   	table-layout: fixed;
   	border-collapse: separate;
@@ -44,6 +44,10 @@ span.btn-label.btn-label-right {
     	width: 1%;
     .btn {
      	width: 100%;
+     	&.active {
+     		display: table-cell;
+     		color: #0275d8;
+     	}
     }
     .dropdown-menu {
       	left: auto;

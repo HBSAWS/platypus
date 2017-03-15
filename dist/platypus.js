@@ -12400,6 +12400,7 @@ e}},showLayout:function(){if(!this.container.hasClass("result")&&(this.result.le
 			Platypus.searchPills();
 			Platypus.infiniteLoading();
 			Platypus.sparkLine();
+			Platypus.feedback();
 			Platypus.toolTip();
 			Platypus.toolTip();
 			Platypus.popOver();
@@ -12578,7 +12579,7 @@ e}},showLayout:function(){if(!this.container.hasClass("result")&&(this.result.le
 				shortcuts: false,
 				toolbar: [
 				// [groupName, [list of button]]
-				['style', ['bold', 'italic', 'underline', 'clear']], ['font', ['strikethrough', 'superscript', 'subscript']], ['fontsize', ['fontsize']], ['color', ['color']], ['para', ['ul', 'ol', 'paragraph']], ['height', ['height']], ['view', ['fullscreen', 'codeview']]],
+				['style', ['bold', 'italic', 'underline', 'clear']], ['font', ['strikethrough', 'superscript', 'subscript']], ['fontsize', ['fontsize']], ['color', ['color']], ['para', ['ul', 'ol', 'paragraph']], ['height', ['height']], ['insert', ['link']], ['view', ['fullscreen', 'codeview']]],
 				popover: {
 					air: [
 						// ['color', ['color']],
@@ -12599,18 +12600,19 @@ e}},showLayout:function(){if(!this.container.hasClass("result")&&(this.result.le
 			var $wizard = $('#myWizard').wizard();
 			var $form = $wizard.closest('form');
 
-			$wizard.on('actionclicked.fu.wizard', function (evt, data) {
-				console.log("wiz action clicked");
-				if (data.direction === 'next' && !$form.parsley().validate('block' + data.step)) {
-					evt.preventDefault();
-					return;
-				}
-			});
+			if ($form.length) {
+				$wizard.on('actionclicked.fu.wizard', function (evt, data) {
+					if (data.direction === 'next' && !$form.parsley().validate({ group: 'block' + data.step })) {
+						evt.preventDefault();
+						return;
+					}
+				});
 
-			$wizard.on('finished.fu.wizard', function (evt, data) {
-				$form.submit();
-				console.log("submit");
-			});
+				$wizard.on('finished.fu.wizard', function (evt, data) {
+					$form.submit();
+					console.log("submit");
+				});
+			}
 		},
 		toasts: function toasts() {
 
@@ -12940,6 +12942,10 @@ e}},showLayout:function(){if(!this.container.hasClass("result")&&(this.result.le
 					barWidth: barWidth
 				});
 			});
+		},
+
+		feedback: function feedback() {
+			$('body').append('\n\t\t\t\t<button id="btn-feedback" type="button" class="btn btn-info" data-toggle="modal" data-target="#feedback-modal">\n\t\t\t\t\t<i class="fa fa-comment-o" data-toggle="tooltip" data-placement="left" title="Feedback"></i>\n\t\t\t\t</button>\n\t\t\t');
 		},
 		last: ''
 	};

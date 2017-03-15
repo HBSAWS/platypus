@@ -1,16 +1,23 @@
-.wizard {
-	.steps {
-		li {
-			.badge {
-				padding: 0 5px;
-			}
-			&.active, 
-			&.complete {
+.fuelux {
+	.wizard {
+		.steps {
+			li {
 				.badge {
-					color: white;
+					padding: 0 5px;
 				}
-			
+				&.active, 
+				&.complete {
+					.badge {
+						color: white;
+					}
+				
+				}
 			}
+		}
+		.step-content > .active .btn-group .active {
+			display: table-cell;  /* fixes bug with .btn-justified */
 		}
 	}
 }
+
+

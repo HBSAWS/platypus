@@ -4091,7 +4091,7 @@ span.btn-label.btn-label-right {
   right: -16px; }
 
 .btn-group-justified {
-  display: table;
+  display: table !important;
   width: 100%;
   table-layout: fixed;
   border-collapse: separate; }
@@ -4103,6 +4103,10 @@ span.btn-label.btn-label-right {
     .btn-group-justified .btn .btn,
     .btn-group-justified .btn-group .btn {
       width: 100%; }
+      .btn-group-justified .btn .btn.active,
+      .btn-group-justified .btn-group .btn.active {
+        display: table-cell;
+        color: #0275d8; }
     .btn-group-justified .btn .dropdown-menu,
     .btn-group-justified .btn-group .dropdown-menu {
       left: auto; }
@@ -4277,6 +4281,12 @@ table.dataTable.dtr-column > tbody > tr.parent td.control:before, table.dataTabl
   background: black; }
 
 /* Tabs */
+#btn-feedback {
+  position: fixed;
+  z-index: 999;
+  right: 0px;
+  top: 50%; }
+
 html {
   position: relative;
   min-height: 100%; }
@@ -4306,7 +4316,6 @@ ul.leaders li:before {
   float: left;
   width: 0;
   white-space: nowrap;
-  opacity: 0.3;
   content: ". . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . "; }
 
 ul.leaders span:first-child {
@@ -4744,6 +4753,7 @@ ul.leaders span + span {
 
 ._after, a.external::after, a.lock::after {
   font-family: 'FontAwesome';
+  content: '\f14c';
   display: inline-block;
   margin-left: 5px;
   vertical-align: super;
@@ -4818,11 +4828,15 @@ strong, .font-weight-bold {
   .typeahead__list > li:hover {
     background-color: transparent; }
 
-.wizard .steps li .badge {
+.fuelux .wizard .steps li .badge {
   padding: 0 5px; }
 
-.wizard .steps li.active .badge, .wizard .steps li.complete .badge {
+.fuelux .wizard .steps li.active .badge, .fuelux .wizard .steps li.complete .badge {
   color: white; }
+
+.fuelux .wizard .step-content > .active .btn-group .active {
+  display: table-cell;
+  /* fixes bug with .btn-justified */ }
 
 .note-toolbar {
   background-color: #f5f5f5;
