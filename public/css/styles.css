@@ -11,7 +11,8 @@ textarea,
 .card,
 .card-header,
 .list-group-item:first-child,
-.nav-tabs .nav-link {
+.nav-tabs .nav-link,
+.modal-content {
   border-radius: 0 !important; }
 
 .swal2-container .swal2-modal h2 {
@@ -4292,12 +4293,11 @@ html {
   min-height: 100%; }
 
 .footer {
-  position: relative; }
-
-.sticky-footer {
   position: absolute;
   bottom: 0;
-  width: 100%; }
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px; }
 
 .list-group {
   padding-left: 0 !important; }

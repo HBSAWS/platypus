@@ -315,7 +315,7 @@
 			$('form *:input[type!=hidden]:first').focus();
 
 			$('input,textarea,select').filter('[required]').each(function () {
-				$(this).closest('.form-group').find('label').append(" <span class='float-xs-right text-danger'>*</span>");
+				$(this).closest('.form-group').find('label').eq(0).append(" <span class='float-xs-right text-danger'>*</span>");
 			});
 
 			window.Parsley.on('field:validated', function (e) {
