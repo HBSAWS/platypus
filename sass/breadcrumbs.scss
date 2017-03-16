@@ -6,6 +6,9 @@
 }
 .breadcrumb > li {
   	display: inline-block;
+    a {
+      color: #009688;
+    }
 }
 .breadcrumb .is-hidden {
   	display: none;

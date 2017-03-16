@@ -13,7 +13,7 @@ var gulp = require('gulp'),
     gutil = require('gulp-load-utils')(['env', 'date', 'colors']);
 
 var opts = {
-    destCDN: ( process.platform === 'darwin' ) ? '/Volumes/prod_webfarm/htdocs/securelib/static/libs/platypus/1.0' : '\\\\nas-prd\\prod_webfarm\\htdocs\\securelib\\static\\libs\\platypus\\1.0',
+    destCDN: ( process.platform === 'darwin' ) ? '/Volumes/prod_webfarm/htdocs/securelib/static/libs/platypus/0.1' : '\\\\nas-prd\\prod_webfarm\\htdocs\\securelib\\static\\libs\\platypus\\0.1',
     dist: './dist',
     jsFiles : [
         'public/vendor/jquery/jquery.min.js',
@@ -53,6 +53,7 @@ var opts = {
         'public/vendor/faker/faker.min.js',
         'public/vendor/highlight/highlight.min.js',
         'public/vendor/sparkline/jquery.sparkline.min.js',
+        'public/vendor/conditionize/conditionize.js',
         'public/js/main.js',
     ], 
     cssFiles : [

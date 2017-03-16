@@ -966,7 +966,8 @@ textarea,
   width: 90%; }
   .panel h5 a {
     width: 100%;
-    display: block; }
+    display: block;
+    color: black; }
     .panel h5 a[data-toggle="collapse"]:after {
       font-family: 'FontAwesome';
       content: "\f106";
@@ -4975,6 +4976,8 @@ a.palette-text-black-darker:focus {
 
 .breadcrumb > li {
   display: inline-block; }
+  .breadcrumb > li a {
+    color: #009688; }
 
 .breadcrumb .is-hidden {
   display: none; }
