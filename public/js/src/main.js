@@ -33,8 +33,8 @@
 			Platypus.externalLinks();
 			Platypus.searchPills();
 			Platypus.infiniteLoading();
-			Platypus.sparkLine();
 			Platypus.feedback();
+			Platypus.renderCharts();
 			Platypus.toolTip();
 			Platypus.toolTip();
 			Platypus.popOver();
@@ -622,43 +622,6 @@
 			}
 
 		},
-		sparkLine: function(){
-			$.fn.sparkline.defaults.common.lineColor = 'white';
-			$.fn.sparkline.defaults.common.width = 'auto';
-			$.fn.sparkline.defaults.common.height = '150px';
-
-			$.fn.sparkline.defaults.line.spotColor = "false";
-			$.fn.sparkline.defaults.line.fillColor = "";
-			$.fn.sparkline.defaults.line.lineWidth = "3";
-			$.fn.sparkline.defaults.line.highlightLineColor = "black";
-
-			$.fn.sparkline.defaults.pie.sliceColors = ["#E0F2F1","#B2DFDB","#80CBC4","#4DB6AC","#26A69A","#009688","#00897B","#00796B","#00695C","#004D40","#A7FFEB","#64FFDA","#1DE9B6","#00BFA5"];
-
-
-			$.fn.sparkline.defaults.pie.borderWidth = '0';
-			
-			$.fn.sparkline.defaults.bar.barColor = "#E0F2F1";
-			$.fn.sparkline.defaults.bar.negBarColor = "#00897B";
-			$.fn.sparkline.defaults.bar.zeroColor = "#B2DFDB";
-
-
-			// Draw a sparkline for the #sparkline element
-			$('.sparkline').each(function(item) {
-				var data = $(this).text().split(','),
-					type = $(this).data('type') || 'bar',
-					parentWidth = $(this).parent().width(),
-					valueCount = data.length,
-					barSpacing = 1,
-					barWidth = Math.round((parentWidth - ( valueCount - 1 ) * barSpacing ) / valueCount);
-
-				$(this).sparkline(data, {
-					type: type,
-					width: (type == 'line') ? '100%' : 'auto',
-					barWidth: barWidth
-				});
-
-			});
-		},
 
 		feedback: function(){
 			$('body').append(`
@@ -666,6 +629,121 @@
 					<i class="fa fa-comment-o" data-toggle="tooltip" data-placement="left" title="Feedback"></i>
 				</button>
 			`);
+		},
+
+		renderCharts: function() {
+
+			$('.chart').each(function() {
+
+				let type = $(this).data('type');
+				let target = '#'+$(this).attr('id');
+
+				console.log(target);
+				
+				switch( type ) {
+					case 'line':
+						console.log("line chart detected on page");
+
+						var chart = c3.generate({
+						    bindto: target,
+						    data: {
+						      columns: [
+						        ['data1', 30, 200, 100, 400, 150, 250],
+						        ['data2', 50, 20, 10, 40, 15, 25]
+						      ]
+						    }
+						});
+						break;
+					case 'gauge':
+						console.log("gauge chart detected on page");
+
+
+						var chart = c3.generate({
+					    data: {
+					        columns: [
+					            ['data', $(this).data('gauge-value') ? $(this).data('gauge-value') : '0']
+					        ],
+					        type: 'gauge',
+					        onclick: function (d, i) { console.log("onclick", d, i); },
+					        onmouseover: function (d, i) { console.log("onmouseover", d, i); },
+					        onmouseout: function (d, i) { console.log("onmouseout", d, i); }
+					    },
+					    bindto: target,
+					    gauge: {},
+					    color: {
+					        pattern: ['#FF0000', '#F97600', '#F6C600', '#60B044'],
+					        threshold: {
+					            values: [30, 60, 90, 100]
+					        }
+					    },
+					    size: {
+					        height: 180
+					    }
+					});
+						break;
+					case 'pie': 
+
+						var chart = c3.generate({
+						    data: {
+						        columns: [
+						            ['data1', 30],
+						            ['data2', 120],
+						        ],
+						        type : 'donut',
+						        onclick: function (d, i) { console.log("onclick", d, i); },
+						        onmouseover: function (d, i) { console.log("onmouseover", d, i); },
+						        onmouseout: function (d, i) { console.log("onmouseout", d, i); }
+						    },
+						    bindto: target,
+						    donut: {
+						        title: "Example"
+						    }
+						});
+
+						break;
+					case 'bar':
+
+					var chart = c3.generate({
+					    data: {
+					        columns: [
+					            ['data1', 30, 200, 100, 400, 150, 250],
+					            ['data2', 130, 100, 140, 200, 150, 50]
+					        ],
+					        type: 'bar'
+					    },
+					    bar: {
+					        width: {
+					            ratio: 0.5 // this makes bar width 50% of length between ticks
+					        }
+					        // or
+					        //width: 100 // this makes bar width 100px
+					    },
+					    bindto: target,
+					});
+
+
+						break;
+					case 'spline':
+						
+						var chart = c3.generate({
+						    data: {
+						        columns: [
+						            ['data1', 30, 200, 100, 400, 150, 250],
+						            ['data2', 130, 100, 140, 200, 150, 50]
+						        ],
+						        type: 'spline'
+						    },
+						    bindto: target,
+						});
+
+						break;
+
+					default: 
+
+				}
+
+			})
+
 		},
 		last: ''
 	};

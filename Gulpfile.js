@@ -10,6 +10,7 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),  
     cleanCSS = require('gulp-clean-css'),
     nightwatch = require('gulp-nightwatch'),
+    banner = require('gulp-banner'),
     gutil = require('gulp-load-utils')(['env', 'date', 'colors']);
 
 var opts = {
@@ -21,6 +22,7 @@ var opts = {
         'public/vendor/bootstrap/bootstrap.min.js',
         'public/vendor/jasny-bootstrap/jasny-bootstrap.min.js',
         'public/vendor/moment/moment-with-locales.min.js',
+        'public/vendor/conditionize/conditionize.js',
         'public/vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js',
         'public/vendor/bootstrap-slider/bootstrap-slider.min.js',
         'public/vendor/bootstrap-toggle/bootstrap-toggle.min.js',
@@ -52,8 +54,8 @@ var opts = {
         'public/vendor/jquery-typeahead/jquery.typeahead.min.js',
         'public/vendor/faker/faker.min.js',
         'public/vendor/highlight/highlight.min.js',
-        'public/vendor/sparkline/jquery.sparkline.min.js',
-        'public/vendor/conditionize/conditionize.js',
+        'public/vendor/d3/d3.v3.min.js',
+        'public/vendor/c3/c3.min.js',
         'public/js/main.js',
     ], 
     cssFiles : [
@@ -82,13 +84,17 @@ var opts = {
         'public/vendor/fullcalendar/fullcalendar.min.css',
         'public/vendor/fullcalendar/fullcalendar.print.css',
         'public/vendor/jquery-typeahead/jquery.typeahead.min.css',
+        'public/vendor/c3/c3.min.css',
         'public/css/styles.css',
     ],
+    banner: `\n/*! <%= date %> */\n`,
+    dt: gutil.date('yyyy-mm-dd h:MM:ss TT Z'),
 }
 
 gulp.task('js', function() {  
     return gulp.src(opts.jsFiles)
         .pipe(concat('platypus.js'))
+        .pipe(banner(opts.banner, {date: opts.dt}))
         .pipe(gulp.dest(opts.dist))
         .pipe(rename('platypus.min.js'))
         .pipe(uglify())
@@ -98,6 +104,7 @@ gulp.task('js', function() {
 gulp.task('css', function() {  
     return gulp.src(opts.cssFiles)
         .pipe(concat('platypus.css'))
+        .pipe(banner(opts.banner, {date: opts.dt}))
         .pipe(gulp.dest(opts.dist))
         .pipe(rename('platypus.min.css'))
         .pipe(cleanCSS({compatibility: 'ie8'}))

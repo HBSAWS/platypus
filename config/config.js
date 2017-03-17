@@ -43,6 +43,7 @@ module.exports = function(app, envConfig){
 
     app.use(express.static(path.join(envConfig.rootPath, 'test/e2e')));
     app.use(express.static(path.join(envConfig.rootPath, 'public')));
+    app.use(express.static(path.join(envConfig.rootPath, 'dist')));
 
     app.use(function(req, res, next) {
 

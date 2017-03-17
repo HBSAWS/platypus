@@ -37,7 +37,10 @@
                             {{#each articles}}
                                 <li>
                                     <a href="/articles/{{slug}}">{{title}}
-                                        <span class="tag palette-bg-teal-500 float-xs-right">{{type}}</span>
+                                        <span class="tag 
+                                            {{#compare type "==" "core"}}palette-bg-teal-500{{/compare}} 
+                                            {{#compare type "==" "addon"}}palette-bg-grey-500{{/compare}} 
+                                        float-xs-right">{{type}}</span>
                                     </a>
                                 </li>
                             {{/each}}
