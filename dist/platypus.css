@@ -1,5 +1,5 @@
 
-/*! 2017-03-17 3:55:48 PM EDT */
+/*! 2017-03-20 9:59:18 AM EDT */
 /*!
  * Bootstrap v4.0.0-alpha.5 (https://getbootstrap.com)
  * Copyright 2011-2016 The Bootstrap Authors
@@ -5075,6 +5075,33 @@ span.btn-label.btn-label-right {
 .parsley-errors-list.filled {
   list-style-type: none;
   padding-left: 0; }
+
+.item.list-group-item {
+  float: none;
+  width: 100%;
+  background-color: #fff;
+  margin-bottom: 10px; }
+  .item.list-group-item a {
+    text-decoration: none; }
+    .item.list-group-item a:hover {
+      background-color: transparent; }
+  .item.list-group-item .img-container {
+    width: 20%;
+    float: left;
+    margin-right: 20px; }
+
+.item.list-group-item:nth-of-type(odd):hover, .item.list-group-item:hover {
+  background: #428bca; }
+
+.item.list-group-item:nth-of-type(odd) {
+  background: #eeeeee; }
+
+.item.list-group-item:before, .item.list-group-item:after {
+  display: table;
+  content: " "; }
+
+.item.list-group-item:after {
+  clear: both; }
 
 /* Icons */
 .rotating-bg {

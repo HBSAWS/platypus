@@ -35,6 +35,7 @@
 			Platypus.infiniteLoading();
 			Platypus.feedback();
 			Platypus.renderCharts();
+			Platypus.gridListSwitcher();
 			Platypus.toolTip();
 			Platypus.toolTip();
 			Platypus.popOver();
@@ -743,6 +744,25 @@
 				}
 
 			})
+
+		},
+		gridListSwitcher: function(){
+
+			$(document).ready(function() {
+			    $('#btn-list').click(function(e){
+			    	e.preventDefault();
+			    	$('.item').addClass('list-group-item');
+			    	$(this).siblings().removeClass('active');
+			    	$(this).addClass('active');
+			    });
+			    $('#btn-grid').click(function(e){
+			    	e.preventDefault();
+			    	$('.item').removeClass('list-group-item').addClass('grid-group-item');
+    		    	$(this).siblings().removeClass('active');
+			    	$(this).addClass('active');
+			    });
+
+			});
 
 		},
 		last: ''

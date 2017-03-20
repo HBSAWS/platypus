@@ -24,10 +24,10 @@
 		<h2 class="">Explore Components
 			<div class="btn-group float-xs-right">
 				 <div class="btn-group btn-group-justified-xs" role="group" aria-label="Justified button group">
-				   	<a class="btn btn-secondary" href="#" role="button">
+				   	<a id="btn-list" class="btn btn-secondary" href="#" role="button">
 				   		<i class="fa fa-list"></i><span class="hidden-sm-down"> List</span>
 				   	</a>
-				   	<a class="btn btn-secondary" href="#" role="button">
+				   	<a id="btn-grid" class="btn btn-secondary active" href="#" role="button">
 				   		<i class="fa fa-th"></i><span class="hidden-sm-down"> Grid</span>
 				   	</a>
 				 </div>
@@ -40,21 +40,17 @@
 		
 				
 				{{#grouped_each 4 articles.docs}}
-					<div class="card-deck">
+					<div class="row list-group mb-3">
 						{{#each this}}
-				    		<div class="card">
+				    		<div class="item col-xs-1 col-lg-3">
 				    			<a href="/articles/{{slug}}">
-							  	<div class="palette-bg-teal-100 p-2">
-							  		<img class="card-img-top img-fluid" src="/images/ui-components-thumbs/{{slug}}.png" alt="Card image cap">
-							  	</div>
-							  	<div class="card-block">
-							    	<h4 class="card-title">{{title}}</h4>
-							    	<p class="card-text">{{intro}}</p>
-							    	
-							  	</div>
-							  	{{!-- <div class="card-footer">
-							      	<a href="/articles/{{slug}}" class="btn btn-block btn-primary">Learn more</a>
-							    </div> --}}
+								  	<div class="palette-bg-teal-100 p-2 img-container">
+								  		<img class="img-fluid" src="/images/ui-components-thumbs/{{slug}}.png">
+								  	</div>
+								  	<div class="p-2 palette-bg-white">
+								    	<h4>{{title}}</h4>
+								    	<p>{{intro}}</p>
+								  	</div>
 							    </a>
 							</div>	
 						{{/each}}
