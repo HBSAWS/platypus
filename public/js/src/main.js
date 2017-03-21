@@ -364,6 +364,13 @@
 				$(this).closest('.form-group').find('label').eq(0).append(" <span class='float-xs-right text-danger'>*</span>");
 			});
 
+			$('input[type="password"].meter').strength({
+			    wrapper: true,
+			    showHideButtonText: 'Show',
+			    showHideButtonTextToggle: 'Hide'
+			  });
+
+
 			window.Parsley.on('field:validated', function (e) {
 				if (e.validationResult.constructor !== Array) {
 					this.$element.closest('.form-group').removeClass('has-danger').addClass('has-success');
