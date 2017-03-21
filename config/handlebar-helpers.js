@@ -85,7 +85,7 @@ var register = function(Handlebars) {
 
 
   moduloIf: function(index_count, mod, eq, block) {
-    if(parseInt(index_count)%(mod) === eq ){
+    if(parseInt(index_count+1)%(mod) === eq ){
       return block.fn(this);
     }
   },

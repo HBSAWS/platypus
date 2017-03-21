@@ -8,7 +8,10 @@ var mongoose = require('mongoose'),
 module.exports = {
     index: function(req, res, next) {
 
-      	Category.findOne({slug: 'ui-components', published: true}, function(err, category){
+      	Category.findOne({
+            slug: 'ui-components', 
+            published: true
+        }, function(err, category){
             if(err) return next(err);
 
             if(category) {
@@ -23,7 +26,7 @@ module.exports = {
                     populate: '_category',
                     lean: false,
                     page: 1,
-                    limit: 8
+                    limit: 100
                 };
                 Article.paginate(query, options).then(function(articles) {
                     res.render('home', { 
@@ -31,7 +34,8 @@ module.exports = {
                     layout : 'home',
                     helpers:  {
                         compare: helpers.compare,
-                        grouped_each: helpers.grouped_each
+                        grouped_each: helpers.grouped_each,
+                        moduloIf: helpers.moduloIf
                     }
                     });
                 });

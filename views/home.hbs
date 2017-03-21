@@ -38,32 +38,35 @@
 		
 			<div id="component-container">
 		
-				
-				{{#grouped_each 4 articles.docs}}
-					<div class="row list-group mb-3">
-						{{#each this}}
-				    		<div class="item col-xs-1 col-lg-3">
-				    			<a href="/articles/{{slug}}">
-								  	<div class="palette-bg-teal-100 p-2 img-container">
-								  		<img class="img-fluid" src="/images/ui-components-thumbs/{{slug}}.png">
-								  	</div>
-								  	<div class="p-2 palette-bg-white">
-								    	<h4>{{title}}</h4>
-								    	<p>{{intro}}</p>
-								  	</div>
-							    </a>
-							</div>	
-						{{/each}}
-					</div>
-				{{/grouped_each}}
+				<div class="row list-group mb-3">
+					{{#each articles.docs}}
+			  			
+			  			<div class="item col-sm-6 col-md-4 col-lg-3 col-xl-2">
+			    			<a href="/articles/{{slug}}">
+							  	<div class="palette-bg-teal-100 p-2 img-container">
+							  		<img class="img-fluid" src="/images/ui-components-thumbs/{{slug}}.png">
+							  	</div>
+							  	<div class="p-2 palette-bg-white">
+							    	<h4>{{title}}</h4>
+							    	<p>{{intro}}</p>
+							  	</div>
+						    </a>
+						</div>
+						
+						{{#moduloIf @index 2 0}}<div class="clearfix mb-3 hidden-xs-down hidden-md-up"></div>{{/moduloIf}}
+						{{#moduloIf @index 3 0}}<div class="clearfix mb-3 hidden-sm-down hidden-lg-up"></div>{{/moduloIf}}
+						{{#moduloIf @index 4 0}}<div class="clearfix mb-3 hidden-md-down hidden-xl-up"></div>{{/moduloIf}}
+						{{#moduloIf @index 6 0}}<div class="clearfix mb-3 hidden-lg-down"></div>{{/moduloIf}}
 
-			</div><!--/#component-container-->
+					{{/each}}
+				</div>
+			</div> <!--/#component-container-->
 
-				
+			{{!--
 			<div class="text-xs-center mt-2">
 				<a class="btn btn-primary loadmore" href="#" data-page="{{articles.page}}" data-pages="{{articles.pages}}">Show {{articles.limit}} more</a>
 			</div>
-			
+			--}}	
 				
 
 	

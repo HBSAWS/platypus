@@ -705,16 +705,18 @@
 		},
 		gridListSwitcher: function gridListSwitcher() {
 
+			var currentClasses = $('.item').eq(0).attr('class');
+
 			$(document).ready(function () {
 				$('#btn-list').click(function (e) {
 					e.preventDefault();
-					$('.item').addClass('list-group-item');
+					$('.item').removeClass().addClass('item col-xs-12');
 					$(this).siblings().removeClass('active');
 					$(this).addClass('active');
 				});
 				$('#btn-grid').click(function (e) {
 					e.preventDefault();
-					$('.item').removeClass('list-group-item').addClass('grid-group-item');
+					$('.item').removeClass().addClass(currentClasses);
 					$(this).siblings().removeClass('active');
 					$(this).addClass('active');
 				});
