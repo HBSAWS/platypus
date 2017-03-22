@@ -29,7 +29,6 @@
 			Platypus.rotatingBg();
 			Platypus.modal();
 			Platypus.search();
-			Platypus.gridList();
 			Platypus.externalLinks();
 			Platypus.searchPills();
 			Platypus.infiniteLoading();
@@ -469,11 +468,10 @@
 				debug: true
 			});
 		},
-		gridList: function gridList() {},
 		externalLinks: function externalLinks() {
 			$('a').filter(function () {
 				return this.hostname && this.hostname !== location.hostname;
-			}).addClass("external");
+			}).addClass("external").attr('target', '_blank');
 		},
 		setupSpinOnAjax: function setupSpinOnAjax() {
 
@@ -612,18 +610,22 @@
 
 				switch (type) {
 					case 'line':
-						console.log("line chart detected on page");
-
 						var chart = c3.generate({
 							bindto: target,
 							data: {
-								columns: [['data1', 30, 200, 100, 400, 150, 250], ['data2', 50, 20, 10, 40, 15, 25]]
+								columns: [['data1', 30, 200, 100, 400, 150, 250], ['data2', 50, 20, 10, 40, 15, 25]],
+								colors: {
+									data1: '#455A64',
+									data2: '#009688',
+									data3: '#9E9E9E'
+								},
+								color: function color(_color, d) {
+									return _color;
+								}
 							}
 						});
 						break;
 					case 'gauge':
-						console.log("gauge chart detected on page");
-
 						var chart = c3.generate({
 							data: {
 								columns: [['data', $(this).data('gauge-value') ? $(this).data('gauge-value') : '0']],
@@ -641,7 +643,7 @@
 							bindto: target,
 							gauge: {},
 							color: {
-								pattern: ['#FF0000', '#F97600', '#F6C600', '#60B044'],
+								pattern: ['#009688', '#009688', '#009688', '#009688'],
 								threshold: {
 									values: [30, 60, 90, 100]
 								}
@@ -657,6 +659,14 @@
 							data: {
 								columns: [['data1', 30], ['data2', 120]],
 								type: 'donut',
+								colors: {
+									data1: '#455A64',
+									data2: '#009688',
+									data3: '#9E9E9E'
+								},
+								color: function color(_color2, d) {
+									return _color2;
+								},
 								onclick: function onclick(d, i) {
 									console.log("onclick", d, i);
 								},
@@ -678,15 +688,21 @@
 
 						var chart = c3.generate({
 							data: {
-								columns: [['data1', 30, 200, 100, 400, 150, 250], ['data2', 130, 100, 140, 200, 150, 50]],
-								type: 'bar'
+								columns: [['data1', 30, 20, 50, 40, 60, 50], ['data2', 200, 130, 90, 240, 130, 220], ['data3', 300, 200, 160, 400, 250, 250]],
+								type: 'bar',
+								colors: {
+									data1: '#455A64',
+									data2: '#009688',
+									data3: '#9E9E9E'
+								},
+								color: function color(_color3, d) {
+									return _color3;
+								}
 							},
 							bar: {
 								width: {
-									ratio: 0.5 // this makes bar width 50% of length between ticks
+									ratio: 0.5
 								}
-								// or
-								//width: 100 // this makes bar width 100px
 							},
 							bindto: target
 						});
@@ -697,13 +713,56 @@
 						var chart = c3.generate({
 							data: {
 								columns: [['data1', 30, 200, 100, 400, 150, 250], ['data2', 130, 100, 140, 200, 150, 50]],
-								type: 'spline'
+								type: 'spline',
+								colors: {
+									data1: '#455A64',
+									data2: '#009688',
+									data3: '#9E9E9E'
+								},
+								color: function color(_color4, d) {
+									return _color4;
+								}
 							},
 							bindto: target
 						});
 
 						break;
 
+					case 'scatter':
+
+						var colors = ['#455A64', '#009688', '#9E9E9E', '#00838F'];
+
+						var chart = c3.generate({
+							data: {
+								xs: {
+									setosa: 'setosa_x',
+									versicolor: 'versicolor_x'
+								},
+								// iris data from R
+								columns: [["setosa_x", 3.5, 3.0, 3.2, 3.1, 3.6, 3.9, 3.4, 3.4, 2.9, 3.1, 3.7, 3.4, 3.0, 3.0, 4.0, 4.4, 3.9, 3.5, 3.8, 3.8, 3.4, 3.7, 3.6, 3.3, 3.4, 3.0, 3.4, 3.5, 3.4, 3.2, 3.1, 3.4, 4.1, 4.2, 3.1, 3.2, 3.5, 3.6, 3.0, 3.4, 3.5, 2.3, 3.2, 3.5, 3.8, 3.0, 3.8, 3.2, 3.7, 3.3], ["versicolor_x", 3.2, 3.2, 3.1, 2.3, 2.8, 2.8, 3.3, 2.4, 2.9, 2.7, 2.0, 3.0, 2.2, 2.9, 2.9, 3.1, 3.0, 2.7, 2.2, 2.5, 3.2, 2.8, 2.5, 2.8, 2.9, 3.0, 2.8, 3.0, 2.9, 2.6, 2.4, 2.4, 2.7, 2.7, 3.0, 3.4, 3.1, 2.3, 3.0, 2.5, 2.6, 3.0, 2.6, 2.3, 2.7, 3.0, 2.9, 2.9, 2.5, 2.8], ["setosa", 0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.3, 0.2, 0.2, 0.1, 0.2, 0.2, 0.1, 0.1, 0.2, 0.4, 0.4, 0.3, 0.3, 0.3, 0.2, 0.4, 0.2, 0.5, 0.2, 0.2, 0.4, 0.2, 0.2, 0.2, 0.2, 0.4, 0.1, 0.2, 0.2, 0.2, 0.2, 0.1, 0.2, 0.2, 0.3, 0.3, 0.2, 0.6, 0.4, 0.3, 0.2, 0.2, 0.2, 0.2], ["versicolor", 1.4, 1.5, 1.5, 1.3, 1.5, 1.3, 1.6, 1.0, 1.3, 1.4, 1.0, 1.5, 1.0, 1.4, 1.3, 1.4, 1.5, 1.0, 1.5, 1.1, 1.8, 1.3, 1.5, 1.2, 1.3, 1.4, 1.4, 1.7, 1.5, 1.0, 1.1, 1.0, 1.2, 1.6, 1.5, 1.6, 1.5, 1.3, 1.3, 1.3, 1.2, 1.4, 1.2, 1.0, 1.3, 1.2, 1.3, 1.3, 1.1, 1.3]],
+								type: 'scatter',
+								color: function color(_color5, data) {
+									return colors[data.index % colors.length];
+								}
+							},
+							axis: {
+								x: {
+									label: 'X',
+									tick: {
+										fit: false
+									}
+								},
+								y: {
+									label: 'Y'
+								}
+							},
+							point: {
+								r: 5
+							},
+							bindto: target
+						});
+
+						break;
 					default:
 
 				}

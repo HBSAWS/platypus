@@ -64,7 +64,7 @@ module.exports = function(app, envConfig){
         // Get nav items
         Category.find({})
         .populate('_parent')
-        .sort('title')
+        .sort('order')
         .lean()
         .exec(function(err, categories) {
             if(err) return next(err);

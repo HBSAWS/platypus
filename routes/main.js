@@ -22,7 +22,7 @@ module.exports = {
                 };
 
                 var options = {
-                    sort: { title: 'asc' },
+                    sort: { order: 'asc' },
                     populate: '_category',
                     lean: false,
                     page: 1,

@@ -6,6 +6,7 @@ var categorySchema = new Schema({
   	title			: { type : String, required: true },
   	slug			: { type : String },
   	icon			: { type : String },
+    order           : { type: Number },
   	published	: { type: Boolean }
 	},
 	{ timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' } 

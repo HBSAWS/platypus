@@ -41,7 +41,7 @@
 				<div class="row list-group mb-3">
 					{{#each articles.docs}}
 			  			
-			  			<div class="item col-sm-6 col-md-4 col-lg-3 col-xl-2">
+			  			<div class="item col-sm-6 col-md-4 col-lg-3 col-xl-3">
 			    			<a href="/articles/{{slug}}">
 							  	<div class="palette-bg-teal-100 p-2 img-container">
 							  		<img class="img-fluid" src="/images/ui-components-thumbs/{{slug}}.png">
@@ -56,7 +56,7 @@
 						{{#moduloIf @index 2 0}}<div class="clearfix mb-3 hidden-xs-down hidden-md-up"></div>{{/moduloIf}}
 						{{#moduloIf @index 3 0}}<div class="clearfix mb-3 hidden-sm-down hidden-lg-up"></div>{{/moduloIf}}
 						{{#moduloIf @index 4 0}}<div class="clearfix mb-3 hidden-md-down hidden-xl-up"></div>{{/moduloIf}}
-						{{#moduloIf @index 6 0}}<div class="clearfix mb-3 hidden-lg-down"></div>{{/moduloIf}}
+						{{#moduloIf @index 4 0}}<div class="clearfix mb-3 hidden-lg-down"></div>{{/moduloIf}}
 
 					{{/each}}
 				</div>

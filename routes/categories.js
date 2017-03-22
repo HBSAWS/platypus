@@ -7,7 +7,9 @@ var mongoose = require('mongoose'),
 module.exports = {
 
   index: function(req, res, next) {
-    Category.find({}, function(err, categories) {
+    Category.find({})
+      .sort('order')
+      .exec(function(err, categories) {
       if(err) return next(err);
       res.render('categories/index', { 
         layout : 'main',

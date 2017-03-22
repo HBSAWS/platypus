@@ -36,6 +36,18 @@
 			</div>
 		</div><!--/.row-->	
 
+		<div class="form-group row">
+			<label class="col-md-3 hidden-sm-down text-xs-right" for="order">Order</label>
+			<div class="col-md-9">
+				<label class="hidden-md-up d-block" for="order">Order</label>
+				<select name="order" class="form-control">
+					{{#each ../parents}}
+					<option value="{{order}}" {{#compare order ../order}}selected{{/compare}}>{{order}}</option>
+					{{/each}}
+				</select>
+			</div>
+		</div><!--/.row-->	 	
+		
 	  	<div class="row form-group">
 			<div class="col-md-3 text-md-right">
 	  		</div>

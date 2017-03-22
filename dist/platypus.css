@@ -1,5 +1,5 @@
 
-/*! 2017-03-21 2:10:17 PM EDT */
+/*! 2017-03-22 10:30:34 AM EDT */
 /*!
  * Bootstrap v4.0.0-alpha.5 (https://getbootstrap.com)
  * Copyright 2011-2016 The Bootstrap Authors
@@ -1127,29 +1127,7 @@ table.dataTable.dtr-inline.collapsed>tbody>tr>td.child,table.dataTable.dtr-inlin
 
 
 
-/* body stuff */
 
-html {
-  min-height: 100%;
-}
-body {
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  min-height: 100%;
-  color: #fff;
-  background: #7a7480;
-  background-image: -webkit-gradient(linear, 0 100%, 0 0, from(#474150), to(#7A7480));
-  background-image: -webkit-linear-gradient(bottom, #474150 0%, #7A7480 100%);
-  background-image: -moz-linear-gradient(bottom, #474150 0%, #7A7480 100%);
-  background-image: -o-linear-gradient(bottom, #474150 0%, #7A7480 100%);
-  background-image: linear-gradient(bottom, #474150 0%, #7A7480 100%);
-  background-repeat: no-repeat;
-  font-family: avenir, sans-serif;
-  font-size: 16px;
-}
-h4 {
-  margin: 0;
-}
 .us-form-input {
   -webkit-appearance: none;
   -webkit-box-sizing: border-box;
@@ -1191,18 +1169,7 @@ h4 {
   height: auto;
   font-size: 1.2em;
 }
-.container {
-  width: 320px;
-  margin: 40px auto;
-  padding: 20px;
-  color: #333;
-  background: #fff;
-  border-radius: 5px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-}
-.container input {
-  width: 100%;
-}
+
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600");
 .btn,
 .alert,
