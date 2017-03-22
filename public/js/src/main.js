@@ -35,6 +35,7 @@
 			Platypus.feedback();
 			Platypus.renderCharts();
 			Platypus.gridListSwitcher();
+			Platypus.videoWidget();
 			Platypus.toolTip();
 			Platypus.toolTip();
 			Platypus.popOver();
@@ -839,6 +840,30 @@
 
 			});
 
+		},
+
+		videoWidget: function() {
+			
+			let trigger = $("body").find('.video-modal[data-toggle="modal"]');
+	      	
+	      	trigger.each(function(){
+
+				let theModal = $(this).data("target"),
+			        videoSRC = $(this).attr("data-youtube-video-id"),
+			        autoplay = $(this).attr("data-autoplay") || 1,
+			        videoSRCauto = `http://www.youtube.com/embed/${videoSRC}?autoplay=${autoplay}`;
+
+	      		$(this).append(`<img class="img-fluid" src="https://img.youtube.com/vi/${videoSRC}/maxresdefault.jpg">`);
+
+		      	$(this).click(function (e) {
+  		     		e.preventDefault();
+			    	$(theModal + ' iframe').attr('src', videoSRCauto);
+			    	$(theModal + ' button.close').click(function () {
+			    		$(theModal + ' iframe').attr('src', videoSRC);
+			    	});
+			    });
+
+	      	});
 		},
 		last: ''
 	};

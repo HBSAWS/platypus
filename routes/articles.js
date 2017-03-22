@@ -112,21 +112,29 @@ module.exports = {
     edit: function(req, res, next) {
         Category.find({}, function(err, categories) {
             if (err) return next(err);
-            Article.findOne({
-                    _id: req.params.id
-                })
-                .populate('_category')
-                .exec(function(err, article) {
-                    res.render('articles/edit', {
-                        article: article,
-                        categories: categories,
-                        layout: '2col',
-                        page_title: page_title,
-                        helpers: {
-                            compare: helpers.compare
-                        }
+            
+            Article.find({}, function(err, articles){
+                if (err) return next(err);
+            
+                Article.findOne({
+                        _id: req.params.id
                     })
+                    .populate('_category')
+                    .exec(function(err, article) {
+                        if (err) return next(err);
+                        res.render('articles/edit', {
+                            article: article,
+                            categories: categories,
+                            types: _.compact(_.uniq(_.map(articles, 'type'))),
+                            layout: '2col',
+                            page_title: page_title,
+                            helpers: {
+                                compare: helpers.compare
+                            }
+                        });
+                        // res.status(200).json(_.compact(_.uniq(_.map(articles, 'type'))));
                 });
+            });
         });
     },
 
