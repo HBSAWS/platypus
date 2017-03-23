@@ -12599,7 +12599,7 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 			Platypus.renderCharts();
 			Platypus.gridListSwitcher();
 			Platypus.videoWidget();
-			Platypus.toolTip();
+			Platypus.hideLoader();
 			Platypus.toolTip();
 			Platypus.popOver();
 		},
@@ -12615,7 +12615,7 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 			});
 		},
 		backToTop: function backToTop() {
-			$('body').append('<a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button" title="Return to the top" data-toggle="tooltip" data-placement="left"><span class="fa fa-chevron-up"></span></a>');
+			$('body').append('<a id="back-to-top" href="#" class="btn palette-bg-teal-500 btn-lg back-to-top text-white" role="button" title="Return to the top" data-toggle="tooltip" data-placement="left"><span class="fa fa-chevron-up"></span></a>');
 			$(window).scroll(function () {
 				if ($(this).scrollTop() > 50) {
 					$('#back-to-top').fadeIn();
@@ -13379,6 +13379,10 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 				});
 			});
 		},
+		hideLoader: function hideLoader() {
+			$('.load-container').fadeOut('slow');
+			$('.load-container + .container-fluid').fadeIn('slow');
+		},
 		last: ''
 	};
 
@@ -13386,3 +13390,7 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 
 	window.Platypus = Platypus;
 })(jQuery);
+
+$(window).on('load', function () {
+	console.log("window.onload event fired");
+});

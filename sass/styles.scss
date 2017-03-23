@@ -45,6 +45,9 @@
 	}
 }
 
+.load-container + .container-fluid {
+    display: none;
+}
 
 .overlay {
     background: rgba(255, 255, 255, 0.8);
