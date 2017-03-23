@@ -28,6 +28,7 @@
 			Platypus.AZList();
 			Platypus.rotatingBg();
 			Platypus.modal();
+			Platypus.navBar();
 			Platypus.search();
 			Platypus.externalLinks();
 			Platypus.searchPills();
@@ -419,6 +420,11 @@
 				prefixes: [], // Set an array of prefixes that should be counted for the prefix and the first word after the prefix ex: ['the', 'a', 'my']
 				filterSelector: '' // Set the filter to a CSS selector rather than the first text letter for each item
 			});
+		},
+		navBar: function(){
+			$(document).on('click', '.hamburger, .canvas-slid', function(e) {
+			    $(".hamburger").toggleClass("is-active");
+		  	});
 		},
 		modal: function() {
 			// global modal options 
