@@ -427,7 +427,47 @@
 		  	});
 		},
 		modal: function() {
-			// global modal options 
+
+
+			$(document).on('click', '.modal-remote', function(e){
+				e.preventDefault();
+				
+				var $bttn = $(this);
+				var opts = {
+					title: $bttn.data('modal-title') !== '' ? $bttn.data('modal-title') : '',
+					size: $bttn.data('modal-size') !== '' ? $bttn.data('modal-size') : 'md',
+					header: $bttn.data('modal-header') !== '' ? $bttn.data('modal-header') : true,
+					footer: $bttn.data('modal-footer') !== '' ?  $bttn.data('modal-footer')  : true,
+				}
+				var modalID = 'modal-'+Math.random().toString(36).substring(7);
+				
+				$bttn.attr('data-target', '#modal-'+modalID);
+				
+				// Repurpose universal modal
+				$('#universal-modal').attr('id', modalID);
+				
+				$(document).on('show.bs.modal', ('#'+modalID), function(e) {  
+					
+					if(opts.title) $('#'+modalID).find('.modal-title').html( opts.title );
+					if(opts.size) $('#'+modalID).find('.modal-dialog').addClass('modal-'+opts.size );
+					if(!opts.header) $('#'+modalID).find('.modal-header').hide();
+					if(!opts.footer) $('#'+modalID).find('.modal-footer').hide();
+					$('#'+modalID).find('.modal-body').load( $bttn.attr('href'), function(){
+						console.log("data loaded into modal");
+					})
+				});
+				// Display modal
+				$('#'+modalID).modal('show');
+				// Reset used modal to defaults
+				$(document).on('hidden.bs.modal', ('#'+modalID), function(e) { 
+					$('#'+modalID).attr('id', 'universal-modal');
+					$('#universal-modal').find('.modal-dialog').removeClass('modal-'+opts.size);
+					$('#universal-modal').find('.modal-title').html('');
+					$('#universal-modal').find('.modal-header, .modal-footer').show();
+				});
+			});
+
+
 		},
 		rotatingBg: function() {
 			$('.rotating-bg').css('background-image', 'url("/images/rotating-bg-hbs/bg-hbs-' + _.random(1, 4) + '.png")');
@@ -516,7 +556,10 @@
 
             // bind spinner to ajax doc events
             $(document).on({
-                ajaxStart: function() {
+                ajaxStart: function(e) {
+
+                	if($(e.target).is(".modal-remote")) return;
+
                     var el = $('<div class="spinner">').appendTo('body').spin();
                     $('body').append('<div class="overlay"></div>');
                     $(".overlay").fadeIn().append(el);

@@ -20,10 +20,10 @@ module.exports = function(app, envConfig){
     // view engine setup
     app.set('views', path.join(envConfig.rootPath, 'views'));
     app.engine('.hbs', handlebars({
-    extname: '.hbs',
-    defaultLayout: 'main', 
-    layoutsDir: path.join(envConfig.rootPath,'views/layouts'),
-    partialsDir: path.join(envConfig.rootPath, 'views/partials')
+        extname: '.hbs',
+        defaultLayout: '', 
+        layoutsDir: path.join(envConfig.rootPath,'views/layouts'),
+        partialsDir: path.join(envConfig.rootPath, 'views/partials')
     }));
     app.set('view engine', '.hbs');
 

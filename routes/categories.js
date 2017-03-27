@@ -29,7 +29,7 @@ module.exports = {
 
             res.render('categories/new', { 
                 parents : categories,
-                layout : 'main',
+                layout : '',
                 helpers: {
                     compare: helpers.compare,
                 } 

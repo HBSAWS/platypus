@@ -1,3 +1,23 @@
+<!-- Universal Modal -->
+<div class="modal fade" id="universal-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h5 class="modal-title"></h5>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <!-- Event modal -->
 <div id="event-modal" class="modal fade">
     <div class="modal-dialog">
@@ -59,7 +79,7 @@
                 <h4 class="modal-title" id="modalLabel">Feedback</h4>
             </div>
             <div class="modal-body">
-    
+
                 <div class="fuelux">
                     <form action="/" id="feedbackDemoForm" method="post" data-parsley-validate> 
                         <div class="wizard" data-initialize="wizard" id="myWizard">
@@ -88,7 +108,7 @@
                                         <label class="col-md-4 hidden-sm-down text-xs-right" for="email">Scope</label>
                                         <div class="col-md-8">
                                             <label class="hidden-md-up d-block" for="email">Scope</label>
-      
+
                                             <div class="custom-controls-stacked">
                                                 <label class="custom-control custom-radio">
                                                     <input id="specific" name="feedback-type" type="radio" class="custom-control-input" data-parsley-group="block1" required>
@@ -98,7 +118,7 @@
                                                         <p>I’d like to give feedback on a specific part of this application.</p>
                                                     </span>
                                                 </label>
-                                                    <label class="custom-control custom-radio">
+                                                <label class="custom-control custom-radio">
                                                     <input id="generic" name="feedback-type" type="radio" class="custom-control-input" data-parsley-group="block1">
                                                     <span class="custom-control-indicator"></span>
                                                     <span class="custom-control-description">
@@ -156,7 +176,7 @@
                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam illo iure aperiam minima amet voluptates, quia nostrum. Doloribus iste, modi explicabo sed non. Necessitatibus id ab quaerat temporibus delectus laborum!</p>
 
                                     
-                                     <div class="form-group row">
+                                    <div class="form-group row">
                                         <label class="col-md-4 hidden-sm-down text-xs-right" for="email">What do you think of this application?</label>
                                         <div class="col-md-8">
                                             <label class="hidden-md-up d-block" for="email">What do you think of this application?</label>
@@ -184,18 +204,18 @@
                                         </div>
                                     </div>
 
-                
+
                                 </div>
                                 <div class="actions">
-                                     <button type="button" class="btn btn-labeled btn-default btn-prev" disabled="disabled"><span class="btn-label"><i class="fa fa-arrow-circle-left"></i></span>Previous</button>
-                                    <button type="button" class="btn btn-labeled btn-primary btn-next" data-last="Complete">Next<span class="btn-label btn-label-right"><i class="fa fa-arrow-circle-right"></i></span></button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                                   <button type="button" class="btn btn-labeled btn-default btn-prev" disabled="disabled"><span class="btn-label"><i class="fa fa-arrow-circle-left"></i></span>Previous</button>
+                                   <button type="button" class="btn btn-labeled btn-primary btn-next" data-last="Complete">Next<span class="btn-label btn-label-right"><i class="fa fa-arrow-circle-right"></i></span></button>
+                               </div>
+                           </div>
+                       </div>
+                   </form>
+               </div>
 
-            </div>
-        </div>
-    </div>
+           </div>
+       </div>
+   </div>
 </div>
