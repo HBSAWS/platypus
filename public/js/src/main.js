@@ -284,24 +284,26 @@
 			});
 		},
 		wizard: function() {
-			
-			var $wizard = $('#myWizard').wizard();
-			var $form = $wizard.closest('form');
+			$('.wizard').each(function() {
+				var $wizard = $(this);
+				$wizard.wizard();
+				var $form = $wizard.closest('form[data-parsley-validate]');
 
-			if($form.length) {
-				$wizard.on('actionclicked.fu.wizard', function (evt, data) {
-					if ( data.direction === 'next' && !$form.parsley().validate({group: 'block'+data.step}) ) {
-						evt.preventDefault();
-						return;
-					}
-				});
+				if($form.length) {
+					$wizard.on('actionclicked.fu.wizard', function (evt, data) {
+						if ( data.direction === 'next' && !$form.parsley().validate({group: 'block'+data.step}) ) {
+							evt.preventDefault();
+							return;
+						}
+					});
 
+					$wizard.on('finished.fu.wizard', function (evt, data) {
+						$form.submit();
+						console.log("submit");
+					});
+				}
+			});
 
-				$wizard.on('finished.fu.wizard', function (evt, data) {
-					$form.submit();
-					console.log("submit");
-				});
-			}
 
 		},
 		toasts: function() {
@@ -453,7 +455,7 @@
 					if(!opts.header) $('#'+modalID).find('.modal-header').hide();
 					if(!opts.footer) $('#'+modalID).find('.modal-footer').hide();
 					$('#'+modalID).find('.modal-body').load( $bttn.attr('href'), function(){
-						console.log("data loaded into modal");
+						console.log("Loading async data into modal");
 					})
 				});
 				// Display modal
@@ -681,9 +683,13 @@
 
 		feedback: function(){
 			$('body').append(`
-				<button id="btn-feedback" type="button" class="btn btn-info" data-toggle="modal" data-target="#feedback-modal">
-					<i class="fa fa-comment-o" data-toggle="tooltip" data-placement="left" title="Feedback"></i>
-				</button>
+				<a id="btn-feedback" href="/feedback/new" class="btn btn-info modal-remote"
+				  	data-modal-title="Feedback"
+				  	data-modal-size="lg"
+				  	data-modal-header="true"
+				  	data-modal-footer="false">
+				  		<i class="fa fa-comment-o" data-toggle="tooltip" data-placement="left" title="Feedback"></i>
+				</a>
 			`);
 		},
 

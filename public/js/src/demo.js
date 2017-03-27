@@ -11,7 +11,7 @@
 			AWSFrameworkDemo.maps();
 			AWSFrameworkDemo.dataTablesDemo();
 			AWSFrameworkDemo.calendarDemo();
-			AWSFrameworkDemo.feedbackDemo();
+			// AWSFrameworkDemo.feedbackDemo();
 		},
 		toastDemo: function toastDemo() {
 			$('#toastr-demo button').click(function (e) {
@@ -373,6 +373,7 @@
 					$('.modal').modal('hide');
 					let data = $(this).serializeArray();
 					console.log(data);
+					$(this).submit();
 					swal({
 							title: 'Thank you',
 							html: `Your feedback was submitted successfully`,

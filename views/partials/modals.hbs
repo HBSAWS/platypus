@@ -68,7 +68,7 @@
 </div>
 
 
-<!-- Feedback modal -->
+{{!-- <!-- Feedback modal -->
 <div class="modal fade" id="feedback-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -80,142 +80,8 @@
             </div>
             <div class="modal-body">
 
-                <div class="fuelux">
-                    <form action="/" id="feedbackDemoForm" method="post" data-parsley-validate> 
-                        <div class="wizard" data-initialize="wizard" id="myWizard">
-                            <div class="steps-container">
-                                <ul class="steps" style="margin-left: 0">
-                                    <li data-step="1" class="active">
-                                        <span class="badge badge-info">1</span>One
-                                        <span class="chevron"></span>
-                                    </li>
-                                    <li data-step="2">
-                                        <span class="badge">2</span>Two
-                                        <span class="chevron"></span>
-                                    </li>
-                                    <li data-step="3" data-name="template">
-                                        <span class="badge">3</span>Three
-                                        <span class="chevron"></span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="step-content">
-                                <div class="step-pane p-2 active" data-step="1">
-                                    <h4>Step One</h4>
-                                    <p>Thank you for your interest in helping us improve this application.</p>
-
-                                    <div class="form-group row">
-                                        <label class="col-md-4 hidden-sm-down text-xs-right" for="email">Scope</label>
-                                        <div class="col-md-8">
-                                            <label class="hidden-md-up d-block" for="email">Scope</label>
-
-                                            <div class="custom-controls-stacked">
-                                                <label class="custom-control custom-radio">
-                                                    <input id="specific" name="feedback-type" type="radio" class="custom-control-input" data-parsley-group="block1" required>
-                                                    <span class="custom-control-indicator"></span>
-                                                    <span class="custom-control-description">
-                                                        <p>Specific feedback</p>
-                                                        <p>I’d like to give feedback on a specific part of this application.</p>
-                                                    </span>
-                                                </label>
-                                                <label class="custom-control custom-radio">
-                                                    <input id="generic" name="feedback-type" type="radio" class="custom-control-input" data-parsley-group="block1">
-                                                    <span class="custom-control-indicator"></span>
-                                                    <span class="custom-control-description">
-                                                        <p>Generic feedback</p>
-                                                        <p>I’d like to give general feedback on the entire application.</p>
-                                                    </span>
-                                                </label>
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="step-pane p-2" data-step="2">
-                                    <h4>Step Two</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam illo iure aperiam minima amet voluptates, quia nostrum. Doloribus iste, modi explicabo sed non. Necessitatibus id ab quaerat temporibus delectus laborum!</p>
-
-                                    <div class="form-group row">
-                                        <label class="col-md-4 hidden-sm-down text-xs-right" for="email">Subject</label>
-                                        <div class="col-md-8">
-                                            <label class="hidden-md-up d-block" for="email">Subject</label>
-                                            {{!-- <input type="text" class="form-control" id="email" data-parsley-group="block2" data-parsley-trigger="keyup" required> --}}
-
-                                            <select name="subject" class="custom-select form-control" data-parsley-group="block2" required>
-                                                <option></option>
-                                                <option value="sugestion">Suggestion</option>
-                                                <option value="compliment">Compliment</option>
-                                                <option value="bug">Bug</option>
-                                                <option value="question">Question</option>
-                                            </select>
-
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label class="col-md-4 hidden-sm-down text-xs-right" for="email">Email address</label>
-                                        <div class="col-md-8">
-                                            <label class="hidden-md-up d-block" for="email">Email address</label>
-                                            <input name="email" type="email" class="form-control" id="email" placeholder="Enter email" data-parsley-trigger="keyup" required>
-                                            <small class="form-text text-muted hidden-sm-down">Might be used to follow-up</small>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label class="col-md-4 hidden-sm-down text-xs-right" for="textarea">What would you like to share with us?</label>
-                                        <div class="col-md-8">
-                                            <label class="hidden-md-up d-block" for="textarea">What would you like to share with us?</label>
-                                            <textarea name="comment" class="form-control" id="textarea" rows="10" maxlength="500"></textarea>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="step-pane p-2" data-step="3">
-                                    <h4>Step Three</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam illo iure aperiam minima amet voluptates, quia nostrum. Doloribus iste, modi explicabo sed non. Necessitatibus id ab quaerat temporibus delectus laborum!</p>
-
-                                    
-                                    <div class="form-group row">
-                                        <label class="col-md-4 hidden-sm-down text-xs-right" for="email">What do you think of this application?</label>
-                                        <div class="col-md-8">
-                                            <label class="hidden-md-up d-block" for="email">What do you think of this application?</label>
-                                            
-
-                                            <div class="btn-group btn-group-justified" data-toggle="buttons">
-                                                <label class="btn" data-toggle="tooltip" data-placement="top" title="Dislike">
-                                                    <input type="radio" name="satisfaction" value="2" id="option2" autocomplete="off">
-                                                    <i class="fa fa-frown-o fa-fw fa-2x"></i>
-                                                </label>
-                                                <label class="btn" data-toggle="tooltip" data-placement="top" title="Neutral">
-                                                    <input type="radio" name="satisfaction" value="3" id="option3" autocomplete="off">
-                                                    <i class="fa fa-meh-o fa-fw fa-2x"></i>
-                                                </label>
-                                                <label class="btn" data-toggle="tooltip" data-placement="top" title="Like">
-                                                    <input type="radio" name="satisfaction" value="4" id="option4" autocomplete="off">
-                                                    <i class="fa fa-smile-o fa-fw fa-2x"></i>
-                                                </label>
-                                                <label class="btn" data-toggle="tooltip" data-placement="top" title="Love">
-                                                    <input type="radio" name="satisfaction" value="5" id="option5" autocomplete="off">
-                                                    <i class="fa fa-heart-o fa-fw fa-2x"></i>
-                                                </label>                                                
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-
-                                </div>
-                                <div class="actions">
-                                   <button type="button" class="btn btn-labeled btn-default btn-prev" disabled="disabled"><span class="btn-label"><i class="fa fa-arrow-circle-left"></i></span>Previous</button>
-                                   <button type="button" class="btn btn-labeled btn-primary btn-next" data-last="Complete">Next<span class="btn-label btn-label-right"><i class="fa fa-arrow-circle-right"></i></span></button>
-                               </div>
-                           </div>
-                       </div>
-                   </form>
-               </div>
 
            </div>
        </div>
    </div>
-</div>
+</div> --}}

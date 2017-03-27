@@ -2,17 +2,20 @@ var express = require('express');
 
 module.exports  = function(app){
 
-    var main      = require('../routes/main'),
-        articles      = require('../routes/articles'),
-        categories    = require('../routes/categories'),
-        api           = require('../routes/api');
+    var main        = require('../routes/main'),
+        articles    = require('../routes/articles'),
+        categories  = require('../routes/categories'),
+        feedback    = require('../routes/feedback'),
+        api         = require('../routes/api');
 
     var articlesRouter      = express.Router(),
-        categoriesRouter    = express.Router();
+        categoriesRouter    = express.Router(),
+        feedbackRouter      = express.Router(),
         apiRouter           = express.Router();
 
     app.use('/articles',    articlesRouter);
     app.use('/categories',  categoriesRouter);    
+    app.use('/feedback',    feedbackRouter);    
     app.use('/api',         apiRouter);  	
 
     articlesRouter.get('/',                       articles.index);
@@ -35,6 +38,10 @@ module.exports  = function(app){
     categoriesRouter.post('/destroy/:id',         categories.destroy);
     categoriesRouter.get('/edit/:id',             categories.edit);
     categoriesRouter.post('/update/:id',          categories.update);
+
+    feedbackRouter.get('/',                       feedback.index);
+    feedbackRouter.get('/new',                    feedback.new);    
+    feedbackRouter.post('/create',                feedback.create);    
 
     apiRouter.get('/:resource/:num?',             api.resource);
 
