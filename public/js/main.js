@@ -42,6 +42,11 @@
 			Platypus.popOver();
 		},
 		btnSubmitAnimate: function btnSubmitAnimate() {
+			$('button[type="submit"]').addClass('ladda-button').attr('data-style', 'zoom-in');
+			// .attr('data-label', 'zoom-in');
+
+			console.log($('button[type="submit"]'));
+
 			Ladda.bind('button[type=submit]');
 		},
 		inputMaxLength: function inputMaxLength() {
@@ -356,6 +361,28 @@
 				wrapper: true,
 				showHideButtonText: 'Show',
 				showHideButtonTextToggle: 'Hide'
+			});
+
+			$('form .confirm-delete').click(function (e) {
+				e.preventDefault();
+				var el = $(this);
+
+				swal({
+					title: 'Are you sure?',
+					text: "You won't be able to revert this!",
+					type: 'warning',
+					showCancelButton: true,
+					// confirmButtonColor: '#3085d6',
+					// cancelButtonColor: '#d33',
+					confirmButtonText: 'Delete'
+				}).then(function () {
+					$(el).closest('form').submit();
+					Ladda.stopAll();
+					swal('Deleted!', 'Your file has been deleted.', 'success');
+				}, function (dismiss) {
+					console.log("dismissed");
+					Ladda.stopAll();
+				});
 			});
 
 			window.Parsley.on('field:validated', function (e) {
