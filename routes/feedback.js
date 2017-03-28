@@ -11,7 +11,7 @@ module.exports = {
         .exec(function(err, feedback) {
             if(err) return next(err);
             res.render('feedback/index', { 
-                layout : 'main',
+                layout : '2col',
                 feedback: feedback,
                 helpers: {
                   compare: helpers.compare,
@@ -36,7 +36,6 @@ module.exports = {
     },
 
     create: function(req, res, next){
-
         Feedback.create({ 
             scope         : req.body.scope,
             subject       : req.body.subject,

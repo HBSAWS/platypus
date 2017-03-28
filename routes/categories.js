@@ -14,6 +14,7 @@ module.exports = {
       res.render('categories/index', { 
         layout : 'main',
         categories: categories,
+        page_title : 'Categories',
         helpers: {
           compare: helpers.compare,
         } 

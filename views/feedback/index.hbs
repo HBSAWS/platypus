@@ -1,0 +1,19 @@
+{{> breadcrumbs this }}
+<div class="page-header p-1">
+	<div class="row">
+		<div class="col-xs-12">
+			<h2 class="display-4 text-truncated">{{page_title}}</h2>
+		</div>
+	</div>
+	<hr>
+</div>
+
+<div id="mainbody" class="m-2">
+	<ul class="list-group">
+		{{#feedback}}
+		<li class="list-group-item pl-1">
+			{{email}}
+		 </li>	
+		{{/feedback}}
+	</ul>
+</div>
