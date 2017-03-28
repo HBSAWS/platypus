@@ -4031,6 +4031,20 @@ a.palette-text-black-darker:focus {
   .card-deck .card > a:hover {
     text-decoration: none; }
 
+.chip {
+  display: inline-block;
+  padding: 0 25px;
+  height: 30px;
+  font-size: 16px;
+  line-height: 30px;
+  background-color: #f1f1f1; }
+
+.chip img {
+  float: left;
+  margin: 0 10px 0 -25px;
+  height: 30px;
+  width: 30px; }
+
 .breadcrumb {
   padding: 8px 15px;
   margin-bottom: 0px;

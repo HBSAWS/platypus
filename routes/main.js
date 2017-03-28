@@ -2,6 +2,7 @@ var mongoose = require('mongoose'),
 	Category = mongoose.model('Category'),
 	Article = mongoose.model('Article'),
 	async = require('async'),
+    request = require('request'),
     helpers = require('../config/handlebar-helpers.js').helpers;
     // helpers = require('handlebars-helpers')();
 
@@ -16,29 +17,51 @@ module.exports = {
 
             if(category) {
 
-                var query = {
-                    _category: category._id,
-                    version: (res.locals.ver_selected !== res.locals.current ) ? res.locals.ver_selected : res.locals.current
-                };
+                var commits = [];
 
-                var options = {
-                    sort: { order: 'asc' },
-                    populate: '_category',
-                    lean: false,
-                    page: 1,
-                    limit: 100
-                };
-                Article.paginate(query, options).then(function(articles) {
-                    res.render('home', { 
-                    articles: articles,
-                    layout : 'home',
-                    helpers:  {
-                        compare: helpers.compare,
-                        grouped_each: helpers.grouped_each,
-                        moduloIf: helpers.moduloIf
+                // get list of commits
+                request({
+                    url: 'https://api.github.com/repos/HBSAWS/platypus/commits',
+                    method: 'GET',
+                    headers: {
+                        'User-Agent': 'request'
                     }
-                    });
-                });
+                }, function(err, response, body) {
+                    if(err) {
+                        console.log(err);
+                    } else {
+                        commits = JSON.parse(body);
+
+                        var query = {
+                            _category: category._id,
+                            version: (res.locals.ver_selected !== res.locals.current ) ? res.locals.ver_selected : res.locals.current
+                        };
+
+                        var options = {
+                            sort: { order: 'asc' },
+                            populate: '_category',
+                            lean: false,
+                            page: 1,
+                            limit: 100
+                        };
+                        Article.paginate(query, options).then(function(articles) {
+                            
+                            // res.status(200).send(body);
+                            res.render('home', { 
+                                commits: commits,
+                                articles: articles,
+                                layout : 'home',
+                                helpers:  {
+                                    compare: helpers.compare,
+                                    grouped_each: helpers.grouped_each,
+                                    moduloIf: helpers.moduloIf
+                                }
+                            });
+                        });
+
+                    }
+                })
+
             } else {
                 res.send("Database is empty. Run 'sudo npm run postinstall' to import db dump.");
             }
