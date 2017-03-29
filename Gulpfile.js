@@ -55,6 +55,7 @@ var opts = {
         'public/vendor/faker/faker.min.js',
         'public/vendor/highlight/highlight.min.js',
         'public/vendor/strength/strength.min.js',
+        'public/vendor/jquery-flip/jquery-flip.min.js',
         'public/vendor/d3/d3.v3.min.js',
         'public/vendor/c3/c3.min.js',
         'public/js/main.js',

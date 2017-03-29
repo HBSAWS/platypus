@@ -11,6 +11,7 @@
 			Platypus.waveEffect();
 			Platypus.breadCrumbs();
 			Platypus.leftMenu();
+			Platypus.cards();
 			Platypus.carousel();
 			Platypus.dataTables();
 			Platypus.select2();
@@ -130,6 +131,30 @@
 				onInit: null,
 				onReady: null
 			});
+		},
+		cards: function() {
+			$('.card-flip').flip({
+				axis: "y",
+		      	reverse: false,
+		      	trigger: "manual",
+		      	speed: 500,
+		      	forceHeight: true,
+		      	forceWidth: false,
+		      	autoSize: true,
+		      	front: '.front',
+		      	back: '.back'
+			});
+
+			$(".card-flip .btn-flip").on('click', function(e){
+				e.preventDefault();
+				$(this).closest('.card').flip(true);
+			});
+
+			$(".card-flip .btn-unflip").on('click', function(e){
+				e.preventDefault();
+				$(this).closest('.card').flip(false);
+			});
+
 		},
 		leftMenu: function() {
 			$(".metismenu").metisMenu({
