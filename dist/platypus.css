@@ -6137,15 +6137,22 @@ strong, .font-weight-bold {
   .typeahead__list > li:hover {
     background-color: transparent; }
 
-.fuelux .wizard .steps li .badge {
-  padding: 0 5px; }
-
-.fuelux .wizard .steps li.active .badge, .fuelux .wizard .steps li.complete .badge {
-  color: white; }
-
-.fuelux .wizard .step-content > .active .btn-group .active {
-  display: table-cell;
-  /* fixes bug with .btn-justified */ }
+.fuelux .wizard {
+  background-color: white;
+  border-radius: 0; }
+  .fuelux .wizard .steps-container {
+    border-radius: 0; }
+    .fuelux .wizard .steps-container .steps li:first-child {
+      border-radius: 0 !important; }
+    .fuelux .wizard .steps-container .steps li .badge {
+      padding: 0 5px; }
+    .fuelux .wizard .steps-container .steps li.active .badge, .fuelux .wizard .steps-container .steps li.complete .badge {
+      color: white; }
+  .fuelux .wizard .step-content > .active .btn-group .active {
+    display: table-cell;
+    /* fixes bug with .btn-justified */ }
+  .fuelux .wizard .step-content .actions {
+    margin: 15px; }
 
 .note-toolbar {
   background-color: #f5f5f5;

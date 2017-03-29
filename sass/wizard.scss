@@ -1,21 +1,33 @@
 .fuelux {
 	.wizard {
-		.steps {
-			li {
-				.badge {
-					padding: 0 5px;
-				}
-				&.active, 
-				&.complete {
-					.badge {
-						color: white;
+		background-color: white;
+		border-radius: 0;
+		.steps-container {
+			border-radius: 0;
+				.steps {
+					li {
+						&:first-child {border-radius: 0 !important;}
+						.badge {
+							padding: 0 5px;
+						}
+						&.active, 
+						&.complete {
+							.badge {
+								color: white;
+							}
+						
+						}
 					}
-				
 				}
-			}
+
 		}
-		.step-content > .active .btn-group .active {
-			display: table-cell;  /* fixes bug with .btn-justified */
+		.step-content {
+			& > .active .btn-group .active {
+				display: table-cell;  /* fixes bug with .btn-justified */
+			}
+			.actions {
+				margin: 15px;
+			}
 		}
 	}
 }

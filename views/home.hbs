@@ -63,22 +63,8 @@
 		</div> <!--/#component-container-->
 
 
-		<h2><i class="fa fa-github"></i> Latest Changes</h2>
-
-
-		<ul class="list-group">
-			{{#commits}}
-		  		<li class="list-group-item pl-1 pr-1">
-		  			<p class="font-weight-bold">
-		  				<a href="{{html_url}}" class="text-capitalize text-truncate">{{commit.message}}</a> <span class="float-xs-right">{{commit.committer.date}}</span></p>
-		  			<div class="chip">
-					  	<img src="{{committer.avatar_url}}" alt="Person" width="96" height="96">
-					  	{{commit.committer.name}}
-					</div>
-
-		  		</li>
-		  	{{/commits}}
-		</ul>
+		{{> updates }}
+		
 
 		<br>
 		<br>
@@ -92,7 +78,7 @@
 
 	
 		
-	</div><!--/.container-->
+ 	</div><!--/.container--> 
 </div><!--/#mainbody-->
 
 
