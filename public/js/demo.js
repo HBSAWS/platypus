@@ -11,7 +11,6 @@
 			AWSFrameworkDemo.maps();
 			AWSFrameworkDemo.dataTablesDemo();
 			AWSFrameworkDemo.calendarDemo();
-			// AWSFrameworkDemo.feedbackDemo();
 		},
 		toastDemo: function toastDemo() {
 			$('#toastr-demo button').click(function (e) {
@@ -324,22 +323,6 @@
 					error: function error() {
 						swal('Error', 'Cannot retrieve sample data.', 'error');
 					}
-				});
-			}
-		},
-		feedbackDemo: function feedbackDemo() {
-			if ($('#feedbackDemoForm').length > 0) {
-				$(document).on('submit', '#feedbackDemoForm', function (e) {
-					e.preventDefault();
-					$('.modal').modal('hide');
-					var data = $(this).serializeArray();
-					console.log(data);
-					$(this).submit();
-					swal({
-						title: 'Thank you',
-						html: 'Your feedback was submitted successfully',
-						type: 'success'
-					});
 				});
 			}
 		},

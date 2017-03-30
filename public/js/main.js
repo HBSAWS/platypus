@@ -9,7 +9,6 @@
 			Platypus.backToTop();
 			Platypus.highlightJS();
 			Platypus.waveEffect();
-			Platypus.breadCrumbs();
 			Platypus.leftMenu();
 			Platypus.cards();
 			Platypus.carousel();
@@ -38,9 +37,10 @@
 			Platypus.renderCharts();
 			Platypus.gridListSwitcher();
 			Platypus.videoWidget();
-			Platypus.hideLoader();
 			Platypus.toolTip();
 			Platypus.popOver();
+			Platypus.breadCrumbs();
+			Platypus.hideLoader();
 		},
 		btnSubmitAnimate: function btnSubmitAnimate() {
 			$('button[type="submit"]').addClass('ladda-button').attr('data-style', 'zoom-in');
@@ -482,7 +482,6 @@
 				$('#universal-modal').attr('id', modalID);
 
 				$(document).on('show.bs.modal', '#' + modalID, function (e) {
-
 					if (opts.title) $('#' + modalID).find('.modal-title').html(opts.title);
 					if (opts.size) $('#' + modalID).find('.modal-dialog').addClass('modal-' + opts.size);
 					if (!opts.header) $('#' + modalID).find('.modal-header').hide();
@@ -491,8 +490,14 @@
 						console.log("Loading async data into modal");
 					});
 				});
+
+				$(document).on('shown.bs.modal', '#' + modalID, function (e) {
+					window.Platypus.wizard();
+				});
+
 				// Display modal
 				$('#' + modalID).modal('show');
+
 				// Reset used modal to defaults
 				$(document).on('hidden.bs.modal', '#' + modalID, function (e) {
 					$('#' + modalID).attr('id', 'universal-modal');
@@ -696,7 +701,27 @@
 		},
 
 		feedback: function feedback() {
+
+			// Inserts feedback button in DOM
 			$('body').append('\n\t\t\t\t<a id="btn-feedback" href="/feedback/new" class="btn btn-info modal-remote"\n\t\t\t\t  \tdata-modal-title="Feedback"\n\t\t\t\t  \tdata-modal-size="lg"\n\t\t\t\t  \tdata-modal-header="true"\n\t\t\t\t  \tdata-modal-footer="false">\n\t\t\t\t  \t\t<i class="fa fa-comment-o" data-toggle="tooltip" data-placement="left" title="Feedback"></i>\n\t\t\t\t</a>\n\t\t\t');
+
+			$(document).on('submit', '#feedbackForm', function (e) {
+				e.preventDefault();
+				$('.modal').modal('hide');
+
+				$.ajax({
+					type: 'POST',
+					url: $(this).attr('action'),
+					data: $(this).serialize(),
+					success: function success() {
+						swal({
+							title: 'Thank you',
+							html: 'Your feedback was submitted successfully',
+							type: 'success'
+						});
+					}
+				});
+			});
 		},
 
 		renderCharts: function renderCharts() {
@@ -912,7 +937,8 @@
 		},
 		hideLoader: function hideLoader() {
 			$('.load-container').fadeOut('slow');
-			$('.load-container + .container-fluid').fadeIn('slow');
+			$('.load-container ~ .container-fluid').fadeIn();
+			$(window).trigger('resize');
 		},
 		last: ''
 	};
@@ -921,7 +947,3 @@
 
 	window.Platypus = Platypus;
 })(jQuery);
-
-$(window).on('load', function () {
-	console.log("window.onload event fired");
-});

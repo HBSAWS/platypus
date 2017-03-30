@@ -23,13 +23,13 @@
                     <p>Thank you for your interest in helping us improve this application.</p>
 
                     <div class="form-group row">
-                        <label class="col-md-4 hidden-sm-down text-xs-right" for="email">Scope</label>
+                        <label class="col-md-4 hidden-sm-down text-xs-right" for="scope">Scope</label>
                         <div class="col-md-8">
-                            <label class="hidden-md-up d-block" for="email">Scope</label>
+                            <label class="hidden-md-up d-block" for="scope">Scope</label>
 
                             <div class="custom-controls-stacked">
                                 <label class="custom-control custom-radio">
-                                    <input id="specific" name="feedback-type" type="radio" class="custom-control-input" data-parsley-group="block1" required>
+                                    <input value="specific" name="scope" type="radio" class="custom-control-input" data-parsley-group="block1" required>
                                     <span class="custom-control-indicator"></span>
                                     <span class="custom-control-description">
                                         <p>Specific feedback</p>
@@ -37,7 +37,7 @@
                                     </span>
                                 </label>
                                 <label class="custom-control custom-radio">
-                                    <input id="generic" name="feedback-type" type="radio" class="custom-control-input" data-parsley-group="block1">
+                                    <input value="generic" name="scope" type="radio" class="custom-control-input" data-parsley-group="block1">
                                     <span class="custom-control-indicator"></span>
                                     <span class="custom-control-description">
                                         <p>Generic feedback</p>
@@ -55,9 +55,9 @@
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam illo iure aperiam minima amet voluptates, quia nostrum. Doloribus iste, modi explicabo sed non. Necessitatibus id ab quaerat temporibus delectus laborum!</p>
 
                     <div class="form-group row">
-                        <label class="col-md-4 hidden-sm-down text-xs-right" for="email">Subject</label>
+                        <label class="col-md-4 hidden-sm-down text-xs-right" for="subject">Subject</label>
                         <div class="col-md-8">
-                            <label class="hidden-md-up d-block" for="email">Subject</label>
+                            <label class="hidden-md-up d-block" for="subject">Subject</label>
                             {{!-- <input type="text" class="form-control" id="email" data-parsley-group="block2" data-parsley-trigger="keyup" required> --}}
 
                             <select name="subject" class="custom-select form-control" data-parsley-group="block2" required>
@@ -75,15 +75,15 @@
                         <label class="col-md-4 hidden-sm-down text-xs-right" for="email">Email address</label>
                         <div class="col-md-8">
                             <label class="hidden-md-up d-block" for="email">Email address</label>
-                            <input name="email" type="email" class="form-control" id="email" placeholder="Enter email" data-parsley-trigger="keyup" required>
+                            <input name="email" type="email" class="form-control" placeholder="Enter email" data-parsley-trigger="keyup" required>
                             <small class="form-text text-muted hidden-sm-down">Might be used to follow-up</small>
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-md-4 hidden-sm-down text-xs-right" for="textarea">What would you like to share with us?</label>
+                        <label class="col-md-4 hidden-sm-down text-xs-right" for="comment">What would you like to share with us?</label>
                         <div class="col-md-8">
-                            <label class="hidden-md-up d-block" for="textarea">What would you like to share with us?</label>
+                            <label class="hidden-md-up d-block" for="comment">What would you like to share with us?</label>
                             <textarea name="comment" class="form-control" id="textarea" rows="10" maxlength="500"></textarea>
                         </div>
                     </div>
@@ -95,9 +95,9 @@
 
                     
                     <div class="form-group row">
-                        <label class="col-md-4 hidden-sm-down text-xs-right" for="email">What do you think of this application?</label>
+                        <label class="col-md-4 hidden-sm-down text-xs-right" for="satisfaction">What do you think of this application?</label>
                         <div class="col-md-8">
-                            <label class="hidden-md-up d-block" for="email">What do you think of this application?</label>
+                            <label class="hidden-md-up d-block" for="satisfaction">What do you think of this application?</label>
                             
 
                             <div class="btn-group btn-group-justified" data-toggle="buttons">

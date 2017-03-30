@@ -9,7 +9,6 @@
 			Platypus.backToTop();
 			Platypus.highlightJS();
 			Platypus.waveEffect();
-			Platypus.breadCrumbs();
 			Platypus.leftMenu();
 			Platypus.cards();
 			Platypus.carousel();
@@ -38,9 +37,10 @@
 			Platypus.renderCharts();
 			Platypus.gridListSwitcher();
 			Platypus.videoWidget();
-			Platypus.hideLoader();
 			Platypus.toolTip();
 			Platypus.popOver();
+			Platypus.breadCrumbs();
+			Platypus.hideLoader();
 		},
 		btnSubmitAnimate: function() {
 			$('button[type="submit"]')
@@ -489,7 +489,6 @@
 		},
 		modal: function() {
 
-
 			$(document).on('click', '.modal-remote', function(e){
 				e.preventDefault();
 				
@@ -508,7 +507,6 @@
 				$('#universal-modal').attr('id', modalID);
 				
 				$(document).on('show.bs.modal', ('#'+modalID), function(e) {  
-					
 					if(opts.title) $('#'+modalID).find('.modal-title').html( opts.title );
 					if(opts.size) $('#'+modalID).find('.modal-dialog').addClass('modal-'+opts.size );
 					if(!opts.header) $('#'+modalID).find('.modal-header').hide();
@@ -517,8 +515,14 @@
 						console.log("Loading async data into modal");
 					})
 				});
+
+				$(document).on('shown.bs.modal', ('#'+modalID), function(e) {  
+					window.Platypus.wizard();
+				});
+
 				// Display modal
 				$('#'+modalID).modal('show');
+
 				// Reset used modal to defaults
 				$(document).on('hidden.bs.modal', ('#'+modalID), function(e) { 
 					$('#'+modalID).attr('id', 'universal-modal');
@@ -741,6 +745,8 @@
 		},
 
 		feedback: function(){
+			
+			// Inserts feedback button in DOM
 			$('body').append(`
 				<a id="btn-feedback" href="/feedback/new" class="btn btn-info modal-remote"
 				  	data-modal-title="Feedback"
@@ -750,6 +756,27 @@
 				  		<i class="fa fa-comment-o" data-toggle="tooltip" data-placement="left" title="Feedback"></i>
 				</a>
 			`);
+
+			$(document).on('submit', '#feedbackForm', function(e){
+				e.preventDefault();
+				$('.modal').modal('hide');
+
+				$.ajax({   
+				   type: 'POST',   
+				   url: $(this).attr('action'),   
+				   data: $(this).serialize(),
+				   success: function(){
+					   	swal({
+							title: 'Thank you',
+							html: `Your feedback was submitted successfully`,
+							type: 'success'
+						});
+				   }
+				});
+				
+			});
+			
+
 		},
 
 		renderCharts: function() {
@@ -981,7 +1008,8 @@
 		},
 		hideLoader: function() {
 			$('.load-container').fadeOut('slow');
-			$('.load-container + .container-fluid').fadeIn('slow');
+			$('.load-container ~ .container-fluid').fadeIn();
+			$(window).trigger('resize');
 		},
 		last: ''
 	};
@@ -989,9 +1017,5 @@
 	$(document).ready(Platypus.ondomready);
 
 	window.Platypus = Platypus;
+
 })(jQuery);
-
-
-$(window).on('load',function() {
-	console.log("window.onload event fired"); 
-});

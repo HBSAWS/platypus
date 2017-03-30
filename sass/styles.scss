@@ -46,7 +46,7 @@
 	}
 }
 
-.load-container + .container-fluid {
+.load-container ~ .container-fluid {
     display: none;
 }
 

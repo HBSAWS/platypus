@@ -4031,12 +4031,6 @@ a.palette-text-black-darker:focus {
   .card-deck .card > a:hover {
     text-decoration: none; }
 
-.card-flip[style] {
-  transform-style: initial !important; }
-  .card-flip[style] > .front[style],
-  .card-flip[style] > .back[style] {
-    transform-style: initial !important; }
-
 .chip {
   display: inline-block;
   padding: 0 25px;
@@ -4617,7 +4611,7 @@ strong, .font-weight-bold {
     padding-top: 0 !important;
     margin-bottom: 20px; } }
 
-.load-container + .container-fluid {
+.load-container ~ .container-fluid {
   display: none; }
 
 .overlay {
