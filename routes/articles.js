@@ -176,7 +176,7 @@ module.exports = {
             res.redirect('/articles/' + article.slug);
         });
     },
-
+    
     search: function(req, res, next) {
         Category.findOne({
             'slug': req.params.cat_slug

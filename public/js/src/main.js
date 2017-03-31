@@ -307,6 +307,33 @@
 					]
 				}
 			});
+
+
+			$('.summernote-airmode').summernote({
+				airMode: true,
+				popover: {
+		         	image: [],
+		         	link: [],
+		         	air: []
+		       	},
+				callbacks: {
+					onInit: function() {
+				      console.log('summernote onInit callback fired');
+				    },
+					onFocus: function(){
+						console.log('summernote OnFocus callback fired');
+						$('.note-air-popover').show();
+					},
+					onBlur: function(){
+						console.log('summernote onBlur callback fired');
+						$('.note-air-popover').hide();
+					},
+					onChange: function(contents, $editable) {
+				      	console.log('summernote onChange callback fired:', contents, $editable);
+				    }
+				}
+			});
+
 		},
 		gauges: function() {
 			$(".dial").each(function () {

@@ -4161,6 +4161,18 @@ span.btn-label.btn-label-right {
   margin-right: 20px; }
 
 /* Icons */
+.img-sm {
+  max-width: 200px; }
+
+.img-md {
+  max-width: 300px; }
+
+.img-lg {
+  max-width: 400px; }
+
+.img-circle {
+  border-radius: 50%; }
+
 .rotating-bg {
   background-position: bottom;
   background-repeat: no-repeat; }
