@@ -1,5 +1,5 @@
 
-/*! 2017-04-03 9:38:16 AM EDT */
+/*! 2017-04-03 4:55:40 PM EDT */
 /*!
  * Bootstrap v4.0.0-alpha.5 (https://getbootstrap.com)
  * Copyright 2011-2016 The Bootstrap Authors
@@ -6110,7 +6110,8 @@ strong, .font-weight-bold {
   font-weight: 600; }
 
 .progress .progress-bar {
-  height: 5px; }
+  height: 5px;
+  transition: width 2s ease-in-out; }
 
 /* AZ List */
 #toast-container > div {
@@ -6172,6 +6173,32 @@ strong, .font-weight-bold {
   .note-toolbar .btn {
     border: 1px solid #ccc;
     background: white; }
+
+.edit-inline + .note-editor:hover {
+  outline: 1px solid #a5cce4;
+  cursor: text;
+  position: relative; }
+  .edit-inline + .note-editor:hover::after {
+    font-size: 11px;
+    position: absolute;
+    font-family: FontAwesome;
+    content: '\f044';
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 4px;
+    color: #a5cce4;
+    background: white; }
+
+.edit-inline.empty + .note-editor::before {
+  position: absolute;
+  content: 'Edit';
+  color: #009688;
+  text-decoration: underline;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  pointer-events: none; }
 
 @media (max-width: 575px) {
   #mainbody {

@@ -27,6 +27,7 @@
 			Platypus.gallery();
 			Platypus.AZList();
 			Platypus.rotatingBg();
+			Platypus.inlineEdit();
 			Platypus.modal();
 			Platypus.navBar();
 			Platypus.search();
@@ -40,6 +41,7 @@
 			Platypus.toolTip();
 			Platypus.popOver();
 			Platypus.breadCrumbs();
+			Platypus.progressBar();
 			Platypus.hideLoader();
 		},
 		btnSubmitAnimate: function() {
@@ -306,64 +308,6 @@
 				}
 			});
 
-
-			$('.summernote-airmode').each(function(){
-
-				let postUrl = $(this).data('post-url');
-				let content = '';
-
-				$(this).summernote({
-					airMode: true,
-					popover: {
-			         	image: [],
-			         	link: [],
-			         	air: []
-			       	},
-					callbacks: {
-						onInit: function() {
-					      	console.log('summernote onInit callback fired');
-					      	 	content = $(this).summernote('code');
-					    },
-						onFocus: function(){
-							console.log('summernote OnFocus callback fired');
-							$('.note-air-popover').show();
-								content = $(this).summernote('code');
-
-						},
-						onBlur: function(){
-							console.log('summernote onBlur callback fired');
-							$('.note-air-popover').hide();
-							console.log( $(this) );
-							if (content !== $(this).summernote('code')) postData( $(this) );
-						},
-						onChange: function(contents, $editable) {
-					      	console.log('summernote onChange callback fired:', contents, $editable);
-					    }
-					}
-				});
-
-				function postData($el){
-
-					var data = {};
-					data.body = $el.summernote('code');
-
-					$.ajax({
-						type: 'POST',
-						data: JSON.stringify(data),
-				        contentType: 'application/json',
-                        url: postUrl,						
-                        success: function(data) {
-                            toastr.success('Item updated successfully.');
-                        },
-                        error: function (request, status, error) {
-					        toastr.error('Cannot update item.');
-					    }
-                    });
-
-
-				}
-			});
-
 		},
 		gauges: function() {
 			$(".dial").each(function () {
@@ -371,6 +315,21 @@
 					fgColor: $(this).data('color') !== '' ? $(this).data('color') : 'green'
 				});
 			});
+		},
+		progressBar: function(){
+			console.log( $('.progress .progress-bar') )
+			$('.progress .progress-bar').hide();
+			$('.progress .progress-bar').css("width", "0%");
+			$('.progress .progress-bar').show();
+			setTimeout(function(){
+				$('.progress .progress-bar').css("width",
+	                function() {
+	                    return $(this).attr("aria-valuenow") + "%";
+	                }
+	        	);
+			}, 500);
+
+
 		},
 		wizard: function() {
 			$('.wizard').each(function() {
@@ -593,6 +552,76 @@
 		},
 		rotatingBg: function() {
 			$('.rotating-bg').css('background-image', 'url("/images/rotating-bg-hbs/bg-hbs-' + _.random(1, 4) + '.png")');
+		},
+
+		inlineEdit: function() {
+
+			$('.edit-inline').each(function(){
+
+				let postUrl = $(this).data('post-url');
+				let content = '';
+
+				$(this).summernote({
+					airMode: true,
+					popover: {
+			         	image: [],
+			         	link: [],
+			         	air: []
+			       	},
+					callbacks: {
+						onInit: function() {
+					      	// console.log('summernote onInit callback fired');
+					      	if ( $(this).summernote('isEmpty') ) {
+					      		$(this).val('');
+					      		$(this).addClass('empty');
+					      	} 
+					    },
+						onFocus: function(){
+							// console.log('summernote OnFocus callback fired');
+							$('.note-air-popover').show();
+							$(this).removeClass('empty');
+							content = $(this).summernote('code');
+
+						},
+						onBlur: function(){
+							// console.log('summernote onBlur callback fired');
+							$('.note-air-popover').hide();
+							// console.log( $(this) );
+							if ( $(this).summernote('isEmpty') ) {
+					      		$(this).val('');
+					      		$(this).addClass('empty');
+					      	} 
+					      	if (content !== $(this).summernote('code')) postData( $(this) );
+					      	
+						},
+						onChange: function(contents, $editable) {
+					      	// console.log('summernote onChange callback fired:', contents, $editable);
+					    }
+					}
+				});
+
+				function postData($el){
+
+					var data = {};
+					data.body = $el.summernote('code');
+
+					$.ajax({
+						type: 'POST',
+						data: JSON.stringify(data),
+				        contentType: 'application/json',
+                        url: postUrl,						
+                        success: function(data) {
+                            toastr.success('Item updated successfully.');
+                        },
+                        error: function (request, status, error) {
+					        toastr.error('Cannot update item.');
+					    }
+                    });
+
+
+				}
+			});
+			
 		},
 		search: function() {
 

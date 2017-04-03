@@ -7,8 +7,36 @@
 	}
 }
 
-
-.summernote-airmode + .note-editor {
-	&:hover { 
+.edit-inline {
+	& + .note-editor {
+		&:hover { 
+			outline: 1px solid rgb(165, 204, 228);
+			cursor: text;
+			position: relative;
+			&::after {
+				font-size: 11px;
+				position: absolute;
+				font-family: FontAwesome;
+				content: '\f044';
+				top: 0;
+				right: 0;
+				z-index: 1000;
+				padding: 4px;
+				color: rgb(165, 204, 228);
+			    background: white;
+			}
+		}
+	}
+	&.empty + .note-editor {
+		&::before {
+			position: absolute;
+			content: 'Edit';
+			color: #009688;
+			text-decoration: underline;
+			top: 0;
+			left: 0;
+			z-index: 1000;
+			pointer-events: none;
+		}
 	}
 }
