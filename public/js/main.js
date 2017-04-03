@@ -46,8 +46,6 @@
 			$('button[type="submit"]').addClass('ladda-button').attr('data-style', 'zoom-in');
 			// .attr('data-label', 'zoom-in');
 
-			console.log($('button[type="submit"]'));
-
 			Ladda.bind('button[type=submit]');
 		},
 		inputMaxLength: function inputMaxLength() {
@@ -292,28 +290,57 @@
 				}
 			});
 
-			$('.summernote-airmode').summernote({
-				airMode: true,
-				popover: {
-					image: [],
-					link: [],
-					air: []
-				},
-				callbacks: {
-					onInit: function onInit() {
-						console.log('summernote onInit callback fired');
+			$('.summernote-airmode').each(function () {
+
+				var postUrl = $(this).data('post-url');
+				var content = '';
+
+				$(this).summernote({
+					airMode: true,
+					popover: {
+						image: [],
+						link: [],
+						air: []
 					},
-					onFocus: function onFocus() {
-						console.log('summernote OnFocus callback fired');
-						$('.note-air-popover').show();
-					},
-					onBlur: function onBlur() {
-						console.log('summernote onBlur callback fired');
-						$('.note-air-popover').hide();
-					},
-					onChange: function onChange(contents, $editable) {
-						console.log('summernote onChange callback fired:', contents, $editable);
+					callbacks: {
+						onInit: function onInit() {
+							console.log('summernote onInit callback fired');
+							content = $(this).summernote('code');
+						},
+						onFocus: function onFocus() {
+							console.log('summernote OnFocus callback fired');
+							$('.note-air-popover').show();
+							content = $(this).summernote('code');
+						},
+						onBlur: function onBlur() {
+							console.log('summernote onBlur callback fired');
+							$('.note-air-popover').hide();
+							console.log($(this));
+							if (content !== $(this).summernote('code')) postData($(this));
+						},
+						onChange: function onChange(contents, $editable) {
+							console.log('summernote onChange callback fired:', contents, $editable);
+						}
 					}
+				});
+
+				function postData($el) {
+
+					var data = {};
+					data.body = $el.summernote('code');
+
+					$.ajax({
+						type: 'POST',
+						data: JSON.stringify(data),
+						contentType: 'application/json',
+						url: postUrl,
+						success: function success(data) {
+							toastr.success('Item updated successfully.');
+						},
+						error: function error(request, status, _error) {
+							toastr.error('Cannot update item.');
+						}
+					});
 				}
 			});
 		},
@@ -356,8 +383,8 @@
 				"preventDuplicates": false,
 				"onclick": null,
 				"showDuration": "300",
-				"hideDuration": "1000",
-				"timeOut": "5000",
+				"hideDuration": "1500",
+				"timeOut": "1500",
 				"extendedTimeOut": "1000",
 				"showEasing": "swing",
 				"hideEasing": "linear",

@@ -40,9 +40,7 @@
 			    	<div class="row">
 			    		<div class="col-md-9">
 			    			<p class="lead">{{intro}}</p>
-			    			<form action="/articles/update/{{_id}}" method="post">
-								<div class="summernote-airmode">{{{body}}}</div>
-							</form>
+			    			<div class="summernote-airmode" data-post-url="/articles/update/{{_id}}/body">{{{body}}}</div>
 			    		</div>
 			    		<div class="col-md-3">
 								

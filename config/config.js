@@ -107,5 +107,6 @@ module.exports = function(app, envConfig){
     //     return next();
     // });
 
+    // mongoose.set('debug', true);
   
 };

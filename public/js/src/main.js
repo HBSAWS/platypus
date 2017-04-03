@@ -48,8 +48,6 @@
 				.attr('data-style', 'zoom-in')
 				// .attr('data-label', 'zoom-in');
 
-			console.log($('button[type="submit"]'));
-
 			Ladda.bind('button[type=submit]');
 		},
 		inputMaxLength: function() {
@@ -309,28 +307,60 @@
 			});
 
 
-			$('.summernote-airmode').summernote({
-				airMode: true,
-				popover: {
-		         	image: [],
-		         	link: [],
-		         	air: []
-		       	},
-				callbacks: {
-					onInit: function() {
-				      console.log('summernote onInit callback fired');
-				    },
-					onFocus: function(){
-						console.log('summernote OnFocus callback fired');
-						$('.note-air-popover').show();
-					},
-					onBlur: function(){
-						console.log('summernote onBlur callback fired');
-						$('.note-air-popover').hide();
-					},
-					onChange: function(contents, $editable) {
-				      	console.log('summernote onChange callback fired:', contents, $editable);
-				    }
+			$('.summernote-airmode').each(function(){
+
+				let postUrl = $(this).data('post-url');
+				let content = '';
+
+				$(this).summernote({
+					airMode: true,
+					popover: {
+			         	image: [],
+			         	link: [],
+			         	air: []
+			       	},
+					callbacks: {
+						onInit: function() {
+					      	console.log('summernote onInit callback fired');
+					      	 	content = $(this).summernote('code');
+					    },
+						onFocus: function(){
+							console.log('summernote OnFocus callback fired');
+							$('.note-air-popover').show();
+								content = $(this).summernote('code');
+
+						},
+						onBlur: function(){
+							console.log('summernote onBlur callback fired');
+							$('.note-air-popover').hide();
+							console.log( $(this) );
+							if (content !== $(this).summernote('code')) postData( $(this) );
+						},
+						onChange: function(contents, $editable) {
+					      	console.log('summernote onChange callback fired:', contents, $editable);
+					    }
+					}
+				});
+
+				function postData($el){
+
+					var data = {};
+					data.body = $el.summernote('code');
+
+					$.ajax({
+						type: 'POST',
+						data: JSON.stringify(data),
+				        contentType: 'application/json',
+                        url: postUrl,						
+                        success: function(data) {
+                            toastr.success('Item updated successfully.');
+                        },
+                        error: function (request, status, error) {
+					        toastr.error('Cannot update item.');
+					    }
+                    });
+
+
 				}
 			});
 
@@ -376,8 +406,8 @@
 				"preventDuplicates": false,
 				"onclick": null,
 				"showDuration": "300",
-				"hideDuration": "1000",
-				"timeOut": "5000",
+				"hideDuration": "1500",
+				"timeOut": "1500",
 				"extendedTimeOut": "1000",
 				"showEasing": "swing",
 				"hideEasing": "linear",

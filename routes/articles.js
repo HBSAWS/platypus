@@ -164,11 +164,6 @@ module.exports = {
             published: req.body.published ? true : false
         };
 
-        // cover attachment present?
-        if (req.file) {
-            update_attrs.cover = req.file.fieldname + '-' + req.file.originalname
-        }
-
         Article.findOneAndUpdate({
             _id: req.params.id
         }, update_attrs, function(err, article) {
@@ -176,7 +171,21 @@ module.exports = {
             res.redirect('/articles/' + article.slug);
         });
     },
-    
+
+
+    update_field: function(req, res, next) {
+
+        var update = {};
+        update[req.params.field] = req.body.body;
+
+        Article.findOneAndUpdate({
+            _id: req.params.id
+        }, {$set:update}, function(err, article) {
+            if (err) return next(err);
+            res.send(article[req.params.field]);
+        });
+    },
+
     search: function(req, res, next) {
         Category.findOne({
             'slug': req.params.cat_slug
