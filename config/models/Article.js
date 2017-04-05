@@ -7,7 +7,6 @@ var articleSchema = new Schema({
     type            : { type   : String, },
     status          : { type   : String, },
     title           : { type : String, required: true },
-    // slug            : { type : String, unique : true, dropDups: true, required: true },
     slug	        : { type : String, required: true },
     intro	        : { type : String, },
     body	        : { type: String,  required: true },

@@ -21,27 +21,15 @@
 		<div class="mb-3">&nbsp;</div>
 
 		<hr>
-		<h2 class="">Explore Components
-			<div class="btn-group float-xs-right">
-				 <div class="btn-group btn-group-justified-xs" role="group" aria-label="Justified button group">
-				   	<a id="btn-list" class="btn btn-secondary" href="#" role="button">
-				   		<i class="fa fa-list"></i><span class="hidden-sm-down"> List</span>
-				   	</a>
-				   	<a id="btn-grid" class="btn btn-secondary active" href="#" role="button">
-				   		<i class="fa fa-th"></i><span class="hidden-sm-down"> Grid</span>
-				   	</a>
-				 </div>
-			</div>
-		</h2>
+		<h2 class="">Explore Components</h2>
 		<hr>
 		
 		
 		<div id="component-container">
 	
-			<div class="row mb-3">
-				{{#each articles.docs}}
-		  			
-		  			<div class="item col-sm-6 col-md-4 col-lg-3 col-xl-3">
+			<div class="carousel row mb-3" data-slick='{"slidesToShow": 4, "slidesToScroll": 4}'>
+				{{#each articles }}
+		  			<div class="col-md-3">
 		    			<a href="/articles/{{slug}}">
 						  	<div class="palette-bg-teal-100 p-2 img-container">
 						  		<img class="img-fluid" src="/images/ui-components-thumbs/{{slug}}.png">
@@ -52,18 +40,20 @@
 						  	</div>
 					    </a>
 					</div>
-					
-					{{#moduloIf @index 2 0}}<div class="clearfix mb-3 hidden-xs-down hidden-md-up"></div>{{/moduloIf}}
-					{{#moduloIf @index 3 0}}<div class="clearfix mb-3 hidden-sm-down hidden-lg-up"></div>{{/moduloIf}}
-					{{#moduloIf @index 4 0}}<div class="clearfix mb-3 hidden-md-down hidden-xl-up"></div>{{/moduloIf}}
-					{{#moduloIf @index 4 0}}<div class="clearfix mb-3 hidden-lg-down"></div>{{/moduloIf}}
-
 				{{/each}}
 			</div>
 		</div> <!--/#component-container-->
 
 
-		{{> updates }}
+		<div class="row">
+			<div class="col-md-6">
+				{{> updates }}
+			</div>
+			<div class="col-md-6">
+				{{> patterns }}
+			</div>
+		</div>
+		
 		
 
 		<br>

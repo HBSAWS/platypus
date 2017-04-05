@@ -3,21 +3,64 @@ var mongoose = require('mongoose'),
 	Article = mongoose.model('Article'),
 	async = require('async'),
     request = require('request'),
+    moment = require('moment'),
+    _ = require('lodash'),
     helpers = require('../config/handlebar-helpers.js').helpers;
     // helpers = require('handlebars-helpers')();
 
 module.exports = {
     index: function(req, res, next) {
 
-      	Category.findOne({
-            slug: 'ui-components', 
-            published: true
-        }, function(err, category){
-            if(err) return next(err);
+        async.waterfall([
+            function(callback) {
+                console.log("Getting UI Components");
 
-            if(category) {
+                Category.find({
+                    $or: [{'slug' : 'ux-components'}, {'slug': 'ui-components'}], 
+                    published: true
+                }, function(err, categories){
+                    if(err) return next(err);
+                    if(categories) {
+                        callback(null, categories);
+                    } else {
+                        res.send("Database is empty. Run 'sudo npm run postinstall' to import db dump.");
+                    }
+                });
 
-                var commits = [];
+            },
+            function(categories, callback) {
+                
+                console.log("Getting Articles");
+
+                var arr_articles = [];
+
+                _.each(categories, function(cat){
+                    console.log("Querying "+cat.title);
+                    Article.find({
+                        _category: cat._id,
+                        version: (res.locals.ver_selected !== res.locals.current ) ? res.locals.ver_selected : res.locals.current
+                    })
+                    .populate('_category')
+                    .exec(function(err, articles){
+
+                        console.log("Found " + articles.length + ' articles');
+
+                        if(err) return next(err);
+                        arr_articles.push(articles);
+
+
+                        if (arr_articles.length == categories.length) callback(null, arr_articles);
+                        
+                    });
+
+                });
+               
+            },
+            function(articles, callback) {
+              console.log("Getting Commits");
+
+
+               var commits = [];
 
                 // get list of commits
                 request({
@@ -27,45 +70,37 @@ module.exports = {
                         'User-Agent': 'request'
                     }
                 }, function(err, response, body) {
-                    if(err) {
-                        console.log(err);
-                    } else {
-                        commits = JSON.parse(body);
+                    if(err) console.log(err);
+                    commits = JSON.parse(body);
+                    callback(null, commits, articles);
+                });
 
-                        var query = {
-                            _category: category._id,
-                            version: (res.locals.ver_selected !== res.locals.current ) ? res.locals.ver_selected : res.locals.current
-                        };
 
-                        var options = {
-                            sort: { order: 'asc' },
-                            populate: '_category',
-                            lean: false,
-                            page: 1,
-                            limit: 100
-                        };
-                        Article.paginate(query, options).then(function(articles) {
-                            
-                            // res.status(200).send(body);
-                            res.render('home', { 
-                                commits: commits,
-                                articles: articles,
-                                layout : 'home',
-                                helpers:  {
-                                    compare: helpers.compare,
-                                    grouped_each: helpers.grouped_each,
-                                    moduloIf: helpers.moduloIf
-                                }
-                            });
-                        });
 
-                    }
-                })
 
-            } else {
-                res.send("Database is empty. Run 'sudo npm run postinstall' to import db dump.");
+              
             }
-        });
+        ], function(error, commits, articles) {
+            
+
+            // res.status(200).send( _.filter(articles[0], item => { return item._category.title == 'UI Components' }) );
+
+            res.render('home', { 
+                commits: _.filter(commits, item => { return moment().utc().diff(item.commit.committer.date, 'days') < 7 }),
+                articles: _.filter(articles[0], item => { return item._category.title == 'UI Components' }),
+                patterns: _.filter(articles[1], item => { return item._category.title == 'UX Components' }),
+                layout : 'home',
+                helpers:  {
+                    compare: helpers.compare,
+                    grouped_each: helpers.grouped_each,
+                    moduloIf: helpers.moduloIf
+                }
+            });
+
+      });
+
+
+
     },
 
     set_version: function(req, res, next) {
