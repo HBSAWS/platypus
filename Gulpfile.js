@@ -56,6 +56,7 @@ var opts = {
         'public/vendor/highlight/highlight.min.js',
         'public/vendor/strength/strength.min.js',
         'public/vendor/jquery-flip/jquery-flip.min.js',
+        'public/vendor/wow/wow.min.js',
         'public/vendor/d3/d3.v3.min.js',
         'public/vendor/c3/c3.min.js',
         'public/js/main.js',
@@ -63,7 +64,7 @@ var opts = {
     cssFiles : [
         'public/vendor/bootstrap/bootstrap.min.css',
         'public/vendor/jasny-bootstrap/jasny-bootstrap.min.css',
-        'public/vendor/font-awesome/font-awesome.min.css',
+        //'public/vendor/font-awesome/font-awesome.min.css',
         'public/vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css',
         'public/vendor/bootstrap-slider/bootstrap-slider.min.css',
         'public/vendor/bootstrap-toggle/bootstrap-toggle.min.css',
@@ -86,6 +87,7 @@ var opts = {
         'public/vendor/fullcalendar/fullcalendar.min.css',
         'public/vendor/fullcalendar/fullcalendar.print.css',
         'public/vendor/jquery-typeahead/jquery.typeahead.min.css',
+        'public/vendor/animate/animate.min.js',
         'public/vendor/c3/c3.min.css',
         'public/vendor/strength/strength.css',
         'public/css/styles.css',
@@ -97,20 +99,22 @@ var opts = {
 gulp.task('js', function() {  
     return gulp.src(opts.jsFiles)
         .pipe(concat('platypus.js'))
-        .pipe(banner(opts.banner, {date: opts.dt}))
         .pipe(gulp.dest(opts.dist))
         .pipe(rename('platypus.min.js'))
-        .pipe(uglify())
+        .pipe(uglify({
+            preserveComments: function(node, comment){ return false;}
+        }))
+        .pipe(banner(opts.banner, {date: opts.dt}))
         .pipe(gulp.dest(opts.dist));
 });
 
 gulp.task('css', function() {  
     return gulp.src(opts.cssFiles)
         .pipe(concat('platypus.css'))
-        .pipe(banner(opts.banner, {date: opts.dt}))
         .pipe(gulp.dest(opts.dist))
         .pipe(rename('platypus.min.css'))
         .pipe(cleanCSS({compatibility: 'ie8'}))
+        .pipe(banner(opts.banner, {date: opts.dt}))        
         .pipe(gulp.dest(opts.dist));
 });
 

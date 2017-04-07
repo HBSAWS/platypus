@@ -40,9 +40,10 @@
 			Platypus.videoWidget();
 			Platypus.toolTip();
 			Platypus.popOver();
-			Platypus.breadCrumbs();
+			Platypus.wowAnimations();
 			Platypus.progressBar();
 			Platypus.hideLoader();
+			Platypus.breadCrumbs();
 		},
 		btnSubmitAnimate: function() {
 			$('button[type="submit"]')
@@ -107,32 +108,69 @@
 					return $item.find('a');
 				},
 				ellipsis: function(classes, label) {
-					return '<li class="' + classes.ellipsisClass + '">' + label + '</li>';
+					return `<li class="${classes.ellipsisClass}">${label}</li>`;
 				},
 
 				dropdown: function(classes) {
-					var dropdownClass = 'dropdown'; // was 'dropdown'
+					var dropdownClass = 'dropdown'; 
 					var dropdownMenuClass = 'dropdown-menu';
 
 					if (this.options.overflow === 'right') {
 						dropdownMenuClass += ' dropdown-menu-right';
 					}
 
-					return '<li class="' + dropdownClass + ' ' + classes.dropdownClass + '">\n\t\t\t\t      <a href="javascript:void(0);" class="' + classes.toggleClass + '" data-toggle="dropdown">\n\t\t\t\t        <i class="' + classes.toggleIconClass + '"></i>\n\t\t\t\t      </a>\n\t\t\t\t      <ul class="' + dropdownMenuClass + ' ' + classes.dropdownMenuClass + '"></ul>\n\t\t\t\t    </li>';
-				},
+				 	return `
+						<li class="${dropdownClass} ${classes.dropdownClass}">
+							<a href="javascript:void(0);" class="${classes.toggleClass}" data-toggle="dropdown">
+								<i class="${classes.toggleIconClass}"></i>
+							</a>
+							<ul class="${dropdownMenuClass} ${classes.dropdownMenuClass}"></ul>
+						</li>
+					`;				},
 
 				dropdownItem: function(classes, label, href) {
 					if (!href) {
-						return '<li class="' + classes.dropdownItemClass + ' ' + classes.dropdownItemDisableClass + '"><a href="#">' + label + '</a></li>';
+						return `
+							<li class="${classes.dropdownItemClass} ${classes.dropdownItemDisableClass}">
+								<a href="#">${label}</a>
+							</li>
+						`;
 					}
-					return '<li class="' + classes.dropdownItemClass + '"><a href="' + href + '">' + label + '</a></li>';
+					return `
+						<li class="${classes.dropdownItemClass}">
+							<a href="${href}">${label}</a>
+						</li>
+						`;
 				},
 				// callbacks
 				onInit: null,
 				onReady: null
 			});
 		},
+		wowAnimations: function(){
+			let wow = new WOW({
+                boxClass:     'wow',      // default
+                animateClass: 'animated', // default
+                offset:       0,          // default
+                mobile:       true,       // default: true
+                live:         true       // default: true
+            });
+            wow.init();
+		},
 		cards: function() {
+			
+			$('.card-hover-effect').on('mouseover', function () {
+			    let $this = $(this);
+			    let effect = 'bounceIn';
+
+			    $this
+			        .addClass('animated ' + effect)
+			        .on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+			        $this.removeClass('animated ' + effect);
+			    });
+			});
+
+
 			$('.card-flip').flip({
 				axis: "y",
 		      	reverse: false,
@@ -259,8 +297,9 @@
 						$('.datatable').DataTable();
 						
 					},
-					error: function error() {
-						swal('Error', 'Cannot retrieve sample data.', 'error');
+					error: function error(request, status, error) {
+						console.log(request, status, error);
+						swal('Error', 'Cannot retrieve data.', 'error');
 					}
 				});
 
@@ -505,6 +544,30 @@
 		},
 		modal: function() {
 
+			// Insert modal
+
+			var modalMarkup = `
+			<!-- Universal Modal -->
+			<div class="modal fade" id="universal-modal" tabindex="-1" role="dialog" aria-hidden="true">
+			    <div class="modal-dialog" role="document">
+			        <div class="modal-content">
+			            <div class="modal-header">
+			                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			                    <span aria-hidden="true">&times;</span>
+			                </button>
+			                <h5 class="modal-title"></h5>
+			            </div>
+			            <div class="modal-body">
+			            </div>
+			            <div class="modal-footer">
+			            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			            </div>
+			        </div>
+			    </div>
+			</div>
+			`;
+
+			$('body').append(modalMarkup);
 			$(document).on('click', '.modal-remote', function(e){
 				e.preventDefault();
 				

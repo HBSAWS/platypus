@@ -1,9 +1,19 @@
 /* Forms */
+
 .slider {
     width: 100% !important;
 }
-.toggle-handle {
-    background: #ddd;
+.toggle.btn {
+	min-width: 65px;
+	.toggle-handle {
+	    background: #ddd;
+	}
+	.toggle-on, 
+	.toggle-off  {
+		top: -2px;
+	}
+	.toggle-on {}
+	.toggle-off {}
 }
 .parsley-errors-list.filled {
     list-style-type: none;
@@ -16,4 +26,12 @@
 	width: 100% !important;
 }
 
+.bootstrap-maxlength[style] {
+	z-index: 1 !important;
+}
+.strength_wrapper[style] {
+	height: initial !important;
+}
 
+
+// Pease ob

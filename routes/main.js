@@ -13,8 +13,6 @@ module.exports = {
 
         async.waterfall([
             function(callback) {
-                console.log("Getting UI Components");
-
                 Category.find({
                     $or: [{'slug' : 'ux-components'}, {'slug': 'ui-components'}], 
                     published: true
@@ -49,20 +47,21 @@ module.exports = {
                         arr_articles.push(articles);
 
 
-                        if (arr_articles.length == categories.length) callback(null, arr_articles);
-                        
+                        if (arr_articles.length == categories.length) {
+                            console.log("Article's array length: "+arr_articles.length);
+                            console.log("Categories's array length: "+categories.length);
+                            console.log("Calling callback");
+                            callback(null, arr_articles);
+                        }
                     });
 
                 });
                
             },
             function(articles, callback) {
-              console.log("Getting Commits");
 
+                var commits = [];
 
-               var commits = [];
-
-                // get list of commits
                 request({
                     url: 'https://api.github.com/repos/HBSAWS/platypus/commits',
                     method: 'GET',
@@ -74,21 +73,14 @@ module.exports = {
                     commits = JSON.parse(body);
                     callback(null, commits, articles);
                 });
-
-
-
-
               
             }
         ], function(error, commits, articles) {
             
-
-            // res.status(200).send( _.filter(articles[0], item => { return item._category.title == 'UI Components' }) );
-
             res.render('home', { 
                 commits: _.filter(commits, item => { return moment().utc().diff(item.commit.committer.date, 'days') < 7 }),
-                articles: _.filter(articles[0], item => { return item._category.title == 'UI Components' }),
-                patterns: _.filter(articles[1], item => { return item._category.title == 'UX Components' }),
+                articles: articles[0],
+                patterns: articles[1],
                 layout : 'home',
                 helpers:  {
                     compare: helpers.compare,
@@ -97,9 +89,7 @@ module.exports = {
                 }
             });
 
-      });
-
-
+        });
 
     },
 

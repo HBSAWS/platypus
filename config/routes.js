@@ -13,10 +13,20 @@ module.exports  = function(app){
         feedbackRouter      = express.Router(),
         apiRouter           = express.Router();
 
+
+    // CORS
+    app.use(function(req, res, next) {
+        res.setHeader('Access-Control-Allow-Headers', 'accept, authorization, content-type, x-requested-with');
+        res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
+        res.setHeader('Access-Control-Allow-Origin', '*'); 
+        next();
+    });
+
     app.use('/articles',    articlesRouter);
     app.use('/categories',  categoriesRouter);    
     app.use('/feedback',    feedbackRouter);    
     app.use('/api',         apiRouter);  	
+
 
     articlesRouter.get('/',                       articles.index);
     articlesRouter.get('/new',                    articles.new);
@@ -53,11 +63,9 @@ module.exports  = function(app){
 
     app.use(function(err, req, res, next) {
         res.status(req.status || 500)
-      
-          res.render('error', { 
+        res.render('error', { 
             error: process.env.NODE_ENV !== 'production' ? err : {}
-          });
-      
-      });
+        });
+    });
 
 };

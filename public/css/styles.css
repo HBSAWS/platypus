@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600");
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 .btn,
 .alert,
 button,
@@ -4143,8 +4144,13 @@ span.btn-label.btn-label-right {
 .slider {
   width: 100% !important; }
 
-.toggle-handle {
-  background: #ddd; }
+.toggle.btn {
+  min-width: 65px; }
+  .toggle.btn .toggle-handle {
+    background: #ddd; }
+  .toggle.btn .toggle-on,
+  .toggle.btn .toggle-off {
+    top: -2px; }
 
 .parsley-errors-list.filled {
   list-style-type: none;
@@ -4153,6 +4159,12 @@ span.btn-label.btn-label-right {
 /* fixes select2 responsive width problem */
 .select2-container[style] {
   width: 100% !important; }
+
+.bootstrap-maxlength[style] {
+  z-index: 1 !important; }
+
+.strength_wrapper[style] {
+  height: initial !important; }
 
 /* List / Grid Switcher */
 .item.col-xs-12 .img-container {
@@ -4369,24 +4381,22 @@ header .hamburger--spin.is-active .hamburger-inner::after {
 /* DataTables */
 div.dataTables_wrapper div.dataTables_filter {
   text-align: left; }
+  div.dataTables_wrapper div.dataTables_filter label {
+    width: 100%;
+    position: relative; }
+    div.dataTables_wrapper div.dataTables_filter label::after {
+      font-family: 'FontAwesome';
+      margin-top: 6px;
+      margin-right: 13px;
+      content: '\f002';
+      position: absolute;
+      right: 0; }
+  div.dataTables_wrapper div.dataTables_filter input {
+    margin-left: 0;
+    width: 100%; }
 
-div.dataTables_wrapper div.dataTables_filter label {
-  width: 100%;
-  position: relative; }
-
-div.dataTables_wrapper div.dataTables_filter label::after {
-  font-family: 'FontAwesome';
-  margin-top: 6px;
-  margin-right: 13px;
-  content: '\f002';
-  position: absolute;
-  right: 0; }
-
-div.dataTables_wrapper div.dataTables_filter input {
-  margin-left: 0;
-  width: 100%; }
-
-table.dataTable.dtr-column > tbody > tr > td.control:before, table.dataTable.dtr-column > tbody > tr > th.control:before {
+table.dataTable.dtr-column > tbody > tr > td.control:before,
+table.dataTable.dtr-column > tbody > tr > th.control:before {
   background: black;
   border-radius: 0;
   box-shadow: none;
@@ -4396,8 +4406,15 @@ table.dataTable.dtr-column > tbody > tr > td.control:before, table.dataTable.dtr
   line-height: 30px !important;
   margin-left: -18px; }
 
-table.dataTable.dtr-column > tbody > tr.parent td.control:before, table.dataTable.dtr-column > tbody > tr.parent th.control:before {
+table.dataTable.dtr-column > tbody > tr.parent td.control:before,
+table.dataTable.dtr-column > tbody > tr.parent th.control:before {
   background: black; }
+
+.datatable thead th {
+  white-space: nowrap; }
+
+.datatable tbody tr td {
+  white-space: nowrap; }
 
 /* Tabs */
 #btn-feedback {
@@ -4521,6 +4538,9 @@ ul.leaders span + span {
   vertical-align: super;
   font-size: 60%;
   text-decoration: none !important; }
+
+a:hover {
+  text-decoration: none; }
 
 a.external[href$=".pdf"]::after {
   content: '\f1c1'; }
@@ -4664,5 +4684,5 @@ strong, .font-weight-bold {
   display: none;
   pointer-events: none; }
 
-.jqstooltip {
-  box-sizing: content-box; }
+.wow {
+  visibility: hidden; }

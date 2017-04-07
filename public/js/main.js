@@ -40,9 +40,10 @@
 			Platypus.videoWidget();
 			Platypus.toolTip();
 			Platypus.popOver();
-			Platypus.breadCrumbs();
+			Platypus.wowAnimations();
 			Platypus.progressBar();
 			Platypus.hideLoader();
+			Platypus.breadCrumbs();
 		},
 		btnSubmitAnimate: function btnSubmitAnimate() {
 			$('button[type="submit"]').addClass('ladda-button').attr('data-style', 'zoom-in');
@@ -109,28 +110,48 @@
 				},
 
 				dropdown: function dropdown(classes) {
-					var dropdownClass = 'dropdown'; // was 'dropdown'
+					var dropdownClass = 'dropdown';
 					var dropdownMenuClass = 'dropdown-menu';
 
 					if (this.options.overflow === 'right') {
 						dropdownMenuClass += ' dropdown-menu-right';
 					}
 
-					return '<li class="' + dropdownClass + ' ' + classes.dropdownClass + '">\n\t\t\t\t      <a href="javascript:void(0);" class="' + classes.toggleClass + '" data-toggle="dropdown">\n\t\t\t\t        <i class="' + classes.toggleIconClass + '"></i>\n\t\t\t\t      </a>\n\t\t\t\t      <ul class="' + dropdownMenuClass + ' ' + classes.dropdownMenuClass + '"></ul>\n\t\t\t\t    </li>';
+					return '\n\t\t\t\t\t\t<li class="' + dropdownClass + ' ' + classes.dropdownClass + '">\n\t\t\t\t\t\t\t<a href="javascript:void(0);" class="' + classes.toggleClass + '" data-toggle="dropdown">\n\t\t\t\t\t\t\t\t<i class="' + classes.toggleIconClass + '"></i>\n\t\t\t\t\t\t\t</a>\n\t\t\t\t\t\t\t<ul class="' + dropdownMenuClass + ' ' + classes.dropdownMenuClass + '"></ul>\n\t\t\t\t\t\t</li>\n\t\t\t\t\t';
 				},
 
 				dropdownItem: function dropdownItem(classes, label, href) {
 					if (!href) {
-						return '<li class="' + classes.dropdownItemClass + ' ' + classes.dropdownItemDisableClass + '"><a href="#">' + label + '</a></li>';
+						return '\n\t\t\t\t\t\t\t<li class="' + classes.dropdownItemClass + ' ' + classes.dropdownItemDisableClass + '">\n\t\t\t\t\t\t\t\t<a href="#">' + label + '</a>\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t';
 					}
-					return '<li class="' + classes.dropdownItemClass + '"><a href="' + href + '">' + label + '</a></li>';
+					return '\n\t\t\t\t\t\t<li class="' + classes.dropdownItemClass + '">\n\t\t\t\t\t\t\t<a href="' + href + '">' + label + '</a>\n\t\t\t\t\t\t</li>\n\t\t\t\t\t\t';
 				},
 				// callbacks
 				onInit: null,
 				onReady: null
 			});
 		},
+		wowAnimations: function wowAnimations() {
+			var wow = new WOW({
+				boxClass: 'wow', // default
+				animateClass: 'animated', // default
+				offset: 0, // default
+				mobile: true, // default: true
+				live: true // default: true
+			});
+			wow.init();
+		},
 		cards: function cards() {
+
+			$('.card-hover-effect').on('mouseover', function () {
+				var $this = $(this);
+				var effect = 'bounceIn';
+
+				$this.addClass('animated ' + effect).on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+					$this.removeClass('animated ' + effect);
+				});
+			});
+
 			$('.card-flip').flip({
 				axis: "y",
 				reverse: false,
@@ -252,8 +273,9 @@
 							// reinitialize it using demo data
 							$('.datatable').DataTable();
 						},
-						error: function error() {
-							swal('Error', 'Cannot retrieve sample data.', 'error');
+						error: function error(request, status, error) {
+							console.log(request, status, error);
+							swal('Error', 'Cannot retrieve data.', 'error');
 						}
 					});
 				})();
@@ -475,6 +497,11 @@
 		},
 		modal: function modal() {
 
+			// Insert modal
+
+			var modalMarkup = '\n\t\t\t<!-- Universal Modal -->\n\t\t\t<div class="modal fade" id="universal-modal" tabindex="-1" role="dialog" aria-hidden="true">\n\t\t\t    <div class="modal-dialog" role="document">\n\t\t\t        <div class="modal-content">\n\t\t\t            <div class="modal-header">\n\t\t\t                <button type="button" class="close" data-dismiss="modal" aria-label="Close">\n\t\t\t                    <span aria-hidden="true">&times;</span>\n\t\t\t                </button>\n\t\t\t                <h5 class="modal-title"></h5>\n\t\t\t            </div>\n\t\t\t            <div class="modal-body">\n\t\t\t            </div>\n\t\t\t            <div class="modal-footer">\n\t\t\t            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>\n\t\t\t            </div>\n\t\t\t        </div>\n\t\t\t    </div>\n\t\t\t</div>\n\t\t\t';
+
+			$('body').append(modalMarkup);
 			$(document).on('click', '.modal-remote', function (e) {
 				e.preventDefault();
 
