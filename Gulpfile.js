@@ -56,6 +56,7 @@ var opts = {
         'public/vendor/highlight/highlight.min.js',
         'public/vendor/strength/strength.min.js',
         'public/vendor/jquery-flip/jquery-flip.min.js',
+        'public/vendor/bootstrap-rating/bootstrap-rating.min.js',
         'public/vendor/wow/wow.min.js',
         'public/vendor/d3/d3.v3.min.js',
         'public/vendor/c3/c3.min.js',

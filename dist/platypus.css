@@ -1573,6 +1573,90 @@ textarea,
   font-weight: normal;
   line-height: 1.2; }
 
+.alert {
+  display: table;
+  width: 100%;
+  color: #404040;
+  padding-left: 61px;
+  position: relative; }
+  .alert strong {
+    display: block;
+    font-size: 115%; }
+
+.alert .icon {
+  text-align: center;
+  width: 45px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 1px solid transparent;
+  padding-top: 15px; }
+
+.alert .icon:after {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  display: block;
+  content: '';
+  width: 10px;
+  height: 10px;
+  border: 1px solid transparent;
+  position: absolute;
+  border-left: 0;
+  border-bottom: 0;
+  top: 50%;
+  right: -6px;
+  margin-top: -3px;
+  background: #fff; }
+
+.alert .icon i {
+  font-size: 20px;
+  color: #fff;
+  left: 12px;
+  margin-top: -10px;
+  position: absolute;
+  top: 50%; }
+
+/*============ colors ========*/
+.alert-success {
+  color: #3c763d;
+  background-color: #dff0d8;
+  border: none !important; }
+
+.alert.alert-success .icon,
+.alert.alert-success .icon:after {
+  background: #60c060; }
+
+.alert-info {
+  background-color: #d9edf7;
+  color: #3a87ad;
+  border: none !important; }
+
+.alert.alert-info .icon,
+.alert.alert-info .icon:after {
+  background: #4d90fd; }
+
+.alert.alert-warning .icon,
+.alert.alert-warning .icon:after {
+  background: #fc9700; }
+
+.alert-warning {
+  background-color: #fcf8e3;
+  color: #c09853;
+  border: none !important; }
+
+.alert-danger {
+  background-color: #f2dede;
+  color: #b94a48;
+  border: none !important; }
+
+.alert.alert-danger .icon,
+.alert.alert-danger .icon:after {
+  background: #da4932; }
+
 @media (max-width: 575px) {
   .card.panel {
     border: 0;
@@ -5963,14 +6047,10 @@ table.dataTable.dtr-column > tbody > tr > th.control:before {
   line-height: 30px !important;
   margin-left: -18px; }
 
-table.dataTable.dtr-column > tbody > tr.parent td.control:before,
-table.dataTable.dtr-column > tbody > tr.parent th.control:before {
-  background: black; }
-
-.datatable thead th {
+table.datatable thead th {
   white-space: nowrap; }
 
-.datatable tbody tr td {
+table.datatable tbody tr td {
   white-space: nowrap; }
 
 /* Tabs */

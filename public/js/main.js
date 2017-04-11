@@ -420,6 +420,26 @@
 				showHideButtonTextToggle: 'Hide'
 			});
 
+			$('.rating-tooltip-manual').rating({
+				extendSymbol: function extendSymbol() {
+					var _title;
+					$(this).tooltip({
+						container: 'body',
+						placement: 'bottom',
+						trigger: 'manual',
+						title: function title() {
+							return _title;
+						}
+					});
+					$(this).on('rating.rateenter', function (e, rate) {
+						_title = rate;
+						$(this).tooltip('show');
+					}).on('rating.rateleave', function () {
+						$(this).tooltip('hide');
+					});
+				}
+			});
+
 			$('form .confirm-delete').click(function (e) {
 				e.preventDefault();
 				var el = $(this);

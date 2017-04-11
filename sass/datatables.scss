@@ -40,12 +40,8 @@ table.dataTable.dtr-column>tbody>tr>th.control:before {
   line-height: 30px !important;
   margin-left: -18px;
 }
-table.dataTable.dtr-column>tbody>tr.parent td.control:before, 
-table.dataTable.dtr-column>tbody>tr.parent th.control:before {
-  background: black;
-}
 
-.datatable {
+table.datatable {
     thead th {
         white-space: nowrap;
     }
