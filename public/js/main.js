@@ -233,7 +233,7 @@
 					}
 				},
 				columnDefs: [{ className: 'control', orderable: false, targets: -1 }],
-				dom: "<'row'<'col-xs-11 text-xs-left'f><'col-xs-1 text-xs-right'l>>" + "<'row'<'col-xs-12'tr>>" + "<'row'<'col-xs-6'i><'col-xs-6'p>>",
+				dom: "<'row'<'col-xs-10 text-xs-left'f><'col-xs-2 text-xs-right'l>>" + "<'row'<'col-xs-12'tr>>" + "<'row'<'col-xs-6'i><'col-xs-6'p>>",
 				"oLanguage": {
 					sSearch: "",
 					sSearchPlaceholder: "Filter records",

@@ -5663,7 +5663,7 @@ span.btn-label.btn-label-right {
   right: -16px; }
 
 .btn-group-justified {
-  display: table !important;
+  display: table;
   width: 100%;
   table-layout: fixed;
   border-collapse: separate; }
@@ -5945,6 +5945,11 @@ div.dataTables_wrapper div.dataTables_filter {
       right: 0; }
   div.dataTables_wrapper div.dataTables_filter input {
     margin-left: 0;
+    width: 100%; }
+
+div.dataTables_wrapper div.dataTables_length label {
+  width: 100%; }
+  div.dataTables_wrapper div.dataTables_length label > select {
     width: 100%; }
 
 table.dataTable.dtr-column > tbody > tr > td.control:before,
