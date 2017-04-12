@@ -1,8 +1,11 @@
 .swal2-container {
-   .swal2-modal h2 {
-	font-weight: normal;
-	line-height: 1.2;
-	}
+ .swal2-modal h2 {
+  font-weight: normal;
+  line-height: 1.2;
+}
+    .swal2-modal {
+        border-radius: 0;
+    }
 }
 
 .alert {
@@ -11,10 +14,10 @@
   color: #404040;
   padding-left: 61px;
   position: relative;
-	strong {
-		display: block;
-	    font-size: 115%;
-	}
+  strong {
+      display: block;
+      font-size: 115%;
+  }
 }
 .alert .icon {
   text-align: center;

@@ -462,6 +462,29 @@
 				});
 			});
 
+			$('.ip-geo-locate').each(function () {
+				var $this = $(this);
+				var type = $(this).data('type');
+
+				$.ajax({
+					url: 'http://freegeoip.net/json/',
+					method: 'GET',
+					success: function success(data) {
+						console.log(data);
+						switch (type) {
+							case 'state':
+								$this.find('option[value="' + data.region_code + '"]').attr('selected', true);
+								break;
+							case 'country':
+								$this.find('option[value*="' + data.country_name + '"]').attr('selected', true);
+								break;
+							default:
+								console.log('IP Geolocation data-type field missing');
+						}
+					}
+				});
+			});
+
 			window.Parsley.on('field:validated', function (e) {
 				if (e.validationResult.constructor !== Array) {
 					this.$element.closest('.form-group').removeClass('has-danger').addClass('has-success');
