@@ -34,4 +34,12 @@
 }
 
 
-// Pease ob
+.conditional {
+	display: block;
+	width: 100%;
+}
+
+.conditional::before {
+	content: '';
+	clear: both;
+}

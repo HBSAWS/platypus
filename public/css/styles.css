@@ -4253,6 +4253,14 @@ span.btn-label.btn-label-right {
 .strength_wrapper[style] {
   height: initial !important; }
 
+.conditional {
+  display: block;
+  width: 100%; }
+
+.conditional::before {
+  content: '';
+  clear: both; }
+
 /* List / Grid Switcher */
 .item.col-xs-12 .img-container {
   width: 20%;
