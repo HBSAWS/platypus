@@ -52,7 +52,7 @@ var opts = {
         'public/vendor/jquery-asBreadcrumbs/jquery-asBreadcrumbs.min.js',
         'public/vendor/jquery.listnav/jquery.listnav.min-2.1.js',
         'public/vendor/jquery-typeahead/jquery.typeahead.min.js',
-        'public/vendor/faker/faker.min.js',
+        // 'public/vendor/faker/faker.min.js',
         'public/vendor/highlight/highlight.min.js',
         'public/vendor/strength/strength.min.js',
         'public/vendor/jquery-flip/jquery-flip.min.js',

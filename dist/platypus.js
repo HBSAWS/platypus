@@ -12893,7 +12893,6 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 			});
 		},
 		progressBar: function progressBar() {
-			console.log($('.progress .progress-bar'));
 			$('.progress .progress-bar').hide();
 			$('.progress .progress-bar').css("width", "0%");
 			$('.progress .progress-bar').show();

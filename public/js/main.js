@@ -322,7 +322,6 @@
 			});
 		},
 		progressBar: function progressBar() {
-			console.log($('.progress .progress-bar'));
 			$('.progress .progress-bar').hide();
 			$('.progress .progress-bar').css("width", "0%");
 			$('.progress .progress-bar').show();
