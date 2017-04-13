@@ -37,9 +37,26 @@
 .conditional {
 	display: block;
 	width: 100%;
+	&::before {
+   		display: block;
+    	content: "";
+    	clear: both;
+  	}
 }
 
-.conditional::before {
-	content: '';
-	clear: both;
+
+fieldset.bordered {
+    border: 1px solid rgba(0,0,0,.3);
+    padding: 1rem;
+    margin: 1rem 0;
+    legend {
+	    font-size: 1rem;
+	    font-weight: bold;
+	    text-align: left;
+	    width:auto;
+	    padding:0 10px;
+	    border-bottom:none;
+	}
+
 }
+

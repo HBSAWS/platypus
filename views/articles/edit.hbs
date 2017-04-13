@@ -30,7 +30,7 @@
 					<label class="hidden-md-up d-block" for="status">Status</label>
 					<select name="status" class="form-control" id="select-single">
 						<option value="" {{#compare status ""}}selected{{/compare}}></option>
-						<option value="Experimental" {{#compare status "experimental"}}selected{{/compare}}>Experimental</option>
+						<option value="experimental" {{#compare status "experimental"}}selected{{/compare}}>Experimental</option>
 						<option value="production" {{#compare status "production"}}selected{{/compare}}>Production</option>
 						<option value="deprecated" {{#compare status "deprecated"}}selected{{/compare}}>Deprecated</option>
 					</select>

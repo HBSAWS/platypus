@@ -185,12 +185,12 @@
 
 			$(".card-flip .btn-flip").on('click', function(e){
 				e.preventDefault();
-				$(this).closest('.card').flip(true);
+				$(this).closest('.card-flip').flip(true);
 			});
 
 			$(".card-flip .btn-unflip").on('click', function(e){
 				e.preventDefault();
-				$(this).closest('.card').flip(false);
+				$(this).closest('.card-flip').flip(false);
 			});
 
 		},
@@ -481,24 +481,29 @@
 			  }
 			});
 
-			$('form .confirm-delete').click(function(e) {
+			$('form .go-back').on('click', function(e) {
+				e.preventDefault();
+				 window.history.back();
+			});
+
+			$('form .confirm-delete').on('click', function(e) {
 			    e.preventDefault();
-			    var el = $(this);
+			    let el = $(this),
+			    	title = (el.data('confirm-delete-title') && el.data('confirm-delete-title') !== '') ? el.data('confirm-delete-title') : 'Are you sure?',
+			    	text = (el.data('confirm-delete-text') && el.data('confirm-delete-text') !== '') ? el.data('confirm-delete-title') : "This action cannot be reverted.";
 
 			    swal({
-				  	title: 'Are you sure?',
-				  	text: "You won't be able to revert this!",
+				  	title: title,
+				  	text: text,
 				  	type: 'warning',
 				  	showCancelButton: true,
-				  	// confirmButtonColor: '#3085d6',
-				  	// cancelButtonColor: '#d33',
 				  	confirmButtonText: 'Delete'
 				}).then(function () {
 				  	$(el).closest('form').submit();
 				  	Ladda.stopAll();
 				  	swal(
 				    	'Deleted!',
-				    	'Your file has been deleted.',
+				    	'Item successfully removed.',
 				    	'success'
 				  	);
 				}, function(dismiss){
@@ -506,6 +511,8 @@
 					Ladda.stopAll();
 				})
 			});
+
+			$('.fileinput').fileinput();
 
 			$('.populate-ul').each(function(){
 				let $el = $(this);
@@ -867,7 +874,7 @@
 			});
 		},
 		formConditionize : function(options){ 
-    		$('.conditional').addClass('clearfix').conditionize();
+    		$('.conditional').conditionize();
 
 		},
 

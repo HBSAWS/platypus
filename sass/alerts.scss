@@ -1,18 +1,19 @@
 .swal2-container {
- .swal2-modal h2 {
-  font-weight: normal;
-  line-height: 1.2;
+   .swal2-modal h2 {
+      font-weight: normal;
+      line-height: 1.2;
+  }
+  .swal2-modal {
+    border-radius: 0;
 }
-    .swal2-modal {
-        border-radius: 0;
-    }
 }
 
 .alert {
   display: table;
   width: 100%;
   color: #404040;
-  padding-left: 61px;
+  padding-left: 4.5rem;
+  padding-bottom: 1rem;
   position: relative;
   strong {
       display: block;
