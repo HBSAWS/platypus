@@ -64,7 +64,8 @@ module.exports  = function(app){
     app.use(function(err, req, res, next) {
         res.status(req.status || 500)
         res.render('error', { 
-            error: process.env.NODE_ENV !== 'production' ? err : {}
+            error: process.env.NODE_ENV !== 'production' ? err : {},
+            layout: 'errors'
         });
     });
 

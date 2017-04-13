@@ -50,7 +50,7 @@ module.exports = {
             })
             .populate('_category')
             .exec(function(err, article) {
-
+                if (err) return next(err);
                 if(article){
                     res.render('articles/show', {
                         article: article,
@@ -62,7 +62,10 @@ module.exports = {
                         }
                     })
                 } else {
-                    res.send("Version or article not found.");
+                    var notFound = new Error('Article cannot be found.');
+                    notFound.status = 404;
+                    return next(notFound);
+
                 }
                 
             });
