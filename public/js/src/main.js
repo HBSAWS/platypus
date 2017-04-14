@@ -3,6 +3,7 @@
 ;(function ($) {
 	var Platypus = {
 		ondomready: function ondomready() {
+			Platypus.detectBreakpoint();
 			Platypus.setupSpinOnAjax();
 			Platypus.btnSubmitAnimate();
 			Platypus.inputMaxLength();
@@ -44,6 +45,61 @@
 			Platypus.progressBar();
 			Platypus.hideLoader();
 			Platypus.breadCrumbs();
+		},
+		detectBreakpoint: function() {
+
+			console.log("Checking breakpoint...")
+		   	let $html = $('html'),
+	       		currClass = '';
+
+			if ($html.hasClass('xl')) {
+				currClass = 'xl';
+			} else if ($html.hasClass('lg')) {
+				currClass = 'lg';
+			} else if ($html.hasClass('md')) {
+				currClass = 'md';
+			} else if ($html.hasClass('sm')) {
+				currClass = 'sm';
+			} else if ($html.hasClass('xs')) {
+				currClass = 'xs';
+			}
+
+			let finalClass = 'xl',
+				w = $(window).width();
+			
+			if (w < 576) {
+				finalClass = 'xs';
+			} else if (w < 768) {
+				finalClass = 'sm';
+			} else if (w < 992) {
+				finalClass = 'md';
+			} else if (w < 1200) {
+				finalClass = 'lg';
+			} else { 
+				finalClass = 'xl'; 
+			} 
+
+			if (currClass == finalClass) return;
+
+			$html.removeClass('xl lg md sm xs');
+
+			if (finalClass == 'xl') {
+				$html.removeClass('lg md sm xs');
+			} else if (finalClass == 'lg') {
+				$html.removeClass('xl md sm xs');
+			} else if (finalClass == 'md') {
+				$html.removeClass('xl lg sm xs');
+			} else if (finalClass == 'sm') {
+				$html.removeClass('xl lg md xs');
+			}
+			if (!$html.hasClass(finalClass)) {
+				$html.addClass(finalClass);
+			}
+
+			$(window).resize(Platypus.detectBreakpoint);
+			
+			console.log("Current break point is: "+finalClass);
+
 		},
 		btnSubmitAnimate: function() {
 			$('button[type="submit"]')
@@ -360,11 +416,9 @@
 			$('.progress .progress-bar').css("width", "0%");
 			$('.progress .progress-bar').show();
 			setTimeout(function(){
-				$('.progress .progress-bar').css("width",
-	                function() {
+				$('.progress .progress-bar').css("width", function() {
 	                    return $(this).attr("aria-valuenow") + "%";
-	                }
-	        	);
+	                });
 			}, 500);
 
 
@@ -399,8 +453,8 @@
 				"debug": false,
 				"newestOnTop": false,
 				"progressBar": false,
-				"positionClass": "toast-bottom-full-width",
-				"preventDuplicates": false,
+				"positionClass": "toast-bottom-center",
+				"preventDuplicates": true,
 				"onclick": null,
 				"showDuration": "300",
 				"hideDuration": "1500",

@@ -4304,8 +4304,7 @@ fieldset.bordered {
 
 .rotating-bg {
   background-position: bottom;
-  background-repeat: no-repeat;
-  height: 100vh; }
+  background-repeat: no-repeat; }
 
 /* Left Nav */
 aside[style] {
