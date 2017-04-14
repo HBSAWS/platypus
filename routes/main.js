@@ -13,55 +13,18 @@ module.exports = {
 
         async.waterfall([
             function(callback) {
-                Category.find({
-                    $or: [{'slug' : 'ux-components'}, {'slug': 'ui-components'}], 
-                    published: true
-                }, function(err, categories){
-                    if(err) return next(err);
-                    if(categories) {
-                        callback(null, categories);
-                    } else {
-                        res.send("Database is empty. Run 'sudo npm run postinstall' to import db dump.");
-                    }
-                });
-
-            },
-            function(categories, callback) {
-                
-                console.log("Getting Articles");
-
-                var arr_articles = [];
-
-                _.each(categories, function(cat){
-                    console.log("Querying "+cat.title);
-                    Article.find({
-                        _category: cat._id,
-                        version: (res.locals.ver_selected !== res.locals.current ) ? res.locals.ver_selected : res.locals.current
-                    })
-                    .populate('_category')
-                    .exec(function(err, articles){
-
-                        console.log("Found " + articles.length + ' articles');
-
-                        if(err) return next(err);
-                        arr_articles.push(articles);
-
-
-                        if (arr_articles.length == categories.length) {
-                            console.log("Article's array length: "+arr_articles.length);
-                            console.log("Categories's array length: "+categories.length);
-                            console.log("Calling callback");
-                            callback(null, arr_articles);
-                        }
-                    });
-
-                });
                
+                Article.find({
+                    version: (res.locals.ver_selected !== res.locals.current ) ? res.locals.ver_selected : res.locals.current
+                })
+                .populate('_category')
+                .exec(function(err, articles){
+                    if(err) return next(err);
+                    callback(null, articles);
+                });               
             },
             function(articles, callback) {
-
                 var commits = [];
-
                 request({
                     url: 'https://api.github.com/repos/HBSAWS/platypus/commits',
                     method: 'GET',
@@ -76,11 +39,11 @@ module.exports = {
               
             }
         ], function(error, commits, articles) {
-            
+            // res.status(200).send(articles);
             res.render('home', { 
                 commits: _.filter(commits, item => { return moment().utc().diff(item.commit.committer.date, 'days') < 7 }),
-                articles: articles[0],
-                patterns: articles[1],
+                articles: _.filter(articles, item => { return item._category.title == 'UI Components' }),
+                patterns:_.filter(articles, item => { return item._category.title == 'UX Components' }),
                 layout : 'home',
                 helpers:  {
                     compare: helpers.compare,
