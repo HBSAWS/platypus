@@ -50,8 +50,11 @@
 
 			console.log("Checking breakpoint...");
 			var $html = $('html'),
-			    currClass = '';
+			    currClass = '',
+			    finalClass = 'xl',
+			    w = $(window).width();
 
+			// get current breakpoint class
 			if ($html.hasClass('xl')) {
 				currClass = 'xl';
 			} else if ($html.hasClass('lg')) {
@@ -64,9 +67,7 @@
 				currClass = 'xs';
 			}
 
-			var finalClass = 'xl',
-			    w = $(window).width();
-
+			// detect breakpoint
 			if (w < 576) {
 				finalClass = 'xs';
 			} else if (w < 768) {

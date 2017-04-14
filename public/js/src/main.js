@@ -50,8 +50,11 @@
 
 			console.log("Checking breakpoint...")
 		   	let $html = $('html'),
-	       		currClass = '';
+	       		currClass = '',
+	       		finalClass = 'xl',
+	       		w = $(window).width();
 
+	       	// get current breakpoint class
 			if ($html.hasClass('xl')) {
 				currClass = 'xl';
 			} else if ($html.hasClass('lg')) {
@@ -62,11 +65,9 @@
 				currClass = 'sm';
 			} else if ($html.hasClass('xs')) {
 				currClass = 'xs';
-			}
-
-			let finalClass = 'xl',
-				w = $(window).width();
+			}				
 			
+			// detect breakpoint
 			if (w < 576) {
 				finalClass = 'xs';
 			} else if (w < 768) {
@@ -97,7 +98,7 @@
 			}
 
 			$(window).resize(Platypus.detectBreakpoint);
-			
+
 			console.log("Current break point is: "+finalClass);
 
 		},

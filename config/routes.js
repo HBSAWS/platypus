@@ -22,11 +22,11 @@ module.exports  = function(app){
         next();
     });
 
+
     app.use('/articles',    articlesRouter);
     app.use('/categories',  categoriesRouter);    
     app.use('/feedback',    feedbackRouter);    
     app.use('/api',         apiRouter);  	
-
 
     articlesRouter.get('/',                       articles.index);
     articlesRouter.get('/new',                    articles.new);

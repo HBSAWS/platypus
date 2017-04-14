@@ -2,9 +2,11 @@ var express     = require('express'),
     logger        = require('morgan'),
     handlebars    = require("express-handlebars"),
     path          = require('path'),
+    flash         = require('connect-flash'),
     session       = require('express-session'),
     cookieParser  = require('cookie-parser'),
     bodyParser    = require('body-parser'),
+    toastr        = require('express-toastr'),
     async         = require('async'),
     _             = require('lodash');
 
@@ -37,9 +39,11 @@ module.exports = function(app, envConfig){
     app.use(session({
         httpOnly: false,  // ajax too
         secret: '1Temporary2',  // TODO: store in env var
-        resave: false,
         saveUninitialized: true,
+        resave: true,
     }));
+    app.use(flash());
+    app.use(toastr());
 
     app.use(express.static(path.join(envConfig.rootPath, 'test/e2e')));
     app.use(express.static(path.join(envConfig.rootPath, 'public')));
@@ -51,10 +55,6 @@ module.exports = function(app, envConfig){
         res.locals.versions = ['0.1', '0.2'];
         res.locals.current = "0.1";
         res.locals.ver_selected = (req.session.ver_selected && req.session.ver_selected !== '') ? req.session.ver_selected : res.locals.current;
-
-        // console.log("res.locals.versions: " + res.locals.versions);
-        // console.log("res.locals.current: " + res.locals.current);
-        // console.log("res.locals.ver_selected: " + res.locals.ver_selected);
 
         Category.findRecursive(function(err, tree){
             if(err) return next(err);
@@ -89,7 +89,6 @@ module.exports = function(app, envConfig){
                     });
 
     				res.locals.nav = arrResult;
-                    // console.log(res.locals.nav);
                 });
     		});
 
@@ -98,8 +97,6 @@ module.exports = function(app, envConfig){
         });
     });
 
-
-       
 
     // Debug session
     // app.use(function(req, res, next) {
