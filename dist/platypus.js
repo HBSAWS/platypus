@@ -12898,9 +12898,65 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 			$('[data-toggle="popover"]').popover();
 		},
 		select2: function select2() {
-			$('.select2').select2({
-				theme: "bootstrap",
-				placeholder: 'Select a month'
+
+			function formatRepo(repo) {
+
+				var markup = '<div class="clearfix">' + '<div clas="col-sm-10">' + '<div class="clearfix">' + '<div class="col-sm-6">' + repo.full_name + '</div>' + '<div class="col-sm-3"><i class="fa fa-code-fork"></i> ' + repo.forks_count + '</div>' + '<div class="col-sm-2"><i class="fa fa-star"></i> ' + repo.stargazers_count + '</div>' + '</div>';
+
+				if (repo.description) {
+					markup += '<div>' + repo.description + '</div>';
+				}
+
+				markup += '</div></div>';
+
+				return markup;
+			}
+
+			function formatRepoSelection(repo) {
+				return repo.full_name || repo.text;
+			}
+
+			$('.select2').each(function () {
+				var $this = $(this);
+				var source = $this.data('source');
+				if (source && source != '') {
+
+					$this.select2({
+						ajax: {
+							url: "https://api.github.com/search/repositories",
+							dataType: 'json',
+							delay: 250,
+							data: function data(params) {
+								return {
+									q: params.term ? params.term : "a", // search term
+									page: params.page
+								};
+							},
+							processResults: function processResults(data, params) {
+								params.page = params.page || 1;
+
+								return {
+									results: data.items,
+									pagination: {
+										more: params.page * 30 < data.total_count
+									}
+								};
+							},
+							cache: true
+						},
+						escapeMarkup: function escapeMarkup(markup) {
+							return markup;
+						},
+						minimumInputLength: 0,
+						templateResult: formatRepo,
+						templateSelection: formatRepoSelection
+					});
+				} else {
+					$this.select2({
+						theme: "bootstrap",
+						placeholder: 'Select an option'
+					});
+				}
 			});
 		},
 		dateRange: function dateRange() {

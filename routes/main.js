@@ -13,7 +13,6 @@ module.exports = {
 
         async.waterfall([
             function(callback) {
-               
                 Article.find({
                     version: (res.locals.ver_selected !== res.locals.current ) ? res.locals.ver_selected : res.locals.current
                 })

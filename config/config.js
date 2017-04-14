@@ -1,22 +1,14 @@
-var express     = require('express'),
-    logger        = require('morgan'),
-    handlebars    = require("express-handlebars"),
-    path          = require('path'),
-    flash         = require('connect-flash'),
-    session       = require('express-session'),
-    cookieParser  = require('cookie-parser'),
-    bodyParser    = require('body-parser'),
-    toastr        = require('express-toastr'),
-    async         = require('async'),
-    _             = require('lodash');
-
-// Navigation
-require('./models/Category');
-require('./models/Article');
-var mongoose = require('mongoose'),
-    Category = mongoose.model('Category');
-    Article = mongoose.model('Article');
-  
+var express         = require('express'),
+    middlewares     = require('./middlewares'),
+    logger          = require('morgan'),
+    handlebars      = require("express-handlebars"),
+    path            = require('path'),
+    flash           = require('connect-flash'),
+    session         = require('express-session'),
+    cookieParser    = require('cookie-parser'),
+    bodyParser      = require('body-parser'),
+    toastr          = require('express-toastr');
+    
 module.exports = function(app, envConfig){
 
     // view engine setup
@@ -49,61 +41,10 @@ module.exports = function(app, envConfig){
     app.use(express.static(path.join(envConfig.rootPath, 'public')));
     app.use(express.static(path.join(envConfig.rootPath, 'dist')));
 
-    app.use(function(req, res, next) {
+    app.use(middlewares.setGlobals);
+    app.use(middlewares.getNav);
+    // app.use(middlewares.debug);
 
-        console.log("********************************* Le Globals *********************************");
-        res.locals.versions = ['0.1', '0.2'];
-        res.locals.current = "0.1";
-        res.locals.ver_selected = (req.session.ver_selected && req.session.ver_selected !== '') ? req.session.ver_selected : res.locals.current;
-
-        Category.findRecursive(function(err, tree){
-            if(err) return next(err);
-            res.locals.tree = tree;
-        });
-
-        // Get nav items
-        Category.find({})
-        .populate('_parent')
-        .sort('order')
-        .lean()
-        .exec(function(err, categories) {
-            if(err) return next(err);
-
-            _.map(categories, function(category) {
-
-                Article.find({
-                    _category: category._id,
-                    version: (res.locals.ver_selected !== res.locals.current ) ? res.locals.ver_selected : res.locals.current
-                })
-    			.sort('title')
-                .lean()
-    			.exec(function(err, a){
-    				if(err) return next(err);
-    		
-                    category.articles = a;
-                            
-                    var arrResult = _.map(categories, function(obj) {
-                        return _.assign(obj, _.find(res.locals.tree, {
-                            _id: obj._id
-                        }));
-                    });
-
-    				res.locals.nav = arrResult;
-                });
-    		});
-
-            return next();
-    
-        });
-    });
-
-
-    // Debug session
-    // app.use(function(req, res, next) {
-    //     console.log(req.session);
-    //     return next();
-    // });
-
-    // mongoose.set('debug', true);
+        
   
 };
