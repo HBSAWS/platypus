@@ -12899,21 +12899,13 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 		},
 		select2: function select2() {
 
-			function formatRepo(repo) {
-
-				var markup = '<div class="clearfix">' + '<div clas="col-sm-10">' + '<div class="clearfix">' + '<div class="col-sm-6">' + repo.full_name + '</div>' + '<div class="col-sm-3"><i class="fa fa-code-fork"></i> ' + repo.forks_count + '</div>' + '<div class="col-sm-2"><i class="fa fa-star"></i> ' + repo.stargazers_count + '</div>' + '</div>';
-
-				if (repo.description) {
-					markup += '<div>' + repo.description + '</div>';
-				}
-
-				markup += '</div></div>';
-
+			function templateResult(item) {
+				var markup = '\n\t\t\t\t    \t<div class="row">\n\t\t\t\t    \t\t<div class="col-sm-4">' + item.text + '</div>\n\t\t\t\t    \t\t<div class="col-sm-4">' + item.name + '</div>\n\t\t\t\t    \t\t<div class="col-sm-4">' + item.id + '</div>\n\t\t\t\t    \t</div>';
 				return markup;
 			}
 
-			function formatRepoSelection(repo) {
-				return repo.full_name || repo.text;
+			function templateSelection(item) {
+				return item.text;
 			}
 
 			$('.select2').each(function () {
@@ -12923,7 +12915,7 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 
 					$this.select2({
 						ajax: {
-							url: "https://api.github.com/search/repositories",
+							url: source,
 							dataType: 'json',
 							delay: 250,
 							data: function data(params) {
@@ -12936,7 +12928,14 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 								params.page = params.page || 1;
 
 								return {
-									results: data.items,
+									results: $.map(data, function (item) {
+										return {
+											text: item.first_name,
+											name: item.last_name,
+											id: item.first_name
+										};
+									}),
+
 									pagination: {
 										more: params.page * 30 < data.total_count
 									}
@@ -12948,8 +12947,8 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 							return markup;
 						},
 						minimumInputLength: 0,
-						templateResult: formatRepo,
-						templateSelection: formatRepoSelection
+						templateResult: templateResult,
+						templateSelection: templateSelection
 					});
 				} else {
 					$this.select2({
