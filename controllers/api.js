@@ -109,6 +109,7 @@ module.exports = {
                         section: _.sample(sections),
                         phone: '(617) 495-'+_.random(000,999),
                         email: fname.charAt(0) + lname + '@mba.'+year+'edu',
+                        active: _.sample([true, false]),
                     })                
                 break;
 

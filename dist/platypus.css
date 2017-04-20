@@ -5831,7 +5831,9 @@ span.btn-label.btn-label-right {
 
 .parsley-errors-list.filled {
   list-style-type: none;
-  padding-left: 0; }
+  padding-left: 0;
+  color: #d9534f;
+  margin-bottom: 0; }
 
 /* fixes select2 responsive width problem */
 .select2-container[style] {
