@@ -3,4 +3,5 @@ reports
 selenium-debug.log
 test/screenshots
 test/e2e/**/*.png
+secrets.js
 .DS_Store

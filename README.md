@@ -10,7 +10,8 @@ cd platypus && sudo npm install
 ```
 
 ## Running the App
-Start up the MongoDB process
+1) Email rsilva@hbs.edu and ask for credentials
+2) Start up the MongoDB process
 ```shell
 sudo mongod  
 ```
@@ -18,7 +19,7 @@ Run Gulp
 ```shell
 gulp  
 ```
-Go to [http://localhost:3000](http://localhost:3000)
+3) Go to [http://localhost:3000](http://localhost:3000)
 
 **TODO**: Import db dump
 

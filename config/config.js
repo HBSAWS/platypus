@@ -30,7 +30,7 @@ module.exports = function(app, envConfig){
     app.use(cookieParser());
     app.use(session({
         httpOnly: false,  // ajax too
-        secret: '1Temporary2',  // TODO: store in env var
+        secret: process.env.PLATYPUS_SESSION_SECRET,  
         saveUninitialized: true,
         resave: true,
     }));
