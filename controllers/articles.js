@@ -52,9 +52,21 @@ module.exports = {
             .exec(function(err, article) {
                 if (err) return next(err);
                 if(article){
+
+                    var old = ( article.version !== res.locals.current ) ? true : false;
+
                     res.render('articles/show', {
                         article: article,
                         layout: 'main',
+                        flash: (old) ? { 
+                            warning: {
+                                title:"Outdated version",
+                                message: `
+                                    You are viewing an older version of this component's documentation.<br>
+                                    <a href="/version/${res.locals.current}">View current version (${res.locals.current})</a>.
+                                `
+                            } 
+                        } : null,
                         page_title: article._category.title,
                         helpers: {
                             compare: helpers.compare,

@@ -1,5 +1,9 @@
 // Export from local
-mongoexport --db platypus-dev --collection categories --out categories.json && mongoexport --db platypus-dev --collection articles --out articles.json
+mongoexport --db platypus-dev --collection categories --out categories.json && 
+mongoexport --db platypus-dev --collection articles --out articles.json &&
+mongoexport --db platypus-dev --collection feedback --out feedback.json
 
 // Import into DigitalOcean
-mongoimport --db platypus-dev --collection categories --file categories.json --drop && mongoimport --db platypus-dev --collection articles --file articles.json --drop
+mongoimport --db platypus-dev --collection categories --file categories.json --drop && 
+mongoimport --db platypus-dev --collection articles --file articles.json --drop &&
+mongoimport --db platypus-dev --collection feedback --file feedback.json --drop

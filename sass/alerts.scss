@@ -15,10 +15,6 @@
   padding-left: 4.5rem;
   padding-bottom: 1rem;
   position: relative;
-  strong {
-      display: block;
-      font-size: 115%;
-  }
 }
 .alert .icon {
   text-align: center;
@@ -29,6 +25,10 @@
   left: 0;
   border: 1px solid transparent;
   padding-top: 15px;
+  & + strong {
+      display: block;
+      font-size: 115%;
+  }
 }
 
 
@@ -65,8 +65,12 @@
   color: #3c763d;
   background-color: #dff0d8;
   border: none !important;
+  a {
+    color: #3c763d;
+    text-decoration: underline;
+    font-weight: 600;
+  }
 }
-
 .alert.alert-success .icon, 
 .alert.alert-success .icon:after {
   background: #60c060;
@@ -76,31 +80,40 @@
   background-color: #d9edf7;
   color: #3a87ad;
   border: none !important;
+  a {
+    color: #3a87ad;
+    text-decoration: underline;
+    font-weight: 600;
+    }
 }
-
 .alert.alert-info .icon, 
 .alert.alert-info .icon:after {
   background: #4d90fd;
-}
-
-
-.alert.alert-warning .icon, 
-.alert.alert-warning .icon:after {
-  background: #fc9700;
 }
 
 .alert-warning {
   background-color: #fcf8e3;
   color: #c09853;
   border: none !important;
+  a {color: #c09853;
+    text-decoration: underline;
+    font-weight: 600;
+  }
+}
+.alert.alert-warning .icon, 
+.alert.alert-warning .icon:after {
+  background: #fc9700;
 }
 
 .alert-danger {
   background-color: #f2dede;
   color: #b94a48;
   border: none !important;
+  a {color: #b94a48;
+    text-decoration: underline;
+    font-weight: 600;
+  }
 }
-
 .alert.alert-danger .icon, 
 .alert.alert-danger .icon:after {
   background: #da4932;

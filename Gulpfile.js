@@ -14,7 +14,7 @@ var gulp = require('gulp'),
     gutil = require('gulp-load-utils')(['env', 'date', 'colors']);
 
 var opts = {
-    destCDN: ( process.platform === 'darwin' ) ? '/Volumes/prod_webfarm/htdocs/securelib/static/libs/platypus/0.1' : '\\\\nas-prd\\prod_webfarm\\htdocs\\securelib\\static\\libs\\platypus\\0.1',
+    destCDN: ( process.platform === 'darwin' ) ? '/Volumes/nas-prd/prod_webfarm/htdocs/securelib/static/libs/platypus/0.2' : '\\\\nas-prd\\prod_webfarm\\htdocs\\securelib\\static\\libs\\platypus\\0.2',
     dist: './dist',
     jsFiles : [
         'public/vendor/jquery/jquery.min.js',

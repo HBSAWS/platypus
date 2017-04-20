@@ -1,6 +1,6 @@
 // Navigation
-require('./models/Category');
-require('./models/Article');
+require('../models/Category');
+require('../models/Article');
 var mongoose = require('mongoose'),
     Category = mongoose.model('Category'),
     Article = mongoose.model('Article'),
@@ -10,7 +10,7 @@ module.exports = {
 	setGlobals: function(req, res, next) {
 		console.log("Settings Globals");
         res.locals.versions = ['0.1', '0.2'];
-        res.locals.current = "0.1";
+        res.locals.current = "0.2";
         res.locals.ver_selected = (req.session.ver_selected && req.session.ver_selected !== '') ? req.session.ver_selected : res.locals.current;
 		return next();
 	},

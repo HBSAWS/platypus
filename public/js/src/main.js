@@ -46,9 +46,9 @@
 			Platypus.hideLoader();
 			Platypus.breadCrumbs();
 		},
+		
 		detectBreakpoint: function() {
 
-			console.log("Checking breakpoint...")
 		   	let $html = $('html'),
 	       		currClass = '',
 	       		finalClass = 'xl',
@@ -99,7 +99,7 @@
 
 			$(window).resize(Platypus.detectBreakpoint);
 
-			console.log("Current break point is: "+finalClass);
+			// console.log("Current break point is: "+finalClass);
 
 		},
 		btnSubmitAnimate: function() {
@@ -515,7 +515,7 @@
 				"debug": false,
 				"newestOnTop": false,
 				"progressBar": false,
-				"positionClass": "toast-bottom-center",
+				"positionClass": ( $('html').hasClass('xs') || $('html').hasClass('sm') ) ? "toast-bottom-center" : "toast-top-right",
 				"preventDuplicates": true,
 				"onclick": null,
 				"showDuration": "300",
@@ -557,9 +557,20 @@
 			});
 		},
 		formRendering: function() {
+
+			// TODO: Refactor this while thing, cache $('form'), break it apart into smaller modules
+
+			// Enable navigate away / close window prompt
+			// TODO: Only bind if data has changed
+			if ( $('form').hasClass('navigate-away-warning') ) {
+				window.onbeforeunload = function() { return true; };
+			} else {
+				window.onbeforeunload = null;
+			}
+
 			$('form small').each(function () {
 				var helpText = $(this).html();
-				var tooltipHelp = ' <a href="#" class="" data-toggle="tooltip" data-placement="right" title="' + helpText + '"><i class="fa fa-question-circle-o"></i></a>';
+				var tooltipHelp = `<a href="#" class="" data-toggle="tooltip" data-placement="right" title="${helpText}"><i class="fa fa-question-circle-o"></i></a>`;
 				$(this).closest('.form-group .col-md-8').find('label').append(tooltipHelp);
 			});
 
@@ -1259,9 +1270,8 @@
 
             // bind spinner to ajax doc events
             $(document).on({
-                ajaxStart: function(e) {
 
-                	if($(e.target).is(".modal-remote")) return;
+                ajaxStart: function(e) {
 
                     var el = $('<div class="spinner">').appendTo('body').spin();
                     $('body').append('<div class="overlay"></div>');

@@ -1586,9 +1586,6 @@ textarea,
   padding-left: 4.5rem;
   padding-bottom: 1rem;
   position: relative; }
-  .alert strong {
-    display: block;
-    font-size: 115%; }
 
 .alert .icon {
   text-align: center;
@@ -1599,6 +1596,9 @@ textarea,
   left: 0;
   border: 1px solid transparent;
   padding-top: 15px; }
+  .alert .icon + strong {
+    display: block;
+    font-size: 115%; }
 
 .alert .icon:after {
   -webkit-transform: rotate(45deg);
@@ -1632,6 +1632,10 @@ textarea,
   color: #3c763d;
   background-color: #dff0d8;
   border: none !important; }
+  .alert-success a {
+    color: #3c763d;
+    text-decoration: underline;
+    font-weight: 600; }
 
 .alert.alert-success .icon,
 .alert.alert-success .icon:after {
@@ -1641,24 +1645,36 @@ textarea,
   background-color: #d9edf7;
   color: #3a87ad;
   border: none !important; }
+  .alert-info a {
+    color: #3a87ad;
+    text-decoration: underline;
+    font-weight: 600; }
 
 .alert.alert-info .icon,
 .alert.alert-info .icon:after {
   background: #4d90fd; }
 
-.alert.alert-warning .icon,
-.alert.alert-warning .icon:after {
-  background: #fc9700; }
-
 .alert-warning {
   background-color: #fcf8e3;
   color: #c09853;
   border: none !important; }
+  .alert-warning a {
+    color: #c09853;
+    text-decoration: underline;
+    font-weight: 600; }
+
+.alert.alert-warning .icon,
+.alert.alert-warning .icon:after {
+  background: #fc9700; }
 
 .alert-danger {
   background-color: #f2dede;
   color: #b94a48;
   border: none !important; }
+  .alert-danger a {
+    color: #b94a48;
+    text-decoration: underline;
+    font-weight: 600; }
 
 .alert.alert-danger .icon,
 .alert.alert-danger .icon:after {
@@ -6098,7 +6114,7 @@ html {
   min-height: 100%; }
 
 .footer {
-  position: absolute;
+  position: static;
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */

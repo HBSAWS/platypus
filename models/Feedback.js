@@ -8,7 +8,11 @@ var feedbackSchema = new Schema({
         comment : { type: String },
         satisfaction : { type: Number }
     },
-    { timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' } 
+    { timestamps: { 
+    	createdAt: 'created_at', 
+    	updatedAt: 'updated_at' 
+    },
+    collection: 'feedback' 
 });
 
 mongoose.model('Feedback', feedbackSchema);

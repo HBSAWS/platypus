@@ -1,0 +1,42 @@
+{{#if flash }}
+	{{#if flash.success }}
+		<div class="alert alert-success">
+		    <button type="button" data-dismiss="alert" aria-hidden="true" class="close">×</button>
+		    <div class="icon">
+		        <i class="fa fa-check"></i>
+		    </div>
+		    <strong>{{flash.success.title}}</strong> 
+		    {{{ flash.success.message }}}
+		</div>
+	{{/if }}
+	{{#if flash.info }}
+		<div class="alert alert-info">
+		    <button type="button" data-dismiss="alert" aria-hidden="true" class="close">×</button>
+		    <div class="icon">
+		        <i class="fa fa-info-circle"></i>
+		    </div>
+		    <strong>{{flash.info.title}}</strong> 
+		    {{{ flash.info.message }}}
+		</div>  
+	{{/if }}		
+	{{#if flash.warning }}
+		<div class="alert alert-warning">
+		    <button type="button" data-dismiss="alert" aria-hidden="true" class="close">×</button>
+		    <div class="icon">
+		        <i class="fa fa-warning"></i>
+		    </div>
+		    <strong>{{flash.warning.title}}</strong> 
+		    {{{ flash.warning.message }}}
+		</div>   
+	{{/if }}		  
+	{{#if flash.danger }}
+		<div class="alert alert-danger">
+		    <button type="button" data-dismiss="alert" aria-hidden="true" class="close">×</button>
+		    <div class="icon">
+		        <i class="fa fa-times-circle"></i>
+		    </div>
+		    <strong>{{flash.danger.title}}</strong> 
+		    {{{ flash.danger.message }}}
+		</div>  
+	{{/if }}		  
+{{/if }}

@@ -2,11 +2,11 @@ var express = require('express');
 
 module.exports  = function(app){
 
-    var main        = require('../routes/main'),
-        articles    = require('../routes/articles'),
-        categories  = require('../routes/categories'),
-        feedback    = require('../routes/feedback'),
-        api         = require('../routes/api');
+    var main        = require('../controllers/main'),
+        articles    = require('../controllers/articles'),
+        categories  = require('../controllers/categories'),
+        feedback    = require('../controllers/feedback'),
+        api         = require('../controllers/api');
 
     var articlesRouter      = express.Router(),
         categoriesRouter    = express.Router(),
