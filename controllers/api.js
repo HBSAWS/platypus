@@ -195,7 +195,7 @@ module.exports = {
                         description: faker.lorem.sentences(5),
                         category: _.sample(['Planning', 'Meetings', 'Vacation', 'Personal']),
                         start: future ? moment().add(_.random(1,7), 'day') : moment().subtract(_.random(1,7), 'day'),
-                        end: 'null',
+                        end: null,
                         location: _.sample(['Travis 100B', 'Spangler 257', 'Batten 150']),
                         // url: _.sample([
                         //     'http://www.hbs.edu',

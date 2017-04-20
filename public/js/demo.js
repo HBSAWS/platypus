@@ -308,8 +308,9 @@
 								$('#event-modal .modal-body .event-starts').html(moment(event.start).format("MMM DD YYYY"));
 								$('#event-modal .modal-body .event-ends').html(moment(event.end).format("MMM DD YYYY"));
 								$('#event-modal .modal-body .event-location').html(event.location);
-								$('#event-modal .modal-body .event-start-month').html(moment(event.start).format("MMM"));
-								$('#event-modal .modal-body .event-start-day').html(moment(event.start).format("DD"));
+								$('#event-modal .modal-body .month').html(moment(event.start).format("MMM"));
+								$('#event-modal .modal-body .day').html(moment(event.start).format("DD"));
+								$('#event-modal .modal-body .year').html(moment(event.start).format("YYYY"));
 								$('#event-modal #event-url').attr('href', event.url);
 								$('#event-modal').modal();
 							}
@@ -317,7 +318,7 @@
 
 						data.forEach(function (event) {
 							//console.log(item);
-							$('#event-listing-demo').append('\n\t\t\t\t\t\t        <div class="row">\n\t\t\t\t\t\t            <div class="col-xs-1 event text-xs-center">\n\t\t\t\t\t\t                <div class="event-start-month tag tag-default d-block text-uppercase">' + moment(event.start).format("MMM") + '</div>\n\t\t\t\t\t\t                <div class="event-start-day day display-4 font-weight-bold">' + moment(event.start).format("DD") + '</div>\n\t\t\t\t\t\t            </div>\n\t\t\t\t\t\t            <div class="col-xs-11">\n\t\t\t\t\t\t                <h3 class="event-title font-weight-bold">' + event.title + '</h3> \n\t\t\t\t\t\t                <span class="tag tag-default event-category">' + event.category + '</span>\n\t\t\t\t\t\t                <ul class="list-unstyled">\n\t\t\t\t\t\t                    <li><span class="event-starts">' + moment(event.start).format("MMM DD YYYY") + '</span> - <span class="event-ends">' + moment(event.end).format("MMM DD YYYY") + '</span></li>\n\t\t\t\t\t\t                    <li><i class="fa fa-map-marker"></i> <a href="#" target="_blank"><span class="event-location">' + event.location + '</span></a></li>\n\t\t\t\t\t\t                </ul>\n\t\t\t\t\t\t                <div class="event-description">\n\t\t\t\t\t\t                    ' + event.description + '\n\t\t\t\t\t\t                </div>\n\t\t\t\t\t\t            </div>\n\t\t\t\t\t\t        </div>\n\t\t\t\t\t\t        <hr>\n\t\t\t\t\t\t\t');
+							$('#event-listing-demo').append('\n\t\t\t\t\t\t        <div class="row">\n\t\t\t\t\t\t            <div class="col-xs-1 event">\n\t\t\t\t\t\t                <div class="month">' + moment(event.start).format("MMM") + '</div>\n\t\t\t\t\t\t                <div class="day">' + moment(event.start).format("DD") + '</div>\n\t\t\t\t\t\t                <div class="year">' + moment(event.start).format("YYYY") + '</div>\n\t\t\t\t\t\t            </div>\n\t\t\t\t\t\t            <div class="col-xs-11">\n\t\t\t\t\t\t                <h3 class="event-title font-weight-bold">' + event.title + '</h3> \n\t\t\t\t\t\t                <span class="tag tag-default event-category">' + event.category + '</span>\n\t\t\t\t\t\t                <ul class="list-unstyled">\n\t\t\t\t\t\t                    <li><span class="event-starts">' + moment(event.start).format("MMM DD YYYY") + '</span> - <span class="event-ends">' + moment(event.end).format("MMM DD YYYY") + '</span></li>\n\t\t\t\t\t\t                    <li><i class="fa fa-map-marker"></i> <a href="#" target="_blank"><span class="event-location">' + event.location + '</span></a></li>\n\t\t\t\t\t\t                </ul>\n\t\t\t\t\t\t                <div class="event-description">\n\t\t\t\t\t\t                    ' + event.description + '\n\t\t\t\t\t\t                </div>\n\t\t\t\t\t\t            </div>\n\t\t\t\t\t\t        </div>\n\t\t\t\t\t\t        <hr>\n\t\t\t\t\t\t\t');
 						});
 					},
 					error: function error() {

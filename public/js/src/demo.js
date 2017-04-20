@@ -325,8 +325,9 @@
 								$('#event-modal .modal-body .event-starts').html(moment(event.start).format("MMM DD YYYY"));
 								$('#event-modal .modal-body .event-ends').html(moment(event.end).format("MMM DD YYYY"));
 								$('#event-modal .modal-body .event-location').html(event.location);
-								$('#event-modal .modal-body .event-start-month').html(moment(event.start).format("MMM"));
-								$('#event-modal .modal-body .event-start-day').html(moment(event.start).format("DD"));
+								$('#event-modal .modal-body .month').html(moment(event.start).format("MMM"));
+								$('#event-modal .modal-body .day').html(moment(event.start).format("DD"));
+								$('#event-modal .modal-body .year').html(moment(event.start).format("YYYY"));
 								$('#event-modal #event-url').attr('href', event.url);
 								$('#event-modal').modal();
 							}
@@ -337,9 +338,10 @@
 							//console.log(item);
 							$('#event-listing-demo').append(`
 						        <div class="row">
-						            <div class="col-xs-1 event text-xs-center">
-						                <div class="event-start-month tag tag-default d-block text-uppercase">${moment(event.start).format("MMM")}</div>
-						                <div class="event-start-day day display-4 font-weight-bold">${moment(event.start).format("DD")}</div>
+						            <div class="col-xs-1 event">
+						                <div class="month">${moment(event.start).format("MMM")}</div>
+						                <div class="day">${moment(event.start).format("DD")}</div>
+						                <div class="year">${moment(event.start).format("YYYY")}</div>
 						            </div>
 						            <div class="col-xs-11">
 						                <h3 class="event-title font-weight-bold">${event.title}</h3> 
