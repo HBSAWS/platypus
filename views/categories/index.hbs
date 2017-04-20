@@ -28,9 +28,15 @@
 		<li class="list-group-item">{{ title }} 
 
 			<span class="float-xs-right">
-				<a href="/categories/edit/{{id}}#" class="btn"><i class="fa fa-edit"></i></a>
+				<a class="btn modal-remote" 
+					href="/categories/edit/{{id}}"
+				  	data-modal-title="Edit Category"
+				  	data-modal-size="lg"
+				  	data-modal-header="true"
+				  	data-modal-footer="false"
+					><i class="fa fa-edit"></i></a>
 				<form class="d-inline" action="/categories/destroy/{{id}}" method="post">
-					<button href="#" class="btn"><i class="fa fa-trash"></i></button>
+					<button href="#" class="btn confirm-delete"><i class="fa fa-trash"></i></button>
 				</form>
 			</span>
 

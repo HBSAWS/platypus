@@ -120,7 +120,7 @@ module.exports = {
                 res.render('categories/edit', {
                     parents: categories,
                     category: category[0],
-                    layout: 'main',
+                    layout: '',
                     page_title: page_title,
                     helpers: {
                         compare: helpers.compare,
