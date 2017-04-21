@@ -4,7 +4,8 @@ require('../models/Article');
 var mongoose = require('mongoose'),
     Category = mongoose.model('Category'),
     Article = mongoose.model('Article'),
-    _ = require('lodash');
+    _ = require('lodash'),
+    helpers = require('handlebars-helpers')();
 
 module.exports = {
 	setGlobals: function(req, res, next) {
@@ -12,6 +13,7 @@ module.exports = {
         res.locals.versions = ['0.1', '0.2'];
         res.locals.current = "0.2";
         res.locals.ver_selected = (req.session.ver_selected && req.session.ver_selected !== '') ? req.session.ver_selected : res.locals.current;
+        res.locals.helpers = helpers;
 		return next();
 	},
 	getNav: function(req, res, next) {

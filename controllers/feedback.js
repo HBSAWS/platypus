@@ -13,6 +13,7 @@ module.exports = {
             res.render('feedback/index', { 
                 layout : '2col',
                 feedback: feedback,
+                page_title: page_title,
                 helpers: {
                   compare: helpers.compare,
                 } 
@@ -37,6 +38,7 @@ module.exports = {
 
     create: function(req, res, next){
         Feedback.create({ 
+            appTitle      : req.header('Referer') || 'Unknown',
             scope         : req.body.scope,
             subject       : req.body.subject,
             email         : req.body.email,

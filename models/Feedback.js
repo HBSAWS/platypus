@@ -2,6 +2,7 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var feedbackSchema = new Schema({
+        appTitle : { type : String, required: true },
         scope : { type : String, required: true },
         subject : { type : String },
         email : { type : String },

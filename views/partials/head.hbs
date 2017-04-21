@@ -7,35 +7,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<link rel="stylesheet" href="/vendor/bootstrap/bootstrap.min.css"/>
-<link rel="stylesheet" href="/vendor/jasny-bootstrap/jasny-bootstrap.min.css"/>
-{{!-- <link rel="stylesheet" href="/vendor/font-awesome/font-awesome.min.css"/> --}}
-<link rel="stylesheet" href="/vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css"/>
-<link rel="stylesheet" href="/vendor/bootstrap-slider/bootstrap-slider.min.css"/>
-<link rel="stylesheet" href="/vendor/bootstrap-toggle/bootstrap-toggle.min.css"/>
-<link rel="stylesheet" href="/vendor/metisMenu/metisMenu.min.css"/>
-<link rel="stylesheet" href="/vendor/slick/slick.css"/>
-<link rel="stylesheet" href="/vendor/slick/slick-theme.css"/>
-<link rel="stylesheet" href="/vendor/dataTables/dataTables.bootstrap.min.css"/>
-<link rel="stylesheet" href="/vendor/dataTables/dataTables.bootstrap4.min.css"/>
-<link rel="stylesheet" href="/vendor/dataTables/responsive.dataTables.min.css"/>
-<link rel="stylesheet" href="/vendor/sweetalert2/sweetalert2.min.css" > 
-<link rel="stylesheet" href="/vendor/summernote/summernote.css"/> 
-<link rel="stylesheet" href="/vendor/waves/waves.min.css"/>
-<link rel="stylesheet" href="/vendor/ladda-bootstrap/ladda.min.css"/>
-<link rel="stylesheet" href="/vendor/select2/select2.min.css"/>
-<link rel="stylesheet" href="/vendor/select2/select2-bootstrap.min.css"/>
-<link rel="stylesheet" href="/vendor/daterangepicker/daterangepicker.css" />
-<link rel="stylesheet" href="/vendor/fuelux/fuelux.min.css"/>
-<link rel="stylesheet" href="/vendor/toastr/toastr.min.css"/>
-<link rel="stylesheet" href="/vendor/blueimp/blueimp-gallery.min.css"/>
-<link rel="stylesheet" href="/vendor/fullcalendar/fullcalendar.min.css"/>
-<link rel="stylesheet" href="/vendor/fullcalendar/fullcalendar.print.css" media="print"/>
-<link rel="stylesheet" href="/vendor/jquery-typeahead/jquery.typeahead.min.css"/>
-<link rel="stylesheet" href="/vendor/animate/animate.min.css"/>
-<link rel="stylesheet" href="/vendor/c3/c3.min.css"/> <!-- TODO: Make this an add-on -->
-<link rel="stylesheet" href="/vendor/strength/strength.css"/> 
-<link rel="stylesheet" href="/css/styles.css"/>
+{{#is current ver_selected  }}  
+	<link rel="stylesheet" href="/dist/platypus.css"/>
+{{else}}
+	<link rel="stylesheet" href="https://d1gfwsbop52idw.cloudfront.net/static/libs/platypus/{{ver_selected}}/platypus.min.css"/>
+{{/is}}
 
-<!-- Do not include in app.min.css -->
+<!-- Do not include in dist -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/rainbow.min.css"/>

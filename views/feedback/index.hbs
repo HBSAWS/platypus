@@ -1,4 +1,5 @@
 {{> breadcrumbs this }}
+
 <div class="page-header p-1">
 	<div class="row">
 		<div class="col-xs-12">
@@ -9,11 +10,30 @@
 </div>
 
 <div id="mainbody" class="m-2">
-	<ul class="list-group">
-		{{#feedback}}
-		<li class="list-group-item pl-1">
-			{{email}}
-		 </li>	
-		{{/feedback}}
-	</ul>
+	<table class="table table-hover datatable" cellspacing="0" width="100%">
+	    <thead>
+	        <tr class="palette-bg-teal-500 text-white">
+	            <th>App</th>
+	            <th>Scope</th>
+	            <th>E-Mail</th>
+	            <th>Subject</th>
+	            <th>Comment</th>
+	            <th>Satisfaction</th>
+	            <th>&nbsp;</th>
+	        </tr>
+	    </thead>
+	    <tbody>	
+		    {{#feedback}}
+				<tr>
+					<th>{{appTitle}}</th>
+		            <th>{{scope}}</th>
+		            <th>{{email}}</th>
+		            <th>{{subject}}</th>
+		            <th>{{comment}}</th>
+		            <th>{{satisfaction}}</th>
+		            <th>&nbsp;</th>
+				</tr>
+			{{/feedback}}
+	    </tbody>
+	</table>
 </div>

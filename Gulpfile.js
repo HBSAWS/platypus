@@ -15,7 +15,7 @@ var gulp = require('gulp'),
 
 var opts = {
     destCDN: ( process.platform === 'darwin' ) ? '/Volumes/nas-prd/prod_webfarm/htdocs/securelib/static/libs/platypus/0.2' : '\\\\nas-prd\\prod_webfarm\\htdocs\\securelib\\static\\libs\\platypus\\0.2',
-    dist: './dist',
+    dist: './public/dist',
     jsFiles : [
         'public/vendor/jquery/jquery.min.js',
         'public/vendor/tether/tether.min.js',
@@ -52,7 +52,6 @@ var opts = {
         'public/vendor/jquery-asBreadcrumbs/jquery-asBreadcrumbs.min.js',
         'public/vendor/jquery.listnav/jquery.listnav.min-2.1.js',
         'public/vendor/jquery-typeahead/jquery.typeahead.min.js',
-        // 'public/vendor/faker/faker.min.js',
         'public/vendor/highlight/highlight.min.js',
         'public/vendor/strength/strength.min.js',
         'public/vendor/jquery-flip/jquery-flip.min.js',
@@ -65,7 +64,6 @@ var opts = {
     cssFiles : [
         'public/vendor/bootstrap/bootstrap.min.css',
         'public/vendor/jasny-bootstrap/jasny-bootstrap.min.css',
-        //'public/vendor/font-awesome/font-awesome.min.css',
         'public/vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css',
         'public/vendor/bootstrap-slider/bootstrap-slider.min.css',
         'public/vendor/bootstrap-toggle/bootstrap-toggle.min.css',

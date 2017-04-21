@@ -4726,6 +4726,9 @@ strong, .font-weight-bold {
   transition: width 2s ease-in-out; }
 
 /* AZ List */
+#azList-nav + ul {
+  padding-left: 0; }
+
 #toast-container > div {
   -moz-border-radius: 0;
   -webkit-border-radius: 0;
