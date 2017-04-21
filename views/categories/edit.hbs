@@ -12,7 +12,7 @@
 		  		<select name="_parent" class="select2 form-control" data-placeholder="Select a parent category or leave blank to assign it as top level">
 		  			<option value=""></option>
 					{{#each ../parents}}
-				  		<option value="{{_id}}" {{#compare _id ../_id}}selected{{/compare}}>{{title}}</option>
+				  		<option value="{{_id}}" {{#is _id ../_id}}selected{{/is}}>{{title}}</option>
 					{{/each}}
 				</select>
 		  	</div>
@@ -52,7 +52,7 @@
 				<label class="hidden-md-up d-block" for="order">Order</label>
 				<select name="order" class="form-control">
 					{{#each ../parents}}
-					<option value="{{order}}" {{#compare order ../order}}selected{{/compare}}>{{order}}</option>
+					<option value="{{order}}" {{#is order ../order}}selected{{/is}}>{{order}}</option>
 					{{/each}}
 				</select>
 			</div>
@@ -64,7 +64,7 @@
 			<div class="col-md-9">
 				<div class="checkbox">
 			    	<label>
-				    	<input name="published" type="checkbox" {{#compare published true}}checked{{/compare}}> Published?
+				    	<input name="published" type="checkbox" {{#is published true}}checked{{/is}}> Published?
 			    	</label>
 				</div>
 		  	</div> 

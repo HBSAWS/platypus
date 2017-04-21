@@ -1,8 +1,7 @@
 var mongoose = require('mongoose'),
     Category = mongoose.model('Category'),
     page_title = 'Categories',
-    async = require('async'),
-    helpers = require('../config/handlebar-helpers.js').helpers;
+    async = require('async');
 
 module.exports = {
 
@@ -14,10 +13,7 @@ module.exports = {
                 res.render('categories/index', {
                     layout: 'main',
                     categories: categories,
-                    page_title: 'Categories',
-                    helpers: {
-                        compare: helpers.compare,
-                    }
+                    page_title: 'Categories'
                 });
             });
     },
@@ -30,10 +26,7 @@ module.exports = {
 
             res.render('categories/new', {
                 parents: categories,
-                layout: '',
-                helpers: {
-                    compare: helpers.compare,
-                }
+                layout: ''
             });
         });
     },
@@ -87,11 +80,7 @@ module.exports = {
                         category: result[0],
                         section_title: 'Categories',
                         layout: '2col',
-                        page_title: category.title,
-                        helpers: {
-                            compare: helpers.compare,
-                            dateFormat: helpers.dateFormat
-                        }
+                        page_title: category.title
                     })
 
                 });
@@ -121,10 +110,7 @@ module.exports = {
                     parents: categories,
                     category: category[0],
                     layout: '',
-                    page_title: page_title,
-                    helpers: {
-                        compare: helpers.compare,
-                    }
+                    page_title: page_title
                 })
             });
 
