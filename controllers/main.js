@@ -4,9 +4,7 @@ var mongoose = require('mongoose'),
 	async = require('async'),
     request = require('request'),
     moment = require('moment'),
-    _ = require('lodash'),
-    helpers = require('../config/handlebar-helpers.js').helpers;
-    // helpers = require('handlebars-helpers')();
+    _ = require('lodash');
 
 module.exports = {
     index: function(req, res, next) {
@@ -43,12 +41,7 @@ module.exports = {
                 commits: _.filter(commits, item => { return moment().utc().diff(item.commit.committer.date, 'days') < 7 }),
                 articles: _.filter(articles, item => { return item._category.title == 'UI Components' }),
                 patterns:_.filter(articles, item => { return item._category.title == 'UX Components' }),
-                layout : 'home',
-                helpers:  {
-                    compare: helpers.compare,
-                    grouped_each: helpers.grouped_each,
-                    moduloIf: helpers.moduloIf
-                }
+                layout : 'home'
             });
 
         });

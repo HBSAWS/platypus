@@ -1,8 +1,7 @@
 var mongoose = require('mongoose'),
 Feedback = mongoose.model('Feedback'),
 page_title = 'Feedback',
-async = require('async'),
-helpers = require('../config/handlebar-helpers.js').helpers;
+async = require('async');
 
 module.exports = {
 
@@ -14,9 +13,6 @@ module.exports = {
                 layout : '2col',
                 feedback: feedback,
                 page_title: page_title,
-                helpers: {
-                  compare: helpers.compare,
-                } 
             });
         });
     },
@@ -28,10 +24,7 @@ module.exports = {
 
               res.render('feedback/new', { 
                 parents : feedback,
-                layout : '',
-                helpers: {
-                  compare: helpers.compare,
-              } 
+                layout : ''
           });
       });
     },
