@@ -10,10 +10,10 @@ var mongoose = require('mongoose'),
 module.exports = {
 	setGlobals: function(req, res, next) {
 		console.log("Settings Globals");
+        res.locals.helpers = helpers;
         res.locals.versions = ['0.1', '0.2'];
         res.locals.current = "0.2";
         res.locals.ver_selected = (req.session.ver_selected && req.session.ver_selected !== '') ? req.session.ver_selected : res.locals.current;
-        res.locals.helpers = helpers;
 		return next();
 	},
 	getNav: function(req, res, next) {
