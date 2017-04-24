@@ -8,9 +8,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 {{#is current ver_selected  }}  
-	<link rel="stylesheet" href="/dist/platypus.min.css"/>
+	<link rel="stylesheet" href="/dist/platypus.min.css?{{moment}}"/>
 {{else}}
-	<link rel="stylesheet" href="https://d1gfwsbop52idw.cloudfront.net/static/libs/platypus/{{ver_selected}}/platypus.min.css"/>
+	<link rel="stylesheet" href="https://d1gfwsbop52idw.cloudfront.net/static/libs/platypus/{{ver_selected}}/platypus.min.css?{{moment}}"/>
 {{/is}}
 
 <!-- Do not include in dist -->

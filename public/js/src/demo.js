@@ -240,60 +240,60 @@
 			}
 		},
 		maps: function(){
-			$("#map1").googleMap({
+			new google.maps.Map(document.getElementById('map1'), {
 		      	zoom: 10, 
-		      	coords: [42.365515, -71.122141], 
-		      	type: "ROADMAP"
+		      	center: {lat: 42.365515, lng: -71.122141}, 
+		      	mapTypeId: "roadmap"
 		    });
-		    $("#map2").googleMap({
+		    new google.maps.Map(document.getElementById('map2'), {
 		      	zoom: 10, 
-		      	coords: [42.365515, -71.122141], 
-		      	type: "SATELLITE"
+		      	center: {lat: 42.365515, lng: -71.122141}, 
+		      	mapTypeId: "satellite"
 		    });
-		    $("#map3").googleMap({
+		    new google.maps.Map(document.getElementById('map3'), {
 		      	zoom: 10, 
-		      	coords: [42.365515, -71.122141], 
-		      	type: "HYBRID"
+		      	center: {lat: 42.365515, lng: -71.122141}, 
+		      	mapTypeId: "hybrid"
 		    });
-		    $("#map4").googleMap({
+		    new google.maps.Map(document.getElementById('map4'), {
 		      	zoom: 10, 
-		      	coords: [42.365515, -71.122141], 
-		      	type: "TERRAIN"
+		      	center: {lat: 42.365515, lng: -71.122141}, 
+		      	mapTypeId: "terrain"
 		    });
 
-		    $("#map5").googleMap();
-		    $("#map5").addMarker({
-		      	coords: [42.365515, -71.122141],
-		      	icon: '/images/branding/hbs-shield.svg', 
-		      	url: 'http://www.hbs.edu'
-		    });
+		 //    new google.maps.Map(document.getElementById('map5')
+		 //    	.addMarker({
+		 //      	coords: [42.365515, -71.122141],
+		 //      	icon: '/images/branding/hbs-shield.svg', 
+		 //      	url: 'http://www.hbs.edu'
+		 //    });
 
-		    $("#map6").googleMap();
-		    $("#map6").addMarker({
-		      	coords: [42.365515, -71.122141], 
-		      	title: '<h4>Harvard Business School<h4>', 
-		      	text:  'test'
-		    });
+		 //    new google.maps.Map(document.getElementById('map')
+		 //    	.addMarker({
+		 //      	coords: [42.365515, -71.122141], 
+		 //      	title: '<h4>Harvard Business School<h4>', 
+		 //      	text:  'test'
+		 //    });
 
 
-		    $("#map7").googleMap();
-		    $("#map7").addMarker({
-		    	 coords: [42.366704, -71.126751]
-		    });
-		    $("#map7").addMarker({
-		    	 coords: [42.362712, -71.128981]
-		    });
-		    $("#map7").addMarker({
-		        coords: [42.364077, -71.124182]
-		    });
+		 //    $("#map7").googleMap();
+		 //    $("#map7").addMarker({
+		 //    	 coords: [42.366704, -71.126751]
+		 //    });
+		 //    $("#map7").addMarker({
+		 //    	 coords: [42.362712, -71.128981]
+		 //    });
+		 //    $("#map7").addMarker({
+		 //        coords: [42.364077, -71.124182]
+		 //    });
   
-		    $("#map8").googleMap();
-		    $("#map8").addWay({
-		    	start: "25 Travis St. Allston, MA",
-				end:  [42.374393, -71.116257],
-				route : 'way',
-				langage : 'english' 
-			});
+		 //    $("#map8").googleMap();
+		 //    $("#map8").addWay({
+		 //    	start: "25 Travis St. Allston, MA",
+			// 	end:  [42.374393, -71.116257],
+			// 	route : 'way',
+			// 	langage : 'english' 
+			// });
 
 		},
 		dataTablesDemo: function(){
