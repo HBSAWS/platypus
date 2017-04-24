@@ -29,10 +29,10 @@
 				<div class="col-md-8">
 					<label class="hidden-md-up d-block" for="status">Status</label>
 					<select name="status" class="form-control" id="select-single">
-						<option value="" {{#compare status ""}}selected{{/compare}}></option>
-						<option value="experimental" {{#compare status "experimental"}}selected{{/compare}}>Experimental</option>
-						<option value="production" {{#compare status "production"}}selected{{/compare}}>Production</option>
-						<option value="deprecated" {{#compare status "deprecated"}}selected{{/compare}}>Deprecated</option>
+						<option value="" {{#is status ""}}selected{{/is}}></option>
+						<option value="experimental" {{#is status "experimental"}}selected{{/is}}>Experimental</option>
+						<option value="production" {{#is status "production"}}selected{{/is}}>Production</option>
+						<option value="deprecated" {{#is status "deprecated"}}selected{{/is}}>Deprecated</option>
 					</select>
 				</div>
 			</div><!--/.row-->
@@ -43,7 +43,7 @@
 		            <label class="hidden-md-up d-block" for="type">Type</label>
 		            <select name="type" class="form-control" id="select-single">
 		                {{#each ../types}}
-		                	<option value="{{this}}" {{#compare this ../type}}selected{{/compare}}>{{this}}</option>
+		                	<option value="{{this}}" {{#is this ../type}}selected{{/is}}>{{this}}</option>
 		                {{/each}}
 		            </select>
 		        </div>
@@ -57,7 +57,7 @@
 			  	<label class="hidden-md-up d-block" for="_category">Category</label>
 			  	<select name="_category" class="form-control select2" required>
 					{{#each ../categories}}
-					  	<option value="{{_id}}" {{#compare title ../_category.title}}selected{{/compare}}>{{title}}</option>
+					  	<option value="{{_id}}" {{#is title ../_category.title}}selected{{/is}}>{{title}}</option>
 					{{/each}}
 				</select>
 			  </div>
@@ -119,7 +119,7 @@
 			  <div class="col-md-8">
 				 	<div class="checkbox">
 				    <label>
-				      <input name="published" type="checkbox" {{#compare published true}}checked{{/compare}}> Published?
+				      <input name="published" type="checkbox" {{#is published true}}checked{{/is}}> Published?
 				    </label>
 				  </div>
 			  </div> 

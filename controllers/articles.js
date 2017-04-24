@@ -2,8 +2,7 @@ var mongoose = require('mongoose'),
     Article = mongoose.model('Article'),
     Category = mongoose.model('Category'),
     page_title = 'Articles',
-    _ = require('lodash'),
-    helpers = require('../config/handlebar-helpers.js').helpers;
+    _ = require('lodash');
 
     // mongoose.set('debug', true);
 
@@ -20,9 +19,6 @@ module.exports = {
                     layout: '2col',
                     articles: articles,
                     page_title: 'Articles',
-                    helpers: {
-                        compare: helpers.compare,
-                    }
                 });
             });
     },
@@ -35,9 +31,6 @@ module.exports = {
                 categories: categories,
                 layout: '2col',
                 page_title: 'New content',
-                helpers: {
-                    compare: helpers.compare,
-                }
             })
         })
     },
@@ -68,10 +61,6 @@ module.exports = {
                             } 
                         } : null,
                         page_title: article._category.title,
-                        helpers: {
-                            compare: helpers.compare,
-                            dateFormat: helpers.dateFormat
-                        }
                     })
                 } else {
                     var notFound = new Error('Article cannot be found.');
@@ -143,9 +132,6 @@ module.exports = {
                             types: _.compact(_.uniq(_.map(articles, 'type'))),
                             layout: '2col',
                             page_title: page_title,
-                            helpers: {
-                                compare: helpers.compare
-                            }
                         });
                         // res.status(200).json(_.compact(_.uniq(_.map(articles, 'type'))));
                 });
@@ -237,10 +223,6 @@ module.exports = {
                     article: article,
                     viewport: req.params.viewport,
                     layout: 'mock',
-                    helpers: {
-                        compare: helpers.compare,
-                        dateFormat: helpers.dateFormat
-                    }
                 })
             });
     },
