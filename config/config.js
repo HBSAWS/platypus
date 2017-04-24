@@ -7,11 +7,16 @@ var express         = require('express'),
     session         = require('express-session'),
     cookieParser    = require('cookie-parser'),
     bodyParser      = require('body-parser'),
-    toastr          = require('express-toastr');
+    toastr          = require('express-toastr'),
+    helpers         = require('handlebars-helpers')();
     
 module.exports = function(app, envConfig){
 
-    // view engine setup
+    app.locals = {
+        helpers : helpers,
+        GOOGLE_MAPS_KEY : process.env.PLATYPUS_GOOGLE_MAPS_KEY
+    }
+
     app.set('views', path.join(envConfig.rootPath, 'views'));
     app.engine('.hbs', handlebars({
         extname: '.hbs',
@@ -20,7 +25,6 @@ module.exports = function(app, envConfig){
         partialsDir: path.join(envConfig.rootPath, 'views/partials')
     }));
     app.set('view engine', '.hbs');
-
     app.use(logger('dev'));
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({
@@ -41,7 +45,7 @@ module.exports = function(app, envConfig){
     app.use(express.static(path.join(envConfig.rootPath, 'public')));
     app.use(express.static(path.join(envConfig.rootPath, 'dist')));
 
-    app.use(middlewares.setGlobals);
+    app.use(middlewares.getVersion);
     app.use(middlewares.getNav);
     // app.use(middlewares.debug);
 

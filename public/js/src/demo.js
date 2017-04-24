@@ -9,7 +9,6 @@
 			AWSFrameworkDemo.icons();
 			AWSFrameworkDemo.search();
 			AWSFrameworkDemo.maps();
-			AWSFrameworkDemo.dataTablesDemo();
 			AWSFrameworkDemo.calendarDemo();
 		},
 		toastDemo: function toastDemo() {

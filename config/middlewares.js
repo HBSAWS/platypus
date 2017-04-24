@@ -4,13 +4,11 @@ require('../models/Article');
 var mongoose = require('mongoose'),
     Category = mongoose.model('Category'),
     Article = mongoose.model('Article'),
-    _ = require('lodash'),
-    helpers = require('handlebars-helpers')();
+    _ = require('lodash');
 
 module.exports = {
-	setGlobals: function(req, res, next) {
-		console.log("Settings Globals");
-        res.locals.helpers = helpers;
+	getVersion: function(req, res, next) {
+		console.log("Determining article version to show");
         res.locals.versions = ['0.1', '0.2'];
         res.locals.current = "0.2";
         res.locals.ver_selected = (req.session.ver_selected && req.session.ver_selected !== '') ? req.session.ver_selected : res.locals.current;
