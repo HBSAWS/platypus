@@ -1230,6 +1230,8 @@
 		},
 		googleMaps: function googleMaps() {
 
+			var geocoder = new google.maps.Geocoder();
+
 			$('.google-map').each(function (map) {
 
 				var m = new google.maps.Map(document.getElementById($(this).attr('id')), {
@@ -1240,6 +1242,22 @@
 					},
 					mapTypeId: $(this).data('map-type') || 'roadmap'
 				});
+
+				geocodeAddress(geocoder, $(this).data('map-address'), m);
+
+				function geocodeAddress(geocoder, address, resultsMap) {
+					geocoder.geocode({ 'address': address }, function (results, status) {
+						if (status === 'OK') {
+							resultsMap.setCenter(results[0].geometry.location);
+							var marker = new google.maps.Marker({
+								map: resultsMap,
+								position: results[0].geometry.location
+							});
+						} else {
+							alert('Geocode was not successful for the following reason: ' + status);
+						}
+					});
+				}
 
 				// has markers? (TODO)
 			});
