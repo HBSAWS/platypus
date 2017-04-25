@@ -216,8 +216,17 @@
 		</div>
 
 		
-		<div id="helpful-widget" data-article-id="{{_id}}">
-			Was this helpful? <a href="#" class="yes">yes</a> | <a href="#" class="no">no</a> <span class="float-xs-right">{{score}}</span>
+		<div class="helpful-widget" data-article-id="{{_id}}">
+			<div class="btn-group btn-group-sm mr-1">
+				<button type="button" class="btn btn-secondary yes" data-toggle="tooltip" title="" data-original-title="Yes">
+					<i class="fa fa-caret-up"></i>
+				</button>
+				<button type="button" class="btn btn-secondary" disabled>{{score}}</button>
+				<button type="button" class="btn btn-secondary no" data-toggle="tooltip" title="" data-original-title="No">
+					<i class="fa fa-caret-down"></i>
+				</button>
+			</div>
+			Was this helpful?
 		</div>
 	</div><!--/#mainbody-->
 

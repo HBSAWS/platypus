@@ -193,8 +193,6 @@ module.exports = {
 
         let val = req.body.val == '+1' ? +1 : -1;
 
-        
-
         Article.findOneAndUpdate({
             _id: req.params.id
         }, {$inc: {score: val}}, function(err, article) {

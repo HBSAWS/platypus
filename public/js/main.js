@@ -1231,10 +1231,10 @@
 		},
 
 		helpful: function helpful() {
-			$('#helpful-widget > a').on('click', function (e) {
+			$('.helpful-widget button').on('click', function (e) {
 				e.preventDefault();
 
-				var id = $(this).parent().data('article-id'),
+				var id = $(this).closest('.helpful-widget').data('article-id'),
 				    val = $(this).hasClass('yes') ? '+1' : '-1';
 
 				var data = {};
@@ -1247,7 +1247,7 @@
 					url: '/articles/score/' + id,
 					success: function success(data) {
 						toastr.success(val);
-						$('#helpful-widget').hide();
+						$('.helpful-widget').hide();
 					},
 					error: function error(request, status, _error2) {
 						toastr.error('Cannot update score.');

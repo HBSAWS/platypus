@@ -13785,10 +13785,10 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 		},
 
 		helpful: function helpful() {
-			$('#helpful-widget > a').on('click', function (e) {
+			$('.helpful-widget button').on('click', function (e) {
 				e.preventDefault();
 
-				var id = $(this).parent().data('article-id'),
+				var id = $(this).closest('.helpful-widget').data('article-id'),
 				    val = $(this).hasClass('yes') ? '+1' : '-1';
 
 				var data = {};
@@ -13801,7 +13801,7 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 					url: '/articles/score/' + id,
 					success: function success(data) {
 						toastr.success(val);
-						$('#helpful-widget').hide();
+						$('.helpful-widget').hide();
 					},
 					error: function error(request, status, _error2) {
 						toastr.error('Cannot update score.');
