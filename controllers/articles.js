@@ -187,6 +187,22 @@ module.exports = {
         });
     },
 
+    update_score: function(req,res,next) {
+
+        console.log(req.body.val);
+
+        let val = req.body.val == '+1' ? +1 : -1;
+
+        
+
+        Article.findOneAndUpdate({
+            _id: req.params.id
+        }, {$inc: {score: val}}, function(err, article) {
+            if (err) return next(err);
+            res.status(200).json(article.score);
+        });
+    },
+
     search: function(req, res, next) {
         Category.findOne({
             'slug': req.params.cat_slug

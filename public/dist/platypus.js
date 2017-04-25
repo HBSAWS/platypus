@@ -12593,6 +12593,7 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 			Platypus.renderCharts();
 			Platypus.gridListSwitcher();
 			Platypus.videoWidget();
+			Platypus.helpful();
 			Platypus.toolTip();
 			Platypus.popOver();
 			Platypus.wowAnimations();
@@ -13782,6 +13783,32 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 				});
 			});
 		},
+
+		helpful: function helpful() {
+			$('#helpful-widget > a').on('click', function (e) {
+				e.preventDefault();
+
+				var id = $(this).parent().data('article-id'),
+				    val = $(this).hasClass('yes') ? '+1' : '-1';
+
+				var data = {};
+				data.val = val;
+
+				$.ajax({
+					type: 'POST',
+					data: JSON.stringify(data),
+					contentType: 'application/json',
+					url: '/articles/score/' + id,
+					success: function success(data) {
+						toastr.success(val);
+						$('#helpful-widget').hide();
+					},
+					error: function error(request, status, _error2) {
+						toastr.error('Cannot update score.');
+					}
+				});
+			});
+		},
 		googleMaps: function googleMaps() {
 
 			var geocoder = new google.maps.Geocoder();
@@ -13797,7 +13824,9 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 					mapTypeId: $(this).data('map-type') || 'roadmap'
 				});
 
-				geocodeAddress(geocoder, $(this).data('map-address'), m);
+				if ($(this).data('map-address')) {
+					geocodeAddress(geocoder, $(this).data('map-address'), m);
+				}
 
 				function geocodeAddress(geocoder, address, resultsMap) {
 					geocoder.geocode({ 'address': address }, function (results, status) {

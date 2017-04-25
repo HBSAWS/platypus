@@ -38,6 +38,7 @@ module.exports  = function(app){
     articlesRouter.get('/edit/:id',               articles.edit);
     articlesRouter.post('/update/:id',            articles.update);
     articlesRouter.post('/update/:id/:field',     articles.update_field);
+    articlesRouter.post('/score/:id',             articles.update_score);
     articlesRouter.get('/search/:cat_slug',       articles.search);
     articlesRouter.get('/mock/:slug/:viewport',   articles.mock);
     articlesRouter.get('/:slug',                  articles.show);
