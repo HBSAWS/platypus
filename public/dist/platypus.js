@@ -12597,6 +12597,7 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 			Platypus.popOver();
 			Platypus.wowAnimations();
 			Platypus.progressBar();
+			Platypus.googleMaps();
 			Platypus.hideLoader();
 			Platypus.breadCrumbs();
 		},
@@ -13779,6 +13780,22 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 						$(theModal + ' iframe').attr('src', videoSRC);
 					});
 				});
+			});
+		},
+		googleMaps: function googleMaps() {
+
+			$('.google-map').each(function (map) {
+
+				var m = new google.maps.Map(document.getElementById($(this).attr('id')), {
+					zoom: $(this).data('map-zoom') || 10,
+					center: {
+						lat: $(this).data('map-lat') || 42.365515,
+						lng: $(this).data('map-lng') || -71.122141
+					},
+					mapTypeId: $(this).data('map-type') || 'roadmap'
+				});
+
+				// has markers? (TODO)
 			});
 		},
 		hideLoader: function hideLoader() {

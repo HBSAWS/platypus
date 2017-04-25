@@ -8,7 +8,6 @@
 			AWSFrameworkDemo.validation();
 			AWSFrameworkDemo.icons();
 			AWSFrameworkDemo.search();
-			AWSFrameworkDemo.maps();
 			AWSFrameworkDemo.calendarDemo();
 		},
 		toastDemo: function toastDemo() {
@@ -228,63 +227,7 @@
 				});
 			}
 		},
-		maps: function maps() {
-			new google.maps.Map(document.getElementById('map1'), {
-				zoom: 10,
-				center: { lat: 42.365515, lng: -71.122141 },
-				mapTypeId: "roadmap"
-			});
-			new google.maps.Map(document.getElementById('map2'), {
-				zoom: 10,
-				center: { lat: 42.365515, lng: -71.122141 },
-				mapTypeId: "satellite"
-			});
-			new google.maps.Map(document.getElementById('map3'), {
-				zoom: 10,
-				center: { lat: 42.365515, lng: -71.122141 },
-				mapTypeId: "hybrid"
-			});
-			new google.maps.Map(document.getElementById('map4'), {
-				zoom: 10,
-				center: { lat: 42.365515, lng: -71.122141 },
-				mapTypeId: "terrain"
-			});
 
-			//    new google.maps.Map(document.getElementById('map5')
-			//    	.addMarker({
-			//      	coords: [42.365515, -71.122141],
-			//      	icon: '/images/branding/hbs-shield.svg', 
-			//      	url: 'http://www.hbs.edu'
-			//    });
-
-			//    new google.maps.Map(document.getElementById('map')
-			//    	.addMarker({
-			//      	coords: [42.365515, -71.122141], 
-			//      	title: '<h4>Harvard Business School<h4>', 
-			//      	text:  'test'
-			//    });
-
-
-			//    $("#map7").googleMap();
-			//    $("#map7").addMarker({
-			//    	 coords: [42.366704, -71.126751]
-			//    });
-			//    $("#map7").addMarker({
-			//    	 coords: [42.362712, -71.128981]
-			//    });
-			//    $("#map7").addMarker({
-			//        coords: [42.364077, -71.124182]
-			//    });
-
-			//    $("#map8").googleMap();
-			//    $("#map8").addWay({
-			//    	start: "25 Travis St. Allston, MA",
-			// 	end:  [42.374393, -71.116257],
-			// 	route : 'way',
-			// 	langage : 'english' 
-			// });
-		},
-		dataTablesDemo: function dataTablesDemo() {},
 		calendarDemo: function calendarDemo() {
 			if ($('.full-calendar').length > 0) {
 
