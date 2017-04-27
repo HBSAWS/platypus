@@ -1,3 +1,8 @@
+// Dump entire db 
+mongodump -d platypus-dev -o ./db-backup
+// Restore entire db
+mongorestore --drop -d platypus-dev ./db-backup/platypus-dev
+
 // Export from local
 mongoexport --db platypus-dev --collection categories --out categories.json && 
 mongoexport --db platypus-dev --collection articles --out articles.json &&
