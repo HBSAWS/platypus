@@ -221,7 +221,7 @@
 				<button type="button" class="btn btn-secondary yes" data-toggle="tooltip" title="" data-original-title="Yes">
 					<i class="fa fa-caret-up"></i>
 				</button>
-				<button type="button" class="btn btn-secondary" disabled>{{score}}</button>
+				<button type="button" class="btn btn-secondary" disabled>{{#if score}}{{score}}{{else}}0{{/if}}</button>
 				<button type="button" class="btn btn-secondary no" data-toggle="tooltip" title="" data-original-title="No">
 					<i class="fa fa-caret-down"></i>
 				</button>
