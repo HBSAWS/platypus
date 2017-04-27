@@ -1734,3 +1734,4 @@
 	window.Platypus = Platypus;
 
 })(jQuery);
+
