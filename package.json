@@ -52,6 +52,6 @@
         "url": "git://github.com/HBSAWS/platypus.git"
     },
     "git-pre-hooks": {
-        "pre-commit": "mongodump -d platypus-dev -o ./db-backup"
+        "pre-commit": ["mongodump -d platypus-dev -o ./db-backup", "git add -A"]
     }
 }
