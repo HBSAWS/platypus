@@ -218,11 +218,11 @@
 		
 		<div class="helpful-widget" data-article-id="{{_id}}">
 			<div class="btn-group btn-group-sm mr-1">
-				<button type="button" class="btn btn-secondary yes" data-toggle="tooltip" title="" data-original-title="Yes">
+				<button type="button" class="btn btn-secondary yes" data-toggle="tooltip" title="Yes">
 					<i class="fa fa-caret-up"></i>
 				</button>
-				<button type="button" class="btn btn-secondary" disabled>{{#if score}}{{score}}{{else}}0{{/if}}</button>
-				<button type="button" class="btn btn-secondary no" data-toggle="tooltip" title="" data-original-title="No">
+				<button type="button" class="btn btn-secondary" disabled data-toggle="tooltip" title="{{#if score}}{{score}} people found this helpful{{else}}Be the first to rate this article{{/if}}">{{#if score}}{{score}}{{else}}0{{/if}}</button>
+				<button type="button" class="btn btn-secondary no" data-toggle="tooltip" title="No">
 					<i class="fa fa-caret-down"></i>
 				</button>
 			</div>

@@ -1734,4 +1734,3 @@
 	window.Platypus = Platypus;
 
 })(jQuery);
-

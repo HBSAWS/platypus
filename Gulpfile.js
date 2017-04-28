@@ -2,6 +2,7 @@ var gulp = require('gulp'),
     babel = require('gulp-babel'),
     sass = require('gulp-sass'),
     nodemon = require('gulp-nodemon'),
+    livereload = require('gulp-livereload'),
     concat = require('gulp-concat'),  
     notify = require('gulp-notify'),  
     rename = require('gulp-rename'),  
@@ -104,7 +105,8 @@ gulp.task('js', function() {
             preserveComments: function(node, comment){ return false;}
         }))
         .pipe(banner(opts.banner, {date: opts.dt}))
-        .pipe(gulp.dest(opts.dist));
+        .pipe(gulp.dest(opts.dist))
+        //.pipe(livereload());  // this works but not ideal
 });
 
 gulp.task('css', function() {  
@@ -169,8 +171,15 @@ gulp.task('nightwatch:ie', function(){
 });
 
 
+gulp.task('refresh', function(){
+  return gulp.src('server.js')
+    .pipe(livereload());
+});
+
 //Watch task
 gulp.task('default',function() {
+
+    livereload.listen();
 
     var log = function(event) {console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');}
 
@@ -179,7 +188,7 @@ gulp.task('default',function() {
         'public/js/src/*.js',
         'views/**/*.hbs'
     ], function() {
-        runSequence('styles','transpile', 'css', 'js');
+        runSequence('styles','transpile', 'css', 'js', 'refresh');
     }).on('change',log);
 
     nodemon({
@@ -187,10 +196,8 @@ gulp.task('default',function() {
         ext: 'js html hbs', 
         env: { 'NODE_ENV': 'development' }
     }).on('start', function() {
-        console.log('\033[2J');
-        //console.clear();
+        // console.log('\033[2J');
     });
-
 });
 
 var reportError = function(error) {
