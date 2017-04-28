@@ -170,7 +170,6 @@ gulp.task('nightwatch:ie', function(){
     }));
 });
 
-
 gulp.task('refresh', function(){
   return gulp.src('server.js')
     .pipe(livereload());
@@ -188,7 +187,7 @@ gulp.task('default',function() {
         'public/js/src/*.js',
         'views/**/*.hbs'
     ], function() {
-        runSequence('styles','transpile', 'css', 'js', 'refresh');
+        runSequence('styles','transpile', 'css', 'js');
     }).on('change',log);
 
     nodemon({
@@ -197,6 +196,7 @@ gulp.task('default',function() {
         env: { 'NODE_ENV': 'development' }
     }).on('start', function() {
         // console.log('\033[2J');
+        gulp.start('refresh');
     });
 });
 
