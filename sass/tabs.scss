@@ -41,3 +41,12 @@
 // }
 
 
+.nav-tabs {
+	.nav-link {
+		background: #eceff1;
+    	color: black;
+    	.fa.d-block {
+    		padding-top: 10px;
+    	}
+	}
+}

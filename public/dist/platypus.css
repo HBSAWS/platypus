@@ -1705,6 +1705,19 @@ textarea,
 .panel ul {
   padding-left: 1em; }
 
+.badge {
+  font-size: .2em;
+  display: block;
+  position: absolute;
+  top: 0em;
+  right: -.75em;
+  width: 2em;
+  height: 2em;
+  line-height: 2em;
+  border-radius: 50%;
+  text-align: center;
+  color: #fff; }
+
 .back-to-top {
   cursor: pointer;
   position: fixed;
@@ -5875,6 +5888,9 @@ fieldset.bordered {
   margin-right: 20px; }
 
 /* Icons */
+.fa {
+  position: relative; }
+
 .img-sm {
   max-width: 200px; }
 
@@ -6113,6 +6129,10 @@ table.dataTable.dtr-column > tbody > tr > th.control:before {
   line-height: 30px !important;
   margin-left: -18px; }
 
+table.dataTable.dtr-column > tbody > tr.parent td.control:before,
+table.dataTable.dtr-column > tbody > tr.parent th.control:before {
+  background-color: black; }
+
 table.datatable thead th {
   white-space: nowrap; }
 
@@ -6120,6 +6140,12 @@ table.datatable tbody tr td {
   white-space: nowrap; }
 
 /* Tabs */
+.nav-tabs .nav-link {
+  background: #eceff1;
+  color: black; }
+  .nav-tabs .nav-link .fa.d-block {
+    padding-top: 10px; }
+
 #btn-feedback {
   position: fixed;
   z-index: 999;

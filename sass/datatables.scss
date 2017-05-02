@@ -41,6 +41,12 @@ table.dataTable.dtr-column>tbody>tr>th.control:before {
   margin-left: -18px;
 }
 
+
+table.dataTable.dtr-column>tbody>tr.parent td.control:before, 
+table.dataTable.dtr-column>tbody>tr.parent th.control:before {
+  background-color: black;
+}
+
 table.datatable {
     thead th {
         white-space: nowrap;

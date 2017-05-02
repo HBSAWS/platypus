@@ -95,6 +95,7 @@
 			} else if (finalClass == 'sm') {
 				$html.removeClass('xl lg md xs');
 			}
+
 			if (!$html.hasClass(finalClass)) {
 				$html.addClass(finalClass);
 			}

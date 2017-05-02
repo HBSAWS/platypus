@@ -57,44 +57,28 @@
 	       		w = $(window).width();
 
 	       	// get current breakpoint class
-			if ($html.hasClass('xl')) {
-				currClass = 'xl';
-			} else if ($html.hasClass('lg')) {
-				currClass = 'lg';
-			} else if ($html.hasClass('md')) {
-				currClass = 'md';
-			} else if ($html.hasClass('sm')) {
-				currClass = 'sm';
-			} else if ($html.hasClass('xs')) {
-				currClass = 'xs';
-			}				
+			if ($html.hasClass('xl')) { currClass = 'xl'; } 
+			else if ($html.hasClass('lg')) { currClass = 'lg'; } 
+			else if ($html.hasClass('md')) { currClass = 'md'; } 
+			else if ($html.hasClass('sm')) { currClass = 'sm'; } 
+			else if ($html.hasClass('xs')) { currClass = 'xs'; }				
 			
 			// detect breakpoint
-			if (w < 576) {
-				finalClass = 'xs';
-			} else if (w < 768) {
-				finalClass = 'sm';
-			} else if (w < 992) {
-				finalClass = 'md';
-			} else if (w < 1200) {
-				finalClass = 'lg';
-			} else { 
-				finalClass = 'xl'; 
-			} 
+			if (w < 576) { finalClass = 'xs'; } 
+			else if (w < 768) { finalClass = 'sm'; } 
+			else if (w < 992) { finalClass = 'md'; } 
+			else if (w < 1200) { finalClass = 'lg'; } 
+			else { finalClass = 'xl'; } 
 
 			if (currClass == finalClass) return;
 
 			$html.removeClass('xl lg md sm xs');
 
-			if (finalClass == 'xl') {
-				$html.removeClass('lg md sm xs');
-			} else if (finalClass == 'lg') {
-				$html.removeClass('xl md sm xs');
-			} else if (finalClass == 'md') {
-				$html.removeClass('xl lg sm xs');
-			} else if (finalClass == 'sm') {
-				$html.removeClass('xl lg md xs');
-			}
+			if (finalClass == 'xl') { $html.removeClass('lg md sm xs'); } 
+			else if (finalClass == 'lg') { $html.removeClass('xl md sm xs'); } 
+			else if (finalClass == 'md') { $html.removeClass('xl lg sm xs'); } 
+			else if (finalClass == 'sm') { $html.removeClass('xl lg md xs'); }
+			
 			if (!$html.hasClass(finalClass)) {
 				$html.addClass(finalClass);
 			}

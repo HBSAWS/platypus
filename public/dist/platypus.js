@@ -12649,6 +12649,7 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 			} else if (finalClass == 'sm') {
 				$html.removeClass('xl lg md xs');
 			}
+
 			if (!$html.hasClass(finalClass)) {
 				$html.addClass(finalClass);
 			}
