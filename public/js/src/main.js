@@ -1170,6 +1170,13 @@
 
 
 				}
+
+				$('.note-editable a').hover(function(){
+					$('.note-editable').attr('contenteditable','false')
+				}, function(){
+					$('.note-editable').attr('contenteditable','true')
+				});
+
 			});
 			
 		},

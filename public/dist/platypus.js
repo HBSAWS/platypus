@@ -13358,6 +13358,12 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 						}
 					});
 				}
+
+				$('.note-editable a').hover(function () {
+					$('.note-editable').attr('contenteditable', 'false');
+				}, function () {
+					$('.note-editable').attr('contenteditable', 'true');
+				});
 			});
 		},
 		search: function search() {
