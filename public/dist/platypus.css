@@ -1690,7 +1690,8 @@ textarea,
   .panel h5 a {
     width: 100%;
     display: block;
-    color: black; }
+    color: black;
+    text-decoration: none; }
     .panel h5 a[data-toggle="collapse"]:after {
       font-family: 'FontAwesome';
       content: "\f106";
@@ -6024,7 +6025,7 @@ header a.hbs-logo img {
   shape-rendering: auto; }
 
 header .hamburger {
-  padding: 6px 0px 0px 0px;
+  padding: 11px 0 0 5px;
   display: inline-block;
   cursor: pointer;
   transition-property: opacity, filter;
@@ -6043,8 +6044,8 @@ header .hamburger:hover {
   opacity: 0.7; }
 
 header .hamburger-box {
-  width: 30px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   display: inline-block;
   position: relative; }
 
@@ -6056,7 +6057,7 @@ header .hamburger-inner {
 header .hamburger-inner,
 header .hamburger-inner::before,
 header .hamburger-inner::after {
-  width: 30px;
+  width: 20px;
   height: 2px;
   background-color: #fff;
   border-radius: 0px;
@@ -6071,10 +6072,10 @@ header .hamburger-inner::after {
   display: block; }
 
 header .hamburger-inner::before {
-  top: -8px; }
+  top: -7px; }
 
 header .hamburger-inner::after {
-  bottom: -8px; }
+  bottom: -7px; }
 
 header .hamburger--spin .hamburger-inner {
   transition-duration: 0.22s;
@@ -6145,11 +6146,13 @@ table.datatable tbody tr td {
   white-space: nowrap; }
 
 /* Tabs */
-.nav-tabs .nav-link {
-  background: #eceff1;
+.nav-tabs a.nav-link {
+  border-top: 4px solid transparent;
   color: black; }
-  .nav-tabs .nav-link .fa.d-block {
+  .nav-tabs a.nav-link .fa.d-block {
     padding-top: 10px; }
+  .nav-tabs a.nav-link.active {
+    border-top: 4px solid #009688 !important; }
 
 #btn-feedback {
   position: fixed;
@@ -6167,6 +6170,12 @@ html {
   width: 100%;
   /* Set the fixed height of the footer here */
   height: 60px; }
+
+#mobile-toolbar i {
+  color: white; }
+
+#mobile-toolbar .external:after {
+  display: none; }
 
 .list-group {
   padding-left: 0 !important; }
@@ -6299,7 +6308,9 @@ a.lock::after {
 
 * {
   font-family: 'Open Sans', sans-serif;
-  font-weight: 400; }
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
 
 strong, .font-weight-bold {
   font-weight: 600; }

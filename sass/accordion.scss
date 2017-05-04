@@ -16,6 +16,7 @@
 			width: 100%; 
 			display: block;
 			color: black;
+			text-decoration: none;
 			&[data-toggle="collapse"]:after {
 		    	font-family: 'FontAwesome';  
 		    	content: "\f106";    

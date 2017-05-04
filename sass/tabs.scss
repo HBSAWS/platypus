@@ -42,11 +42,14 @@
 
 
 .nav-tabs {
-	.nav-link {
-		background: #eceff1;
+	a.nav-link {
+		border-top: 4px solid transparent;
     	color: black;
     	.fa.d-block {
     		padding-top: 10px;
     	}
+		&.active {
+			border-top: 4px solid #009688 !important;
+		}
 	}
 }

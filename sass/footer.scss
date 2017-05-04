@@ -10,3 +10,10 @@ html {
   height: 60px;
 }
 
+
+#mobile-toolbar {
+	i {color: white;}
+	.external:after {
+		display: none;
+	}
+}

@@ -231,23 +231,23 @@
 	</div><!--/#mainbody-->
 
 
-<div id="mobile-toolbar" class="hidden-md-up">
-  	<div class="col-xs-12 palette-bg-teal-500 text-white navbar-fixed-bottom">
-  		<div class="row">
-    		<div class="col-xs-4 text-xs-center">
-    			<a class="btn btn-link" href="/articles/edit/{{_id}}" data-toggle="tooltip" title="Edit"><i class="fa fa-fw fa-2x fa-edit text-white"></i></a>
-    		</div>
-    		<div class="col-xs-4 text-xs-center">
-    			<a class="btn btn-link" href="https://hbs-itg.atlassian.net/secure/CreateIssue!default.jspa" data-toggle="tooltip" title="Report Bug"><i class="fa fa-fw fa-2x fa-bug text-white"></i></a>
-    		</div>
-    		<div class="col-xs-4 text-xs-center">
-    			<form class="d-inline" action="/articles/destroy/{{_id}}" method="POST">
-			   		<button type="submit" class="btn btn-link confirm-delete" data-toggle="tooltip" title="Delete"><i class="fa fa-fw fa-2x fa-trash text-white"></i></button>
-			   	</form>
-    		</div>
-  		</div>
-  	</div>
-</div>
+	<div id="mobile-toolbar" class="hidden-md-up">
+	  	<div class="col-xs-12 palette-bg-teal-500 navbar-fixed-bottom">
+	  		<div class="row">
+	    		<div class="col-xs-4 text-xs-center">
+	    			<a class="btn btn-link" href="/articles/edit/{{_id}}" data-toggle="tooltip" title="Edit"><i class="fa fa-fw fa-2x fa-edit"></i></a>
+	    		</div>
+	    		<div class="col-xs-4 text-xs-center">
+	    			<a class="btn btn-link" href="https://hbs-itg.atlassian.net/secure/CreateIssue!default.jspa" data-toggle="tooltip" title="Report Bug"><i class="fa fa-fw fa-2x fa-bug"></i></a>
+	    		</div>
+	    		<div class="col-xs-4 text-xs-center">
+	    			<form class="d-inline" action="/articles/destroy/{{_id}}" method="POST">
+				   		<button type="submit" class="btn btn-link confirm-delete" data-toggle="tooltip" title="Delete"><i class="fa fa-fw fa-2x fa-trash"></i></button>
+				   	</form>
+	    		</div>
+	  		</div>
+	  	</div>
+	</div>
 
 {{/article}}
 

@@ -10,7 +10,7 @@ header {
     }
     
     .hamburger {
-        padding: 6px 0px 0px 0px;
+        padding: 11px 0 0 5px;
         display: inline-block;
         cursor: pointer;
         transition-property: opacity, filter;
@@ -29,8 +29,8 @@ header {
         opacity: 0.7;
     }
     .hamburger-box {
-        width: 30px;
-        height: 24px;
+        width: 20px;
+        height: 20px;
         display: inline-block;
         position: relative;
     }
@@ -42,7 +42,7 @@ header {
     .hamburger-inner,
     .hamburger-inner::before,
     .hamburger-inner::after {
-        width: 30px;
+        width: 20px;
         height: 2px;
         background-color: #fff;
         border-radius: 0px;
@@ -57,10 +57,10 @@ header {
         display: block;
     }
     .hamburger-inner::before {
-        top: -8px;
+        top: -7px;
     }
     .hamburger-inner::after {
-        bottom: -8px;
+        bottom: -7px;
     }
  
     .hamburger--spin .hamburger-inner {
