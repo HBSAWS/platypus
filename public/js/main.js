@@ -36,7 +36,6 @@
 			Platypus.searchPills();
 			Platypus.infiniteLoading();
 			Platypus.feedback();
-			Platypus.renderCharts();
 			Platypus.gridListSwitcher();
 			Platypus.videoWidget();
 			Platypus.helpful();
@@ -47,6 +46,7 @@
 			Platypus.googleMaps();
 			Platypus.hideLoader();
 			Platypus.breadCrumbs();
+			Platypus.renderCharts();
 		},
 
 		detectBreakpoint: function detectBreakpoint() {
@@ -1050,6 +1050,7 @@
 								}
 							}
 						});
+						chart.flush();
 						break;
 					case 'gauge':
 						var chart = c3.generate({
@@ -1078,6 +1079,7 @@
 								height: 180
 							}
 						});
+						chart.flush();
 						break;
 					case 'pie':
 
@@ -1108,7 +1110,7 @@
 								title: "Example"
 							}
 						});
-
+						chart.flush();
 						break;
 					case 'bar':
 
@@ -1132,7 +1134,7 @@
 							},
 							bindto: target
 						});
-
+						chart.flush();
 						break;
 					case 'spline':
 
@@ -1151,7 +1153,7 @@
 							},
 							bindto: target
 						});
-
+						chart.flush();
 						break;
 
 					case 'scatter':
@@ -1187,11 +1189,14 @@
 							},
 							bindto: target
 						});
+						chart.flush();
 
 						break;
 					default:
 
 				}
+
+				$(this).css('visibility', 'visible');
 			});
 		},
 		gridListSwitcher: function gridListSwitcher() {

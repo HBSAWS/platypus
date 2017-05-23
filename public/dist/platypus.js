@@ -12590,7 +12590,6 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 			Platypus.searchPills();
 			Platypus.infiniteLoading();
 			Platypus.feedback();
-			Platypus.renderCharts();
 			Platypus.gridListSwitcher();
 			Platypus.videoWidget();
 			Platypus.helpful();
@@ -12601,6 +12600,7 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 			Platypus.googleMaps();
 			Platypus.hideLoader();
 			Platypus.breadCrumbs();
+			Platypus.renderCharts();
 		},
 
 		detectBreakpoint: function detectBreakpoint() {
@@ -13604,6 +13604,7 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 								}
 							}
 						});
+						chart.flush();
 						break;
 					case 'gauge':
 						var chart = c3.generate({
@@ -13632,6 +13633,7 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 								height: 180
 							}
 						});
+						chart.flush();
 						break;
 					case 'pie':
 
@@ -13662,7 +13664,7 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 								title: "Example"
 							}
 						});
-
+						chart.flush();
 						break;
 					case 'bar':
 
@@ -13686,7 +13688,7 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 							},
 							bindto: target
 						});
-
+						chart.flush();
 						break;
 					case 'spline':
 
@@ -13705,7 +13707,7 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 							},
 							bindto: target
 						});
-
+						chart.flush();
 						break;
 
 					case 'scatter':
@@ -13741,11 +13743,14 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 							},
 							bindto: target
 						});
+						chart.flush();
 
 						break;
 					default:
 
 				}
+
+				$(this).css('visibility', 'visible');
 			});
 		},
 		gridListSwitcher: function gridListSwitcher() {

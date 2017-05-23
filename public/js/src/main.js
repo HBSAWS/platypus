@@ -36,7 +36,6 @@
 			Platypus.searchPills();
 			Platypus.infiniteLoading();
 			Platypus.feedback();
-			Platypus.renderCharts();
 			Platypus.gridListSwitcher();
 			Platypus.videoWidget();
 			Platypus.helpful();
@@ -47,6 +46,7 @@
 			Platypus.googleMaps();
 			Platypus.hideLoader();
 			Platypus.breadCrumbs();
+			Platypus.renderCharts(); 
 		},
 		
 		detectBreakpoint: function() {
@@ -1429,7 +1429,7 @@
 				let target = '#'+$(this).attr('id');
 
 				console.log(target);
-				
+								
 				switch( type ) {
 					case 'line':
 						var chart = c3.generate({
@@ -1449,30 +1449,32 @@
 						        },						      
 						    }
 						});
+						chart.flush();
 						break;
 					case 'gauge':
 						var chart = c3.generate({
-					    data: {
-					        columns: [
-					            ['data', $(this).data('gauge-value') ? $(this).data('gauge-value') : '0']
-					        ],
-					        type: 'gauge',
-					        onclick: function (d, i) { console.log("onclick", d, i); },
-					        onmouseover: function (d, i) { console.log("onmouseover", d, i); },
-					        onmouseout: function (d, i) { console.log("onmouseout", d, i); }
-					    },
-					    bindto: target,
-					    gauge: {},
-					    color: {
-					        pattern: ['#009688', '#009688', '#009688', '#009688'],
-					        threshold: {
-					            values: [30, 60, 90, 100]
-					        }
-					    },
-					    size: {
-					        height: 180
-					    }
-					});
+						    data: {
+						        columns: [
+						            ['data', $(this).data('gauge-value') ? $(this).data('gauge-value') : '0']
+						        ],
+						        type: 'gauge',
+						        onclick: function (d, i) { console.log("onclick", d, i); },
+						        onmouseover: function (d, i) { console.log("onmouseover", d, i); },
+						        onmouseout: function (d, i) { console.log("onmouseout", d, i); }
+						    },
+						    bindto: target,
+						    gauge: {},
+						    color: {
+						        pattern: ['#009688', '#009688', '#009688', '#009688'],
+						        threshold: {
+						            values: [30, 60, 90, 100]
+						        }
+						    },
+						    size: {
+						        height: 180
+						    }
+						});
+						chart.flush();
 						break;
 					case 'pie': 
 
@@ -1500,7 +1502,7 @@
 						        title: "Example"
 						    }
 						});
-
+						chart.flush();
 						break;
 					case 'bar':
 
@@ -1528,8 +1530,7 @@
 						    },
 						    bindto: target,
 						});
-
-
+						chart.flush();
 						break;
 					case 'spline':
 						
@@ -1551,7 +1552,7 @@
 						    },
 						    bindto: target,
 						});
-
+						chart.flush();
 						break;
 
 					case 'scatter':
@@ -1592,7 +1593,7 @@
 							},
 						    bindto: target,
 						});
-
+						chart.flush();
 
 
 						break;
@@ -1600,7 +1601,10 @@
 
 				}
 
-			})
+			
+			$(this).css('visibility', 'visible');
+
+			});
 
 		},
 		gridListSwitcher: function(){
