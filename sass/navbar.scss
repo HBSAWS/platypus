@@ -8,7 +8,9 @@ header {
             shape-rendering: auto;
         }
     }
-    
+    a.external:after {
+        display: none !important;
+    }
     .hamburger {
         padding: 11px 0 0 5px;
         display: inline-block;
