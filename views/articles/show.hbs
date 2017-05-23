@@ -2,7 +2,7 @@
 	
 	{{> breadcrumbs this }}
 	
-	<div class="page-header p-1">
+	<div class="page-header px-1 pt-1">
 		<div class="row">
 			<div class="col-sm-7">
 				<h1 class="text-truncated">{{title}}</h1>
@@ -19,7 +19,6 @@
 				</div>
 			</div>
 		</div>
-		<hr>
 	</div>
 
 	<div id="mainbody" class="p-1">
@@ -108,30 +107,8 @@
 					<!-- Tab panes -->
 					<div class="tab-content">
 						<div class="tab-pane active mt-2" id="xs" role="tabpanel">
-							
-							{{!-- <div class="row">
-				      			<div class="d-block mx-auto palette-bg-white"> --}}
-				      				
-				      				{{{markup}}}
-
-				      				{{#if js}}
-								  		{{{js}}}
-								  	{{/if}}	
-
-									{{!-- <div class="device-mockup" data-device="iphone6" data-orientation="portrait" data-color="white">
-									    <div class="device">
-										<div class="screen palette-bg-white">
-										    <iframe src="/articles/mock/{{slug}}/480" height="100%" width="100%" frameborder="0" scrolling="yes">You need an iframes capable browser to view this content.</iframe>
-										</div>
-										<div class="button">
-										    <!-- You can hook the "home button" to some JavaScript events or just remove it -->
-										</div>
-									    </div>
-									</div> --}}
-
-				      			{{!-- </div>
-							</div> --}}
-
+		      				{{{markup}}}
+		      				{{#if js}} {{{js}}} {{/if}}	
 						</div>
 						<div class="tab-pane  mt-2" id="sm" role="tabpanel">
 							
@@ -139,19 +116,23 @@
 							<div class="btn-group btn-group-justified" role="group" aria-label="Justified button group">
 						   		<a class="btn btn-secondary" href="/articles/mock/{{slug}}/480" target="_blank">
 						   			<i class="fa fa-fw fa-mobile fa-2x d-block mx-auto"></i>
-						   			<span class="hidden-sm-down"> XS - Mobile (&lt;576px)</span>
+						   			<span class="hidden-sm-down"> XS - Mobile<br/>(&lt;576px)</span>
 						   		</a>
 						   		<a class="btn btn-secondary" href="/articles/mock/{{slug}}/600" target="_blank">
 						   			<i class="fa fa-fw fa-tablet fa-2x d-block mx-auto"></i>
-						   			<span class="hidden-sm-down"> SM - Phablet (≥576px)</span>
+						   			<span class="hidden-sm-down"> SM - Phablet<br/>(≥576px)</span>
 						   		</a>
 						   		<a class="btn btn-secondary" href="/articles/mock/{{slug}}/768" target="_blank">
 						   			<i class="fa fa-fw fa-tablet fa-3x d-block mx-auto"></i>
-						   			<span class="hidden-sm-down"> MD - Tablet (≥768px)</span>
+						   			<span class="hidden-sm-down"> MD - Tablet<br/>(≥768px)</span>
 						   		</a>
 						   		<a class="btn btn-secondary" href="/articles/mock/{{slug}}/1024" target="_blank">
 						   			<i class="fa fa-fw fa-laptop fa-4x d-block mx-auto"></i>
-						   			<span class="hidden-sm-down"> LG - Laptop (≥992px)</span>
+						   			<span class="hidden-sm-down"> LG - Laptop<br/>(≥992px)</span>
+						   		</a>
+						   		<a class="btn btn-secondary" href="/articles/mock/{{slug}}/1200" target="_blank">
+						   			<i class="fa fa-fw fa-desktop fa-5x d-block mx-auto"></i>
+						   			<span class="hidden-sm-down"> XL - Laptop<br/>(≥1200px)</span>
 						   		</a>
 						 	</div>
 

@@ -13582,12 +13582,8 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 		renderCharts: function renderCharts() {
 
 			$('.chart').each(function () {
-
 				var type = $(this).data('type');
 				var target = '#' + $(this).attr('id');
-
-				console.log(target);
-
 				switch (type) {
 					case 'line':
 						var chart = c3.generate({
@@ -13744,13 +13740,9 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 							bindto: target
 						});
 						chart.flush();
-
 						break;
 					default:
-
 				}
-
-				$(this).css('visibility', 'visible');
 			});
 		},
 		gridListSwitcher: function gridListSwitcher() {

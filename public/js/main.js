@@ -1028,12 +1028,8 @@
 		renderCharts: function renderCharts() {
 
 			$('.chart').each(function () {
-
 				var type = $(this).data('type');
 				var target = '#' + $(this).attr('id');
-
-				console.log(target);
-
 				switch (type) {
 					case 'line':
 						var chart = c3.generate({
@@ -1190,13 +1186,9 @@
 							bindto: target
 						});
 						chart.flush();
-
 						break;
 					default:
-
 				}
-
-				$(this).css('visibility', 'visible');
 			});
 		},
 		gridListSwitcher: function gridListSwitcher() {
