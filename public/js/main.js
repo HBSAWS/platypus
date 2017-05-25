@@ -652,7 +652,7 @@
 		},
 
 		slimScroll: function slimScroll() {
-			$('.sidebar').slimScroll({
+			$('.sidebar, .modal-body').slimScroll({
 				height: '100%'
 			});
 		},
@@ -713,7 +713,15 @@
 				// Repurpose universal modal
 				$('#universal-modal').attr('id', modalID);
 
+				// Wire modal events
 				$(document).on('show.bs.modal', '#' + modalID, function (e) {
+					// Fix screen shifting issue
+					if ($(document).height() > $(window).height()) {
+						$('body').addClass("modal-open-noscroll");
+					} else {
+						$('body').removeClass("modal-open-noscroll");
+					}
+
 					if (opts.title) $('#' + modalID).find('.modal-title').html(opts.title);
 					if (opts.size) $('#' + modalID).find('.modal-dialog').addClass('modal-' + opts.size);
 					if (!opts.header) $('#' + modalID).find('.modal-header').hide();
@@ -723,13 +731,17 @@
 					});
 				});
 
+				// Display modal
+				$('#' + modalID).modal('show');
+
 				$(document).on('shown.bs.modal', '.modal', function (e) {
 					window.Platypus.wizard();
 					window.Platypus.inputMaxLength();
 				});
 
-				// Display modal
-				$('#' + modalID).modal('show');
+				$('.modal').on('hide.bs.modal', function () {
+					$('body').removeClass("modal-open-noscroll");
+				});
 
 				// Reset used modal to defaults
 				$(document).on('hidden.bs.modal', '#' + modalID, function (e) {
