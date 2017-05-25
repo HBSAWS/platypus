@@ -12668,6 +12668,7 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 			$('input[maxlength], textarea[maxlength]').maxlength({
 				alwaysShow: true,
 				// threshold: 10,
+				appendToParent: true,
 				warningClass: "tag tag-success",
 				limitReachedClass: "tag tag-danger"
 			});
@@ -13276,8 +13277,9 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 					});
 				});
 
-				$(document).on('shown.bs.modal', '#' + modalID, function (e) {
+				$(document).on('shown.bs.modal', '.modal', function (e) {
 					window.Platypus.wizard();
+					window.Platypus.inputMaxLength();
 				});
 
 				// Display modal

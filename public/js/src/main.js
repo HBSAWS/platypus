@@ -100,6 +100,7 @@
 			$('input[maxlength], textarea[maxlength]').maxlength({
 				alwaysShow: true,
 				// threshold: 10,
+				appendToParent: true,
 				warningClass: "tag tag-success",
 				limitReachedClass: "tag tag-danger"
 			});
@@ -1082,8 +1083,9 @@
 					})
 				});
 
-				$(document).on('shown.bs.modal', ('#'+modalID), function(e) {  
+				$(document).on('shown.bs.modal', '.modal', function(e) {  
 					window.Platypus.wizard();
+					window.Platypus.inputMaxLength();
 				});
 
 				// Display modal
