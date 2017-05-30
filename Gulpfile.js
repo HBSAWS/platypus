@@ -102,7 +102,7 @@ gulp.task('js', function() {
         .pipe(gulp.dest(opts.dist))
         .pipe(rename('platypus.min.js'))
         .pipe(uglify({
-            preserveComments: function(node, comment){ return false;}
+            preserveComments: false
         }))
         .pipe(banner(opts.banner, {date: opts.dt}))
         .pipe(gulp.dest(opts.dist))

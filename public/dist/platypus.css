@@ -6377,17 +6377,13 @@ strong, .font-weight-bold {
   .typeahead__list > li:hover {
     background-color: transparent; }
 
-.modal-body {
+.modal-body.scrollable {
   max-height: calc(100vh - 210px);
   overflow-y: auto; }
 
-body.modal-open-noscroll {
-  padding-right: 0 !important;
-  overflow: hidden; }
-
-.modal-open-noscroll .navbar-default,
-.modal-open .navbar-default {
-  padding-right: 0 !important; }
+.modal-open[style] {
+  padding-right: 0px !important;
+  overflow: auto; }
 
 .fuelux .wizard {
   background-color: white;

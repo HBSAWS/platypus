@@ -13269,13 +13269,6 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 
 				// Wire modal events
 				$(document).on('show.bs.modal', '#' + modalID, function (e) {
-					// Fix screen shifting issue
-					if ($(document).height() > $(window).height()) {
-						$('body').addClass("modal-open-noscroll");
-					} else {
-						$('body').removeClass("modal-open-noscroll");
-					}
-
 					if (opts.title) $('#' + modalID).find('.modal-title').html(opts.title);
 					if (opts.size) $('#' + modalID).find('.modal-dialog').addClass('modal-' + opts.size);
 					if (!opts.header) $('#' + modalID).find('.modal-header').hide();
@@ -13291,10 +13284,6 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 				$(document).on('shown.bs.modal', '.modal', function (e) {
 					window.Platypus.wizard();
 					window.Platypus.inputMaxLength();
-				});
-
-				$('.modal').on('hide.bs.modal', function () {
-					$('body').removeClass("modal-open-noscroll");
 				});
 
 				// Reset used modal to defaults

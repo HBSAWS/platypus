@@ -1,4 +1,4 @@
-.modal-body {
+.modal-body.scrollable {
     max-height: calc(100vh - 210px);
     overflow-y: auto;
 }
@@ -6,11 +6,7 @@
 
 // Fixes screen shifting 
 // https://stackoverflow.com/questions/19960162/bootstrap-3-modal-fires-and-causes-page-to-shift-to-the-left-momentarily-brows
-body.modal-open-noscroll {
-  padding-right: 0!important;
-  overflow: hidden;
-}
-.modal-open-noscroll .navbar-default, 
-.modal-open .navbar-default {
-  padding-right: 0!important;
+.modal-open[style] {
+	padding-right: 0px !important;
+	overflow: auto;
 }
