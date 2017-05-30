@@ -12,6 +12,10 @@ module.exports = {
         res.locals.versions = ['0.1', '0.2'];
         res.locals.current = "0.2";
         res.locals.ver_selected = (req.session.ver_selected && req.session.ver_selected !== '') ? req.session.ver_selected : res.locals.current;
+        res.locals.browsers = [
+            "Chrome", "Internet Explorer", "Firefox", "Opera", "Safari",
+            "Safari Mobile", "Android Mobile", "Windows Mobile"
+        ]
 		return next();
 	},
 	getNav: function(req, res, next) {

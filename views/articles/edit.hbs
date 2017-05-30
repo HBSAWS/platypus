@@ -153,8 +153,23 @@
 					<label class="hidden-md-up d-block" for="resources">Resources</label>
 					<textarea name="resources" class="form-control summernote">{{resources}}</textarea>
 				</div>
-			</div><!--/.row-->	 	
-			
+			</div><!--/.row-->	 
+
+
+			<div class="row form-group">
+				<div class="col-md-4 hidden-sm-down text-xs-right">
+					<label for="tested_on">Tested On</label>
+				</div>
+				<div class="col-md-8">
+					<label class="hidden-md-up d-block" for="tested_on">Tested On</label>
+					<select name="tested_on" class="select2 form-control" data-placeholder="Select one" data-allow-clear="true" multiple>
+					    {{#each ../browsers}}
+					    	<option value="{{this}}" {{#inArray ../browsers this}}selected{{/inArray}}>{{this}}</option>
+					    {{/each}}
+					</select>
+				</div>
+			</div><!--/.row-->	
+		
 		  <div class="row form-group hidden-sm-down">
 		  	<div class="col-md-4 hidden-sm-down text-xs-right">
 		  	</div>

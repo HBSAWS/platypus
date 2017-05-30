@@ -62,16 +62,55 @@
 
 			    			<h6 class="mb-1">Tested on</h6>
 			    			<div class="row mb-1 text-xs-center">
-			    				<div class="col-xs-3"><i class="fa fa-2x fa-chrome text-primary" data-toggle="tooltip" title="9+"></i></div>
-			    				<div class="col-xs-3"><i class="fa fa-2x fa-safari text-muted" data-toggle="tooltip" title="Not tested"></i></div>
-			    				<div class="col-xs-3"><i class="fa fa-2x fa-firefox text-muted" data-toggle="tooltip" title="Not tested"></i></div>
-			    				<div class="col-xs-3"><i class="fa fa-2x fa-internet-explorer text-muted" data-toggle="tooltip" title="Not tested"></i></div>
+			    				{{#inArray tested_on "Chrome"}}
+			    					<div class="col-xs-3"><i class="fa fa-2x fa-chrome text-success" data-toggle="tooltip" title="Passing"></i></div>
+			    				{{else}}
+			    					<div class="col-xs-3"><i class="fa fa-2x fa-chrome text-muted" data-toggle="tooltip" title="Not tested"></i></div>
+								{{/inArray}}
+
+								{{#inArray tested_on "Safari"}}
+									<div class="col-xs-3"><i class="fa fa-2x fa-safari text-success" data-toggle="tooltip" title="Passing"></i></div>
+								{{else}}
+									<div class="col-xs-3"><i class="fa fa-2x fa-safari text-muted" data-toggle="tooltip" title="Not tested"></i></div>
+								{{/inArray}}
+
+								{{#inArray tested_on "Firefox"}}
+									<div class="col-xs-3"><i class="fa fa-2x fa-firefox text-success" data-toggle="tooltip" title="Passing"></i></div>
+								{{else}}
+									<div class="col-xs-3"><i class="fa fa-2x fa-firefox text-muted" data-toggle="tooltip" title="Not tested"></i></div>
+								{{/inArray}}
+
+								{{#inArray tested_on "Internet Explorer"}}
+									<div class="col-xs-3"><i class="fa fa-2x fa-internet-explorer text-success" data-toggle="tooltip" title="Passing"></i></div>
+								{{else}}
+									<div class="col-xs-3"><i class="fa fa-2x fa-internet-explorer text-muted" data-toggle="tooltip" title="Not tested"></i></div>
+								{{/inArray}}			    				
 			    			</div>
 			    			<div class="row text-xs-center">
-			    				<div class="col-xs-3"><i class="fa fa-2x fa-opera text-muted" data-toggle="tooltip" title="Not tested"></i></div>
-			    				<div class="col-xs-3"><i class="fa fa-2x fa-android text-muted" data-toggle="tooltip" title="Not tested"></i></div>
-			    				<div class="col-xs-3"><i class="fa fa-2x fa-apple text-muted" data-toggle="tooltip" title="Not tested"></i></div>
-			    				<div class="col-xs-3"><i class="fa fa-2x fa-windows text-muted" data-toggle="tooltip" title="Not tested"></i></div>
+
+			    				{{#inArray tested_on "Safari Mobile"}}
+			    					<div class="col-xs-3"><i class="fa fa-2x fa-opera text-success" data-toggle="tooltip" title="Passing"></i></div>
+			    				{{else}}
+			    					<div class="col-xs-3"><i class="fa fa-2x fa-opera text-muted" data-toggle="tooltip" title="Not tested"></i></div>
+								{{/inArray}}
+
+			    				{{#inArray tested_on "Android Mobile"}}
+			    					<div class="col-xs-3"><i class="fa fa-2x fa-android text-success" data-toggle="tooltip" title="Passing"></i></div>
+								{{else}}
+									<div class="col-xs-3"><i class="fa fa-2x fa-android text-muted" data-toggle="tooltip" title="Not tested"></i></div>
+								{{/inArray}}
+
+			    				{{#inArray tested_on "Safari Mobile"}}
+			    					<div class="col-xs-3"><i class="fa fa-2x fa-apple text-success" data-toggle="tooltip" title="Passing"></i></div>
+								{{else}}
+									<div class="col-xs-3"><i class="fa fa-2x fa-apple text-muted" data-toggle="tooltip" title="Not tested"></i></div>
+								{{/inArray}}
+
+			    				{{#inArray tested_on "Windows Mobile"}}
+			    					<div class="col-xs-3"><i class="fa fa-2x fa-windows text-success" data-toggle="tooltip" title="Passing"></i></div>
+			    				{{else}}
+			    					<div class="col-xs-3"><i class="fa fa-2x fa-windows text-muted" data-toggle="tooltip" title="Not tested"></i></div>
+			    				{{/inArray}}
 			    			</div>
 			    		</div>
 			    	</div>

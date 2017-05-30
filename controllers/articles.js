@@ -162,6 +162,7 @@ module.exports = {
             resources: req.body.resources,            
             js: req.body.js,
             fiddle: req.body.fiddle,
+            tested_on: req.body.tested_on,
             published: req.body.published ? true : false
         };
 
