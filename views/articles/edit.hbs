@@ -162,9 +162,9 @@
 				</div>
 				<div class="col-md-8">
 					<label class="hidden-md-up d-block" for="tested_on">Tested On</label>
-					<select name="tested_on" class="select2 form-control" data-placeholder="Select one" data-allow-clear="true" multiple>
+					<select name="tested_on" class="select2 form-control" data-placeholder="Select" data-allow-clear="true" multiple>
 					    {{#each ../browsers}}
-					    	<option value="{{this}}" {{#inArray ../browsers this}}selected{{/inArray}}>{{this}}</option>
+					    	<option value="{{.}}" {{#inArray ../tested_on this}} selected {{ else }} {{/inArray}}>{{.}}</option>
 					    {{/each}}
 					</select>
 				</div>
