@@ -1253,11 +1253,12 @@
 					contentType: 'application/json',
 					url: '/articles/score/' + id,
 					success: function success(data) {
-						toastr.success(val);
+						toastr.success(data.score);
 						$('.helpful-widget').hide();
 					},
 					error: function error(request, status, _error2) {
-						toastr.error('Cannot update score.');
+						console.log(_error2);
+						toastr.error('Cannot update score. ');
 					}
 				});
 			});

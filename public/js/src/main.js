@@ -1660,11 +1660,13 @@
 			        contentType: 'application/json',
                     url: '/articles/score/'+id,						
                     success: function(data) {
-                        toastr.success(val);
+                        toastr.success(data.score);
                         $('.helpful-widget').hide();
                     },
                     error: function (request, status, error) {
-				        toastr.error('Cannot update score.');
+				        console.log(error);
+				        toastr.error('Cannot update score. ');
+
 				    }
                 });
 

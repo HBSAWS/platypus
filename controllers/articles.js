@@ -192,13 +192,12 @@ module.exports = {
 
         console.log(req.body.val);
 
-        let val = req.body.val == '+1' ? +1 : -1;
-
         Article.findOneAndUpdate({
             _id: req.params.id
-        }, {$inc: {score: val}}, function(err, article) {
+        }, {$inc: {score: req.body.val} }, {new : true}, function(err, article) {
             if (err) return next(err);
-            res.status(200).json(article.score);
+            console.log(article);
+            res.status(200).json(article);
         });
     },
 
