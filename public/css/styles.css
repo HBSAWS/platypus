@@ -4131,7 +4131,6 @@ a.palette-text-black-darker:focus {
 
 /* Event Styling */
 .event {
-  width: 100px;
   text-align: center;
   text-transform: uppercase !important; }
   .event > .month {
