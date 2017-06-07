@@ -12555,6 +12555,47 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 'use strict';
 
 ;(function ($) {
+
+	var load = function () {
+		function _load(tag) {
+			return function (url) {
+				return new Promise(function (resolve, reject) {
+					var element = document.createElement(tag);
+					var parent = 'body';
+					var attr = 'src';
+
+					element.onload = function () {
+						console.log("Loaded " + url + " successfully.");
+						resolve(url);
+					};
+					element.onerror = function () {
+						console.log("Cannot load " + url);
+						reject(url);
+					};
+
+					switch (tag) {
+						case 'script':
+							element.async = true;
+							break;
+						case 'link':
+							element.type = 'text/css';
+							element.rel = 'stylesheet';
+							attr = 'href';
+							parent = 'head';
+					}
+
+					element[attr] = url;
+					document[parent].appendChild(element);
+				});
+			};
+		}
+		return {
+			css: _load('link'),
+			js: _load('script'),
+			img: _load('img')
+		};
+	}();
+
 	var Platypus = {
 		ondomready: function ondomready() {
 			Platypus.detectBreakpoint();
@@ -12839,11 +12880,71 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 		},
 		dataTables: function dataTables() {
 
+			function initTable($tbl, bButtons) {
+
+				var btnMarkup = bButtons ? "<'row'<'col-xs-4 text-xs-left'B><'col-xs-6 text-xs-left'f><'col-xs-2 text-xs-right'l>><'row'<'col-xs-12'tr>><'row'<'col-sm-6 col-xs-12 small'i><'col-sm-6 col-xs-12'p>>" : "<'row'<'col-xs-10 text-xs-left'f><'col-xs-2 text-xs-right'l>><'row'<'col-xs-12'tr>><'row'<'col-sm-6 col-xs-12 small'i><'col-sm-6 col-xs-12'p>>";
+
+				$tbl.DataTable({
+					responsive: {
+						details: {
+							type: 'column',
+							target: -1
+						}
+					},
+					columnDefs: [{ className: 'control', orderable: false, targets: -1 }],
+					dom: btnMarkup,
+					"oLanguage": {
+						sSearch: "",
+						sSearchPlaceholder: "Filter records",
+						sLengthMenu: "_MENU_"
+					},
+					// deferRender: true,
+					buttons: [{
+						extend: 'copy',
+						classname: 'btn',
+						text: '<i class="fa fa-files-o"></i>',
+						titleAttr: 'Copy to Clipboard'
+					}, {
+						extend: 'csv',
+						classname: 'btn',
+						text: '<i class="fa fa-files-o"></i>',
+						titleAttr: 'Download as .CSV'
+					}, {
+						extend: 'excel',
+						classname: 'btn',
+						text: '<i class="fa fa-file-text-o"></i>',
+						titleAttr: 'Download as Excel'
+					}, {
+						extend: 'pdf',
+						classname: 'btn',
+						text: '<i class="fa fa-file-pdf-o"></i>',
+						titleAttr: 'Download as .PDF'
+					}, {
+						extend: 'print',
+						classname: 'btn',
+						text: '<i class="fa fa-print"></i>',
+						titleAttr: 'Print'
+					}, {
+						extend: 'colvis',
+						classname: 'btn',
+						text: '<i class="fa fa-eye"></i>',
+						titleAttr: 'Hide/Show Columns'
+					}]
+				});
+			}
+
 			$('.datatable').each(function () {
 
 				var $tbl = $(this);
 				var src = $tbl.data('src') && $tbl.data('src') !== '' ? $tbl.data('src') : false;
 				var cols = $tbl.data('cols') && $tbl.data('cols') !== '' ? $tbl.data('cols').split(',') : false;
+				var buttons = $tbl.data('buttons') && $tbl.data('buttons') !== '' ? $tbl.data('buttons').split(',') : false;
+				var p = void 0;
+
+				if (buttons) {
+					console.log("Buttons attribute found, loading remote assets...");
+					p = Promise.all([load.css("https://cdn.datatables.net/buttons/1.3.1/css/buttons.dataTables.min.css"), load.js("https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js"), load.js("https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"), load.js("https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/pdfmake.min.js"), load.js("https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/vfs_fonts.js"), load.js("https://cdn.datatables.net/buttons/1.3.1/js/buttons.html5.min.js"), load.js("https://cdn.datatables.net/buttons/1.3.1/js/buttons.print.min.js"), load.js("https://cdn.datatables.net/buttons/1.3.1/js/buttons.colVis.min.js")]);
+				}
 
 				if (src && cols) {
 
@@ -12855,33 +12956,22 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 							// }
 
 							data.forEach(function (item) {
-								//console.log(item);
 								$tbl.find('tbody').append("<tr></tr>");
-
 								cols.forEach(function (col) {
 									$tbl.find('tbody tr:last-child').append("<td>" + item[col] + "</td>");
 								});
-
 								$tbl.find('tbody tr:last-child').append("<td></td>");
 							});
 
-							// Initialize datatables with remote data
-							$tbl.DataTable({
-								responsive: {
-									details: {
-										type: 'column',
-										target: -1
-									}
-								},
-								columnDefs: [{ className: 'control', orderable: false, targets: -1 }],
-								dom: "<'row'<'col-xs-10 text-xs-left'f><'col-xs-2 text-xs-right'l>>" + "<'row'<'col-xs-12'tr>>" + "<'row'<'col-sm-6 col-xs-12 small'i><'col-sm-6 col-xs-12'p>>",
-								"oLanguage": {
-									sSearch: "",
-									sSearchPlaceholder: "Filter records",
-									sLengthMenu: "_MENU_"
-								},
-								deferRender: true
-							});
+							if (buttons) {
+								p.then(function () {
+									initTable($tbl, true);
+								}).catch(function () {
+									console.log('Cannot load DataTables button assets');
+								});
+							} else {
+								initTable($tbl, false);
+							}
 						},
 						error: function error(request, status, error) {
 							console.log(request, status, error);
@@ -12891,22 +12981,7 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 				} else {
 
 					// Initialize normal datatables
-					$tbl.DataTable({
-						responsive: {
-							details: {
-								type: 'column',
-								target: -1
-							}
-						},
-						columnDefs: [{ className: 'control', orderable: false, targets: -1 }],
-						dom: "<'row'<'col-xs-10 text-xs-left'f><'col-xs-2 text-xs-right'l>>" + "<'row'<'col-xs-12'tr>>" + "<'row'<'col-sm-6 col-xs-12 small'i><'col-sm-6 col-xs-12'p>>",
-						"oLanguage": {
-							sSearch: "",
-							sSearchPlaceholder: "Filter records",
-							sLengthMenu: "_MENU_"
-						},
-						deferRender: true
-					});
+					initTable($tbl, true);
 				}
 			});
 		},
