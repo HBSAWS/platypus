@@ -12880,9 +12880,45 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 		},
 		dataTables: function dataTables() {
 
-			function initTable($tbl, bButtons) {
+			function initTable($tbl, buttons) {
 
-				var btnMarkup = bButtons ? "<'row'<'col-xs-4 text-xs-left'B><'col-xs-6 text-xs-left'f><'col-xs-2 text-xs-right'l>><'row'<'col-xs-12'tr>><'row'<'col-sm-6 col-xs-12 small'i><'col-sm-6 col-xs-12'p>>" : "<'row'<'col-xs-10 text-xs-left'f><'col-xs-2 text-xs-right'l>><'row'<'col-xs-12'tr>><'row'<'col-sm-6 col-xs-12 small'i><'col-sm-6 col-xs-12'p>>";
+				var btnMarkup = buttons.length > 0 ? "<'row'<'col-xs-4 text-xs-left'B><'col-xs-6 text-xs-left'f><'col-xs-2 text-xs-right'l>><'row'<'col-xs-12'tr>><'row'<'col-sm-6 col-xs-12 small'i><'col-sm-6 col-xs-12'p>>" : "<'row'<'col-xs-10 text-xs-left'f><'col-xs-2 text-xs-right'l>><'row'<'col-xs-12'tr>><'row'<'col-sm-6 col-xs-12 small'i><'col-sm-6 col-xs-12'p>>";
+
+				if (buttons.length > 0) {
+					$.extend(true, $.fn.dataTable.Buttons.defaults, {
+						buttons: [{
+							extend: 'copy',
+							classname: 'btn',
+							text: '<i class="fa fa-files-o"></i>',
+							titleAttr: 'Copy to Clipboard'
+						}, {
+							extend: 'csv',
+							classname: 'btn',
+							text: '<i class="fa fa-files-o"></i>',
+							titleAttr: 'Download as .CSV'
+						}, {
+							extend: 'excel',
+							classname: 'btn',
+							text: '<i class="fa fa-file-text-o"></i>',
+							titleAttr: 'Download as Excel'
+						}, {
+							extend: 'pdf',
+							classname: 'btn',
+							text: '<i class="fa fa-file-pdf-o"></i>',
+							titleAttr: 'Download as .PDF'
+						}, {
+							extend: 'print',
+							classname: 'btn',
+							text: '<i class="fa fa-print"></i>',
+							titleAttr: 'Print'
+						}, {
+							extend: 'colvis',
+							classname: 'btn',
+							text: '<i class="fa fa-eye"></i>',
+							titleAttr: 'Hide/Show Columns'
+						}]
+					});
+				}
 
 				$tbl.DataTable({
 					responsive: {
@@ -12897,39 +12933,7 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 						sSearch: "",
 						sSearchPlaceholder: "Filter records",
 						sLengthMenu: "_MENU_"
-					},
-					// deferRender: true,
-					buttons: [{
-						extend: 'copy',
-						classname: 'btn',
-						text: '<i class="fa fa-files-o"></i>',
-						titleAttr: 'Copy to Clipboard'
-					}, {
-						extend: 'csv',
-						classname: 'btn',
-						text: '<i class="fa fa-files-o"></i>',
-						titleAttr: 'Download as .CSV'
-					}, {
-						extend: 'excel',
-						classname: 'btn',
-						text: '<i class="fa fa-file-text-o"></i>',
-						titleAttr: 'Download as Excel'
-					}, {
-						extend: 'pdf',
-						classname: 'btn',
-						text: '<i class="fa fa-file-pdf-o"></i>',
-						titleAttr: 'Download as .PDF'
-					}, {
-						extend: 'print',
-						classname: 'btn',
-						text: '<i class="fa fa-print"></i>',
-						titleAttr: 'Print'
-					}, {
-						extend: 'colvis',
-						classname: 'btn',
-						text: '<i class="fa fa-eye"></i>',
-						titleAttr: 'Hide/Show Columns'
-					}]
+					}
 				});
 			}
 
@@ -12942,18 +12946,14 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 				var p = void 0;
 
 				if (buttons) {
-					console.log("Buttons attribute found, loading remote assets...");
-					p = Promise.all([load.css("https://cdn.datatables.net/buttons/1.3.1/css/buttons.dataTables.min.css"), load.js("https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js"), load.js("https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"), load.js("https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/pdfmake.min.js"), load.js("https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/vfs_fonts.js"), load.js("https://cdn.datatables.net/buttons/1.3.1/js/buttons.html5.min.js"), load.js("https://cdn.datatables.net/buttons/1.3.1/js/buttons.print.min.js"), load.js("https://cdn.datatables.net/buttons/1.3.1/js/buttons.colVis.min.js")]);
+					console.log("DataTable 'data-buttons' attribute found, loading remote dependecies...");
+					p = Promise.all([load.css("https://cdn.datatables.net/buttons/1.3.1/css/buttons.dataTables.min.css"), load.js("https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js"), load.js("https://cdn.datatables.net/buttons/1.3.1/js/buttons.bootstrap.min.js"), load.js("https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"), load.js("https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/pdfmake.min.js"), load.js("https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/vfs_fonts.js"), load.js("https://cdn.datatables.net/buttons/1.3.1/js/buttons.html5.min.js"), load.js("https://cdn.datatables.net/buttons/1.3.1/js/buttons.print.min.js"), load.js("https://cdn.datatables.net/buttons/1.3.1/js/buttons.colVis.min.js")]);
 				}
 
 				if (src && cols) {
 
 					$.ajax(src, {
 						success: function success(data) {
-
-							// if ( $.fn.DataTable.isDataTable('.datatable') ) {
-							//   $('.datatable').DataTable().destroy();
-							// }
 
 							data.forEach(function (item) {
 								$tbl.find('tbody').append("<tr></tr>");
@@ -12965,12 +12965,12 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 
 							if (buttons) {
 								p.then(function () {
-									initTable($tbl, true);
+									initTable($tbl, buttons);
 								}).catch(function () {
-									console.log('Cannot load DataTables button assets');
+									console.log('Cannot load DataTables button remote dependecies');
 								});
 							} else {
-								initTable($tbl, false);
+								initTable($tbl, buttons);
 							}
 						},
 						error: function error(request, status, error) {
@@ -12981,7 +12981,7 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 				} else {
 
 					// Initialize normal datatables
-					initTable($tbl, true);
+					initTable($tbl, buttons);
 				}
 			});
 		},
