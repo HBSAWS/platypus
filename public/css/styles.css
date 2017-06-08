@@ -4607,6 +4607,9 @@ table.datatable tbody tr td {
       .dataTable.collapsed tr.child td ul li span.dtr-data {
         width: 75%; }
 
+.dt-button-collection a:last-child {
+  display: none !important; }
+
 /* Tabs */
 .nav-tabs a.nav-link {
   border-top: 4px solid transparent;

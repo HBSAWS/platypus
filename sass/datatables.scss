@@ -79,3 +79,6 @@ table.datatable {
     }
   }
 }
+
+// Hides last col (responsive placeholder) in ColVis plugin
+.dt-button-collection a:last-child {display: none !important;}
