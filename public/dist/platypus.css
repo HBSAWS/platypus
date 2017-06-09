@@ -6162,6 +6162,14 @@ table.datatable tbody tr td {
 .dt-button-collection a:last-child {
   display: none !important; }
 
+.dt-buttons .dt-button {
+  border-radius: 0;
+  background: none;
+  background-color: transparent; }
+  .dt-buttons .dt-button:hover {
+    background: none !important;
+    background-color: transparent !important; }
+
 /* Tabs */
 .nav-tabs a.nav-link {
   border-top: 4px solid transparent;

@@ -433,7 +433,12 @@
 
 				if (buttons) {
 					console.log("DataTable 'data-buttons' attribute found, loading remote dependecies...");
-					p = Promise.all([load.js("/vendor/pdfmake/build/pdfmake.min.js"), load.js("/vendor/pdfmake/build/vfs_fonts.js"), load.css("https://cdn.datatables.net/buttons/1.3.1/css/buttons.dataTables.min.css"), load.js("https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js"), load.js("https://cdn.datatables.net/buttons/1.3.1/js/buttons.bootstrap.min.js"), load.js("https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"), load.js("https://cdn.datatables.net/buttons/1.3.1/js/buttons.html5.min.js"), load.js("https://cdn.datatables.net/buttons/1.3.1/js/buttons.print.min.js"), load.js("https://cdn.datatables.net/buttons/1.3.1/js/buttons.colVis.min.js")]);
+					p = Promise.all([
+					// load.js("/vendor/pdfmake/build/pdfmake.min.js"),
+					// load.js("/vendor/pdfmake/build/vfs_fonts.js"),
+					load.css("https://cdn.datatables.net/buttons/1.3.1/css/buttons.dataTables.min.css"), load.js("https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js"),
+					// load.js("https://cdn.datatables.net/buttons/1.3.1/js/buttons.bootstrap.min.js"), 
+					load.js("https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"), load.js("https://cdn.datatables.net/buttons/1.3.1/js/buttons.html5.min.js"), load.js("https://cdn.datatables.net/buttons/1.3.1/js/buttons.print.min.js"), load.js("https://cdn.datatables.net/buttons/1.3.1/js/buttons.colVis.min.js")]);
 				}
 
 				if (src && cols) {

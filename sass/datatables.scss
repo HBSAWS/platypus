@@ -82,3 +82,14 @@ table.datatable {
 
 // Hides last col (responsive placeholder) in ColVis plugin
 .dt-button-collection a:last-child {display: none !important;}
+.dt-buttons .dt-button {
+  border-radius: 0; 
+  background: none; 
+  background-color: transparent;
+  &:hover {
+    background: none !important; 
+    background-color: transparent !important; 
+  }
+}
+
+
