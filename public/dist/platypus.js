@@ -12883,55 +12883,80 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 			function initTable($tbl, buttons) {
 
 				var btnMarkup = buttons.length > 0 ? "<'row'<'col-xs-4 text-xs-left'B><'col-xs-6 text-xs-left'f><'col-xs-2 text-xs-right'l>><'row'<'col-xs-12'tr>><'row'<'col-sm-6 col-xs-12 small'i><'col-sm-6 col-xs-12'p>>" : "<'row'<'col-xs-10 text-xs-left'f><'col-xs-2 text-xs-right'l>><'row'<'col-xs-12'tr>><'row'<'col-sm-6 col-xs-12 small'i><'col-sm-6 col-xs-12'p>>";
+				var aoBttns = [];
 
 				if (buttons.length > 0) {
 
 					window.pdfMake.fonts = {
-						alef: {
-							normal: 'Alef-Bold.ttf',
-							bold: 'Alef-Bold.ttf',
-							italics: 'Alef-Bold.ttf"',
-							bolditalics: 'Alef-Bold.ttf'
+						Roboto: {
+							normal: 'Roboto-Regular.ttf',
+							bold: 'Roboto-Medium.ttf',
+							italics: 'Roboto-Italic.ttf',
+							bolditalics: 'Roboto-MediumItalic.ttf'
 						}
 					};
 
+					for (i = 0; i <= buttons.length; i++) {
+						switch (buttons[i]) {
+							case 'copy':
+								aoBttns.push({
+									extend: 'copy',
+									classname: 'btn',
+									text: '<i class="fa fa-files-o"></i>',
+									titleAttr: 'Copy to Clipboard'
+								});
+								break;
+
+							case 'csv':
+								aoBttns.push({
+									extend: 'csv',
+									classname: 'btn',
+									text: '<i class="fa fa-files-o"></i>',
+									titleAttr: 'Download as .CSV'
+								});
+								break;
+
+							case 'excel':
+								aoBttns.push({
+									extend: 'excel',
+									classname: 'btn',
+									text: '<i class="fa fa-file-text-o"></i>',
+									titleAttr: 'Download as Excel'
+								});
+								break;
+
+							case 'pdf':
+								aoBttns.push({
+									extend: 'pdf',
+									classname: 'btn',
+									text: '<i class="fa fa-file-pdf-o"></i>',
+									titleAttr: 'Download as .PDF'
+								});
+								break;
+
+							case 'print':
+								aoBttns.push({
+									extend: 'print',
+									classname: 'btn',
+									text: '<i class="fa fa-print"></i>',
+									titleAttr: 'Print'
+								});
+								break;
+
+							case 'colvis':
+								aoBttns.push({
+									extend: 'colvis',
+									classname: 'btn',
+									text: '<i class="fa fa-eye"></i>',
+									titleAttr: 'Hide/Show Columns'
+								});
+								break;
+
+						}
+					}
+
 					$.extend(true, $.fn.dataTable.Buttons.defaults, {
-						buttons: [{
-							extend: 'copy',
-							classname: 'btn',
-							text: '<i class="fa fa-files-o"></i>',
-							titleAttr: 'Copy to Clipboard'
-						}, {
-							extend: 'csv',
-							classname: 'btn',
-							text: '<i class="fa fa-files-o"></i>',
-							titleAttr: 'Download as .CSV'
-						}, {
-							extend: 'excel',
-							classname: 'btn',
-							text: '<i class="fa fa-file-text-o"></i>',
-							titleAttr: 'Download as Excel'
-						}, {
-							extend: 'pdf',
-							classname: 'btn',
-							text: '<i class="fa fa-file-pdf-o"></i>',
-							titleAttr: 'Download as .PDF',
-							customize: function customize(doc) {
-								doc.defaultStyle = {
-									font: 'alef'
-								};
-							}
-						}, {
-							extend: 'print',
-							classname: 'btn',
-							text: '<i class="fa fa-print"></i>',
-							titleAttr: 'Print'
-						}, {
-							extend: 'colvis',
-							classname: 'btn',
-							text: '<i class="fa fa-eye"></i>',
-							titleAttr: 'Hide/Show Columns'
-						}]
+						buttons: aoBttns
 					});
 				}
 
@@ -12962,7 +12987,7 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 
 				if (buttons) {
 					console.log("DataTable 'data-buttons' attribute found, loading remote dependecies...");
-					p = Promise.all([load.js("https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/pdfmake.min.js"), load.js("https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/vfs_fonts.js"), load.css("https://cdn.datatables.net/buttons/1.3.1/css/buttons.dataTables.min.css"), load.js("https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js"), load.js("https://cdn.datatables.net/buttons/1.3.1/js/buttons.bootstrap.min.js"), load.js("https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"), load.js("https://cdn.datatables.net/buttons/1.3.1/js/buttons.html5.min.js"), load.js("https://cdn.datatables.net/buttons/1.3.1/js/buttons.print.min.js"), load.js("https://cdn.datatables.net/buttons/1.3.1/js/buttons.colVis.min.js")]);
+					p = Promise.all([load.js("/vendor/pdfmake/build/pdfmake.min.js"), load.js("/vendor/pdfmake/build/vfs_fonts.js"), load.css("https://cdn.datatables.net/buttons/1.3.1/css/buttons.dataTables.min.css"), load.js("https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js"), load.js("https://cdn.datatables.net/buttons/1.3.1/js/buttons.bootstrap.min.js"), load.js("https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"), load.js("https://cdn.datatables.net/buttons/1.3.1/js/buttons.html5.min.js"), load.js("https://cdn.datatables.net/buttons/1.3.1/js/buttons.print.min.js"), load.js("https://cdn.datatables.net/buttons/1.3.1/js/buttons.colVis.min.js")]);
 				}
 
 				if (src && cols) {
