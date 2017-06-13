@@ -12896,60 +12896,85 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 						}
 					};
 
+					$tbl.on('init.dt', function (e, settings, json) {
+						var api = new $.fn.dataTable.Api(settings);
+						if (api.buttons().length > 0) {
+
+							$("a", api.buttons().container(0)).each(function (index) {
+								$(this).attr('data-toggle', 'tooltip');
+								$(this).attr('data-placement', 'top');
+							});
+
+							$('[data-toggle="tooltip"]').tooltip();
+						}
+					});
+
 					for (i = 0; i <= buttons.length; i++) {
 						switch (buttons[i]) {
 							case 'copy':
-								aoBttns.push({
-									extend: 'copy',
-									classname: 'btn',
-									text: '<i class="fa fa-files-o"></i>',
-									titleAttr: 'Copy to Clipboard'
-								});
+								if (buttons.indexOf('copy') !== -1) {
+									aoBttns.push({
+										extend: 'copy',
+										classname: 'btn',
+										text: '<i class="fa fa-files-o"></i>',
+										titleAttr: 'Copy to Clipboard'
+									});
+								}
 								break;
 
 							case 'csv':
-								aoBttns.push({
-									extend: 'csv',
-									classname: 'btn',
-									text: '<i class="fa fa-files-o"></i>',
-									titleAttr: 'Download as .CSV'
-								});
+								if (buttons.indexOf('csv') !== -1) {
+									aoBttns.push({
+										extend: 'csv',
+										classname: 'btn',
+										text: '<i class="fa fa-files-o"></i>',
+										titleAttr: 'Download as .CSV'
+									});
+								}
 								break;
 
 							case 'excel':
-								aoBttns.push({
-									extend: 'excel',
-									classname: 'btn',
-									text: '<i class="fa fa-file-text-o"></i>',
-									titleAttr: 'Download as Excel'
-								});
+								if (buttons.indexOf('excel') !== -1) {
+									aoBttns.push({
+										extend: 'excel',
+										classname: 'btn',
+										text: '<i class="fa fa-file-text-o"></i>',
+										titleAttr: 'Download as Excel'
+									});
+								}
 								break;
 
 							case 'pdf':
-								aoBttns.push({
-									extend: 'pdf',
-									classname: 'btn',
-									text: '<i class="fa fa-file-pdf-o"></i>',
-									titleAttr: 'Download as .PDF'
-								});
+								if (buttons.indexOf('pdf') !== -1) {
+									aoBttns.push({
+										extend: 'pdf',
+										classname: 'btn',
+										text: '<i class="fa fa-file-pdf-o"></i>',
+										titleAttr: 'Download as .PDF'
+									});
+								}
 								break;
 
 							case 'print':
-								aoBttns.push({
-									extend: 'print',
-									classname: 'btn',
-									text: '<i class="fa fa-print"></i>',
-									titleAttr: 'Print'
-								});
+								if (buttons.indexOf('print') !== -1) {
+									aoBttns.push({
+										extend: 'print',
+										classname: 'btn',
+										text: '<i class="fa fa-print"></i>',
+										titleAttr: 'Print'
+									});
+								}
 								break;
 
 							case 'colvis':
-								aoBttns.push({
-									extend: 'colvis',
-									classname: 'btn',
-									text: '<i class="fa fa-eye"></i>',
-									titleAttr: 'Hide/Show Columns'
-								});
+								if (buttons.indexOf('colvis') !== -1) {
+									aoBttns.push({
+										extend: 'colvis',
+										classname: 'btn',
+										text: '<i class="fa fa-eye"></i>',
+										titleAttr: 'Hide/Show Columns'
+									});
+								}
 								break;
 
 						}
@@ -12986,13 +13011,14 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 				var p = void 0;
 
 				if (buttons) {
+					// TODO - load only necessary dependencies
 					console.log("DataTable 'data-buttons' attribute found, loading remote dependecies...");
 					p = Promise.all([
 					// load.js("/vendor/pdfmake/build/pdfmake.min.js"),
 					// load.js("/vendor/pdfmake/build/vfs_fonts.js"),
-					load.css("https://cdn.datatables.net/buttons/1.3.1/css/buttons.dataTables.min.css"), load.js("https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js"),
-					// load.js("https://cdn.datatables.net/buttons/1.3.1/js/buttons.bootstrap.min.js"), 
-					load.js("https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"), load.js("https://cdn.datatables.net/buttons/1.3.1/js/buttons.html5.min.js"), load.js("https://cdn.datatables.net/buttons/1.3.1/js/buttons.print.min.js"), load.js("https://cdn.datatables.net/buttons/1.3.1/js/buttons.colVis.min.js")]);
+					load.css("https://s3.us-east-2.amazonaws.com/platypus-hbs/vendor/datatables/buttons/1.3.1/css/buttons.dataTables.min.css"), load.js("https://s3.us-east-2.amazonaws.com/platypus-hbs/vendor/datatables/buttons/1.3.1/js/dataTables.buttons.min.js"),
+					// load.js("https://s3.us-east-2.amazonaws.com/platypus-hbs/vendor/datatables/buttons/1.3.1/js/buttons.bootstrap.min.js"), 
+					load.js("https://s3.us-east-2.amazonaws.com/platypus-hbs/vendor/datatables/jszip/3.1.3/jszip.min.js"), load.js("https://s3.us-east-2.amazonaws.com/platypus-hbs/vendor/datatables/buttons/1.3.1/js/buttons.html5.min.js"), load.js("https://s3.us-east-2.amazonaws.com/platypus-hbs/vendor/datatables/buttons/1.3.1/js/buttons.print.min.js"), load.js("https://s3.us-east-2.amazonaws.com/platypus-hbs/vendor/datatables/buttons/1.3.1/js/buttons.colVis.min.js")]);
 				}
 
 				if (src && cols) {
