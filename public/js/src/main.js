@@ -378,7 +378,7 @@
 					    			aoBttns.push({
 			                            extend: 'csv', 
 			                            classname: 'btn',
-			                            text: '<i class="fa fa-files-o"></i>',
+			                            text: '<i class="fa fa-file-text"></i>',
 			                            titleAttr: 'Download as .CSV'   				    				
 					    			});
 				    			}
@@ -389,7 +389,7 @@
 					    			aoBttns.push({
 		                            	extend: 'excel', 
 			                            classname: 'btn',
-			                            text: '<i class="fa fa-file-text-o"></i>',
+			                            text: '<i class="fa fa-file-excel-o"></i>',
 			                            titleAttr: 'Download as Excel' 				    				
 					    			});
 					    		}
@@ -477,7 +477,6 @@
 		                // load.js("/vendor/pdfmake/build/vfs_fonts.js"),
 		                load.css("https://s3.us-east-2.amazonaws.com/platypus-hbs/vendor/datatables/buttons/1.3.1/css/buttons.dataTables.min.css"),
 		                load.js("https://s3.us-east-2.amazonaws.com/platypus-hbs/vendor/datatables/buttons/1.3.1/js/dataTables.buttons.min.js"), 
-		                // load.js("https://s3.us-east-2.amazonaws.com/platypus-hbs/vendor/datatables/buttons/1.3.1/js/buttons.bootstrap.min.js"), 
 		                load.js("https://s3.us-east-2.amazonaws.com/platypus-hbs/vendor/datatables/jszip/3.1.3/jszip.min.js"),
 		                load.js("https://s3.us-east-2.amazonaws.com/platypus-hbs/vendor/datatables/buttons/1.3.1/js/buttons.html5.min.js"),
 		                load.js("https://s3.us-east-2.amazonaws.com/platypus-hbs/vendor/datatables/buttons/1.3.1/js/buttons.print.min.js"),
@@ -501,8 +500,8 @@
 							if(buttons) {
 								p.then(function(){
 									initTable($tbl, buttons);
-								}).catch(function() {
-					                console.log('Cannot load DataTables button remote dependecies');
+								}).catch(function(e) {
+					                console.log('Cannot load DataTables button remote dependecies:'+e);
 					            });
 					        } else {
 					        	initTable($tbl, buttons);
@@ -1563,36 +1562,39 @@
 
 		feedback: function(){
 			
-			// Inserts feedback button in DOM
-			$('body').append(`
-				<a id="btn-feedback" href="/feedback/new" class="btn btn-info modal-remote"
-				  	data-modal-title="Feedback"
-				  	data-modal-size="lg"
-				  	data-modal-header="true"
-				  	data-modal-footer="false">
-				  		<i class="fa fa-comment-o" data-toggle="tooltip" data-placement="left" title="Feedback"></i>
-				</a>
-			`);
-
-			$(document).on('submit', '#feedbackForm', function(e){
-				e.preventDefault();
-				$('.modal').modal('hide');
-
-				$.ajax({   
-				   type: 'POST',   
-				   url: $(this).attr('action'),   
-				   data: $(this).serialize(),
-				   success: function(){
-					   	swal({
-							title: 'Thank you',
-							html: `Your feedback was submitted successfully`,
-							type: 'success'
-						});
-				   }
-				});
+			if ( $('body').data('feedback-url') ) {
 				
-			});
+				// Inserts feedback button in DOM
+				$('body').append(`
+					<a id="btn-feedback" href="/feedback/new" class="btn btn-info modal-remote"
+					  	data-modal-title="Feedback"
+					  	data-modal-size="lg"
+					  	data-modal-header="true"
+					  	data-modal-footer="false">
+					  		<i class="fa fa-comment-o" data-toggle="tooltip" data-placement="left" title="Feedback"></i>
+					</a>
+				`);
+
+				$(document).on('submit', '#feedbackForm', function(e){
+					e.preventDefault();
+					$('.modal').modal('hide');
+
+					$.ajax({   
+					   type: 'POST',   
+					   url: $(this).attr('action'),   
+					   data: $(this).serialize(),
+					   success: function(){
+						   	swal({
+								title: 'Thank you',
+								html: `Your feedback was submitted successfully`,
+								type: 'success'
+							});
+					   }
+					});
+					
+				});
 			
+			}
 
 		},
 

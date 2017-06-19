@@ -12927,7 +12927,7 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 									aoBttns.push({
 										extend: 'csv',
 										classname: 'btn',
-										text: '<i class="fa fa-files-o"></i>',
+										text: '<i class="fa fa-file-text"></i>',
 										titleAttr: 'Download as .CSV'
 									});
 								}
@@ -12938,7 +12938,7 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 									aoBttns.push({
 										extend: 'excel',
 										classname: 'btn',
-										text: '<i class="fa fa-file-text-o"></i>',
+										text: '<i class="fa fa-file-excel-o"></i>',
 										titleAttr: 'Download as Excel'
 									});
 								}
@@ -13016,9 +13016,7 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 					p = Promise.all([
 					// load.js("/vendor/pdfmake/build/pdfmake.min.js"),
 					// load.js("/vendor/pdfmake/build/vfs_fonts.js"),
-					load.css("https://s3.us-east-2.amazonaws.com/platypus-hbs/vendor/datatables/buttons/1.3.1/css/buttons.dataTables.min.css"), load.js("https://s3.us-east-2.amazonaws.com/platypus-hbs/vendor/datatables/buttons/1.3.1/js/dataTables.buttons.min.js"),
-					// load.js("https://s3.us-east-2.amazonaws.com/platypus-hbs/vendor/datatables/buttons/1.3.1/js/buttons.bootstrap.min.js"), 
-					load.js("https://s3.us-east-2.amazonaws.com/platypus-hbs/vendor/datatables/jszip/3.1.3/jszip.min.js"), load.js("https://s3.us-east-2.amazonaws.com/platypus-hbs/vendor/datatables/buttons/1.3.1/js/buttons.html5.min.js"), load.js("https://s3.us-east-2.amazonaws.com/platypus-hbs/vendor/datatables/buttons/1.3.1/js/buttons.print.min.js"), load.js("https://s3.us-east-2.amazonaws.com/platypus-hbs/vendor/datatables/buttons/1.3.1/js/buttons.colVis.min.js")]);
+					load.css("https://s3.us-east-2.amazonaws.com/platypus-hbs/vendor/datatables/buttons/1.3.1/css/buttons.dataTables.min.css"), load.js("https://s3.us-east-2.amazonaws.com/platypus-hbs/vendor/datatables/buttons/1.3.1/js/dataTables.buttons.min.js"), load.js("https://s3.us-east-2.amazonaws.com/platypus-hbs/vendor/datatables/jszip/3.1.3/jszip.min.js"), load.js("https://s3.us-east-2.amazonaws.com/platypus-hbs/vendor/datatables/buttons/1.3.1/js/buttons.html5.min.js"), load.js("https://s3.us-east-2.amazonaws.com/platypus-hbs/vendor/datatables/buttons/1.3.1/js/buttons.print.min.js"), load.js("https://s3.us-east-2.amazonaws.com/platypus-hbs/vendor/datatables/buttons/1.3.1/js/buttons.colVis.min.js")]);
 				}
 
 				if (src && cols) {
@@ -13037,8 +13035,8 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 							if (buttons) {
 								p.then(function () {
 									initTable($tbl, buttons);
-								}).catch(function () {
-									console.log('Cannot load DataTables button remote dependecies');
+								}).catch(function (e) {
+									console.log('Cannot load DataTables button remote dependecies:' + e);
 								});
 							} else {
 								initTable($tbl, buttons);
@@ -13719,26 +13717,29 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 
 		feedback: function feedback() {
 
-			// Inserts feedback button in DOM
-			$('body').append('\n\t\t\t\t<a id="btn-feedback" href="/feedback/new" class="btn btn-info modal-remote"\n\t\t\t\t  \tdata-modal-title="Feedback"\n\t\t\t\t  \tdata-modal-size="lg"\n\t\t\t\t  \tdata-modal-header="true"\n\t\t\t\t  \tdata-modal-footer="false">\n\t\t\t\t  \t\t<i class="fa fa-comment-o" data-toggle="tooltip" data-placement="left" title="Feedback"></i>\n\t\t\t\t</a>\n\t\t\t');
+			if ($('body').data('feedback-url')) {
 
-			$(document).on('submit', '#feedbackForm', function (e) {
-				e.preventDefault();
-				$('.modal').modal('hide');
+				// Inserts feedback button in DOM
+				$('body').append('\n\t\t\t\t\t<a id="btn-feedback" href="/feedback/new" class="btn btn-info modal-remote"\n\t\t\t\t\t  \tdata-modal-title="Feedback"\n\t\t\t\t\t  \tdata-modal-size="lg"\n\t\t\t\t\t  \tdata-modal-header="true"\n\t\t\t\t\t  \tdata-modal-footer="false">\n\t\t\t\t\t  \t\t<i class="fa fa-comment-o" data-toggle="tooltip" data-placement="left" title="Feedback"></i>\n\t\t\t\t\t</a>\n\t\t\t\t');
 
-				$.ajax({
-					type: 'POST',
-					url: $(this).attr('action'),
-					data: $(this).serialize(),
-					success: function success() {
-						swal({
-							title: 'Thank you',
-							html: 'Your feedback was submitted successfully',
-							type: 'success'
-						});
-					}
+				$(document).on('submit', '#feedbackForm', function (e) {
+					e.preventDefault();
+					$('.modal').modal('hide');
+
+					$.ajax({
+						type: 'POST',
+						url: $(this).attr('action'),
+						data: $(this).serialize(),
+						success: function success() {
+							swal({
+								title: 'Thank you',
+								html: 'Your feedback was submitted successfully',
+								type: 'success'
+							});
+						}
+					});
 				});
-			});
+			}
 		},
 
 		renderCharts: function renderCharts() {
