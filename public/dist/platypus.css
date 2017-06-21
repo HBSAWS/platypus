@@ -6015,7 +6015,13 @@ body.canvas-slid .fa.fa-navicon::before {
   display: block; }
 
 .gallery a {
-  font-size: 0; }
+  font-size: 0;
+  line-height: 0; }
+  .gallery a img {
+    max-width: 100px; }
+
+a:not([href]):not([tabindex]) {
+  color: white; }
 
 header a.hbs-logo img {
   position: absolute;

@@ -1,5 +1,11 @@
 .gallery {
 	a {
 		font-size: 0;
+		line-height: 0;
+		img {max-width: 100px;}
 	}
+}
+
+a:not([href]):not([tabindex]) {
+	color: white;
 }
