@@ -130,12 +130,12 @@
 
 		},
 		btnSubmitAnimate: function() {
-			$('button[type="submit"]')
+			$('button[type="submit"]').not(".no-spinner")
 				.addClass('ladda-button')
 				.attr('data-style', 'zoom-in')
 				// .attr('data-label', 'zoom-in');
 
-			Ladda.bind('button[type=submit]');
+			Ladda.bind('button[type="submit"]:not(.no-spinner)');
 		},
 		inputMaxLength: function() {
 			$('input[maxlength], textarea[maxlength]').maxlength({
@@ -452,6 +452,7 @@
 					},
 					columnDefs: [{ className: 'control', orderable: false, targets: -1 }],
 					dom: btnMarkup,
+					stateSave: true,
 					"oLanguage": {
 						sSearch: "",
 						sSearchPlaceholder: "Filter records",

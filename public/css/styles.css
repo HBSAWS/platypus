@@ -4469,6 +4469,9 @@ body.canvas-slid .fa.fa-navicon::before {
     max-width: 100px; }
 
 a:not([href]):not([tabindex]) {
+  color: rgba(255, 255, 255, 0.5); }
+
+a:not([href]):not([tabindex]):focus, a:not([href]):not([tabindex]):hover {
   color: white; }
 
 header a.hbs-logo img {

@@ -12700,10 +12700,10 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 			// console.log("Current break point is: "+finalClass);
 		},
 		btnSubmitAnimate: function btnSubmitAnimate() {
-			$('button[type="submit"]').addClass('ladda-button').attr('data-style', 'zoom-in');
+			$('button[type="submit"]').not(".no-spinner").addClass('ladda-button').attr('data-style', 'zoom-in');
 			// .attr('data-label', 'zoom-in');
 
-			Ladda.bind('button[type=submit]');
+			Ladda.bind('button[type="submit"]:not(.no-spinner)');
 		},
 		inputMaxLength: function inputMaxLength() {
 			$('input[maxlength], textarea[maxlength]').maxlength({
@@ -12994,6 +12994,7 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 					},
 					columnDefs: [{ className: 'control', orderable: false, targets: -1 }],
 					dom: btnMarkup,
+					stateSave: true,
 					"oLanguage": {
 						sSearch: "",
 						sSearchPlaceholder: "Filter records",
