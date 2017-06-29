@@ -17,4 +17,5 @@ require('./config/routes')(app);
 // Start server
 app.listen(envConfig.port, function(){
   console.log('Server listening on port ' + envConfig.port);
+  console.log('Loading ' + env + ' environment variables');
 });
