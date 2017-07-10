@@ -14,8 +14,10 @@ mongoimport --db platypus-dev --collection articles --file articles.json --drop 
 mongoimport --db platypus-dev --collection feedback --file feedback.json --drop
 
 
-// Import on RHITDEV1
+// Import on RHITDEV1 (From local machine on VPN - NOT rhitdev1)
 
-mongoimport --db platypus --collection categories --file categories.json --drop && 
-mongoimport --db platypus --collection articles --file articles.json --drop &&
-mongoimport --db platypus --collection feedback --file feedback.json --drop
+mongoimport -h rhnosqlstg1.hbs.edu:27017 -d platypus -c categories --file categories.json --drop &&
+mongoimport -h rhnosqlstg1.hbs.edu:27017 -d platypus -c categories --file categories.json --drop &&
+mongoimport -h rhnosqlstg1.hbs.edu:27017 -d platypus -c categories --file categories.json --drop
+
+
