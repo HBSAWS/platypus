@@ -12,3 +12,10 @@ mongoexport --db platypus-dev --collection feedback --out feedback.json
 mongoimport --db platypus-dev --collection categories --file categories.json --drop && 
 mongoimport --db platypus-dev --collection articles --file articles.json --drop &&
 mongoimport --db platypus-dev --collection feedback --file feedback.json --drop
+
+
+// Import on RHITDEV1
+
+mongoimport --db platypus --collection categories --file categories.json --drop && 
+mongoimport --db platypus --collection articles --file articles.json --drop &&
+mongoimport --db platypus --collection feedback --file feedback.json --drop

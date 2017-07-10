@@ -12,6 +12,6 @@ module.exports = {
     production: {
         rootPath: rootPath,
         database: 'mongodb://rhnosqlstg1.hbs.edu:27017/platypus',
-        port: process.env.PORT || 80
+        port: process.env.PORT || 3000
     }
 };
