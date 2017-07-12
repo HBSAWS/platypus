@@ -1,4 +1,5 @@
-var express = require('express');
+var express = require('express'),
+    upload = require('jquery-file-upload-middleware');
 
 module.exports  = function(app){
 
@@ -13,6 +14,16 @@ module.exports  = function(app){
         feedbackRouter      = express.Router(),
         apiRouter           = express.Router();
 
+    upload.configure({
+        uploadDir: 'public/uploads',
+        uploadUrl: '/uploads',
+        imageVersions: {
+            thumbnail: {
+                width: 80,
+                height: 80
+            }
+        }
+    });
 
     // CORS
     app.use(function(req, res, next) {
@@ -27,6 +38,7 @@ module.exports  = function(app){
     app.use('/categories',  categoriesRouter);    
     app.use('/feedback',    feedbackRouter);    
     app.use('/api',         apiRouter);  	
+    app.use('/upload',      upload.fileHandler());
 
     articlesRouter.get('/',                       articles.index);
     articlesRouter.get('/new',                    articles.new);

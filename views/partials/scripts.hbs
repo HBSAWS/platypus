@@ -13,8 +13,31 @@
 {{else}}
 	<script src="https://d1gfwsbop52idw.cloudfront.net/static/libs/platypus/{{ver_selected}}/platypus.min.js?{{moment}}"></script>
 {{/is}}
+
 <!-- exlcuded libs -->
 <script src="https://maps.googleapis.com/maps/api/js?key={{GOOGLE_MAPS_KEY}}" async defer></script>
 <script src="/js/demo.js"></script>
 
+
+{{#if loadUploaderAssets}}
+	<!-- Uploader Assets -->
+	<script src="/uploader/js/vendor/jquery.ui.widget.js"></script>
+	<script src="//blueimp.github.io/JavaScript-Templates/js/tmpl.min.js"></script>
+	<script src="//blueimp.github.io/JavaScript-Load-Image/js/load-image.all.min.js"></script>
+	<script src="//blueimp.github.io/JavaScript-Canvas-to-Blob/js/canvas-to-blob.min.js"></script>
+	<script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
+	<script src="/uploader/js/jquery.iframe-transport.js"></script>
+	<script src="/uploader/js/jquery.fileupload.js"></script>
+	<script src="/uploader/js/jquery.fileupload-process.js"></script>
+	<script src="/uploader/js/jquery.fileupload-image.js"></script>
+	<script src="/uploader/js/jquery.fileupload-audio.js"></script>
+	<script src="/uploader/js/jquery.fileupload-video.js"></script>
+	<script src="/uploader/js/jquery.fileupload-validate.js"></script>
+	<script src="/uploader/js/jquery.fileupload-ui.js"></script>
+	<script src="/uploader/js/main.js"></script>
+	<!-- The XDomainRequest Transport is included for cross-domain file deletion for IE 8 and IE 9 -->
+	<!--[if (gte IE 8)&(lt IE 10)]>
+	<script src="/uploader/js/cors/jquery.xdr-transport.js"></script>
+	<![endif]-->
+{{/if}}
 

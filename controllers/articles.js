@@ -61,6 +61,7 @@ module.exports = {
                             } 
                         } : null,
                         page_title: article._category.title,
+                        loadUploaderAssets: (article.title == 'Uploader') ? true : false
                     })
                 } else {
                     var notFound = new Error('Article cannot be found.');
