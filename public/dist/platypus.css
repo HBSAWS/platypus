@@ -6014,11 +6014,14 @@ body.canvas-slid .fa.fa-navicon::before {
 .carousel.slick-initialized {
   display: block; }
 
-.gallery a {
+.gallery {
   font-size: 0;
   line-height: 0; }
-  .gallery a img {
-    max-width: 100px; }
+  .gallery a {
+    font-size: 0;
+    line-height: 0; }
+    .gallery a img {
+      max-width: 100px; }
 
 a:not([href]):not([tabindex]) {
   color: rgba(255, 255, 255, 0.5); }
