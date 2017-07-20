@@ -47,17 +47,17 @@ module.exports = {
                         if(err) return next(err);           
                         category.articles = a;
                         if(categories.length === i+1) {
-                            res.locals.nav = categories;
-                            callback(null);
+                            callback(null, categories);
                         }
                     });
                 });                
             }
-        ], function (err) {
+        ], function (err, categories) {
             if (err) {
                 return next(err);
             } else {
                 console.log("Navigation is ready");
+                res.locals.nav = categories;
                 return next();
             }
         });

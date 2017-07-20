@@ -1,5 +1,6 @@
 var express = require('express'),
     upload = require('jquery-file-upload-middleware');
+    // middlewares = require('./middlewares');
 
 module.exports  = function(app){
 
@@ -72,6 +73,8 @@ module.exports  = function(app){
     app.get('/',                                  main.index);
     app.get('/version/:version',                  main.set_version);
     app.get('/loadmore/:page?',                   main.loadmore);
+
+    // app.use(middlewares.getNav);
 
     app.use(function(err, req, res, next) {
         res.status(req.status || 500)
