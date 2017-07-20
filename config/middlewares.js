@@ -46,10 +46,9 @@ module.exports = {
                                 _id: obj._id
                             }));
                         });
-                        res.locals.nav = arrResult;
-                        
                         // done?
                         if(categories.length === i+1) {
+                            res.locals.nav = arrResult;
                             return next();
                         }
                         });
