@@ -51,7 +51,7 @@ module.exports = {
                         
 
                         var groupedbyCategories = _(articles)
-                        // .orderBy('_category.order')
+                        .orderBy('_category.order')
                         .groupBy('_category.title')
                         .map(function(value, key) { 
                             return {
