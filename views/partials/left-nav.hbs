@@ -24,13 +24,13 @@
     <nav class="sidebar-nav">
         <ul class="metismenu">
             
-            {{#nav}}
+            {{#with nav}}
                 {{!-- Render first level nav --}}
-               
+                    {{#each this}}
                     <li>
                         <a class="has-arrow" href="#" aria-expanded="false">
                             <span class="sidebar-nav-item-icon fa fa-{{icon}}"></span>
-                            <span class="sidebar-nav-item">{{title}}</span>
+                            <span class="sidebar-nav-item">{{this.category}}</span>
                         </a>
                         <ul aria-expanded="false" class="collapse">
                             
@@ -43,14 +43,15 @@
                                         float-xs-right">{{type}}</span>
                                     </a>
                                 </li>
-                            
+
                             {{/each}}
 
 
                         </ul>
                     </li>
+                    {{/each}}
                
-            {{/nav}}
+            {{/with}}
                                                            
         </ul>
     </nav>

@@ -37,22 +37,35 @@ module.exports = {
                 },
                 function(categories, callback) {
                     
-                    _.map(categories, function(category, i) {
-                        console.log(i);
-                        Article.find({
-                            _category: category._id,
-                            version: (res.locals.ver_selected !== res.locals.current ) ? res.locals.ver_selected : res.locals.current
-                        })
-                        .sort('title')
-                        .lean()
-                        .exec(function(err, a){
-                            if(err) return next(err);           
-                            category.articles = a;
-                            if(categories.length === i+1) {
-                                callback(null, categories);
+                    var category_ids = _.map(categories, '_id');
+
+                    Article.find({
+                        _category: { $in: category_ids},
+                        version: (res.locals.ver_selected !== res.locals.current ) ? res.locals.ver_selected : res.locals.current
+                    })
+                    .populate('_category')
+                    .sort('title')
+                    .lean()
+                    .exec(function(err, articles){
+                        if(err) return next(err);           
+                        
+
+                        var groupedbyCategories = _(articles)
+                        .orderBy('_category.order')
+                        .groupBy('_category.title')
+                        .map(function(value, key) { 
+                            return {
+                                category: key, 
+                                articles: value
                             }
-                        });
-                    });                
+                        })
+                        .value();
+
+                        // res.status(200).json(groupedbyCategories);
+                        callback(null, groupedbyCategories);
+                        
+                    });
+                                   
                 }
             ], function (err, categories) {
                 if (err) {
