@@ -55,6 +55,7 @@ module.exports = {
                 }
             ], function (err, categories) {
                 if (err) {
+                    console.log(err);
                     return next(err);
                 } else {
                     console.log("Navigation is ready");
