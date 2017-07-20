@@ -38,6 +38,7 @@ module.exports = {
                 function(categories, callback) {
                     
                     _.map(categories, function(category, i) {
+                        console.log(i);
                         Article.find({
                             _category: category._id,
                             version: (res.locals.ver_selected !== res.locals.current ) ? res.locals.ver_selected : res.locals.current
