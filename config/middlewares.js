@@ -19,11 +19,9 @@ module.exports = {
 		return next();
 	},
 	getNav: function(req, res, next) {
-        Category.findRecursive(function(err, tree){
-            if(err) return next(err);
-            res.locals.tree = tree;
+        // Category.findRecursive(function(err, tree){
+        //     if(err) return next(err);
         
-
             Category.find({})
             .populate('_parent')
             .sort('order')
@@ -41,21 +39,19 @@ module.exports = {
                     .exec(function(err, a){
                         if(err) return next(err);           
                         category.articles = a;
-                        var arrResult = _.map(categories, function(obj) {
-                            return _.assign(obj, _.find(res.locals.tree, {
-                                _id: obj._id
-                            }));
-                        });
-                        // done?
+                        // var arrResult = _.map(categories, function(obj) {
+                        //     return _.assign(obj, _.find(tree, {
+                        //         _id: obj._id
+                        //     }));
+                        // });
+                        // // done?
                         if(categories.length === i+1) {
-                            res.locals.nav = arrResult;
+                            res.locals.nav = categories;
                             return next();
                         }
-                        });
                     });
-                
-            
-            });
+                 });
+            // });
 
         });
 	},
