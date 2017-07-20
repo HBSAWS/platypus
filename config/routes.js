@@ -73,7 +73,6 @@ module.exports  = function(app){
     app.get('/version/:version',                  main.set_version);
     app.get('/loadmore/:page?',                   main.loadmore);
 
-
     app.use(function(err, req, res, next) {
         res.status(req.status || 500)
         res.render('error', { 

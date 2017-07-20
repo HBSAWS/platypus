@@ -4,6 +4,7 @@ require('../models/Article');
 var mongoose = require('mongoose'),
     Category = mongoose.model('Category'),
     Article = mongoose.model('Article'),
+    async = require('async'),
     _ = require('lodash');
 
 module.exports = {
@@ -19,17 +20,23 @@ module.exports = {
 		return next();
 	},
 	getNav: function(req, res, next) {
-        // Category.findRecursive(function(err, tree){
-        //     if(err) return next(err);
         
-            Category.find({})
-            .populate('_parent')
-            .sort('order')
-            .lean()
-            .exec(function(err, categories) {
-                if(err) return next(err);
-                _.map(categories, function(category, i) {
+       async.waterfall([
+            function(callback) {
 
+                Category.find({})
+                .populate('_parent')
+                .sort('order')
+                .lean()
+                .exec(function(err, categories) {
+                    if(err) return next(err);
+                    callback(null, categories);
+                });
+
+            },
+            function(categories, callback) {
+                
+                _.map(categories, function(category, i) {
                     Article.find({
                         _category: category._id,
                         version: (res.locals.ver_selected !== res.locals.current ) ? res.locals.ver_selected : res.locals.current
@@ -39,21 +46,23 @@ module.exports = {
                     .exec(function(err, a){
                         if(err) return next(err);           
                         category.articles = a;
-                        // var arrResult = _.map(categories, function(obj) {
-                        //     return _.assign(obj, _.find(tree, {
-                        //         _id: obj._id
-                        //     }));
-                        // });
-                        // // done?
                         if(categories.length === i+1) {
                             res.locals.nav = categories;
-                            return next();
+                            callback(null);
                         }
                     });
-                 });
-            // });
-
+                });                
+            }
+        ], function (err) {
+            if (err) {
+                return next(err);
+            } else {
+                console.log("Navigation is ready");
+                return next();
+            }
         });
+
+
 	},
 	debug: function(req, res, next) {
 	    console.log(req.session);
