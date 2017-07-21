@@ -29,8 +29,8 @@
                     {{#each this}}
                     <li>
                         <a class="has-arrow" href="#" aria-expanded="false">
-                            <span class="sidebar-nav-item-icon fa fa-{{icon}}"></span>
-                            <span class="sidebar-nav-item">{{this.category}}</span>
+                            <span class="sidebar-nav-item-icon fa fa-{{this.articles.[0]._category.icon}}"></span>
+                            <span class="sidebar-nav-item">{{category}}</span>
                         </a>
                         <ul aria-expanded="false" class="collapse">
                             
