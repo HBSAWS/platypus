@@ -32,10 +32,10 @@
                             <span class="sidebar-nav-item-icon fa fa-{{this.articles.[0]._category.icon}}"></span>
                             <span class="sidebar-nav-item">{{this.category}}</span>
                         </a>
-                        <ul aria-expanded="false" class="collapse">
+                        <ul aria-expanded="false" class="collapse {{#compare this.category "==" ../../current_category}}in{{/compare}}">
                             
                             {{#each articles}}
-                                <li>
+                                <li class="{{#compare slug "==" ../../../current_article}}active{{/compare}}">
                                     <a href="/articles/{{slug}}" class="text-truncate">{{title}}
                                         <span class="tag 
                                             {{#compare type "==" "core"}}palette-bg-teal-500{{/compare}} 

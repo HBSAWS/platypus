@@ -283,43 +283,6 @@
 			$(".metismenu").metisMenu({
 				toggle: true
 			});
-
-			if (typeof getCookie("activeLi") != "undefined" && getCookie("activeLi").length > 0) {
-				$('.metismenu ul a[href="' + getCookie("activeLi") + '"]').parent().addClass("active");
-				$('.metismenu ul a[href="' + getCookie("activeLi") + '"]').parent().parent().addClass("in");
-			}
-
-			$(".metismenu ul a").click(function (a) {
-				removeActive();
-				$(this).parent().addClass("active");
-				setActiveCookie(this.getAttribute("href"));
-			});
-
-			function removeActive() {
-				$(".metismenu ul li").each(function (li) {
-					$(this).removeClass("active");
-				});
-			}
-
-			function setActiveCookie(active) {
-				//document.cookie="activeLi="+active;
-				var d = new Date();
-				d.setTime(d.getTime() + 30 * 24 * 60 * 60 * 1000); // expire in 30 days
-				var expires = "expires=" + d.toUTCString();
-				document.cookie = "activeLi=" + active + "; " + expires;
-			}
-
-			function getCookie(cname) {
-				var name = cname + "=";
-				var ca = document.cookie.split(';');
-				for (var i = 0; i < ca.length; i++) {
-					var c = ca[i];
-					while (c.charAt(0) == ' ') {
-						c = c.substring(1);
-					}if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
-				}
-				return "";
-			}
 		},
 		carousel: function() {
 			$(".carousel").slick({
@@ -730,7 +693,7 @@
 
 			$('form small').each(function () {
 				var helpText = $(this).html();
-				var tooltipHelp = `<a href="#" class="" data-toggle="tooltip" data-placement="right" title="${helpText}"><i class="fa fa-question-circle-o"></i></a>`;
+				var tooltipHelp = `<a href="#" class="" data-toggle="tooltip" data-placement="right" title="${helpText}"><i class="fa fa-question-circle-o fa-fw"></i></a>`;
 				$(this).closest('.form-group .col-md-8').find('label').append(tooltipHelp);
 			});
 
