@@ -4824,6 +4824,10 @@ strong, .font-weight-bold {
   height: 5px;
   transition: width 2s ease-in-out; }
 
+.popover {
+  max-width: 100%;
+  /* Max Width of the popover (depending on the container!) */ }
+
 /* AZ List */
 #azList-nav + ul {
   padding-left: 0; }
