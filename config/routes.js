@@ -17,6 +17,8 @@ module.exports  = function(app){
     upload.configure({
         uploadDir: 'public/uploads',
         uploadUrl: '/uploads',
+        acceptFileTypes: /\.(gif|jpe?g|png)$/i,
+        imageTypes: /\.(gif|jpe?g|png)$/i,
         imageVersions: {
             thumbnail: {
                 width: 80,

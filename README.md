@@ -23,6 +23,14 @@ gulp
 
 **TODO**: Import db dump
 
+## Restarting App 
+1) ssh rhitdev1
+2) sudo su - hbs
+3) cd /export/projects/docs/framework/platypus/
+4) ./shutdown
+5) ./startup (takes a minute)
+6) Go to [http://platypus.hbs.edu/](http://platypus.hbs.edu)
+
 ## Building
 TODO
 
