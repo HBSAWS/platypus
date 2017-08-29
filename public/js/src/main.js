@@ -416,10 +416,17 @@
 					columnDefs: [{ className: 'control', orderable: false, targets: -1 }],
 					dom: btnMarkup,
 					stateSave: true,
+					pagingType: 'full_numbers',
 					"oLanguage": {
 						sSearch: "",
 						sSearchPlaceholder: "Filter records",
-						sLengthMenu: "_MENU_"
+						sLengthMenu: "_MENU_",
+						oPaginate: {
+					   		sNext: '<i class="fa fa-forward"></i>',
+					   		sPrevious: '<i class="fa fa-backward"></i>',
+					   		sFirst: '<i class="fa fa-step-backward"></i>',
+					   		sLast: '<i class="fa fa-step-forward"></i>'
+					   	}
 					}
 				});
 
@@ -739,7 +746,7 @@
 			    e.preventDefault();
 			    let el = $(this),
 			    	title = (el.data('confirm-delete-title') && el.data('confirm-delete-title') !== '') ? el.data('confirm-delete-title') : 'Are you sure?',
-			    	text = (el.data('confirm-delete-text') && el.data('confirm-delete-text') !== '') ? el.data('confirm-delete-title') : "This action cannot be reverted.";
+			    	text = (el.data('confirm-delete-text') && el.data('confirm-delete-text') !== '') ? el.data('confirm-delete-text') : "This action cannot be reverted.";
 
 			    swal({
 				  	title: title,
