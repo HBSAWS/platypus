@@ -42,6 +42,8 @@
         }
     })();
 
+    var currentVersion = '0.4';
+
 	var Platypus = {
 		ondomready: function ondomready() {
 			Platypus.detectBreakpoint();
@@ -82,7 +84,6 @@
 			Platypus.helpful();
 			Platypus.toolTip();
 			Platypus.popOver();
-			Platypus.wowAnimations();
 			Platypus.progressBar();
 			Platypus.googleMaps();
 			Platypus.hideLoader();
@@ -231,16 +232,6 @@
 				onInit: null,
 				onReady: null
 			});
-		},
-		wowAnimations: function(){
-			let wow = new WOW({
-                boxClass:     'wow',      // default
-                animateClass: 'animated', // default
-                offset:       0,          // default
-                mobile:       true,       // default: true
-                live:         true       // default: true
-            });
-            wow.init();
 		},
 		cards: function() {
 			
@@ -704,7 +695,7 @@
 				$(this).closest('.form-group .col-md-8').find('label').append(tooltipHelp);
 			});
 
-			$('form *:input[type!=hidden]:first').focus();
+			// $('form *:input[type!=hidden]:first').focus();
 
 			$('input,textarea,select').filter('[required]').each(function () {
 				$(this).closest('.form-group').find('label:not(".custom-control"):first-child').append(" <span class='float-xs-right text-danger'>*</span>");
@@ -742,7 +733,7 @@
 				 window.history.back();
 			});
 
-			$('form .confirm-delete').on('click', function(e) {
+			$('.confirm-delete').on('click', function(e) {
 			    e.preventDefault();
 			    let el = $(this),
 			    	title = (el.data('confirm-delete-title') && el.data('confirm-delete-title') !== '') ? el.data('confirm-delete-title') : 'Are you sure?',
@@ -755,15 +746,19 @@
 				  	showCancelButton: true,
 				  	confirmButtonText: 'Delete'
 				}).then(function () {
-				  	$(el).closest('form').submit();
+					let parentForm = $(el).closest('form');
+				  	if ( parentForm.length > 0 ) {
+				  		parentForm.submit();
+				  	} else {
+				  		window.location.href = $(el).attr("href");
+				  	}
 				  	Ladda.stopAll();
-				  	swal(
-				    	'Deleted!',
-				    	'Item successfully removed.',
-				    	'success'
-				  	);
+				  	// swal(
+				    //  	'Deleted!',
+				    //  	'Item successfully removed.',
+				    //  	'success'
+				  	// );
 				}, function(dismiss){
-					console.log("dismissed");
 					Ladda.stopAll();
 				})
 			});
@@ -1246,7 +1241,7 @@
 
 		},
 		rotatingBg: function() {
-			$('.rotating-bg').css('background-image', 'url("/images/rotating-bg-hbs/bg-hbs-' + _.random(1, 4) + '.png")');
+			$('.rotating-bg').css('background-image', 'url("https://s3.us-east-2.amazonaws.com/platypus-hbs/version/'+currentVersion+'/images/rotating-bg-hbs/bg-hbs-' + _.random(1, 4) + '.png")');
 		},
 
 		inlineEdit: function() {
@@ -1408,9 +1403,11 @@
             };
 
             // bind spinner to ajax doc events
-            $(document).on({
+            $('.btn-ajax-spin').on({
 
                 ajaxStart: function(e) {
+
+                	console.log("Target of ajaxStart is:", e.target);
 
                     var el = $('<div class="spinner">').appendTo('body').spin();
                     $('body').append('<div class="overlay"></div>');
