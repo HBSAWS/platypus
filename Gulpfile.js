@@ -42,7 +42,7 @@ var opts = {
         'public/vendor/spin/spin.js', 
         'public/vendor/spin/jquery.spin.js', 
         'public/vendor/ladda-bootstrap/ladda.min.js', 
-        'public/vendor/select2/select2.min.js', 
+        'public/vendor/select2/select2.full.min.js', 
         'public/vendor/daterangepicker/daterangepicker.js',
         'public/vendor/jquery.knob/jquery.knob.min.js',
         'public/vendor/fuelux/fuelux.min.js',

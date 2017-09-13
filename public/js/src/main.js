@@ -139,13 +139,23 @@
 			Ladda.bind('button[type="submit"]:not(.no-spinner)');
 		},
 		inputMaxLength: function() {
-			$('input[maxlength], textarea[maxlength]').maxlength({
-				alwaysShow: true,
-				// threshold: 10,
-				appendToParent: true,
-				warningClass: "tag tag-success",
-				limitReachedClass: "tag tag-danger"
+
+			$('input[maxlength], textarea[maxlength]').each(function(){
+				
+				let $input = $(this);
+				
+				$input.maxlength({
+					alwaysShow: true,
+					showOnReady: false,
+					// threshold: 10,
+					appendToParent: true,
+					warningClass: "tag tag-success",
+					limitReachedClass: "tag tag-danger"
+				}).on('blur', function () {
+	             	$input.siblings('span.bootstrap-maxlength').hide();
+	          	});
 			});
+			
 		},
 		backToTop: function() {
 			$('body').append('<a id="back-to-top" href="#" class="btn palette-bg-teal-500 btn-lg back-to-top text-white" role="button" title="Return to the top" data-toggle="tooltip" data-placement="left"><span class="fa fa-chevron-up"></span></a>');

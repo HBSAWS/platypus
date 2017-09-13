@@ -153,12 +153,21 @@
 			Ladda.bind('button[type="submit"]:not(.no-spinner)');
 		},
 		inputMaxLength: function inputMaxLength() {
-			$('input[maxlength], textarea[maxlength]').maxlength({
-				alwaysShow: true,
-				// threshold: 10,
-				appendToParent: true,
-				warningClass: "tag tag-success",
-				limitReachedClass: "tag tag-danger"
+
+			$('input[maxlength], textarea[maxlength]').each(function () {
+
+				var $input = $(this);
+
+				$input.maxlength({
+					alwaysShow: true,
+					showOnReady: false,
+					// threshold: 10,
+					appendToParent: true,
+					warningClass: "tag tag-success",
+					limitReachedClass: "tag tag-danger"
+				}).on('blur', function () {
+					$input.siblings('span.bootstrap-maxlength').hide();
+				});
 			});
 		},
 		backToTop: function backToTop() {
