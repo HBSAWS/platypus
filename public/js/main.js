@@ -47,6 +47,7 @@
 	var Platypus = {
 		ondomready: function ondomready() {
 			Platypus.detectBreakpoint();
+			Platypus.detectBrowsers();
 			Platypus.setupSpinOnAjax();
 			Platypus.btnSubmitAnimate();
 			Platypus.inputMaxLength();
@@ -147,11 +148,49 @@
 
 			// console.log("Current break point is: "+finalClass);
 		},
+		detectBrowsers: function detectBrowsers() {
+			// Opera 8.0+
+			var isOpera = !!window.opr && !!opr.addons || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+			// Firefox 1.0+
+			var isFirefox = typeof InstallTrigger !== 'undefined';
+			// Safari 3.0+ "[object HTMLElementConstructor]" 
+			var isSafari = /constructor/i.test(window.HTMLElement) || function (p) {
+				return p.toString() === "[object SafariRemoteNotification]";
+			}(!window['safari'] || safari.pushNotification);
+			// Internet Explorer 6-11
+			var isIE = /*@cc_on!@*/false || !!document.documentMode;
+			// Edge 20+
+			var isEdge = !isIE && !!window.StyleMedia;
+			// Chrome 1+
+			var isChrome = !!window.chrome && !!window.chrome.webstore;
+			// Blink engine detection
+			var isBlink = (isChrome || isOpera) && !!window.CSS;
+
+			return {
+				isOpera: isOpera,
+				isFirefox: isFirefox,
+				isSafari: isSafari,
+				isIE: isIE,
+				isEdge: isEdge,
+				isBlink: isBlink
+			};
+		},
 		btnSubmitAnimate: function btnSubmitAnimate() {
 			$('button[type="submit"]').not(".no-spinner").addClass('ladda-button').attr('data-style', 'zoom-in');
 			// .attr('data-label', 'zoom-in');
 
 			Ladda.bind('button[type="submit"]:not(.no-spinner)');
+
+			var browser = Platypus.detectBrowsers();
+
+			if (browser.isSafari || browser.isFirefox) {
+				// Prevent Back-Forward-Cache issue
+				$(window).bind("pageshow", function (event) {
+					if (event.originalEvent.persisted) {
+						Ladda.stopAll();
+					}
+				});
+			}
 		},
 		inputMaxLength: function inputMaxLength() {
 
@@ -474,9 +513,15 @@
 		},
 
 		toolTip: function toolTip() {
+			$('[data-toggle="tooltip"]').on('click', function (e) {
+				e.preventDefault();
+			});
 			$('[data-toggle="tooltip"]').tooltip();
 		},
 		popOver: function popOver() {
+			$('[data-toggle="popover"]').on('click', function (e) {
+				e.preventDefault();
+			});
 			$('[data-toggle="popover"]').popover();
 		},
 		select2: function select2() {
@@ -541,7 +586,12 @@
 			});
 		},
 		dateRange: function dateRange() {
-			$('input[name="daterange"]').daterangepicker();
+			$('input.daterange').daterangepicker({
+				"startDate": $(this).data("start-date"),
+				"endDate": $(this).data("end-date"),
+				"maxDate": $(this).data("max-date"),
+				"minDate": $(this).data("min-date")
+			});
 		},
 		wysiwyg: function wysiwyg() {
 			$('.summernote').summernote({
@@ -789,88 +839,95 @@
 		},
 		formAddress: function formAddress() {
 
-			// This example displays an address form, using the autocomplete feature
-			// of the Google Places API to help users fill in the information.
+			if ($('input#autocomplete').length > 0) {
+				var placeSearch, autocomplete;
+				var componentForm;
 
-			$('.confirm-edit-address').hide();
+				(function () {
+					var initialize = function initialize() {
+						// Create the autocomplete object, restricting the search
+						// to geographical location types.
+						autocomplete = new google.maps.places.Autocomplete(
+						/** @type {HTMLInputElement} */document.getElementById('autocomplete'), {
+							types: ['geocode']
+						});
+						// When the user selects an address from the dropdown,
+						// populate the address fields in the form.
+						google.maps.event.addListener(autocomplete, 'place_changed', function () {
+							fillInAddress();
+						});
+					};
 
-			$("#autocomplete").on('focus', function () {
-				geolocate();
-			});
+					// [START region_fillform]
 
-			var placeSearch, autocomplete;
-			var componentForm = {
-				street_number: 'short_name',
-				route: 'long_name',
-				locality: 'long_name',
-				administrative_area_level_1: 'short_name',
-				country: 'long_name',
-				postal_code: 'short_name'
-			};
 
-			function initialize() {
-				// Create the autocomplete object, restricting the search
-				// to geographical location types.
-				autocomplete = new google.maps.places.Autocomplete(
-				/** @type {HTMLInputElement} */document.getElementById('autocomplete'), {
-					types: ['geocode']
-				});
-				// When the user selects an address from the dropdown,
-				// populate the address fields in the form.
-				google.maps.event.addListener(autocomplete, 'place_changed', function () {
-					fillInAddress();
-				});
-			}
+					var fillInAddress = function fillInAddress() {
 
-			// [START region_fillform]
-			function fillInAddress() {
+						$('.confirm-edit-address').show();
 
-				$('.confirm-edit-address').show();
+						// Get the place details from the autocomplete object.
+						var place = autocomplete.getPlace();
 
-				// Get the place details from the autocomplete object.
-				var place = autocomplete.getPlace();
+						document.getElementById("latitude").value = place.geometry.location.lat();
+						document.getElementById("longitude").value = place.geometry.location.lng();
 
-				document.getElementById("latitude").value = place.geometry.location.lat();
-				document.getElementById("longitude").value = place.geometry.location.lng();
+						for (var component in componentForm) {
+							document.getElementById(component).value = '';
+							document.getElementById(component).disabled = false;
+						}
 
-				for (var component in componentForm) {
-					document.getElementById(component).value = '';
-					document.getElementById(component).disabled = false;
-				}
+						// Get each component of the address from the place details
+						// and fill the corresponding field on the form.
+						for (var i = 0; i < place.address_components.length; i++) {
+							var addressType = place.address_components[i].types[0];
+							if (componentForm[addressType]) {
+								var val = place.address_components[i][componentForm[addressType]];
+								document.getElementById(addressType).value = val;
+							}
+						}
+					};
 
-				// Get each component of the address from the place details
-				// and fill the corresponding field on the form.
-				for (var i = 0; i < place.address_components.length; i++) {
-					var addressType = place.address_components[i].types[0];
-					if (componentForm[addressType]) {
-						var val = place.address_components[i][componentForm[addressType]];
-						document.getElementById(addressType).value = val;
-					}
-				}
-			}
-			// [END region_fillform]
+					// Bias the autocomplete object to the user's geographical location,
+					// as supplied by the browser's 'navigator.geolocation' object.
 
-			// [START region_geolocation]
-			// Bias the autocomplete object to the user's geographical location,
-			// as supplied by the browser's 'navigator.geolocation' object.
-			function geolocate() {
-				if (navigator.geolocation) {
-					navigator.geolocation.getCurrentPosition(function (position) {
-						var geolocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
-						var latitude = position.coords.latitude;
-						var longitude = position.coords.longitude;
-						document.getElementById("latitude").value = latitude;
-						document.getElementById("longitude").value = longitude;
+					var geolocate = function geolocate() {
+						if (navigator.geolocation) {
+							navigator.geolocation.getCurrentPosition(function (position) {
+								var geolocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
-						autocomplete.setBounds(new google.maps.LatLngBounds(geolocation, geolocation));
+								var latitude = position.coords.latitude;
+								var longitude = position.coords.longitude;
+								document.getElementById("latitude").value = latitude;
+								document.getElementById("longitude").value = longitude;
+
+								autocomplete.setBounds(new google.maps.LatLngBounds(geolocation, geolocation));
+							});
+						}
+					};
+
+					// This example displays an address form, using the autocomplete feature
+					// of the Google Places API to help users fill in the information.
+
+					$('.confirm-edit-address').hide();
+
+					$("#autocomplete").on('focus', function () {
+						geolocate();
 					});
-				}
-			}
 
-			initialize();
-			// [END region_geolocation]
-			// 
+					componentForm = {
+						street_number: 'short_name',
+						route: 'long_name',
+						locality: 'long_name',
+						administrative_area_level_1: 'short_name',
+						country: 'long_name',
+						postal_code: 'short_name'
+					};
+
+
+					initialize();
+				})();
+			}
 		},
 		slimScroll: function slimScroll() {
 			$('.sidebar, .modal-body').slimScroll({
@@ -925,7 +982,9 @@
 					title: $bttn.data('modal-title') !== '' ? $bttn.data('modal-title') : '',
 					size: $bttn.data('modal-size') !== '' ? $bttn.data('modal-size') : 'md',
 					header: $bttn.data('modal-header') !== '' ? $bttn.data('modal-header') : true,
-					footer: $bttn.data('modal-footer') !== '' ? $bttn.data('modal-footer') : true
+					footer: $bttn.data('modal-footer') !== '' ? $bttn.data('modal-footer') : true,
+					iframe: $bttn.data('modal-iframe') !== '' ? $bttn.data('modal-iframe') : false,
+					scrollable: $bttn.data('modal-scrollable') !== '' ? $bttn.data('modal-scrollable') : false
 				};
 				var modalID = 'modal-' + Math.random().toString(36).substring(7);
 
@@ -940,9 +999,15 @@
 					if (opts.size) $('#' + modalID).find('.modal-dialog').addClass('modal-' + opts.size);
 					if (!opts.header) $('#' + modalID).find('.modal-header').hide();
 					if (!opts.footer) $('#' + modalID).find('.modal-footer').hide();
-					$('#' + modalID).find('.modal-body').load($bttn.attr('href'), function () {
-						console.log("Loading async data into modal");
-					});
+					if (opts.iframe) {
+						$('#' + modalID).find('.modal-body').html('<iframe width="100%" height="100%" frameborder="0" scrolling="' + (opts.scrollable ? 'yes' : 'no') + '" allowtransparency="true" src="' + $bttn.attr('href') + '"></iframe>');
+						$('#' + modalID).find('.modal-body iframe').css('height', $(window).height() - 180 + 'px');
+					} else {
+						$('#' + modalID).find('.modal-body').load($bttn.attr('href'), function () {
+							console.log("Loading async data into modal");
+						});
+						if (opts.scrollable) $('#' + modalID).find('.modal-body').addClass('scrollable');
+					}
 				});
 
 				// Display modal

@@ -26,6 +26,7 @@
 /* fixes select2 responsive width problem */
 .select2-container[style] {
 	width: 100% !important;
+	display: block;
 }
 
 .bootstrap-maxlength[style] {

@@ -100,7 +100,18 @@ gulp.task('js', function() {
         .pipe(gulp.dest(opts.dist))
         .pipe(rename('platypus.min.js'))
         .pipe(uglify({
-            preserveComments: false
+            preserveComments: false,
+            // mangle: true,
+            // compress: {
+            //     sequences: true,
+            //     dead_code: true,
+            //     conditionals: true,
+            //     booleans: true,
+            //     unused: true,
+            //     if_return: true,
+            //     join_vars: true,
+            //     drop_console: true
+            // }
         }))
         .pipe(banner(opts.banner, {date: opts.dt}))
         .pipe(gulp.dest(opts.dist))

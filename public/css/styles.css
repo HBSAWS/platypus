@@ -4304,7 +4304,8 @@ span.btn-label.btn-label-right {
 
 /* fixes select2 responsive width problem */
 .select2-container[style] {
-  width: 100% !important; }
+  width: 100% !important;
+  display: block; }
 
 .bootstrap-maxlength[style] {
   z-index: 1 !important; }
