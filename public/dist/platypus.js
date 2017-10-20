@@ -6284,24 +6284,32 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 			};
 		},
 		dateTimePickers: function dateTimePickers() {
+
 			var customIcons = {
 				time: "fa fa-clock-o",
 				date: "fa fa-calendar",
 				up: "fa fa-arrow-up",
-				down: "fa fa-arrow-down"
+				down: "fa fa-arrow-down",
+				previous: 'fa fa-angle-left',
+				next: 'fa fa-angle-right',
+				today: 'fa fa-bullseye',
+				clear: 'fa fa-tash',
+				close: 'fa fa-close'
 			};
 
-			$('input[type="datetime-local"]').datetimepicker({
-				locale: 'en',
-				format: 'YYYY-MM-DDTHH:mm:ss',
-				icons: customIcons
-			});
+			$('.datetime-picker').each(function () {
 
-			$('input[type="time"]').datetimepicker({
-				locale: 'en',
-				format: 'HH:mm:ss',
-				icons: customIcons
+				var format = $(this).data('format') != '' ? $(this).data('format') : 'MM-DD-YYYY';
+				var inline = $(this).data('inline') != '' && $(this).data('inline') == true ? true : false;
 
+				$(this).datetimepicker({
+					locale: 'en',
+					format: format,
+					icons: customIcons,
+					keepOpen: false,
+					inline: inline,
+					sideBySide: true,
+					debug: false });
 			});
 		},
 		slider: function slider() {

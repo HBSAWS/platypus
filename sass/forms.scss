@@ -64,3 +64,23 @@ fieldset.bordered {
 	box-shadow: none;
 	border-radius: 0;
 }
+
+.bootstrap-datetimepicker-widget.dropdown-menu {
+	* {
+		border-radius: 0 !important;
+	}
+	padding: 10px;
+	.picker-switch {
+		background: black;
+		color: white;
+		border-radius: 0;
+	}
+	ul.list-unstyled {
+		padding-left: 0;
+	}
+	table thead tr:first-child th {
+		background: grey;
+	    
+	    color: white;
+	}
+}
