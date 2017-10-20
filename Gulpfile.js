@@ -23,7 +23,6 @@ var opts = {
         'public/vendor/bootstrap/bootstrap.min.js',
         'public/vendor/jasny-bootstrap/jasny-bootstrap.min.js',
         'public/vendor/moment/moment-with-locales.min.js',
-        'public/vendor/conditionize/conditionize.js',
         'public/vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js',
         'public/vendor/bootstrap-slider/bootstrap-slider.min.js',
         'public/vendor/bootstrap-toggle/bootstrap-toggle.min.js',
