@@ -15,3 +15,21 @@ strong, .font-weight-bold {
 .text-opaque {
 	opacity: 0.7;
 }
+
+
+/* Responsive Display Styles */
+
+$breakpoints: xs sm md lg xl;
+
+@mixin display() {
+	@each $x in $breakpoints {
+		html.#{$x} .display-4 { font-size: 3.0em; };
+		html.#{$x} .display-3 { font-size: 3.5em; };
+		html.#{$x} .display-2 { font-size: 4.0em; };
+		html.#{$x} .display-1 { font-size: 4.5em; };
+	}
+}
+
+@include display();
+
+

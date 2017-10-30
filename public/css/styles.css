@@ -137,6 +137,52 @@ select:not([multiple]) {
 .alert.alert-danger .icon:after {
   background: #da4932; }
 
+/* Border Mixin */
+.b-t1 {
+  border-top: 1px solid rgba(0, 0, 0, 0.1); }
+
+.b-r1 {
+  border-right: 1px solid rgba(0, 0, 0, 0.1); }
+
+.b-b1 {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+
+.b-l1 {
+  border-left: 1px solid rgba(0, 0, 0, 0.1); }
+
+.b-1 {
+  border: 1px solid rgba(0, 0, 0, 0.1); }
+
+.b-t2 {
+  border-top: 2px solid rgba(0, 0, 0, 0.1); }
+
+.b-r2 {
+  border-right: 2px solid rgba(0, 0, 0, 0.1); }
+
+.b-b2 {
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1); }
+
+.b-l2 {
+  border-left: 2px solid rgba(0, 0, 0, 0.1); }
+
+.b-2 {
+  border: 2px solid rgba(0, 0, 0, 0.1); }
+
+.b-t3 {
+  border-top: 3px solid rgba(0, 0, 0, 0.1); }
+
+.b-r3 {
+  border-right: 3px solid rgba(0, 0, 0, 0.1); }
+
+.b-b3 {
+  border-bottom: 3px solid rgba(0, 0, 0, 0.1); }
+
+.b-l3 {
+  border-left: 3px solid rgba(0, 0, 0, 0.1); }
+
+.b-3 {
+  border: 3px solid rgba(0, 0, 0, 0.1); }
+
 @media (max-width: 575px) {
   .card.panel {
     border: 0;
@@ -4311,6 +4357,15 @@ span.btn-label.btn-label-right {
   color: #d9534f;
   margin-bottom: 0; }
 
+.custom-file-control::before {
+  content: "Browse"; }
+
+.custom-file-control.selected::after {
+  content: attr(data-before); }
+
+.custom-file-control::after {
+  content: "Choose file..."; }
+
 /* fixes select2 responsive width problem */
 .select2-container[style] {
   width: 100% !important;
@@ -4838,6 +4893,67 @@ strong, .font-weight-bold {
 .text-opaque {
   opacity: 0.7; }
 
+/* Responsive Display Styles */
+html.xs .display-4 {
+  font-size: 3.0em; }
+
+html.xs .display-3 {
+  font-size: 3.5em; }
+
+html.xs .display-2 {
+  font-size: 4.0em; }
+
+html.xs .display-1 {
+  font-size: 4.5em; }
+
+html.sm .display-4 {
+  font-size: 3.0em; }
+
+html.sm .display-3 {
+  font-size: 3.5em; }
+
+html.sm .display-2 {
+  font-size: 4.0em; }
+
+html.sm .display-1 {
+  font-size: 4.5em; }
+
+html.md .display-4 {
+  font-size: 3.0em; }
+
+html.md .display-3 {
+  font-size: 3.5em; }
+
+html.md .display-2 {
+  font-size: 4.0em; }
+
+html.md .display-1 {
+  font-size: 4.5em; }
+
+html.lg .display-4 {
+  font-size: 3.0em; }
+
+html.lg .display-3 {
+  font-size: 3.5em; }
+
+html.lg .display-2 {
+  font-size: 4.0em; }
+
+html.lg .display-1 {
+  font-size: 4.5em; }
+
+html.xl .display-4 {
+  font-size: 3.0em; }
+
+html.xl .display-3 {
+  font-size: 3.5em; }
+
+html.xl .display-2 {
+  font-size: 4.0em; }
+
+html.xl .display-1 {
+  font-size: 4.5em; }
+
 .progress .progress-bar {
   height: 5px;
   transition: width 2s ease-in-out; }
@@ -4905,6 +5021,9 @@ table tr .rotate div {
   clear: both; }
   .typeahead__list > li:hover {
     background-color: transparent; }
+
+body.modal-open {
+  overflow: hidden !important; }
 
 .modal-body.scrollable {
   max-height: calc(100vh - 210px);

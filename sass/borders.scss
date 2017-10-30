@@ -1,0 +1,25 @@
+/* Border Mixin */
+
+$positions: t r b l;
+$sizes: 3;
+
+@mixin borders($size) {
+  	@each $x in $positions {
+	    @if $x == t {
+	    	.b-#{$x}#{$size} { border-top: #{$size}px solid rgba(0,0,0,0.1); }
+		} @else if $x == r {
+			.b-#{$x}#{$size} { border-right: #{$size}px solid rgba(0,0,0,0.1); }
+		} @else if $x == l {
+			.b-#{$x}#{$size} { border-left: #{$size}px solid rgba(0,0,0,0.1); }
+		} @else if $x == b {
+			.b-#{$x}#{$size} { border-bottom: #{$size}px solid rgba(0,0,0,0.1); }
+		}
+	}
+	.b-#{$size} { border: #{$size}px solid rgba(0,0,0,0.1); }
+}
+
+@for $i from 1 through $sizes {
+	@include borders($i);
+}
+
+

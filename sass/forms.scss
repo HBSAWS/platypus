@@ -22,6 +22,16 @@
     margin-bottom: 0;
 }
 
+.custom-file-control::before {
+	content: "Browse";
+}
+.custom-file-control.selected::after {
+	content: attr(data-before);
+}
+.custom-file-control::after {
+	content: "Choose file...";
+}
+
 
 /* fixes select2 responsive width problem */
 .select2-container[style] {

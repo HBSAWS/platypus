@@ -86,6 +86,7 @@
 			Platypus.helpful();
 			Platypus.toolTip();
 			Platypus.popOver();
+			Platypus.printArea();
 			Platypus.progressBar();
 			Platypus.googleMaps();
 			Platypus.hideLoader();
@@ -547,6 +548,30 @@
 			});
 			$('[data-toggle="popover"]').popover();
 		},
+		printArea: function(){
+			
+			function printArea($el) {
+			   var area = document.getElementById( $el );
+			   var title = document.title;
+			   var newWin= window.open('','','width=800,height=800');
+			   newWin.document.write('<html><head><title>' + title + '</title><link rel="stylesheet" type="text/css" href="https://s3.us-east-2.amazonaws.com/platypus-hbs/version/0.5/platypus.min.css"></head><body>');
+			   newWin.document.write(area.outerHTML);
+			   newWin.document.write('</body></html>');
+		       newWin.document.close();
+		       newWin.focus();
+		       //The Timeout is ONLY to make Safari work, but it still works with FF, IE & Chrome.
+		       setTimeout(function() {
+		           console.log('inside settimeout');
+		           newWin.print();
+		           newWin.close();
+		       }, 1000);
+			}
+
+			$('a.print').click(function(){
+				printArea( $(this).data('print-area-id') );
+			});
+			
+		},
 		select2: function() {
 
 			  function templateResult (item) {
@@ -722,7 +747,7 @@
 				close: 'fa fa-close'
 			};
 			
-			$('.datetime-picker').each(function(){
+			$('body').on('click', '.datetime-picker', function(e) {
 
 				var format = $(this).data('format') != '' ? $(this).data('format') : 'MM-DD-YYYY';
 				var inline = ( $(this).data('inline') != '' && $(this).data('inline') == true) ? true : false;
@@ -800,6 +825,10 @@
 			$('form .go-back').on('click', function(e) {
 				e.preventDefault();
 				 window.history.back();
+			});
+
+			$('.custom-file-input').on('change', function(e){
+				$(this).next().toggleClass('selected').attr('data-before', $(this).val().replace(/C:\\fakepath\\/i, ''));
 			});
 
 			$('.confirm-delete').on('click', function(e) {
@@ -1582,7 +1611,7 @@
 			});
 		},
 		externalLinks: function() {
-			$('a').filter(function () {
+			$('a:not([target]), :not([target="_self"])').filter(function () {
 				return this.hostname && this.hostname !== location.hostname;
 			}).addClass("external").attr('target', '_blank');
 		},

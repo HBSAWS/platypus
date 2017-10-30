@@ -1,8 +1,12 @@
+// prevents body from scrolling when modal is open
+body.modal-open {
+	overflow: hidden !important; 
+}
+
 .modal-body.scrollable {
     max-height: calc(100vh - 210px);
     overflow-y: auto;
 }
-
 
 // Fixes screen shifting 
 // https://stackoverflow.com/questions/19960162/bootstrap-3-modal-fires-and-causes-page-to-shift-to-the-left-momentarily-brows
