@@ -9,7 +9,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.30/vfs_fonts.js"></script>
 
 {{#is current ver_selected  }}  
-	<script src="/dist/platypus.js?{{moment}}"></script>
+	<script src="/dist/platypus.min.js?{{moment}}"></script>
 {{else}}
 	<script src="https://s3.us-east-2.amazonaws.com/platypus-hbs/version/{{ver_selected}}/platypus.min.js?{{moment}}"></script>
 {{/is}}

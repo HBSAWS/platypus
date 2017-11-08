@@ -62,6 +62,7 @@
 			Platypus.dateRange();
 			Platypus.wysiwyg();
 			Platypus.gauges();
+			Platypus.avatar();
 			Platypus.wizard();
 			Platypus.toasts();
 			Platypus.dateTimePickers();
@@ -538,7 +539,6 @@
 				newWin.focus();
 				//The Timeout is ONLY to make Safari work, but it still works with FF, IE & Chrome.
 				setTimeout(function () {
-					console.log('inside settimeout');
 					newWin.print();
 					newWin.close();
 				}, 1000);
@@ -640,6 +640,28 @@
 				});
 			});
 		},
+		avatar: function avatar() {
+			var palette = ["red", "pink", "purple", "indigo", "blue", "light-blue", "cyan", "teal", "green", "lime", "yellow", "amber", "orange", "deep-orange", "brown", "grey", "blue-grey"];
+			$('.avatar').each(function () {
+				var name = _.trim($(this).text());
+				var initials = name.split(" ").map(function (n) {
+					return n[0];
+				}).join("");
+				var personId = $(this).data('person-id');
+				var personRole = $(this).data('person-role');
+
+				if (!isNaN(personId) && (personRole == 'facstaff' || 'mba')) {
+					var url = 'http://sands.hbs.edu/photos/' + personRole + '/Ent' + personId + '.jpg';
+					$(this).css({
+						"background-image": 'url(' + url + ')'
+					});
+					$(this).text(initials.toUpperCase()).attr('data-toggle', 'tooltip').attr('title', name);
+				} else {
+					$(this).addClass("palette-bg-" + _.sample(palette) + "-500");
+					$(this).text(initials.toUpperCase()).attr('data-toggle', 'tooltip').attr('title', name);;
+				}
+			});
+		},
 		progressBar: function progressBar() {
 			$('.progress .progress-bar').hide();
 			$('.progress .progress-bar').css("width", "0%");
@@ -705,7 +727,7 @@
 				close: 'fa fa-close'
 			};
 
-			$('body').on('click', '.datetime-picker', function (e) {
+			$('body').on('focus', '.datetime-picker', function (e) {
 
 				var format = $(this).data('format') != '' ? $(this).data('format') : 'MM-DD-YYYY';
 				var inline = $(this).data('inline') != '' && $(this).data('inline') == true ? true : false;
@@ -747,7 +769,12 @@
 				$(this).closest('.form-group .col-md-8').find('label').append(tooltipHelp);
 			});
 
-			// $('form *:input[type!=hidden]:first').focus();
+			$('body').on('click', '.input-group-addon', function () {
+				if ($(this).siblings('.form-control').length) {
+					console.log("clicked");
+					$(this).siblings('.form-control').focus();
+				}
+			});
 
 			$('input,textarea,select').filter('[required]').each(function () {
 				$(this).closest('.form-group').find('label:not(".custom-control"):first-child').append("&nbsp;<span class='float-xs-right text-danger'>*</span>");
@@ -785,7 +812,17 @@
 			});
 
 			$('.custom-file-input').on('change', function (e) {
-				$(this).next().toggleClass('selected').attr('data-before', $(this).val().replace(/C:\\fakepath\\/i, ''));
+				if ($(this).val() != "") {
+					$(this).next().addClass('selected').attr('data-before', $(this).val().replace(/^C:\\fakepath\\|^.*[\\\/]/gmi, ''));
+				} else {
+					$(this).next().addClass('selected').attr('data-before', 'Choose file...');
+				}
+			});
+
+			$('input.currency').maskMoney();
+
+			$('button[type="reset"]').on('click', function () {
+				$('.custom-file-control').removeClass('selected');
 			});
 
 			$('.confirm-delete').on('click', function (e) {
@@ -867,6 +904,7 @@
 				} else {
 					this.$element.closest('.form-group').removeClass('has-success').addClass('has-danger');
 					this.$element.removeClass('form-control-success').addClass('form-control-danger');
+					Ladda.stopAll();
 				}
 			});
 		},
