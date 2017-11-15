@@ -40,7 +40,8 @@
                                         <span class="tag 
                                             {{#compare type "==" "core"}}palette-bg-teal-500{{/compare}} 
                                             {{#compare type "==" "addon"}}palette-bg-grey-500{{/compare}} 
-                                        float-xs-right hidden-lg-down">{{type}}</span>
+                                        float-xs-right hidden-lg-down text-uppercase"
+                                         data-toggle="tooltip" title="{{type}}">{{truncate type 1 ""}}</span>
                                     </a>
                                 </li>
 

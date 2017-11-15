@@ -806,7 +806,7 @@
 				}
 			});
 
-			$('form .go-back').on('click', function (e) {
+			$('.go-back').on('click', function (e) {
 				e.preventDefault();
 				window.history.back();
 			});
@@ -1596,22 +1596,68 @@
 		},
 		gridListSwitcher: function gridListSwitcher() {
 
-			var currentClasses = $('.item').eq(0).attr('class');
+			function init() {
+				var currentMode = $('#list-grid-switcher a.active').data('mode');
+				var layout = $('.row.list-grid').data('cols').split(",").map(function (col) {
+					return "col-" + col;
+				});
+				updateActiveIndicator(currentMode);
+				setupInitialState(currentMode, layout);
+				saveState(currentMode);
+				bindEvents(layout);
+			}
 
-			$(document).ready(function () {
-				$('#btn-list').click(function (e) {
-					e.preventDefault();
-					$('.item').removeClass().addClass('item col-xs-12');
-					$(this).siblings().removeClass('active');
-					$(this).addClass('active');
+			function setupInitialState(mode, layout) {
+				$('.row.list-grid > div[class^="col-"]').each(function () {
+					switch (mode) {
+						case 'list':
+							$(this).removeClass().addClass('col-xs-12');
+							break;
+						case 'grid':
+							$(this).removeClass().addClass(layout.join(" "));
+							break;
+						default:
+							console.log("Unknown mode");
+					}
+					$('.row.list-grid').removeClass('invisible');
 				});
-				$('#btn-grid').click(function (e) {
-					e.preventDefault();
-					$('.item').removeClass().addClass(currentClasses);
-					$(this).siblings().removeClass('active');
-					$(this).addClass('active');
+			}
+
+			function switchModes(mode, layout) {
+				$('.row.list-grid > div[class^="col-"]').each(function () {
+					switch (mode) {
+						case 'list':
+							$(this).removeClass().addClass('col-xs-12');
+							break;
+						case 'grid':
+							$(this).removeClass().addClass(layout.join(" "));
+							break;
+						default:
+							console.log("Unknown mode");
+					}
 				});
-			});
+				updateActiveIndicator(mode);
+			}
+
+			function saveState(mode) {
+				$('.row.list-grid > div[class^="col-"]').each(function () {
+					$(this).data(mode + '-cols', $(this).attr('class'));
+				});
+			}
+
+			function updateActiveIndicator(mode) {
+				var activeClasses = "active";
+				$('#list-grid-switcher a').removeClass(activeClasses);
+				$('#list-grid-switcher a[data-mode="' + mode + '"]').addClass(activeClasses);
+			}
+
+			function bindEvents(layout) {
+				$('#list-grid-switcher a').click(function () {
+					switchModes($(this).data('mode'), layout);
+				});
+			}
+
+			init();
 		},
 
 		videoWidget: function videoWidget() {
