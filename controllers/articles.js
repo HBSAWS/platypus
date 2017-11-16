@@ -229,6 +229,15 @@ module.exports = {
         })
     },
 
+    exists: function(req, res, next) {
+        var coin = _.sample([true, false]);
+        if(coin) {
+            res.status(200).send({}) 
+        } else {
+            res.status(404).send({});
+        }
+    },
+
     mock: function(req, res, next) {
         Article.findOne({
                 slug: req.params.slug
