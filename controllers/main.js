@@ -39,7 +39,7 @@ module.exports = {
             // res.status(200).send(articles);
             res.render('home', { 
                 commits: _.filter(commits, item => { return moment().utc().diff(item.commit.committer.date, 'days') < 7 }),
-                articles: _.sampleSize(_.filter(articles, item => { return item._category.title == 'UI Components' }), 30),
+                articles: _.filter(articles, item => { return item._category.title == 'UI Components' }),
                 patterns: _.sampleSize(_.filter(articles, item => { return item._category.title == 'UX Components' }), 20),
                 layout : 'home'
             });

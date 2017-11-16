@@ -48,9 +48,6 @@ module.exports = {
 
                     var old = ( article.version !== res.locals.current ) ? true : false;
 
-                    console.log("## article._category.title: " + article._category.title);
-                    console.log("## article.slug: " + article.slug);
-
                     res.render('articles/show', {
                         article: article,
                         layout: 'main',

@@ -21,6 +21,9 @@ module.exports = function(app, envConfig){
     app.engine('.hbs', handlebars({
         extname: '.hbs',
         defaultLayout: '', 
+        helpers: {
+            foo: function (block) { return block.fn(); } //example
+        },
         layoutsDir: path.join(envConfig.rootPath,'views/layouts'),
         partialsDir: path.join(envConfig.rootPath, 'views/partials')
     }));

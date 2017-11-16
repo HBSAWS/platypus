@@ -36,12 +36,13 @@
                             
                             {{#each articles}}
                                 <li class="{{#compare slug "==" ../../../current_article}}active{{/compare}}">
-                                    <a href="/articles/{{slug}}" class="text-truncate text-nowrap">{{title}}
+                                    <a href="/articles/{{slug}}" class="text-truncate text-nowrap">
                                         <span class="tag 
                                             {{#compare type "==" "core"}}palette-bg-teal-500{{/compare}} 
                                             {{#compare type "==" "addon"}}palette-bg-grey-500{{/compare}} 
                                         float-xs-right hidden-lg-down text-uppercase"
                                          data-toggle="tooltip" title="{{type}}">{{truncate type 1 ""}}</span>
+                                         {{title}}
                                     </a>
                                 </li>
 
