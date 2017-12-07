@@ -473,9 +473,15 @@
 					// TODO - load only necessary dependencies
 					console.log("DataTable 'data-buttons' attribute found, loading remote dependecies...");
 					p = Promise.all([
-					// load.js("/vendor/pdfmake/build/pdfmake.min.js"),
-					// load.js("/vendor/pdfmake/build/vfs_fonts.js"),
-					load.css("https://s3.us-east-2.amazonaws.com/platypus-hbs/vendor/datatables/buttons/1.3.1/css/buttons.dataTables.min.css"), load.js("https://s3.us-east-2.amazonaws.com/platypus-hbs/vendor/datatables/buttons/1.3.1/js/dataTables.buttons.min.js"), load.js("https://s3.us-east-2.amazonaws.com/platypus-hbs/vendor/datatables/jszip/3.1.3/jszip.min.js"), load.js("https://s3.us-east-2.amazonaws.com/platypus-hbs/vendor/datatables/buttons/1.3.1/js/buttons.html5.min.js"), load.js("https://s3.us-east-2.amazonaws.com/platypus-hbs/vendor/datatables/buttons/1.3.1/js/buttons.print.min.js"), load.js("https://s3.us-east-2.amazonaws.com/platypus-hbs/vendor/datatables/buttons/1.3.1/js/buttons.colVis.min.js")]);
+						// load.js("/vendor/pdfmake/build/pdfmake.min.js"),
+						// load.js("/vendor/pdfmake/build/vfs_fonts.js"),
+						load.css("https://s3.us-east-2.amazonaws.com/platypus-hbs/vendor/datatables/buttons/1.3.1/css/buttons.dataTables.min.css"), 
+						load.js("https://s3.us-east-2.amazonaws.com/platypus-hbs/vendor/datatables/buttons/1.3.1/js/dataTables.buttons.min.js"), 
+						load.js("https://s3.us-east-2.amazonaws.com/platypus-hbs/vendor/datatables/jszip/3.1.3/jszip.min.js"), 
+						load.js("https://s3.us-east-2.amazonaws.com/platypus-hbs/vendor/datatables/buttons/1.3.1/js/buttons.html5.min.js"), 
+						load.js("https://s3.us-east-2.amazonaws.com/platypus-hbs/vendor/datatables/buttons/1.3.1/js/buttons.print.min.js"), 
+						load.js("https://s3.us-east-2.amazonaws.com/platypus-hbs/vendor/datatables/buttons/1.3.1/js/buttons.colVis.min.js")
+					]);
 				}
 
 				if (src && cols) {
@@ -611,10 +617,11 @@
 		},
 		dateRange: function dateRange() {
 			$('input.daterange').daterangepicker({
-				"startDate": $(this).data("start-date"),
-				"endDate": $(this).data("end-date"),
-				"maxDate": $(this).data("max-date"),
-				"minDate": $(this).data("min-date")
+				autoApply: true,
+				startDate: $(this).data("start-date"),
+				endDate: $(this).data("end-date"),
+				maxDate: $(this).data("max-date"),
+				minDate: $(this).data("min-date")
 			});
 		},
 		wysiwyg: function wysiwyg() {

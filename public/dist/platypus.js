@@ -6196,10 +6196,11 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 		},
 		dateRange: function dateRange() {
 			$('input.daterange').daterangepicker({
-				"startDate": $(this).data("start-date"),
-				"endDate": $(this).data("end-date"),
-				"maxDate": $(this).data("max-date"),
-				"minDate": $(this).data("min-date")
+				autoApply: true,
+				startDate: $(this).data("start-date"),
+				endDate: $(this).data("end-date"),
+				maxDate: $(this).data("max-date"),
+				minDate: $(this).data("min-date")
 			});
 		},
 		wysiwyg: function wysiwyg() {

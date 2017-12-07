@@ -641,10 +641,11 @@
 		},
 		dateRange: function() {
 			$('input.daterange').daterangepicker({
-				"startDate": $(this).data("start-date"),
-			    "endDate": $(this).data("end-date"),
-				"maxDate": $(this).data("max-date"),
-				"minDate": $(this).data("min-date"),
+				autoApply: true,
+				startDate: $(this).data("start-date"),
+			    endDate: $(this).data("end-date"),
+				maxDate: $(this).data("max-date"),
+				minDate: $(this).data("min-date"),
 			});
 		},
 		wysiwyg: function() {

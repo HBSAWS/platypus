@@ -28,7 +28,7 @@ module.exports = function(app, envConfig){
         partialsDir: path.join(envConfig.rootPath, 'views/partials')
     }));
     app.set('view engine', '.hbs');
-    app.use(logger('dev'));
+    app.use(logger('combined'));
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({
         limit: '50mb',

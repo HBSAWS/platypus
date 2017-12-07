@@ -1,0 +1,340 @@
+2017-10-26 16:12:19,868 * * DEBUG [hbs.common.service.configuration.HBSCommonsConfigurationFactory] ======> In  HBSCommonsConfigurationFactory /Users/rsilva/Desktop/finaid/build/exploded/WEB-INF/classes/appContext.properties
+2017-10-26 16:12:19,919 * * DEBUG [hbs.common.service.configuration.HBSCommonsConfigurationFactory] ======> In  HBSCommonsConfigurationFactory /Users/rsilva/Desktop/finaid/build/exploded/WEB-INF/classes/applicationConfiguration.properties
+2017-10-26 16:12:19,923 * * DEBUG [hbs.common.service.configuration.HBSCommonsConfigurationFactory] ======> In  HBSCommonsConfigurationFactory /Users/rsilva/Desktop/finaid/build/exploded/WEB-INF/classes/appnAccessWSConfig-CEE.xml
+2017-10-26 16:12:19,950 * * DEBUG [hbs.common.service.configuration.HBSCommonsConfigurationFactory] ======> In  HBSCommonsConfigurationFactory /Users/rsilva/Desktop/finaid/build/exploded/WEB-INF/classes/log4j.xml
+2017-10-26 16:12:19,955 * * ERROR [hbs.common.service.configuration.HBSCommonsConfigurationFactory] Unable to load configuration for file /Users/rsilva/Desktop/finaid/build/exploded/WEB-INF/classes/log4j.xml
+2017-10-26 16:12:19,958 * * DEBUG [hbs.common.service.configuration.ConfigurationService] All properties/xml files in /export/file_area/finaid-cee will be cached in commonConfigurationService
+2017-10-26 16:12:20,738 * * DEBUG [hbs.mba.finaid.servlet.AppContextObjectFactory] AppContextObjectFactory.init: loaded properties file
+2017-10-26 16:12:20,739 * * DEBUG [hbs.mba.finaid.servlet.AppContextObjectFactory] AppContextObjectFactory.init: keys: [Countries, databaseConfig, MaritalStatus]
+2017-10-26 16:12:20,740 * * DEBUG [hbs.mba.finaid.servlet.AppContextObjectFactory] AppContextObjectFactory.init: key/className map: {Countries=hbs.mba.finaid.Countries, MaritalStatus=hbs.mba.finaid.MaritalStatus, databaseConfig=hbs.mba.finaid.common.DatabaseConfigDO}
+2017-10-26 16:12:20,740 * * DEBUG [hbs.mba.finaid.servlet.AppContextServlet] AppContextServlet.refreshAll: 
+2017-10-26 16:12:20,741 * * DEBUG [hbs.mba.finaid.servlet.AppContextObjectFactory] AppContextObjectFactory.getContextObject: key=Countries, className=hbs.mba.finaid.Countries
+2017-10-26 16:12:20,761 * * DEBUG [sqlLogger] Attempting context lookup for java:/comp/env/jdbc/fin-aid
+2017-10-26 16:12:20,761 * * INFO  [sqlLogger] Exiting
+2017-10-26 16:12:20,784 * * INFO  [sqlLogger] Initializing pool (null)
+2017-10-26 16:12:20,786 * * DEBUG [sqlLogger] Attempting context lookup for java:/comp/env/jdbc/fin-aid
+2017-10-26 16:12:20,787 * * INFO  [sqlLogger] Exiting
+2017-10-26 16:12:20,796 * * DEBUG [sqlLogger] Attempting context lookup for java:/comp/env/jdbc/fin-aid
+2017-10-26 16:12:20,796 * * INFO  [sqlLogger] Exiting
+2017-10-26 16:12:20,876 * * DEBUG [sqlLogger] <sql [fin-aid]> SELECT cntry_type_code, cntry_type_desc FROM bt_cntry_type ORDER BY cntry_type_desc   <Time msec>: 78
+2017-10-26 16:12:21,004 * * DEBUG [sqlLogger] <sql [fin-aid]> ROLLBACK WORK   <Time msec>: 2
+2017-10-26 16:12:21,004 * * DEBUG [sqlLogger] <sql [fin-aid]> 
+2017-10-26 16:12:21,037 * * DEBUG [hbs.mba.finaid.servlet.AppContextServlet] AppContextServlet.init: adding Countries to servlet context
+2017-10-26 16:12:21,038 * * DEBUG [hbs.mba.finaid.servlet.AppContextObjectFactory] AppContextObjectFactory.getContextObject: key=databaseConfig, className=hbs.mba.finaid.common.DatabaseConfigDO
+2017-10-26 16:12:21,055 * * DEBUG [sqlLogger] Attempting context lookup for java:/comp/env/jdbc/fin-aid
+2017-10-26 16:12:21,056 * * INFO  [sqlLogger] Exiting
+2017-10-26 16:12:21,059 * * DEBUG [sqlLogger] <sql [fin-aid]> select c.config_key,  c.config_value from bt_appn_config c where c.APPN_PURPOSE_TYPE_CODE = 'FAID' 
+   <Time msec>: 3
+2017-10-26 16:12:21,066 * * DEBUG [sqlLogger] <sql [fin-aid]> ROLLBACK WORK   <Time msec>: 5
+2017-10-26 16:12:21,066 * * DEBUG [sqlLogger] <sql [fin-aid]> 
+2017-10-26 16:12:21,068 * * DEBUG [hbs.mba.finaid.servlet.AppContextServlet] AppContextServlet.init: adding databaseConfig to servlet context
+2017-10-26 16:12:21,068 * * DEBUG [hbs.mba.finaid.servlet.AppContextObjectFactory] AppContextObjectFactory.getContextObject: key=MaritalStatus, className=hbs.mba.finaid.MaritalStatus
+2017-10-26 16:12:21,071 * * DEBUG [sqlLogger] Attempting context lookup for java:/comp/env/jdbc/fin-aid
+2017-10-26 16:12:21,071 * * INFO  [sqlLogger] Exiting
+2017-10-26 16:12:21,075 * * DEBUG [sqlLogger] <sql [fin-aid]> SELECT marital_stat_type_code, marital_stat_type_desc FROM bt_marital_stat_type ORDER BY marital_stat_type_desc   <Time msec>: 4
+2017-10-26 16:12:21,079 * * DEBUG [sqlLogger] <sql [fin-aid]> ROLLBACK WORK   <Time msec>: 3
+2017-10-26 16:12:21,080 * * DEBUG [sqlLogger] <sql [fin-aid]> 
+2017-10-26 16:12:21,081 * * DEBUG [hbs.mba.finaid.servlet.AppContextServlet] AppContextServlet.init: adding MaritalStatus to servlet context
+2017-10-26 16:12:21,081 * * DEBUG [hbs.mba.finaid.servlet.AppContextServlet] AppContextServlet.init: creating timedRefresh()
+2017-10-26 16:12:21,085 * * ERROR [hbs.mba.finaid.servlet.AppContextServlet] AppContextServlet.init: could not parse time for timedRefresh
+java.text.ParseException: could not parse @refreshSchedule@ into time
+	at hbs.mba.finaid.servlet.AppContextServlet$TimedRefresh.getTime(AppContextServlet.java:525)
+	at hbs.mba.finaid.servlet.AppContextServlet$TimedRefresh.parseSchedule(AppContextServlet.java:483)
+	at hbs.mba.finaid.servlet.AppContextServlet$TimedRefresh.<init>(AppContextServlet.java:436)
+	at hbs.mba.finaid.servlet.AppContextServlet.init(AppContextServlet.java:191)
+	at org.apache.catalina.core.StandardWrapper.loadServlet(StandardWrapper.java:1213)
+	at org.apache.catalina.core.StandardWrapper.load(StandardWrapper.java:1026)
+	at org.apache.catalina.core.StandardContext.loadOnStartup(StandardContext.java:4425)
+	at org.apache.catalina.core.StandardContext.start(StandardContext.java:4738)
+	at org.apache.catalina.core.ContainerBase.start(ContainerBase.java:1057)
+	at org.apache.catalina.core.StandardHost.start(StandardHost.java:822)
+	at org.apache.catalina.core.ContainerBase.start(ContainerBase.java:1057)
+	at org.apache.catalina.core.StandardEngine.start(StandardEngine.java:463)
+	at org.apache.catalina.core.StandardService.start(StandardService.java:525)
+	at org.apache.catalina.core.StandardServer.start(StandardServer.java:754)
+	at org.apache.catalina.startup.Catalina.start(Catalina.java:595)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:289)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:414)
+2017-10-26 16:12:26,694 * * DEBUG [sqlLogger] Attempting context lookup for java:/comp/env/jdbc/fin-aid
+2017-10-26 16:12:26,706 * * INFO  [sqlLogger] Exiting
+2017-10-26 16:12:27,124 * * DEBUG [sqlLogger] <sql [fin-aid]> select phaseterm.academic_phase_type_code, term.acty_id,
+ (SELECT finaid_appn_id FROM mt_finaid_appn 
+ WHERE  prsn_id =887175 AND term_acty_id = term.acty_id),
+ (SELECT submit_date FROM mt_finaid_appn
+ WHERE  prsn_id =887175 AND term_acty_id = term.acty_id),
+ (SELECT DISTINCT 1 FROM activity_task_configuration atc, activity_task at, term_detail td
+ WHERE  atc.activity_task_id = at.activity_task_id
+ AND at.activity_task_code = 'FAMS' AND at.active_flag = 'T'
+ AND atc.acty_id = td.academic_phase_acty_id AND td.term_acty_id = term.acty_id
+ AND SYSDATE > atc.start_date_time AND SYSDATE < atc.end_date_time),
+ (SELECT DISTINCT 1 FROM activity_task_configuration atc, activity_task at, term_detail td
+ WHERE  atc.activity_task_id = at.activity_task_id
+ AND at.activity_task_code = 'FAMS' AND at.active_flag = 'T'
+ AND atc.acty_id = td.academic_phase_acty_id AND td.term_acty_id = term.acty_id
+ AND SYSDATE > atc.end_date_time),
+ phaseterm.term_short_name, phaseenroll.academic_phase_acty_id
+ from phase_term_v phaseTerm, bt_acty term, academic_phase_enrollment phaseEnroll, bt_stu_dtl stuDtl
+ where phaseEnroll.academic_phase_acty_id = phaseTerm.academic_phase_acty_id
+ and phaseTerm.term_acty_id = term.acty_id
+ and studtl.prsn_id = phaseEnroll.person_id
+ and studtl.prgm_id = 1
+ AND phaseTerm.term_type_id = 1
+ AND term.par_id = phaseterm.program_session_acty_id
+ AND phaseEnroll.person_id = 887175
+ AND phaseEnroll.withdrawn_date IS NULL
+ AND phaseterm.program_id = 1
+ ORDER BY phaseterm.academic_phase_type_code desc, phaseterm.academic_phase_acty_id   <Time msec>: 417
+2017-10-26 16:12:27,127 * * DEBUG [sqlLogger] <sql [fin-aid]> ROLLBACK WORK   <Time msec>: 1
+2017-10-26 16:12:27,128 * * DEBUG [sqlLogger] <sql [fin-aid]> 
+2017-10-26 16:12:27,137 * * DEBUG [sqlLogger] Attempting context lookup for java:/comp/env/jdbc/fin-aid
+2017-10-26 16:12:27,137 * * INFO  [sqlLogger] Exiting
+2017-10-26 16:12:27,142 * * DEBUG [sqlLogger] <sql [fin-aid]> select phaseterm.academic_phase_type_code, term.acty_id,
+ (SELECT finaid_appn_id FROM mt_finaid_appn 
+ WHERE  prsn_id =887175 AND term_acty_id = term.acty_id),
+ (SELECT submit_date FROM mt_finaid_appn
+ WHERE  prsn_id =887175 AND term_acty_id = term.acty_id),
+ (SELECT DISTINCT 1 FROM activity_task_configuration atc, activity_task at, term_detail td
+ WHERE  atc.activity_task_id = at.activity_task_id
+ AND at.activity_task_code = 'FAMS' AND at.active_flag = 'T'
+ AND atc.acty_id = td.academic_phase_acty_id AND td.term_acty_id = term.acty_id
+ AND SYSDATE > atc.start_date_time AND SYSDATE < atc.end_date_time),
+ (SELECT DISTINCT 1 FROM activity_task_configuration atc, activity_task at, term_detail td
+ WHERE  atc.activity_task_id = at.activity_task_id
+ AND at.activity_task_code = 'FAMS' AND at.active_flag = 'T'
+ AND atc.acty_id = td.academic_phase_acty_id AND td.term_acty_id = term.acty_id
+ AND SYSDATE > atc.end_date_time),
+ phaseterm.term_short_name, phaseenroll.academic_phase_acty_id
+ from phase_term_v phaseTerm, bt_acty term, academic_phase_enrollment phaseEnroll, bt_stu_dtl stuDtl
+ where phaseEnroll.academic_phase_acty_id = phaseTerm.academic_phase_acty_id
+ and phaseTerm.term_acty_id = term.acty_id
+ and studtl.prsn_id = phaseEnroll.person_id
+ and studtl.prgm_id = 1
+ AND phaseTerm.term_type_id = 1
+ AND term.par_id = phaseterm.program_session_acty_id
+ AND phaseEnroll.person_id = 887175
+ AND phaseEnroll.withdrawn_date IS NULL
+ AND phaseterm.program_id = 1
+ ORDER BY phaseterm.academic_phase_type_code desc, phaseterm.academic_phase_acty_id   <Time msec>: 5
+2017-10-26 16:12:27,144 * * DEBUG [sqlLogger] <sql [fin-aid]> ROLLBACK WORK   <Time msec>: 1
+2017-10-26 16:12:27,144 * * DEBUG [sqlLogger] <sql [fin-aid]> 
+2017-10-26 16:12:34,926 * * DEBUG [sqlLogger] Attempting context lookup for java:/comp/env/jdbc/fin-aid
+2017-10-26 16:12:34,927 * * INFO  [sqlLogger] Exiting
+2017-10-26 16:12:34,932 * * DEBUG [sqlLogger] <sql [fin-aid]> select phaseterm.academic_phase_type_code, term.acty_id,
+ (SELECT finaid_appn_id FROM mt_finaid_appn 
+ WHERE  prsn_id =887175 AND term_acty_id = term.acty_id),
+ (SELECT submit_date FROM mt_finaid_appn
+ WHERE  prsn_id =887175 AND term_acty_id = term.acty_id),
+ (SELECT DISTINCT 1 FROM activity_task_configuration atc, activity_task at, term_detail td
+ WHERE  atc.activity_task_id = at.activity_task_id
+ AND at.activity_task_code = 'FAMS' AND at.active_flag = 'T'
+ AND atc.acty_id = td.academic_phase_acty_id AND td.term_acty_id = term.acty_id
+ AND SYSDATE > atc.start_date_time AND SYSDATE < atc.end_date_time),
+ (SELECT DISTINCT 1 FROM activity_task_configuration atc, activity_task at, term_detail td
+ WHERE  atc.activity_task_id = at.activity_task_id
+ AND at.activity_task_code = 'FAMS' AND at.active_flag = 'T'
+ AND atc.acty_id = td.academic_phase_acty_id AND td.term_acty_id = term.acty_id
+ AND SYSDATE > atc.end_date_time),
+ phaseterm.term_short_name, phaseenroll.academic_phase_acty_id
+ from phase_term_v phaseTerm, bt_acty term, academic_phase_enrollment phaseEnroll, bt_stu_dtl stuDtl
+ where phaseEnroll.academic_phase_acty_id = phaseTerm.academic_phase_acty_id
+ and phaseTerm.term_acty_id = term.acty_id
+ and studtl.prsn_id = phaseEnroll.person_id
+ and studtl.prgm_id = 1
+ AND phaseTerm.term_type_id = 1
+ AND term.par_id = phaseterm.program_session_acty_id
+ AND phaseEnroll.person_id = 887175
+ AND phaseEnroll.withdrawn_date IS NULL
+ AND phaseterm.program_id = 1
+ ORDER BY phaseterm.academic_phase_type_code desc, phaseterm.academic_phase_acty_id   <Time msec>: 5
+2017-10-26 16:12:34,933 * * DEBUG [sqlLogger] <sql [fin-aid]> ROLLBACK WORK   <Time msec>: 1
+2017-10-26 16:12:34,933 * * DEBUG [sqlLogger] <sql [fin-aid]> 
+2017-10-26 16:12:40,531 * * DEBUG [sqlLogger] Attempting context lookup for java:/comp/env/jdbc/fin-aid
+2017-10-26 16:12:40,532 * * INFO  [sqlLogger] Exiting
+2017-10-26 16:12:40,536 * * DEBUG [sqlLogger] <sql [fin-aid]> select phaseterm.academic_phase_type_code, term.acty_id,
+ (SELECT finaid_appn_id FROM mt_finaid_appn 
+ WHERE  prsn_id =887175 AND term_acty_id = term.acty_id),
+ (SELECT submit_date FROM mt_finaid_appn
+ WHERE  prsn_id =887175 AND term_acty_id = term.acty_id),
+ (SELECT DISTINCT 1 FROM activity_task_configuration atc, activity_task at, term_detail td
+ WHERE  atc.activity_task_id = at.activity_task_id
+ AND at.activity_task_code = 'FAMS' AND at.active_flag = 'T'
+ AND atc.acty_id = td.academic_phase_acty_id AND td.term_acty_id = term.acty_id
+ AND SYSDATE > atc.start_date_time AND SYSDATE < atc.end_date_time),
+ (SELECT DISTINCT 1 FROM activity_task_configuration atc, activity_task at, term_detail td
+ WHERE  atc.activity_task_id = at.activity_task_id
+ AND at.activity_task_code = 'FAMS' AND at.active_flag = 'T'
+ AND atc.acty_id = td.academic_phase_acty_id AND td.term_acty_id = term.acty_id
+ AND SYSDATE > atc.end_date_time),
+ phaseterm.term_short_name, phaseenroll.academic_phase_acty_id
+ from phase_term_v phaseTerm, bt_acty term, academic_phase_enrollment phaseEnroll, bt_stu_dtl stuDtl
+ where phaseEnroll.academic_phase_acty_id = phaseTerm.academic_phase_acty_id
+ and phaseTerm.term_acty_id = term.acty_id
+ and studtl.prsn_id = phaseEnroll.person_id
+ and studtl.prgm_id = 1
+ AND phaseTerm.term_type_id = 1
+ AND term.par_id = phaseterm.program_session_acty_id
+ AND phaseEnroll.person_id = 887175
+ AND phaseEnroll.withdrawn_date IS NULL
+ AND phaseterm.program_id = 1
+ ORDER BY phaseterm.academic_phase_type_code desc, phaseterm.academic_phase_acty_id   <Time msec>: 3
+2017-10-26 16:12:40,539 * * DEBUG [sqlLogger] <sql [fin-aid]> ROLLBACK WORK   <Time msec>: 3
+2017-10-26 16:12:40,539 * * DEBUG [sqlLogger] <sql [fin-aid]> 
+2017-10-26 16:12:40,541 * * DEBUG [sqlLogger] Attempting context lookup for java:/comp/env/jdbc/fin-aid
+2017-10-26 16:12:40,542 * * INFO  [sqlLogger] Exiting
+2017-10-26 16:12:40,547 * * DEBUG [sqlLogger] <sql [fin-aid]> select phaseterm.academic_phase_type_code, term.acty_id,
+ (SELECT finaid_appn_id FROM mt_finaid_appn 
+ WHERE  prsn_id =887175 AND term_acty_id = term.acty_id),
+ (SELECT submit_date FROM mt_finaid_appn
+ WHERE  prsn_id =887175 AND term_acty_id = term.acty_id),
+ (SELECT DISTINCT 1 FROM activity_task_configuration atc, activity_task at, term_detail td
+ WHERE  atc.activity_task_id = at.activity_task_id
+ AND at.activity_task_code = 'FAMS' AND at.active_flag = 'T'
+ AND atc.acty_id = td.academic_phase_acty_id AND td.term_acty_id = term.acty_id
+ AND SYSDATE > atc.start_date_time AND SYSDATE < atc.end_date_time),
+ (SELECT DISTINCT 1 FROM activity_task_configuration atc, activity_task at, term_detail td
+ WHERE  atc.activity_task_id = at.activity_task_id
+ AND at.activity_task_code = 'FAMS' AND at.active_flag = 'T'
+ AND atc.acty_id = td.academic_phase_acty_id AND td.term_acty_id = term.acty_id
+ AND SYSDATE > atc.end_date_time),
+ phaseterm.term_short_name, phaseenroll.academic_phase_acty_id
+ from phase_term_v phaseTerm, bt_acty term, academic_phase_enrollment phaseEnroll, bt_stu_dtl stuDtl
+ where phaseEnroll.academic_phase_acty_id = phaseTerm.academic_phase_acty_id
+ and phaseTerm.term_acty_id = term.acty_id
+ and studtl.prsn_id = phaseEnroll.person_id
+ and studtl.prgm_id = 1
+ AND phaseTerm.term_type_id = 1
+ AND term.par_id = phaseterm.program_session_acty_id
+ AND phaseEnroll.person_id = 887175
+ AND phaseEnroll.withdrawn_date IS NULL
+ AND phaseterm.program_id = 1
+ ORDER BY phaseterm.academic_phase_type_code desc, phaseterm.academic_phase_acty_id   <Time msec>: 5
+2017-10-26 16:12:40,549 * * DEBUG [sqlLogger] <sql [fin-aid]> ROLLBACK WORK   <Time msec>: 1
+2017-10-26 16:12:40,550 * * DEBUG [sqlLogger] <sql [fin-aid]> 
+2017-10-26 16:19:54,173 * * DEBUG [sqlLogger] Attempting context lookup for java:/comp/env/jdbc/fin-aid
+2017-10-26 16:19:54,175 * * INFO  [sqlLogger] Exiting
+2017-10-26 16:19:54,188 * * DEBUG [sqlLogger] <sql [fin-aid]> select phaseterm.academic_phase_type_code, term.acty_id,
+ (SELECT finaid_appn_id FROM mt_finaid_appn 
+ WHERE  prsn_id =887175 AND term_acty_id = term.acty_id),
+ (SELECT submit_date FROM mt_finaid_appn
+ WHERE  prsn_id =887175 AND term_acty_id = term.acty_id),
+ (SELECT DISTINCT 1 FROM activity_task_configuration atc, activity_task at, term_detail td
+ WHERE  atc.activity_task_id = at.activity_task_id
+ AND at.activity_task_code = 'FAMS' AND at.active_flag = 'T'
+ AND atc.acty_id = td.academic_phase_acty_id AND td.term_acty_id = term.acty_id
+ AND SYSDATE > atc.start_date_time AND SYSDATE < atc.end_date_time),
+ (SELECT DISTINCT 1 FROM activity_task_configuration atc, activity_task at, term_detail td
+ WHERE  atc.activity_task_id = at.activity_task_id
+ AND at.activity_task_code = 'FAMS' AND at.active_flag = 'T'
+ AND atc.acty_id = td.academic_phase_acty_id AND td.term_acty_id = term.acty_id
+ AND SYSDATE > atc.end_date_time),
+ phaseterm.term_short_name, phaseenroll.academic_phase_acty_id
+ from phase_term_v phaseTerm, bt_acty term, academic_phase_enrollment phaseEnroll, bt_stu_dtl stuDtl
+ where phaseEnroll.academic_phase_acty_id = phaseTerm.academic_phase_acty_id
+ and phaseTerm.term_acty_id = term.acty_id
+ and studtl.prsn_id = phaseEnroll.person_id
+ and studtl.prgm_id = 1
+ AND phaseTerm.term_type_id = 1
+ AND term.par_id = phaseterm.program_session_acty_id
+ AND phaseEnroll.person_id = 887175
+ AND phaseEnroll.withdrawn_date IS NULL
+ AND phaseterm.program_id = 1
+ ORDER BY phaseterm.academic_phase_type_code desc, phaseterm.academic_phase_acty_id   <Time msec>: 13
+2017-10-26 16:19:54,201 * * DEBUG [sqlLogger] <sql [fin-aid]> ROLLBACK WORK   <Time msec>: 13
+2017-10-26 16:19:54,201 * * DEBUG [sqlLogger] <sql [fin-aid]> 
+2017-10-26 16:19:54,205 * * DEBUG [sqlLogger] Attempting context lookup for java:/comp/env/jdbc/fin-aid
+2017-10-26 16:19:54,205 * * INFO  [sqlLogger] Exiting
+2017-10-26 16:19:54,218 * * DEBUG [sqlLogger] <sql [fin-aid]> select phaseterm.academic_phase_type_code, term.acty_id,
+ (SELECT finaid_appn_id FROM mt_finaid_appn 
+ WHERE  prsn_id =887175 AND term_acty_id = term.acty_id),
+ (SELECT submit_date FROM mt_finaid_appn
+ WHERE  prsn_id =887175 AND term_acty_id = term.acty_id),
+ (SELECT DISTINCT 1 FROM activity_task_configuration atc, activity_task at, term_detail td
+ WHERE  atc.activity_task_id = at.activity_task_id
+ AND at.activity_task_code = 'FAMS' AND at.active_flag = 'T'
+ AND atc.acty_id = td.academic_phase_acty_id AND td.term_acty_id = term.acty_id
+ AND SYSDATE > atc.start_date_time AND SYSDATE < atc.end_date_time),
+ (SELECT DISTINCT 1 FROM activity_task_configuration atc, activity_task at, term_detail td
+ WHERE  atc.activity_task_id = at.activity_task_id
+ AND at.activity_task_code = 'FAMS' AND at.active_flag = 'T'
+ AND atc.acty_id = td.academic_phase_acty_id AND td.term_acty_id = term.acty_id
+ AND SYSDATE > atc.end_date_time),
+ phaseterm.term_short_name, phaseenroll.academic_phase_acty_id
+ from phase_term_v phaseTerm, bt_acty term, academic_phase_enrollment phaseEnroll, bt_stu_dtl stuDtl
+ where phaseEnroll.academic_phase_acty_id = phaseTerm.academic_phase_acty_id
+ and phaseTerm.term_acty_id = term.acty_id
+ and studtl.prsn_id = phaseEnroll.person_id
+ and studtl.prgm_id = 1
+ AND phaseTerm.term_type_id = 1
+ AND term.par_id = phaseterm.program_session_acty_id
+ AND phaseEnroll.person_id = 887175
+ AND phaseEnroll.withdrawn_date IS NULL
+ AND phaseterm.program_id = 1
+ ORDER BY phaseterm.academic_phase_type_code desc, phaseterm.academic_phase_acty_id   <Time msec>: 13
+2017-10-26 16:19:54,220 * * DEBUG [sqlLogger] <sql [fin-aid]> ROLLBACK WORK   <Time msec>: 1
+2017-10-26 16:19:54,220 * * DEBUG [sqlLogger] <sql [fin-aid]> 
+2017-10-26 16:28:17,509 * * DEBUG [sqlLogger] Attempting context lookup for java:/comp/env/jdbc/fin-aid
+2017-10-26 16:28:17,510 * * INFO  [sqlLogger] Exiting
+2017-10-26 16:28:17,601 * * DEBUG [sqlLogger] <sql [fin-aid]> select phaseterm.academic_phase_type_code, term.acty_id,
+ (SELECT finaid_appn_id FROM mt_finaid_appn 
+ WHERE  prsn_id =887175 AND term_acty_id = term.acty_id),
+ (SELECT submit_date FROM mt_finaid_appn
+ WHERE  prsn_id =887175 AND term_acty_id = term.acty_id),
+ (SELECT DISTINCT 1 FROM activity_task_configuration atc, activity_task at, term_detail td
+ WHERE  atc.activity_task_id = at.activity_task_id
+ AND at.activity_task_code = 'FAMS' AND at.active_flag = 'T'
+ AND atc.acty_id = td.academic_phase_acty_id AND td.term_acty_id = term.acty_id
+ AND SYSDATE > atc.start_date_time AND SYSDATE < atc.end_date_time),
+ (SELECT DISTINCT 1 FROM activity_task_configuration atc, activity_task at, term_detail td
+ WHERE  atc.activity_task_id = at.activity_task_id
+ AND at.activity_task_code = 'FAMS' AND at.active_flag = 'T'
+ AND atc.acty_id = td.academic_phase_acty_id AND td.term_acty_id = term.acty_id
+ AND SYSDATE > atc.end_date_time),
+ phaseterm.term_short_name, phaseenroll.academic_phase_acty_id
+ from phase_term_v phaseTerm, bt_acty term, academic_phase_enrollment phaseEnroll, bt_stu_dtl stuDtl
+ where phaseEnroll.academic_phase_acty_id = phaseTerm.academic_phase_acty_id
+ and phaseTerm.term_acty_id = term.acty_id
+ and studtl.prsn_id = phaseEnroll.person_id
+ and studtl.prgm_id = 1
+ AND phaseTerm.term_type_id = 1
+ AND term.par_id = phaseterm.program_session_acty_id
+ AND phaseEnroll.person_id = 887175
+ AND phaseEnroll.withdrawn_date IS NULL
+ AND phaseterm.program_id = 1
+ ORDER BY phaseterm.academic_phase_type_code desc, phaseterm.academic_phase_acty_id   <Time msec>: 90
+2017-10-26 16:28:17,604 * * DEBUG [sqlLogger] <sql [fin-aid]> ROLLBACK WORK   <Time msec>: 2
+2017-10-26 16:28:17,604 * * DEBUG [sqlLogger] <sql [fin-aid]> 
+2017-10-26 16:28:17,606 * * DEBUG [sqlLogger] Attempting context lookup for java:/comp/env/jdbc/fin-aid
+2017-10-26 16:28:17,606 * * INFO  [sqlLogger] Exiting
+2017-10-26 16:28:17,610 * * DEBUG [sqlLogger] <sql [fin-aid]> select phaseterm.academic_phase_type_code, term.acty_id,
+ (SELECT finaid_appn_id FROM mt_finaid_appn 
+ WHERE  prsn_id =887175 AND term_acty_id = term.acty_id),
+ (SELECT submit_date FROM mt_finaid_appn
+ WHERE  prsn_id =887175 AND term_acty_id = term.acty_id),
+ (SELECT DISTINCT 1 FROM activity_task_configuration atc, activity_task at, term_detail td
+ WHERE  atc.activity_task_id = at.activity_task_id
+ AND at.activity_task_code = 'FAMS' AND at.active_flag = 'T'
+ AND atc.acty_id = td.academic_phase_acty_id AND td.term_acty_id = term.acty_id
+ AND SYSDATE > atc.start_date_time AND SYSDATE < atc.end_date_time),
+ (SELECT DISTINCT 1 FROM activity_task_configuration atc, activity_task at, term_detail td
+ WHERE  atc.activity_task_id = at.activity_task_id
+ AND at.activity_task_code = 'FAMS' AND at.active_flag = 'T'
+ AND atc.acty_id = td.academic_phase_acty_id AND td.term_acty_id = term.acty_id
+ AND SYSDATE > atc.end_date_time),
+ phaseterm.term_short_name, phaseenroll.academic_phase_acty_id
+ from phase_term_v phaseTerm, bt_acty term, academic_phase_enrollment phaseEnroll, bt_stu_dtl stuDtl
+ where phaseEnroll.academic_phase_acty_id = phaseTerm.academic_phase_acty_id
+ and phaseTerm.term_acty_id = term.acty_id
+ and studtl.prsn_id = phaseEnroll.person_id
+ and studtl.prgm_id = 1
+ AND phaseTerm.term_type_id = 1
+ AND term.par_id = phaseterm.program_session_acty_id
+ AND phaseEnroll.person_id = 887175
+ AND phaseEnroll.withdrawn_date IS NULL
+ AND phaseterm.program_id = 1
+ ORDER BY phaseterm.academic_phase_type_code desc, phaseterm.academic_phase_acty_id   <Time msec>: 4
+2017-10-26 16:28:17,612 * * DEBUG [sqlLogger] <sql [fin-aid]> ROLLBACK WORK   <Time msec>: 2
+2017-10-26 16:28:17,612 * * DEBUG [sqlLogger] <sql [fin-aid]> 

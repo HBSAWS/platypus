@@ -4709,9 +4709,6 @@ table.dataTable.dtr-column > tbody > tr.parent th.control:before {
 table.datatable thead th {
   white-space: nowrap; }
 
-table.datatable tbody tr td {
-  white-space: nowrap; }
-
 .dataTable.collapsed tr.child {
   width: 100%; }
   .dataTable.collapsed tr.child td {
@@ -4979,7 +4976,7 @@ html.xl .display-1 {
   font-size: 4.5em; }
 
 .progress .progress-bar {
-  height: 5px;
+  height: 1em;
   transition: width 2s ease-in-out; }
 
 .popover {
