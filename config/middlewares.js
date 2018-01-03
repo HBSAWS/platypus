@@ -17,6 +17,11 @@ module.exports = {
             "Chrome", "Internet Explorer", "Firefox", "Opera", "Safari",
             "Safari Mobile", "Android Mobile", "Windows Mobile"
         ]
+        res.locals.accessibility_levels = [
+            "WCAG 2.0 Level A",
+            "WCAG 2.0 Level AA",
+            "WCAG 2.0 Level AAA",
+        ];
 		return next();
 	},
 	getNav: function(req, res, next) {

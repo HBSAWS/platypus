@@ -166,6 +166,7 @@ module.exports = {
             js: req.body.js,
             fiddle: req.body.fiddle,
             tested_on: req.body.tested_on,
+            accessibility: req.body.accessibility,
             published: req.body.published ? true : false
         };
 

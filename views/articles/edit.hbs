@@ -155,6 +155,19 @@
 				</div>
 			</div><!--/.row-->	 
 
+			<div class="row form-group">
+				<div class="col-md-4 hidden-sm-down text-xs-right">
+					<label for="accessibility">Accessibility</label>
+				</div>
+				<div class="col-md-8">
+					<label class="hidden-md-up d-block" for="accessibility">Tested On</label>
+					<select name="accessibility" class="select2 form-control" data-placeholder="Select" data-allow-clear="true">
+					    {{#each ../accessibility_levels}}
+					    	<option value="{{.}}" {{#is ../accessibility this}} selected {{ else }} {{/is}}>{{.}}</option>
+					    {{/each}}
+					</select>
+				</div>
+			</div><!--/.row-->	
 
 			<div class="row form-group">
 				<div class="col-md-4 hidden-sm-down text-xs-right">
