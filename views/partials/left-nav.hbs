@@ -5,7 +5,8 @@
     </a>
     
     <div class="p-1">
-        <select class="form-control" onchange="location = '/version/'+this.value;">
+        <label class="text-white mb-0" for="select_version">Select Version:</label>
+        <select name="select_version" class="form-control" onchange="location = '/version/'+this.value;">
             {{#versions}}
             
                 {{#compare ../current "!=" ../ver_selected}}

@@ -93,6 +93,7 @@
 			Platypus.hideLoader();
 			Platypus.breadCrumbs();
 			Platypus.renderCharts(); 
+			Platypus.debug(); 
 		},
 		
 		detectBreakpoint: function() {
@@ -2172,6 +2173,37 @@
 			$('.load-container').fadeOut('slow');
 			$('.load-container ~ .container-fluid').fadeIn();
 			$(window).trigger('resize');
+		},
+		debug: function(){
+			let searchParams = new URLSearchParams(window.location.search);
+			if (searchParams.has('debug') ) {
+				switch(searchParams.get('debug')) {
+					case 'accessibility':
+						console.log("Debugging accessibility... The page might become unresponsive for a few seconds. Please stand by.");
+						p = Promise.all([
+							load.js("https://cdnjs.cloudflare.com/ajax/libs/axe-core/2.6.1/axe.min.js"),
+						]).then(function(){
+							let opts = {
+								runOnly: { 
+									type: "tag", 
+									values: ["wcag2a", "wcag2aa"]
+								}
+							};
+
+							axe.run(document, opts, function (error, results) {
+							  if(results.violations.length === 0) {
+							  	console.log("Congratulations! This page is WCAG 2.0 Level A and AA compliant.")
+							  } else {
+							  	console.log("The following accessibility issue should be fixed:")
+							  	results.violations.map( (violation) => console.log(violation) );
+							  }
+							});
+						});
+						break;
+					default:
+					console.log("Invalid debug value");
+				}
+			}
 		},
 		last: ''
 	};

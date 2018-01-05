@@ -5678,6 +5678,7 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 			Platypus.hideLoader();
 			Platypus.breadCrumbs();
 			Platypus.renderCharts();
+			Platypus.debug();
 		},
 
 		detectBreakpoint: function detectBreakpoint() {
@@ -7344,6 +7345,37 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 			$('.load-container').fadeOut('slow');
 			$('.load-container ~ .container-fluid').fadeIn();
 			$(window).trigger('resize');
+		},
+		debug: function debug() {
+			var searchParams = new URLSearchParams(window.location.search);
+			if (searchParams.has('debug')) {
+				switch (searchParams.get('debug')) {
+					case 'accessibility':
+						console.log("Debugging accessibility... The page might become unresponsive for a few seconds. Please stand by.");
+						p = Promise.all([load.js("https://cdnjs.cloudflare.com/ajax/libs/axe-core/2.6.1/axe.min.js")]).then(function () {
+							var opts = {
+								runOnly: {
+									type: "tag",
+									values: ["wcag2a", "wcag2aa"]
+								}
+							};
+
+							axe.run(document, opts, function (error, results) {
+								if (results.violations.length === 0) {
+									console.log("Congratulations! This page is WCAG 2.0 Level A and AA compliant.");
+								} else {
+									console.log("The following accessibility issue should be fixed:");
+									results.violations.map(function (violation) {
+										return console.log(violation);
+									});
+								}
+							});
+						});
+						break;
+					default:
+						console.log("Invalid debug value");
+				}
+			}
 		},
 		last: ''
 	};
