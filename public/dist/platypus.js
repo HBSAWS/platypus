@@ -6095,7 +6095,15 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 				} else {
 
 					// Initialize normal datatables
-					initTable($tbl, buttons);
+					if (buttons) {
+						p.then(function () {
+							initTable($tbl, buttons);
+						}).catch(function (e) {
+							console.log('Cannot load DataTables button remote dependecies:' + e);
+						});
+					} else {
+						initTable($tbl, buttons);
+					}
 				}
 			});
 		},

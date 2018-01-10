@@ -530,7 +530,15 @@
 				} else {
 
 					// Initialize normal datatables
-					initTable($tbl, buttons);
+					if(buttons) {
+						p.then(function(){
+							initTable($tbl, buttons);
+						}).catch(function(e) {
+			                console.log('Cannot load DataTables button remote dependecies:'+e);
+			            });
+			        } else {
+			        	initTable($tbl, buttons);
+			        }
 				
 				}
 			
