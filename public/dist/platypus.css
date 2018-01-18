@@ -6690,6 +6690,9 @@ span.btn-label.btn-label-right {
 .ladda-button {
   padding: .5rem 1rem;
   font-size: 16px; }
+  .ladda-button.btn-secondary {
+    color: #373a3c;
+    border-color: #ccc; }
 
 /* Toggle Button */
 .toggle-on, .toggle-off {
@@ -6704,7 +6707,8 @@ span.btn-label.btn-label-right {
   width: 100% !important; }
 
 .toggle.btn {
-  min-width: 65px; }
+  min-width: 65px;
+  height: 38px; }
   .toggle.btn .toggle-handle {
     background: #ddd; }
   .toggle.btn .toggle-on,

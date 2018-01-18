@@ -93,6 +93,7 @@
 			Platypus.hideLoader();
 			Platypus.breadCrumbs();
 			Platypus.renderCharts(); 
+			Platypus.swapIcons(); 
 			Platypus.debug(); 
 		},
 		
@@ -1275,39 +1276,39 @@
 
 			$.fn.conditionize = function(options){ 
     
-		     var settings = $.extend({
-		        hideJS: true
-		    }, options );
-		    
-		    $.fn.showOrHide = function(listenTo, listenFor, $section) {
-		      if ($(listenTo).is('select, input[type=text]') && $(listenTo).val() == listenFor ) {
-		        $section.slideDown();
-		      }
-		      else if ($(listenTo + ":checked").val() == listenFor) {
-		        $section.slideDown();
-		      }
-		      else {
-		        $section.slideUp();
-		      }
-		    } 
+			     var settings = $.extend({
+			        hideJS: true
+			    }, options );
+			    
+			    $.fn.showOrHide = function(listenTo, listenFor, $section) {
+			      if ($(listenTo).is('select, input[type=text]') && $(listenTo).val() == listenFor ) {
+			        $section.slideDown();
+			      }
+			      else if ($(listenTo + ":checked").val() == listenFor) {
+			        $section.slideDown();
+			      }
+			      else {
+			        $section.slideUp();
+			      }
+			    } 
 
-		    return this.each( function() {
-		      var listenTo = '[name="' + $(this).data('cond-option').toString() + '"]';
-		      var listenFor = $(this).data('cond-value');
-		      var $section = $(this);
-		  
-		      //Set up event listener
-		      $(listenTo).on('change', function() {
-		        $.fn.showOrHide(listenTo, listenFor, $section);
-		      });
-		      //If setting was chosen, hide everything first...
-		      if (settings.hideJS) {
-		        $(this).hide();
-		      }
-		      //Show based on current value on page load
-		      $.fn.showOrHide(listenTo, listenFor, $section);
-		    });
-		  }
+			    return this.each( function() {
+			      var listenTo = '[name="' + $(this).data('cond-option').toString() + '"]';
+			      var listenFor = $(this).data('cond-value');
+			      var $section = $(this);
+			  
+			      //Set up event listener
+			      $(listenTo).on('change', function() {
+			        $.fn.showOrHide(listenTo, listenFor, $section);
+			      });
+			      //If setting was chosen, hide everything first...
+			      if (settings.hideJS) {
+			        $(this).hide();
+			      }
+			      //Show based on current value on page load
+			      $.fn.showOrHide(listenTo, listenFor, $section);
+			    });
+			  }
 
     		$('.conditional').conditionize();
 
@@ -2181,6 +2182,35 @@
 			$('.load-container').fadeOut('slow');
 			$('.load-container ~ .container-fluid').fadeIn();
 			$(window).trigger('resize');
+		},
+		swapIcons: function() {
+			 $('[data-alt-icon]').each(function() {
+			 	var currClasses = $(this).attr('class');
+			 	var icon = $(this).data("icon");
+				var altIco = $(this).data('alt-icon');
+				var event = $(this).data('alt-icon-trigger');
+
+				$(this).addClass('fa').addClass(icon);
+				$(this).addClass(currClasses);
+				
+				switch(event) {
+					case 'click':
+						$(this).on(event, function(e) {
+							$(this).toggleClass(icon + ' ' +altIco);
+						});
+						break;
+					case 'hover':
+						$(this).hover(function() {
+								$(this).toggleClass(icon + ' ' +altIco);
+							},
+							function(){
+								$(this).toggleClass(altIco + ' ' +icon);
+							});
+						break;
+					default:
+					console.log("Unknown event.");
+				}
+			});
 		},
 		debug: function(){
 			let searchParams = new URLSearchParams(window.location.search);

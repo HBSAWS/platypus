@@ -5678,6 +5678,7 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 			Platypus.hideLoader();
 			Platypus.breadCrumbs();
 			Platypus.renderCharts();
+			Platypus.swapIcons();
 			Platypus.debug();
 		},
 
@@ -7353,6 +7354,34 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 			$('.load-container').fadeOut('slow');
 			$('.load-container ~ .container-fluid').fadeIn();
 			$(window).trigger('resize');
+		},
+		swapIcons: function swapIcons() {
+			$('[data-alt-icon]').each(function () {
+				var currClasses = $(this).attr('class');
+				var icon = $(this).data("icon");
+				var altIco = $(this).data('alt-icon');
+				var event = $(this).data('alt-icon-trigger');
+
+				$(this).addClass('fa').addClass(icon);
+				$(this).addClass(currClasses);
+
+				switch (event) {
+					case 'click':
+						$(this).on(event, function (e) {
+							$(this).toggleClass(icon + ' ' + altIco);
+						});
+						break;
+					case 'hover':
+						$(this).hover(function () {
+							$(this).toggleClass(icon + ' ' + altIco);
+						}, function () {
+							$(this).toggleClass(altIco + ' ' + icon);
+						});
+						break;
+					default:
+						console.log("Unknown event.");
+				}
+			});
 		},
 		debug: function debug() {
 			var searchParams = new URLSearchParams(window.location.search);

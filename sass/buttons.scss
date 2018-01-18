@@ -60,6 +60,10 @@ span.btn-label.btn-label-right {
 .ladda-button {
 	padding: .5rem 1rem;
 	font-size: 16px;
+  &.btn-secondary {
+    color: #373a3c;
+    border-color: #ccc;
+  }
 }
 
 /* Toggle Button */
