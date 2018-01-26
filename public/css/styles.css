@@ -4442,9 +4442,6 @@ fieldset.bordered {
   margin-right: 20px; }
 
 /* Icons */
-.fa {
-  position: relative; }
-
 .img-xs {
   max-width: 100px; }
 
@@ -5060,6 +5057,11 @@ table tr .rotate div {
   clear: both; }
   .typeahead__list > li:hover {
     background-color: transparent; }
+
+.modal .modal-dialog {
+  transform: translate(0, -50%);
+  top: 50%;
+  margin: 0 auto; }
 
 body.modal-open {
   overflow: hidden !important; }
