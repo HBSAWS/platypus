@@ -601,6 +601,8 @@
 				$('.select2').each(function(){
 					let $this = $(this);
 					let source = $this.data('source');
+					let placeholder = $this.data('placeholder') !== '' ? $this.data('placeholder') : 'Select an option';
+
 					if ( source && source != '' ){
 
 						$this.select2({
@@ -634,16 +636,22 @@
 						      cache: true
 						    },
 						    escapeMarkup: function (markup) { return markup; },
+						    placeholder: placeholder,
 						    minimumInputLength: 0,
 						    templateResult: templateResult,
 						    templateSelection: templateSelection
-						  });
+						  }).on("select2:open", function() { 
+						    $('.select2-search__field').attr('placeholder', placeholder);
+						});;
 
 					} else {
 						$this.select2({
 							theme: "bootstrap",
-							placeholder: 'Select an option'
-						});
+							placeholder: placeholder
+						}).on("select2:open", function() { 
+						   $('.select2-search__field').attr('placeholder', placeholder);
+						});;
+						
 					}
 				})
 

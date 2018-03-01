@@ -37,7 +37,7 @@
 }
 
 /* Full Calendar */
-.fc-event {
+.full-calendar .fc-event {
     position: relative;
     display: block;
     font-size: .85em;
@@ -49,3 +49,6 @@
     	opacity: .5;
     }
 }
+
+// Scheduler Events
+.fc-timeline-event { position: absolute;}

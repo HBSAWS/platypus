@@ -15,6 +15,8 @@ textarea,
 .list-group-item:first-child,
 .nav-tabs .nav-link,
 .modal-content,
+.tooltip-inner,
+.popover,
 .img-thumbnail {
   -webkit-border-radius: 0 !important;
   -moz-border-radius: 0 !important;
@@ -4225,7 +4227,7 @@ a.palette-text-black-darker:focus {
     padding-bottom: 6px; }
 
 /* Full Calendar */
-.fc-event {
+.full-calendar .fc-event {
   position: relative;
   display: block;
   font-size: .85em;
@@ -4233,8 +4235,11 @@ a.palette-text-black-darker:focus {
   border-radius: 0;
   background: #009688 !important;
   color: white !important; }
-  .fc-event .fc-time {
+  .full-calendar .fc-event .fc-time {
     opacity: .5; }
+
+.fc-timeline-event {
+  position: absolute; }
 
 .card-deck .card > a {
   color: black; }
@@ -5059,7 +5064,7 @@ table tr .rotate div {
     background-color: transparent; }
 
 .modal .modal-dialog {
-  transform: translate(0, -50%);
+  transform: translate(0, -50%) !important;
   top: 50%;
   margin: 0 auto; }
 

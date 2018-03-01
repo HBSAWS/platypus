@@ -1,22 +1,24 @@
 .btn, 
-	.alert,
-	button, 
-	input, 
-	select, 
-	textarea, 
-	.custom-file-control, 
-	.input-group-addon, 
-	.form-control, 
-	.tag,
-	.card,
-	.card-header,
-	.list-group-item:first-child,
-	.nav-tabs .nav-link,
-	.modal-content,
-	.img-thumbnail {
-		-webkit-border-radius: 0 !important;
-	    -moz-border-radius: 0 !important;
-		border-radius: 0 !important;
+.alert,
+button, 
+input, 
+select, 
+textarea, 
+.custom-file-control, 
+.input-group-addon, 
+.form-control, 
+.tag,
+.card,
+.card-header,
+.list-group-item:first-child,
+.nav-tabs .nav-link,
+.modal-content,
+.tooltip-inner,
+.popover,
+.img-thumbnail {
+	-webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+	border-radius: 0 !important;
 
 }
 
