@@ -1,5 +1,4 @@
 #!/bin/bash
 
 
-export NODE_ENV=production
-nohup gulp &
+NODE_ENV=production nohup node server.js &
