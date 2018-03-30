@@ -94,6 +94,7 @@
 			Platypus.breadCrumbs();
 			Platypus.renderCharts(); 
 			Platypus.swapIcons(); 
+			Platypus.shortcutKeys(); 
 			Platypus.debug(); 
 		},
 		
@@ -584,77 +585,78 @@
 		},
 		select2: function() {
 
-			  function templateResult (item) {
-			    	var markup = `
-				    	<div class="row">
-				    		<div class="col-sm-4">${item.text}</div>
-				    		<div class="col-sm-4">${item.name}</div>
-				    		<div class="col-sm-4">${item.id}</div>
-				    	</div>`
-			    	return markup;
-			  	}
+			var browser = Platypus.detectBrowsers();
+			
+			function templateResult (item) {
+		    	var markup = `
+			    	<div class="row">
+			    		<div class="col-sm-4">${item.text}</div>
+			    		<div class="col-sm-4">${item.name}</div>
+			    		<div class="col-sm-4">${item.id}</div>
+			    	</div>`
+		    	return markup;
+		  	}
 
-			  	function templateSelection (item) {
-			    	return item.text;
-			  	}
+		  	function templateSelection (item) {
+		    	return item.text;
+		  	}
 
-				$('.select2').each(function(){
-					let $this = $(this);
-					let source = $this.data('source');
-					let placeholder = $this.data('placeholder') !== '' ? $this.data('placeholder') : 'Select an option';
+			$('.select2').each(function(){
+				let $this = $(this);
+				let source = $this.data('source');
+				let placeholder = (!browser.isIE && $this.data('placeholder')) !== '' ? $this.data('placeholder') : 'Select an option';
 
-					if ( source && source != '' ){
+				if ( source && source != '' ){
 
-						$this.select2({
-						    ajax: {
-						      	url: source,
-						      	dataType: 'json',
-						      	delay: 250,
-						      	data: function (params) {
-						        	return {
-						            	q: params.term ? params.term : "a", // search term
-						          		page: params.page
-						        	};
-						      	},
-						      	processResults: function (data, params) {
-						        	params.page = params.page || 1;
+					$this.select2({
+					    ajax: {
+					      	url: source,
+					      	dataType: 'json',
+					      	delay: 250,
+					      	data: function (params) {
+					        	return {
+					            	q: params.term ? params.term : "a", // search term
+					          		page: params.page
+					        	};
+					      	},
+					      	processResults: function (data, params) {
+					        	params.page = params.page || 1;
 
-						        	return {
-						          		results: $.map(data, function (item) {
-					                    	return {
-					                        	text: item.first_name,
-					                        	name: item.last_name,
-					                        	id: item.first_name
-					                    	}
-					              		}),
-						          	
-						          	pagination: {
-						            more: (params.page * 30) < data.total_count
-						          }
-						        };
-						      },
-						      cache: true
-						    },
-						    escapeMarkup: function (markup) { return markup; },
-						    placeholder: placeholder,
-						    minimumInputLength: 0,
-						    templateResult: templateResult,
-						    templateSelection: templateSelection
-						  }).on("select2:open", function() { 
-						    $('.select2-search__field').attr('placeholder', placeholder);
-						});;
+					        	return {
+					          		results: $.map(data, function (item) {
+				                    	return {
+				                        	text: item.first_name,
+				                        	name: item.last_name,
+				                        	id: item.first_name
+				                    	}
+				              		}),
+					          	
+					          	pagination: {
+					            more: (params.page * 30) < data.total_count
+					          }
+					        };
+					      },
+					      cache: true
+					    },
+					    escapeMarkup: function (markup) { return markup; },
+					    placeholder: placeholder,
+					    minimumInputLength: 0,
+					    templateResult: templateResult,
+					    templateSelection: templateSelection
+					  }).on("select2:open", function() { 
+					    if(!browser.isIE) $('.select2-search__field').attr('placeholder', placeholder);
+					});;
 
-					} else {
-						$this.select2({
-							theme: "bootstrap",
-							placeholder: placeholder
-						}).on("select2:open", function() { 
-						   $('.select2-search__field').attr('placeholder', placeholder);
-						});;
-						
-					}
-				})
-
+				} else {
+					$this.select2({
+						theme: "bootstrap",
+						placeholder: placeholder
+					}).on("select2:open", function() { 
+					   if(!browser.isIE) $('.select2-search__field').attr('placeholder', placeholder);
+					});;
+					
+				}
+			})
 
 		},
 		dateRange: function() {
@@ -2220,34 +2222,52 @@
 				}
 			});
 		},
-		debug: function(){
-			let searchParams = new URLSearchParams(window.location.search);
-			if (searchParams.has('debug') ) {
-				switch(searchParams.get('debug')) {
-					case 'accessibility':
-						console.log("Debugging accessibility... The page might become unresponsive for a few seconds. Please stand by.");
-						p = Promise.all([
-							load.js("https://cdnjs.cloudflare.com/ajax/libs/axe-core/2.6.1/axe.min.js"),
-						]).then(function(){
-							let opts = {
-								runOnly: { 
-									type: "tag", 
-									values: ["wcag2a", "wcag2aa"]
-								}
-							};
+		shortcutKeys: function(){
+			// Find Content 
+			hotkeys('ctrl+f,command+f', function(e, handler){   
+				e.preventDefault();   
+				$('a[href="#search-container"]').trigger('click');
+			});
 
-							axe.run(document, opts, function (error, results) {
-							  if(results.violations.length === 0) {
-							  	console.log("Congratulations! This page is WCAG 2.0 Level A and AA compliant.")
-							  } else {
-							  	console.log("The following accessibility issue should be fixed:")
-							  	results.violations.map( (violation) => console.log(violation) );
-							  }
+			// Support Guide 
+			hotkeys('f1', function(e, handler){   
+				e.preventDefault();   
+				$('a[href="/support"]').trigger('click');
+			});
+		},
+		debug: function(){
+			var browser = Platypus.detectBrowsers();
+
+			if(!browser.isIE) {
+
+				let searchParams = new URLSearchParams(window.location.search);
+				if (searchParams.has('debug') ) {
+					switch(searchParams.get('debug')) {
+						case 'accessibility':
+							console.log("Debugging accessibility... The page might become unresponsive for a few seconds. Please stand by.");
+							p = Promise.all([
+								load.js("https://cdnjs.cloudflare.com/ajax/libs/axe-core/2.6.1/axe.min.js"),
+							]).then(function(){
+								let opts = {
+									runOnly: { 
+										type: "tag", 
+										values: ["wcag2a", "wcag2aa"]
+									}
+								};
+
+								axe.run(document, opts, function (error, results) {
+								  if(results.violations.length === 0) {
+								  	console.log("Congratulations! This page is WCAG 2.0 Level A and AA compliant.")
+								  } else {
+								  	console.log("The following accessibility issue should be fixed:")
+								  	results.violations.map( (violation) => console.log(violation) );
+								  }
+								});
 							});
-						});
-						break;
-					default:
-					console.log("Invalid debug value");
+							break;
+						default:
+						console.log("Invalid debug value");
+					}
 				}
 			}
 		},

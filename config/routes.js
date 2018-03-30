@@ -74,6 +74,7 @@ module.exports  = function(app){
     apiRouter.get('/:resource/:num?',             api.resource);
 
     app.get('/',                                  main.index);
+    app.get('/support',                           main.support);
     app.get('/version/:version',                  main.set_version);
     app.get('/loadmore/:page?',                   main.loadmore);
 

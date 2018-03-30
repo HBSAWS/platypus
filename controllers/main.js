@@ -57,6 +57,12 @@ module.exports = {
         });
     },
     
+    support: function(req, res, next) {
+        res.render('support', { 
+                layout: ''
+            });
+    },
+
     loadmore: function(req, res, next) {
 
         Category.findOne({slug: 'ui-components', published: true}, function(err, category){

@@ -94,6 +94,7 @@
 			Platypus.breadCrumbs();
 			Platypus.renderCharts();
 			Platypus.swapIcons();
+			Platypus.shortcutKeys();
 			Platypus.debug();
 		},
 
@@ -560,8 +561,10 @@
 		},
 		select2: function select2() {
 
+			var browser = Platypus.detectBrowsers();
+
 			function templateResult(item) {
-				var markup = '\n\t\t\t\t    \t<div class="row">\n\t\t\t\t    \t\t<div class="col-sm-4">' + item.text + '</div>\n\t\t\t\t    \t\t<div class="col-sm-4">' + item.name + '</div>\n\t\t\t\t    \t\t<div class="col-sm-4">' + item.id + '</div>\n\t\t\t\t    \t</div>';
+				var markup = '\n\t\t\t    \t<div class="row">\n\t\t\t    \t\t<div class="col-sm-4">' + item.text + '</div>\n\t\t\t    \t\t<div class="col-sm-4">' + item.name + '</div>\n\t\t\t    \t\t<div class="col-sm-4">' + item.id + '</div>\n\t\t\t    \t</div>';
 				return markup;
 			}
 
@@ -572,7 +575,7 @@
 			$('.select2').each(function () {
 				var $this = $(this);
 				var source = $this.data('source');
-				var placeholder = $this.data('placeholder') !== '' ? $this.data('placeholder') : 'Select an option';
+				var placeholder = (!browser.isIE && $this.data('placeholder')) !== '' ? $this.data('placeholder') : 'Select an option';
 
 				if (source && source != '') {
 
@@ -614,14 +617,14 @@
 						templateResult: templateResult,
 						templateSelection: templateSelection
 					}).on("select2:open", function () {
-						$('.select2-search__field').attr('placeholder', placeholder);
+						if (!browser.isIE) $('.select2-search__field').attr('placeholder', placeholder);
 					});;
 				} else {
 					$this.select2({
 						theme: "bootstrap",
 						placeholder: placeholder
 					}).on("select2:open", function () {
-						$('.select2-search__field').attr('placeholder', placeholder);
+						if (!browser.isIE) $('.select2-search__field').attr('placeholder', placeholder);
 					});;
 				}
 			});
@@ -1805,34 +1808,52 @@
 				}
 			});
 		},
-		debug: function debug() {
-			var searchParams = new URLSearchParams(window.location.search);
-			if (searchParams.has('debug')) {
-				switch (searchParams.get('debug')) {
-					case 'accessibility':
-						console.log("Debugging accessibility... The page might become unresponsive for a few seconds. Please stand by.");
-						p = Promise.all([load.js("https://cdnjs.cloudflare.com/ajax/libs/axe-core/2.6.1/axe.min.js")]).then(function () {
-							var opts = {
-								runOnly: {
-									type: "tag",
-									values: ["wcag2a", "wcag2aa"]
-								}
-							};
+		shortcutKeys: function shortcutKeys() {
+			// Find Content 
+			hotkeys('ctrl+f,command+f', function (e, handler) {
+				e.preventDefault();
+				$('a[href="#search-container"]').trigger('click');
+			});
 
-							axe.run(document, opts, function (error, results) {
-								if (results.violations.length === 0) {
-									console.log("Congratulations! This page is WCAG 2.0 Level A and AA compliant.");
-								} else {
-									console.log("The following accessibility issue should be fixed:");
-									results.violations.map(function (violation) {
-										return console.log(violation);
-									});
-								}
+			// Support Guide 
+			hotkeys('f1', function (e, handler) {
+				e.preventDefault();
+				$('a[href="/support"]').trigger('click');
+			});
+		},
+		debug: function debug() {
+			var browser = Platypus.detectBrowsers();
+
+			if (!browser.isIE) {
+
+				var searchParams = new URLSearchParams(window.location.search);
+				if (searchParams.has('debug')) {
+					switch (searchParams.get('debug')) {
+						case 'accessibility':
+							console.log("Debugging accessibility... The page might become unresponsive for a few seconds. Please stand by.");
+							p = Promise.all([load.js("https://cdnjs.cloudflare.com/ajax/libs/axe-core/2.6.1/axe.min.js")]).then(function () {
+								var opts = {
+									runOnly: {
+										type: "tag",
+										values: ["wcag2a", "wcag2aa"]
+									}
+								};
+
+								axe.run(document, opts, function (error, results) {
+									if (results.violations.length === 0) {
+										console.log("Congratulations! This page is WCAG 2.0 Level A and AA compliant.");
+									} else {
+										console.log("The following accessibility issue should be fixed:");
+										results.violations.map(function (violation) {
+											return console.log(violation);
+										});
+									}
+								});
 							});
-						});
-						break;
-					default:
-						console.log("Invalid debug value");
+							break;
+						default:
+							console.log("Invalid debug value");
+					}
 				}
 			}
 		},
