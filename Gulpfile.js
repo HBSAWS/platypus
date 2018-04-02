@@ -59,6 +59,7 @@ var opts = {
         'public/vendor/bootstrap-rating/bootstrap-rating.min.js',
         'public/vendor/jquery.maskMoney/jquery.maskMoney.min.js',
         'public/vendor/hotkeys/hotkeys.min.js',
+        'public/vendor/clipboard/clipboard.min.js',
         'public/vendor/d3/d3.v3.min.js',
         'public/vendor/c3/c3.min.js',
         'public/js/main.js',

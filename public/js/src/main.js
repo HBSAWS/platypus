@@ -95,6 +95,7 @@
 			Platypus.renderCharts(); 
 			Platypus.swapIcons(); 
 			Platypus.shortcutKeys(); 
+			Platypus.clipboard(); 
 			Platypus.debug(); 
 		},
 		
@@ -2233,6 +2234,35 @@
 			hotkeys('f1', function(e, handler){   
 				e.preventDefault();   
 				$('a[href="/support"]').trigger('click');
+			});
+		},
+		clipboard: function(){
+			var clipboard = new ClipboardJS('.btn');
+
+			clipboard.on('success', function(e) {
+
+				switch(e.action) {
+					case 'copy':
+						toastr.success("Copied sucessfully");
+						break;
+					case 'cut':
+						toastr.success("Cut sucessfully");
+						break;
+					default:
+						console.log("Invalid selection")
+				}
+				
+			    // console.info('Action:', e.action);
+			    // console.info('Text:', e.text);
+			    // console.info('Trigger:', e.trigger);
+
+			    e.clearSelection();
+			});
+
+			clipboard.on('error', function(e) {
+			    toastr.error("Unable to copy/cut");
+			    // console.error('Action:', e.action);
+			    // console.error('Trigger:', e.trigger);
 			});
 		},
 		debug: function(){
