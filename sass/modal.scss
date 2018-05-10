@@ -8,6 +8,7 @@
 // prevents body from scrolling when modal is open
 body.modal-open {
 	overflow: hidden !important; 
+	padding-right: 15px !important;
 }
 
 .modal-body.scrollable {
@@ -15,9 +16,12 @@ body.modal-open {
     overflow-y: auto;
 }
 
-// Fixes screen shifting 
-// https://stackoverflow.com/questions/19960162/bootstrap-3-modal-fires-and-causes-page-to-shift-to-the-left-momentarily-brows
-.modal-open[style] {
-	padding-right: 0px !important;
-	overflow: auto;
+// Custom glassy styling
+body.modal-open .container-fluid,   
+body.modal-open .container,  { 
+	-webkit-filter: blur(2px); 
+	-moz-filter: blur(2px); 
+	-o-filter: blur(2px); 
+	-ms-filter: blur(2px); 
+	filter: blur(2px); 
 }

@@ -5699,8 +5699,8 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 			Platypus.breadCrumbs();
 			Platypus.renderCharts();
 			Platypus.swapIcons();
-			Platypus.shortcutKeys();
 			Platypus.clipboard();
+			Platypus.matchHeight();
 			Platypus.debug();
 		},
 
@@ -6366,6 +6366,7 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 					keepOpen: false,
 					inline: inline,
 					sideBySide: true,
+					stepping: 15,
 					debug: false });
 			});
 		},
@@ -6536,6 +6537,42 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 			});
 		},
 		formConditionize: function formConditionize(options) {
+			// Old Version
+			// $.fn.conditionize = function(options){ 
+
+			//      var settings = $.extend({
+			//         hideJS: true
+			//     }, options );
+
+			//     $.fn.showOrHide = function(listenTo, listenFor, $section) {
+			//       if ($(listenTo).is('select, input[type=text]') && $(listenTo).val() == listenFor ) {
+			//         $section.slideDown();
+			//       }
+			//       else if ($(listenTo + ":checked").val() == listenFor) {
+			//         $section.slideDown();
+			//       }
+			//       else {
+			//         $section.slideUp();
+			//       }
+			//     } 
+
+			//     return this.each( function() {
+			//       var listenTo = '[name="' + $(this).data('cond-option').toString() + '"]';
+			//       var listenFor = $(this).data('cond-value');
+			//       var $section = $(this);
+
+			//       //Set up event listener
+			//       $(listenTo).on('change', function() {
+			//         $.fn.showOrHide(listenTo, listenFor, $section);
+			//       });
+			//       //If setting was chosen, hide everything first...
+			//       if (settings.hideJS) {
+			//         $(this).hide();
+			//       }
+			//       //Show based on current value on page load
+			//       $.fn.showOrHide(listenTo, listenFor, $section);
+			//     });
+			//   }
 
 			$.fn.conditionize = function (options) {
 
@@ -6543,31 +6580,64 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 					hideJS: true
 				}, options);
 
-				$.fn.showOrHide = function (listenTo, listenFor, $section) {
-					if ($(listenTo).is('select, input[type=text]') && $(listenTo).val() == listenFor) {
-						$section.slideDown();
-					} else if ($(listenTo + ":checked").val() == listenFor) {
+				$.fn.showOrHide = function (is_met, $section) {
+					if (is_met) {
 						$section.slideDown();
 					} else {
 						$section.slideUp();
+						$section.find('select, input').each(function () {
+							if ($(this).attr('type') == 'radio' || $(this).attr('type') == 'checkbox') {
+								$(this).prop('checked', false).trigger('change');
+							} else {
+								$(this).val('').trigger('change');
+							}
+						});
 					}
 				};
 
 				return this.each(function () {
-					var listenTo = '[name="' + $(this).data('cond-option').toString() + '"]';
-					var listenFor = $(this).data('cond-value');
 					var $section = $(this);
+					var cond = $(this).data('condition');
 
-					//Set up event listener
-					$(listenTo).on('change', function () {
-						$.fn.showOrHide(listenTo, listenFor, $section);
-					});
+					// First get all (distinct) used field/inputs
+					var re = /(#?\w+)/ig;
+					var match = re.exec(cond);
+					var inputs = {},
+					    e = "",
+					    name = "";
+					while (match !== null) {
+						name = match[1];
+						e = name.substring(0, 1) == '#' ? name : "[name=" + name + "]";
+						if ($(e).length && !(name in inputs)) {
+							inputs[name] = e;
+						}
+						match = re.exec(cond);
+					}
+
+					// Replace fields names/ids by $().val()
+					for (name in inputs) {
+						e = inputs[name];
+						tmp_re = new RegExp("(" + name + ")\\b", "g");
+						if ($(e).attr('type') == 'radio' || $(e).attr('type') == 'checkbox') {
+							cond = cond.replace(tmp_re, "$('" + e + ":checked').val()");
+						} else {
+							cond = cond.replace(tmp_re, "$('" + e + "').val()");
+						}
+					}
+
+					//Set up event listeners
+					for (name in inputs) {
+						$(inputs[name]).on('change', function () {
+							$.fn.showOrHide(eval(cond), $section);
+						});
+					}
+
 					//If setting was chosen, hide everything first...
 					if (settings.hideJS) {
 						$(this).hide();
 					}
 					//Show based on current value on page load
-					$.fn.showOrHide(listenTo, listenFor, $section);
+					$.fn.showOrHide(eval(cond), $section);
 				});
 			};
 
@@ -6575,7 +6645,7 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 		},
 		formAddress: function formAddress() {
 
-			if ($('input#autocomplete').length > 0) {
+			if ($('input.address-autocomplete').length > 0) {
 				var placeSearch, autocomplete;
 				var componentForm;
 
@@ -6584,14 +6654,16 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 						// Create the autocomplete object, restricting the search
 						// to geographical location types.
 						autocomplete = new google.maps.places.Autocomplete(
-						/** @type {HTMLInputElement} */document.getElementById('autocomplete'), {
+						/** @type {HTMLInputElement} */document.querySelector('input.address-autocomplete'), {
 							types: ['geocode']
 						});
 						// When the user selects an address from the dropdown,
 						// populate the address fields in the form.
-						google.maps.event.addListener(autocomplete, 'place_changed', function () {
-							fillInAddress();
-						});
+						if ($('.confirm-edit-address').length > 0) {
+							google.maps.event.addListener(autocomplete, 'place_changed', function () {
+								fillInAddress();
+							});
+						}
 					};
 
 					// [START region_fillform]
@@ -6645,9 +6717,9 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 					// This example displays an address form, using the autocomplete feature
 					// of the Google Places API to help users fill in the information.
 
-					$('.confirm-edit-address').hide();
+					if ($('.confirm-edit-address').length > 0) $('.confirm-edit-address').hide();
 
-					$("#autocomplete").on('focus', function () {
+					$("input.address-autocomplete").on('focus', function () {
 						geolocate();
 					});
 
@@ -7414,19 +7486,6 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 				}
 			});
 		},
-		shortcutKeys: function shortcutKeys() {
-			// Find Content 
-			hotkeys('ctrl+f,command+f', function (e, handler) {
-				e.preventDefault();
-				$('a[href="#search-container"]').trigger('click');
-			});
-
-			// Support Guide 
-			hotkeys('f1', function (e, handler) {
-				e.preventDefault();
-				$('a[href="/support"]').trigger('click');
-			});
-		},
 		clipboard: function clipboard() {
 			var clipboard = new ClipboardJS('.btn');
 
@@ -7454,6 +7513,16 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 				toastr.error("Unable to copy/cut");
 				// console.error('Action:', e.action);
 				// console.error('Trigger:', e.trigger);
+			});
+		},
+		matchHeight: function matchHeight() {
+			$(function () {
+				$('.match-height').matchHeight({
+					byRow: true, // enable row detection
+					property: 'height', // the CSS property name to set (e.g. 'height' or 'min-height')
+					target: null, // optional element to use instead of the element with maximum height
+					remove: false // remove previous bindings instead of applying new ones
+				});
 			});
 		},
 		debug: function debug() {

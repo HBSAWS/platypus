@@ -4,7 +4,8 @@
   "description": "HBS AWS Framework",
   "main": "index.js",
   "scripts": {
-    "postinstall": "node nightwatch.conf.js"
+    "postinstall": "node nightwatch.conf.js",
+    "start": "node server.js"
   },
   "author": "Rob Silva",
   "license": "ISC",
@@ -48,7 +49,9 @@
     "gulp-clean-css": "^2.0.13",
     "gulp-gzip": "^1.4.2",
     "gulp-nightwatch": "^0.3.2",
-    "selenium-download": "^2.0.9"
+    "gulp-typescript": "^4.0.2",
+    "selenium-download": "^2.0.9",
+    "typescript": "^2.8.1"
   },
   "repository": {
     "type": "git",
@@ -59,5 +62,12 @@
       "mongodump -d platypus-dev -o ./db-backup",
       "git add -A"
     ]
+  },
+  "bugs": {
+    "url": "https://github.com/HBSAWS/platypus/issues"
+  },
+  "homepage": "https://github.com/HBSAWS/platypus#readme",
+  "directories": {
+    "test": "test"
   }
 }

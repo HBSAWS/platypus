@@ -216,13 +216,29 @@
 					<!-- Tab panes -->
 					<div class="tab-content">
 					  	{{#if markup}}
-					  		<div class="tab-pane active" id="html_markup" role="tabpanel">
-					  			<pre class="pre-scrollable"><code class="html">{{markup}}</code></pre>
+					  		<div class="tab-pane active" id="html_markup" role="tabpanel" style="position: relative;">
+					  			<pre class="pre-scrollable"><code class="html" id="copy-html">{{markup}}</code></pre>
+					  			<button class="btn btn-secondary" 
+					  			type="button" 
+					  			data-clipboard-target="#copy-html"
+					  			data-toggle="tooltip"
+					  			title="Copy to clipboard"
+					  			style="position: absolute; top: 20px; right: 35px; z-index: 10;">
+					  				<i class="fa fa-copy"></i>
+					  			</button>
 					  		</div>
 					  	{{/if}}	
 					  	{{#if js}}
-					  		<div class="tab-pane" id="js" role="tabpanel">
-					  			<pre class="pre-scrollable"><code class="javascript">{{this.js}}</code></pre>
+					  		<div class="tab-pane" id="js" role="tabpanel" style="position: relative;">
+					  			<pre class="pre-scrollable"><code class="javascript" id="copy-js">{{this.js}}</code></pre>
+					  			<button class="btn btn-secondary" 
+					  			type="button" 
+					  			data-clipboard-target="#copy-js" 
+					  			data-toggle="tooltip"
+					  			title="Copy to clipboard"
+					  			style="position: absolute; top: 20px; right: 35px; z-index: 10;">
+					  				<i class="fa fa-copy"></i>
+					  			</button>
 					  		</div>
 					  	{{/if}}		
 					  	{{#if fiddle}}
