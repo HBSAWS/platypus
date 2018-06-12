@@ -6443,6 +6443,7 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 					columnDefs: [{ className: 'control', orderable: false, targets: -1 }],
 					dom: btnMarkup,
 					stateSave: true,
+					lengthMenu: [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
 					pagingType: 'full_numbers',
 					"oLanguage": {
 						sSearch: "",
