@@ -2,18 +2,18 @@
 		
 	{{> breadcrumbs this }}
 	
-	<div class="page-header px-1 pt-1">
+	<div class="page-header px-3 pt-3">
 		<div class="row">
 			<div class="col-sm-7">
 				<h1 class="text-truncated">{{title}}</h1>
 			</div>
 			<div class="col-sm-5 hidden-sm-down">
-				<div class="btn-group float-xs-right">
+				<div class="btn-group float-right">
 					 <div class="btn-group btn-group-justified-xs" role="group" aria-label="Justified button group">
-					   	<a class="btn btn-secondary" href="/articles/edit/{{_id}}"><i class="fa fa-edit"></i><span class="hidden-lg-down"> Edit</span></a>
-					   	<a class="btn btn-secondary" href="https://hbs-itg.atlassian.net/secure/CreateIssue!default.jspa" role="button"><i class="fa fa-bug"></i><span class="hidden-lg-down"> Report Bug</span></a>
+					   	<a class="btn btn-secondary" href="/articles/edit/{{_id}}"><i class="fa fa-edit"></i><span class="d-none d-xl-inline"> Edit</span></a>
+					   	<a class="btn btn-secondary" href="https://hbs-itg.atlassian.net/secure/CreateIssue!default.jspa" role="button"><i class="fa fa-bug"></i><span class="d-none d-xl-inline"> Report Bug</span></a>
 					   	<form class="d-inline" action="/articles/destroy/{{_id}}" method="POST">
-					   		<button type="submit" class="btn btn-danger confirm-delete"><i class="fa fa-trash"></i><span class="hidden-lg-down"> Delete</span></button>
+					   		<button type="submit" class="btn btn-danger confirm-delete"><i class="fa fa-trash"></i><span class="d-none d-xl-inline"> Delete</span></button>
 					   	</form>
 					 </div>
 				</div>
@@ -21,13 +21,13 @@
 		</div>
 	</div>
 
-	<div id="mainbody" class="p-1">
+	<div id="mainbody" class="p-3">
 
 		{{> alerts flash=../flash }}
 
 		<div id="main-panels" role="tablist" aria-multiselectable="true">
 		  	
-		  	<div class="card panel">
+		  	<div class="card panel mb-3">
 		    	<div class="card-header" role="tab" id="header-one">
 		      	<h5 class="mb-0">
 		        	<a class="text-truncate" data-toggle="collapse" {{!-- data-parent="#main-panels" --}} href="#description" aria-expanded="true" aria-controls="description">
@@ -36,8 +36,8 @@
 		      	</h5>
 		    </div>
 
-		    <div id="description" class="collapse in" role="tabpanel" aria-labelledby="header-one">
-			    <div class="card-block">
+		    <div id="description" class="collapse show" role="tabpanel" aria-labelledby="header-one">
+			    <div class="card-block p-4">
 			    	<div class="row">
 			    		<div class="col-md-9">
 			    			<p class="lead"><span class="edit-inline" data-post-url="/articles/update/{{_id}}/intro">{{intro}}</span></p>
@@ -65,54 +65,54 @@
 							</ul>
 
 			    			<h6 class="mb-1">Tested on</h6>
-			    			<div class="row mb-1 text-xs-center">
+			    			<div class="row mb-1 text-center">
 			    				{{#inArray tested_on "Chrome"}}
-			    					<div class="col-xs-3"><i class="fa fa-2x fa-chrome text-success" data-toggle="tooltip" title="Passing"></i></div>
+			    					<div class="col-3"><i class="fa fa-2x fa-chrome text-success" data-toggle="tooltip" title="Passing"></i></div>
 			    				{{else}}
-			    					<div class="col-xs-3"><i class="fa fa-2x fa-chrome text-muted" data-toggle="tooltip" title="Not tested"></i></div>
+			    					<div class="col-3"><i class="fa fa-2x fa-chrome text-muted" data-toggle="tooltip" title="Not tested"></i></div>
 								{{/inArray}}
 
 								{{#inArray tested_on "Safari"}}
-									<div class="col-xs-3"><i class="fa fa-2x fa-safari text-success" data-toggle="tooltip" title="Passing"></i></div>
+									<div class="col-3"><i class="fa fa-2x fa-safari text-success" data-toggle="tooltip" title="Passing"></i></div>
 								{{else}}
-									<div class="col-xs-3"><i class="fa fa-2x fa-safari text-muted" data-toggle="tooltip" title="Not tested"></i></div>
+									<div class="col-3"><i class="fa fa-2x fa-safari text-muted" data-toggle="tooltip" title="Not tested"></i></div>
 								{{/inArray}}
 
 								{{#inArray tested_on "Firefox"}}
-									<div class="col-xs-3"><i class="fa fa-2x fa-firefox text-success" data-toggle="tooltip" title="Passing"></i></div>
+									<div class="col-3"><i class="fa fa-2x fa-firefox text-success" data-toggle="tooltip" title="Passing"></i></div>
 								{{else}}
-									<div class="col-xs-3"><i class="fa fa-2x fa-firefox text-muted" data-toggle="tooltip" title="Not tested"></i></div>
+									<div class="col-3"><i class="fa fa-2x fa-firefox text-muted" data-toggle="tooltip" title="Not tested"></i></div>
 								{{/inArray}}
 
 								{{#inArray tested_on "Internet Explorer"}}
-									<div class="col-xs-3"><i class="fa fa-2x fa-internet-explorer text-success" data-toggle="tooltip" title="Passing"></i></div>
+									<div class="col-3"><i class="fa fa-2x fa-internet-explorer text-success" data-toggle="tooltip" title="Passing"></i></div>
 								{{else}}
-									<div class="col-xs-3"><i class="fa fa-2x fa-internet-explorer text-muted" data-toggle="tooltip" title="Not tested"></i></div>
+									<div class="col-3"><i class="fa fa-2x fa-internet-explorer text-muted" data-toggle="tooltip" title="Not tested"></i></div>
 								{{/inArray}}			    				
 			    			</div>
-			    			<div class="row text-xs-center">
+			    			<div class="row text-center">
 			    				{{#inArray tested_on "Safari Mobile"}}
-			    					<div class="col-xs-3"><i class="fa fa-2x fa-opera text-success" data-toggle="tooltip" title="Passing"></i></div>
+			    					<div class="col-3"><i class="fa fa-2x fa-opera text-success" data-toggle="tooltip" title="Passing"></i></div>
 			    				{{else}}
-			    					<div class="col-xs-3"><i class="fa fa-2x fa-opera text-muted" data-toggle="tooltip" title="Not tested"></i></div>
+			    					<div class="col-3"><i class="fa fa-2x fa-opera text-muted" data-toggle="tooltip" title="Not tested"></i></div>
 								{{/inArray}}
 
 			    				{{#inArray tested_on "Android Mobile"}}
-			    					<div class="col-xs-3"><i class="fa fa-2x fa-android text-success" data-toggle="tooltip" title="Passing"></i></div>
+			    					<div class="col-3"><i class="fa fa-2x fa-android text-success" data-toggle="tooltip" title="Passing"></i></div>
 								{{else}}
-									<div class="col-xs-3"><i class="fa fa-2x fa-android text-muted" data-toggle="tooltip" title="Not tested"></i></div>
+									<div class="col-3"><i class="fa fa-2x fa-android text-muted" data-toggle="tooltip" title="Not tested"></i></div>
 								{{/inArray}}
 
 			    				{{#inArray tested_on "Safari Mobile"}}
-			    					<div class="col-xs-3"><i class="fa fa-2x fa-apple text-success" data-toggle="tooltip" title="Passing"></i></div>
+			    					<div class="col-3"><i class="fa fa-2x fa-apple text-success" data-toggle="tooltip" title="Passing"></i></div>
 								{{else}}
-									<div class="col-xs-3"><i class="fa fa-2x fa-apple text-muted" data-toggle="tooltip" title="Not tested"></i></div>
+									<div class="col-3"><i class="fa fa-2x fa-apple text-muted" data-toggle="tooltip" title="Not tested"></i></div>
 								{{/inArray}}
 
 			    				{{#inArray tested_on "Windows Mobile"}}
-			    					<div class="col-xs-3"><i class="fa fa-2x fa-windows text-success" data-toggle="tooltip" title="Passing"></i></div>
+			    					<div class="col-3"><i class="fa fa-2x fa-windows text-success" data-toggle="tooltip" title="Passing"></i></div>
 			    				{{else}}
-			    					<div class="col-xs-3"><i class="fa fa-2x fa-windows text-muted" data-toggle="tooltip" title="Not tested"></i></div>
+			    					<div class="col-3"><i class="fa fa-2x fa-windows text-muted" data-toggle="tooltip" title="Not tested"></i></div>
 			    				{{/inArray}}
 			    			</div>
 			    		</div>
@@ -124,7 +124,7 @@
 
 		  
 		{{#if markup}}
-			<div class="card panel">
+			<div class="card panel mb-3">
 			    <div class="card-header" role="tab" id="header-two">
 			      <h5 class="mb-0">
 			        <a class="collapsed text-truncate" data-toggle="collapse" {{!-- data-parent="#main-panels" --}} href="#examples" aria-expanded="true" aria-controls="examples">
@@ -132,8 +132,8 @@
 			        </a>
 			      </h5>
 			    </div>
-			    <div id="examples" class="collapse in" role="tabpanel" aria-labelledby="header-two">
-			      <div class="card-block">
+			    <div id="examples" class="collapse show" role="tabpanel" aria-labelledby="header-two">
+			      <div class="card-block p-4">
 
 			      
 						<!-- Nav tabs -->
@@ -141,7 +141,7 @@
 						<li class="nav-item">
 							<a class="nav-link active" data-toggle="tab" href="#xs" role="tab">XL - Desktop (≥1200px)</a>
 						</li>
-						<li class="nav-item  hidden-xs-down">
+						<li class="nav-item  hidden-down">
 							<a class="nav-link" data-toggle="tab" href="#sm" role="tab">Other Devices</a>
 						</li>		
 					</ul> 
@@ -183,7 +183,7 @@
 			      </div>
 			    </div>
 			  </div>
-			  <div class="card panel">
+			  <div class="card panel mb-3">
 			    <div class="card-header" role="tab" id="header-three">
 			      <h5 class="mb-0">
 			        <a class="collapsed text-truncate" data-toggle="collapse" {{!-- data-parent="#main-panels" --}} href="#markup" aria-expanded="true" aria-controls="markup">
@@ -191,8 +191,8 @@
 			        </a>
 			      </h5>
 			    </div>
-			    <div id="markup" class="collapse in" role="tabpanel" aria-labelledby="header-three">
-			      <div class="card-block">
+			    <div id="markup" class="collapse show" role="tabpanel" aria-labelledby="header-three">
+			      <div class="card-block p-4">
 					
 					<!-- Nav tabs -->
 					<ul class="nav nav-tabs" role="tablist">
@@ -271,16 +271,16 @@
 	</div><!--/#mainbody-->
 
 
-	<div id="mobile-toolbar" class="hidden-md-up">
-	  	<div class="col-xs-12 palette-bg-teal-500 navbar-fixed-bottom">
+	<div id="mobile-toolbar" class="d-lg-none">
+	  	<div class="col-12 palette-bg-teal-500 navbar-fixed-bottom">
 	  		<div class="row">
-	    		<div class="col-xs-4 text-xs-center">
+	    		<div class="col-4 text-center">
 	    			<a class="btn btn-link" href="/articles/edit/{{_id}}" data-toggle="tooltip" title="Edit"><i class="fa fa-fw fa-2x fa-edit"></i></a>
 	    		</div>
-	    		<div class="col-xs-4 text-xs-center">
+	    		<div class="col-4 text-center">
 	    			<a class="btn btn-link" href="https://hbs-itg.atlassian.net/secure/CreateIssue!default.jspa" data-toggle="tooltip" title="Report Bug"><i class="fa fa-fw fa-2x fa-bug"></i></a>
 	    		</div>
-	    		<div class="col-xs-4 text-xs-center">
+	    		<div class="col-4 text-center">
 	    			<form class="d-inline" action="/articles/destroy/{{_id}}" method="POST">
 				   		<button type="submit" class="btn btn-link confirm-delete" data-toggle="tooltip" title="Delete"><i class="fa fa-fw fa-2x fa-trash"></i></button>
 				   	</form>

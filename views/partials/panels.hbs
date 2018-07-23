@@ -1,7 +1,7 @@
 {{#article}}
 
-    <div id="side-panels" class="p-1" role="tablist" aria-multiselectable="true">
-        <div class="card panel">
+    <div id="side-panels" class="p-3" role="tablist" aria-multiselectable="true">
+        <div class="card panel mb-3">
             <div class="card-header" role="tab" id="headingOne">
                 <h5 class="mb-0">
                     <a class="text-truncate" data-toggle="collapse" href="#best_practices" aria-expanded="true" aria-controls="best_practices">
@@ -9,13 +9,13 @@
                     </a>
                 </h5>
             </div>
-        <div id="best_practices" class="collapse in" role="tabpanel" aria-labelledby="headingOne">
-            <div class="card-block">
+        <div id="best_practices" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+            <div class="card-block p-4">
               <div class="edit-inline" data-post-url="/articles/update/{{_id}}/best_practices">{{{best_practices}}}</div>
           </div>
         </div>
         </div>
-        <div class="card panel">
+        <div class="card panel mb-3">
           <div class="card-header" role="tab" id="headingTwo">
             <h5 class="mb-0">
               <a class="collapsed text-truncate" data-toggle="collapse" href="#avoid" aria-expanded="true" aria-controls="avoid">
@@ -23,13 +23,13 @@
             </a>
         </h5>
         </div>
-        <div id="avoid" class="collapse in" role="tabpanel" aria-labelledby="headingTwo">
-            <div class="card-block">
+        <div id="avoid" class="collapse show" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="card-block p-4">
               <div class="edit-inline" data-post-url="/articles/update/{{_id}}/avoid">{{{avoid}}}</div>
           </div>
         </div>
         </div>
-        <div class="card panel">
+        <div class="card panel mb-3">
           <div class="card-header" role="tab" id="headingThree">
             <h5 class="mb-0">
               <a class="collapsed text-truncate" data-toggle="collapse" href="#resources" aria-expanded="true" aria-controls="resources">
@@ -37,8 +37,8 @@
             </a>
         </h5>
         </div>
-        <div id="resources" class="collapse in" role="tabpanel" aria-labelledby="headingThree">
-            <div class="card-block">
+        <div id="resources" class="collapse show" role="tabpanel" aria-labelledby="headingThree">
+            <div class="card-block p-4">
               <div class="edit-inline" data-post-url="/articles/update/{{_id}}/resources">{{{resources}}}</div>
           </div>
         </div>

@@ -3,11 +3,11 @@
 	<form action="/categories/create" method="post" data-parsley-validate>
 	  
 	  	<div class="row form-group">
-		  	<div class="col-md-3 hidden-sm-down text-xs-right">
+		  	<div class="col-md-3 hidden-sm-down text-right">
 		    	<label for="_parent">Parent Category</label>
 		  	</div>
 		  	<div class="col-md-9">
-		  		<label class="hidden-md-up d-block" for="_parent">Category</label>
+		  		<label class="d-lg-none d-block" for="_parent">Category</label>
 		  		<select name="_parent" class="select2 form-control" data-placeholder="Select a parent category or leave blank to assign it as top level">
 		  			<option value=""></option>
 					{{#each parents}}

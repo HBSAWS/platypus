@@ -4,11 +4,11 @@
 	<form action="/categories/update/{{id}}" method="post" data-parsley-validate>
 	  
 		<div class="row form-group">
-		  	<div class="col-md-3 hidden-sm-down text-xs-right">
+		  	<div class="col-md-3 hidden-sm-down text-right">
 		    	<label for="_parent">Parent Category</label>
 		  	</div>
 		  	<div class="col-md-9">
-		  		<label class="hidden-md-up d-block" for="_parent">Category</label>
+		  		<label class="d-lg-none d-block" for="_parent">Category</label>
 		  		<select name="_parent" class="select2 form-control" data-placeholder="Select a parent category or leave blank to assign it as top level">
 		  			<option value=""></option>
 					{{#each ../parents}}
@@ -47,9 +47,9 @@
 		</div><!--/.row-->	
 
 		<div class="form-group row">
-			<label class="col-md-3 hidden-sm-down text-xs-right" for="order">Order</label>
+			<label class="col-md-3 hidden-sm-down text-right" for="order">Order</label>
 			<div class="col-md-9">
-				<label class="hidden-md-up d-block" for="order">Order</label>
+				<label class="d-lg-none d-block" for="order">Order</label>
 				<select name="order" class="form-control">
 					{{#each ../parents}}
 					<option value="{{order}}" {{#is order ../order}}selected{{/is}}>{{order}}</option>

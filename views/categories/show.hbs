@@ -1,9 +1,9 @@
 {{#category}}
     
     {{> breadcrumbs this }}
-    <div class="page-header p-1">
+    <div class="page-header p-3">
         <div class="row">
-            <div class="col-xs-12">
+            <div class="col-12">
                 <h1 class="text-truncated">{{title}}</h1>
             </div>
         </div>
@@ -15,7 +15,7 @@
 
         <div class="row">
             {{#each articles}}
-                <div class="col-xs-6 col-sm-3 col-lg-3 col-lg-4 col-xl-2 text-xs-center">
+                <div class="col-6 col-sm-3 col-lg-3 col-lg-4 col-xl-2 text-center">
                 	<a href="/articles/{{slug}}" class="palette-text-black-darker">
         	        	<div class="palette-bg-blue-grey-100 p-2 mb-2">
         	        		<img src="/images/ui-components-thumbs/{{slug}}.png" class="img-fluid">

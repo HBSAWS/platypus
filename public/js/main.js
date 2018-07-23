@@ -793,7 +793,7 @@
 				$(this).closest('.form-group .col-md-8').find('label').append(tooltipHelp);
 			});
 
-			$('body').on('click', '.input-group-addon', function () {
+			$('body').on('click', '.input-group-append', function () {
 				if ($(this).siblings('.form-control').length) {
 					console.log("clicked");
 					$(this).siblings('.form-control').focus();
@@ -1175,7 +1175,27 @@
 
 			// Insert modal
 
-			var modalMarkup = '\n\t\t\t<!-- Universal Modal -->\n\t\t\t<div class="modal fade" id="universal-modal" tabindex="-1" role="dialog" aria-hidden="true">\n\t\t\t    <div class="modal-dialog" role="document">\n\t\t\t        <div class="modal-content">\n\t\t\t            <div class="modal-header">\n\t\t\t                <button type="button" class="close" data-dismiss="modal" aria-label="Close">\n\t\t\t                    <span aria-hidden="true">&times;</span>\n\t\t\t                </button>\n\t\t\t                <h5 class="modal-title"></h5>\n\t\t\t            </div>\n\t\t\t            <div class="modal-body">\n\t\t\t            </div>\n\t\t\t            <div class="modal-footer">\n\t\t\t            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>\n\t\t\t            </div>\n\t\t\t        </div>\n\t\t\t    </div>\n\t\t\t</div>\n\t\t\t';
+			// var modalMarkup = `
+			// <!-- Universal Modal -->
+			// <div class="modal fade" id="universal-modal" tabindex="-1" role="dialog" aria-hidden="true">
+			//     <div class="modal-dialog" role="document">
+			//         <div class="modal-content">
+			//             <div class="modal-header">
+			//                 <h5 class="modal-title"></h5>
+			//                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			//                     <span aria-hidden="true">&times;</span>
+			//                 </button>
+			//             </div>
+			//             <div class="modal-body">
+			//             </div>
+			//             <div class="modal-footer">
+			//             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			//             </div>
+			//         </div>
+			//     </div>
+			// </div>
+			// `;
+			var modalMarkup = '\n\t\t\t<!-- Universal Modal -->\n\t\t\t<div class="modal fade" id="universal-modal" tabindex="-1" role="dialog" aria-hidden="true">\n\t\t\t<div class="modal-dialog" role="document">\n\t\t\t\t<div class="modal-content">\n\t\t\t\t  <div class="modal-header">\n\t\t\t\t    <h5 class="modal-title"></h5>\n\t\t\t\t    <button type="button" class="close" data-dismiss="modal" aria-label="Close">\n\t\t\t\t      <span aria-hidden="true">&times;</span>\n\t\t\t\t    </button>\n\t\t\t\t  </div>\n\t\t\t\t  <div class="modal-body">\n\t\t\t\t  </div>\n\t\t\t\t  <div class="modal-footer">\n\t\t\t\t    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>\n\t\t\t\t  </div>\n\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>';
 
 			$('body').append(modalMarkup);
 			$(document).on('click', '.modal-remote', function (e) {

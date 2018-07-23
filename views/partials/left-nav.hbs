@@ -1,10 +1,13 @@
 <aside class="sidebar">
 
-    <a href="#" class="hbs-logo hidden-lg-up d-block mx-auto mt-1 mb-1">
-        <img class="mx-auto" src="/images/branding/hbs-shield.svg" alt="">
+    {{!-- <a href="#" class="hbs-logo d-lg-none d-block mx-auto mt-1 mb-1"> --}}
+    <a href="#" class="hbs-logo d-lg-none mt-1 mb-1">
+        <div class="d-block text-center">
+            <img class="mx-auto" src="/images/branding/hbs-shield.svg" alt="">
+        </div>
     </a>
     
-    <div class="p-1">
+    <div class="p-3">
         <label class="text-white mb-0" for="select_version">Select Version:</label>
         <select name="select_version" class="form-control" onchange="location = '/version/'+this.value;">
             {{#versions}}
@@ -41,7 +44,7 @@
                                         <span class="tag 
                                             {{#compare type "==" "core"}}palette-bg-teal-500{{/compare}} 
                                             {{#compare type "==" "addon"}}palette-bg-grey-500{{/compare}} 
-                                        float-xs-right hidden-lg-down text-uppercase"
+                                        float-right d-none d-xl-block text-uppercase px-1"
                                          data-toggle="tooltip" title="{{type}}">{{truncate type 1 ""}}</span>
                                          {{title}}
                                     </a>

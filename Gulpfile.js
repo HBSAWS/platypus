@@ -19,7 +19,7 @@ var opts = {
     dist: './public/dist',
     jsFiles : [
         'public/vendor/jquery/jquery.min.js',
-        'public/vendor/tether/tether.min.js',
+        'public/vendor/popper/popper.min.js',
         'public/vendor/bootstrap/bootstrap.min.js',
         'public/vendor/jasny-bootstrap/jasny-bootstrap.min.js',
         'public/vendor/moment/moment-with-locales.min.js',

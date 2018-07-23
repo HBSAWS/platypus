@@ -1,9 +1,9 @@
 {{#article}}
 
 	{{> breadcrumbs this }}
-	<div class="page-header p-1">
+	<div class="page-header p-3">
 		<div class="row">
-			<div class="col-xs-12">
+			<div class="col-12">
 				<h1 class="text-truncated">Edit {{title}}</h1>
 			</div>
 		</div>
@@ -15,19 +15,19 @@
 		<form action="/articles/update/{{id}}" method="post" data-parsley-validate>
 		  
 		  <div class="row form-group">
-			  <div class="col-md-4 hidden-sm-down text-xs-right">
+			  <div class="col-md-4 hidden-sm-down text-right">
 			    <label for="title">Title</label>
 			  </div>
 			  <div class="col-md-8">
-			  	<label class="hidden-md-up d-block" for="title">Title</label>
+			  	<label class="d-lg-none d-block" for="title">Title</label>
 			  	<input name="title" type="text" class="form-control" value="{{title}}" autofocus required>
 			  </div>
 			</div><!--/.row-->
 
 			<div class="form-group row">
-				<label class="col-md-4 hidden-sm-down text-xs-right" for="status">Status</label>
+				<label class="col-md-4 hidden-sm-down text-right" for="status">Status</label>
 				<div class="col-md-8">
-					<label class="hidden-md-up d-block" for="status">Status</label>
+					<label class="d-lg-none d-block" for="status">Status</label>
 					<select name="status" class="form-control" id="select-single">
 						<option value="" {{#is status ""}}selected{{/is}}></option>
 						<option value="experimental" {{#is status "experimental"}}selected{{/is}}>Experimental</option>
@@ -38,9 +38,9 @@
 			</div><!--/.row-->
 
 		    <div class="form-group row">
-		        <label class="col-md-4 hidden-sm-down text-xs-right" for="type">Type</label>
+		        <label class="col-md-4 hidden-sm-down text-right" for="type">Type</label>
 		        <div class="col-md-8">
-		            <label class="hidden-md-up d-block" for="type">Type</label>
+		            <label class="d-lg-none d-block" for="type">Type</label>
 		            <select name="type" class="form-control" id="select-single">
 		                {{#each ../types}}
 		                	<option value="{{this}}" {{#is this ../type}}selected{{/is}}>{{this}}</option>
@@ -50,11 +50,11 @@
 		    </div><!--/.row-->
 			
 			<div class="row form-group">
-			  <div class="col-md-4 hidden-sm-down text-xs-right">
+			  <div class="col-md-4 hidden-sm-down text-right">
 			    <label for="_category">Category</label>
 			  </div>
 			  <div class="col-md-8">
-			  	<label class="hidden-md-up d-block" for="_category">Category</label>
+			  	<label class="d-lg-none d-block" for="_category">Category</label>
 			  	<select name="_category" class="form-control select2" required>
 					{{#each ../categories}}
 					  	<option value="{{_id}}" {{#is title ../_category.title}}selected{{/is}}>{{title}}</option>
@@ -64,21 +64,21 @@
 			</div><!--/.row-->
 
 			<div class="row form-group">
-			  <div class="col-md-4 hidden-sm-down text-xs-right">
+			  <div class="col-md-4 hidden-sm-down text-right">
 			    <label for="intro">Intro</label>
 			  </div>
 			  <div class="col-md-8">
-			  	<label class="hidden-md-up d-block" for="intro">Intro</label>
+			  	<label class="d-lg-none d-block" for="intro">Intro</label>
 			  	<input name="intro" type="text" class="form-control" value="{{intro}}" >
 				</div>
 			</div><!--/.row-->	
 
 			<div class="row form-group">
-			  <div class="col-md-4 hidden-sm-down text-xs-right">
+			  <div class="col-md-4 hidden-sm-down text-right">
 		    	<label for="body">Body</label>
 			  </div>
 			  <div class="col-md-8">
-			  	<label class="hidden-md-up d-block" for="body">Body</label>
+			  	<label class="d-lg-none d-block" for="body">Body</label>
 			  	<textarea name="body" class="form-control summernote" required>{{body}}</textarea>
 			  </div>
 			</div><!--/.row-->	
@@ -88,7 +88,7 @@
 			    <label for="markup">Markup</label>
 			  </div>
 			  <div class="col-md-8">
-			  	<label class="hidden-md-up d-block" for="markup">Markup</label>
+			  	<label class="d-lg-none d-block" for="markup">Markup</label>
 			  	<textarea name="markup" class="form-control" rows="20">{{markup}}</textarea>
 				</div>
 			</div><!--/.row-->		
@@ -98,23 +98,23 @@
 			    <label for="js">Javascript</label>
 			  </div>
 			  <div class="col-md-8">
-			  	<label class="hidden-md-up d-block" for="js">Javascript</label>
+			  	<label class="d-lg-none d-block" for="js">Javascript</label>
 			  	<textarea name="js" class="form-control" rows="20">{{this.js}}</textarea>
 				</div>
 			</div><!--/.row-->	
 
 		  	<div class="row form-group">
-			  <div class="col-md-4 hidden-sm-down text-xs-right">
+			  <div class="col-md-4 hidden-sm-down text-right">
 			    <label for="fiddle">Fiddle</label>
 			  </div>
 			  <div class="col-md-8">
-			  	<label class="hidden-md-up d-block" for="fiddle">Fiddle</label>
+			  	<label class="d-lg-none d-block" for="fiddle">Fiddle</label>
 			  	<input name="fiddle" type="text" class="form-control" value="{{fiddle}}">
 				</div>
 			</div><!--/.row-->	
 
 		  <div class="row form-group">
-		  	<div class="col-md-4 hidden-sm-down text-xs-right">
+		  	<div class="col-md-4 hidden-sm-down text-right">
 		  	</div>
 			  <div class="col-md-8">
 				 	<div class="checkbox">
@@ -126,41 +126,41 @@
 		 	</div><!--/.row-->	
 
 			<div class="row form-group">
-				<div class="col-md-4 hidden-sm-down text-xs-right">
+				<div class="col-md-4 hidden-sm-down text-right">
 					<label for="best_practices">Best Practices</label>
 				</div>
 				<div class="col-md-8">
-					<label class="hidden-md-up d-block" for="best_practices">Best Practices</label>
+					<label class="d-lg-none d-block" for="best_practices">Best Practices</label>
 					<textarea name="best_practices" class="form-control summernote">{{best_practices}}</textarea>
 				</div>
 			</div><!--/.row-->		
 
 			<div class="row form-group">
-				<div class="col-md-4 hidden-sm-down text-xs-right">
+				<div class="col-md-4 hidden-sm-down text-right">
 					<label for="avoid">Avoid</label>
 				</div>
 				<div class="col-md-8">
-					<label class="hidden-md-up d-block" for="avoid">Avoid</label>
+					<label class="d-lg-none d-block" for="avoid">Avoid</label>
 					<textarea name="avoid" class="form-control summernote">{{avoid}}</textarea>
 				</div>
 			</div><!--/.row-->	
 
 			<div class="row form-group">
-				<div class="col-md-4 hidden-sm-down text-xs-right">
+				<div class="col-md-4 hidden-sm-down text-right">
 					<label for="resources">Resources</label>
 				</div>
 				<div class="col-md-8">
-					<label class="hidden-md-up d-block" for="resources">Resources</label>
+					<label class="d-lg-none d-block" for="resources">Resources</label>
 					<textarea name="resources" class="form-control summernote">{{resources}}</textarea>
 				</div>
 			</div><!--/.row-->	 
 
 			<div class="row form-group">
-				<div class="col-md-4 hidden-sm-down text-xs-right">
+				<div class="col-md-4 hidden-sm-down text-right">
 					<label for="accessibility">Accessibility</label>
 				</div>
 				<div class="col-md-8">
-					<label class="hidden-md-up d-block" for="accessibility">Tested On</label>
+					<label class="d-lg-none d-block" for="accessibility">Tested On</label>
 					<select name="accessibility" class="select2 form-control" data-placeholder="Select" data-allow-clear="true">
 					    {{#each ../accessibility_levels}}
 					    	<option value="{{.}}" {{#is ../accessibility this}} selected {{ else }} {{/is}}>{{.}}</option>
@@ -170,11 +170,11 @@
 			</div><!--/.row-->	
 
 			<div class="row form-group">
-				<div class="col-md-4 hidden-sm-down text-xs-right">
+				<div class="col-md-4 hidden-sm-down text-right">
 					<label for="tested_on">Tested On</label>
 				</div>
 				<div class="col-md-8">
-					<label class="hidden-md-up d-block" for="tested_on">Tested On</label>
+					<label class="d-lg-none d-block" for="tested_on">Tested On</label>
 					<select name="tested_on" class="select2 form-control" data-placeholder="Select" data-allow-clear="true" multiple>
 					    {{#each ../browsers}}
 					    	<option value="{{.}}" {{#inArray ../tested_on this}} selected {{ else }} {{/inArray}}>{{.}}</option>
@@ -184,17 +184,17 @@
 			</div><!--/.row-->	
 		
 		  <div class="row form-group hidden-sm-down">
-		  	<div class="col-md-4 hidden-sm-down text-xs-right">
+		  	<div class="col-md-4 hidden-sm-down text-right">
 		  	</div>
 			<div class="col-md-8"> 	
 				<button type="submit" class="btn btn-primary ladda-button">Update</button>
 			</div> 
 		 </div><!--/.row-->	
 
-		<div id="mobile-toolbar" class="hidden-md-up">
-	  		<div class="col-xs-12 palette-bg-teal-500 navbar-fixed-bottom">
+		<div id="mobile-toolbar" class="d-lg-none">
+	  		<div class="col-12 palette-bg-teal-500 navbar-fixed-bottom">
 	  			<div class="row">
-	    			<div class="col-xs-12 text-xs-center">
+	    			<div class="col-12 text-center">
 	    				<button type="submit" class="btn btn-link ladda-button" data-toggle="tooltip" title="Update"><i class="fa fa-fw fa-2x fa-save"></i></button>
 	    			</div>
 	  			</div>
