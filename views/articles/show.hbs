@@ -8,14 +8,12 @@
 				<h1 class="text-truncated">{{title}}</h1>
 			</div>
 			<div class="col-sm-5 hidden-sm-down">
-				<div class="btn-group float-right">
-					 <div class="btn-group btn-group-justified-xs" role="group" aria-label="Justified button group">
-					   	<a class="btn btn-secondary" href="/articles/edit/{{_id}}"><i class="fa fa-edit"></i><span class="d-none d-xl-inline"> Edit</span></a>
-					   	<a class="btn btn-secondary" href="https://hbs-itg.atlassian.net/secure/CreateIssue!default.jspa" role="button"><i class="fa fa-bug"></i><span class="d-none d-xl-inline"> Report Bug</span></a>
-					   	<form class="d-inline" action="/articles/destroy/{{_id}}" method="POST">
-					   		<button type="submit" class="btn btn-danger confirm-delete"><i class="fa fa-trash"></i><span class="d-none d-xl-inline"> Delete</span></button>
-					   	</form>
-					 </div>
+				<div class="float-right">	
+				   	<a class="btn btn-secondary mr-1" href="/articles/edit/{{_id}}"><i class="fa fa-edit"></i><span class="d-none d-xl-inline"> Edit</span></a>
+				   	<a class="btn btn-secondary mr-1" href="https://hbs-itg.atlassian.net/secure/CreateIssue!default.jspa" role="button"><i class="fa fa-bug"></i><span class="d-none d-xl-inline"> Report Bug</span></a>
+				   	<form class="d-inline" action="/articles/destroy/{{_id}}" method="POST">
+				   		<button type="submit" class="btn btn-danger confirm-delete"><i class="fa fa-trash"></i><span class="d-none d-xl-inline"> Delete</span></button>
+				   	</form>
 				</div>
 			</div>
 		</div>

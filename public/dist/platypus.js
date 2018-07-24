@@ -6920,11 +6920,11 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 
 			window.Parsley.on('field:validated', function (e) {
 				if (e.validationResult.constructor !== Array) {
-					this.$element.closest('.form-group').removeClass('has-danger').addClass('has-success');
-					this.$element.removeClass('form-control-danger').addClass('form-control-success');
+					// this.$element.closest('.form-group').removeClass('has-danger').addClass('has-success');
+					this.$element.removeClass('is-invalid').addClass('is-valid');
 				} else {
-					this.$element.closest('.form-group').removeClass('has-success').addClass('has-danger');
-					this.$element.removeClass('form-control-success').addClass('form-control-danger');
+					// this.$element.closest('.form-group').removeClass('has-success').addClass('has-danger');
+					this.$element.removeClass('is-valid').addClass('is-invalid');
 					Ladda.stopAll();
 				}
 			});

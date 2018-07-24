@@ -6489,7 +6489,7 @@ span.btn-label.btn-label-right {
 
 /* Ladda buttons */
 .ladda-button {
-  padding: .5rem 1rem;
+  padding: 0.4 0.4rem 1rem;
   font-size: 16px; }
   .ladda-button.btn-secondary {
     color: #373a3c;
