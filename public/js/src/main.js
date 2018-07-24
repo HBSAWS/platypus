@@ -1720,13 +1720,22 @@
 						ajax: {
 							url: '/articles/search/ui-components'
 						},
-						template: '<div clas="row"><div class="col-xs-1 p-2 bg-info"><img src="/images/ui-components-thumbs/{{slug}}.png" class="img-fluid"></div><div class="col-xs-11"><h5>{{title}}</h5>{{intro}}</div></div>'
+						template: `
+							<div class="row px-2 py-1">
+								<div class="col-1 p-4 bg-info">
+									<img src="/images/ui-components-thumbs/{{slug}}.png" class="img-fluid">
+								</div>
+								<div class="col-11">
+									<h5>{{title}}</h5>
+									{{intro}}
+								</div>
+							</div>`
 					},
 					resources: {
 						ajax: {
 							url: '/articles/search/resources'
 						},
-						template: '<div clas="row"><div class="col-xs-12"><h5>{{title}}</h5>{{intro}}</div></div>'
+						template: '<div clas="row"><div class="col-12"><h5>{{title}}</h5>{{intro}}</div></div>'
 					}
 				},
 				emptyTemplate: "no result for {{query}}",

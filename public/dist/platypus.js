@@ -7339,13 +7339,13 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
 						ajax: {
 							url: '/articles/search/ui-components'
 						},
-						template: '<div clas="row"><div class="col-xs-1 p-2 bg-info"><img src="/images/ui-components-thumbs/{{slug}}.png" class="img-fluid"></div><div class="col-xs-11"><h5>{{title}}</h5>{{intro}}</div></div>'
+						template: '\n\t\t\t\t\t\t\t<div class="row px-2 py-1">\n\t\t\t\t\t\t\t\t<div class="col-1 p-4 bg-info">\n\t\t\t\t\t\t\t\t\t<img src="/images/ui-components-thumbs/{{slug}}.png" class="img-fluid">\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class="col-11">\n\t\t\t\t\t\t\t\t\t<h5>{{title}}</h5>\n\t\t\t\t\t\t\t\t\t{{intro}}\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>'
 					},
 					resources: {
 						ajax: {
 							url: '/articles/search/resources'
 						},
-						template: '<div clas="row"><div class="col-xs-12"><h5>{{title}}</h5>{{intro}}</div></div>'
+						template: '<div clas="row"><div class="col-12"><h5>{{title}}</h5>{{intro}}</div></div>'
 					}
 				},
 				emptyTemplate: "no result for {{query}}",

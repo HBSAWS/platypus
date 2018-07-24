@@ -7146,9 +7146,10 @@ html.xl .display-2 {
 html.xl .display-1 {
   font-size: 4.5em; }
 
-.progress .progress-bar {
-  height: 1em;
-  transition: width 2s ease-in-out; }
+.progress {
+  border-radius: 0; }
+  .progress .progress-bar {
+    transition: width 2s ease-in-out; }
 
 .popover {
   max-width: 100%;
