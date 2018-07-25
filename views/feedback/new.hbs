@@ -27,7 +27,7 @@
                         <div class="col-md-8">
                             <label class="d-lg-none d-block" for="scope">Scope</label>
 
-                            <div class="custom-controls-stacked">
+                            {{!-- <div class="custom-controls-stacked">
                                 <label class="custom-control custom-radio">
                                     <input value="specific" name="scope" type="radio" class="custom-control-input" data-parsley-group="block1" required>
                                     <span class="custom-control-indicator"></span>
@@ -44,6 +44,15 @@
                                         <p>I’d like to give general feedback on the entire application.</p>
                                     </span>
                                 </label>
+                            </div> --}}
+
+                            <div class="custom-control custom-radio mb-2">
+                                <input value="specific" name="scope" type="radio" id="specific" class="custom-control-input" data-parsley-group="block1" required>
+                                <label class="custom-control-label" for="specific">I’d like to give feedback on a specific part of this application.</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input value="generic" name="scope" type="radio" id="generic" class="custom-control-input" data-parsley-group="block1">
+                                <label class="custom-control-label" for="generic">I’d like to give general feedback on the entire application.</label>
                             </div>
 
                         </div>

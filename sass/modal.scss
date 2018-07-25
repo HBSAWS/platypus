@@ -1,11 +1,11 @@
 // center modal
-.modal .modal-dialog {
-    transform: translate(0, -50%) !important;
-    top: 50%;
-    margin: 0 auto;
-}
+// .modal .modal-dialog {
+//     transform: translate(0, -50%) !important;
+//     top: 50%;
+//     margin: 0 auto;
+// }
 
-// prevents body from scrolling when modal is open
+// // prevents body from scrolling when modal is open
 body.modal-open {
 	overflow: hidden !important; 
 	padding-right: 15px !important;
