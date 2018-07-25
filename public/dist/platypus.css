@@ -2149,6 +2149,7 @@ input,
 select,
 textarea,
 .custom-file-control,
+.custom-file-label,
 .input-group-addon,
 .form-control,
 .tag,
@@ -2367,7 +2368,7 @@ select::-ms-expand {
   font-size: .2em;
   display: block;
   position: absolute;
-  top: 0em;
+  top: -12px;
   right: -.75em;
   width: 2em;
   height: 2em;
