@@ -8,7 +8,7 @@ div.dataTables_wrapper {
             position: relative;
             &::after {
                 font-family: 'FontAwesome';
-                margin-top: 6px;
+                margin-top: 0px;
                 margin-right: 13px;
                 content: '\f002';
                 position: absolute;
@@ -26,7 +26,10 @@ div.dataTables_wrapper {
         width: 100%;
       }
     }
-
+  
+  ul.pagination {
+    float: right;
+  }
 }
 
 table.dataTable.dtr-column>tbody>tr>td.control:before, 

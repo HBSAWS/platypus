@@ -337,7 +337,7 @@
 
 			function initTable($tbl, buttons) {
 
-				var btnMarkup = buttons.length > 0 ? "<'row'<'col-xs-4 text-xs-left'B><'col-xs-6 text-xs-left'f><'col-xs-2 text-xs-right'l>><'row'<'col-xs-12'tr>><'row'<'col-sm-6 col-xs-12 small'i><'col-sm-6 col-xs-12'p>>" : "<'row'<'col-xs-10 text-xs-left'f><'col-xs-2 text-xs-right'l>><'row'<'col-xs-12'tr>><'row'<'col-sm-6 col-xs-12 small'i><'col-sm-6 col-xs-12'p>>";
+				var btnMarkup = buttons.length > 0 ? "<'row w-100'<'col-4 text-left'B><'col-6 text-left'f><'col-2 text-right'l>><'row w-100'<'col-12'tr>><'row w-100'<'col-sm-6 col-12 small'i><'col-sm-6 col-12'p>>" : "<'row w-100'<'col-10 text-left'f><'col-2 text-right'l>><'row w-100'<'col-12'tr>><'row w-100'<'col-sm-6 col-12 small'i><'col-sm-6 col-12'p>>";
 				var aoBttns = [];
 
 				if (buttons.length > 0) {
