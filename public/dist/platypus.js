@@ -5996,1967 +5996,2063 @@ e=this.getYAxis(d,h.y2Orient,i.axis_y2_tick_format,h.y2AxisTickValues,!1,!0,!0))
 c.hasArcType()&&c.expandArc(a),c.toggleFocusLegend(a,!0),c.focusedTargetIds=a,c.defocusedTargetIds=c.defocusedTargetIds.filter(function(b){return a.indexOf(b)<0})},h.defocus=function(a){var b,c=this.internal;a=c.mapToTargetIds(a),b=c.svg.selectAll(c.selectorTargets(a.filter(c.isTargetToShow,c))),b.classed(l.focused,!1).classed(l.defocused,!0),c.hasArcType()&&c.unexpandArc(a),c.toggleFocusLegend(a,!1),c.focusedTargetIds=c.focusedTargetIds.filter(function(b){return a.indexOf(b)<0}),c.defocusedTargetIds=a},h.revert=function(a){var b,c=this.internal;a=c.mapToTargetIds(a),b=c.svg.selectAll(c.selectorTargets(a)),b.classed(l.focused,!1).classed(l.defocused,!1),c.hasArcType()&&c.unexpandArc(a),c.config.legend_show&&(c.showLegend(a.filter(c.isLegendToShow.bind(c))),c.legend.selectAll(c.selectorLegends(a)).filter(function(){return c.d3.select(this).classed(l.legendItemFocused)}).classed(l.legendItemFocused,!1)),c.focusedTargetIds=[],c.defocusedTargetIds=[]},h.show=function(a,b){var c,d=this.internal;a=d.mapToTargetIds(a),b=b||{},d.removeHiddenTargetIds(a),c=d.svg.selectAll(d.selectorTargets(a)),c.transition().style("opacity",1,"important").call(d.endall,function(){c.style("opacity",null).style("opacity",1)}),b.withLegend&&d.showLegend(a),d.redraw({withUpdateOrgXDomain:!0,withUpdateXDomain:!0,withLegend:!0})},h.hide=function(a,b){var c,d=this.internal;a=d.mapToTargetIds(a),b=b||{},d.addHiddenTargetIds(a),c=d.svg.selectAll(d.selectorTargets(a)),c.transition().style("opacity",0,"important").call(d.endall,function(){c.style("opacity",null).style("opacity",0)}),b.withLegend&&d.hideLegend(a),d.redraw({withUpdateOrgXDomain:!0,withUpdateXDomain:!0,withLegend:!0})},h.toggle=function(a,b){var c=this,d=this.internal;d.mapToTargetIds(a).forEach(function(a){d.isTargetToShow(a)?c.hide(a,b):c.show(a,b)})},h.zoom=function(a){var b=this.internal;return a&&(b.isTimeSeries()&&(a=a.map(function(a){return b.parseDate(a)})),b.brush.extent(a),b.redraw({withUpdateXDomain:!0,withY:b.config.zoom_rescale}),b.config.zoom_onzoom.call(this,b.x.orgDomain())),b.brush.extent()},h.zoom.enable=function(a){var b=this.internal;b.config.zoom_enabled=a,b.updateAndRedraw()},h.unzoom=function(){var a=this.internal;a.brush.clear().update(),a.redraw({withUpdateXDomain:!0})},h.zoom.max=function(a){var b=this.internal,c=b.config,d=b.d3;return 0===a||a?void(c.zoom_x_max=d.max([b.orgXDomain[1],a])):c.zoom_x_max},h.zoom.min=function(a){var b=this.internal,c=b.config,d=b.d3;return 0===a||a?void(c.zoom_x_min=d.min([b.orgXDomain[0],a])):c.zoom_x_min},h.zoom.range=function(a){return arguments.length?(q(a.max)&&this.domain.max(a.max),void(q(a.min)&&this.domain.min(a.min))):{max:this.domain.max(),min:this.domain.min()}},h.load=function(a){var b=this.internal,c=b.config;return a.xs&&b.addXs(a.xs),"names"in a&&h.data.names.bind(this)(a.names),"classes"in a&&Object.keys(a.classes).forEach(function(b){c.data_classes[b]=a.classes[b]}),"categories"in a&&b.isCategorized()&&(c.axis_x_categories=a.categories),"axes"in a&&Object.keys(a.axes).forEach(function(b){c.data_axes[b]=a.axes[b]}),"colors"in a&&Object.keys(a.colors).forEach(function(b){c.data_colors[b]=a.colors[b]}),"cacheIds"in a&&b.hasCaches(a.cacheIds)?void b.load(b.getCaches(a.cacheIds),a.done):void("unload"in a?b.unload(b.mapToTargetIds("boolean"==typeof a.unload&&a.unload?null:a.unload),function(){b.loadFromArgs(a)}):b.loadFromArgs(a))},h.unload=function(a){var b=this.internal;a=a||{},a instanceof Array?a={ids:a}:"string"==typeof a&&(a={ids:[a]}),b.unload(b.mapToTargetIds(a.ids),function(){b.redraw({withUpdateOrgXDomain:!0,withUpdateXDomain:!0,withLegend:!0}),a.done&&a.done()})},h.flow=function(a){var b,c,d,e,f,g,h,i,j=this.internal,k=[],l=j.getMaxDataCount(),n=0,o=0;if(a.json)c=j.convertJsonToData(a.json,a.keys);else if(a.rows)c=j.convertRowsToData(a.rows);else{if(!a.columns)return;c=j.convertColumnsToData(a.columns)}b=j.convertDataToTargets(c,!0),j.data.targets.forEach(function(a){var c,d,e=!1;for(c=0;c<b.length;c++)if(a.id===b[c].id){for(e=!0,a.values[a.values.length-1]&&(o=a.values[a.values.length-1].index+1),n=b[c].values.length,d=0;n>d;d++)b[c].values[d].index=o+d,j.isTimeSeries()||(b[c].values[d].x=o+d);a.values=a.values.concat(b[c].values),b.splice(c,1);break}e||k.push(a.id)}),j.data.targets.forEach(function(a){var b,c;for(b=0;b<k.length;b++)if(a.id===k[b])for(o=a.values[a.values.length-1].index+1,c=0;n>c;c++)a.values.push({id:a.id,index:o+c,x:j.isTimeSeries()?j.getOtherTargetX(o+c):o+c,value:null})}),j.data.targets.length&&b.forEach(function(a){var b,c=[];for(b=j.data.targets[0].values[0].index;o>b;b++)c.push({id:a.id,index:b,x:j.isTimeSeries()?j.getOtherTargetX(b):b,value:null});a.values.forEach(function(a){a.index+=o,j.isTimeSeries()||(a.x+=o)}),a.values=c.concat(a.values)}),j.data.targets=j.data.targets.concat(b),d=j.getMaxDataCount(),f=j.data.targets[0],g=f.values[0],q(a.to)?(n=0,i=j.isTimeSeries()?j.parseDate(a.to):a.to,f.values.forEach(function(a){a.x<i&&n++})):q(a.length)&&(n=a.length),l?1===l&&j.isTimeSeries()&&(h=(f.values[f.values.length-1].x-g.x)/2,e=[new Date(+g.x-h),new Date(+g.x+h)],j.updateXDomain(null,!0,!0,!1,e)):(h=j.isTimeSeries()?f.values.length>1?f.values[f.values.length-1].x-g.x:g.x-j.getXDomain(j.data.targets)[0]:1,e=[g.x-h,g.x],j.updateXDomain(null,!0,!0,!1,e)),j.updateTargets(j.data.targets),j.redraw({flow:{index:g.index,length:n,duration:m(a.duration)?a.duration:j.config.transition_duration,done:a.done,orgDataCount:l},withLegend:!0,withTransition:l>1,withTrimXDomain:!1,withUpdateXAxis:!0})},i.generateFlow=function(a){var b=this,c=b.config,d=b.d3;return function(){var e,f,g,h=a.targets,i=a.flow,j=a.drawBar,k=a.drawLine,m=a.drawArea,n=a.cx,o=a.cy,p=a.xv,q=a.xForText,r=a.yForText,s=a.duration,u=1,v=i.index,w=i.length,x=b.getValueOnIndex(b.data.targets[0].values,v),y=b.getValueOnIndex(b.data.targets[0].values,v+w),z=b.x.domain(),A=i.duration||s,B=i.done||function(){},C=b.generateWait(),D=b.xgrid||d.selectAll([]),E=b.xgridLines||d.selectAll([]),F=b.mainRegion||d.selectAll([]),G=b.mainText||d.selectAll([]),H=b.mainBar||d.selectAll([]),I=b.mainLine||d.selectAll([]),J=b.mainArea||d.selectAll([]),K=b.mainCircle||d.selectAll([]);b.flowing=!0,b.data.targets.forEach(function(a){a.values.splice(0,w)}),g=b.updateXDomain(h,!0,!0),b.updateXGrid&&b.updateXGrid(!0),i.orgDataCount?e=1===i.orgDataCount||(x&&x.x)===(y&&y.x)?b.x(z[0])-b.x(g[0]):b.isTimeSeries()?b.x(z[0])-b.x(g[0]):b.x(x.x)-b.x(y.x):1!==b.data.targets[0].values.length?e=b.x(z[0])-b.x(g[0]):b.isTimeSeries()?(x=b.getValueOnIndex(b.data.targets[0].values,0),y=b.getValueOnIndex(b.data.targets[0].values,b.data.targets[0].values.length-1),e=b.x(x.x)-b.x(y.x)):e=t(g)/2,u=t(z)/t(g),f="translate("+e+",0) scale("+u+",1)",b.hideXGridFocus(),d.transition().ease("linear").duration(A).each(function(){C.add(b.axes.x.transition().call(b.xAxis)),C.add(H.transition().attr("transform",f)),C.add(I.transition().attr("transform",f)),C.add(J.transition().attr("transform",f)),C.add(K.transition().attr("transform",f)),C.add(G.transition().attr("transform",f)),C.add(F.filter(b.isRegionOnX).transition().attr("transform",f)),C.add(D.transition().attr("transform",f)),C.add(E.transition().attr("transform",f))}).call(C,function(){var a,d=[],e=[],f=[];if(w){for(a=0;w>a;a++)d.push("."+l.shape+"-"+(v+a)),e.push("."+l.text+"-"+(v+a)),f.push("."+l.eventRect+"-"+(v+a));b.svg.selectAll("."+l.shapes).selectAll(d).remove(),b.svg.selectAll("."+l.texts).selectAll(e).remove(),b.svg.selectAll("."+l.eventRects).selectAll(f).remove(),b.svg.select("."+l.xgrid).remove()}D.attr("transform",null).attr(b.xgridAttr),E.attr("transform",null),E.select("line").attr("x1",c.axis_rotated?0:p).attr("x2",c.axis_rotated?b.width:p),E.select("text").attr("x",c.axis_rotated?b.width:0).attr("y",p),H.attr("transform",null).attr("d",j),I.attr("transform",null).attr("d",k),J.attr("transform",null).attr("d",m),K.attr("transform",null).attr("cx",n).attr("cy",o),G.attr("transform",null).attr("x",q).attr("y",r).style("fill-opacity",b.opacityForText.bind(b)),F.attr("transform",null),F.select("rect").filter(b.isRegionOnX).attr("x",b.regionX.bind(b)).attr("width",b.regionWidth.bind(b)),c.interaction_enabled&&b.redrawEventRect(),B(),b.flowing=!1})}},h.selected=function(a){var b=this.internal,c=b.d3;return c.merge(b.main.selectAll("."+l.shapes+b.getTargetSelectorSuffix(a)).selectAll("."+l.shape).filter(function(){return c.select(this).classed(l.SELECTED)}).map(function(a){return a.map(function(a){var b=a.__data__;return b.data?b.data:b})}))},h.select=function(a,b,c){var d=this.internal,e=d.d3,f=d.config;f.data_selection_enabled&&d.main.selectAll("."+l.shapes).selectAll("."+l.shape).each(function(g,h){var i=e.select(this),j=g.data?g.data.id:g.id,k=d.getToggle(this,g).bind(d),m=f.data_selection_grouped||!a||a.indexOf(j)>=0,n=!b||b.indexOf(h)>=0,o=i.classed(l.SELECTED);i.classed(l.line)||i.classed(l.area)||(m&&n?f.data_selection_isselectable(g)&&!o&&k(!0,i.classed(l.SELECTED,!0),g,h):q(c)&&c&&o&&k(!1,i.classed(l.SELECTED,!1),g,h))})},h.unselect=function(a,b){var c=this.internal,d=c.d3,e=c.config;e.data_selection_enabled&&c.main.selectAll("."+l.shapes).selectAll("."+l.shape).each(function(f,g){var h=d.select(this),i=f.data?f.data.id:f.id,j=c.getToggle(this,f).bind(c),k=e.data_selection_grouped||!a||a.indexOf(i)>=0,m=!b||b.indexOf(g)>=0,n=h.classed(l.SELECTED);h.classed(l.line)||h.classed(l.area)||k&&m&&e.data_selection_isselectable(f)&&n&&j(!1,h.classed(l.SELECTED,!1),f,g)})},h.transform=function(a,b){var c=this.internal,d=["pie","donut"].indexOf(a)>=0?{withTransform:!0}:null;c.transformTo(b,a,d)},i.transformTo=function(a,b,c){var d=this,e=!d.hasArcType(),f=c||{withTransitionForAxis:e};f.withTransitionForTransform=!1,d.transiting=!1,d.setTargetType(a,b),d.updateTargets(d.data.targets),d.updateAndRedraw(f)},h.groups=function(a){var b=this.internal,c=b.config;return p(a)?c.data_groups:(c.data_groups=a,b.redraw(),c.data_groups)},h.xgrids=function(a){var b=this.internal,c=b.config;return a?(c.grid_x_lines=a,b.redrawWithoutRescale(),c.grid_x_lines):c.grid_x_lines},h.xgrids.add=function(a){var b=this.internal;return this.xgrids(b.config.grid_x_lines.concat(a?a:[]))},h.xgrids.remove=function(a){var b=this.internal;b.removeGridLines(a,!0)},h.ygrids=function(a){var b=this.internal,c=b.config;return a?(c.grid_y_lines=a,b.redrawWithoutRescale(),c.grid_y_lines):c.grid_y_lines},h.ygrids.add=function(a){var b=this.internal;return this.ygrids(b.config.grid_y_lines.concat(a?a:[]))},h.ygrids.remove=function(a){var b=this.internal;b.removeGridLines(a,!1)},h.regions=function(a){var b=this.internal,c=b.config;return a?(c.regions=a,b.redrawWithoutRescale(),c.regions):c.regions},h.regions.add=function(a){var b=this.internal,c=b.config;return a?(c.regions=c.regions.concat(a),b.redrawWithoutRescale(),c.regions):c.regions},h.regions.remove=function(a){var b,c,d,e=this.internal,f=e.config;return a=a||{},b=e.getOption(a,"duration",f.transition_duration),c=e.getOption(a,"classes",[l.region]),d=e.main.select("."+l.regions).selectAll(c.map(function(a){return"."+a})),(b?d.transition().duration(b):d).style("opacity",0).remove(),f.regions=f.regions.filter(function(a){var b=!1;return a["class"]?(a["class"].split(" ").forEach(function(a){c.indexOf(a)>=0&&(b=!0)}),!b):!0}),f.regions},h.data=function(a){var b=this.internal.data.targets;return"undefined"==typeof a?b:b.filter(function(b){return[].concat(a).indexOf(b.id)>=0})},h.data.shown=function(a){return this.internal.filterTargetsToShow(this.data(a))},h.data.values=function(a){var b,c=null;return a&&(b=this.data(a),c=b[0]?b[0].values.map(function(a){return a.value}):null),c},h.data.names=function(a){return this.internal.clearLegendItemTextBoxCache(),this.internal.updateDataAttributes("names",a)},h.data.colors=function(a){return this.internal.updateDataAttributes("colors",a)},h.data.axes=function(a){return this.internal.updateDataAttributes("axes",a)},h.category=function(a,b){var c=this.internal,d=c.config;return arguments.length>1&&(d.axis_x_categories[a]=b,c.redraw()),d.axis_x_categories[a]},h.categories=function(a){var b=this.internal,c=b.config;return arguments.length?(c.axis_x_categories=a,b.redraw(),c.axis_x_categories):c.axis_x_categories},h.color=function(a){var b=this.internal;return b.color(a)},h.x=function(a){var b=this.internal;return arguments.length&&(b.updateTargetX(b.data.targets,a),b.redraw({withUpdateOrgXDomain:!0,withUpdateXDomain:!0})),b.data.xs},h.xs=function(a){var b=this.internal;return arguments.length&&(b.updateTargetXs(b.data.targets,a),b.redraw({withUpdateOrgXDomain:!0,withUpdateXDomain:!0})),b.data.xs},h.axis=function(){},h.axis.labels=function(a){var b=this.internal;arguments.length&&(Object.keys(a).forEach(function(c){b.axis.setLabelText(c,a[c])}),b.axis.updateLabels())},h.axis.max=function(a){var b=this.internal,c=b.config;return arguments.length?("object"==typeof a?(m(a.x)&&(c.axis_x_max=a.x),m(a.y)&&(c.axis_y_max=a.y),m(a.y2)&&(c.axis_y2_max=a.y2)):c.axis_y_max=c.axis_y2_max=a,void b.redraw({withUpdateOrgXDomain:!0,withUpdateXDomain:!0})):{x:c.axis_x_max,y:c.axis_y_max,y2:c.axis_y2_max}},h.axis.min=function(a){var b=this.internal,c=b.config;return arguments.length?("object"==typeof a?(m(a.x)&&(c.axis_x_min=a.x),m(a.y)&&(c.axis_y_min=a.y),m(a.y2)&&(c.axis_y2_min=a.y2)):c.axis_y_min=c.axis_y2_min=a,void b.redraw({withUpdateOrgXDomain:!0,withUpdateXDomain:!0})):{x:c.axis_x_min,y:c.axis_y_min,y2:c.axis_y2_min}},h.axis.range=function(a){return arguments.length?(q(a.max)&&this.axis.max(a.max),void(q(a.min)&&this.axis.min(a.min))):{max:this.axis.max(),min:this.axis.min()}},h.legend=function(){},h.legend.show=function(a){var b=this.internal;b.showLegend(b.mapToTargetIds(a)),b.updateAndRedraw({withLegend:!0})},h.legend.hide=function(a){var b=this.internal;b.hideLegend(b.mapToTargetIds(a)),b.updateAndRedraw({withLegend:!0})},h.resize=function(a){var b=this.internal,c=b.config;c.size_width=a?a.width:null,c.size_height=a?a.height:null,this.flush()},h.flush=function(){var a=this.internal;a.updateAndRedraw({withLegend:!0,withTransition:!1,withTransitionForTransform:!1})},h.destroy=function(){var b=this.internal;if(a.clearInterval(b.intervalForObserveInserted),void 0!==b.resizeTimeout&&a.clearTimeout(b.resizeTimeout),a.detachEvent)a.detachEvent("onresize",b.resizeFunction);else if(a.removeEventListener)a.removeEventListener("resize",b.resizeFunction);else{var c=a.onresize;c&&c.add&&c.remove&&c.remove(b.resizeFunction)}return b.selectChart.classed("c3",!1).html(""),Object.keys(b).forEach(function(a){b[a]=null}),null},h.tooltip=function(){},h.tooltip.show=function(a){var b,c,d=this.internal;a.mouse&&(c=a.mouse),a.data?d.isMultipleX()?(c=[d.x(a.data.x),d.getYScale(a.data.id)(a.data.value)],b=null):b=m(a.data.index)?a.data.index:d.getIndexByX(a.data.x):"undefined"!=typeof a.x?b=d.getIndexByX(a.x):"undefined"!=typeof a.index&&(b=a.index),d.dispatchEvent("mouseover",b,c),d.dispatchEvent("mousemove",b,c),d.config.tooltip_onshow.call(d,a.data)},h.tooltip.hide=function(){this.internal.dispatchEvent("mouseout",0),this.internal.config.tooltip_onhide.call(this)};var A;i.isSafari=function(){var b=a.navigator.userAgent;return b.indexOf("Safari")>=0&&b.indexOf("Chrome")<0},i.isChrome=function(){var b=a.navigator.userAgent;return b.indexOf("Chrome")>=0},Function.prototype.bind||(Function.prototype.bind=function(a){if("function"!=typeof this)throw new TypeError("Function.prototype.bind - what is trying to be bound is not callable");var b=Array.prototype.slice.call(arguments,1),c=this,d=function(){},e=function(){return c.apply(this instanceof d?this:a,b.concat(Array.prototype.slice.call(arguments)))};return d.prototype=this.prototype,e.prototype=new d,e}),function(){"SVGPathSeg"in a||(a.SVGPathSeg=function(a,b,c){this.pathSegType=a,this.pathSegTypeAsLetter=b,this._owningPathSegList=c},SVGPathSeg.PATHSEG_UNKNOWN=0,SVGPathSeg.PATHSEG_CLOSEPATH=1,SVGPathSeg.PATHSEG_MOVETO_ABS=2,SVGPathSeg.PATHSEG_MOVETO_REL=3,SVGPathSeg.PATHSEG_LINETO_ABS=4,SVGPathSeg.PATHSEG_LINETO_REL=5,SVGPathSeg.PATHSEG_CURVETO_CUBIC_ABS=6,SVGPathSeg.PATHSEG_CURVETO_CUBIC_REL=7,SVGPathSeg.PATHSEG_CURVETO_QUADRATIC_ABS=8,SVGPathSeg.PATHSEG_CURVETO_QUADRATIC_REL=9,SVGPathSeg.PATHSEG_ARC_ABS=10,SVGPathSeg.PATHSEG_ARC_REL=11,SVGPathSeg.PATHSEG_LINETO_HORIZONTAL_ABS=12,SVGPathSeg.PATHSEG_LINETO_HORIZONTAL_REL=13,SVGPathSeg.PATHSEG_LINETO_VERTICAL_ABS=14,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL=15,SVGPathSeg.PATHSEG_CURVETO_CUBIC_SMOOTH_ABS=16,SVGPathSeg.PATHSEG_CURVETO_CUBIC_SMOOTH_REL=17,SVGPathSeg.PATHSEG_CURVETO_QUADRATIC_SMOOTH_ABS=18,SVGPathSeg.PATHSEG_CURVETO_QUADRATIC_SMOOTH_REL=19,SVGPathSeg.prototype._segmentChanged=function(){this._owningPathSegList&&this._owningPathSegList.segmentChanged(this)},a.SVGPathSegClosePath=function(a){SVGPathSeg.call(this,SVGPathSeg.PATHSEG_CLOSEPATH,"z",a)},SVGPathSegClosePath.prototype=Object.create(SVGPathSeg.prototype),SVGPathSegClosePath.prototype.toString=function(){return"[object SVGPathSegClosePath]"},SVGPathSegClosePath.prototype._asPathString=function(){return this.pathSegTypeAsLetter},SVGPathSegClosePath.prototype.clone=function(){return new SVGPathSegClosePath(void 0)},a.SVGPathSegMovetoAbs=function(a,b,c){SVGPathSeg.call(this,SVGPathSeg.PATHSEG_MOVETO_ABS,"M",a),this._x=b,this._y=c},SVGPathSegMovetoAbs.prototype=Object.create(SVGPathSeg.prototype),SVGPathSegMovetoAbs.prototype.toString=function(){return"[object SVGPathSegMovetoAbs]"},SVGPathSegMovetoAbs.prototype._asPathString=function(){return this.pathSegTypeAsLetter+" "+this._x+" "+this._y},SVGPathSegMovetoAbs.prototype.clone=function(){return new SVGPathSegMovetoAbs(void 0,this._x,this._y)},Object.defineProperty(SVGPathSegMovetoAbs.prototype,"x",{get:function(){return this._x},set:function(a){this._x=a,this._segmentChanged()},enumerable:!0}),Object.defineProperty(SVGPathSegMovetoAbs.prototype,"y",{get:function(){return this._y},set:function(a){this._y=a,this._segmentChanged()},enumerable:!0}),a.SVGPathSegMovetoRel=function(a,b,c){SVGPathSeg.call(this,SVGPathSeg.PATHSEG_MOVETO_REL,"m",a),this._x=b,this._y=c},SVGPathSegMovetoRel.prototype=Object.create(SVGPathSeg.prototype),SVGPathSegMovetoRel.prototype.toString=function(){return"[object SVGPathSegMovetoRel]"},SVGPathSegMovetoRel.prototype._asPathString=function(){return this.pathSegTypeAsLetter+" "+this._x+" "+this._y},SVGPathSegMovetoRel.prototype.clone=function(){return new SVGPathSegMovetoRel(void 0,this._x,this._y)},Object.defineProperty(SVGPathSegMovetoRel.prototype,"x",{get:function(){return this._x},set:function(a){this._x=a,this._segmentChanged()},enumerable:!0}),Object.defineProperty(SVGPathSegMovetoRel.prototype,"y",{get:function(){return this._y},set:function(a){this._y=a,this._segmentChanged()},enumerable:!0}),a.SVGPathSegLinetoAbs=function(a,b,c){SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_ABS,"L",a),this._x=b,this._y=c},SVGPathSegLinetoAbs.prototype=Object.create(SVGPathSeg.prototype),SVGPathSegLinetoAbs.prototype.toString=function(){return"[object SVGPathSegLinetoAbs]"},SVGPathSegLinetoAbs.prototype._asPathString=function(){return this.pathSegTypeAsLetter+" "+this._x+" "+this._y},SVGPathSegLinetoAbs.prototype.clone=function(){return new SVGPathSegLinetoAbs(void 0,this._x,this._y)},Object.defineProperty(SVGPathSegLinetoAbs.prototype,"x",{get:function(){return this._x},set:function(a){this._x=a,this._segmentChanged()},enumerable:!0}),Object.defineProperty(SVGPathSegLinetoAbs.prototype,"y",{get:function(){return this._y},set:function(a){this._y=a,this._segmentChanged()},enumerable:!0}),a.SVGPathSegLinetoRel=function(a,b,c){SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_REL,"l",a),this._x=b,this._y=c},SVGPathSegLinetoRel.prototype=Object.create(SVGPathSeg.prototype),SVGPathSegLinetoRel.prototype.toString=function(){return"[object SVGPathSegLinetoRel]"},SVGPathSegLinetoRel.prototype._asPathString=function(){return this.pathSegTypeAsLetter+" "+this._x+" "+this._y},SVGPathSegLinetoRel.prototype.clone=function(){return new SVGPathSegLinetoRel(void 0,this._x,this._y)},Object.defineProperty(SVGPathSegLinetoRel.prototype,"x",{get:function(){return this._x},set:function(a){this._x=a,this._segmentChanged()},enumerable:!0}),Object.defineProperty(SVGPathSegLinetoRel.prototype,"y",{get:function(){return this._y},set:function(a){this._y=a,this._segmentChanged()},enumerable:!0}),a.SVGPathSegCurvetoCubicAbs=function(a,b,c,d,e,f,g){SVGPathSeg.call(this,SVGPathSeg.PATHSEG_CURVETO_CUBIC_ABS,"C",a),this._x=b,this._y=c,this._x1=d,this._y1=e,this._x2=f,this._y2=g},SVGPathSegCurvetoCubicAbs.prototype=Object.create(SVGPathSeg.prototype),SVGPathSegCurvetoCubicAbs.prototype.toString=function(){return"[object SVGPathSegCurvetoCubicAbs]"},SVGPathSegCurvetoCubicAbs.prototype._asPathString=function(){return this.pathSegTypeAsLetter+" "+this._x1+" "+this._y1+" "+this._x2+" "+this._y2+" "+this._x+" "+this._y},SVGPathSegCurvetoCubicAbs.prototype.clone=function(){return new SVGPathSegCurvetoCubicAbs(void 0,this._x,this._y,this._x1,this._y1,this._x2,this._y2)},Object.defineProperty(SVGPathSegCurvetoCubicAbs.prototype,"x",{get:function(){return this._x},set:function(a){this._x=a,this._segmentChanged()},enumerable:!0}),Object.defineProperty(SVGPathSegCurvetoCubicAbs.prototype,"y",{get:function(){return this._y},set:function(a){this._y=a,this._segmentChanged()},enumerable:!0}),Object.defineProperty(SVGPathSegCurvetoCubicAbs.prototype,"x1",{get:function(){return this._x1},set:function(a){this._x1=a,this._segmentChanged()},enumerable:!0}),Object.defineProperty(SVGPathSegCurvetoCubicAbs.prototype,"y1",{get:function(){return this._y1},set:function(a){this._y1=a,this._segmentChanged()},enumerable:!0}),Object.defineProperty(SVGPathSegCurvetoCubicAbs.prototype,"x2",{get:function(){return this._x2},set:function(a){this._x2=a,this._segmentChanged()},enumerable:!0}),Object.defineProperty(SVGPathSegCurvetoCubicAbs.prototype,"y2",{get:function(){return this._y2},set:function(a){this._y2=a,this._segmentChanged()},enumerable:!0}),a.SVGPathSegCurvetoCubicRel=function(a,b,c,d,e,f,g){SVGPathSeg.call(this,SVGPathSeg.PATHSEG_CURVETO_CUBIC_REL,"c",a),this._x=b,this._y=c,this._x1=d,this._y1=e,this._x2=f,this._y2=g},SVGPathSegCurvetoCubicRel.prototype=Object.create(SVGPathSeg.prototype),SVGPathSegCurvetoCubicRel.prototype.toString=function(){return"[object SVGPathSegCurvetoCubicRel]"},SVGPathSegCurvetoCubicRel.prototype._asPathString=function(){return this.pathSegTypeAsLetter+" "+this._x1+" "+this._y1+" "+this._x2+" "+this._y2+" "+this._x+" "+this._y},SVGPathSegCurvetoCubicRel.prototype.clone=function(){return new SVGPathSegCurvetoCubicRel(void 0,this._x,this._y,this._x1,this._y1,this._x2,this._y2)},Object.defineProperty(SVGPathSegCurvetoCubicRel.prototype,"x",{get:function(){return this._x},set:function(a){this._x=a,this._segmentChanged()},enumerable:!0}),Object.defineProperty(SVGPathSegCurvetoCubicRel.prototype,"y",{get:function(){return this._y},set:function(a){this._y=a,this._segmentChanged()},enumerable:!0}),Object.defineProperty(SVGPathSegCurvetoCubicRel.prototype,"x1",{get:function(){return this._x1},set:function(a){this._x1=a,this._segmentChanged()},enumerable:!0}),Object.defineProperty(SVGPathSegCurvetoCubicRel.prototype,"y1",{get:function(){return this._y1},set:function(a){this._y1=a,this._segmentChanged()},enumerable:!0}),Object.defineProperty(SVGPathSegCurvetoCubicRel.prototype,"x2",{get:function(){return this._x2},set:function(a){this._x2=a,this._segmentChanged()},enumerable:!0}),Object.defineProperty(SVGPathSegCurvetoCubicRel.prototype,"y2",{get:function(){return this._y2},set:function(a){this._y2=a,this._segmentChanged()},enumerable:!0}),a.SVGPathSegCurvetoQuadraticAbs=function(a,b,c,d,e){SVGPathSeg.call(this,SVGPathSeg.PATHSEG_CURVETO_QUADRATIC_ABS,"Q",a),this._x=b,this._y=c,this._x1=d,this._y1=e},SVGPathSegCurvetoQuadraticAbs.prototype=Object.create(SVGPathSeg.prototype),SVGPathSegCurvetoQuadraticAbs.prototype.toString=function(){return"[object SVGPathSegCurvetoQuadraticAbs]"},SVGPathSegCurvetoQuadraticAbs.prototype._asPathString=function(){return this.pathSegTypeAsLetter+" "+this._x1+" "+this._y1+" "+this._x+" "+this._y},SVGPathSegCurvetoQuadraticAbs.prototype.clone=function(){return new SVGPathSegCurvetoQuadraticAbs(void 0,this._x,this._y,this._x1,this._y1)},Object.defineProperty(SVGPathSegCurvetoQuadraticAbs.prototype,"x",{get:function(){return this._x},set:function(a){this._x=a,this._segmentChanged()},enumerable:!0}),Object.defineProperty(SVGPathSegCurvetoQuadraticAbs.prototype,"y",{get:function(){return this._y},set:function(a){this._y=a,this._segmentChanged()},enumerable:!0}),Object.defineProperty(SVGPathSegCurvetoQuadraticAbs.prototype,"x1",{get:function(){return this._x1},set:function(a){this._x1=a,this._segmentChanged()},enumerable:!0}),Object.defineProperty(SVGPathSegCurvetoQuadraticAbs.prototype,"y1",{get:function(){return this._y1},set:function(a){this._y1=a,this._segmentChanged()},enumerable:!0}),a.SVGPathSegCurvetoQuadraticRel=function(a,b,c,d,e){SVGPathSeg.call(this,SVGPathSeg.PATHSEG_CURVETO_QUADRATIC_REL,"q",a),this._x=b,this._y=c,this._x1=d,this._y1=e},SVGPathSegCurvetoQuadraticRel.prototype=Object.create(SVGPathSeg.prototype),SVGPathSegCurvetoQuadraticRel.prototype.toString=function(){return"[object SVGPathSegCurvetoQuadraticRel]"},SVGPathSegCurvetoQuadraticRel.prototype._asPathString=function(){return this.pathSegTypeAsLetter+" "+this._x1+" "+this._y1+" "+this._x+" "+this._y},SVGPathSegCurvetoQuadraticRel.prototype.clone=function(){return new SVGPathSegCurvetoQuadraticRel(void 0,this._x,this._y,this._x1,this._y1)},Object.defineProperty(SVGPathSegCurvetoQuadraticRel.prototype,"x",{get:function(){return this._x},set:function(a){this._x=a,this._segmentChanged()},enumerable:!0}),Object.defineProperty(SVGPathSegCurvetoQuadraticRel.prototype,"y",{get:function(){return this._y},set:function(a){this._y=a,this._segmentChanged()},enumerable:!0}),Object.defineProperty(SVGPathSegCurvetoQuadraticRel.prototype,"x1",{get:function(){return this._x1},set:function(a){this._x1=a,this._segmentChanged()},enumerable:!0}),Object.defineProperty(SVGPathSegCurvetoQuadraticRel.prototype,"y1",{get:function(){return this._y1},set:function(a){this._y1=a,this._segmentChanged()},enumerable:!0}),a.SVGPathSegArcAbs=function(a,b,c,d,e,f,g,h){SVGPathSeg.call(this,SVGPathSeg.PATHSEG_ARC_ABS,"A",a),this._x=b,this._y=c,this._r1=d,this._r2=e,this._angle=f,this._largeArcFlag=g,this._sweepFlag=h},SVGPathSegArcAbs.prototype=Object.create(SVGPathSeg.prototype),SVGPathSegArcAbs.prototype.toString=function(){return"[object SVGPathSegArcAbs]"},SVGPathSegArcAbs.prototype._asPathString=function(){return this.pathSegTypeAsLetter+" "+this._r1+" "+this._r2+" "+this._angle+" "+(this._largeArcFlag?"1":"0")+" "+(this._sweepFlag?"1":"0")+" "+this._x+" "+this._y},SVGPathSegArcAbs.prototype.clone=function(){return new SVGPathSegArcAbs(void 0,this._x,this._y,this._r1,this._r2,this._angle,this._largeArcFlag,this._sweepFlag)},Object.defineProperty(SVGPathSegArcAbs.prototype,"x",{get:function(){return this._x},set:function(a){this._x=a,this._segmentChanged()},enumerable:!0}),Object.defineProperty(SVGPathSegArcAbs.prototype,"y",{get:function(){return this._y},set:function(a){this._y=a,this._segmentChanged()},enumerable:!0}),Object.defineProperty(SVGPathSegArcAbs.prototype,"r1",{get:function(){return this._r1},set:function(a){this._r1=a,this._segmentChanged()},enumerable:!0}),Object.defineProperty(SVGPathSegArcAbs.prototype,"r2",{get:function(){return this._r2},set:function(a){this._r2=a,this._segmentChanged()},enumerable:!0}),Object.defineProperty(SVGPathSegArcAbs.prototype,"angle",{get:function(){return this._angle},set:function(a){this._angle=a,this._segmentChanged()},enumerable:!0}),Object.defineProperty(SVGPathSegArcAbs.prototype,"largeArcFlag",{get:function(){return this._largeArcFlag},set:function(a){this._largeArcFlag=a,this._segmentChanged()},enumerable:!0}),Object.defineProperty(SVGPathSegArcAbs.prototype,"sweepFlag",{get:function(){return this._sweepFlag},set:function(a){this._sweepFlag=a,this._segmentChanged()},enumerable:!0}),a.SVGPathSegArcRel=function(a,b,c,d,e,f,g,h){SVGPathSeg.call(this,SVGPathSeg.PATHSEG_ARC_REL,"a",a),this._x=b,this._y=c,this._r1=d,this._r2=e,this._angle=f,this._largeArcFlag=g,this._sweepFlag=h},SVGPathSegArcRel.prototype=Object.create(SVGPathSeg.prototype),SVGPathSegArcRel.prototype.toString=function(){return"[object SVGPathSegArcRel]"},SVGPathSegArcRel.prototype._asPathString=function(){return this.pathSegTypeAsLetter+" "+this._r1+" "+this._r2+" "+this._angle+" "+(this._largeArcFlag?"1":"0")+" "+(this._sweepFlag?"1":"0")+" "+this._x+" "+this._y},SVGPathSegArcRel.prototype.clone=function(){return new SVGPathSegArcRel(void 0,this._x,this._y,this._r1,this._r2,this._angle,this._largeArcFlag,this._sweepFlag)},Object.defineProperty(SVGPathSegArcRel.prototype,"x",{get:function(){return this._x},set:function(a){this._x=a,this._segmentChanged()},enumerable:!0}),Object.defineProperty(SVGPathSegArcRel.prototype,"y",{get:function(){return this._y},set:function(a){this._y=a,this._segmentChanged()},enumerable:!0}),Object.defineProperty(SVGPathSegArcRel.prototype,"r1",{get:function(){return this._r1},set:function(a){this._r1=a,this._segmentChanged()},enumerable:!0}),Object.defineProperty(SVGPathSegArcRel.prototype,"r2",{get:function(){return this._r2},set:function(a){this._r2=a,this._segmentChanged()},enumerable:!0}),Object.defineProperty(SVGPathSegArcRel.prototype,"angle",{get:function(){return this._angle},set:function(a){this._angle=a,this._segmentChanged()},enumerable:!0}),Object.defineProperty(SVGPathSegArcRel.prototype,"largeArcFlag",{get:function(){return this._largeArcFlag},set:function(a){this._largeArcFlag=a,this._segmentChanged()},enumerable:!0}),Object.defineProperty(SVGPathSegArcRel.prototype,"sweepFlag",{get:function(){return this._sweepFlag},set:function(a){this._sweepFlag=a,this._segmentChanged()},enumerable:!0}),a.SVGPathSegLinetoHorizontalAbs=function(a,b){SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_HORIZONTAL_ABS,"H",a),this._x=b},SVGPathSegLinetoHorizontalAbs.prototype=Object.create(SVGPathSeg.prototype),SVGPathSegLinetoHorizontalAbs.prototype.toString=function(){return"[object SVGPathSegLinetoHorizontalAbs]"},SVGPathSegLinetoHorizontalAbs.prototype._asPathString=function(){return this.pathSegTypeAsLetter+" "+this._x},SVGPathSegLinetoHorizontalAbs.prototype.clone=function(){return new SVGPathSegLinetoHorizontalAbs(void 0,this._x)},Object.defineProperty(SVGPathSegLinetoHorizontalAbs.prototype,"x",{get:function(){return this._x},set:function(a){this._x=a,this._segmentChanged()},enumerable:!0}),a.SVGPathSegLinetoHorizontalRel=function(a,b){SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_HORIZONTAL_REL,"h",a),this._x=b},SVGPathSegLinetoHorizontalRel.prototype=Object.create(SVGPathSeg.prototype),SVGPathSegLinetoHorizontalRel.prototype.toString=function(){return"[object SVGPathSegLinetoHorizontalRel]"},SVGPathSegLinetoHorizontalRel.prototype._asPathString=function(){return this.pathSegTypeAsLetter+" "+this._x},SVGPathSegLinetoHorizontalRel.prototype.clone=function(){return new SVGPathSegLinetoHorizontalRel(void 0,this._x)},Object.defineProperty(SVGPathSegLinetoHorizontalRel.prototype,"x",{get:function(){return this._x},set:function(a){this._x=a,this._segmentChanged()},enumerable:!0}),a.SVGPathSegLinetoVerticalAbs=function(a,b){SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_ABS,"V",a),this._y=b},SVGPathSegLinetoVerticalAbs.prototype=Object.create(SVGPathSeg.prototype),SVGPathSegLinetoVerticalAbs.prototype.toString=function(){return"[object SVGPathSegLinetoVerticalAbs]"},SVGPathSegLinetoVerticalAbs.prototype._asPathString=function(){return this.pathSegTypeAsLetter+" "+this._y},SVGPathSegLinetoVerticalAbs.prototype.clone=function(){return new SVGPathSegLinetoVerticalAbs(void 0,this._y)},Object.defineProperty(SVGPathSegLinetoVerticalAbs.prototype,"y",{get:function(){return this._y},set:function(a){this._y=a,this._segmentChanged()},enumerable:!0}),a.SVGPathSegLinetoVerticalRel=function(a,b){
 SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SVGPathSegLinetoVerticalRel.prototype=Object.create(SVGPathSeg.prototype),SVGPathSegLinetoVerticalRel.prototype.toString=function(){return"[object SVGPathSegLinetoVerticalRel]"},SVGPathSegLinetoVerticalRel.prototype._asPathString=function(){return this.pathSegTypeAsLetter+" "+this._y},SVGPathSegLinetoVerticalRel.prototype.clone=function(){return new SVGPathSegLinetoVerticalRel(void 0,this._y)},Object.defineProperty(SVGPathSegLinetoVerticalRel.prototype,"y",{get:function(){return this._y},set:function(a){this._y=a,this._segmentChanged()},enumerable:!0}),a.SVGPathSegCurvetoCubicSmoothAbs=function(a,b,c,d,e){SVGPathSeg.call(this,SVGPathSeg.PATHSEG_CURVETO_CUBIC_SMOOTH_ABS,"S",a),this._x=b,this._y=c,this._x2=d,this._y2=e},SVGPathSegCurvetoCubicSmoothAbs.prototype=Object.create(SVGPathSeg.prototype),SVGPathSegCurvetoCubicSmoothAbs.prototype.toString=function(){return"[object SVGPathSegCurvetoCubicSmoothAbs]"},SVGPathSegCurvetoCubicSmoothAbs.prototype._asPathString=function(){return this.pathSegTypeAsLetter+" "+this._x2+" "+this._y2+" "+this._x+" "+this._y},SVGPathSegCurvetoCubicSmoothAbs.prototype.clone=function(){return new SVGPathSegCurvetoCubicSmoothAbs(void 0,this._x,this._y,this._x2,this._y2)},Object.defineProperty(SVGPathSegCurvetoCubicSmoothAbs.prototype,"x",{get:function(){return this._x},set:function(a){this._x=a,this._segmentChanged()},enumerable:!0}),Object.defineProperty(SVGPathSegCurvetoCubicSmoothAbs.prototype,"y",{get:function(){return this._y},set:function(a){this._y=a,this._segmentChanged()},enumerable:!0}),Object.defineProperty(SVGPathSegCurvetoCubicSmoothAbs.prototype,"x2",{get:function(){return this._x2},set:function(a){this._x2=a,this._segmentChanged()},enumerable:!0}),Object.defineProperty(SVGPathSegCurvetoCubicSmoothAbs.prototype,"y2",{get:function(){return this._y2},set:function(a){this._y2=a,this._segmentChanged()},enumerable:!0}),a.SVGPathSegCurvetoCubicSmoothRel=function(a,b,c,d,e){SVGPathSeg.call(this,SVGPathSeg.PATHSEG_CURVETO_CUBIC_SMOOTH_REL,"s",a),this._x=b,this._y=c,this._x2=d,this._y2=e},SVGPathSegCurvetoCubicSmoothRel.prototype=Object.create(SVGPathSeg.prototype),SVGPathSegCurvetoCubicSmoothRel.prototype.toString=function(){return"[object SVGPathSegCurvetoCubicSmoothRel]"},SVGPathSegCurvetoCubicSmoothRel.prototype._asPathString=function(){return this.pathSegTypeAsLetter+" "+this._x2+" "+this._y2+" "+this._x+" "+this._y},SVGPathSegCurvetoCubicSmoothRel.prototype.clone=function(){return new SVGPathSegCurvetoCubicSmoothRel(void 0,this._x,this._y,this._x2,this._y2)},Object.defineProperty(SVGPathSegCurvetoCubicSmoothRel.prototype,"x",{get:function(){return this._x},set:function(a){this._x=a,this._segmentChanged()},enumerable:!0}),Object.defineProperty(SVGPathSegCurvetoCubicSmoothRel.prototype,"y",{get:function(){return this._y},set:function(a){this._y=a,this._segmentChanged()},enumerable:!0}),Object.defineProperty(SVGPathSegCurvetoCubicSmoothRel.prototype,"x2",{get:function(){return this._x2},set:function(a){this._x2=a,this._segmentChanged()},enumerable:!0}),Object.defineProperty(SVGPathSegCurvetoCubicSmoothRel.prototype,"y2",{get:function(){return this._y2},set:function(a){this._y2=a,this._segmentChanged()},enumerable:!0}),a.SVGPathSegCurvetoQuadraticSmoothAbs=function(a,b,c){SVGPathSeg.call(this,SVGPathSeg.PATHSEG_CURVETO_QUADRATIC_SMOOTH_ABS,"T",a),this._x=b,this._y=c},SVGPathSegCurvetoQuadraticSmoothAbs.prototype=Object.create(SVGPathSeg.prototype),SVGPathSegCurvetoQuadraticSmoothAbs.prototype.toString=function(){return"[object SVGPathSegCurvetoQuadraticSmoothAbs]"},SVGPathSegCurvetoQuadraticSmoothAbs.prototype._asPathString=function(){return this.pathSegTypeAsLetter+" "+this._x+" "+this._y},SVGPathSegCurvetoQuadraticSmoothAbs.prototype.clone=function(){return new SVGPathSegCurvetoQuadraticSmoothAbs(void 0,this._x,this._y)},Object.defineProperty(SVGPathSegCurvetoQuadraticSmoothAbs.prototype,"x",{get:function(){return this._x},set:function(a){this._x=a,this._segmentChanged()},enumerable:!0}),Object.defineProperty(SVGPathSegCurvetoQuadraticSmoothAbs.prototype,"y",{get:function(){return this._y},set:function(a){this._y=a,this._segmentChanged()},enumerable:!0}),a.SVGPathSegCurvetoQuadraticSmoothRel=function(a,b,c){SVGPathSeg.call(this,SVGPathSeg.PATHSEG_CURVETO_QUADRATIC_SMOOTH_REL,"t",a),this._x=b,this._y=c},SVGPathSegCurvetoQuadraticSmoothRel.prototype=Object.create(SVGPathSeg.prototype),SVGPathSegCurvetoQuadraticSmoothRel.prototype.toString=function(){return"[object SVGPathSegCurvetoQuadraticSmoothRel]"},SVGPathSegCurvetoQuadraticSmoothRel.prototype._asPathString=function(){return this.pathSegTypeAsLetter+" "+this._x+" "+this._y},SVGPathSegCurvetoQuadraticSmoothRel.prototype.clone=function(){return new SVGPathSegCurvetoQuadraticSmoothRel(void 0,this._x,this._y)},Object.defineProperty(SVGPathSegCurvetoQuadraticSmoothRel.prototype,"x",{get:function(){return this._x},set:function(a){this._x=a,this._segmentChanged()},enumerable:!0}),Object.defineProperty(SVGPathSegCurvetoQuadraticSmoothRel.prototype,"y",{get:function(){return this._y},set:function(a){this._y=a,this._segmentChanged()},enumerable:!0}),SVGPathElement.prototype.createSVGPathSegClosePath=function(){return new SVGPathSegClosePath(void 0)},SVGPathElement.prototype.createSVGPathSegMovetoAbs=function(a,b){return new SVGPathSegMovetoAbs(void 0,a,b)},SVGPathElement.prototype.createSVGPathSegMovetoRel=function(a,b){return new SVGPathSegMovetoRel(void 0,a,b)},SVGPathElement.prototype.createSVGPathSegLinetoAbs=function(a,b){return new SVGPathSegLinetoAbs(void 0,a,b)},SVGPathElement.prototype.createSVGPathSegLinetoRel=function(a,b){return new SVGPathSegLinetoRel(void 0,a,b)},SVGPathElement.prototype.createSVGPathSegCurvetoCubicAbs=function(a,b,c,d,e,f){return new SVGPathSegCurvetoCubicAbs(void 0,a,b,c,d,e,f)},SVGPathElement.prototype.createSVGPathSegCurvetoCubicRel=function(a,b,c,d,e,f){return new SVGPathSegCurvetoCubicRel(void 0,a,b,c,d,e,f)},SVGPathElement.prototype.createSVGPathSegCurvetoQuadraticAbs=function(a,b,c,d){return new SVGPathSegCurvetoQuadraticAbs(void 0,a,b,c,d)},SVGPathElement.prototype.createSVGPathSegCurvetoQuadraticRel=function(a,b,c,d){return new SVGPathSegCurvetoQuadraticRel(void 0,a,b,c,d)},SVGPathElement.prototype.createSVGPathSegArcAbs=function(a,b,c,d,e,f,g){return new SVGPathSegArcAbs(void 0,a,b,c,d,e,f,g)},SVGPathElement.prototype.createSVGPathSegArcRel=function(a,b,c,d,e,f,g){return new SVGPathSegArcRel(void 0,a,b,c,d,e,f,g)},SVGPathElement.prototype.createSVGPathSegLinetoHorizontalAbs=function(a){return new SVGPathSegLinetoHorizontalAbs(void 0,a)},SVGPathElement.prototype.createSVGPathSegLinetoHorizontalRel=function(a){return new SVGPathSegLinetoHorizontalRel(void 0,a)},SVGPathElement.prototype.createSVGPathSegLinetoVerticalAbs=function(a){return new SVGPathSegLinetoVerticalAbs(void 0,a)},SVGPathElement.prototype.createSVGPathSegLinetoVerticalRel=function(a){return new SVGPathSegLinetoVerticalRel(void 0,a)},SVGPathElement.prototype.createSVGPathSegCurvetoCubicSmoothAbs=function(a,b,c,d){return new SVGPathSegCurvetoCubicSmoothAbs(void 0,a,b,c,d)},SVGPathElement.prototype.createSVGPathSegCurvetoCubicSmoothRel=function(a,b,c,d){return new SVGPathSegCurvetoCubicSmoothRel(void 0,a,b,c,d)},SVGPathElement.prototype.createSVGPathSegCurvetoQuadraticSmoothAbs=function(a,b){return new SVGPathSegCurvetoQuadraticSmoothAbs(void 0,a,b)},SVGPathElement.prototype.createSVGPathSegCurvetoQuadraticSmoothRel=function(a,b){return new SVGPathSegCurvetoQuadraticSmoothRel(void 0,a,b)}),"SVGPathSegList"in a||(a.SVGPathSegList=function(a){this._pathElement=a,this._list=this._parsePath(this._pathElement.getAttribute("d")),this._mutationObserverConfig={attributes:!0,attributeFilter:["d"]},this._pathElementMutationObserver=new MutationObserver(this._updateListFromPathMutations.bind(this)),this._pathElementMutationObserver.observe(this._pathElement,this._mutationObserverConfig)},Object.defineProperty(SVGPathSegList.prototype,"numberOfItems",{get:function(){return this._checkPathSynchronizedToList(),this._list.length},enumerable:!0}),Object.defineProperty(SVGPathElement.prototype,"pathSegList",{get:function(){return this._pathSegList||(this._pathSegList=new SVGPathSegList(this)),this._pathSegList},enumerable:!0}),Object.defineProperty(SVGPathElement.prototype,"normalizedPathSegList",{get:function(){return this.pathSegList},enumerable:!0}),Object.defineProperty(SVGPathElement.prototype,"animatedPathSegList",{get:function(){return this.pathSegList},enumerable:!0}),Object.defineProperty(SVGPathElement.prototype,"animatedNormalizedPathSegList",{get:function(){return this.pathSegList},enumerable:!0}),SVGPathSegList.prototype._checkPathSynchronizedToList=function(){this._updateListFromPathMutations(this._pathElementMutationObserver.takeRecords())},SVGPathSegList.prototype._updateListFromPathMutations=function(a){if(this._pathElement){var b=!1;a.forEach(function(a){"d"==a.attributeName&&(b=!0)}),b&&(this._list=this._parsePath(this._pathElement.getAttribute("d")))}},SVGPathSegList.prototype._writeListToPath=function(){this._pathElementMutationObserver.disconnect(),this._pathElement.setAttribute("d",SVGPathSegList._pathSegArrayAsString(this._list)),this._pathElementMutationObserver.observe(this._pathElement,this._mutationObserverConfig)},SVGPathSegList.prototype.segmentChanged=function(a){this._writeListToPath()},SVGPathSegList.prototype.clear=function(){this._checkPathSynchronizedToList(),this._list.forEach(function(a){a._owningPathSegList=null}),this._list=[],this._writeListToPath()},SVGPathSegList.prototype.initialize=function(a){return this._checkPathSynchronizedToList(),this._list=[a],a._owningPathSegList=this,this._writeListToPath(),a},SVGPathSegList.prototype._checkValidIndex=function(a){if(isNaN(a)||0>a||a>=this.numberOfItems)throw"INDEX_SIZE_ERR"},SVGPathSegList.prototype.getItem=function(a){return this._checkPathSynchronizedToList(),this._checkValidIndex(a),this._list[a]},SVGPathSegList.prototype.insertItemBefore=function(a,b){return this._checkPathSynchronizedToList(),b>this.numberOfItems&&(b=this.numberOfItems),a._owningPathSegList&&(a=a.clone()),this._list.splice(b,0,a),a._owningPathSegList=this,this._writeListToPath(),a},SVGPathSegList.prototype.replaceItem=function(a,b){return this._checkPathSynchronizedToList(),a._owningPathSegList&&(a=a.clone()),this._checkValidIndex(b),this._list[b]=a,a._owningPathSegList=this,this._writeListToPath(),a},SVGPathSegList.prototype.removeItem=function(a){this._checkPathSynchronizedToList(),this._checkValidIndex(a);var b=this._list[a];return this._list.splice(a,1),this._writeListToPath(),b},SVGPathSegList.prototype.appendItem=function(a){return this._checkPathSynchronizedToList(),a._owningPathSegList&&(a=a.clone()),this._list.push(a),a._owningPathSegList=this,this._writeListToPath(),a},SVGPathSegList._pathSegArrayAsString=function(a){var b="",c=!0;return a.forEach(function(a){c?(c=!1,b+=a._asPathString()):b+=" "+a._asPathString()}),b},SVGPathSegList.prototype._parsePath=function(a){if(!a||0==a.length)return[];var b=this,c=function(){this.pathSegList=[]};c.prototype.appendSegment=function(a){this.pathSegList.push(a)};var d=function(a){this._string=a,this._currentIndex=0,this._endIndex=this._string.length,this._previousCommand=SVGPathSeg.PATHSEG_UNKNOWN,this._skipOptionalSpaces()};d.prototype._isCurrentSpace=function(){var a=this._string[this._currentIndex];return" ">=a&&(" "==a||"\n"==a||"	"==a||"\r"==a||"\f"==a)},d.prototype._skipOptionalSpaces=function(){for(;this._currentIndex<this._endIndex&&this._isCurrentSpace();)this._currentIndex++;return this._currentIndex<this._endIndex},d.prototype._skipOptionalSpacesOrDelimiter=function(){return this._currentIndex<this._endIndex&&!this._isCurrentSpace()&&","!=this._string.charAt(this._currentIndex)?!1:(this._skipOptionalSpaces()&&this._currentIndex<this._endIndex&&","==this._string.charAt(this._currentIndex)&&(this._currentIndex++,this._skipOptionalSpaces()),this._currentIndex<this._endIndex)},d.prototype.hasMoreData=function(){return this._currentIndex<this._endIndex},d.prototype.peekSegmentType=function(){var a=this._string[this._currentIndex];return this._pathSegTypeFromChar(a)},d.prototype._pathSegTypeFromChar=function(a){switch(a){case"Z":case"z":return SVGPathSeg.PATHSEG_CLOSEPATH;case"M":return SVGPathSeg.PATHSEG_MOVETO_ABS;case"m":return SVGPathSeg.PATHSEG_MOVETO_REL;case"L":return SVGPathSeg.PATHSEG_LINETO_ABS;case"l":return SVGPathSeg.PATHSEG_LINETO_REL;case"C":return SVGPathSeg.PATHSEG_CURVETO_CUBIC_ABS;case"c":return SVGPathSeg.PATHSEG_CURVETO_CUBIC_REL;case"Q":return SVGPathSeg.PATHSEG_CURVETO_QUADRATIC_ABS;case"q":return SVGPathSeg.PATHSEG_CURVETO_QUADRATIC_REL;case"A":return SVGPathSeg.PATHSEG_ARC_ABS;case"a":return SVGPathSeg.PATHSEG_ARC_REL;case"H":return SVGPathSeg.PATHSEG_LINETO_HORIZONTAL_ABS;case"h":return SVGPathSeg.PATHSEG_LINETO_HORIZONTAL_REL;case"V":return SVGPathSeg.PATHSEG_LINETO_VERTICAL_ABS;case"v":return SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL;case"S":return SVGPathSeg.PATHSEG_CURVETO_CUBIC_SMOOTH_ABS;case"s":return SVGPathSeg.PATHSEG_CURVETO_CUBIC_SMOOTH_REL;case"T":return SVGPathSeg.PATHSEG_CURVETO_QUADRATIC_SMOOTH_ABS;case"t":return SVGPathSeg.PATHSEG_CURVETO_QUADRATIC_SMOOTH_REL;default:return SVGPathSeg.PATHSEG_UNKNOWN}},d.prototype._nextCommandHelper=function(a,b){return("+"==a||"-"==a||"."==a||a>="0"&&"9">=a)&&b!=SVGPathSeg.PATHSEG_CLOSEPATH?b==SVGPathSeg.PATHSEG_MOVETO_ABS?SVGPathSeg.PATHSEG_LINETO_ABS:b==SVGPathSeg.PATHSEG_MOVETO_REL?SVGPathSeg.PATHSEG_LINETO_REL:b:SVGPathSeg.PATHSEG_UNKNOWN},d.prototype.initialCommandIsMoveTo=function(){if(!this.hasMoreData())return!0;var a=this.peekSegmentType();return a==SVGPathSeg.PATHSEG_MOVETO_ABS||a==SVGPathSeg.PATHSEG_MOVETO_REL},d.prototype._parseNumber=function(){var a=0,b=0,c=1,d=0,e=1,f=1,g=this._currentIndex;if(this._skipOptionalSpaces(),this._currentIndex<this._endIndex&&"+"==this._string.charAt(this._currentIndex)?this._currentIndex++:this._currentIndex<this._endIndex&&"-"==this._string.charAt(this._currentIndex)&&(this._currentIndex++,e=-1),!(this._currentIndex==this._endIndex||(this._string.charAt(this._currentIndex)<"0"||this._string.charAt(this._currentIndex)>"9")&&"."!=this._string.charAt(this._currentIndex))){for(var h=this._currentIndex;this._currentIndex<this._endIndex&&this._string.charAt(this._currentIndex)>="0"&&this._string.charAt(this._currentIndex)<="9";)this._currentIndex++;if(this._currentIndex!=h)for(var i=this._currentIndex-1,j=1;i>=h;)b+=j*(this._string.charAt(i--)-"0"),j*=10;if(this._currentIndex<this._endIndex&&"."==this._string.charAt(this._currentIndex)){if(this._currentIndex++,this._currentIndex>=this._endIndex||this._string.charAt(this._currentIndex)<"0"||this._string.charAt(this._currentIndex)>"9")return;for(;this._currentIndex<this._endIndex&&this._string.charAt(this._currentIndex)>="0"&&this._string.charAt(this._currentIndex)<="9";)d+=(this._string.charAt(this._currentIndex++)-"0")*(c*=.1)}if(this._currentIndex!=g&&this._currentIndex+1<this._endIndex&&("e"==this._string.charAt(this._currentIndex)||"E"==this._string.charAt(this._currentIndex))&&"x"!=this._string.charAt(this._currentIndex+1)&&"m"!=this._string.charAt(this._currentIndex+1)){if(this._currentIndex++,"+"==this._string.charAt(this._currentIndex)?this._currentIndex++:"-"==this._string.charAt(this._currentIndex)&&(this._currentIndex++,f=-1),this._currentIndex>=this._endIndex||this._string.charAt(this._currentIndex)<"0"||this._string.charAt(this._currentIndex)>"9")return;for(;this._currentIndex<this._endIndex&&this._string.charAt(this._currentIndex)>="0"&&this._string.charAt(this._currentIndex)<="9";)a*=10,a+=this._string.charAt(this._currentIndex)-"0",this._currentIndex++}var k=b+d;if(k*=e,a&&(k*=Math.pow(10,f*a)),g!=this._currentIndex)return this._skipOptionalSpacesOrDelimiter(),k}},d.prototype._parseArcFlag=function(){if(!(this._currentIndex>=this._endIndex)){var a=!1,b=this._string.charAt(this._currentIndex++);if("0"==b)a=!1;else{if("1"!=b)return;a=!0}return this._skipOptionalSpacesOrDelimiter(),a}},d.prototype.parseSegment=function(){var a=this._string[this._currentIndex],c=this._pathSegTypeFromChar(a);if(c==SVGPathSeg.PATHSEG_UNKNOWN){if(this._previousCommand==SVGPathSeg.PATHSEG_UNKNOWN)return null;if(c=this._nextCommandHelper(a,this._previousCommand),c==SVGPathSeg.PATHSEG_UNKNOWN)return null}else this._currentIndex++;switch(this._previousCommand=c,c){case SVGPathSeg.PATHSEG_MOVETO_REL:return new SVGPathSegMovetoRel(b,this._parseNumber(),this._parseNumber());case SVGPathSeg.PATHSEG_MOVETO_ABS:return new SVGPathSegMovetoAbs(b,this._parseNumber(),this._parseNumber());case SVGPathSeg.PATHSEG_LINETO_REL:return new SVGPathSegLinetoRel(b,this._parseNumber(),this._parseNumber());case SVGPathSeg.PATHSEG_LINETO_ABS:return new SVGPathSegLinetoAbs(b,this._parseNumber(),this._parseNumber());case SVGPathSeg.PATHSEG_LINETO_HORIZONTAL_REL:return new SVGPathSegLinetoHorizontalRel(b,this._parseNumber());case SVGPathSeg.PATHSEG_LINETO_HORIZONTAL_ABS:return new SVGPathSegLinetoHorizontalAbs(b,this._parseNumber());case SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL:return new SVGPathSegLinetoVerticalRel(b,this._parseNumber());case SVGPathSeg.PATHSEG_LINETO_VERTICAL_ABS:return new SVGPathSegLinetoVerticalAbs(b,this._parseNumber());case SVGPathSeg.PATHSEG_CLOSEPATH:return this._skipOptionalSpaces(),new SVGPathSegClosePath(b);case SVGPathSeg.PATHSEG_CURVETO_CUBIC_REL:var d={x1:this._parseNumber(),y1:this._parseNumber(),x2:this._parseNumber(),y2:this._parseNumber(),x:this._parseNumber(),y:this._parseNumber()};return new SVGPathSegCurvetoCubicRel(b,d.x,d.y,d.x1,d.y1,d.x2,d.y2);case SVGPathSeg.PATHSEG_CURVETO_CUBIC_ABS:var d={x1:this._parseNumber(),y1:this._parseNumber(),x2:this._parseNumber(),y2:this._parseNumber(),x:this._parseNumber(),y:this._parseNumber()};return new SVGPathSegCurvetoCubicAbs(b,d.x,d.y,d.x1,d.y1,d.x2,d.y2);case SVGPathSeg.PATHSEG_CURVETO_CUBIC_SMOOTH_REL:var d={x2:this._parseNumber(),y2:this._parseNumber(),x:this._parseNumber(),y:this._parseNumber()};return new SVGPathSegCurvetoCubicSmoothRel(b,d.x,d.y,d.x2,d.y2);case SVGPathSeg.PATHSEG_CURVETO_CUBIC_SMOOTH_ABS:var d={x2:this._parseNumber(),y2:this._parseNumber(),x:this._parseNumber(),y:this._parseNumber()};return new SVGPathSegCurvetoCubicSmoothAbs(b,d.x,d.y,d.x2,d.y2);case SVGPathSeg.PATHSEG_CURVETO_QUADRATIC_REL:var d={x1:this._parseNumber(),y1:this._parseNumber(),x:this._parseNumber(),y:this._parseNumber()};return new SVGPathSegCurvetoQuadraticRel(b,d.x,d.y,d.x1,d.y1);case SVGPathSeg.PATHSEG_CURVETO_QUADRATIC_ABS:var d={x1:this._parseNumber(),y1:this._parseNumber(),x:this._parseNumber(),y:this._parseNumber()};return new SVGPathSegCurvetoQuadraticAbs(b,d.x,d.y,d.x1,d.y1);case SVGPathSeg.PATHSEG_CURVETO_QUADRATIC_SMOOTH_REL:return new SVGPathSegCurvetoQuadraticSmoothRel(b,this._parseNumber(),this._parseNumber());case SVGPathSeg.PATHSEG_CURVETO_QUADRATIC_SMOOTH_ABS:return new SVGPathSegCurvetoQuadraticSmoothAbs(b,this._parseNumber(),this._parseNumber());case SVGPathSeg.PATHSEG_ARC_REL:var d={x1:this._parseNumber(),y1:this._parseNumber(),arcAngle:this._parseNumber(),arcLarge:this._parseArcFlag(),arcSweep:this._parseArcFlag(),x:this._parseNumber(),y:this._parseNumber()};return new SVGPathSegArcRel(b,d.x,d.y,d.x1,d.y1,d.arcAngle,d.arcLarge,d.arcSweep);case SVGPathSeg.PATHSEG_ARC_ABS:var d={x1:this._parseNumber(),y1:this._parseNumber(),arcAngle:this._parseNumber(),arcLarge:this._parseArcFlag(),arcSweep:this._parseArcFlag(),x:this._parseNumber(),y:this._parseNumber()};return new SVGPathSegArcAbs(b,d.x,d.y,d.x1,d.y1,d.arcAngle,d.arcLarge,d.arcSweep);default:throw"Unknown path seg type."}};var e=new c,f=new d(a);if(!f.initialCommandIsMoveTo())return[];for(;f.hasMoreData();){var g=f.parseSegment();if(!g)return[];e.appendSegment(g)}return e.pathSegList})}(),"function"==typeof define&&define.amd?define("c3",["d3"],function(){return k}):"undefined"!=typeof exports&&"undefined"!=typeof module?module.exports=k:a.c3=k}(window);
 'use strict';
-
-;(function ($) {
-
-	var load = function () {
-		function _load(tag) {
-			return function (url) {
-				return new Promise(function (resolve, reject) {
-					var element = document.createElement(tag);
-					var parent = 'body';
-					var attr = 'src';
-
-					element.onload = function () {
-						console.log("Loaded " + url + " successfully.");
-						resolve(url);
-					};
-					element.onerror = function () {
-						console.log("Cannot load " + url);
-						reject(url);
-					};
-
-					switch (tag) {
-						case 'script':
-							element.async = true;
-							break;
-						case 'link':
-							element.type = 'text/css';
-							element.rel = 'stylesheet';
-							attr = 'href';
-							parent = 'head';
-					}
-
-					element[attr] = url;
-					document[parent].appendChild(element);
-				});
-			};
-		}
-		return {
-			css: _load('link'),
-			js: _load('script'),
-			img: _load('img')
-		};
-	}();
-
-	var currentVersion = '0.4';
-
-	var Platypus = {
-		ondomready: function ondomready() {
-			Platypus.detectBreakpoint();
-			Platypus.detectBrowsers();
-			Platypus.setupSpinOnAjax();
-			Platypus.btnSubmitAnimate();
-			Platypus.inputMaxLength();
-			Platypus.backToTop();
-			Platypus.highlightJS();
-			Platypus.waveEffect();
-			Platypus.leftMenu();
-			Platypus.cards();
-			Platypus.carousel();
-			Platypus.dataTables();
-			Platypus.select2();
-			Platypus.dateRange();
-			Platypus.wysiwyg();
-			Platypus.gauges();
-			Platypus.avatar();
-			Platypus.wizard();
-			Platypus.toasts();
-			Platypus.dateTimePickers();
-			Platypus.slider();
-			Platypus.formRendering();
-			Platypus.formConditionize();
-			Platypus.formAddress();
-			Platypus.slimScroll();
-			Platypus.gallery();
-			Platypus.AZList();
-			Platypus.rotatingBg();
-			Platypus.inlineEdit();
-			Platypus.modal();
-			Platypus.navBar();
-			Platypus.search();
-			Platypus.externalLinks();
-			Platypus.searchPills();
-			Platypus.infiniteLoading();
-			Platypus.feedback();
-			Platypus.gridListSwitcher();
-			Platypus.videoWidget();
-			Platypus.helpful();
-			Platypus.toolTip();
-			Platypus.popOver();
-			Platypus.printArea();
-			Platypus.progressBar();
-			Platypus.googleMaps();
-			Platypus.hideLoader();
-			Platypus.breadCrumbs();
-			Platypus.renderCharts();
-			Platypus.swapIcons();
-			Platypus.clipboard();
-			Platypus.matchHeight();
-			Platypus.debug();
-		},
-
-		detectBreakpoint: function detectBreakpoint() {
-
-			var $html = $('html'),
-			    currClass = '',
-			    finalClass = 'xl',
-			    w = $(window).width();
-
-			// get current breakpoint class
-			if ($html.hasClass('xl')) {
-				currClass = 'xl';
-			} else if ($html.hasClass('lg')) {
-				currClass = 'lg';
-			} else if ($html.hasClass('md')) {
-				currClass = 'md';
-			} else if ($html.hasClass('sm')) {
-				currClass = 'sm';
-			} else if ($html.hasClass('xs')) {
-				currClass = 'xs';
-			}
-
-			// detect breakpoint
-			if (w < 576) {
-				finalClass = 'xs';
-			} else if (w < 768) {
-				finalClass = 'sm';
-			} else if (w < 992) {
-				finalClass = 'md';
-			} else if (w < 1200) {
-				finalClass = 'lg';
-			} else {
-				finalClass = 'xl';
-			}
-
-			if (currClass == finalClass) return;
-
-			$html.removeClass('xl lg md sm xs');
-
-			if (finalClass == 'xl') {
-				$html.removeClass('lg md sm xs');
-			} else if (finalClass == 'lg') {
-				$html.removeClass('xl md sm xs');
-			} else if (finalClass == 'md') {
-				$html.removeClass('xl lg sm xs');
-			} else if (finalClass == 'sm') {
-				$html.removeClass('xl lg md xs');
-			}
-
-			if (!$html.hasClass(finalClass)) {
-				$html.addClass(finalClass);
-			}
-
-			$(window).resize(Platypus.detectBreakpoint);
-
-			// console.log("Current break point is: "+finalClass);
-		},
-		detectBrowsers: function detectBrowsers() {
-			// Opera 8.0+
-			var isOpera = !!window.opr && !!opr.addons || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
-			// Firefox 1.0+
-			var isFirefox = typeof InstallTrigger !== 'undefined';
-			// Safari 3.0+ "[object HTMLElementConstructor]" 
-			var isSafari = /constructor/i.test(window.HTMLElement) || function (p) {
-				return p.toString() === "[object SafariRemoteNotification]";
-			}(!window['safari'] || safari.pushNotification);
-			// Internet Explorer 6-11
-			var isIE = /*@cc_on!@*/false || !!document.documentMode;
-			// Edge 20+
-			var isEdge = !isIE && !!window.StyleMedia;
-			// Chrome 1+
-			var isChrome = !!window.chrome && !!window.chrome.webstore;
-			// Blink engine detection
-			var isBlink = (isChrome || isOpera) && !!window.CSS;
-
-			return {
-				isOpera: isOpera,
-				isFirefox: isFirefox,
-				isSafari: isSafari,
-				isIE: isIE,
-				isEdge: isEdge,
-				isBlink: isBlink
-			};
-		},
-		btnSubmitAnimate: function btnSubmitAnimate() {
-			$('button[type="submit"]').not(".no-spinner").addClass('ladda-button').attr('data-style', 'zoom-in');
-			// .attr('data-label', 'zoom-in');
-
-			Ladda.bind('button[type="submit"]:not(.no-spinner)');
-
-			var browser = Platypus.detectBrowsers();
-
-			if (browser.isSafari || browser.isFirefox) {
-				// Prevent Back-Forward-Cache issue
-				$(window).bind("pageshow", function (event) {
-					if (event.originalEvent.persisted) {
-						Ladda.stopAll();
-					}
-				});
-			}
-		},
-		inputMaxLength: function inputMaxLength() {
-
-			$('input[maxlength], textarea[maxlength]').each(function () {
-
-				var $input = $(this);
-
-				$input.maxlength({
-					alwaysShow: true,
-					showOnReady: false,
-					// threshold: 10,
-					appendToParent: true,
-					warningClass: "tag tag-success",
-					limitReachedClass: "tag tag-danger"
-				}).on('blur', function () {
-					$input.siblings('span.bootstrap-maxlength').hide();
-				});
-			});
-		},
-		backToTop: function backToTop() {
-			$('body').append('<a id="back-to-top" href="#" class="btn palette-bg-teal-500 btn-lg back-to-top text-white" role="button" title="Return to the top" data-toggle="tooltip" data-placement="left"><span class="fa fa-chevron-up"></span></a>');
-			$(window).scroll(function () {
-				if ($(this).scrollTop() > 50) {
-					$('#back-to-top').fadeIn();
-				} else {
-					$('#back-to-top').fadeOut();
-				}
-			});
-			$('#back-to-top').click(function () {
-				$('#back-to-top').tooltip('hide');
-				$('body,html').animate({
-					scrollTop: 0
-				}, 800);
-				return false;
-			});
-		},
-		highlightJS: function highlightJS() {
-			$('pre code').each(function (i, e) {
-				hljs.highlightBlock(e);
-			});
-		},
-		waveEffect: function waveEffect() {
-			Waves.attach('.btn, .sidebar-nav li a');
-			Waves.init();
-		},
-		breadCrumbs: function breadCrumbs() {
-			$('.breadcrumb').asBreadcrumbs({
-				namespace: 'breadcrumb',
-				overflow: "left",
-				responsive: true,
-				ellipsisText: "&#8230;",
-				ellipsisClass: null,
-				hiddenClass: 'is-hidden',
-				dropdownClass: null,
-				dropdownMenuClass: null,
-				dropdownItemClass: null,
-				dropdownItemDisableClass: 'disabled',
-				toggleClass: 'dropdown-toggle',
-				toggleIconClass: 'caret',
-				getItems: function getItems($parent) {
-					return $parent.children();
-				},
-				getItemLink: function getItemLink($item) {
-					return $item.find('a');
-				},
-				ellipsis: function ellipsis(classes, label) {
-					return '<li class="' + classes.ellipsisClass + '">' + label + '</li>';
-				},
-
-				dropdown: function dropdown(classes) {
-					var dropdownClass = 'dropdown';
-					var dropdownMenuClass = 'dropdown-menu';
-
-					if (this.options.overflow === 'right') {
-						dropdownMenuClass += ' dropdown-menu-right';
-					}
-
-					return '\n\t\t\t\t\t\t<li class="' + dropdownClass + ' ' + classes.dropdownClass + '">\n\t\t\t\t\t\t\t<a href="javascript:void(0);" class="' + classes.toggleClass + '" data-toggle="dropdown">\n\t\t\t\t\t\t\t\t<i class="' + classes.toggleIconClass + '"></i>\n\t\t\t\t\t\t\t</a>\n\t\t\t\t\t\t\t<ul class="' + dropdownMenuClass + ' ' + classes.dropdownMenuClass + '"></ul>\n\t\t\t\t\t\t</li>\n\t\t\t\t\t';
-				},
-
-				dropdownItem: function dropdownItem(classes, label, href) {
-					if (!href) {
-						return '\n\t\t\t\t\t\t\t<li class="' + classes.dropdownItemClass + ' ' + classes.dropdownItemDisableClass + '">\n\t\t\t\t\t\t\t\t<a href="#">' + label + '</a>\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t';
-					}
-					return '\n\t\t\t\t\t\t<li class="' + classes.dropdownItemClass + '">\n\t\t\t\t\t\t\t<a href="' + href + '">' + label + '</a>\n\t\t\t\t\t\t</li>\n\t\t\t\t\t\t';
-				},
-				// callbacks
-				onInit: null,
-				onReady: null
-			});
-		},
-		cards: function cards() {
-
-			$('.card-hover-effect').on('mouseover', function () {
-				var $this = $(this);
-				var effect = 'bounceIn';
-
-				$this.addClass('animated ' + effect).on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
-					$this.removeClass('animated ' + effect);
-				});
-			});
-
-			$('.card-flip').flip({
-				axis: "y",
-				reverse: false,
-				trigger: "manual",
-				speed: 500,
-				forceHeight: true,
-				forceWidth: false,
-				autoSize: true,
-				front: '.front',
-				back: '.back'
-			});
-
-			$(".card-flip .btn-flip").on('click', function (e) {
-				e.preventDefault();
-				$(this).closest('.card-flip').flip(true);
-			});
-
-			$(".card-flip .btn-unflip").on('click', function (e) {
-				e.preventDefault();
-				$(this).closest('.card-flip').flip(false);
-			});
-		},
-		leftMenu: function leftMenu() {
-			$(".metismenu").metisMenu({
-				toggle: true
-			});
-		},
-		carousel: function carousel() {
-			$(".carousel").slick({
-				dots: true,
-				infinite: false,
-				arrows: false
-			});
-		},
-		dataTables: function dataTables() {
-
-			function initTable($tbl, buttons) {
-
-				var btnMarkup = buttons.length > 0 ? "<'row w-100'<'col-4 text-left'B><'col-6 text-left'f><'col-2 text-right'l>><'row w-100'<'col-12'tr>><'row w-100'<'col-sm-6 col-12 small'i><'col-sm-6 col-12'p>>" : "<'row w-100'<'col-10 text-left'f><'col-2 text-right'l>><'row w-100'<'col-12'tr>><'row w-100'<'col-sm-6 col-12 small'i><'col-sm-6 col-12'p>>";
-				var aoBttns = [];
-
-				if (buttons.length > 0) {
-
-					window.pdfMake.fonts = {
-						Roboto: {
-							normal: 'Roboto-Regular.ttf',
-							bold: 'Roboto-Medium.ttf',
-							italics: 'Roboto-Italic.ttf',
-							bolditalics: 'Roboto-MediumItalic.ttf'
-						}
-					};
-
-					$tbl.on('init.dt', function (e, settings, json) {
-						var api = new $.fn.dataTable.Api(settings);
-						if (api.buttons().length > 0) {
-
-							$("a", api.buttons().container(0)).each(function (index) {
-								$(this).attr('data-toggle', 'tooltip');
-								$(this).attr('data-placement', 'top');
-							});
-
-							$('[data-toggle="tooltip"]').tooltip();
-						}
-					});
-
-					for (i = 0; i <= buttons.length; i++) {
-						switch (buttons[i]) {
-							case 'copy':
-								if (buttons.indexOf('copy') !== -1) {
-									aoBttns.push({
-										extend: 'copy',
-										classname: 'btn',
-										text: '<i class="fa fa-files-o"></i>',
-										titleAttr: 'Copy to Clipboard'
-									});
-								}
-								break;
-
-							case 'csv':
-								if (buttons.indexOf('csv') !== -1) {
-									aoBttns.push({
-										extend: 'csv',
-										classname: 'btn',
-										text: '<i class="fa fa-file-text"></i>',
-										titleAttr: 'Download as .CSV'
-									});
-								}
-								break;
-
-							case 'excel':
-								if (buttons.indexOf('excel') !== -1) {
-									aoBttns.push({
-										extend: 'excel',
-										classname: 'btn',
-										text: '<i class="fa fa-file-excel-o"></i>',
-										titleAttr: 'Download as Excel'
-									});
-								}
-								break;
-
-							case 'pdf':
-								if (buttons.indexOf('pdf') !== -1) {
-									aoBttns.push({
-										extend: 'pdf',
-										classname: 'btn',
-										text: '<i class="fa fa-file-pdf-o"></i>',
-										titleAttr: 'Download as .PDF'
-									});
-								}
-								break;
-
-							case 'print':
-								if (buttons.indexOf('print') !== -1) {
-									aoBttns.push({
-										extend: 'print',
-										classname: 'btn',
-										text: '<i class="fa fa-print"></i>',
-										titleAttr: 'Print'
-									});
-								}
-								break;
-
-							case 'colvis':
-								if (buttons.indexOf('colvis') !== -1) {
-									aoBttns.push({
-										extend: 'colvis',
-										classname: 'btn',
-										text: '<i class="fa fa-eye"></i>',
-										titleAttr: 'Hide/Show Columns'
-									});
-								}
-								break;
-
-						}
-					}
-
-					$.extend(true, $.fn.dataTable.Buttons.defaults, {
-						buttons: aoBttns
-					});
-				}
-
-				$tbl.DataTable({
-					responsive: {
-						details: {
-							type: 'column',
-							target: -1
-						}
-					},
-					columnDefs: [{ className: 'control', orderable: false, targets: -1 }],
-					dom: btnMarkup,
-					stateSave: true,
-					lengthMenu: [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
-					pagingType: 'full_numbers',
-					"oLanguage": {
-						sSearch: "",
-						sSearchPlaceholder: "Filter records",
-						sLengthMenu: "_MENU_",
-						oPaginate: {
-							sNext: '<i class="fa fa-forward"></i>',
-							sPrevious: '<i class="fa fa-backward"></i>',
-							sFirst: '<i class="fa fa-step-backward"></i>',
-							sLast: '<i class="fa fa-step-forward"></i>'
-						}
-					}
-				});
-			}
-
-			$('.datatable').each(function () {
-
-				var $tbl = $(this);
-				var src = $tbl.data('src') && $tbl.data('src') !== '' ? $tbl.data('src') : false;
-				var cols = $tbl.data('cols') && $tbl.data('cols') !== '' ? $tbl.data('cols').split(',') : false;
-				var buttons = $tbl.data('buttons') && $tbl.data('buttons') !== '' ? $tbl.data('buttons').split(',') : false;
-				var p = void 0;
-
-				if (buttons) {
-					// TODO - load only necessary dependencies
-					console.log("DataTable 'data-buttons' attribute found, loading remote dependecies...");
-					p = Promise.all([
-					// load.js("/vendor/pdfmake/build/pdfmake.min.js"),
-					// load.js("/vendor/pdfmake/build/vfs_fonts.js"),
-					load.css("https://s3.us-east-2.amazonaws.com/platypus-hbs/vendor/datatables/buttons/1.3.1/css/buttons.dataTables.min.css"), load.js("https://s3.us-east-2.amazonaws.com/platypus-hbs/vendor/datatables/buttons/1.3.1/js/dataTables.buttons.min.js"), load.js("https://s3.us-east-2.amazonaws.com/platypus-hbs/vendor/datatables/jszip/3.1.3/jszip.min.js"), load.js("https://s3.us-east-2.amazonaws.com/platypus-hbs/vendor/datatables/buttons/1.3.1/js/buttons.html5.min.js"), load.js("https://s3.us-east-2.amazonaws.com/platypus-hbs/vendor/datatables/buttons/1.3.1/js/buttons.print.min.js"), load.js("https://s3.us-east-2.amazonaws.com/platypus-hbs/vendor/datatables/buttons/1.3.1/js/buttons.colVis.min.js")]);
-				}
-
-				if (src && cols) {
-
-					$.ajax(src, {
-						success: function success(data) {
-
-							data.forEach(function (item) {
-								$tbl.find('tbody').append("<tr></tr>");
-								cols.forEach(function (col) {
-									$tbl.find('tbody tr:last-child').append("<td>" + item[col] + "</td>");
-								});
-								$tbl.find('tbody tr:last-child').append("<td></td>");
-							});
-
-							if (buttons) {
-								p.then(function () {
-									initTable($tbl, buttons);
-								}).catch(function (e) {
-									console.log('Cannot load DataTables button remote dependecies:' + e);
-								});
-							} else {
-								initTable($tbl, buttons);
-							}
-						},
-						error: function error(request, status, error) {
-							console.log(request, status, error);
-							swal('Error', 'Cannot retrieve data.', 'error');
-						}
-					});
-				} else {
-
-					// Initialize normal datatables
-					if (buttons) {
-						p.then(function () {
-							initTable($tbl, buttons);
-						}).catch(function (e) {
-							console.log('Cannot load DataTables button remote dependecies:' + e);
-						});
-					} else {
-						initTable($tbl, buttons);
-					}
-				}
-			});
-		},
-
-		toolTip: function toolTip() {
-			$('[data-toggle="tooltip"]').on('click', function (e) {
-				e.preventDefault();
-			});
-			$('[data-toggle="tooltip"]').tooltip();
-		},
-		popOver: function popOver() {
-			$('[data-toggle="popover"]').on('click', function (e) {
-				e.preventDefault();
-			});
-			$('[data-toggle="popover"]').popover();
-		},
-		printArea: function printArea() {
-
-			function printArea($el) {
-				var area = document.getElementById($el);
-				var title = document.title;
-				var newWin = window.open('', '', 'width=800,height=800');
-				newWin.document.write('<html><head><title>' + title + '</title><link rel="stylesheet" type="text/css" href="https://s3.us-east-2.amazonaws.com/platypus-hbs/version/0.5/platypus.min.css"></head><body>');
-				newWin.document.write(area.outerHTML);
-				newWin.document.write('</body></html>');
-				newWin.document.close();
-				newWin.focus();
-				//The Timeout is ONLY to make Safari work, but it still works with FF, IE & Chrome.
-				setTimeout(function () {
-					newWin.print();
-					newWin.close();
-				}, 1000);
-			}
-
-			$('a.print').click(function () {
-				printArea($(this).data('print-area-id'));
-			});
-		},
-		select2: function select2() {
-
-			var browser = Platypus.detectBrowsers();
-
-			function templateResult(item) {
-				var markup = '\n\t\t\t    \t<div class="row">\n\t\t\t    \t\t<div class="col-sm-4">' + item.text + '</div>\n\t\t\t    \t\t<div class="col-sm-4">' + item.name + '</div>\n\t\t\t    \t\t<div class="col-sm-4">' + item.id + '</div>\n\t\t\t    \t</div>';
-				return markup;
-			}
-
-			function templateSelection(item) {
-				return item.text;
-			}
-
-			$('.select2').each(function () {
-				var $this = $(this);
-				var source = $this.data('source');
-				var placeholder = (!browser.isIE && $this.data('placeholder')) !== '' ? $this.data('placeholder') : 'Select an option';
-
-				if (source && source != '') {
-
-					$this.select2({
-						ajax: {
-							url: source,
-							dataType: 'json',
-							delay: 250,
-							data: function data(params) {
-								return {
-									q: params.term ? params.term : "a", // search term
-									page: params.page
-								};
-							},
-							processResults: function processResults(data, params) {
-								params.page = params.page || 1;
-
-								return {
-									results: $.map(data, function (item) {
-										return {
-											text: item.first_name,
-											name: item.last_name,
-											id: item.first_name
-										};
-									}),
-
-									pagination: {
-										more: params.page * 30 < data.total_count
-									}
-								};
-							},
-							cache: true
-						},
-						escapeMarkup: function escapeMarkup(markup) {
-							return markup;
-						},
-						placeholder: placeholder,
-						minimumInputLength: 0,
-						templateResult: templateResult,
-						templateSelection: templateSelection
-					}).on("select2:open", function () {
-						if (!browser.isIE) $('.select2-search__field').attr('placeholder', placeholder);
-					});;
-				} else {
-					$this.select2({
-						theme: "bootstrap",
-						placeholder: placeholder
-					}).on("select2:open", function () {
-						if (!browser.isIE) $('.select2-search__field').attr('placeholder', placeholder);
-					});;
-				}
-			});
-		},
-		dateRange: function dateRange() {
-			$('input.daterange').daterangepicker({
-				autoApply: true,
-				startDate: $(this).data("start-date"),
-				endDate: $(this).data("end-date"),
-				maxDate: $(this).data("max-date"),
-				minDate: $(this).data("min-date")
-			});
-		},
-		wysiwyg: function wysiwyg() {
-			$('.summernote').summernote({
-				height: '200px',
-				airMode: false,
-				shortcuts: false,
-				toolbar: [
-				// [groupName, [list of button]]
-				['style', ['bold', 'italic', 'underline', 'clear']], ['font', ['strikethrough', 'superscript', 'subscript']], ['fontsize', ['fontsize']], ['color', ['color']], ['para', ['ul', 'ol', 'paragraph']], ['height', ['height']], ['insert', ['link']], ['view', ['fullscreen', 'codeview']]],
-				popover: {
-					air: [
-						// ['color', ['color']],
-						// ['font', ['bold', 'underline', 'clear']]
-					]
-				}
-			});
-		},
-		gauges: function gauges() {
-			$(".dial").each(function () {
-				$(this).knob({
-					fgColor: $(this).data('color') !== '' ? $(this).data('color') : 'green'
-				});
-			});
-		},
-		avatar: function avatar() {
-			var palette = ["red", "pink", "purple", "indigo", "blue", "light-blue", "cyan", "teal", "green", "lime", "yellow", "amber", "orange", "deep-orange", "brown", "grey", "blue-grey"];
-			$('.avatar').each(function () {
-				var name = _.trim($(this).text());
-				var initials = name.split(" ").map(function (n) {
-					return n[0];
-				}).join("");
-				var personId = $(this).data('person-id');
-				var personRole = $(this).data('person-role');
-
-				if (!isNaN(personId) && (personRole == 'facstaff' || 'mba')) {
-					var url = 'http://sands.hbs.edu/photos/' + personRole + '/Ent' + personId + '.jpg';
-					$(this).css({
-						"background-image": 'url(' + url + ')'
-					});
-					$(this).text(initials.toUpperCase()).attr('data-toggle', 'tooltip').attr('title', name);
-				} else {
-					$(this).addClass("palette-bg-" + _.sample(palette) + "-500");
-					$(this).text(initials.toUpperCase()).attr('data-toggle', 'tooltip').attr('title', name);;
-				}
-			});
-		},
-		progressBar: function progressBar() {
-			$('.progress .progress-bar').hide();
-			$('.progress .progress-bar').css("width", "0%");
-			$('.progress .progress-bar').show();
-			setTimeout(function () {
-				$('.progress .progress-bar').css("width", function () {
-					return $(this).attr("aria-valuenow") + "%";
-				});
-			}, 500);
-		},
-		wizard: function wizard() {
-			$('.wizard').each(function () {
-				var $wizard = $(this);
-				$wizard.wizard();
-				var $form = $wizard.closest('form[data-parsley-validate]');
-
-				if ($form.length) {
-					$wizard.on('actionclicked.fu.wizard', function (evt, data) {
-						if (data.direction === 'next' && !$form.parsley().validate({ group: 'block' + data.step })) {
-							evt.preventDefault();
-							return;
-						}
-					});
-
-					$wizard.on('finished.fu.wizard', function (evt, data) {
-						$form.submit();
-						console.log("submit");
-					});
-				}
-			});
-		},
-		toasts: function toasts() {
-
-			toastr.options = {
-				"closeButton": true,
-				"debug": false,
-				"newestOnTop": false,
-				"progressBar": false,
-				"positionClass": $('html').hasClass('xs') || $('html').hasClass('sm') ? "toast-bottom-center" : "toast-top-right",
-				"preventDuplicates": true,
-				"onclick": null,
-				"showDuration": "300",
-				"hideDuration": "1500",
-				"timeOut": "1500",
-				"extendedTimeOut": "1000",
-				"showEasing": "swing",
-				"hideEasing": "linear",
-				"showMethod": "fadeIn",
-				"hideMethod": "fadeOut"
-			};
-		},
-		dateTimePickers: function dateTimePickers() {
-
-			var customIcons = {
-				time: "fa fa-clock-o",
-				date: "fa fa-calendar",
-				up: "fa fa-arrow-up",
-				down: "fa fa-arrow-down",
-				previous: 'fa fa-angle-left',
-				next: 'fa fa-angle-right',
-				today: 'fa fa-bullseye',
-				clear: 'fa fa-tash',
-				close: 'fa fa-close'
-			};
-
-			$('body').on('focus', '.datetime-picker', function (e) {
-
-				var format = $(this).data('format') != '' ? $(this).data('format') : 'MM-DD-YYYY';
-				var inline = $(this).data('inline') != '' && $(this).data('inline') == true ? true : false;
-
-				$(this).datetimepicker({
-					locale: 'en',
-					format: format,
-					icons: customIcons,
-					keepOpen: false,
-					inline: inline,
-					sideBySide: true,
-					stepping: 15,
-					debug: false });
-			});
-		},
-		slider: function slider() {
-			$('input[name="slider"]').slider({
-				formatter: function formatter(value) {
-					return value;
-				}
-			});
-		},
-		formRendering: function formRendering() {
-
-			// TODO: Refactor this while thing, cache $('form'), break it apart into smaller modules
-
-			// Enable navigate away / close window prompt
-			// TODO: Only bind if data has changed
-			if ($('form').hasClass('navigate-away-warning')) {
-				window.onbeforeunload = function () {
-					return true;
-				};
-			} else {
-				window.onbeforeunload = null;
-			}
-
-			$('form small').each(function () {
-				var helpText = $(this).html();
-				var tooltipHelp = '<a href="#" class="" data-toggle="tooltip" data-placement="right" title="' + helpText + '"><i class="fa fa-question-circle-o fa-fw"></i></a>';
-				$(this).closest('.form-group .col-md-8').find('label').append(tooltipHelp);
-			});
-
-			$('body').on('click', '.input-group-append', function () {
-				if ($(this).siblings('.form-control').length) {
-					console.log("clicked");
-					$(this).siblings('.form-control').focus();
-				}
-			});
-
-			$('input,textarea,select').filter('[required]').each(function () {
-				$(this).closest('.form-group').find('label:not(".custom-control"):first-child').append("&nbsp;<span class='float-xs-right text-danger'>*</span>");
-			});
-
-			$('input[type="password"].meter').strength({
-				wrapper: true,
-				showHideButtonText: 'Show',
-				showHideButtonTextToggle: 'Hide'
-			});
-
-			$('.rating-tooltip-manual').rating({
-				extendSymbol: function extendSymbol() {
-					var _title;
-					$(this).tooltip({
-						container: 'body',
-						placement: 'bottom',
-						trigger: 'manual',
-						title: function title() {
-							return _title;
-						}
-					});
-					$(this).on('rating.rateenter', function (e, rate) {
-						_title = rate;
-						$(this).tooltip('show');
-					}).on('rating.rateleave', function () {
-						$(this).tooltip('hide');
-					});
-				}
-			});
-
-			$('.go-back').on('click', function (e) {
-				e.preventDefault();
-				window.history.back();
-			});
-
-			$('.custom-file-input').on('change', function (e) {
-				if ($(this).val() != "") {
-					$(this).next().addClass('selected').attr('data-before', $(this).val().replace(/^C:\\fakepath\\|^.*[\\\/]/gmi, ''));
-				} else {
-					$(this).next().addClass('selected').attr('data-before', 'Choose file...');
-				}
-			});
-
-			$('input.currency').maskMoney();
-
-			$('button[type="reset"]').on('click', function () {
-				$('.custom-file-control').removeClass('selected');
-			});
-
-			$('.confirm-delete').on('click', function (e) {
-				e.preventDefault();
-				var el = $(this),
-				    title = el.data('confirm-delete-title') && el.data('confirm-delete-title') !== '' ? el.data('confirm-delete-title') : 'Are you sure?',
-				    text = el.data('confirm-delete-text') && el.data('confirm-delete-text') !== '' ? el.data('confirm-delete-text') : "This action cannot be reverted.";
-
-				swal({
-					title: title,
-					text: text,
-					type: 'warning',
-					showCancelButton: true,
-					confirmButtonText: 'Delete'
-				}).then(function () {
-					var parentForm = $(el).closest('form');
-					if (parentForm.length > 0) {
-						parentForm.submit();
-					} else {
-						window.location.href = $(el).attr("href");
-					}
-					Ladda.stopAll();
-					// swal(
-					//  	'Deleted!',
-					//  	'Item successfully removed.',
-					//  	'success'
-					// );
-				}, function (dismiss) {
-					Ladda.stopAll();
-				});
-			});
-
-			$('.fileinput').fileinput();
-
-			$('.populate-ul').each(function () {
-				var $el = $(this);
-				var type = $el.data('populate-ul-type');
-				var geo = $el.data('ip-geo-locate');
-				var geoLocateResponse = void 0;
-				var countries = [{ "name": "", "code": "" }, { "name": "Afghanistan", "code": "AF" }, { "name": "land Islands", "code": "AX" }, { "name": "Albania", "code": "AL" }, { "name": "Algeria", "code": "DZ" }, { "name": "American Samoa", "code": "AS" }, { "name": "AndorrA", "code": "AD" }, { "name": "Angola", "code": "AO" }, { "name": "Anguilla", "code": "AI" }, { "name": "Antarctica", "code": "AQ" }, { "name": "Antigua and Barbuda", "code": "AG" }, { "name": "Argentina", "code": "AR" }, { "name": "Armenia", "code": "AM" }, { "name": "Aruba", "code": "AW" }, { "name": "Australia", "code": "AU" }, { "name": "Austria", "code": "AT" }, { "name": "Azerbaijan", "code": "AZ" }, { "name": "Bahamas", "code": "BS" }, { "name": "Bahrain", "code": "BH" }, { "name": "Bangladesh", "code": "BD" }, { "name": "Barbados", "code": "BB" }, { "name": "Belarus", "code": "BY" }, { "name": "Belgium", "code": "BE" }, { "name": "Belize", "code": "BZ" }, { "name": "Benin", "code": "BJ" }, { "name": "Bermuda", "code": "BM" }, { "name": "Bhutan", "code": "BT" }, { "name": "Bolivia", "code": "BO" }, { "name": "Bosnia and Herzegovina", "code": "BA" }, { "name": "Botswana", "code": "BW" }, { "name": "Bouvet Island", "code": "BV" }, { "name": "Brazil", "code": "BR" }, { "name": "British Indian Ocean Territory", "code": "IO" }, { "name": "Brunei Darussalam", "code": "BN" }, { "name": "Bulgaria", "code": "BG" }, { "name": "Burkina Faso", "code": "BF" }, { "name": "Burundi", "code": "BI" }, { "name": "Cambodia", "code": "KH" }, { "name": "Cameroon", "code": "CM" }, { "name": "Canada", "code": "CA" }, { "name": "Cape Verde", "code": "CV" }, { "name": "Cayman Islands", "code": "KY" }, { "name": "Central African Republic", "code": "CF" }, { "name": "Chad", "code": "TD" }, { "name": "Chile", "code": "CL" }, { "name": "China", "code": "CN" }, { "name": "Christmas Island", "code": "CX" }, { "name": "Cocos (Keeling) Islands", "code": "CC" }, { "name": "Colombia", "code": "CO" }, { "name": "Comoros", "code": "KM" }, { "name": "Congo", "code": "CG" }, { "name": "Congo, The Democratic Republic of the", "code": "CD" }, { "name": "Cook Islands", "code": "CK" }, { "name": "Costa Rica", "code": "CR" }, { "name": "Cote D'Ivoire", "code": "CI" }, { "name": "Croatia", "code": "HR" }, { "name": "Cuba", "code": "CU" }, { "name": "Cyprus", "code": "CY" }, { "name": "Czech Republic", "code": "CZ" }, { "name": "Denmark", "code": "DK" }, { "name": "Djibouti", "code": "DJ" }, { "name": "Dominica", "code": "DM" }, { "name": "Dominican Republic", "code": "DO" }, { "name": "Ecuador", "code": "EC" }, { "name": "Egypt", "code": "EG" }, { "name": "El Salvador", "code": "SV" }, { "name": "Equatorial Guinea", "code": "GQ" }, { "name": "Eritrea", "code": "ER" }, { "name": "Estonia", "code": "EE" }, { "name": "Ethiopia", "code": "ET" }, { "name": "Falkland Islands (Malvinas)", "code": "FK" }, { "name": "Faroe Islands", "code": "FO" }, { "name": "Fiji", "code": "FJ" }, { "name": "Finland", "code": "FI" }, { "name": "France", "code": "FR" }, { "name": "French Guiana", "code": "GF" }, { "name": "French Polynesia", "code": "PF" }, { "name": "French Southern Territories", "code": "TF" }, { "name": "Gabon", "code": "GA" }, { "name": "Gambia", "code": "GM" }, { "name": "Georgia", "code": "GE" }, { "name": "Germany", "code": "DE" }, { "name": "Ghana", "code": "GH" }, { "name": "Gibraltar", "code": "GI" }, { "name": "Greece", "code": "GR" }, { "name": "Greenland", "code": "GL" }, { "name": "Grenada", "code": "GD" }, { "name": "Guadeloupe", "code": "GP" }, { "name": "Guam", "code": "GU" }, { "name": "Guatemala", "code": "GT" }, { "name": "Guernsey", "code": "GG" }, { "name": "Guinea", "code": "GN" }, { "name": "Guinea-Bissau", "code": "GW" }, { "name": "Guyana", "code": "GY" }, { "name": "Haiti", "code": "HT" }, { "name": "Heard Island and Mcdonald Islands", "code": "HM" }, { "name": "Holy See (Vatican City State)", "code": "VA" }, { "name": "Honduras", "code": "HN" }, { "name": "Hong Kong", "code": "HK" }, { "name": "Hungary", "code": "HU" }, { "name": "Iceland", "code": "IS" }, { "name": "India", "code": "IN" }, { "name": "Indonesia", "code": "ID" }, { "name": "Iran, Islamic Republic Of", "code": "IR" }, { "name": "Iraq", "code": "IQ" }, { "name": "Ireland", "code": "IE" }, { "name": "Isle of Man", "code": "IM" }, { "name": "Israel", "code": "IL" }, { "name": "Italy", "code": "IT" }, { "name": "Jamaica", "code": "JM" }, { "name": "Japan", "code": "JP" }, { "name": "Jersey", "code": "JE" }, { "name": "Jordan", "code": "JO" }, { "name": "Kazakhstan", "code": "KZ" }, { "name": "Kenya", "code": "KE" }, { "name": "Kiribati", "code": "KI" }, { "name": "Korea, Democratic People's Republic of", "code": "KP" }, { "name": "Korea, Republic of", "code": "KR" }, { "name": "Kuwait", "code": "KW" }, { "name": "Kyrgyzstan", "code": "KG" }, { "name": "Lao People's Democratic Republic", "code": "LA" }, { "name": "Latvia", "code": "LV" }, { "name": "Lebanon", "code": "LB" }, { "name": "Lesotho", "code": "LS" }, { "name": "Liberia", "code": "LR" }, { "name": "Libyan Arab Jamahiriya", "code": "LY" }, { "name": "Liechtenstein", "code": "LI" }, { "name": "Lithuania", "code": "LT" }, { "name": "Luxembourg", "code": "LU" }, { "name": "Macao", "code": "MO" }, { "name": "Macedonia, The Former Yugoslav Republic of", "code": "MK" }, { "name": "Madagascar", "code": "MG" }, { "name": "Malawi", "code": "MW" }, { "name": "Malaysia", "code": "MY" }, { "name": "Maldives", "code": "MV" }, { "name": "Mali", "code": "ML" }, { "name": "Malta", "code": "MT" }, { "name": "Marshall Islands", "code": "MH" }, { "name": "Martinique", "code": "MQ" }, { "name": "Mauritania", "code": "MR" }, { "name": "Mauritius", "code": "MU" }, { "name": "Mayotte", "code": "YT" }, { "name": "Mexico", "code": "MX" }, { "name": "Micronesia, Federated States of", "code": "FM" }, { "name": "Moldova, Republic of", "code": "MD" }, { "name": "Monaco", "code": "MC" }, { "name": "Mongolia", "code": "MN" }, { "name": "Montenegro", "code": "ME" }, { "name": "Montserrat", "code": "MS" }, { "name": "Morocco", "code": "MA" }, { "name": "Mozambique", "code": "MZ" }, { "name": "Myanmar", "code": "MM" }, { "name": "Namibia", "code": "NA" }, { "name": "Nauru", "code": "NR" }, { "name": "Nepal", "code": "NP" }, { "name": "Netherlands", "code": "NL" }, { "name": "Netherlands Antilles", "code": "AN" }, { "name": "New Caledonia", "code": "NC" }, { "name": "New Zealand", "code": "NZ" }, { "name": "Nicaragua", "code": "NI" }, { "name": "Niger", "code": "NE" }, { "name": "Nigeria", "code": "NG" }, { "name": "Niue", "code": "NU" }, { "name": "Norfolk Island", "code": "NF" }, { "name": "Northern Mariana Islands", "code": "MP" }, { "name": "Norway", "code": "NO" }, { "name": "Oman", "code": "OM" }, { "name": "Pakistan", "code": "PK" }, { "name": "Palau", "code": "PW" }, { "name": "Palestinian Territory, Occupied", "code": "PS" }, { "name": "Panama", "code": "PA" }, { "name": "Papua New Guinea", "code": "PG" }, { "name": "Paraguay", "code": "PY" }, { "name": "Peru", "code": "PE" }, { "name": "Philippines", "code": "PH" }, { "name": "Pitcairn", "code": "PN" }, { "name": "Poland", "code": "PL" }, { "name": "Portugal", "code": "PT" }, { "name": "Puerto Rico", "code": "PR" }, { "name": "Qatar", "code": "QA" }, { "name": "Reunion", "code": "RE" }, { "name": "Romania", "code": "RO" }, { "name": "Russian Federation", "code": "RU" }, { "name": "RWANDA", "code": "RW" }, { "name": "Saint Helena", "code": "SH" }, { "name": "Saint Kitts and Nevis", "code": "KN" }, { "name": "Saint Lucia", "code": "LC" }, { "name": "Saint Pierre and Miquelon", "code": "PM" }, { "name": "Saint Vincent and the Grenadines", "code": "VC" }, { "name": "Samoa", "code": "WS" }, { "name": "San Marino", "code": "SM" }, { "name": "Sao Tome and Principe", "code": "ST" }, { "name": "Saudi Arabia", "code": "SA" }, { "name": "Senegal", "code": "SN" }, { "name": "Serbia", "code": "RS" }, { "name": "Seychelles", "code": "SC" }, { "name": "Sierra Leone", "code": "SL" }, { "name": "Singapore", "code": "SG" }, { "name": "Slovakia", "code": "SK" }, { "name": "Slovenia", "code": "SI" }, { "name": "Solomon Islands", "code": "SB" }, { "name": "Somalia", "code": "SO" }, { "name": "South Africa", "code": "ZA" }, { "name": "South Georgia and the South Sandwich Islands", "code": "GS" }, { "name": "Spain", "code": "ES" }, { "name": "Sri Lanka", "code": "LK" }, { "name": "Sudan", "code": "SD" }, { "name": "Suriname", "code": "SR" }, { "name": "Svalbard and Jan Mayen", "code": "SJ" }, { "name": "Swaziland", "code": "SZ" }, { "name": "Sweden", "code": "SE" }, { "name": "Switzerland", "code": "CH" }, { "name": "Syrian Arab Republic", "code": "SY" }, { "name": "Taiwan, Province of China", "code": "TW" }, { "name": "Tajikistan", "code": "TJ" }, { "name": "Tanzania, United Republic of", "code": "TZ" }, { "name": "Thailand", "code": "TH" }, { "name": "Timor-Leste", "code": "TL" }, { "name": "Togo", "code": "TG" }, { "name": "Tokelau", "code": "TK" }, { "name": "Tonga", "code": "TO" }, { "name": "Trinidad and Tobago", "code": "TT" }, { "name": "Tunisia", "code": "TN" }, { "name": "Turkey", "code": "TR" }, { "name": "Turkmenistan", "code": "TM" }, { "name": "Turks and Caicos Islands", "code": "TC" }, { "name": "Tuvalu", "code": "TV" }, { "name": "Uganda", "code": "UG" }, { "name": "Ukraine", "code": "UA" }, { "name": "United Arab Emirates", "code": "AE" }, { "name": "United Kingdom", "code": "GB" }, { "name": "United States", "code": "US" }, { "name": "United States Minor Outlying Islands", "code": "UM" }, { "name": "Uruguay", "code": "UY" }, { "name": "Uzbekistan", "code": "UZ" }, { "name": "Vanuatu", "code": "VU" }, { "name": "Venezuela", "code": "VE" }, { "name": "Viet Nam", "code": "VN" }, { "name": "Virgin Islands, British", "code": "VG" }, { "name": "Virgin Islands, U.S.", "code": "VI" }, { "name": "Wallis and Futuna", "code": "WF" }, { "name": "Western Sahara", "code": "EH" }, { "name": "Yemen", "code": "YE" }, { "name": "Zambia", "code": "ZM" }, { "name": "Zimbabwe", "code": "ZW" }];
-				var states = [{ "name": "Alabama", "abbreviation": "AL" }, { "name": "Alaska", "abbreviation": "AK" }, { "name": "American Samoa", "abbreviation": "AS" }, { "name": "Arizona", "abbreviation": "AZ" }, { "name": "Arkansas", "abbreviation": "AR" }, { "name": "California", "abbreviation": "CA" }, { "name": "Colorado", "abbreviation": "CO" }, { "name": "Connecticut", "abbreviation": "CT" }, { "name": "Delaware", "abbreviation": "DE" }, { "name": "District Of Columbia", "abbreviation": "DC" }, { "name": "Federated States Of Micronesia", "abbreviation": "FM" }, { "name": "Florida", "abbreviation": "FL" }, { "name": "Georgia", "abbreviation": "GA" }, { "name": "Guam", "abbreviation": "GU" }, { "name": "Hawaii", "abbreviation": "HI" }, { "name": "Idaho", "abbreviation": "ID" }, { "name": "Illinois", "abbreviation": "IL" }, { "name": "Indiana", "abbreviation": "IN" }, { "name": "Iowa", "abbreviation": "IA" }, { "name": "Kansas", "abbreviation": "KS" }, { "name": "Kentucky", "abbreviation": "KY" }, { "name": "Louisiana", "abbreviation": "LA" }, { "name": "Maine", "abbreviation": "ME" }, { "name": "Marshall Islands", "abbreviation": "MH" }, { "name": "Maryland", "abbreviation": "MD" }, { "name": "Massachusetts", "abbreviation": "MA" }, { "name": "Michigan", "abbreviation": "MI" }, { "name": "Minnesota", "abbreviation": "MN" }, { "name": "Mississippi", "abbreviation": "MS" }, { "name": "Missouri", "abbreviation": "MO" }, { "name": "Montana", "abbreviation": "MT" }, { "name": "Nebraska", "abbreviation": "NE" }, { "name": "Nevada", "abbreviation": "NV" }, { "name": "New Hampshire", "abbreviation": "NH" }, { "name": "New Jersey", "abbreviation": "NJ" }, { "name": "New Mexico", "abbreviation": "NM" }, { "name": "New York", "abbreviation": "NY" }, { "name": "North Carolina", "abbreviation": "NC" }, { "name": "North Dakota", "abbreviation": "ND" }, { "name": "Northern Mariana Islands", "abbreviation": "MP" }, { "name": "Ohio", "abbreviation": "OH" }, { "name": "Oklahoma", "abbreviation": "OK" }, { "name": "Oregon", "abbreviation": "OR" }, { "name": "Palau", "abbreviation": "PW" }, { "name": "Pennsylvania", "abbreviation": "PA" }, { "name": "Puerto Rico", "abbreviation": "PR" }, { "name": "Rhode Island", "abbreviation": "RI" }, { "name": "South Carolina", "abbreviation": "SC" }, { "name": "South Dakota", "abbreviation": "SD" }, { "name": "Tennessee", "abbreviation": "TN" }, { "name": "Texas", "abbreviation": "TX" }, { "name": "Utah", "abbreviation": "UT" }, { "name": "Vermont", "abbreviation": "VT" }, { "name": "Virgin Islands", "abbreviation": "VI" }, { "name": "Virginia", "abbreviation": "VA" }, { "name": "Washington", "abbreviation": "WA" }, { "name": "West Virginia", "abbreviation": "WV" }, { "name": "Wisconsin", "abbreviation": "WI" }, { "name": "Wyoming", "abbreviation": "WY" }];
-
-				if (geo) {
-					$.ajax({
-						url: 'http://freegeoip.net/json/',
-						method: 'GET',
-						success: function success(data) {
-							geoLocateResponse = data;
-							// console.log(geoLocateResponse);
-							populate(true);
-						}
-					});
-				}
-
-				function populate(geo) {
-					switch (type) {
-						case 'country':
-							countries.forEach(function (country) {
-								$el.append('<option value="' + country.name + '">' + country.name + '</option>');
-								if (geo && geoLocateResponse !== '') $el.find('option[value="' + geoLocateResponse.country_name + '"]').attr('selected', true);
-							});
-							break;
-						case 'state':
-							states.forEach(function (state) {
-								$el.append('<option value="' + state.abbreviation + '">' + state.name + '</option>');
-								if (geo && geoLocateResponse !== '') $el.find('option[value="' + geoLocateResponse.region_code + '"]').attr('selected', true);
-							});
-							break;
-						default:
-							console.log('Invalid .populate-ul data-populate-ul-type value');
-					}
-				}
-			});
-
-			window.Parsley.on('field:validated', function (e) {
-				if (e.validationResult.constructor !== Array) {
-					// this.$element.closest('.form-group').removeClass('has-danger').addClass('has-success');
-					this.$element.removeClass('is-invalid').addClass('is-valid');
-				} else {
-					// this.$element.closest('.form-group').removeClass('has-success').addClass('has-danger');
-					this.$element.removeClass('is-valid').addClass('is-invalid');
-					Ladda.stopAll();
-				}
-			});
-		},
-		formConditionize: function formConditionize(options) {
-			// Old Version
-			// $.fn.conditionize = function(options){ 
-
-			//      var settings = $.extend({
-			//         hideJS: true
-			//     }, options );
-
-			//     $.fn.showOrHide = function(listenTo, listenFor, $section) {
-			//       if ($(listenTo).is('select, input[type=text]') && $(listenTo).val() == listenFor ) {
-			//         $section.slideDown();
-			//       }
-			//       else if ($(listenTo + ":checked").val() == listenFor) {
-			//         $section.slideDown();
-			//       }
-			//       else {
-			//         $section.slideUp();
-			//       }
-			//     } 
-
-			//     return this.each( function() {
-			//       var listenTo = '[name="' + $(this).data('cond-option').toString() + '"]';
-			//       var listenFor = $(this).data('cond-value');
-			//       var $section = $(this);
-
-			//       //Set up event listener
-			//       $(listenTo).on('change', function() {
-			//         $.fn.showOrHide(listenTo, listenFor, $section);
-			//       });
-			//       //If setting was chosen, hide everything first...
-			//       if (settings.hideJS) {
-			//         $(this).hide();
-			//       }
-			//       //Show based on current value on page load
-			//       $.fn.showOrHide(listenTo, listenFor, $section);
-			//     });
-			//   }
-
-			$.fn.conditionize = function (options) {
-
-				var settings = $.extend({
-					hideJS: true
-				}, options);
-
-				$.fn.showOrHide = function (is_met, $section) {
-					if (is_met) {
-						$section.slideDown();
-					} else {
-						$section.slideUp();
-						$section.find('select, input').each(function () {
-							if ($(this).attr('type') == 'radio' || $(this).attr('type') == 'checkbox') {
-								$(this).prop('checked', false).trigger('change');
-							} else {
-								$(this).val('').trigger('change');
-							}
-						});
-					}
-				};
-
-				return this.each(function () {
-					var $section = $(this);
-					var cond = $(this).data('condition');
-
-					// First get all (distinct) used field/inputs
-					var re = /(#?\w+)/ig;
-					var match = re.exec(cond);
-					var inputs = {},
-					    e = "",
-					    name = "";
-					while (match !== null) {
-						name = match[1];
-						e = name.substring(0, 1) == '#' ? name : "[name=" + name + "]";
-						if ($(e).length && !(name in inputs)) {
-							inputs[name] = e;
-						}
-						match = re.exec(cond);
-					}
-
-					// Replace fields names/ids by $().val()
-					for (name in inputs) {
-						e = inputs[name];
-						tmp_re = new RegExp("(" + name + ")\\b", "g");
-						if ($(e).attr('type') == 'radio' || $(e).attr('type') == 'checkbox') {
-							cond = cond.replace(tmp_re, "$('" + e + ":checked').val()");
-						} else {
-							cond = cond.replace(tmp_re, "$('" + e + "').val()");
-						}
-					}
-
-					//Set up event listeners
-					for (name in inputs) {
-						$(inputs[name]).on('change', function () {
-							$.fn.showOrHide(eval(cond), $section);
-						});
-					}
-
-					//If setting was chosen, hide everything first...
-					if (settings.hideJS) {
-						$(this).hide();
-					}
-					//Show based on current value on page load
-					$.fn.showOrHide(eval(cond), $section);
-				});
-			};
-
-			$('.conditional').conditionize();
-		},
-		formAddress: function formAddress() {
-
-			if ($('input.address-autocomplete').length > 0) {
-				var placeSearch, autocomplete;
-				var componentForm;
-
-				(function () {
-					var initialize = function initialize() {
-						// Create the autocomplete object, restricting the search
-						// to geographical location types.
-						autocomplete = new google.maps.places.Autocomplete(
-						/** @type {HTMLInputElement} */document.querySelector('input.address-autocomplete'), {
-							types: ['geocode']
-						});
-						// When the user selects an address from the dropdown,
-						// populate the address fields in the form.
-						if ($('.confirm-edit-address').length > 0) {
-							google.maps.event.addListener(autocomplete, 'place_changed', function () {
-								fillInAddress();
-							});
-						}
-					};
-
-					// [START region_fillform]
-
-
-					var fillInAddress = function fillInAddress() {
-
-						$('.confirm-edit-address').show();
-
-						// Get the place details from the autocomplete object.
-						var place = autocomplete.getPlace();
-
-						document.getElementById("latitude").value = place.geometry.location.lat();
-						document.getElementById("longitude").value = place.geometry.location.lng();
-
-						for (var component in componentForm) {
-							document.getElementById(component).value = '';
-							document.getElementById(component).disabled = false;
-						}
-
-						// Get each component of the address from the place details
-						// and fill the corresponding field on the form.
-						for (var i = 0; i < place.address_components.length; i++) {
-							var addressType = place.address_components[i].types[0];
-							if (componentForm[addressType]) {
-								var val = place.address_components[i][componentForm[addressType]];
-								document.getElementById(addressType).value = val;
-							}
-						}
-					};
-
-					// Bias the autocomplete object to the user's geographical location,
-					// as supplied by the browser's 'navigator.geolocation' object.
-
-
-					var geolocate = function geolocate() {
-						if (navigator.geolocation) {
-							navigator.geolocation.getCurrentPosition(function (position) {
-								var geolocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-
-								var latitude = position.coords.latitude;
-								var longitude = position.coords.longitude;
-								document.getElementById("latitude").value = latitude;
-								document.getElementById("longitude").value = longitude;
-
-								autocomplete.setBounds(new google.maps.LatLngBounds(geolocation, geolocation));
-							});
-						}
-					};
-
-					// This example displays an address form, using the autocomplete feature
-					// of the Google Places API to help users fill in the information.
-
-					if ($('.confirm-edit-address').length > 0) $('.confirm-edit-address').hide();
-
-					$("input.address-autocomplete").on('focus', function () {
-						geolocate();
-					});
-
-					componentForm = {
-						street_number: 'short_name',
-						route: 'long_name',
-						locality: 'long_name',
-						administrative_area_level_1: 'short_name',
-						country: 'long_name',
-						postal_code: 'short_name'
-					};
-
-
-					initialize();
-				})();
-			}
-		},
-		slimScroll: function slimScroll() {
-			$('.sidebar, .modal-body').slimScroll({
-				height: '100%'
-			});
-		},
-		gallery: function gallery() {
-			$('.gallery').click(function (event) {
-				event = event || window.event;
-				var target = event.target || event.srcElement,
-				    link = target.src ? target.parentNode : target,
-				    options = { index: link, event: event, hidePageScrollbars: false },
-				    links = this.getElementsByTagName('a');
-				blueimp.Gallery(links, options);
-			});
-		},
-		AZList: function AZList() {
-			$('#azList').listnav({
-				initLetter: '', // filter the list to a specific letter on init ('a'-'z', '-' [numbers 0-9], '_' [other])
-				includeAll: true, // Include the ALL button
-				includeOther: false, // Include a '...' option to filter non-english characters by
-				includeNums: true, // Include a '0-9' option to filter by
-				flagDisabled: true, // Add a class of 'ln-disabled' to nav items with no content to show
-				removeDisabled: false, // Remove those 'ln-disabled' nav items (flagDisabled must be set to true for this to function)
-				allText: 'All', // set custom text in navbar to ALL button
-				noMatchText: 'No matching entries', // set custom text for nav items with no content to show
-				showCounts: true, // Show the number of list items that match that letter above the mouse
-				dontCount: '', // A comma separated list of selectors you want to exclude from the count function (numbers on top of navigation)
-				cookieName: null, // Set this to a string to remember the last clicked navigation item requires jQuery Cookie Plugin ('myCookieName')
-				onClick: null, // Set a function that fires when you click a nav item. see Demo 5
-				prefixes: [], // Set an array of prefixes that should be counted for the prefix and the first word after the prefix ex: ['the', 'a', 'my']
-				filterSelector: '' // Set the filter to a CSS selector rather than the first text letter for each item
-			});
-		},
-		navBar: function navBar() {
-			$(document).on('click', '.hamburger, .canvas-slid', function (e) {
-				$(".hamburger").toggleClass("is-active");
-			});
-		},
-		modal: function modal() {
-
-			// Insert modal
-			var modalMarkup = '\n\t\t\t<!-- Universal Modal -->\n\t\t\t<div class="modal fade" id="universal-modal" tabindex="-1" role="dialog" aria-hidden="true">\n\t\t\t<div class="modal-dialog modal-dialog-centered" role="document">\n\t\t\t\t<div class="modal-content">\n\t\t\t\t  <div class="modal-header">\n\t\t\t\t    <h5 class="modal-title"></h5>\n\t\t\t\t    <button type="button" class="close" data-dismiss="modal" aria-label="Close">\n\t\t\t\t      <span aria-hidden="true">&times;</span>\n\t\t\t\t    </button>\n\t\t\t\t  </div>\n\t\t\t\t  <div class="modal-body">\n\t\t\t\t  </div>\n\t\t\t\t  <div class="modal-footer">\n\t\t\t\t    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>\n\t\t\t\t  </div>\n\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>';
-
-			$('body').append(modalMarkup);
-			$(document).on('click', '.modal-remote', function (e) {
-				e.preventDefault();
-
-				var $bttn = $(this);
-				var opts = {
-					title: $bttn.data('modal-title') !== '' ? $bttn.data('modal-title') : '',
-					size: $bttn.data('modal-size') !== '' ? $bttn.data('modal-size') : 'md',
-					header: $bttn.data('modal-header') !== '' ? $bttn.data('modal-header') : true,
-					footer: $bttn.data('modal-footer') !== '' ? $bttn.data('modal-footer') : true,
-					iframe: $bttn.data('modal-iframe') !== '' ? $bttn.data('modal-iframe') : false,
-					scrollable: $bttn.data('modal-scrollable') !== '' ? $bttn.data('modal-scrollable') : false
-				};
-				var modalID = 'modal-' + Math.random().toString(36).substring(7);
-
-				$bttn.attr('data-target', '#modal-' + modalID);
-
-				// Repurpose universal modal
-				$('#universal-modal').attr('id', modalID);
-
-				// Wire modal events
-				$(document).on('show.bs.modal', '#' + modalID, function (e) {
-					if (opts.title) $('#' + modalID).find('.modal-title').html(opts.title);
-					if (opts.size) $('#' + modalID).find('.modal-dialog').addClass('modal-' + opts.size);
-					if (!opts.header) $('#' + modalID).find('.modal-header').hide();
-					if (!opts.footer) $('#' + modalID).find('.modal-footer').hide();
-					if (opts.iframe) {
-						$('#' + modalID).find('.modal-body').html('<iframe width="100%" height="100%" frameborder="0" scrolling="' + (opts.scrollable ? 'yes' : 'no') + '" allowtransparency="true" src="' + $bttn.attr('href') + '"></iframe>');
-						$('#' + modalID).find('.modal-body iframe').css('height', $(window).height() - 180 + 'px');
-					} else {
-						$('#' + modalID).find('.modal-body').load($bttn.attr('href'), function () {
-							console.log("Loading async data into modal");
-						});
-						if (opts.scrollable) $('#' + modalID).find('.modal-body').addClass('scrollable');
-					}
-				});
-
-				// Display modal
-				$('#' + modalID).modal('show');
-
-				$(document).on('shown.bs.modal', '.modal', function (e) {
-					window.Platypus.wizard();
-					window.Platypus.inputMaxLength();
-				});
-
-				// Reset used modal to defaults
-				$(document).on('hidden.bs.modal', '#' + modalID, function (e) {
-					$('#' + modalID).attr('id', 'universal-modal');
-					$('#universal-modal').find('.modal-dialog').removeClass('modal-' + opts.size);
-					$('#universal-modal').find('.modal-title').html('');
-					$('#universal-modal').find('.modal-header, .modal-footer').show();
-				});
-			});
-		},
-		rotatingBg: function rotatingBg() {
-			$('.rotating-bg').css('background-image', 'url("https://s3.us-east-2.amazonaws.com/platypus-hbs/version/' + currentVersion + '/images/rotating-bg-hbs/bg-hbs-' + _.random(1, 4) + '.png")');
-		},
-
-		inlineEdit: function inlineEdit() {
-
-			$('.edit-inline').each(function () {
-
-				var postUrl = $(this).data('post-url');
-				var content = '';
-
-				$(this).summernote({
-					airMode: true,
-					popover: {
-						image: [],
-						link: [],
-						air: []
-					},
-					callbacks: {
-						onInit: function onInit() {
-							// console.log('summernote onInit callback fired');
-							if ($(this).summernote('isEmpty')) {
-								$(this).val('');
-								$(this).addClass('empty');
-							}
-						},
-						onFocus: function onFocus() {
-							// console.log('summernote OnFocus callback fired');
-							$('.note-air-popover').show();
-							$(this).removeClass('empty');
-							content = $(this).summernote('code');
-						},
-						onBlur: function onBlur() {
-							// console.log('summernote onBlur callback fired');
-							$('.note-air-popover').hide();
-							// console.log( $(this) );
-							if ($(this).summernote('isEmpty')) {
-								$(this).val('');
-								$(this).addClass('empty');
-							}
-							if (content !== $(this).summernote('code')) postData($(this));
-						},
-						onChange: function onChange(contents, $editable) {
-							// console.log('summernote onChange callback fired:', contents, $editable);
-						}
-					}
-				});
-
-				function postData($el) {
-
-					var data = {};
-					data.body = $el.summernote('code');
-
-					$.ajax({
-						type: 'POST',
-						data: JSON.stringify(data),
-						contentType: 'application/json',
-						url: postUrl,
-						success: function success(data) {
-							toastr.success('Item updated successfully.');
-						},
-						error: function error(request, status, _error) {
-							toastr.error('Cannot update item.');
-						}
-					});
-				}
-
-				$('.note-editable a').hover(function () {
-					$('.note-editable').attr('contenteditable', 'false');
-				}, function () {
-					$('.note-editable').attr('contenteditable', 'true');
-				});
-			});
-		},
-		search: function search() {
-
-			$.typeahead({
-				input: ".js-typeahead",
-				order: "asc",
-				display: ["title", "intro"],
-				href: "/articles/{{slug}}",
-				group: {
-					template: function template(item) {
-						return 'Found in ' + item._category.title;
-					}
-				},
-				source: {
-					ui_components: {
-						ajax: {
-							url: '/articles/search/ui-components'
-						},
-						template: '\n\t\t\t\t\t\t\t<div class="row px-2 py-1">\n\t\t\t\t\t\t\t\t<div class="col-1 p-4 bg-info">\n\t\t\t\t\t\t\t\t\t<img src="/images/ui-components-thumbs/{{slug}}.png" class="img-fluid">\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class="col-11">\n\t\t\t\t\t\t\t\t\t<h5>{{title}}</h5>\n\t\t\t\t\t\t\t\t\t{{intro}}\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>'
-					},
-					resources: {
-						ajax: {
-							url: '/articles/search/resources'
-						},
-						template: '<div clas="row"><div class="col-12"><h5>{{title}}</h5>{{intro}}</div></div>'
-					}
-				},
-				emptyTemplate: "no result for {{query}}",
-				hint: true,
-				backdrop: {
-					"background-color": "#000"
-				},
-				callback: {
-					onInit: function onInit(node) {
-						// console.log('Typeahead Initiated on ' + node.selector);
-					},
-					onClick: function onClick(node, a, item, event) {
-						window.location(item.href);
-					}
-				},
-				selector: {
-					container: "typeahead__container",
-					result: "typeahead__result",
-					list: "typeahead__list",
-					group: "typeahead__group",
-					item: "typeahead__item",
-					empty: "typeahead__empty",
-					display: "typeahead__display",
-					query: "typeahead__query",
-					filter: "typeahead__filter",
-					filterButton: "typeahead__filter-button",
-					dropdown: "typeahead__dropdown",
-					dropdownItem: "typeahead__dropdown-item",
-					button: "typeahead__button",
-					backdrop: "typeahead__backdrop",
-					hint: "typeahead__hint",
-					cancelButton: "typeahead__cancel-button"
-				},
-				debug: true
-			});
-		},
-		externalLinks: function externalLinks() {
-			$('a:not([target]), :not([target="_self"])').filter(function () {
-				return this.hostname && this.hostname !== location.hostname;
-			}).addClass("external").attr('target', '_blank');
-		},
-		setupSpinOnAjax: function setupSpinOnAjax() {
-
-			// setup spinner animation options
-			$.fn.spin = function (opts) {
-				this.each(function () {
-					var $this = $(this),
-					    spinner = $this.data('spinner');
-					if (spinner) spinner.stop();
-					if (opts !== false) {
-						opts = $.extend({ color: $this.css('color') }, opts);
-						spinner = new Spinner(opts).spin(this);
-						$this.data('spinner', spinner);
-					}
-				});
-				return this;
-			};
-
-			// bind spinner to ajax doc events
-			$('.btn-ajax-spin').on({
-
-				ajaxStart: function ajaxStart(e) {
-
-					console.log("Target of ajaxStart is:", e.target);
-
-					var el = $('<div class="spinner">').appendTo('body').spin();
-					$('body').append('<div class="overlay"></div>');
-					$(".overlay").fadeIn().append(el);
-					var opts = {
-						lines: 12,
-						length: 5,
-						width: 5,
-						radius: 10,
-						color: '#000',
-						speed: 1,
-						trail: 66,
-						shadow: false
-					};
-					$(el).spin(opts);
-				},
-				ajaxStop: function ajaxStop() {
-					var el = $('.spinner');
-					//el.spin(false).remove();
-					$(".overlay").fadeOut();
-				}
-			});
-		},
-		searchPills: function searchPills() {
-
-			// Initialize pillBox
-			$('#searchPills').pillbox({
-				readonly: false,
-				edit: false
-			});
-
-			// Mock functionality
-			$('#facets input[type="checkbox"]').change(function (e) {
-				e.preventDefault();
-				var pillVal = $(this).val();
-
-				// // Show spinner
-				// function showSpinner() {
-				// 	var el = $('<div class="d-block mt-3 p-3">').appendTo('#results').spin(Platypus.getSpinnerOpts());
-				// 	setTimeout(function () {
-				// 		el.spin(false).remove();
-				// 	}, 1000);
-				// }
-
-				if (this.checked) {
-					$('#searchPills').pillbox('addItems', -1, [{ text: pillVal }]);
-					//showSpinner();
-				} else {
-					$('#searchPills').pillbox('removeByText', pillVal);
-					//showSpinner();
-				}
-
-				$('#searchPills').on('removed.fu.pillbox', function (evt, item) {
-					$('#facets input[value="' + item.value + '"]').prop('checked', false);
-					//showSpinner();
-				});
-			});
-		},
-		infiniteLoading: function infiniteLoading() {
-
-			if ($('.loadmore').length > 0) {
-				$('.loadmore').click(function (e) {
-					e.preventDefault();
-
-					var page = parseInt($(this).data('page'));
-					var pages = parseInt($(this).data('pages'));
-					var nextPageUrl = 'loadmore/' + (page + 1);
-					$(this).data('page', page + 1);
-					$(this).attr('data-page', page + 1);
-
-					$.ajax(nextPageUrl, {
-						success: function success(data) {
-
-							data.docs.forEach(function (item, index) {
-
-								if (index === 0 || index % 4 === 0) {
-									$('#component-container').append('<div class="card-deck"></div>');
-								}
-
-								$('#component-container .card-deck:last-child').append('\t\t\t    \t\t\n\t\t\t\t\t    \t\t\t<div class="card">\n\t\t\t\t\t    \t\t\t\t<a href="/articles/' + item.slug + '">\n\t\t\t\t\t\t\t\t\t\t  \t<div class="palette-bg-teal-100 p-2">\n\t\t\t\t\t\t\t\t\t\t  \t\t<img class="card-img-top img-fluid" src="/images/ui-components-thumbs/' + item.slug + '.png" alt="Card image cap">\n\t\t\t\t\t\t\t\t\t\t  \t</div>\n\t\t\t\t\t\t\t\t\t\t  \t<div class="card-block">\n\t\t\t\t\t\t\t\t\t\t    \t<h4 class="card-title">' + item.title + '</h4>\n\t\t\t\t\t\t\t\t\t\t    \t<p class="card-text">' + item.intro + '</p>\n\t\t\t\t\t\t\t\t\t\t    \t\n\t\t\t\t\t\t\t\t\t\t  \t</div>\n\t\t\t\t\t\t\t\t\t    </a>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t    \t\t');
-							});
-
-							$('html, body').animate({ scrollTop: $(document).height() }, 'slow');
-						},
-						error: function error() {
-							swal('Error', 'Cannot retrieve sample data.', 'error');
-						}
-					});
-
-					if (page === pages - 1) {
-						$(this).hide();
-						// toastr.success('That\'s the end.');
-					}
-				});
-
-				window.onscroll = function (ev) {
-					if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-						// console.log("end of page");
-					}
-				};
-			}
-		},
-
-		feedback: function feedback() {
-
-			if ($('body').data('feedback-url')) {
-
-				// Inserts feedback button in DOM
-				$('body').append('\n\t\t\t\t\t<a id="btn-feedback" href="/feedback/new" class="btn btn-info modal-remote"\n\t\t\t\t\t  \tdata-modal-title="Feedback"\n\t\t\t\t\t  \tdata-modal-size="lg"\n\t\t\t\t\t  \tdata-modal-header="true"\n\t\t\t\t\t  \tdata-modal-footer="false">\n\t\t\t\t\t  \t\t<i class="fa fa-comment-o" data-toggle="tooltip" data-placement="left" title="Feedback"></i>\n\t\t\t\t\t</a>\n\t\t\t\t');
-
-				$(document).on('submit', '#feedbackForm', function (e) {
-					e.preventDefault();
-					$('.modal').modal('hide');
-
-					$.ajax({
-						type: 'POST',
-						url: $(this).attr('action'),
-						data: $(this).serialize(),
-						success: function success() {
-							swal({
-								title: 'Thank you',
-								html: 'Your feedback was submitted successfully',
-								type: 'success'
-							});
-						}
-					});
-				});
-			}
-		},
-
-		renderCharts: function renderCharts() {
-
-			$('.chart').each(function () {
-				var type = $(this).data('type');
-				var target = '#' + $(this).attr('id');
-				switch (type) {
-					case 'line':
-						var chart = c3.generate({
-							bindto: target,
-							data: {
-								columns: [['data1', 30, 200, 100, 400, 150, 250], ['data2', 50, 20, 10, 40, 15, 25]],
-								colors: {
-									data1: '#455A64',
-									data2: '#009688',
-									data3: '#9E9E9E'
-								},
-								color: function color(_color, d) {
-									return _color;
-								}
-							}
-						});
-						chart.flush();
-						break;
-					case 'gauge':
-						var chart = c3.generate({
-							data: {
-								columns: [['data', $(this).data('gauge-value') ? $(this).data('gauge-value') : '0']],
-								type: 'gauge',
-								onclick: function onclick(d, i) {
-									console.log("onclick", d, i);
-								},
-								onmouseover: function onmouseover(d, i) {
-									console.log("onmouseover", d, i);
-								},
-								onmouseout: function onmouseout(d, i) {
-									console.log("onmouseout", d, i);
-								}
-							},
-							bindto: target,
-							gauge: {},
-							color: {
-								pattern: ['#009688', '#009688', '#009688', '#009688'],
-								threshold: {
-									values: [30, 60, 90, 100]
-								}
-							},
-							size: {
-								height: 180
-							}
-						});
-						chart.flush();
-						break;
-					case 'pie':
-
-						var chart = c3.generate({
-							data: {
-								columns: [['data1', 30], ['data2', 120]],
-								type: 'donut',
-								colors: {
-									data1: '#455A64',
-									data2: '#009688',
-									data3: '#9E9E9E'
-								},
-								color: function color(_color2, d) {
-									return _color2;
-								},
-								onclick: function onclick(d, i) {
-									console.log("onclick", d, i);
-								},
-								onmouseover: function onmouseover(d, i) {
-									console.log("onmouseover", d, i);
-								},
-								onmouseout: function onmouseout(d, i) {
-									console.log("onmouseout", d, i);
-								}
-							},
-							bindto: target,
-							donut: {
-								title: "Example"
-							}
-						});
-						chart.flush();
-						break;
-					case 'bar':
-
-						var chart = c3.generate({
-							data: {
-								columns: [['data1', 30, 20, 50, 40, 60, 50], ['data2', 200, 130, 90, 240, 130, 220], ['data3', 300, 200, 160, 400, 250, 250]],
-								type: 'bar',
-								colors: {
-									data1: '#455A64',
-									data2: '#009688',
-									data3: '#9E9E9E'
-								},
-								color: function color(_color3, d) {
-									return _color3;
-								}
-							},
-							bar: {
-								width: {
-									ratio: 0.5
-								}
-							},
-							bindto: target
-						});
-						chart.flush();
-						break;
-					case 'spline':
-
-						var chart = c3.generate({
-							data: {
-								columns: [['data1', 30, 200, 100, 400, 150, 250], ['data2', 130, 100, 140, 200, 150, 50]],
-								type: 'spline',
-								colors: {
-									data1: '#455A64',
-									data2: '#009688',
-									data3: '#9E9E9E'
-								},
-								color: function color(_color4, d) {
-									return _color4;
-								}
-							},
-							bindto: target
-						});
-						chart.flush();
-						break;
-
-					case 'scatter':
-
-						var colors = ['#455A64', '#009688', '#9E9E9E', '#00838F'];
-
-						var chart = c3.generate({
-							data: {
-								xs: {
-									setosa: 'setosa_x',
-									versicolor: 'versicolor_x'
-								},
-								// iris data from R
-								columns: [["setosa_x", 3.5, 3.0, 3.2, 3.1, 3.6, 3.9, 3.4, 3.4, 2.9, 3.1, 3.7, 3.4, 3.0, 3.0, 4.0, 4.4, 3.9, 3.5, 3.8, 3.8, 3.4, 3.7, 3.6, 3.3, 3.4, 3.0, 3.4, 3.5, 3.4, 3.2, 3.1, 3.4, 4.1, 4.2, 3.1, 3.2, 3.5, 3.6, 3.0, 3.4, 3.5, 2.3, 3.2, 3.5, 3.8, 3.0, 3.8, 3.2, 3.7, 3.3], ["versicolor_x", 3.2, 3.2, 3.1, 2.3, 2.8, 2.8, 3.3, 2.4, 2.9, 2.7, 2.0, 3.0, 2.2, 2.9, 2.9, 3.1, 3.0, 2.7, 2.2, 2.5, 3.2, 2.8, 2.5, 2.8, 2.9, 3.0, 2.8, 3.0, 2.9, 2.6, 2.4, 2.4, 2.7, 2.7, 3.0, 3.4, 3.1, 2.3, 3.0, 2.5, 2.6, 3.0, 2.6, 2.3, 2.7, 3.0, 2.9, 2.9, 2.5, 2.8], ["setosa", 0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.3, 0.2, 0.2, 0.1, 0.2, 0.2, 0.1, 0.1, 0.2, 0.4, 0.4, 0.3, 0.3, 0.3, 0.2, 0.4, 0.2, 0.5, 0.2, 0.2, 0.4, 0.2, 0.2, 0.2, 0.2, 0.4, 0.1, 0.2, 0.2, 0.2, 0.2, 0.1, 0.2, 0.2, 0.3, 0.3, 0.2, 0.6, 0.4, 0.3, 0.2, 0.2, 0.2, 0.2], ["versicolor", 1.4, 1.5, 1.5, 1.3, 1.5, 1.3, 1.6, 1.0, 1.3, 1.4, 1.0, 1.5, 1.0, 1.4, 1.3, 1.4, 1.5, 1.0, 1.5, 1.1, 1.8, 1.3, 1.5, 1.2, 1.3, 1.4, 1.4, 1.7, 1.5, 1.0, 1.1, 1.0, 1.2, 1.6, 1.5, 1.6, 1.5, 1.3, 1.3, 1.3, 1.2, 1.4, 1.2, 1.0, 1.3, 1.2, 1.3, 1.3, 1.1, 1.3]],
-								type: 'scatter',
-								color: function color(_color5, data) {
-									return colors[data.index % colors.length];
-								}
-							},
-							axis: {
-								x: {
-									label: 'X',
-									tick: {
-										fit: false
-									}
-								},
-								y: {
-									label: 'Y'
-								}
-							},
-							point: {
-								r: 5
-							},
-							bindto: target
-						});
-						chart.flush();
-						break;
-					default:
-				}
-			});
-		},
-		gridListSwitcher: function gridListSwitcher() {
-
-			if ($('#list-grid-switcher').length) {
-				(function () {
-					var init = function init() {
-						var currentMode = $('#list-grid-switcher a.active').data('mode');
-						var layout = $('.row.list-grid').data('cols').split(",").map(function (col) {
-							return "col-" + col;
-						});
-						updateActiveIndicator(currentMode);
-						setupInitialState(currentMode, layout);
-						saveState(currentMode);
-						bindEvents(layout);
-					};
-
-					var setupInitialState = function setupInitialState(mode, layout) {
-						$('.row.list-grid > div[class^="col-"]').each(function () {
-							switch (mode) {
-								case 'list':
-									$(this).removeClass().addClass('col-xs-12');
-									break;
-								case 'grid':
-									$(this).removeClass().addClass(layout.join(" "));
-									break;
-								default:
-									console.log("Unknown mode");
-							}
-							$('.row.list-grid').removeClass('invisible');
-						});
-					};
-
-					var switchModes = function switchModes(mode, layout) {
-						$('.row.list-grid > div[class^="col-"]').each(function () {
-							switch (mode) {
-								case 'list':
-									$(this).removeClass().addClass('col-xs-12');
-									break;
-								case 'grid':
-									$(this).removeClass().addClass(layout.join(" "));
-									break;
-								default:
-									console.log("Unknown mode");
-							}
-						});
-						updateActiveIndicator(mode);
-					};
-
-					var saveState = function saveState(mode) {
-						$('.row.list-grid > div[class^="col-"]').each(function () {
-							$(this).data(mode + '-cols', $(this).attr('class'));
-						});
-					};
-
-					var updateActiveIndicator = function updateActiveIndicator(mode) {
-						var activeClasses = "active";
-						$('#list-grid-switcher a').removeClass(activeClasses);
-						$('#list-grid-switcher a[data-mode="' + mode + '"]').addClass(activeClasses);
-					};
-
-					var bindEvents = function bindEvents(layout) {
-						$('#list-grid-switcher a').click(function () {
-							switchModes($(this).data('mode'), layout);
-						});
-					};
-
-					init();
-				})();
-			}
-		},
-
-		videoWidget: function videoWidget() {
-
-			var trigger = $("body").find('.video-modal[data-toggle="modal"]');
-
-			trigger.each(function () {
-
-				var theModal = $(this).data("target"),
-				    videoSRC = $(this).attr("data-youtube-video-id"),
-				    autoplay = $(this).attr("data-autoplay") || 1,
-				    videoSRCauto = 'http://www.youtube.com/embed/' + videoSRC + '?autoplay=' + autoplay;
-
-				$(this).append('<img class="img-fluid" src="https://img.youtube.com/vi/' + videoSRC + '/maxresdefault.jpg">');
-
-				$(this).click(function (e) {
-					e.preventDefault();
-					$(theModal + ' iframe').attr('src', videoSRCauto);
-					$(theModal + ' button.close').click(function () {
-						$(theModal + ' iframe').attr('src', videoSRC);
-					});
-				});
-			});
-		},
-
-		helpful: function helpful() {
-			$('.helpful-widget button').on('click', function (e) {
-				e.preventDefault();
-
-				var id = $(this).closest('.helpful-widget').data('article-id'),
-				    val = $(this).hasClass('yes') ? '+1' : '-1';
-
-				var data = {};
-				data.val = val;
-
-				$.ajax({
-					type: 'POST',
-					data: JSON.stringify(data),
-					contentType: 'application/json',
-					url: '/articles/score/' + id,
-					success: function success(data) {
-						toastr.success(data.score);
-						$('.helpful-widget').hide();
-					},
-					error: function error(request, status, _error2) {
-						console.log(_error2);
-						toastr.error('Cannot update score. ');
-					}
-				});
-			});
-		},
-		googleMaps: function googleMaps() {
-
-			if ($('.google-map').length > 0) {
-				(function () {
-
-					var geocoder = new google.maps.Geocoder();
-
-					$('.google-map').each(function (map) {
-
-						var m = new google.maps.Map(document.getElementById($(this).attr('id')), {
-							zoom: $(this).data('map-zoom') || 10,
-							center: {
-								lat: $(this).data('map-lat') || 42.365515,
-								lng: $(this).data('map-lng') || -71.122141
-							},
-							mapTypeId: $(this).data('map-type') || 'roadmap'
-						});
-
-						if ($(this).data('map-address')) {
-							geocodeAddress(geocoder, $(this).data('map-address'), m);
-						}
-
-						function geocodeAddress(geocoder, address, resultsMap) {
-							geocoder.geocode({ 'address': address }, function (results, status) {
-								if (status === 'OK') {
-									resultsMap.setCenter(results[0].geometry.location);
-									var marker = new google.maps.Marker({
-										map: resultsMap,
-										position: results[0].geometry.location
-									});
-								} else {
-									alert('Geocode was not successful for the following reason: ' + status);
-								}
-							});
-						}
-
-						// has markers? (TODO)
-					});
-				})();
-			}
-		},
-		hideLoader: function hideLoader() {
-			$('.load-container').fadeOut('slow');
-			$('.load-container ~ .container-fluid').fadeIn();
-			$(window).trigger('resize');
-		},
-		swapIcons: function swapIcons() {
-			$('[data-alt-icon]').each(function () {
-				var currClasses = $(this).attr('class');
-				var icon = $(this).data("icon");
-				var altIco = $(this).data('alt-icon');
-				var event = $(this).data('alt-icon-trigger');
-
-				$(this).addClass('fa').addClass(icon);
-				$(this).addClass(currClasses);
-
-				switch (event) {
-					case 'click':
-						$(this).on(event, function (e) {
-							$(this).toggleClass(icon + ' ' + altIco);
-						});
-						break;
-					case 'hover':
-						$(this).hover(function () {
-							$(this).toggleClass(icon + ' ' + altIco);
-						}, function () {
-							$(this).toggleClass(altIco + ' ' + icon);
-						});
-						break;
-					default:
-						console.log("Unknown event.");
-				}
-			});
-		},
-		clipboard: function clipboard() {
-			var clipboard = new ClipboardJS('.btn');
-
-			clipboard.on('success', function (e) {
-
-				switch (e.action) {
-					case 'copy':
-						toastr.success("Copied sucessfully");
-						break;
-					case 'cut':
-						toastr.success("Cut sucessfully");
-						break;
-					default:
-						console.log("Invalid selection");
-				}
-
-				// console.info('Action:', e.action);
-				// console.info('Text:', e.text);
-				// console.info('Trigger:', e.trigger);
-
-				e.clearSelection();
-			});
-
-			clipboard.on('error', function (e) {
-				toastr.error("Unable to copy/cut");
-				// console.error('Action:', e.action);
-				// console.error('Trigger:', e.trigger);
-			});
-		},
-		matchHeight: function matchHeight() {
-			$(function () {
-				$('.match-height').matchHeight({
-					byRow: true, // enable row detection
-					property: 'height', // the CSS property name to set (e.g. 'height' or 'min-height')
-					target: null, // optional element to use instead of the element with maximum height
-					remove: false // remove previous bindings instead of applying new ones
-				});
-			});
-		},
-		debug: function debug() {
-			var browser = Platypus.detectBrowsers();
-
-			if (!browser.isIE) {
-
-				var searchParams = new URLSearchParams(window.location.search);
-				if (searchParams.has('debug')) {
-					switch (searchParams.get('debug')) {
-						case 'accessibility':
-							console.log("Debugging accessibility... The page might become unresponsive for a few seconds. Please stand by.");
-							p = Promise.all([load.js("https://cdnjs.cloudflare.com/ajax/libs/axe-core/2.6.1/axe.min.js")]).then(function () {
-								var opts = {
-									runOnly: {
-										type: "tag",
-										values: ["wcag2a", "wcag2aa"]
-									}
-								};
-
-								axe.run(document, opts, function (error, results) {
-									if (results.violations.length === 0) {
-										console.log("Congratulations! This page is WCAG 2.0 Level A and AA compliant.");
-									} else {
-										console.log("The following accessibility issue should be fixed:");
-										results.violations.map(function (violation) {
-											return console.log(violation);
-										});
-									}
-								});
-							});
-							break;
-						default:
-							console.log("Invalid debug value");
-					}
-				}
-			}
-		},
-		last: ''
-	};
-
-	$(document).ready(Platypus.ondomready);
-
-	window.Platypus = Platypus;
+;
+(function ($) {
+    var load = (function () {
+        function _load(tag) {
+            return function (url) {
+                return new Promise(function (resolve, reject) {
+                    var element = document.createElement(tag);
+                    var parent = 'body';
+                    var attr = 'src';
+                    element.onload = function () {
+                        console.log("Loaded " + url + " successfully.");
+                        resolve(url);
+                    };
+                    element.onerror = function () {
+                        console.log("Cannot load " + url);
+                        reject(url);
+                    };
+                    switch (tag) {
+                        case 'script':
+                            element.async = true;
+                            break;
+                        case 'link':
+                            element.type = 'text/css';
+                            element.rel = 'stylesheet';
+                            attr = 'href';
+                            parent = 'head';
+                    }
+                    element[attr] = url;
+                    document[parent].appendChild(element);
+                });
+            };
+        }
+        return {
+            css: _load('link'),
+            js: _load('script'),
+            img: _load('img')
+        };
+    })();
+    var currentVersion = '0.4';
+    var Platypus = {
+        ondomready: function () {
+            Platypus.detectBreakpoint();
+            Platypus.detectBrowsers();
+            Platypus.setupSpinOnAjax();
+            Platypus.btnSubmitAnimate();
+            Platypus.inputMaxLength();
+            Platypus.backToTop();
+            Platypus.highlightJS();
+            Platypus.waveEffect();
+            Platypus.leftMenu();
+            Platypus.cards();
+            Platypus.carousel();
+            Platypus.dataTables();
+            Platypus.select2();
+            Platypus.dateRange();
+            Platypus.wysiwyg();
+            Platypus.gauges();
+            Platypus.avatar();
+            Platypus.wizard();
+            Platypus.toasts();
+            Platypus.dateTimePickers();
+            Platypus.slider();
+            Platypus.formRendering();
+            Platypus.formConditionize();
+            Platypus.formAddress();
+            Platypus.slimScroll();
+            Platypus.gallery();
+            Platypus.AZList();
+            Platypus.rotatingBg();
+            Platypus.inlineEdit();
+            Platypus.modal();
+            Platypus.navBar();
+            Platypus.search();
+            Platypus.externalLinks();
+            Platypus.searchPills();
+            Platypus.infiniteLoading();
+            Platypus.feedback();
+            Platypus.gridListSwitcher();
+            Platypus.videoWidget();
+            Platypus.helpful();
+            Platypus.toolTip();
+            Platypus.popOver();
+            Platypus.printArea();
+            Platypus.progressBar();
+            Platypus.googleMaps();
+            Platypus.hideLoader();
+            Platypus.breadCrumbs();
+            Platypus.renderCharts();
+            Platypus.swapIcons();
+            Platypus.clipboard();
+            Platypus.matchHeight();
+            Platypus.debug();
+            Platypus.testTS();
+        },
+        testTS: function () {
+            console.log("Testing Typescript implementation....");
+        },
+        detectBreakpoint: function () {
+            var $html = $('html'), currClass = '', finalClass = 'xl', w = $(window).width();
+            // get current breakpoint class
+            if ($html.hasClass('xl')) {
+                currClass = 'xl';
+            }
+            else if ($html.hasClass('lg')) {
+                currClass = 'lg';
+            }
+            else if ($html.hasClass('md')) {
+                currClass = 'md';
+            }
+            else if ($html.hasClass('sm')) {
+                currClass = 'sm';
+            }
+            else if ($html.hasClass('xs')) {
+                currClass = 'xs';
+            }
+            // detect breakpoint
+            if (w < 576) {
+                finalClass = 'xs';
+            }
+            else if (w < 768) {
+                finalClass = 'sm';
+            }
+            else if (w < 992) {
+                finalClass = 'md';
+            }
+            else if (w < 1200) {
+                finalClass = 'lg';
+            }
+            else {
+                finalClass = 'xl';
+            }
+            if (currClass == finalClass)
+                return;
+            $html.removeClass('xl lg md sm xs');
+            if (finalClass == 'xl') {
+                $html.removeClass('lg md sm xs');
+            }
+            else if (finalClass == 'lg') {
+                $html.removeClass('xl md sm xs');
+            }
+            else if (finalClass == 'md') {
+                $html.removeClass('xl lg sm xs');
+            }
+            else if (finalClass == 'sm') {
+                $html.removeClass('xl lg md xs');
+            }
+            if (!$html.hasClass(finalClass)) {
+                $html.addClass(finalClass);
+            }
+            $(window).resize(Platypus.detectBreakpoint);
+        },
+        detectBrowsers: function () {
+            // Opera 8.0+
+            var isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+            // Firefox 1.0+
+            var isFirefox = typeof InstallTrigger !== 'undefined';
+            // Safari 3.0+ "[object HTMLElementConstructor]" 
+            var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || safari.pushNotification);
+            // Internet Explorer 6-11
+            var isIE = /*@cc_on!@*/ false || !!document.documentMode;
+            // Edge 20+
+            var isEdge = !isIE && !!window.StyleMedia;
+            // Chrome 1+
+            var isChrome = !!window.chrome && !!window.chrome.webstore;
+            // Blink engine detection
+            var isBlink = (isChrome || isOpera) && !!window.CSS;
+            return {
+                isOpera: isOpera,
+                isFirefox: isFirefox,
+                isSafari: isSafari,
+                isIE: isIE,
+                isEdge: isEdge,
+                isBlink: isBlink
+            };
+        },
+        btnSubmitAnimate: function () {
+            $('button[type="submit"]').not(".no-spinner")
+                .addClass('ladda-button')
+                .attr('data-style', 'zoom-in');
+            // .attr('data-label', 'zoom-in');
+            Ladda.bind('button[type="submit"]:not(.no-spinner)');
+            var browser = Platypus.detectBrowsers();
+            if (browser.isSafari || browser.isFirefox) {
+                // Prevent Back-Forward-Cache issue
+                $(window).bind("pageshow", function (event) {
+                    if (event.originalEvent.persisted) {
+                        Ladda.stopAll();
+                    }
+                });
+            }
+        },
+        inputMaxLength: function () {
+            $('input[maxlength], textarea[maxlength]').each(function () {
+                var $input = $(this);
+                $input.maxlength({
+                    alwaysShow: true,
+                    showOnReady: false,
+                    // threshold: 10,
+                    appendToParent: true,
+                    warningClass: "tag tag-success",
+                    limitReachedClass: "tag tag-danger"
+                }).on('blur', function () {
+                    $input.siblings('span.bootstrap-maxlength').hide();
+                });
+            });
+        },
+        backToTop: function () {
+            $('body').append('<a id="back-to-top" href="#" class="btn palette-bg-teal-500 btn-lg back-to-top text-white" role="button" title="Return to the top" data-toggle="tooltip" data-placement="left"><span class="fa fa-chevron-up"></span></a>');
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 50) {
+                    $('#back-to-top').fadeIn();
+                }
+                else {
+                    $('#back-to-top').fadeOut();
+                }
+            });
+            $('#back-to-top').click(function () {
+                $('#back-to-top').tooltip('hide');
+                $('body,html').animate({
+                    scrollTop: 0
+                }, 800);
+                return false;
+            });
+        },
+        highlightJS: function () {
+            $('pre code').each(function (i, e) {
+                hljs.highlightBlock(e);
+            });
+        },
+        waveEffect: function () {
+            Waves.attach('.btn, .sidebar-nav li a');
+            Waves.init();
+        },
+        breadCrumbs: function () {
+            $('.breadcrumb').asBreadcrumbs({
+                namespace: 'breadcrumb',
+                overflow: "left",
+                responsive: true,
+                ellipsisText: "&#8230;",
+                ellipsisClass: null,
+                hiddenClass: 'is-hidden',
+                dropdownClass: null,
+                dropdownMenuClass: null,
+                dropdownItemClass: null,
+                dropdownItemDisableClass: 'disabled',
+                toggleClass: 'dropdown-toggle',
+                toggleIconClass: 'caret',
+                getItems: function ($parent) {
+                    return $parent.children();
+                },
+                getItemLink: function ($item) {
+                    return $item.find('a');
+                },
+                ellipsis: function (classes, label) {
+                    return "<li class=\"" + classes.ellipsisClass + "\">" + label + "</li>";
+                },
+                dropdown: function (classes) {
+                    var dropdownClass = 'dropdown';
+                    var dropdownMenuClass = 'dropdown-menu';
+                    if (this.options.overflow === 'right') {
+                        dropdownMenuClass += ' dropdown-menu-right';
+                    }
+                    return "\n\t\t\t\t\t\t<li class=\"" + dropdownClass + " " + classes.dropdownClass + "\">\n\t\t\t\t\t\t\t<a href=\"javascript:void(0);\" class=\"" + classes.toggleClass + "\" data-toggle=\"dropdown\">\n\t\t\t\t\t\t\t\t<i class=\"" + classes.toggleIconClass + "\"></i>\n\t\t\t\t\t\t\t</a>\n\t\t\t\t\t\t\t<ul class=\"" + dropdownMenuClass + " " + classes.dropdownMenuClass + "\"></ul>\n\t\t\t\t\t\t</li>\n\t\t\t\t\t";
+                },
+                dropdownItem: function (classes, label, href) {
+                    if (!href) {
+                        return "\n\t\t\t\t\t\t\t<li class=\"" + classes.dropdownItemClass + " " + classes.dropdownItemDisableClass + "\">\n\t\t\t\t\t\t\t\t<a href=\"#\">" + label + "</a>\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t";
+                    }
+                    return "\n\t\t\t\t\t\t<li class=\"" + classes.dropdownItemClass + "\">\n\t\t\t\t\t\t\t<a href=\"" + href + "\">" + label + "</a>\n\t\t\t\t\t\t</li>\n\t\t\t\t\t\t";
+                },
+                // callbacks
+                onInit: null,
+                onReady: null
+            });
+        },
+        cards: function () {
+            $('.card-hover-effect').on('mouseover', function () {
+                var $this = $(this);
+                var effect = 'bounceIn';
+                $this
+                    .addClass('animated ' + effect)
+                    .on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+                    $this.removeClass('animated ' + effect);
+                });
+            });
+            $('.card-flip').flip({
+                axis: "y",
+                reverse: false,
+                trigger: "manual",
+                speed: 500,
+                forceHeight: true,
+                forceWidth: false,
+                autoSize: true,
+                front: '.front',
+                back: '.back'
+            });
+            $(".card-flip .btn-flip").on('click', function (e) {
+                e.preventDefault();
+                $(this).closest('.card-flip').flip(true);
+            });
+            $(".card-flip .btn-unflip").on('click', function (e) {
+                e.preventDefault();
+                $(this).closest('.card-flip').flip(false);
+            });
+        },
+        leftMenu: function () {
+            $(".metismenu").metisMenu({
+                toggle: true
+            });
+        },
+        carousel: function () {
+            $(".carousel").slick({
+                dots: true,
+                infinite: false,
+                arrows: false
+            });
+        },
+        dataTables: function () {
+            function initTable($tbl, buttons) {
+                var btnMarkup = (buttons.length > 0) ? "<'row w-100'<'col-4 text-left'B><'col-6 text-left'f><'col-2 text-right'l>><'row w-100'<'col-12'tr>><'row w-100'<'col-sm-6 col-12 small'i><'col-sm-6 col-12'p>>" : "<'row w-100'<'col-10 text-left'f><'col-2 text-right'l>><'row w-100'<'col-12'tr>><'row w-100'<'col-sm-6 col-12 small'i><'col-sm-6 col-12'p>>";
+                var aoBttns = [];
+                if (buttons.length > 0) {
+                    window.pdfMake.fonts = {
+                        Roboto: {
+                            normal: 'Roboto-Regular.ttf',
+                            bold: 'Roboto-Medium.ttf',
+                            italics: 'Roboto-Italic.ttf',
+                            bolditalics: 'Roboto-MediumItalic.ttf'
+                        }
+                    };
+                    $tbl.on('init.dt', function (e, settings, json) {
+                        var api = new $.fn.dataTable.Api(settings);
+                        if (api.buttons().length > 0) {
+                            $("a", api.buttons().container(0)).each(function (index) {
+                                $(this).attr('data-toggle', 'tooltip');
+                                $(this).attr('data-placement', 'top');
+                            });
+                            $('[data-toggle="tooltip"]').tooltip();
+                        }
+                    });
+                    for (i = 0; i <= buttons.length; i++) {
+                        switch (buttons[i]) {
+                            case 'copy':
+                                if (buttons.indexOf('copy') !== -1) {
+                                    aoBttns.push({
+                                        extend: 'copy',
+                                        classname: 'btn',
+                                        text: '<i class="fa fa-files-o"></i>',
+                                        titleAttr: 'Copy to Clipboard'
+                                    });
+                                }
+                                break;
+                            case 'csv':
+                                if (buttons.indexOf('csv') !== -1) {
+                                    aoBttns.push({
+                                        extend: 'csv',
+                                        classname: 'btn',
+                                        text: '<i class="fa fa-file-text"></i>',
+                                        titleAttr: 'Download as .CSV'
+                                    });
+                                }
+                                break;
+                            case 'excel':
+                                if (buttons.indexOf('excel') !== -1) {
+                                    aoBttns.push({
+                                        extend: 'excel',
+                                        classname: 'btn',
+                                        text: '<i class="fa fa-file-excel-o"></i>',
+                                        titleAttr: 'Download as Excel'
+                                    });
+                                }
+                                break;
+                            case 'pdf':
+                                if (buttons.indexOf('pdf') !== -1) {
+                                    aoBttns.push({
+                                        extend: 'pdf',
+                                        classname: 'btn',
+                                        text: '<i class="fa fa-file-pdf-o"></i>',
+                                        titleAttr: 'Download as .PDF'
+                                    });
+                                }
+                                break;
+                            case 'print':
+                                if (buttons.indexOf('print') !== -1) {
+                                    aoBttns.push({
+                                        extend: 'print',
+                                        classname: 'btn',
+                                        text: '<i class="fa fa-print"></i>',
+                                        titleAttr: 'Print'
+                                    });
+                                }
+                                break;
+                            case 'colvis':
+                                if (buttons.indexOf('colvis') !== -1) {
+                                    aoBttns.push({
+                                        extend: 'colvis',
+                                        classname: 'btn',
+                                        text: '<i class="fa fa-eye"></i>',
+                                        titleAttr: 'Hide/Show Columns'
+                                    });
+                                }
+                                break;
+                        }
+                    }
+                    $.extend(true, $.fn.dataTable.Buttons.defaults, {
+                        buttons: aoBttns
+                    });
+                }
+                $tbl.DataTable({
+                    responsive: {
+                        details: {
+                            type: 'column',
+                            target: -1
+                        }
+                    },
+                    columnDefs: [{ className: 'control', orderable: false, targets: -1 }],
+                    dom: btnMarkup,
+                    stateSave: true,
+                    lengthMenu: [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+                    pagingType: 'full_numbers',
+                    "oLanguage": {
+                        sSearch: "",
+                        sSearchPlaceholder: "Filter records",
+                        sLengthMenu: "_MENU_",
+                        oPaginate: {
+                            sNext: '<i class="fa fa-forward"></i>',
+                            sPrevious: '<i class="fa fa-backward"></i>',
+                            sFirst: '<i class="fa fa-step-backward"></i>',
+                            sLast: '<i class="fa fa-step-forward"></i>'
+                        }
+                    }
+                });
+            }
+            $('.datatable').each(function () {
+                var $tbl = $(this);
+                var src = ($tbl.data('src') && $tbl.data('src') !== '') ? $tbl.data('src') : false;
+                var cols = ($tbl.data('cols') && $tbl.data('cols') !== '') ? $tbl.data('cols').split(',') : false;
+                var buttons = ($tbl.data('buttons') && $tbl.data('buttons') !== '') ? $tbl.data('buttons').split(',') : false;
+                var p;
+                if (buttons) {
+                    // TODO - load only necessary dependencies
+                    console.log("DataTable 'data-buttons' attribute found, loading remote dependecies...");
+                    p = Promise.all([
+                        // load.js("/vendor/pdfmake/build/pdfmake.min.js"),
+                        // load.js("/vendor/pdfmake/build/vfs_fonts.js"),
+                        load.css("https://s3.us-east-2.amazonaws.com/platypus-hbs/vendor/datatables/buttons/1.3.1/css/buttons.dataTables.min.css"),
+                        load.js("https://s3.us-east-2.amazonaws.com/platypus-hbs/vendor/datatables/buttons/1.3.1/js/dataTables.buttons.min.js"),
+                        load.js("https://s3.us-east-2.amazonaws.com/platypus-hbs/vendor/datatables/jszip/3.1.3/jszip.min.js"),
+                        load.js("https://s3.us-east-2.amazonaws.com/platypus-hbs/vendor/datatables/buttons/1.3.1/js/buttons.html5.min.js"),
+                        load.js("https://s3.us-east-2.amazonaws.com/platypus-hbs/vendor/datatables/buttons/1.3.1/js/buttons.print.min.js"),
+                        load.js("https://s3.us-east-2.amazonaws.com/platypus-hbs/vendor/datatables/buttons/1.3.1/js/buttons.colVis.min.js"),
+                    ]);
+                }
+                if (src && cols) {
+                    $.ajax(src, {
+                        success: function success(data) {
+                            data.forEach(function (item) {
+                                $tbl.find('tbody').append("<tr></tr>");
+                                cols.forEach(function (col) {
+                                    $tbl.find('tbody tr:last-child').append("<td>" + item[col] + "</td>");
+                                });
+                                $tbl.find('tbody tr:last-child').append("<td></td>");
+                            });
+                            if (buttons) {
+                                p.then(function () {
+                                    initTable($tbl, buttons);
+                                })["catch"](function (e) {
+                                    console.log('Cannot load DataTables button remote dependecies:' + e);
+                                });
+                            }
+                            else {
+                                initTable($tbl, buttons);
+                            }
+                        },
+                        error: function error(request, status, error) {
+                            console.log(request, status, error);
+                            swal('Error', 'Cannot retrieve data.', 'error');
+                        }
+                    });
+                }
+                else {
+                    // Initialize normal datatables
+                    if (buttons) {
+                        p.then(function () {
+                            initTable($tbl, buttons);
+                        })["catch"](function (e) {
+                            console.log('Cannot load DataTables button remote dependecies:' + e);
+                        });
+                    }
+                    else {
+                        initTable($tbl, buttons);
+                    }
+                }
+            });
+        },
+        toolTip: function () {
+            $('[data-toggle="tooltip"]').on('click', function (e) {
+                e.preventDefault();
+            });
+            $('[data-toggle="tooltip"]').tooltip();
+        },
+        popOver: function () {
+            $('[data-toggle="popover"]').on('click', function (e) {
+                e.preventDefault();
+            });
+            $('[data-toggle="popover"]').popover();
+        },
+        printArea: function () {
+            function printArea($el) {
+                var area = document.getElementById($el);
+                var title = document.title;
+                var newWin = window.open('', '', 'width=800,height=800');
+                newWin.document.write('<html><head><title>' + title + '</title><link rel="stylesheet" type="text/css" href="https://s3.us-east-2.amazonaws.com/platypus-hbs/version/0.5/platypus.min.css"></head><body>');
+                newWin.document.write(area.outerHTML);
+                newWin.document.write('</body></html>');
+                newWin.document.close();
+                newWin.focus();
+                //The Timeout is ONLY to make Safari work, but it still works with FF, IE & Chrome.
+                setTimeout(function () {
+                    newWin.print();
+                    newWin.close();
+                }, 1000);
+            }
+            $('a.print').click(function () {
+                printArea($(this).data('print-area-id'));
+            });
+        },
+        select2: function () {
+            var browser = Platypus.detectBrowsers();
+            function templateResult(item) {
+                var markup = "\n\t\t\t    \t<div class=\"row\">\n\t\t\t    \t\t<div class=\"col-sm-4\">" + item.text + "</div>\n\t\t\t    \t\t<div class=\"col-sm-4\">" + item.name + "</div>\n\t\t\t    \t\t<div class=\"col-sm-4\">" + item.id + "</div>\n\t\t\t    \t</div>";
+                return markup;
+            }
+            function templateSelection(item) {
+                return item.text;
+            }
+            $('.select2').each(function () {
+                var $this = $(this);
+                var source = $this.data('source');
+                var placeholder = (!browser.isIE && $this.data('placeholder')) !== '' ? $this.data('placeholder') : 'Select an option';
+                if (source && source != '') {
+                    $this.select2({
+                        ajax: {
+                            url: source,
+                            dataType: 'json',
+                            delay: 250,
+                            data: function (params) {
+                                return {
+                                    q: params.term ? params.term : "a",
+                                    page: params.page
+                                };
+                            },
+                            processResults: function (data, params) {
+                                params.page = params.page || 1;
+                                return {
+                                    results: $.map(data, function (item) {
+                                        return {
+                                            text: item.first_name,
+                                            name: item.last_name,
+                                            id: item.first_name
+                                        };
+                                    }),
+                                    pagination: {
+                                        more: (params.page * 30) < data.total_count
+                                    }
+                                };
+                            },
+                            cache: true
+                        },
+                        escapeMarkup: function (markup) { return markup; },
+                        placeholder: placeholder,
+                        minimumInputLength: 0,
+                        templateResult: templateResult,
+                        templateSelection: templateSelection
+                    }).on("select2:open", function () {
+                        if (!browser.isIE)
+                            $('.select2-search__field').attr('placeholder', placeholder);
+                    });
+                    ;
+                }
+                else {
+                    $this.select2({
+                        theme: "bootstrap",
+                        placeholder: placeholder
+                    }).on("select2:open", function () {
+                        if (!browser.isIE)
+                            $('.select2-search__field').attr('placeholder', placeholder);
+                    });
+                    ;
+                }
+            });
+        },
+        dateRange: function () {
+            $('input.daterange').daterangepicker({
+                autoApply: true,
+                startDate: $(this).data("start-date"),
+                endDate: $(this).data("end-date"),
+                maxDate: $(this).data("max-date"),
+                minDate: $(this).data("min-date")
+            });
+        },
+        wysiwyg: function () {
+            $('.summernote').summernote({
+                height: '200px',
+                airMode: false,
+                shortcuts: false,
+                toolbar: [
+                    // [groupName, [list of button]]
+                    ['style', ['bold', 'italic', 'underline', 'clear']],
+                    ['font', ['strikethrough', 'superscript', 'subscript']],
+                    ['fontsize', ['fontsize']], ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['height', ['height']],
+                    ['insert', ['link']],
+                    ['view', ['fullscreen', 'codeview']]
+                ],
+                popover: {
+                    air: [
+                    // ['color', ['color']],
+                    // ['font', ['bold', 'underline', 'clear']]
+                    ]
+                }
+            });
+        },
+        gauges: function () {
+            $(".dial").each(function () {
+                $(this).knob({
+                    fgColor: $(this).data('color') !== '' ? $(this).data('color') : 'green'
+                });
+            });
+        },
+        avatar: function () {
+            var palette = ["red", "pink", "purple", "indigo", "blue", "light-blue", "cyan", "teal", "green", "lime", "yellow", "amber", "orange", "deep-orange", "brown", "grey", "blue-grey"];
+            $('.avatar').each(function () {
+                var name = _.trim($(this).text());
+                var initials = name.split(" ").map(function (n) { return n[0]; }).join("");
+                var personId = $(this).data('person-id');
+                var personRole = $(this).data('person-role');
+                if (!isNaN(personId) && (personRole == 'facstaff' || 'mba')) {
+                    var url = "http://sands.hbs.edu/photos/" + personRole + "/Ent" + personId + ".jpg";
+                    $(this).css({
+                        "background-image": "url(" + url + ")"
+                    });
+                    $(this).text(initials.toUpperCase()).attr('data-toggle', 'tooltip').attr('title', name);
+                }
+                else {
+                    $(this).addClass("palette-bg-" + _.sample(palette) + "-500");
+                    $(this).text(initials.toUpperCase()).attr('data-toggle', 'tooltip').attr('title', name);
+                    ;
+                }
+            });
+        },
+        progressBar: function () {
+            $('.progress .progress-bar').hide();
+            $('.progress .progress-bar').css("width", "0%");
+            $('.progress .progress-bar').show();
+            setTimeout(function () {
+                $('.progress .progress-bar').css("width", function () {
+                    return $(this).attr("aria-valuenow") + "%";
+                });
+            }, 500);
+        },
+        wizard: function () {
+            $('.wizard').each(function () {
+                var $wizard = $(this);
+                $wizard.wizard();
+                var $form = $wizard.closest('form[data-parsley-validate]');
+                if ($form.length) {
+                    $wizard.on('actionclicked.fu.wizard', function (evt, data) {
+                        if (data.direction === 'next' && !$form.parsley().validate({ group: 'block' + data.step })) {
+                            evt.preventDefault();
+                            return;
+                        }
+                    });
+                    $wizard.on('finished.fu.wizard', function (evt, data) {
+                        $form.submit();
+                        console.log("submit");
+                    });
+                }
+            });
+        },
+        toasts: function () {
+            toastr.options = {
+                "closeButton": true,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": false,
+                "positionClass": ($('html').hasClass('xs') || $('html').hasClass('sm')) ? "toast-bottom-center" : "toast-top-right",
+                "preventDuplicates": true,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1500",
+                "timeOut": "1500",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+        },
+        dateTimePickers: function () {
+            var customIcons = {
+                time: "fa fa-clock-o",
+                date: "fa fa-calendar",
+                up: "fa fa-arrow-up",
+                down: "fa fa-arrow-down",
+                previous: 'fa fa-angle-left',
+                next: 'fa fa-angle-right',
+                today: 'fa fa-bullseye',
+                clear: 'fa fa-tash',
+                close: 'fa fa-close'
+            };
+            $('body').on('focus', '.datetime-picker', function (e) {
+                var format = $(this).data('format') != '' ? $(this).data('format') : 'MM-DD-YYYY';
+                var inline = ($(this).data('inline') != '' && $(this).data('inline') == true) ? true : false;
+                $(this).datetimepicker({
+                    locale: 'en',
+                    format: format,
+                    icons: customIcons,
+                    keepOpen: false,
+                    inline: inline,
+                    sideBySide: true,
+                    stepping: 15,
+                    debug: false
+                });
+            });
+        },
+        slider: function () {
+            $('input[name="slider"]').slider({
+                formatter: function formatter(value) {
+                    return value;
+                }
+            });
+        },
+        formRendering: function () {
+            // TODO: Refactor this while thing, cache $('form'), break it apart into smaller modules
+            // Enable navigate away / close window prompt
+            // TODO: Only bind if data has changed
+            if ($('form').hasClass('navigate-away-warning')) {
+                window.onbeforeunload = function () { return true; };
+            }
+            else {
+                window.onbeforeunload = null;
+            }
+            $('form small').each(function () {
+                var helpText = $(this).html();
+                var tooltipHelp = "<a href=\"#\" class=\"\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"" + helpText + "\"><i class=\"fa fa-question-circle-o fa-fw\"></i></a>";
+                $(this).closest('.form-group .col-md-8').find('label').append(tooltipHelp);
+            });
+            $('body').on('click', '.input-group-append', function () {
+                if ($(this).siblings('.form-control').length) {
+                    console.log("clicked");
+                    $(this).siblings('.form-control').focus();
+                }
+            });
+            $('input,textarea,select').filter('[required]').each(function () {
+                $(this).closest('.form-group').find('label:not(".custom-control"):first-child').append("&nbsp;<span class='float-right text-danger'>*</span>");
+            });
+            $('input[type="password"].meter').strength({
+                wrapper: true,
+                showHideButtonText: 'Show',
+                showHideButtonTextToggle: 'Hide'
+            });
+            $('.rating-tooltip-manual').rating({
+                extendSymbol: function () {
+                    var title;
+                    $(this).tooltip({
+                        container: 'body',
+                        placement: 'bottom',
+                        trigger: 'manual',
+                        title: function () {
+                            return title;
+                        }
+                    });
+                    $(this).on('rating.rateenter', function (e, rate) {
+                        title = rate;
+                        $(this).tooltip('show');
+                    })
+                        .on('rating.rateleave', function () {
+                        $(this).tooltip('hide');
+                    });
+                }
+            });
+            $('.go-back').on('click', function (e) {
+                e.preventDefault();
+                window.history.back();
+            });
+            $('.custom-file-input').on('change', function (e) {
+                if ($(this).val() != "") {
+                    $(this).next().addClass('selected').attr('data-before', $(this).val().replace(/^C:\\fakepath\\|^.*[\\\/]/gmi, ''));
+                }
+                else {
+                    $(this).next().addClass('selected').attr('data-before', 'Choose file...');
+                }
+            });
+            $('input.currency').maskMoney();
+            $('button[type="reset"]').on('click', function () {
+                $('.custom-file-control').removeClass('selected');
+            });
+            $('.confirm-delete').on('click', function (e) {
+                e.preventDefault();
+                var el = $(this), title = (el.data('confirm-delete-title') && el.data('confirm-delete-title') !== '') ? el.data('confirm-delete-title') : 'Are you sure?', text = (el.data('confirm-delete-text') && el.data('confirm-delete-text') !== '') ? el.data('confirm-delete-text') : "This action cannot be reverted.";
+                swal({
+                    title: title,
+                    text: text,
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Delete'
+                }).then(function () {
+                    var parentForm = $(el).closest('form');
+                    if (parentForm.length > 0) {
+                        parentForm.submit();
+                    }
+                    else {
+                        window.location.href = $(el).attr("href");
+                    }
+                    Ladda.stopAll();
+                    // swal(
+                    //  	'Deleted!',
+                    //  	'Item successfully removed.',
+                    //  	'success'
+                    // );
+                }, function (dismiss) {
+                    Ladda.stopAll();
+                });
+            });
+            $('.fileinput').fileinput();
+            $('.populate-ul').each(function () {
+                var $el = $(this);
+                var type = $el.data('populate-ul-type');
+                var geo = $el.data('ip-geo-locate');
+                var geoLocateResponse;
+                var countries = [
+                    { "name": "", "code": "" },
+                    { "name": "Afghanistan", "code": "AF" },
+                    { "name": "land Islands", "code": "AX" },
+                    { "name": "Albania", "code": "AL" },
+                    { "name": "Algeria", "code": "DZ" },
+                    { "name": "American Samoa", "code": "AS" },
+                    { "name": "AndorrA", "code": "AD" },
+                    { "name": "Angola", "code": "AO" },
+                    { "name": "Anguilla", "code": "AI" },
+                    { "name": "Antarctica", "code": "AQ" },
+                    { "name": "Antigua and Barbuda", "code": "AG" },
+                    { "name": "Argentina", "code": "AR" },
+                    { "name": "Armenia", "code": "AM" },
+                    { "name": "Aruba", "code": "AW" },
+                    { "name": "Australia", "code": "AU" },
+                    { "name": "Austria", "code": "AT" },
+                    { "name": "Azerbaijan", "code": "AZ" },
+                    { "name": "Bahamas", "code": "BS" },
+                    { "name": "Bahrain", "code": "BH" },
+                    { "name": "Bangladesh", "code": "BD" },
+                    { "name": "Barbados", "code": "BB" },
+                    { "name": "Belarus", "code": "BY" },
+                    { "name": "Belgium", "code": "BE" },
+                    { "name": "Belize", "code": "BZ" },
+                    { "name": "Benin", "code": "BJ" },
+                    { "name": "Bermuda", "code": "BM" },
+                    { "name": "Bhutan", "code": "BT" },
+                    { "name": "Bolivia", "code": "BO" },
+                    { "name": "Bosnia and Herzegovina", "code": "BA" },
+                    { "name": "Botswana", "code": "BW" },
+                    { "name": "Bouvet Island", "code": "BV" },
+                    { "name": "Brazil", "code": "BR" },
+                    { "name": "British Indian Ocean Territory", "code": "IO" },
+                    { "name": "Brunei Darussalam", "code": "BN" },
+                    { "name": "Bulgaria", "code": "BG" },
+                    { "name": "Burkina Faso", "code": "BF" },
+                    { "name": "Burundi", "code": "BI" },
+                    { "name": "Cambodia", "code": "KH" },
+                    { "name": "Cameroon", "code": "CM" },
+                    { "name": "Canada", "code": "CA" },
+                    { "name": "Cape Verde", "code": "CV" },
+                    { "name": "Cayman Islands", "code": "KY" },
+                    { "name": "Central African Republic", "code": "CF" },
+                    { "name": "Chad", "code": "TD" },
+                    { "name": "Chile", "code": "CL" },
+                    { "name": "China", "code": "CN" },
+                    { "name": "Christmas Island", "code": "CX" },
+                    { "name": "Cocos (Keeling) Islands", "code": "CC" },
+                    { "name": "Colombia", "code": "CO" },
+                    { "name": "Comoros", "code": "KM" },
+                    { "name": "Congo", "code": "CG" },
+                    { "name": "Congo, The Democratic Republic of the", "code": "CD" },
+                    { "name": "Cook Islands", "code": "CK" },
+                    { "name": "Costa Rica", "code": "CR" },
+                    { "name": "Cote D'Ivoire", "code": "CI" },
+                    { "name": "Croatia", "code": "HR" },
+                    { "name": "Cuba", "code": "CU" },
+                    { "name": "Cyprus", "code": "CY" },
+                    { "name": "Czech Republic", "code": "CZ" },
+                    { "name": "Denmark", "code": "DK" },
+                    { "name": "Djibouti", "code": "DJ" },
+                    { "name": "Dominica", "code": "DM" },
+                    { "name": "Dominican Republic", "code": "DO" },
+                    { "name": "Ecuador", "code": "EC" },
+                    { "name": "Egypt", "code": "EG" },
+                    { "name": "El Salvador", "code": "SV" },
+                    { "name": "Equatorial Guinea", "code": "GQ" },
+                    { "name": "Eritrea", "code": "ER" },
+                    { "name": "Estonia", "code": "EE" },
+                    { "name": "Ethiopia", "code": "ET" },
+                    { "name": "Falkland Islands (Malvinas)", "code": "FK" },
+                    { "name": "Faroe Islands", "code": "FO" },
+                    { "name": "Fiji", "code": "FJ" },
+                    { "name": "Finland", "code": "FI" },
+                    { "name": "France", "code": "FR" },
+                    { "name": "French Guiana", "code": "GF" },
+                    { "name": "French Polynesia", "code": "PF" },
+                    { "name": "French Southern Territories", "code": "TF" },
+                    { "name": "Gabon", "code": "GA" },
+                    { "name": "Gambia", "code": "GM" },
+                    { "name": "Georgia", "code": "GE" },
+                    { "name": "Germany", "code": "DE" },
+                    { "name": "Ghana", "code": "GH" },
+                    { "name": "Gibraltar", "code": "GI" },
+                    { "name": "Greece", "code": "GR" },
+                    { "name": "Greenland", "code": "GL" },
+                    { "name": "Grenada", "code": "GD" },
+                    { "name": "Guadeloupe", "code": "GP" },
+                    { "name": "Guam", "code": "GU" },
+                    { "name": "Guatemala", "code": "GT" },
+                    { "name": "Guernsey", "code": "GG" },
+                    { "name": "Guinea", "code": "GN" },
+                    { "name": "Guinea-Bissau", "code": "GW" },
+                    { "name": "Guyana", "code": "GY" },
+                    { "name": "Haiti", "code": "HT" },
+                    { "name": "Heard Island and Mcdonald Islands", "code": "HM" },
+                    { "name": "Holy See (Vatican City State)", "code": "VA" },
+                    { "name": "Honduras", "code": "HN" },
+                    { "name": "Hong Kong", "code": "HK" },
+                    { "name": "Hungary", "code": "HU" },
+                    { "name": "Iceland", "code": "IS" },
+                    { "name": "India", "code": "IN" },
+                    { "name": "Indonesia", "code": "ID" },
+                    { "name": "Iran, Islamic Republic Of", "code": "IR" },
+                    { "name": "Iraq", "code": "IQ" },
+                    { "name": "Ireland", "code": "IE" },
+                    { "name": "Isle of Man", "code": "IM" },
+                    { "name": "Israel", "code": "IL" },
+                    { "name": "Italy", "code": "IT" },
+                    { "name": "Jamaica", "code": "JM" },
+                    { "name": "Japan", "code": "JP" },
+                    { "name": "Jersey", "code": "JE" },
+                    { "name": "Jordan", "code": "JO" },
+                    { "name": "Kazakhstan", "code": "KZ" },
+                    { "name": "Kenya", "code": "KE" },
+                    { "name": "Kiribati", "code": "KI" },
+                    { "name": "Korea, Democratic People's Republic of", "code": "KP" },
+                    { "name": "Korea, Republic of", "code": "KR" },
+                    { "name": "Kuwait", "code": "KW" },
+                    { "name": "Kyrgyzstan", "code": "KG" },
+                    { "name": "Lao People's Democratic Republic", "code": "LA" },
+                    { "name": "Latvia", "code": "LV" },
+                    { "name": "Lebanon", "code": "LB" },
+                    { "name": "Lesotho", "code": "LS" },
+                    { "name": "Liberia", "code": "LR" },
+                    { "name": "Libyan Arab Jamahiriya", "code": "LY" },
+                    { "name": "Liechtenstein", "code": "LI" },
+                    { "name": "Lithuania", "code": "LT" },
+                    { "name": "Luxembourg", "code": "LU" },
+                    { "name": "Macao", "code": "MO" },
+                    { "name": "Macedonia, The Former Yugoslav Republic of", "code": "MK" },
+                    { "name": "Madagascar", "code": "MG" },
+                    { "name": "Malawi", "code": "MW" },
+                    { "name": "Malaysia", "code": "MY" },
+                    { "name": "Maldives", "code": "MV" },
+                    { "name": "Mali", "code": "ML" },
+                    { "name": "Malta", "code": "MT" },
+                    { "name": "Marshall Islands", "code": "MH" },
+                    { "name": "Martinique", "code": "MQ" },
+                    { "name": "Mauritania", "code": "MR" },
+                    { "name": "Mauritius", "code": "MU" },
+                    { "name": "Mayotte", "code": "YT" },
+                    { "name": "Mexico", "code": "MX" },
+                    { "name": "Micronesia, Federated States of", "code": "FM" },
+                    { "name": "Moldova, Republic of", "code": "MD" },
+                    { "name": "Monaco", "code": "MC" },
+                    { "name": "Mongolia", "code": "MN" },
+                    { "name": "Montenegro", "code": "ME" },
+                    { "name": "Montserrat", "code": "MS" },
+                    { "name": "Morocco", "code": "MA" },
+                    { "name": "Mozambique", "code": "MZ" },
+                    { "name": "Myanmar", "code": "MM" },
+                    { "name": "Namibia", "code": "NA" },
+                    { "name": "Nauru", "code": "NR" },
+                    { "name": "Nepal", "code": "NP" },
+                    { "name": "Netherlands", "code": "NL" },
+                    { "name": "Netherlands Antilles", "code": "AN" },
+                    { "name": "New Caledonia", "code": "NC" },
+                    { "name": "New Zealand", "code": "NZ" },
+                    { "name": "Nicaragua", "code": "NI" },
+                    { "name": "Niger", "code": "NE" },
+                    { "name": "Nigeria", "code": "NG" },
+                    { "name": "Niue", "code": "NU" },
+                    { "name": "Norfolk Island", "code": "NF" },
+                    { "name": "Northern Mariana Islands", "code": "MP" },
+                    { "name": "Norway", "code": "NO" },
+                    { "name": "Oman", "code": "OM" },
+                    { "name": "Pakistan", "code": "PK" },
+                    { "name": "Palau", "code": "PW" },
+                    { "name": "Palestinian Territory, Occupied", "code": "PS" },
+                    { "name": "Panama", "code": "PA" },
+                    { "name": "Papua New Guinea", "code": "PG" },
+                    { "name": "Paraguay", "code": "PY" },
+                    { "name": "Peru", "code": "PE" },
+                    { "name": "Philippines", "code": "PH" },
+                    { "name": "Pitcairn", "code": "PN" },
+                    { "name": "Poland", "code": "PL" },
+                    { "name": "Portugal", "code": "PT" },
+                    { "name": "Puerto Rico", "code": "PR" },
+                    { "name": "Qatar", "code": "QA" },
+                    { "name": "Reunion", "code": "RE" },
+                    { "name": "Romania", "code": "RO" },
+                    { "name": "Russian Federation", "code": "RU" },
+                    { "name": "RWANDA", "code": "RW" },
+                    { "name": "Saint Helena", "code": "SH" },
+                    { "name": "Saint Kitts and Nevis", "code": "KN" },
+                    { "name": "Saint Lucia", "code": "LC" },
+                    { "name": "Saint Pierre and Miquelon", "code": "PM" },
+                    { "name": "Saint Vincent and the Grenadines", "code": "VC" },
+                    { "name": "Samoa", "code": "WS" },
+                    { "name": "San Marino", "code": "SM" },
+                    { "name": "Sao Tome and Principe", "code": "ST" },
+                    { "name": "Saudi Arabia", "code": "SA" },
+                    { "name": "Senegal", "code": "SN" },
+                    { "name": "Serbia", "code": "RS" },
+                    { "name": "Seychelles", "code": "SC" },
+                    { "name": "Sierra Leone", "code": "SL" },
+                    { "name": "Singapore", "code": "SG" },
+                    { "name": "Slovakia", "code": "SK" },
+                    { "name": "Slovenia", "code": "SI" },
+                    { "name": "Solomon Islands", "code": "SB" },
+                    { "name": "Somalia", "code": "SO" },
+                    { "name": "South Africa", "code": "ZA" },
+                    { "name": "South Georgia and the South Sandwich Islands", "code": "GS" },
+                    { "name": "Spain", "code": "ES" },
+                    { "name": "Sri Lanka", "code": "LK" },
+                    { "name": "Sudan", "code": "SD" },
+                    { "name": "Suriname", "code": "SR" },
+                    { "name": "Svalbard and Jan Mayen", "code": "SJ" },
+                    { "name": "Swaziland", "code": "SZ" },
+                    { "name": "Sweden", "code": "SE" },
+                    { "name": "Switzerland", "code": "CH" },
+                    { "name": "Syrian Arab Republic", "code": "SY" },
+                    { "name": "Taiwan, Province of China", "code": "TW" },
+                    { "name": "Tajikistan", "code": "TJ" },
+                    { "name": "Tanzania, United Republic of", "code": "TZ" },
+                    { "name": "Thailand", "code": "TH" },
+                    { "name": "Timor-Leste", "code": "TL" },
+                    { "name": "Togo", "code": "TG" },
+                    { "name": "Tokelau", "code": "TK" },
+                    { "name": "Tonga", "code": "TO" },
+                    { "name": "Trinidad and Tobago", "code": "TT" },
+                    { "name": "Tunisia", "code": "TN" },
+                    { "name": "Turkey", "code": "TR" },
+                    { "name": "Turkmenistan", "code": "TM" },
+                    { "name": "Turks and Caicos Islands", "code": "TC" },
+                    { "name": "Tuvalu", "code": "TV" },
+                    { "name": "Uganda", "code": "UG" },
+                    { "name": "Ukraine", "code": "UA" },
+                    { "name": "United Arab Emirates", "code": "AE" },
+                    { "name": "United Kingdom", "code": "GB" },
+                    { "name": "United States", "code": "US" },
+                    { "name": "United States Minor Outlying Islands", "code": "UM" },
+                    { "name": "Uruguay", "code": "UY" },
+                    { "name": "Uzbekistan", "code": "UZ" },
+                    { "name": "Vanuatu", "code": "VU" },
+                    { "name": "Venezuela", "code": "VE" },
+                    { "name": "Viet Nam", "code": "VN" },
+                    { "name": "Virgin Islands, British", "code": "VG" },
+                    { "name": "Virgin Islands, U.S.", "code": "VI" },
+                    { "name": "Wallis and Futuna", "code": "WF" },
+                    { "name": "Western Sahara", "code": "EH" },
+                    { "name": "Yemen", "code": "YE" },
+                    { "name": "Zambia", "code": "ZM" },
+                    { "name": "Zimbabwe", "code": "ZW" }
+                ];
+                var states = [
+                    { "name": "Alabama", "abbreviation": "AL" },
+                    { "name": "Alaska", "abbreviation": "AK" },
+                    { "name": "American Samoa", "abbreviation": "AS" },
+                    { "name": "Arizona", "abbreviation": "AZ" },
+                    { "name": "Arkansas", "abbreviation": "AR" },
+                    { "name": "California", "abbreviation": "CA" },
+                    { "name": "Colorado", "abbreviation": "CO" },
+                    { "name": "Connecticut", "abbreviation": "CT" },
+                    { "name": "Delaware", "abbreviation": "DE" },
+                    { "name": "District Of Columbia", "abbreviation": "DC" },
+                    { "name": "Federated States Of Micronesia", "abbreviation": "FM" },
+                    { "name": "Florida", "abbreviation": "FL" },
+                    { "name": "Georgia", "abbreviation": "GA" },
+                    { "name": "Guam", "abbreviation": "GU" },
+                    { "name": "Hawaii", "abbreviation": "HI" },
+                    { "name": "Idaho", "abbreviation": "ID" },
+                    { "name": "Illinois", "abbreviation": "IL" },
+                    { "name": "Indiana", "abbreviation": "IN" },
+                    { "name": "Iowa", "abbreviation": "IA" },
+                    { "name": "Kansas", "abbreviation": "KS" },
+                    { "name": "Kentucky", "abbreviation": "KY" },
+                    { "name": "Louisiana", "abbreviation": "LA" },
+                    { "name": "Maine", "abbreviation": "ME" },
+                    { "name": "Marshall Islands", "abbreviation": "MH" },
+                    { "name": "Maryland", "abbreviation": "MD" },
+                    { "name": "Massachusetts", "abbreviation": "MA" },
+                    { "name": "Michigan", "abbreviation": "MI" },
+                    { "name": "Minnesota", "abbreviation": "MN" },
+                    { "name": "Mississippi", "abbreviation": "MS" },
+                    { "name": "Missouri", "abbreviation": "MO" },
+                    { "name": "Montana", "abbreviation": "MT" },
+                    { "name": "Nebraska", "abbreviation": "NE" },
+                    { "name": "Nevada", "abbreviation": "NV" },
+                    { "name": "New Hampshire", "abbreviation": "NH" },
+                    { "name": "New Jersey", "abbreviation": "NJ" },
+                    { "name": "New Mexico", "abbreviation": "NM" },
+                    { "name": "New York", "abbreviation": "NY" },
+                    { "name": "North Carolina", "abbreviation": "NC" },
+                    { "name": "North Dakota", "abbreviation": "ND" },
+                    { "name": "Northern Mariana Islands", "abbreviation": "MP" },
+                    { "name": "Ohio", "abbreviation": "OH" },
+                    { "name": "Oklahoma", "abbreviation": "OK" },
+                    { "name": "Oregon", "abbreviation": "OR" },
+                    { "name": "Palau", "abbreviation": "PW" },
+                    { "name": "Pennsylvania", "abbreviation": "PA" },
+                    { "name": "Puerto Rico", "abbreviation": "PR" },
+                    { "name": "Rhode Island", "abbreviation": "RI" },
+                    { "name": "South Carolina", "abbreviation": "SC" },
+                    { "name": "South Dakota", "abbreviation": "SD" },
+                    { "name": "Tennessee", "abbreviation": "TN" },
+                    { "name": "Texas", "abbreviation": "TX" },
+                    { "name": "Utah", "abbreviation": "UT" },
+                    { "name": "Vermont", "abbreviation": "VT" },
+                    { "name": "Virgin Islands", "abbreviation": "VI" },
+                    { "name": "Virginia", "abbreviation": "VA" },
+                    { "name": "Washington", "abbreviation": "WA" },
+                    { "name": "West Virginia", "abbreviation": "WV" },
+                    { "name": "Wisconsin", "abbreviation": "WI" },
+                    { "name": "Wyoming", "abbreviation": "WY" }
+                ];
+                if (geo) {
+                    $.ajax({
+                        url: 'http://freegeoip.net/json/',
+                        method: 'GET',
+                        success: function (data) {
+                            geoLocateResponse = data;
+                            // console.log(geoLocateResponse);
+                            populate(true);
+                        }
+                    });
+                }
+                function populate(geo) {
+                    switch (type) {
+                        case 'country':
+                            countries.forEach(function (country) {
+                                $el.append("<option value=\"" + country.name + "\">" + country.name + "</option>");
+                                if (geo && geoLocateResponse !== '')
+                                    $el.find('option[value="' + geoLocateResponse.country_name + '"]').attr('selected', true);
+                            });
+                            break;
+                        case 'state':
+                            states.forEach(function (state) {
+                                $el.append("<option value=\"" + state.abbreviation + "\">" + state.name + "</option>");
+                                if (geo && geoLocateResponse !== '')
+                                    $el.find('option[value="' + geoLocateResponse.region_code + '"]').attr('selected', true);
+                            });
+                            break;
+                        default:
+                            console.log('Invalid .populate-ul data-populate-ul-type value');
+                    }
+                }
+            });
+            window.Parsley.on('field:validated', function (e) {
+                if (e.validationResult.constructor !== Array) {
+                    // this.$element.closest('.form-group').removeClass('has-danger').addClass('has-success');
+                    this.$element.removeClass('is-invalid').addClass('is-valid');
+                }
+                else {
+                    // this.$element.closest('.form-group').removeClass('has-success').addClass('has-danger');
+                    this.$element.removeClass('is-valid').addClass('is-invalid');
+                    Ladda.stopAll();
+                }
+            });
+        },
+        formConditionize: function () {
+            $.fn.conditionize = function (options) {
+                var settings = $.extend({
+                    hideJS: true
+                }, options);
+                $.fn.showOrHide = function (is_met, $section) {
+                    if (is_met) {
+                        $section.slideDown();
+                    }
+                    else {
+                        $section.slideUp();
+                        $section.find('select, input').each(function () {
+                            if (($(this).attr('type') == 'radio') || ($(this).attr('type') == 'checkbox')) {
+                                $(this).prop('checked', false).trigger('change');
+                            }
+                            else {
+                                $(this).val('').trigger('change');
+                            }
+                        });
+                    }
+                };
+                return this.each(function () {
+                    var $section = $(this);
+                    var cond = $(this).data('condition');
+                    // First get all (distinct) used field/inputs
+                    var re = /(#?\w+)/ig;
+                    var match = re.exec(cond);
+                    var inputs = {}, e = "", name = "";
+                    while (match !== null) {
+                        name = match[1];
+                        e = (name.substring(0, 1) == '#' ? name : "[name=" + name + "]");
+                        if ($(e).length && !(name in inputs)) {
+                            inputs[name] = e;
+                        }
+                        match = re.exec(cond);
+                    }
+                    // Replace fields names/ids by $().val()
+                    for (name in inputs) {
+                        e = inputs[name];
+                        tmp_re = new RegExp("(" + name + ")\\b", "g");
+                        if (($(e).attr('type') == 'radio') || ($(e).attr('type') == 'checkbox')) {
+                            cond = cond.replace(tmp_re, "$('" + e + ":checked').val()");
+                        }
+                        else {
+                            cond = cond.replace(tmp_re, "$('" + e + "').val()");
+                        }
+                    }
+                    //Set up event listeners
+                    for (name in inputs) {
+                        $(inputs[name]).on('change', function () {
+                            $.fn.showOrHide(eval(cond), $section);
+                        });
+                    }
+                    //If setting was chosen, hide everything first...
+                    if (settings.hideJS) {
+                        $(this).hide();
+                    }
+                    //Show based on current value on page load
+                    $.fn.showOrHide(eval(cond), $section);
+                });
+            };
+            $('.conditional').conditionize();
+        },
+        formAddress: function () {
+            if ($('input.address-autocomplete').length > 0) {
+                // This example displays an address form, using the autocomplete feature
+                // of the Google Places API to help users fill in the information.
+                if ($('.confirm-edit-address').length > 0)
+                    $('.confirm-edit-address').hide();
+                $("input.address-autocomplete").on('focus', function () {
+                    geolocate();
+                });
+                var placeSearch, autocomplete;
+                var componentForm = {
+                    street_number: 'short_name',
+                    route: 'long_name',
+                    locality: 'long_name',
+                    administrative_area_level_1: 'short_name',
+                    country: 'long_name',
+                    postal_code: 'short_name'
+                };
+                function initialize() {
+                    // Create the autocomplete object, restricting the search
+                    // to geographical location types.
+                    autocomplete = new google.maps.places.Autocomplete(
+                    /** @type {HTMLInputElement} */ (document.querySelector('input.address-autocomplete')), {
+                        types: ['geocode']
+                    });
+                    // When the user selects an address from the dropdown,
+                    // populate the address fields in the form.
+                    if ($('.confirm-edit-address').length > 0) {
+                        google.maps.event.addListener(autocomplete, 'place_changed', function () {
+                            fillInAddress();
+                        });
+                    }
+                }
+                // [START region_fillform]
+                function fillInAddress() {
+                    $('.confirm-edit-address').show();
+                    // Get the place details from the autocomplete object.
+                    var place = autocomplete.getPlace();
+                    document.getElementById("latitude").value = place.geometry.location.lat();
+                    document.getElementById("longitude").value = place.geometry.location.lng();
+                    for (var component in componentForm) {
+                        document.getElementById(component).value = '';
+                        document.getElementById(component).disabled = false;
+                    }
+                    // Get each component of the address from the place details
+                    // and fill the corresponding field on the form.
+                    for (var i = 0; i < place.address_components.length; i++) {
+                        var addressType = place.address_components[i].types[0];
+                        if (componentForm[addressType]) {
+                            var val = place.address_components[i][componentForm[addressType]];
+                            document.getElementById(addressType).value = val;
+                        }
+                    }
+                }
+                // Bias the autocomplete object to the user's geographical location,
+                // as supplied by the browser's 'navigator.geolocation' object.
+                function geolocate() {
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(function (position) {
+                            var geolocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                            var latitude = position.coords.latitude;
+                            var longitude = position.coords.longitude;
+                            document.getElementById("latitude").value = latitude;
+                            document.getElementById("longitude").value = longitude;
+                            autocomplete.setBounds(new google.maps.LatLngBounds(geolocation, geolocation));
+                        });
+                    }
+                }
+                initialize();
+            }
+        },
+        slimScroll: function () {
+            $('.sidebar, .modal-body').slimScroll({
+                height: '100%'
+            });
+        },
+        gallery: function () {
+            $('.gallery').click(function (event) {
+                event = event || window.event;
+                var target = event.target || event.srcElement, link = target.src ? target.parentNode : target, options = { index: link, event: event, hidePageScrollbars: false }, links = this.getElementsByTagName('a');
+                blueimp.Gallery(links, options);
+            });
+        },
+        AZList: function () {
+            $('#azList').listnav({
+                initLetter: '',
+                includeAll: true,
+                includeOther: false,
+                includeNums: true,
+                flagDisabled: true,
+                removeDisabled: false,
+                allText: 'All',
+                noMatchText: 'No matching entries',
+                showCounts: true,
+                dontCount: '',
+                cookieName: null,
+                onClick: null,
+                prefixes: [],
+                filterSelector: '' // Set the filter to a CSS selector rather than the first text letter for each item
+            });
+        },
+        navBar: function () {
+            $(document).on('click', '.hamburger, .canvas-slid', function (e) {
+                $(".hamburger").toggleClass("is-active");
+            });
+        },
+        modal: function () {
+            // Insert modal
+            var modalMarkup = "\n\t\t\t<!-- Universal Modal -->\n\t\t\t<div class=\"modal fade\" id=\"universal-modal\" tabindex=\"-1\" role=\"dialog\" aria-hidden=\"true\">\n\t\t\t<div class=\"modal-dialog modal-dialog-centered\" role=\"document\">\n\t\t\t\t<div class=\"modal-content\">\n\t\t\t\t  <div class=\"modal-header\">\n\t\t\t\t    <h5 class=\"modal-title\"></h5>\n\t\t\t\t    <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n\t\t\t\t      <span aria-hidden=\"true\">&times;</span>\n\t\t\t\t    </button>\n\t\t\t\t  </div>\n\t\t\t\t  <div class=\"modal-body\">\n\t\t\t\t  </div>\n\t\t\t\t  <div class=\"modal-footer\">\n\t\t\t\t    <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n\t\t\t\t  </div>\n\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>";
+            $('body').append(modalMarkup);
+            $(document).on('click', '.modal-remote', function (e) {
+                e.preventDefault();
+                var $bttn = $(this);
+                var opts = {
+                    title: $bttn.data('modal-title') !== '' ? $bttn.data('modal-title') : '',
+                    size: $bttn.data('modal-size') !== '' ? $bttn.data('modal-size') : 'md',
+                    header: $bttn.data('modal-header') !== '' ? $bttn.data('modal-header') : true,
+                    footer: $bttn.data('modal-footer') !== '' ? $bttn.data('modal-footer') : true,
+                    iframe: $bttn.data('modal-iframe') !== '' ? $bttn.data('modal-iframe') : false,
+                    scrollable: $bttn.data('modal-scrollable') !== '' ? $bttn.data('modal-scrollable') : false
+                };
+                var modalID = 'modal-' + Math.random().toString(36).substring(7);
+                $bttn.attr('data-target', '#modal-' + modalID);
+                // Repurpose universal modal
+                $('#universal-modal').attr('id', modalID);
+                // Wire modal events
+                $(document).on('show.bs.modal', ('#' + modalID), function (e) {
+                    if (opts.title)
+                        $('#' + modalID).find('.modal-title').html(opts.title);
+                    if (opts.size)
+                        $('#' + modalID).find('.modal-dialog').addClass('modal-' + opts.size);
+                    if (!opts.header)
+                        $('#' + modalID).find('.modal-header').hide();
+                    if (!opts.footer)
+                        $('#' + modalID).find('.modal-footer').hide();
+                    if (opts.iframe) {
+                        $('#' + modalID).find('.modal-body').html('<iframe width="100%" height="100%" frameborder="0" scrolling="' + (opts.scrollable ? 'yes' : 'no') + '" allowtransparency="true" src="' + $bttn.attr('href') + '"></iframe>');
+                        $('#' + modalID).find('.modal-body iframe').css('height', ($(window).height() - 180) + 'px');
+                    }
+                    else {
+                        $('#' + modalID).find('.modal-body').load($bttn.attr('href'), function () {
+                            console.log("Loading async data into modal");
+                        });
+                        if (opts.scrollable)
+                            $('#' + modalID).find('.modal-body').addClass('scrollable');
+                    }
+                });
+                // Display modal
+                $('#' + modalID).modal('show');
+                $(document).on('shown.bs.modal', '.modal', function (e) {
+                    window.Platypus.wizard();
+                    window.Platypus.inputMaxLength();
+                });
+                // Reset used modal to defaults
+                $(document).on('hidden.bs.modal', ('#' + modalID), function (e) {
+                    $('#' + modalID).attr('id', 'universal-modal');
+                    $('#universal-modal').find('.modal-dialog').removeClass('modal-' + opts.size);
+                    $('#universal-modal').find('.modal-title').html('');
+                    $('#universal-modal').find('.modal-header, .modal-footer').show();
+                });
+            });
+        },
+        rotatingBg: function () {
+            $('.rotating-bg').css('background-image', 'url("https://s3.us-east-2.amazonaws.com/platypus-hbs/version/' + currentVersion + '/images/rotating-bg-hbs/bg-hbs-' + _.random(1, 4) + '.png")');
+        },
+        inlineEdit: function () {
+            $('.edit-inline').each(function () {
+                var postUrl = $(this).data('post-url');
+                var content = '';
+                $(this).summernote({
+                    airMode: true,
+                    popover: {
+                        image: [],
+                        link: [],
+                        air: []
+                    },
+                    callbacks: {
+                        onInit: function () {
+                            // console.log('summernote onInit callback fired');
+                            if ($(this).summernote('isEmpty')) {
+                                $(this).val('');
+                                $(this).addClass('empty');
+                            }
+                        },
+                        onFocus: function () {
+                            // console.log('summernote OnFocus callback fired');
+                            $('.note-air-popover').show();
+                            $(this).removeClass('empty');
+                            content = $(this).summernote('code');
+                        },
+                        onBlur: function () {
+                            // console.log('summernote onBlur callback fired');
+                            $('.note-air-popover').hide();
+                            // console.log( $(this) );
+                            if ($(this).summernote('isEmpty')) {
+                                $(this).val('');
+                                $(this).addClass('empty');
+                            }
+                            if (content !== $(this).summernote('code'))
+                                postData($(this));
+                        },
+                        onChange: function (contents, $editable) {
+                            // console.log('summernote onChange callback fired:', contents, $editable);
+                        }
+                    }
+                });
+                function postData($el) {
+                    var data = {};
+                    data.body = $el.summernote('code');
+                    $.ajax({
+                        type: 'POST',
+                        data: JSON.stringify(data),
+                        contentType: 'application/json',
+                        url: postUrl,
+                        success: function (data) {
+                            toastr.success('Item updated successfully.');
+                        },
+                        error: function (request, status, error) {
+                            toastr.error('Cannot update item.');
+                        }
+                    });
+                }
+                $('.note-editable a').hover(function () {
+                    $('.note-editable').attr('contenteditable', 'false');
+                }, function () {
+                    $('.note-editable').attr('contenteditable', 'true');
+                });
+            });
+        },
+        search: function () {
+            $.typeahead({
+                input: ".js-typeahead",
+                order: "asc",
+                display: ["title", "intro"],
+                href: "/articles/{{slug}}",
+                group: {
+                    template: function template(item) {
+                        return 'Found in ' + item._category.title;
+                    }
+                },
+                source: {
+                    ui_components: {
+                        ajax: {
+                            url: '/articles/search/ui-components'
+                        },
+                        template: "\n\t\t\t\t\t\t\t<div class=\"row px-2 py-1\">\n\t\t\t\t\t\t\t\t<div class=\"col-1 p-4 bg-info\">\n\t\t\t\t\t\t\t\t\t<img src=\"/images/ui-components-thumbs/{{slug}}.png\" class=\"img-fluid\">\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t<div class=\"col-11\">\n\t\t\t\t\t\t\t\t\t<h5>{{title}}</h5>\n\t\t\t\t\t\t\t\t\t{{intro}}\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>"
+                    },
+                    resources: {
+                        ajax: {
+                            url: '/articles/search/resources'
+                        },
+                        template: '<div clas="row"><div class="col-12"><h5>{{title}}</h5>{{intro}}</div></div>'
+                    }
+                },
+                emptyTemplate: "no result for {{query}}",
+                hint: true,
+                backdrop: {
+                    "background-color": "#000"
+                },
+                callback: {
+                    onInit: function (node) {
+                        // console.log('Typeahead Initiated on ' + node.selector);
+                    },
+                    onClick: function (node, a, item, event) {
+                        window.location(item.href);
+                    }
+                },
+                selector: {
+                    container: "typeahead__container",
+                    result: "typeahead__result",
+                    list: "typeahead__list",
+                    group: "typeahead__group",
+                    item: "typeahead__item",
+                    empty: "typeahead__empty",
+                    display: "typeahead__display",
+                    query: "typeahead__query",
+                    filter: "typeahead__filter",
+                    filterButton: "typeahead__filter-button",
+                    dropdown: "typeahead__dropdown",
+                    dropdownItem: "typeahead__dropdown-item",
+                    button: "typeahead__button",
+                    backdrop: "typeahead__backdrop",
+                    hint: "typeahead__hint",
+                    cancelButton: "typeahead__cancel-button"
+                },
+                debug: true
+            });
+        },
+        externalLinks: function () {
+            $('a:not([target]), :not([target="_self"])').filter(function () {
+                return this.hostname && this.hostname !== location.hostname;
+            }).addClass("external").attr('target', '_blank');
+        },
+        setupSpinOnAjax: function () {
+            // setup spinner animation options
+            $.fn.spin = function (opts) {
+                this.each(function () {
+                    var $this = $(this), spinner = $this.data('spinner');
+                    if (spinner)
+                        spinner.stop();
+                    if (opts !== false) {
+                        opts = $.extend({ color: $this.css('color') }, opts);
+                        spinner = new Spinner(opts).spin(this);
+                        $this.data('spinner', spinner);
+                    }
+                });
+                return this;
+            };
+            // bind spinner to ajax doc events
+            $('.btn-ajax-spin').on({
+                ajaxStart: function (e) {
+                    console.log("Target of ajaxStart is:", e.target);
+                    var el = $('<div class="spinner">').appendTo('body').spin();
+                    $('body').append('<div class="overlay"></div>');
+                    $(".overlay").fadeIn().append(el);
+                    var opts = {
+                        lines: 12,
+                        length: 5,
+                        width: 5,
+                        radius: 10,
+                        color: '#000',
+                        speed: 1,
+                        trail: 66,
+                        shadow: false
+                    };
+                    $(el).spin(opts);
+                },
+                ajaxStop: function () {
+                    var el = $('.spinner');
+                    //el.spin(false).remove();
+                    $(".overlay").fadeOut();
+                }
+            });
+        },
+        searchPills: function () {
+            // Initialize pillBox
+            $('#searchPills').pillbox({
+                readonly: false,
+                edit: false
+            });
+            // Mock functionality
+            $('#facets input[type="checkbox"]').change(function (e) {
+                e.preventDefault();
+                var pillVal = $(this).val();
+                // // Show spinner
+                // function showSpinner() {
+                // 	var el = $('<div class="d-block mt-3 p-3">').appendTo('#results').spin(Platypus.getSpinnerOpts());
+                // 	setTimeout(function () {
+                // 		el.spin(false).remove();
+                // 	}, 1000);
+                // }
+                if (this.checked) {
+                    $('#searchPills').pillbox('addItems', -1, [{ text: pillVal }]);
+                    //showSpinner();
+                }
+                else {
+                    $('#searchPills').pillbox('removeByText', pillVal);
+                    //showSpinner();
+                }
+                $('#searchPills').on('removed.fu.pillbox', function (evt, item) {
+                    $('#facets input[value="' + item.value + '"]').prop('checked', false);
+                    //showSpinner();
+                });
+            });
+        },
+        infiniteLoading: function () {
+            if ($('.loadmore').length > 0) {
+                $('.loadmore').click(function (e) {
+                    e.preventDefault();
+                    var page = parseInt($(this).data('page'));
+                    var pages = parseInt($(this).data('pages'));
+                    var nextPageUrl = 'loadmore/' + (page + 1);
+                    $(this).data('page', page + 1);
+                    $(this).attr('data-page', page + 1);
+                    $.ajax(nextPageUrl, {
+                        success: function success(data) {
+                            data.docs.forEach(function (item, index) {
+                                if (index === 0 || index % 4 === 0) {
+                                    $('#component-container').append("<div class=\"card-deck\"></div>");
+                                }
+                                $('#component-container .card-deck:last-child').append("\t\t\t    \t\t\n\t\t\t\t\t    \t\t\t<div class=\"card\">\n\t\t\t\t\t    \t\t\t\t<a href=\"/articles/" + item.slug + "\">\n\t\t\t\t\t\t\t\t\t\t  \t<div class=\"palette-bg-teal-100 p-2\">\n\t\t\t\t\t\t\t\t\t\t  \t\t<img class=\"card-img-top img-fluid\" src=\"/images/ui-components-thumbs/" + item.slug + ".png\" alt=\"Card image cap\">\n\t\t\t\t\t\t\t\t\t\t  \t</div>\n\t\t\t\t\t\t\t\t\t\t  \t<div class=\"card-block\">\n\t\t\t\t\t\t\t\t\t\t    \t<h4 class=\"card-title\">" + item.title + "</h4>\n\t\t\t\t\t\t\t\t\t\t    \t<p class=\"card-text\">" + item.intro + "</p>\n\t\t\t\t\t\t\t\t\t\t    \t\n\t\t\t\t\t\t\t\t\t\t  \t</div>\n\t\t\t\t\t\t\t\t\t    </a>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t    \t\t");
+                            });
+                            $('html, body').animate({ scrollTop: $(document).height() }, 'slow');
+                        },
+                        error: function error() {
+                            swal('Error', 'Cannot retrieve sample data.', 'error');
+                        }
+                    });
+                    if (page === pages - 1) {
+                        $(this).hide();
+                        // toastr.success('That\'s the end.');
+                    }
+                });
+                window.onscroll = function (ev) {
+                    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+                        // console.log("end of page");
+                    }
+                };
+            }
+        },
+        feedback: function () {
+            if ($('body').data('feedback-url')) {
+                // Inserts feedback button in DOM
+                $('body').append("\n\t\t\t\t\t<a id=\"btn-feedback\" href=\"/feedback/new\" class=\"btn btn-info modal-remote\"\n\t\t\t\t\t  \tdata-modal-title=\"Feedback\"\n\t\t\t\t\t  \tdata-modal-size=\"lg\"\n\t\t\t\t\t  \tdata-modal-header=\"true\"\n\t\t\t\t\t  \tdata-modal-footer=\"false\">\n\t\t\t\t\t  \t\t<i class=\"fa fa-comment-o\" data-toggle=\"tooltip\" data-placement=\"left\" title=\"Feedback\"></i>\n\t\t\t\t\t</a>\n\t\t\t\t");
+                $(document).on('submit', '#feedbackForm', function (e) {
+                    e.preventDefault();
+                    $('.modal').modal('hide');
+                    $.ajax({
+                        type: 'POST',
+                        url: $(this).attr('action'),
+                        data: $(this).serialize(),
+                        success: function () {
+                            swal({
+                                title: 'Thank you',
+                                html: "Your feedback was submitted successfully",
+                                type: 'success'
+                            });
+                        }
+                    });
+                });
+            }
+        },
+        renderCharts: function () {
+            $('.chart').each(function () {
+                var type = $(this).data('type');
+                var target = '#' + $(this).attr('id');
+                switch (type) {
+                    case 'line':
+                        var chart = c3.generate({
+                            bindto: target,
+                            data: {
+                                columns: [
+                                    ['data1', 30, 200, 100, 400, 150, 250],
+                                    ['data2', 50, 20, 10, 40, 15, 25]
+                                ],
+                                colors: {
+                                    data1: '#455A64',
+                                    data2: '#009688',
+                                    data3: '#9E9E9E'
+                                },
+                                color: function (color, d) {
+                                    return color;
+                                }
+                            }
+                        });
+                        chart.flush();
+                        break;
+                    case 'gauge':
+                        var chart = c3.generate({
+                            data: {
+                                columns: [
+                                    ['data', $(this).data('gauge-value') ? $(this).data('gauge-value') : '0']
+                                ],
+                                type: 'gauge'
+                            },
+                            bindto: target,
+                            gauge: {},
+                            color: {
+                                pattern: ['#009688', '#009688', '#009688', '#009688'],
+                                threshold: {
+                                    values: [30, 60, 90, 100]
+                                }
+                            },
+                            size: {
+                                height: 180
+                            }
+                        });
+                        chart.flush();
+                        break;
+                    case 'pie':
+                        var chart = c3.generate({
+                            data: {
+                                columns: [
+                                    ['data1', 30],
+                                    ['data2', 120],
+                                ],
+                                type: 'donut',
+                                colors: {
+                                    data1: '#455A64',
+                                    data2: '#009688',
+                                    data3: '#9E9E9E'
+                                },
+                                color: function (color, d) {
+                                    return color;
+                                }
+                            },
+                            bindto: target,
+                            donut: {
+                                title: "Example"
+                            }
+                        });
+                        chart.flush();
+                        break;
+                    case 'bar':
+                        var chart = c3.generate({
+                            data: {
+                                columns: [
+                                    ['data1', 30, 20, 50, 40, 60, 50],
+                                    ['data2', 200, 130, 90, 240, 130, 220],
+                                    ['data3', 300, 200, 160, 400, 250, 250]
+                                ],
+                                type: 'bar',
+                                colors: {
+                                    data1: '#455A64',
+                                    data2: '#009688',
+                                    data3: '#9E9E9E'
+                                },
+                                color: function (color, d) {
+                                    return color;
+                                }
+                            },
+                            bar: {
+                                width: {
+                                    ratio: 0.5
+                                }
+                            },
+                            bindto: target
+                        });
+                        chart.flush();
+                        break;
+                    case 'spline':
+                        var chart = c3.generate({
+                            data: {
+                                columns: [
+                                    ['data1', 30, 200, 100, 400, 150, 250],
+                                    ['data2', 130, 100, 140, 200, 150, 50]
+                                ],
+                                type: 'spline',
+                                colors: {
+                                    data1: '#455A64',
+                                    data2: '#009688',
+                                    data3: '#9E9E9E'
+                                },
+                                color: function (color, d) {
+                                    return color;
+                                }
+                            },
+                            bindto: target
+                        });
+                        chart.flush();
+                        break;
+                    case 'scatter':
+                        var colors = ['#455A64', '#009688', '#9E9E9E', '#00838F'];
+                        var chart = c3.generate({
+                            data: {
+                                xs: {
+                                    setosa: 'setosa_x',
+                                    versicolor: 'versicolor_x'
+                                },
+                                // iris data from R
+                                columns: [
+                                    ["setosa_x", 3.5, 3.0, 3.2, 3.1, 3.6, 3.9, 3.4, 3.4, 2.9, 3.1, 3.7, 3.4, 3.0, 3.0, 4.0, 4.4, 3.9, 3.5, 3.8, 3.8, 3.4, 3.7, 3.6, 3.3, 3.4, 3.0, 3.4, 3.5, 3.4, 3.2, 3.1, 3.4, 4.1, 4.2, 3.1, 3.2, 3.5, 3.6, 3.0, 3.4, 3.5, 2.3, 3.2, 3.5, 3.8, 3.0, 3.8, 3.2, 3.7, 3.3],
+                                    ["versicolor_x", 3.2, 3.2, 3.1, 2.3, 2.8, 2.8, 3.3, 2.4, 2.9, 2.7, 2.0, 3.0, 2.2, 2.9, 2.9, 3.1, 3.0, 2.7, 2.2, 2.5, 3.2, 2.8, 2.5, 2.8, 2.9, 3.0, 2.8, 3.0, 2.9, 2.6, 2.4, 2.4, 2.7, 2.7, 3.0, 3.4, 3.1, 2.3, 3.0, 2.5, 2.6, 3.0, 2.6, 2.3, 2.7, 3.0, 2.9, 2.9, 2.5, 2.8],
+                                    ["setosa", 0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.3, 0.2, 0.2, 0.1, 0.2, 0.2, 0.1, 0.1, 0.2, 0.4, 0.4, 0.3, 0.3, 0.3, 0.2, 0.4, 0.2, 0.5, 0.2, 0.2, 0.4, 0.2, 0.2, 0.2, 0.2, 0.4, 0.1, 0.2, 0.2, 0.2, 0.2, 0.1, 0.2, 0.2, 0.3, 0.3, 0.2, 0.6, 0.4, 0.3, 0.2, 0.2, 0.2, 0.2],
+                                    ["versicolor", 1.4, 1.5, 1.5, 1.3, 1.5, 1.3, 1.6, 1.0, 1.3, 1.4, 1.0, 1.5, 1.0, 1.4, 1.3, 1.4, 1.5, 1.0, 1.5, 1.1, 1.8, 1.3, 1.5, 1.2, 1.3, 1.4, 1.4, 1.7, 1.5, 1.0, 1.1, 1.0, 1.2, 1.6, 1.5, 1.6, 1.5, 1.3, 1.3, 1.3, 1.2, 1.4, 1.2, 1.0, 1.3, 1.2, 1.3, 1.3, 1.1, 1.3],
+                                ],
+                                type: 'scatter',
+                                color: function (color, data) {
+                                    return colors[data.index % colors.length];
+                                }
+                            },
+                            axis: {
+                                x: {
+                                    label: 'X',
+                                    tick: {
+                                        fit: false
+                                    }
+                                },
+                                y: {
+                                    label: 'Y'
+                                }
+                            },
+                            point: {
+                                r: 5
+                            },
+                            bindto: target
+                        });
+                        chart.flush();
+                        break;
+                    default:
+                }
+            });
+        },
+        gridListSwitcher: function () {
+            function init() {
+                var currentMode = $('#list-grid-switcher a.active').data('mode');
+                var layout = $('.row.list-grid').data('cols').split(",").map(function (col) { return "col-" + col; });
+                updateActiveIndicator(currentMode);
+                setupInitialState(currentMode, layout);
+                saveState(currentMode);
+                bindEvents(layout);
+            }
+            function setupInitialState(mode, layout) {
+                $('.row.list-grid > div[class^="col-"]').each(function () {
+                    switch (mode) {
+                        case 'list':
+                            $(this).removeClass().addClass('col-12');
+                            break;
+                        case 'grid':
+                            $(this).removeClass().addClass(layout.join(" "));
+                            break;
+                        default:
+                            console.log("Unknown mode");
+                    }
+                    $('.row.list-grid').removeClass('invisible');
+                });
+            }
+            function switchModes(mode, layout) {
+                $('.row.list-grid > div[class^="col-"]').each(function () {
+                    switch (mode) {
+                        case 'list':
+                            $(this).removeClass().addClass('col-12');
+                            break;
+                        case 'grid':
+                            $(this).removeClass().addClass(layout.join(" "));
+                            break;
+                        default:
+                            console.log("Unknown mode");
+                    }
+                });
+                updateActiveIndicator(mode);
+            }
+            function saveState(mode) {
+                $('.row.list-grid > div[class^="col-"]').each(function () {
+                    $(this).data(mode + '-cols', $(this).attr('class'));
+                });
+            }
+            function updateActiveIndicator(mode) {
+                var activeClasses = "active";
+                $('#list-grid-switcher a').removeClass(activeClasses);
+                $('#list-grid-switcher a[data-mode="' + mode + '"]').addClass(activeClasses);
+            }
+            function bindEvents(layout) {
+                $('#list-grid-switcher a').click(function () {
+                    switchModes($(this).data('mode'), layout);
+                });
+            }
+            if ($('#list-grid-switcher').length)
+                init();
+        },
+        videoWidget: function () {
+            var trigger = $("body").find('.video-modal[data-toggle="modal"]');
+            trigger.each(function () {
+                var theModal = $(this).data("target"), videoSRC = $(this).attr("data-youtube-video-id"), autoplay = $(this).attr("data-autoplay") || 1, videoSRCauto = "http://www.youtube.com/embed/" + videoSRC + "?autoplay=" + autoplay;
+                $(this).append("<img class=\"img-fluid\" src=\"https://img.youtube.com/vi/" + videoSRC + "/maxresdefault.jpg\">");
+                $(this).click(function (e) {
+                    e.preventDefault();
+                    $(theModal + ' iframe').attr('src', videoSRCauto);
+                    $(theModal + ' button.close').click(function () {
+                        $(theModal + ' iframe').attr('src', videoSRC);
+                    });
+                });
+            });
+        },
+        helpful: function () {
+            $('.helpful-widget button').on('click', function (e) {
+                e.preventDefault();
+                var id = $(this).closest('.helpful-widget').data('article-id'), val = $(this).hasClass('yes') ? '+1' : '-1';
+                var data = {};
+                data.val = val;
+                $.ajax({
+                    type: 'POST',
+                    data: JSON.stringify(data),
+                    contentType: 'application/json',
+                    url: '/articles/score/' + id,
+                    success: function (data) {
+                        toastr.success(data.score);
+                        $('.helpful-widget').hide();
+                    },
+                    error: function (request, status, error) {
+                        console.log(error);
+                        toastr.error('Cannot update score. ');
+                    }
+                });
+            });
+        },
+        googleMaps: function () {
+            if ($('.google-map').length > 0) {
+                var geocoder_1 = new google.maps.Geocoder();
+                $('.google-map').each(function (map) {
+                    var m = new google.maps.Map(document.getElementById($(this).attr('id')), {
+                        zoom: $(this).data('map-zoom') || 10,
+                        center: {
+                            lat: $(this).data('map-lat') || 42.365515,
+                            lng: $(this).data('map-lng') || -71.122141
+                        },
+                        mapTypeId: $(this).data('map-type') || 'roadmap'
+                    });
+                    if ($(this).data('map-address')) {
+                        geocodeAddress(geocoder_1, $(this).data('map-address'), m);
+                    }
+                    function geocodeAddress(geocoder, address, resultsMap) {
+                        geocoder.geocode({ 'address': address }, function (results, status) {
+                            if (status === 'OK') {
+                                resultsMap.setCenter(results[0].geometry.location);
+                                var marker = new google.maps.Marker({
+                                    map: resultsMap,
+                                    position: results[0].geometry.location
+                                });
+                            }
+                            else {
+                                alert('Geocode was not successful for the following reason: ' + status);
+                            }
+                        });
+                    }
+                    // has markers? (TODO)
+                });
+            }
+        },
+        hideLoader: function () {
+            $('.load-container').fadeOut('slow');
+            $('.load-container ~ .container-fluid').fadeIn();
+            $(window).trigger('resize');
+        },
+        swapIcons: function () {
+            $('[data-alt-icon]').each(function () {
+                var currClasses = $(this).attr('class');
+                var icon = $(this).data("icon");
+                var altIco = $(this).data('alt-icon');
+                var event = $(this).data('alt-icon-trigger');
+                $(this).addClass('fa').addClass(icon);
+                $(this).addClass(currClasses);
+                switch (event) {
+                    case 'click':
+                        $(this).on(event, function (e) {
+                            $(this).toggleClass(icon + ' ' + altIco);
+                        });
+                        break;
+                    case 'hover':
+                        $(this).hover(function () {
+                            $(this).toggleClass(icon + ' ' + altIco);
+                        }, function () {
+                            $(this).toggleClass(altIco + ' ' + icon);
+                        });
+                        break;
+                    default:
+                        console.log("Unknown event.");
+                }
+            });
+        },
+        clipboard: function () {
+            var clipboard = new ClipboardJS('.btn');
+            clipboard.on('success', function (e) {
+                switch (e.action) {
+                    case 'copy':
+                        toastr.success("Copied sucessfully");
+                        break;
+                    case 'cut':
+                        toastr.success("Cut sucessfully");
+                        break;
+                    default:
+                        console.log("Invalid selection");
+                }
+                // console.info('Action:', e.action);
+                // console.info('Text:', e.text);
+                // console.info('Trigger:', e.trigger);
+                e.clearSelection();
+            });
+            clipboard.on('error', function (e) {
+                toastr.error("Unable to copy/cut");
+                // console.error('Action:', e.action);
+                // console.error('Trigger:', e.trigger);
+            });
+        },
+        matchHeight: function () {
+            $(function () {
+                $('.match-height').matchHeight({
+                    byRow: true,
+                    property: 'height',
+                    target: null,
+                    remove: false // remove previous bindings instead of applying new ones
+                });
+            });
+        },
+        debug: function () {
+            var browser = Platypus.detectBrowsers();
+            if (!browser.isIE) {
+                var searchParams = new URLSearchParams(window.location.search);
+                if (searchParams.has('debug')) {
+                    switch (searchParams.get('debug')) {
+                        case 'accessibility':
+                            console.log("Debugging accessibility... The page might become unresponsive for a few seconds. Please stand by.");
+                            p = Promise.all([
+                                load.js("https://cdnjs.cloudflare.com/ajax/libs/axe-core/2.6.1/axe.min.js"),
+                            ]).then(function () {
+                                var opts = {
+                                    runOnly: {
+                                        type: "tag",
+                                        values: ["wcag2a", "wcag2aa"]
+                                    }
+                                };
+                                axe.run(document, opts, function (error, results) {
+                                    if (results.violations.length === 0) {
+                                        console.log("Congratulations! This page is WCAG 2.0 Level A and AA compliant.");
+                                    }
+                                    else {
+                                        console.log("The following accessibility issue should be fixed:");
+                                        results.violations.map(function (violation) { return console.log(violation); });
+                                    }
+                                });
+                            });
+                            break;
+                        default:
+                            console.log("Invalid debug value");
+                    }
+                }
+            }
+        },
+        last: ''
+    };
+    $(document).ready(Platypus.ondomready);
+    window.Platypus = Platypus;
 })(jQuery);

@@ -12,6 +12,7 @@ var gulp = require('gulp'),
     cleanCSS = require('gulp-clean-css'),
     nightwatch = require('gulp-nightwatch'),
     banner = require('gulp-banner'),
+    ts = require('gulp-typescript'),
     gutil = require('gulp-load-utils')(['env', 'date', 'colors']);
 
 var opts = {
@@ -98,6 +99,15 @@ var opts = {
     banner: `\n/*! <%= date %> */\n`,
     dt: gutil.date('yyyy-mm-dd h:MM:ss TT Z'),
 }
+
+gulp.task('typescript', function () {
+    return gulp.src('public/js/src/*.ts')
+        .pipe(ts({
+            noImplicitAny: true,
+            outFile: 'main.js'
+        }))
+        .pipe(gulp.dest('public/js'));
+});
 
 gulp.task('js', function() {  
     return gulp.src(opts.jsFiles)
@@ -198,10 +208,10 @@ gulp.task('default',function() {
 
     gulp.watch([
         'sass/**/*.scss',
-        'public/js/src/*.js',
+        'public/js/src/*.ts',
         'views/**/*.hbs'
     ], function() {
-        runSequence('styles','transpile', 'css', 'js');
+        runSequence('styles','transpile', 'css', 'typescript', 'js');
     }).on('change',log);
 
     nodemon({

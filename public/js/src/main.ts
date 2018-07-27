@@ -1,14 +1,16 @@
 'use strict';
 
+declare var jQuery: any;
+
 ;(function ($) {
 
-  	var load = (function() {
-        function _load(tag) {
-            return function(url) {
-                return new Promise(function(resolve, reject) {
-                    var element = document.createElement(tag);
-                    var parent = 'body';
-                    var attr = 'src';
+  	let load = (function() {
+        function _load(tag: string) {
+            return function(url: string) {
+                return new Promise(function(resolve: any, reject: any) {
+                    let element: any = document.createElement(tag);
+                    let parent: string = 'body';
+                    let attr: string = 'src';
 
                     element.onload = function() {
                       console.log("Loaded "+url+ " successfully.");
@@ -97,8 +99,13 @@
 			Platypus.clipboard(); 
 			Platypus.matchHeight(); 
 			Platypus.debug(); 
+			Platypus.testTS(); 
 		},
 		
+		testTS: function(){
+			console.log("Testing Typescript implementation....");
+			declare var foo: number;
+		},
 		detectBreakpoint: function() {
 
 		   	let $html = $('html'),
@@ -135,8 +142,6 @@
 
 			$(window).resize(Platypus.detectBreakpoint);
 
-			// console.log("Current break point is: "+finalClass);
-
 		},
 		detectBrowsers: function(){
 			// Opera 8.0+
@@ -164,6 +169,7 @@
 		    }
 		},
 		btnSubmitAnimate: function() {
+			
 			$('button[type="submit"]').not(".no-spinner")
 				.addClass('ladda-button')
 				.attr('data-style', 'zoom-in')
@@ -219,7 +225,7 @@
 			});
 		},
 		highlightJS: function() {
-			$('pre code').each(function (i, e) {
+			$('pre code').each(function (i: number, e: any) {
 				hljs.highlightBlock(e);
 			});
 		},
@@ -241,17 +247,17 @@
 				dropdownItemDisableClass: 'disabled',
 				toggleClass: 'dropdown-toggle',
 				toggleIconClass: 'caret',
-				getItems: function($parent) {
+				getItems: function($parent: any) {
 					return $parent.children();
 				},
-				getItemLink: function($item) {
+				getItemLink: function($item: any) {
 					return $item.find('a');
 				},
-				ellipsis: function(classes, label) {
+				ellipsis: function(classes: any, label: string) {
 					return `<li class="${classes.ellipsisClass}">${label}</li>`;
 				},
 
-				dropdown: function(classes) {
+				dropdown: function(classes: any) {
 					var dropdownClass = 'dropdown'; 
 					var dropdownMenuClass = 'dropdown-menu';
 
@@ -313,12 +319,12 @@
 		      	back: '.back'
 			});
 
-			$(".card-flip .btn-flip").on('click', function(e){
+			$(".card-flip .btn-flip").on('click', function(e: any){
 				e.preventDefault();
 				$(this).closest('.card-flip').flip(true);
 			});
 
-			$(".card-flip .btn-unflip").on('click', function(e){
+			$(".card-flip .btn-unflip").on('click', function(e: any){
 				e.preventDefault();
 				$(this).closest('.card-flip').flip(false);
 			});
@@ -338,7 +344,7 @@
 		},
 		dataTables: function() {
 
-			function initTable($tbl, buttons) {
+			function initTable($tbl: any, buttons: any) {
 
 				let btnMarkup = (buttons.length > 0) ? "<'row w-100'<'col-4 text-left'B><'col-6 text-left'f><'col-2 text-right'l>><'row w-100'<'col-12'tr>><'row w-100'<'col-sm-6 col-12 small'i><'col-sm-6 col-12'p>>" : "<'row w-100'<'col-10 text-left'f><'col-2 text-right'l>><'row w-100'<'col-12'tr>><'row w-100'<'col-sm-6 col-12 small'i><'col-sm-6 col-12'p>>";
 				let aoBttns = [];
@@ -517,7 +523,7 @@
 							if(buttons) {
 								p.then(function(){
 									initTable($tbl, buttons);
-								}).catch(function(e) {
+								}).catch(function(e: any) {
 					                console.log('Cannot load DataTables button remote dependecies:'+e);
 					            });
 					        } else {
@@ -537,7 +543,7 @@
 					if(buttons) {
 						p.then(function(){
 							initTable($tbl, buttons);
-						}).catch(function(e) {
+						}).catch(function(e: any) {
 			                console.log('Cannot load DataTables button remote dependecies:'+e);
 			            });
 			        } else {
@@ -551,13 +557,13 @@
 		},
 
 		toolTip: function() {
-			$('[data-toggle="tooltip"]').on('click', function(e){
+			$('[data-toggle="tooltip"]').on('click', function(e: any){
 				e.preventDefault();
 			});
 			$('[data-toggle="tooltip"]').tooltip();
 		},
 		popOver: function() {
-			$('[data-toggle="popover"]').on('click', function(e){
+			$('[data-toggle="popover"]').on('click', function(e: any){
 				e.preventDefault();
 			});
 			$('[data-toggle="popover"]').popover();
@@ -793,7 +799,7 @@
 				close: 'fa fa-close'
 			};
 			
-			$('body').on('focus', '.datetime-picker', function(e) {
+			$('body').on('focus', '.datetime-picker', function(e: any) {
 
 				var format = $(this).data('format') != '' ? $(this).data('format') : 'MM-DD-YYYY';
 				var inline = ( $(this).data('inline') != '' && $(this).data('inline') == true) ? true : false;
@@ -844,7 +850,7 @@
 			});
 
 			$('input,textarea,select').filter('[required]').each(function () {
-				$(this).closest('.form-group').find('label:not(".custom-control"):first-child').append("&nbsp;<span class='float-xs-right text-danger'>*</span>");
+				$(this).closest('.form-group').find('label:not(".custom-control"):first-child').append("&nbsp;<span class='float-right text-danger'>*</span>");
 			});
 
 			$('input[type="password"].meter').strength({
@@ -874,12 +880,12 @@
 			  }
 			});
 
-			$('.go-back').on('click', function(e) {
+			$('.go-back').on('click', function(e: any) {
 				e.preventDefault();
 				 window.history.back();
 			});
 
-			$('.custom-file-input').on('change', function(e){
+			$('.custom-file-input').on('change', function(e: any){
 				if ( $(this).val() != "" ) {
 					$(this).next().addClass('selected').attr('data-before', $(this).val().replace(/^C:\\fakepath\\|^.*[\\\/]/gmi, ''));
 				} else {
@@ -893,7 +899,7 @@
 			    $('.custom-file-control').removeClass('selected');
 		    });
 
-			$('.confirm-delete').on('click', function(e) {
+			$('.confirm-delete').on('click', function(e: any) {
 			    e.preventDefault();
 			    let el = $(this),
 			    	title = (el.data('confirm-delete-title') && el.data('confirm-delete-title') !== '') ? el.data('confirm-delete-title') : 'Are you sure?',
@@ -929,7 +935,7 @@
 				let $el = $(this);
 				let type = $el.data('populate-ul-type');
 				let geo = $el.data('ip-geo-locate');
-				let geoLocateResponse;
+				let geoLocateResponse : any;
 				let countries = [ 
 					{"name": "", "code": ""}, 
 					{"name": "Afghanistan", "code": "AF"}, 
@@ -1285,45 +1291,9 @@
 				}
 			});
 		},
-		formConditionize : function(options){ 
-			// Old Version
-			// $.fn.conditionize = function(options){ 
-    
-			//      var settings = $.extend({
-			//         hideJS: true
-			//     }, options );
-			    
-			//     $.fn.showOrHide = function(listenTo, listenFor, $section) {
-			//       if ($(listenTo).is('select, input[type=text]') && $(listenTo).val() == listenFor ) {
-			//         $section.slideDown();
-			//       }
-			//       else if ($(listenTo + ":checked").val() == listenFor) {
-			//         $section.slideDown();
-			//       }
-			//       else {
-			//         $section.slideUp();
-			//       }
-			//     } 
+		formConditionize : function(){ 
 
-			//     return this.each( function() {
-			//       var listenTo = '[name="' + $(this).data('cond-option').toString() + '"]';
-			//       var listenFor = $(this).data('cond-value');
-			//       var $section = $(this);
-			  
-			//       //Set up event listener
-			//       $(listenTo).on('change', function() {
-			//         $.fn.showOrHide(listenTo, listenFor, $section);
-			//       });
-			//       //If setting was chosen, hide everything first...
-			//       if (settings.hideJS) {
-			//         $(this).hide();
-			//       }
-			//       //Show based on current value on page load
-			//       $.fn.showOrHide(listenTo, listenFor, $section);
-			//     });
-			//   }
-
-			 $.fn.conditionize = function(options) {
+			 $.fn.conditionize = function(options: object) {
 
 			    var settings = $.extend({
 			        hideJS: true
@@ -1516,7 +1486,7 @@
 			});
 		},
 		navBar: function(){
-			$(document).on('click', '.hamburger, .canvas-slid', function(e) {
+			$(document).on('click', '.hamburger, .canvas-slid', function(e: any) {
 			    $(".hamburger").toggleClass("is-active");
 		  	});
 		},
@@ -1545,7 +1515,7 @@
 			
 
 			$('body').append(modalMarkup);
-			$(document).on('click', '.modal-remote', function(e){
+			$(document).on('click', '.modal-remote', function(e: any){
 				e.preventDefault();
 				
 				var $bttn = $(this);
@@ -1565,7 +1535,7 @@
 				$('#universal-modal').attr('id', modalID);
 				
 				// Wire modal events
-				$(document).on('show.bs.modal', ('#'+modalID), function(e) {  
+				$(document).on('show.bs.modal', ('#'+modalID), function(e: any) {  
 					if(opts.title) $('#'+modalID).find('.modal-title').html( opts.title );
 					if(opts.size) $('#'+modalID).find('.modal-dialog').addClass('modal-'+opts.size );
 					if(!opts.header) $('#'+modalID).find('.modal-header').hide();
@@ -1586,13 +1556,13 @@
 				// Display modal
 				$('#'+modalID).modal('show');
 
-				$(document).on('shown.bs.modal', '.modal', function(e) {  
+				$(document).on('shown.bs.modal', '.modal', function(e: any) {  
 					window.Platypus.wizard();
 					window.Platypus.inputMaxLength();
 				});
 
 				// Reset used modal to defaults
-				$(document).on('hidden.bs.modal', ('#'+modalID), function(e) { 
+				$(document).on('hidden.bs.modal', ('#'+modalID), function(e: any) { 
 					$('#'+modalID).attr('id', 'universal-modal');
 					$('#universal-modal').find('.modal-dialog').removeClass('modal-'+opts.size);
 					$('#universal-modal').find('.modal-title').html('');
@@ -1776,7 +1746,7 @@
             // bind spinner to ajax doc events
             $('.btn-ajax-spin').on({
 
-                ajaxStart: function(e) {
+                ajaxStart: function(e: any) {
 
                 	console.log("Target of ajaxStart is:", e.target);
 
@@ -1812,7 +1782,7 @@
 			});
 
 			// Mock functionality
-			$('#facets input[type="checkbox"]').change(function (e) {
+			$('#facets input[type="checkbox"]').change(function (e: any) {
 				e.preventDefault();
 				var pillVal = $(this).val();
 
@@ -1832,7 +1802,7 @@
 					//showSpinner();
 				}
 
-				$('#searchPills').on('removed.fu.pillbox', function (evt, item) {
+				$('#searchPills').on('removed.fu.pillbox', function (evt: any, item: any) {
 					$('#facets input[value="' + item.value + '"]').prop('checked', false);
 					//showSpinner();
 				});
@@ -1841,7 +1811,7 @@
 		infiniteLoading: function(){
 			
 			if ( $('.loadmore').length > 0 ) {
-				$('.loadmore').click(function(e){
+				$('.loadmore').click(function(e: any){
 					e.preventDefault();
 
 					var page = parseInt($(this).data('page'));
@@ -1914,7 +1884,7 @@
 					</a>
 				`);
 
-				$(document).on('submit', '#feedbackForm', function(e){
+				$(document).on('submit', '#feedbackForm', function(e: any){
 					e.preventDefault();
 					$('.modal').modal('hide');
 
@@ -1956,7 +1926,7 @@
 						            data2: '#009688',
 						            data3: '#9E9E9E'
 						        },
-						        color: function (color, d) {
+						        color: function (color: any, d: any) {
 						            return color;
 						        },						      
 						    }
@@ -1970,9 +1940,9 @@
 						            ['data', $(this).data('gauge-value') ? $(this).data('gauge-value') : '0']
 						        ],
 						        type: 'gauge',
-						        onclick: function (d, i) { console.log("onclick", d, i); },
-						        onmouseover: function (d, i) { console.log("onmouseover", d, i); },
-						        onmouseout: function (d, i) { console.log("onmouseout", d, i); }
+						        // onclick: function (d, i) { console.log("onclick", d, i); },
+						        // onmouseover: function (d, i) { console.log("onmouseover", d, i); },
+						        // onmouseout: function (d, i) { console.log("onmouseout", d, i); }
 						    },
 						    bindto: target,
 						    gauge: {},
@@ -2005,9 +1975,9 @@
 						        color: function (color, d) {
 						            return color;
 						        },
-						        onclick: function (d, i) { console.log("onclick", d, i); },
-						        onmouseover: function (d, i) { console.log("onmouseover", d, i); },
-						        onmouseout: function (d, i) { console.log("onmouseout", d, i); }
+						        // onclick: function (d, i) { console.log("onclick", d, i); },
+						        // onmouseover: function (d, i) { console.log("onmouseover", d, i); },
+						        // onmouseout: function (d, i) { console.log("onmouseout", d, i); }
 						    },
 						    bindto: target,
 						    donut: {
@@ -2085,7 +2055,7 @@
 						            ["versicolor", 1.4, 1.5, 1.5, 1.3, 1.5, 1.3, 1.6, 1.0, 1.3, 1.4, 1.0, 1.5, 1.0, 1.4, 1.3, 1.4, 1.5, 1.0, 1.5, 1.1, 1.8, 1.3, 1.5, 1.2, 1.3, 1.4, 1.4, 1.7, 1.5, 1.0, 1.1, 1.0, 1.2, 1.6, 1.5, 1.6, 1.5, 1.3, 1.3, 1.3, 1.2, 1.4, 1.2, 1.0, 1.3, 1.2, 1.3, 1.3, 1.1, 1.3],
 						        ],
 						        type: 'scatter',
-						        color:function(color, data){            
+						        color:function(color: any, data: any){            
 							        return colors[data.index % colors.length];
 							    },
 						    },
@@ -2113,68 +2083,67 @@
 		},
 		gridListSwitcher: function(){
 
-			if ($('#list-grid-switcher').length ) {
-				function init() {
-					var currentMode = $('#list-grid-switcher a.active').data('mode');
-					var layout = $('.row.list-grid').data('cols').split(",").map(function(col){ return "col-"+col });
-					updateActiveIndicator(currentMode);
-					setupInitialState(currentMode, layout);
-					saveState(currentMode);
-					bindEvents(layout);
-				}
-				
-				function setupInitialState(mode, layout){
-					$('.row.list-grid > div[class^="col-"]').each(function(){		
-						switch(mode) {
-							case 'list':
-								$(this).removeClass().addClass('col-xs-12');
-								break;
-							case 'grid':
-								$(this).removeClass().addClass(layout.join(" "));
-								break;
-							default:
-								console.log("Unknown mode");
-						}
-						$('.row.list-grid').removeClass('invisible');
-					});
-				}
-
-				function switchModes(mode, layout) {
-					$('.row.list-grid > div[class^="col-"]').each(function(){			
-						switch(mode) {
-							case 'list':
-								$(this).removeClass().addClass('col-xs-12');
-								break;
-							case 'grid':
-								$(this).removeClass().addClass( layout.join(" ") );
-								break;
-							default:
-								console.log("Unknown mode");
-						}
-					});
-					updateActiveIndicator(mode);
-				}
-
-				function saveState(mode){
-					$('.row.list-grid > div[class^="col-"]').each(function(){
-						$(this).data(mode+'-cols', $(this).attr('class') );		
-					});
-				}
-
-				function updateActiveIndicator(mode) {
-					var activeClasses = "active";
-					$('#list-grid-switcher a').removeClass(activeClasses);
-					$('#list-grid-switcher a[data-mode="' + mode + '"]').addClass(activeClasses);
-				}
-
-				function bindEvents(layout) {
-					$('#list-grid-switcher a').click(function(){
-						switchModes( $(this).data('mode'), layout );
-					});
-				}
-
-				init();
+			function init() {
+				var currentMode = $('#list-grid-switcher a.active').data('mode');
+				var layout = $('.row.list-grid').data('cols').split(",").map(function(col){ return "col-"+col });
+				updateActiveIndicator(currentMode);
+				setupInitialState(currentMode, layout);
+				saveState(currentMode);
+				bindEvents(layout);
 			}
+			
+			function setupInitialState(mode: string, layout: any){
+				$('.row.list-grid > div[class^="col-"]').each(function(){		
+					switch(mode) {
+						case 'list':
+							$(this).removeClass().addClass('col-12');
+							break;
+						case 'grid':
+							$(this).removeClass().addClass(layout.join(" "));
+							break;
+						default:
+							console.log("Unknown mode");
+					}
+					$('.row.list-grid').removeClass('invisible');
+				});
+			}
+
+			function switchModes(mode: string, layout: any) {
+				$('.row.list-grid > div[class^="col-"]').each(function(){			
+					switch(mode) {
+						case 'list':
+							$(this).removeClass().addClass('col-12');
+							break;
+						case 'grid':
+							$(this).removeClass().addClass( layout.join(" ") );
+							break;
+						default:
+							console.log("Unknown mode");
+					}
+				});
+				updateActiveIndicator(mode);
+			}
+
+			function saveState(mode: string){
+				$('.row.list-grid > div[class^="col-"]').each(function(){
+					$(this).data(mode+'-cols', $(this).attr('class') );		
+				});
+			}
+
+			function updateActiveIndicator(mode: string) {
+				var activeClasses = "active";
+				$('#list-grid-switcher a').removeClass(activeClasses);
+				$('#list-grid-switcher a[data-mode="' + mode + '"]').addClass(activeClasses);
+			}
+
+			function bindEvents(layout: any) {
+				$('#list-grid-switcher a').click(function(){
+					switchModes( $(this).data('mode'), layout );
+				});
+			}
+
+			if ($('#list-grid-switcher').length ) init();
+
 		},
 
 		videoWidget: function() {
@@ -2202,13 +2171,14 @@
 		},
 
 		helpful: function(){
-			$('.helpful-widget button').on('click', function(e){
+			
+			$('.helpful-widget button').on('click', function(e: any){
 				e.preventDefault();
 				
 				let id = $(this).closest('.helpful-widget').data('article-id'),
 					val = $(this).hasClass('yes') ? '+1' : '-1';
 
-				var data = {};
+				let data = <any>{};
 				data.val = val;
 
 				$.ajax({
@@ -2220,7 +2190,7 @@
                         toastr.success(data.score);
                         $('.helpful-widget').hide();
                     },
-                    error: function (request, status, error) {
+                    error: function (request: any, status: any, error: any) {
 				        console.log(error);
 				        toastr.error('Cannot update score. ');
 
@@ -2233,7 +2203,7 @@
 
 			if( $('.google-map').length > 0 ) {
 				
-				let geocoder = new google.maps.Geocoder();
+				let geocoder: any = new google.maps.Geocoder();
 
 				$('.google-map').each(function(map){	
 									
@@ -2250,7 +2220,7 @@
 						geocodeAddress(geocoder, $(this).data('map-address'), m);
 					}
 
-					function geocodeAddress(geocoder, address, resultsMap) {
+					function geocodeAddress(geocoder: any, address: string, resultsMap: any) {
 				        geocoder.geocode({'address': address}, function(results, status) {
 				        if (status === 'OK') {
 				            resultsMap.setCenter(results[0].geometry.location);
@@ -2286,7 +2256,7 @@
 				
 				switch(event) {
 					case 'click':
-						$(this).on(event, function(e) {
+						$(this).on(event, function(e: any) {
 							$(this).toggleClass(icon + ' ' +altIco);
 						});
 						break;
@@ -2306,7 +2276,7 @@
 		clipboard: function(){
 			var clipboard = new ClipboardJS('.btn');
 
-			clipboard.on('success', function(e) {
+			clipboard.on('success', function(e: any) {
 
 				switch(e.action) {
 					case 'copy':
@@ -2326,7 +2296,7 @@
 			    e.clearSelection();
 			});
 
-			clipboard.on('error', function(e) {
+			clipboard.on('error', function(e: any) {
 			    toastr.error("Unable to copy/cut");
 			    // console.error('Action:', e.action);
 			    // console.error('Trigger:', e.trigger);
@@ -2362,12 +2332,12 @@
 									}
 								};
 
-								axe.run(document, opts, function (error, results) {
+								axe.run(document, opts, function (error: any, results: any) {
 								  if(results.violations.length === 0) {
 								  	console.log("Congratulations! This page is WCAG 2.0 Level A and AA compliant.")
 								  } else {
 								  	console.log("The following accessibility issue should be fixed:")
-								  	results.violations.map( (violation) => console.log(violation) );
+								  	results.violations.map( (violation: object) => console.log(violation) );
 								  }
 								});
 							});

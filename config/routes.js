@@ -55,7 +55,7 @@ module.exports  = function(app){
     articlesRouter.post('/score/:id',             articles.update_score);
     articlesRouter.get('/search/:cat_slug',       articles.search);
     articlesRouter.get('/mock/:slug/:viewport',   articles.mock);
-    articlesRouter.get('/exists/:slug?',           articles.exists);  // sample for ajax validation
+    articlesRouter.get('/exists/:slug?',          articles.exists);  // sample for ajax validation
     articlesRouter.get('/:slug',                  articles.show);
     
     

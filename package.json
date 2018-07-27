@@ -32,6 +32,7 @@
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.3.2",
     "gulp-sourcemaps": "^2.4.0",
+    "gulp-typescript": "^4.0.2",
     "gulp-uglify": "^2.0.0",
     "handlebars-helpers": "^0.8.0",
     "jquery-file-upload-middleware": "^0.1.8",

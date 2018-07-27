@@ -28,7 +28,7 @@ module.exports = function(app, envConfig){
         partialsDir: path.join(envConfig.rootPath, 'views/partials')
     }));
     app.set('view engine', '.hbs');
-    app.use(logger('combined'));
+    app.use(logger('tiny'));
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({
         limit: '50mb',
@@ -52,6 +52,4 @@ module.exports = function(app, envConfig){
     app.use(middlewares.getNav);
     // app.use(middlewares.debug);
 
-        
-  
 };
