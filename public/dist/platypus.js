@@ -6088,10 +6088,6 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
             Platypus.clipboard();
             Platypus.matchHeight();
             Platypus.debug();
-            Platypus.testTS();
-        },
-        testTS: function () {
-            console.log("Testing Typescript implementation....");
         },
         detectBreakpoint: function () {
             var $html = $('html'), currClass = '', finalClass = 'xl', w = $(window).width();
@@ -7138,7 +7134,8 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
                 ];
                 if (geo) {
                     $.ajax({
-                        url: 'http://freegeoip.net/json/',
+                        //url: 'http://freegeoip.net/json/',
+                        url: 'http://ip-api.com/json',
                         method: 'GET',
                         success: function (data) {
                             geoLocateResponse = data;
@@ -7153,14 +7150,14 @@ SVGPathSeg.call(this,SVGPathSeg.PATHSEG_LINETO_VERTICAL_REL,"v",a),this._y=b},SV
                             countries.forEach(function (country) {
                                 $el.append("<option value=\"" + country.name + "\">" + country.name + "</option>");
                                 if (geo && geoLocateResponse !== '')
-                                    $el.find('option[value="' + geoLocateResponse.country_name + '"]').attr('selected', true);
+                                    $el.find('option[value="' + geoLocateResponse.country + '"]').attr('selected', true);
                             });
                             break;
                         case 'state':
                             states.forEach(function (state) {
                                 $el.append("<option value=\"" + state.abbreviation + "\">" + state.name + "</option>");
                                 if (geo && geoLocateResponse !== '')
-                                    $el.find('option[value="' + geoLocateResponse.region_code + '"]').attr('selected', true);
+                                    $el.find('option[value="' + geoLocateResponse.region + '"]').attr('selected', true);
                             });
                             break;
                         default:

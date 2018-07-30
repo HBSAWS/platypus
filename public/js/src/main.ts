@@ -99,13 +99,8 @@ declare var jQuery: any;
 			Platypus.clipboard(); 
 			Platypus.matchHeight(); 
 			Platypus.debug(); 
-			Platypus.testTS(); 
 		},
 		
-		testTS: function(){
-			console.log("Testing Typescript implementation....");
-			declare var foo: number;
-		},
 		detectBreakpoint: function() {
 
 		   	let $html = $('html'),
@@ -1247,7 +1242,8 @@ declare var jQuery: any;
 
 				if(geo) {
 					$.ajax({
-						url: 'http://freegeoip.net/json/',
+						//url: 'http://freegeoip.net/json/',
+						url: 'http://ip-api.com/json',
 						method: 'GET',
 						success: function(data){
 							geoLocateResponse = data;
@@ -1262,13 +1258,13 @@ declare var jQuery: any;
 						case 'country':
 							countries.forEach(function(country){
 								$el.append(`<option value="${country.name}">${country.name}</option>`);
-								if (geo && geoLocateResponse !== '') $el.find('option[value="'+geoLocateResponse.country_name+'"]').attr('selected', true);
+								if (geo && geoLocateResponse !== '') $el.find('option[value="'+geoLocateResponse.country+'"]').attr('selected', true);
 							});
 							break;
 						case 'state':
 							states.forEach(function(state){
 								$el.append(`<option value="${state.abbreviation}">${state.name}</option>`);
-								if (geo && geoLocateResponse !== '') $el.find('option[value="'+geoLocateResponse.region_code+'"]').attr('selected', true);
+								if (geo && geoLocateResponse !== '') $el.find('option[value="'+geoLocateResponse.region+'"]').attr('selected', true);
 							});
 							break;
 						default:
