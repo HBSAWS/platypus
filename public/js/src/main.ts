@@ -1,6 +1,20 @@
 'use strict';
 
-declare var jQuery: any;
+let Platypus: any,
+	jQuery: any,
+	d3: any,
+	c3: any,
+	toastr: any,
+	swal: any,
+	Ladda: any,
+	Waves: any,
+	hljs: any,
+	ClipboardJS: any,
+	axe: any,
+	blueimp: any,
+	Spinner: any,
+	_: any;
+
 
 ;(function ($) {
 
@@ -505,9 +519,9 @@ declare var jQuery: any;
 				if(src && cols) {
 					
 					$.ajax(src, {
-						success: function success(data) {
+						success: function success(data: any) {
 
-							data.forEach(function (item) {
+							data.forEach(function (item: any) {
 								$tbl.find('tbody').append("<tr></tr>");
 								cols.forEach(function(col){
 									$tbl.find('tbody tr:last-child').append("<td>" + item[col] +"</td>");
@@ -527,7 +541,7 @@ declare var jQuery: any;
 							
 
 						},
-						error: function error(request, status, error) {
+						error: function error(request: any, status: any, error: any) {
 							console.log(request, status, error);
 							swal('Error', 'Cannot retrieve data.', 'error');
 						}
@@ -865,7 +879,7 @@ declare var jQuery: any;
 			        return title;
 			      }
 			    });
-			    $(this).on('rating.rateenter', function (e, rate) {
+			    $(this).on('rating.rateenter', function (e: any, rate: any) {
 			      title = rate;
 			      $(this).tooltip('show');
 			    })
@@ -1253,7 +1267,7 @@ declare var jQuery: any;
 					});
 				}
 
-				function populate(geo) {
+				function populate(geo: any) {
 					switch(type){
 						case 'country':
 							countries.forEach(function(country){
@@ -1362,91 +1376,89 @@ declare var jQuery: any;
 		},
 		formAddress: function(){
 
-			if ( $('input.address-autocomplete').length > 0 ) {
-				// This example displays an address form, using the autocomplete feature
-				// of the Google Places API to help users fill in the information.
+			if ( $('input.address-autocomplete').length > 0 ) initialize();
 
-				if ( $('.confirm-edit-address').length > 0 ) $('.confirm-edit-address').hide();
+			// This example displays an address form, using the autocomplete feature
+			// of the Google Places API to help users fill in the information.
 
-				$("input.address-autocomplete").on('focus', function () {
-				    geolocate();
-				});
+			if ( $('.confirm-edit-address').length > 0 ) $('.confirm-edit-address').hide();
 
-				var placeSearch, autocomplete;
-				var componentForm = {
-				    street_number: 'short_name',
-				    route: 'long_name',
-				    locality: 'long_name',
-				    administrative_area_level_1: 'short_name',
-				    country: 'long_name',
-				    postal_code: 'short_name'
-				};
+			$("input.address-autocomplete").on('focus', function () {
+			    geolocate();
+			});
 
-				function initialize() {
-				    // Create the autocomplete object, restricting the search
-				    // to geographical location types.
-				    autocomplete = new google.maps.places.Autocomplete(
-				    /** @type {HTMLInputElement} */ (document.querySelector('input.address-autocomplete')), {
-				        types: ['geocode']
-				    });
-				    // When the user selects an address from the dropdown,
-				    // populate the address fields in the form.
-				    if ( $('.confirm-edit-address').length > 0 ) {
-				    	google.maps.event.addListener(autocomplete, 'place_changed', function () {
-				        	fillInAddress();
-				    	});
-				    }
-				}
+			var placeSearch, autocomplete;
+			var componentForm = {
+			    street_number: 'short_name',
+			    route: 'long_name',
+			    locality: 'long_name',
+			    administrative_area_level_1: 'short_name',
+			    country: 'long_name',
+			    postal_code: 'short_name'
+			};
 
-				// [START region_fillform]
-				function fillInAddress() {
-
-					$('.confirm-edit-address').show();
-
-				    // Get the place details from the autocomplete object.
-				    var place = autocomplete.getPlace();
-
-				    document.getElementById("latitude").value = place.geometry.location.lat();
-				    document.getElementById("longitude").value = place.geometry.location.lng();
-
-				    for (var component in componentForm) {
-				        document.getElementById(component).value = '';
-				        document.getElementById(component).disabled = false;
-				    }
-
-				    // Get each component of the address from the place details
-				    // and fill the corresponding field on the form.
-				    for (var i = 0; i < place.address_components.length; i++) {
-				        var addressType = place.address_components[i].types[0];
-				        if (componentForm[addressType]) {
-				            var val = place.address_components[i][componentForm[addressType]];
-				            document.getElementById(addressType).value = val;
-				        }
-				    }
-				}
-				
-				// Bias the autocomplete object to the user's geographical location,
-				// as supplied by the browser's 'navigator.geolocation' object.
-				function geolocate() {
-				    if (navigator.geolocation) {
-				        navigator.geolocation.getCurrentPosition(function (position) {
-				            var geolocation = new google.maps.LatLng(
-				            position.coords.latitude, position.coords.longitude);
-
-				            var latitude = position.coords.latitude;
-				            var longitude = position.coords.longitude;
-				            document.getElementById("latitude").value = latitude;
-				            document.getElementById("longitude").value = longitude;
-
-				            autocomplete.setBounds(new google.maps.LatLngBounds(geolocation, geolocation));
-				        });
-				    }
-
-				}
-
-				initialize();
-			
+			function initialize() {
+			    // Create the autocomplete object, restricting the search
+			    // to geographical location types.
+			    autocomplete = new google.maps.places.Autocomplete(
+			    /** @type {HTMLInputElement} */ (document.querySelector('input.address-autocomplete')), {
+			        types: ['geocode']
+			    });
+			    // When the user selects an address from the dropdown,
+			    // populate the address fields in the form.
+			    if ( $('.confirm-edit-address').length > 0 ) {
+			    	google.maps.event.addListener(autocomplete, 'place_changed', function () {
+			        	fillInAddress();
+			    	});
+			    }
 			}
+
+			// [START region_fillform]
+			function fillInAddress() {
+
+				$('.confirm-edit-address').show();
+
+			    // Get the place details from the autocomplete object.
+			    var place = autocomplete.getPlace();
+
+			    document.getElementById("latitude").value = place.geometry.location.lat();
+			    document.getElementById("longitude").value = place.geometry.location.lng();
+
+			    for (var component in componentForm) {
+			        document.getElementById(component).value = '';
+			        document.getElementById(component).disabled = false;
+			    }
+
+			    // Get each component of the address from the place details
+			    // and fill the corresponding field on the form.
+			    for (var i = 0; i < place.address_components.length; i++) {
+			        var addressType = place.address_components[i].types[0];
+			        if (componentForm[addressType]) {
+			            var val = place.address_components[i][componentForm[addressType]];
+			            document.getElementById(addressType).value = val;
+			        }
+			    }
+			}
+			
+			// Bias the autocomplete object to the user's geographical location,
+			// as supplied by the browser's 'navigator.geolocation' object.
+			function geolocate() {
+			    if (navigator.geolocation) {
+			        navigator.geolocation.getCurrentPosition(function (position) {
+			            var geolocation = new google.maps.LatLng(
+			            position.coords.latitude, position.coords.longitude);
+
+			            var latitude = position.coords.latitude;
+			            var longitude = position.coords.longitude;
+			            document.getElementById("latitude").value = latitude;
+			            document.getElementById("longitude").value = longitude;
+
+			            autocomplete.setBounds(new google.maps.LatLngBounds(geolocation, geolocation));
+			        });
+			    }
+
+			}
+
 		},
 		slimScroll: function() {
 			$('.sidebar, .modal-body').slimScroll({
@@ -1612,7 +1624,7 @@ declare var jQuery: any;
 					      	if (content !== $(this).summernote('code')) postData( $(this) );
 					      	
 						},
-						onChange: function(contents, $editable) {
+						onChange: function(contents: any, $editable: any) {
 					      	// console.log('summernote onChange callback fired:', contents, $editable);
 					    }
 					}
@@ -1628,10 +1640,10 @@ declare var jQuery: any;
 						data: JSON.stringify(data),
 				        contentType: 'application/json',
                         url: postUrl,						
-                        success: function(data) {
+                        success: function(data: any) {
                             toastr.success('Item updated successfully.');
                         },
-                        error: function (request, status, error) {
+                        error: function (request: any, status: any, error: any) {
 					        toastr.error('Cannot update item.');
 					    }
                     });
@@ -1656,7 +1668,7 @@ declare var jQuery: any;
 				display: ["title", "intro"],
 				href: "/articles/{{slug}}",
 				group: {
-					template: function template(item) {
+					template: function template(item: any) {
 						return 'Found in ' + item._category.title;
 					}
 				},
@@ -1725,7 +1737,7 @@ declare var jQuery: any;
 		setupSpinOnAjax: function() {
 
 			// setup spinner animation options
-            $.fn.spin = function(opts) {
+            $.fn.spin = function(opts: {}) {
                 this.each(function() {
                     var $this = $(this),
                         spinner = $this.data('spinner');
@@ -1968,7 +1980,7 @@ declare var jQuery: any;
 						            data2: '#009688',
 						            data3: '#9E9E9E'
 						        },
-						        color: function (color, d) {
+						        color: function (color: any, d: any) {
 						            return color;
 						        },
 						        // onclick: function (d, i) { console.log("onclick", d, i); },
@@ -1997,7 +2009,7 @@ declare var jQuery: any;
 						            data2: '#009688',
 						            data3: '#9E9E9E'
 						        },
-						        color: function (color, d) {
+						        color: function (color: any, d: any) {
 						            return color;
 						        },
 						    },
@@ -2024,7 +2036,7 @@ declare var jQuery: any;
 						            data2: '#009688',
 						            data3: '#9E9E9E'
 						        },
-						        color: function (color, d) {
+						        color: function (color: any, d: any) {
 						            return color;
 						        }						        
 						    },
@@ -2182,7 +2194,7 @@ declare var jQuery: any;
 					data: JSON.stringify(data),
 			        contentType: 'application/json',
                     url: '/articles/score/'+id,						
-                    success: function(data) {
+                    success: function(data: any) {
                         toastr.success(data.score);
                         $('.helpful-widget').hide();
                     },
@@ -2217,7 +2229,7 @@ declare var jQuery: any;
 					}
 
 					function geocodeAddress(geocoder: any, address: string, resultsMap: any) {
-				        geocoder.geocode({'address': address}, function(results, status) {
+				        geocoder.geocode({'address': address}, function(results: any, status: any) {
 				        if (status === 'OK') {
 				            resultsMap.setCenter(results[0].geometry.location);
 				            var marker = new google.maps.Marker({
