@@ -6312,9 +6312,9 @@ var Platypus, jQuery, d3, c3, toastr, swal, Ladda, Waves, hljs, ClipboardJS, axe
         },
         dataTables: function () {
             function initTable($tbl, buttons) {
-                var btnMarkup = (buttons.length > 0) ? "<'row w-100'<'col-4 text-left'B><'col-6 text-left'f><'col-2 text-right'l>><'row w-100'<'col-12'tr>><'row w-100'<'col-sm-6 col-12 small'i><'col-sm-6 col-12'p>>" : "<'row w-100'<'col-10 text-left'f><'col-2 text-right'l>><'row w-100'<'col-12'tr>><'row w-100'<'col-sm-6 col-12 small'i><'col-sm-6 col-12'p>>";
+                var btnMarkup = (buttons.length) ? "<'row w-100'<'col-4 text-left'B><'col-6 text-left'f><'col-2 text-right'l>><'row w-100'<'col-12'tr>><'row w-100'<'col-sm-6 col-12 small'i><'col-sm-6 col-12'p>>" : "<'row w-100'<'col-10 text-left'f><'col-2 text-right'l>><'row w-100'<'col-12'tr>><'row w-100'<'col-sm-6 col-12 small'i><'col-sm-6 col-12'p>>";
                 var aoBttns = [];
-                if (buttons.length > 0) {
+                if (buttons.length) {
                     window.pdfMake.fonts = {
                         Roboto: {
                             normal: 'Roboto-Regular.ttf',
@@ -6325,7 +6325,7 @@ var Platypus, jQuery, d3, c3, toastr, swal, Ladda, Waves, hljs, ClipboardJS, axe
                     };
                     $tbl.on('init.dt', function (e, settings, json) {
                         var api = new $.fn.dataTable.Api(settings);
-                        if (api.buttons().length > 0) {
+                        if (api.buttons().length) {
                             $("a", api.buttons().container(0)).each(function (index) {
                                 $(this).attr('data-toggle', 'tooltip');
                                 $(this).attr('data-placement', 'top');
@@ -6333,7 +6333,7 @@ var Platypus, jQuery, d3, c3, toastr, swal, Ladda, Waves, hljs, ClipboardJS, axe
                             $('[data-toggle="tooltip"]').tooltip();
                         }
                     });
-                    for (i = 0; i <= buttons.length; i++) {
+                    for (var i = 0; i <= buttons.length; i++) {
                         switch (buttons[i]) {
                             case 'copy':
                                 if (buttons.indexOf('copy') !== -1) {
@@ -6803,7 +6803,7 @@ var Platypus, jQuery, d3, c3, toastr, swal, Ladda, Waves, hljs, ClipboardJS, axe
                     confirmButtonText: 'Delete'
                 }).then(function () {
                     var parentForm = $(el).closest('form');
-                    if (parentForm.length > 0) {
+                    if (parentForm.length) {
                         parentForm.submit();
                     }
                     else {
@@ -7135,12 +7135,10 @@ var Platypus, jQuery, d3, c3, toastr, swal, Ladda, Waves, hljs, ClipboardJS, axe
                 ];
                 if (geo) {
                     $.ajax({
-                        //url: 'http://freegeoip.net/json/',
                         url: 'http://ip-api.com/json',
                         method: 'GET',
                         success: function (data) {
                             geoLocateResponse = data;
-                            // console.log(geoLocateResponse);
                             populate(true);
                         }
                     });
@@ -7242,12 +7240,11 @@ var Platypus, jQuery, d3, c3, toastr, swal, Ladda, Waves, hljs, ClipboardJS, axe
             $('.conditional').conditionize();
         },
         formAddress: function () {
-            if ($('input.address-autocomplete').length > 0)
+            if ($('input.address-autocomplete').length)
                 initialize();
             // This example displays an address form, using the autocomplete feature
             // of the Google Places API to help users fill in the information.
-            if ($('.confirm-edit-address').length > 0)
-                $('.confirm-edit-address').hide();
+            $('.confirm-edit-address').hide();
             $("input.address-autocomplete").on('focus', function () {
                 geolocate();
             });
@@ -7269,7 +7266,7 @@ var Platypus, jQuery, d3, c3, toastr, swal, Ladda, Waves, hljs, ClipboardJS, axe
                 });
                 // When the user selects an address from the dropdown,
                 // populate the address fields in the form.
-                if ($('.confirm-edit-address').length > 0) {
+                if ($('.confirm-edit-address').length) {
                     google.maps.event.addListener(autocomplete, 'place_changed', function () {
                         fillInAddress();
                     });
@@ -7606,7 +7603,7 @@ var Platypus, jQuery, d3, c3, toastr, swal, Ladda, Waves, hljs, ClipboardJS, axe
             });
         },
         infiniteLoading: function () {
-            if ($('.loadmore').length > 0) {
+            if ($('.loadmore').length) {
                 $('.loadmore').click(function (e) {
                     e.preventDefault();
                     var page = parseInt($(this).data('page'));
@@ -7917,7 +7914,7 @@ var Platypus, jQuery, d3, c3, toastr, swal, Ladda, Waves, hljs, ClipboardJS, axe
             });
         },
         googleMaps: function () {
-            if ($('.google-map').length > 0) {
+            if ($('.google-map').length) {
                 var geocoder_1 = new google.maps.Geocoder();
                 $('.google-map').each(function (map) {
                     var m = new google.maps.Map(document.getElementById($(this).attr('id')), {

@@ -190,7 +190,7 @@ let Platypus: any,
 
 			if(browser.isSafari || browser.isFirefox) {
 				// Prevent Back-Forward-Cache issue
-	            $(window).bind("pageshow", function(event) {
+	            $(window).bind("pageshow", function(event: any) {
 	                if (event.originalEvent.persisted) {
 	                    Ladda.stopAll();
 	                }
@@ -355,10 +355,10 @@ let Platypus: any,
 
 			function initTable($tbl: any, buttons: any) {
 
-				let btnMarkup = (buttons.length > 0) ? "<'row w-100'<'col-4 text-left'B><'col-6 text-left'f><'col-2 text-right'l>><'row w-100'<'col-12'tr>><'row w-100'<'col-sm-6 col-12 small'i><'col-sm-6 col-12'p>>" : "<'row w-100'<'col-10 text-left'f><'col-2 text-right'l>><'row w-100'<'col-12'tr>><'row w-100'<'col-sm-6 col-12 small'i><'col-sm-6 col-12'p>>";
+				let btnMarkup = (buttons.length) ? "<'row w-100'<'col-4 text-left'B><'col-6 text-left'f><'col-2 text-right'l>><'row w-100'<'col-12'tr>><'row w-100'<'col-sm-6 col-12 small'i><'col-sm-6 col-12'p>>" : "<'row w-100'<'col-10 text-left'f><'col-2 text-right'l>><'row w-100'<'col-12'tr>><'row w-100'<'col-sm-6 col-12 small'i><'col-sm-6 col-12'p>>";
 				let aoBttns = [];
 
-				if(buttons.length>0) {
+				if(buttons.length) {
 
 					
 					window.pdfMake.fonts = {
@@ -372,7 +372,7 @@ let Platypus: any,
 					
 					$tbl.on('init.dt', function (e, settings, json) {
 			            var api = new $.fn.dataTable.Api(settings);
-			            if (api.buttons().length > 0) {
+			            if (api.buttons().length) {
 			 
 			                $("a", api.buttons().container(0)).each(function (index) {
 			                    $(this).attr('data-toggle', 'tooltip');
@@ -383,7 +383,7 @@ let Platypus: any,
 			            }
 			        });
 			
-				    for(i=0;i<=buttons.length; i++){
+				    for(let i=0; i<=buttons.length; i++){
 				    	switch(buttons[i]) {
 				    		case 'copy':
 				    			if(buttons.indexOf('copy') !== -1) {
@@ -630,7 +630,7 @@ let Platypus: any,
 					      	url: source,
 					      	dataType: 'json',
 					      	delay: 250,
-					      	data: function (params) {
+					      	data: function (params: any) {
 					        	return {
 					            	q: params.term ? params.term : "a", // search term
 					          		page: params.page
@@ -640,7 +640,7 @@ let Platypus: any,
 					        	params.page = params.page || 1;
 
 					        	return {
-					          		results: $.map(data, function (item) {
+					          		results: $.map(data, function (item: any) {
 				                    	return {
 				                        	text: item.first_name,
 				                        	name: item.last_name,
@@ -655,7 +655,7 @@ let Platypus: any,
 					      },
 					      cache: true
 					    },
-					    escapeMarkup: function (markup) { return markup; },
+					    escapeMarkup: function (markup: string) { return markup; },
 					    placeholder: placeholder,
 					    minimumInputLength: 0,
 					    templateResult: templateResult,
@@ -922,7 +922,7 @@ let Platypus: any,
 				  	confirmButtonText: 'Delete'
 				}).then(function () {
 					let parentForm = $(el).closest('form');
-				  	if ( parentForm.length > 0 ) {
+				  	if ( parentForm.length ) {
 				  		parentForm.submit();
 				  	} else {
 				  		window.location.href = $(el).attr("href");
@@ -933,7 +933,7 @@ let Platypus: any,
 				    //  	'Item successfully removed.',
 				    //  	'success'
 				  	// );
-				}, function(dismiss){
+				}, function(dismiss: any){
 					Ladda.stopAll();
 				})
 			});
@@ -1256,12 +1256,10 @@ let Platypus: any,
 
 				if(geo) {
 					$.ajax({
-						//url: 'http://freegeoip.net/json/',
 						url: 'http://ip-api.com/json',
 						method: 'GET',
-						success: function(data){
+						success: function(data: any){
 							geoLocateResponse = data;
-							// console.log(geoLocateResponse);
 							populate(true);
 						}
 					});
@@ -1309,7 +1307,7 @@ let Platypus: any,
 			        hideJS: true
 			    }, options );
 
-			    $.fn.showOrHide = function(is_met, $section) {
+			    $.fn.showOrHide = function(is_met: boolean, $section: any) {
 			      if (is_met) {
 			        $section.slideDown();
 			      }
@@ -1376,12 +1374,12 @@ let Platypus: any,
 		},
 		formAddress: function(){
 
-			if ( $('input.address-autocomplete').length > 0 ) initialize();
+			if ( $('input.address-autocomplete').length ) initialize();
 
 			// This example displays an address form, using the autocomplete feature
 			// of the Google Places API to help users fill in the information.
 
-			if ( $('.confirm-edit-address').length > 0 ) $('.confirm-edit-address').hide();
+			$('.confirm-edit-address').hide();
 
 			$("input.address-autocomplete").on('focus', function () {
 			    geolocate();
@@ -1406,7 +1404,7 @@ let Platypus: any,
 			    });
 			    // When the user selects an address from the dropdown,
 			    // populate the address fields in the form.
-			    if ( $('.confirm-edit-address').length > 0 ) {
+			    if ( $('.confirm-edit-address').length ) {
 			    	google.maps.event.addListener(autocomplete, 'place_changed', function () {
 			        	fillInAddress();
 			    	});
@@ -1466,7 +1464,7 @@ let Platypus: any,
 			});
 		},
 		gallery: function() {
-			$('.gallery').click(function (event) {
+			$('.gallery').click(function (event: any) {
 				event = event || window.event;
 				var target = event.target || event.srcElement,
 				    link = target.src ? target.parentNode : target,
@@ -1630,9 +1628,9 @@ let Platypus: any,
 					}
 				});
 
-				function postData($el){
+				function postData($el: any){
 
-					var data = {};
+					var data = <any>{};
 					data.body = $el.summernote('code');
 
 					$.ajax({
@@ -1701,10 +1699,10 @@ let Platypus: any,
 					"background-color": "#000"
 				},
 				callback: {
-					onInit: function(node) {
+					onInit: function(node: any) {
 						// console.log('Typeahead Initiated on ' + node.selector);
 					},
-					onClick: function(node, a, item, event) {
+					onClick: function(node: any, a: any, item: any, event: any) {
 						window.location(item.href);
 					}
 				},
@@ -1818,7 +1816,7 @@ let Platypus: any,
 		},
 		infiniteLoading: function(){
 			
-			if ( $('.loadmore').length > 0 ) {
+			if ( $('.loadmore').length ) {
 				$('.loadmore').click(function(e: any){
 					e.preventDefault();
 
@@ -1829,9 +1827,9 @@ let Platypus: any,
 					$(this).attr('data-page', page+1);
 
 					$.ajax(nextPageUrl, {
-						success: function success(data) {
+						success: function success(data: any) {
 
-					    	data.docs.forEach(function(item, index){
+					    	data.docs.forEach(function(item: any, index: number){
 
 					    		if(index === 0 || index % 4 === 0) {
 					    			$('#component-container').append(`<div class="card-deck"></div>`)
@@ -2209,7 +2207,7 @@ let Platypus: any,
 		},
 		googleMaps: function(){
 
-			if( $('.google-map').length > 0 ) {
+			if( $('.google-map').length ) {
 				
 				let geocoder: any = new google.maps.Geocoder();
 
