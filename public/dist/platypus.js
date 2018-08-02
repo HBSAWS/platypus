@@ -6326,7 +6326,7 @@ var Platypus, jQuery, d3, c3, toastr, swal, Ladda, Waves, hljs, ClipboardJS, axe
                     $tbl.on('init.dt', function (e, settings, json) {
                         var api = new $.fn.dataTable.Api(settings);
                         if (api.buttons().length) {
-                            $("a", api.buttons().container(0)).each(function (index) {
+                            $("a", api.buttons().container(0)).each(function () {
                                 $(this).attr('data-toggle', 'tooltip');
                                 $(this).attr('data-placement', 'top');
                             });
@@ -7215,7 +7215,7 @@ var Platypus, jQuery, d3, c3, toastr, swal, Ladda, Waves, hljs, ClipboardJS, axe
                     // Replace fields names/ids by $().val()
                     for (name in inputs) {
                         e = inputs[name];
-                        tmp_re = new RegExp("(" + name + ")\\b", "g");
+                        var tmp_re = new RegExp("(" + name + ")\\b", "g");
                         if (($(e).attr('type') == 'radio') || ($(e).attr('type') == 'checkbox')) {
                             cond = cond.replace(tmp_re, "$('" + e + ":checked').val()");
                         }
@@ -7244,7 +7244,6 @@ var Platypus, jQuery, d3, c3, toastr, swal, Ladda, Waves, hljs, ClipboardJS, axe
                 initialize();
             // This example displays an address form, using the autocomplete feature
             // of the Google Places API to help users fill in the information.
-            $('.confirm-edit-address').hide();
             $("input.address-autocomplete").on('focus', function () {
                 geolocate();
             });
@@ -7272,16 +7271,15 @@ var Platypus, jQuery, d3, c3, toastr, swal, Ladda, Waves, hljs, ClipboardJS, axe
                     });
                 }
             }
-            // [START region_fillform]
             function fillInAddress() {
-                $('.confirm-edit-address').show();
+                $('.confirm-edit-address').removeClass('d-none').addClass('d-block');
                 // Get the place details from the autocomplete object.
                 var place = autocomplete.getPlace();
-                document.getElementById("latitude").value = place.geometry.location.lat();
-                document.getElementById("longitude").value = place.geometry.location.lng();
+                $("#latitude").val(place.geometry.location.lat());
+                $("#longitude").val(place.geometry.location.lng());
                 for (var component in componentForm) {
-                    document.getElementById(component).value = '';
-                    document.getElementById(component).disabled = false;
+                    $('#' + component).val('');
+                    $('#' + component).prop('disabled', false);
                 }
                 // Get each component of the address from the place details
                 // and fill the corresponding field on the form.
@@ -7289,7 +7287,7 @@ var Platypus, jQuery, d3, c3, toastr, swal, Ladda, Waves, hljs, ClipboardJS, axe
                     var addressType = place.address_components[i].types[0];
                     if (componentForm[addressType]) {
                         var val = place.address_components[i][componentForm[addressType]];
-                        document.getElementById(addressType).value = val;
+                        $('#' + addressType).val(val);
                     }
                 }
             }
@@ -7301,8 +7299,8 @@ var Platypus, jQuery, d3, c3, toastr, swal, Ladda, Waves, hljs, ClipboardJS, axe
                         var geolocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
                         var latitude = position.coords.latitude;
                         var longitude = position.coords.longitude;
-                        document.getElementById("latitude").value = latitude;
-                        document.getElementById("longitude").value = longitude;
+                        $("#latitude").val(latitude);
+                        $("#longitude").val(longitude);
                         autocomplete.setBounds(new google.maps.LatLngBounds(geolocation, geolocation));
                     });
                 }
@@ -7640,7 +7638,7 @@ var Platypus, jQuery, d3, c3, toastr, swal, Ladda, Waves, hljs, ClipboardJS, axe
         feedback: function () {
             if ($('body').data('feedback-url')) {
                 // Inserts feedback button in DOM
-                $('body').append("\n\t\t\t\t\t<a id=\"btn-feedback\" href=\"/feedback/new\" class=\"btn btn-info modal-remote\"\n\t\t\t\t\t  \tdata-modal-title=\"Feedback\"\n\t\t\t\t\t  \tdata-modal-size=\"lg\"\n\t\t\t\t\t  \tdata-modal-header=\"true\"\n\t\t\t\t\t  \tdata-modal-footer=\"false\">\n\t\t\t\t\t  \t\t<i class=\"fa fa-comment-o\" data-toggle=\"tooltip\" data-placement=\"left\" title=\"Feedback\"></i>\n\t\t\t\t\t</a>\n\t\t\t\t");
+                $('body').append("\n\t\t\t\t\t<a id=\"btn-feedback\" href=\"/feedback/new\" class=\"btn btn-info modal-remote\"\n\t\t\t\t\t  \tdata-modal-title=\"Feedback\"\n\t\t\t\t\t  \tdata-modal-size=\"lg\"\n\t\t\t\t\t  \tdata-modal-header=\"true\"\n\t\t\t\t\t  \tdata-modal-footer=\"false\">\n\t\t\t\t\t  \t\t<i class=\"fa fa-comment-alt\" data-toggle=\"tooltip\" data-placement=\"left\" title=\"Feedback\"></i>\n\t\t\t\t\t</a>\n\t\t\t\t");
                 $(document).on('submit', '#feedbackForm', function (e) {
                     e.preventDefault();
                     $('.modal').modal('hide');
@@ -8019,7 +8017,7 @@ var Platypus, jQuery, d3, c3, toastr, swal, Ladda, Waves, hljs, ClipboardJS, axe
                     switch (searchParams.get('debug')) {
                         case 'accessibility':
                             console.log("Debugging accessibility... The page might become unresponsive for a few seconds. Please stand by.");
-                            p = Promise.all([
+                            var p = Promise.all([
                                 load.js("https://cdnjs.cloudflare.com/ajax/libs/axe-core/2.6.1/axe.min.js"),
                             ]).then(function () {
                                 var opts = {
@@ -8048,5 +8046,5 @@ var Platypus, jQuery, d3, c3, toastr, swal, Ladda, Waves, hljs, ClipboardJS, axe
         last: ''
     };
     $(document).ready(Platypus.ondomready);
-    window.Platypus = Platypus;
+    window['Platypus'] = Platypus;
 })(jQuery);

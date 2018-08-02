@@ -1,0 +1,1761 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"email",
+				"emailsRouter"
+			],
+			[
+				"article",
+				"articlesRouter"
+			],
+			[
+				"file",
+				"fieldname"
+			],
+			[
+				"fil",
+				"fieldname"
+			],
+			[
+				"user",
+				"userBadges"
+			],
+			[
+				"ed",
+				"endDate"
+			],
+			[
+				"badges",
+				"badgesRouter"
+			],
+			[
+				"test",
+				"testTS"
+			],
+			[
+				"fu",
+				"foundObj"
+			],
+			[
+				"coun",
+				"countriesRouter"
+			],
+			[
+				"auto",
+				"autofocus\tAttr"
+			],
+			[
+				"pos",
+				"position\tproperty"
+			],
+			[
+				"overfl",
+				"overflow-y\tproperty"
+			],
+			[
+				"target",
+				"targetGroups"
+			],
+			[
+				"show",
+				"showAllURLs\tproperty"
+			],
+			[
+				"is",
+				"isFirst"
+			],
+			[
+				"check",
+				"checkbox"
+			],
+			[
+				"list-inline",
+				"list-inline-item"
+			],
+			[
+				"qustio",
+				"Question"
+			],
+			[
+				"navl",
+				"nav-link"
+			],
+			[
+				"prel",
+				"preloader.service\tscript"
+			],
+			[
+				"forma",
+				"formattedData"
+			],
+			[
+				"text",
+				"textarea"
+			],
+			[
+				"adminis",
+				"administratorId"
+			],
+			[
+				"curr",
+				"currVals"
+			],
+			[
+				"event",
+				"eventCategory"
+			],
+			[
+				"cate",
+				"category"
+			],
+			[
+				"busines",
+				"business"
+			],
+			[
+				"see",
+				"selectedPlans"
+			],
+			[
+				"sel",
+				"selectedPlans"
+			],
+			[
+				"bus",
+				"business"
+			],
+			[
+				"group",
+				"groupId"
+			],
+			[
+				"speak",
+				"speaker-accordion"
+			],
+			[
+				"grou",
+				"groupIds"
+			],
+			[
+				"room",
+				"roomTypeIds"
+			],
+			[
+				"past",
+				"pastEvents"
+			],
+			[
+				"vie",
+				"viewPreferenceGroupIds"
+			],
+			[
+				"prase",
+				"parseInt"
+			],
+			[
+				"remo",
+				"removeSpeaker"
+			],
+			[
+				"list-gr",
+				"list-group-item"
+			],
+			[
+				"over",
+				"overflow-y"
+			],
+			[
+				"data-",
+				"data-platypus-compression"
+			],
+			[
+				"el",
+				"elMarkup"
+			],
+			[
+				"form",
+				"forminator"
+			],
+			[
+				"subm",
+				"Submitted"
+			],
+			[
+				"HBS",
+				"hbsPersonEmail"
+			],
+			[
+				"month",
+				"monthlyOn"
+			],
+			[
+				"start",
+				"startTime"
+			],
+			[
+				"place",
+				"placeholder"
+			],
+			[
+				"sess",
+				"sessionStorage"
+			],
+			[
+				"get",
+				"getItem"
+			],
+			[
+				"ses",
+				"sessionStorage"
+			],
+			[
+				"current",
+				"currentDoc"
+			],
+			[
+				"s",
+				"status"
+			],
+			[
+				"btn-s",
+				"btn-start-recording"
+			],
+			[
+				"auth",
+				"authentication"
+			],
+			[
+				"clien",
+				"clientToken"
+			],
+			[
+				"eve",
+				"eventDescripion"
+			],
+			[
+				"curren",
+				"currentPage"
+			],
+			[
+				"client",
+				"clientauthentication"
+			],
+			[
+				"create",
+				"createReservation"
+			],
+			[
+				"o",
+				"occupancy"
+			],
+			[
+				"end",
+				"endDate"
+			],
+			[
+				"new",
+				"newEvent"
+			],
+			[
+				"ev",
+				"evtType"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"palette-",
+				"palette-bg-teal-500"
+			],
+			[
+				"b",
+				"breadcrumb.component\tscript"
+			],
+			[
+				"bread",
+				"Breadcrumb\tscript"
+			],
+			[
+				"r",
+				"required\tAttr"
+			],
+			[
+				"tim",
+				"timeOutVal"
+			],
+			[
+				"comm",
+				"commentsPromise"
+			],
+			[
+				"po",
+				"postsPromise"
+			],
+			[
+				"sw",
+				"switchModes"
+			],
+			[
+				"cur",
+				"currentMode"
+			],
+			[
+				"defau",
+				"defaultMode"
+			],
+			[
+				"stop",
+				"stopAll"
+			],
+			[
+				"backgr",
+				"background-image"
+			],
+			[
+				"col",
+				"color"
+			],
+			[
+				"print",
+				"printArea"
+			],
+			[
+				"scroll",
+				"scrollable"
+			],
+			[
+				"ca",
+				"category_ids"
+			],
+			[
+				"as",
+				"assets"
+			],
+			[
+				"load",
+				"loadCmds"
+			],
+			[
+				"le",
+				"length"
+			],
+			[
+				"btn",
+				"btnMarkup"
+			],
+			[
+				"succ",
+				"successfully"
+			],
+			[
+				"init",
+				"initTable"
+			],
+			[
+				"data",
+				"datatable"
+			],
+			[
+				"backgrou",
+				"background"
+			],
+			[
+				"curre",
+				"currentTable"
+			],
+			[
+				"suc",
+				"successfully"
+			],
+			[
+				"success",
+				"successfully"
+			],
+			[
+				"tb",
+				"tbl_btns"
+			],
+			[
+				"border-",
+				"border-bottom"
+			],
+			[
+				"dest",
+				"destCDN"
+			],
+			[
+				"sig",
+				"signature_key"
+			],
+			[
+				"sgi",
+				"signature_key"
+			],
+			[
+				"ajax",
+				"ajaxStart"
+			],
+			[
+				"prevent",
+				"preventDefault"
+			],
+			[
+				"succe",
+				"success"
+			],
+			[
+				"succes",
+				"successfully"
+			],
+			[
+				"air",
+				"airMode"
+			],
+			[
+				"recor",
+				"recordingUrl"
+			],
+			[
+				"recorer-",
+				"recorder-flash"
+			],
+			[
+				"fa-arrow-",
+				"fa-arrow-circle-down"
+			],
+			[
+				"background",
+				"background-color"
+			],
+			[
+				"grid",
+				"gridListSwitcher"
+			],
+			[
+				"submi",
+				"submitted"
+			],
+			[
+				"pre",
+				"preConfirm"
+			],
+			[
+				"feed",
+				"feedbackDemo"
+			],
+			[
+				"person",
+				"personId"
+			],
+			[
+				"inline",
+				"inline-block"
+			],
+			[
+				"plat",
+				"platypus"
+			],
+			[
+				"ent",
+				"EntID"
+			],
+			[
+				"date",
+				"date_helpers"
+			],
+			[
+				"artic",
+				"article"
+			],
+			[
+				"spi",
+				"spinner"
+			],
+			[
+				"search",
+				"searchPills"
+			],
+			[
+				"js",
+				"jsfiddle"
+			],
+			[
+				"mou",
+				"mouseover"
+			],
+			[
+				"bootstrap",
+				"bootstrap-maxlength"
+			],
+			[
+				"unde",
+				"undefined"
+			],
+			[
+				"catego",
+				"categories"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "public/js/src/main.ts",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Applications/MAMP/htdocs/tripsplitsy/config/routes.js",
+			"settings":
+			{
+				"buffer_size": 4850,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Applications/MAMP/htdocs/tripsplitsy/controllers/emails.js",
+			"settings":
+			{
+				"buffer_size": 818,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/home.hbs",
+			"settings":
+			{
+				"buffer_size": 1905,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 29.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"syn html",
+				"Set Syntax: HTML"
+			],
+			[
+				"syn handl",
+				"Set Syntax: Handlebars"
+			],
+			[
+				"syn type",
+				"Set Syntax: TypeScript"
+			],
+			[
+				"javas",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"syn javas",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"syn java",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"syn hm",
+				"Set Syntax: HTML"
+			],
+			[
+				"synhtml",
+				"Set Syntax: HTML"
+			],
+			[
+				"syn css",
+				"Set Syntax: CSS"
+			],
+			[
+				"styles",
+				"Set Syntax: AppleScript"
+			],
+			[
+				"html",
+				"Set Syntax: HTML"
+			],
+			[
+				"packa",
+				"Package Control: Install Package"
+			],
+			[
+				"syn  htm",
+				"Set Syntax: HTML"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"javascri",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"syn jas",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"syn javascr",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"jascr",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"syn avasr",
+				"Set Syntax: JavaScript (Rails)"
+			],
+			[
+				"syn react",
+				"Set Syntax: TypeScriptReact"
+			],
+			[
+				"syn htm",
+				"Set Syntax: HTML"
+			],
+			[
+				"syn json",
+				"Set Syntax: JSON"
+			],
+			[
+				"syn hml",
+				"Set Syntax: HTML"
+			],
+			[
+				"synt",
+				"Set Syntax: YAML"
+			],
+			[
+				"syn js",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"SYN HTML",
+				"Set Syntax: HTML"
+			],
+			[
+				"syn sass",
+				"Set Syntax: Sass"
+			],
+			[
+				"javsa",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"incre",
+				"Emmet: Increment Number by 1"
+			],
+			[
+				"inc",
+				"Emmet: Increment Number by 1"
+			],
+			[
+				"in",
+				"Emmet: Increment Number by 1"
+			],
+			[
+				"synh\t",
+				"Set Syntax: HTML"
+			],
+			[
+				"syn  javascr",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"syntax C",
+				"Set Syntax: C"
+			],
+			[
+				"intall",
+				"Package Control: Install Package"
+			],
+			[
+				"sass",
+				"Set Syntax: Sass"
+			]
+		],
+		"width": 484.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Applications/MAMP/htdocs/tripsplitsy",
+		"/Applications/MAMP/htdocs/tripsplitsy/config",
+		"/Applications/MAMP/htdocs/tripsplitsy/controllers"
+	],
+	"file_history":
+	[
+		"/Applications/MAMP/htdocs/tripsplitsy/config/routes.js",
+		"/Applications/MAMP/htdocs/tripsplitsy/controllers/emails.js",
+		"/Users/rsilva/Desktop/platypus/config/routes.js",
+		"/Applications/MAMP/htdocs/hbsPollUI/src/app/author/components/polls.component.ts",
+		"/Applications/MAMP/htdocs/hbsPollUI/src/app/author/components/storeListener/edit.component.ts",
+		"/Applications/MAMP/htdocs/hbsPollUI/src/app/author/components/storeListener/editQuestScript.component.ts",
+		"/Applications/MAMP/htdocs/hbsPollUI/src/app/modules/hbs-services/services/modal.service.ts",
+		"/Applications/MAMP/htdocs/hbsPollUI/src/app/modules/pollComponents/question.component.ts",
+		"/Applications/MAMP/htdocs/tripsplitsy/views/partials/hero.hbs",
+		"/Applications/MAMP/htdocs/tripsplitsy/views/trips/show.hbs",
+		"/Applications/MAMP/htdocs/tripsplitsy/views/users/show.hbs",
+		"/Applications/MAMP/htdocs/hbsPollUI/src/app/author/components/polls.component.html",
+		"/Users/rsilva/Desktop/platypus/public/js/src/main.ts",
+		"/Applications/MAMP/htdocs/tripsplitsy/controllers/articles.js",
+		"/Applications/MAMP/htdocs/tripsplitsy/views/articles/show.hbs",
+		"/Applications/MAMP/htdocs/tripsplitsy/models/Article.js",
+		"/Applications/MAMP/htdocs/tripsplitsy/views/articles/index.hbs",
+		"/Applications/MAMP/htdocs/tripsplitsy/controllers/countries.js",
+		"/Applications/MAMP/htdocs/tripsplitsy/views/articles/edit.hbs",
+		"/Applications/MAMP/htdocs/tripsplitsy/public/js/main.js",
+		"/Applications/MAMP/htdocs/tripsplitsy/views/partials/scripts.hbs",
+		"/Applications/MAMP/htdocs/tripsplitsy/views/partials/head.hbs",
+		"/Applications/MAMP/htdocs/tripsplitsy/views/articles/new.hbs",
+		"/Applications/MAMP/htdocs/tripsplitsy/views/partials/footer.hbs",
+		"/Applications/MAMP/htdocs/tripsplitsy/sass/styles.scss",
+		"/Applications/MAMP/htdocs/tripsplitsy/sass/typography.scss",
+		"/Applications/MAMP/htdocs/tripsplitsy/node_modules/accepts/index.js",
+		"/Applications/MAMP/htdocs/tripsplitsy/views/home.hbs",
+		"/Applications/MAMP/htdocs/tripsplitsy/config/database.js",
+		"/Applications/MAMP/htdocs/tripsplitsy/views/partials/trip-tile.hbs",
+		"/Applications/MAMP/htdocs/tripsplitsy/views/trips/new.hbs",
+		"/Applications/MAMP/htdocs/tripsplitsy/controllers/trips.js",
+		"/Applications/MAMP/htdocs/tripsplitsy/views/trips/index.hbs",
+		"/Applications/MAMP/htdocs/tripsplitsy/views/partials/trip-row.hbs",
+		"/Applications/MAMP/htdocs/tripsplitsy/views/countries/show.hbs",
+		"/Applications/MAMP/htdocs/tripsplitsy/controllers/users.js",
+		"/Applications/MAMP/htdocs/tripsplitsy/views/partials/navbar.hbs",
+		"/Applications/MAMP/htdocs/tripsplitsy/controllers/badges.js",
+		"/Users/rsilva/Desktop/platypus/tsconfig.json",
+		"/Users/rsilva/Desktop/platypus/Gulpfile.js",
+		"/Users/rsilva/Desktop/platypus/sass/list-group.scss",
+		"/Applications/MAMP/htdocs/tripsplitsy/server.js",
+		"/Applications/MAMP/htdocs/tripsplitsy/views/users/edit.hbs",
+		"/Applications/MAMP/htdocs/tripsplitsy/controllers/main.js",
+		"/Applications/MAMP/htdocs/tripsplitsy/views/contact.hbs",
+		"/Applications/MAMP/htdocs/tripsplitsy/views/users/index.hbs",
+		"/Applications/MAMP/htdocs/tripsplitsy/views/about.hbs",
+		"/Applications/MAMP/htdocs/tripsplitsy/views/layouts/main.hbs",
+		"/Applications/MAMP/htdocs/tripsplitsy/views/partials/details.hbs",
+		"/Applications/MAMP/htdocs/tripsplitsy/models/Trip.js",
+		"/Applications/MAMP/htdocs/tripsplitsy/.gitignore",
+		"/Applications/MAMP/htdocs/tripsplitsy/views/partials/people.hbs",
+		"/Applications/MAMP/htdocs/tripsplitsy/views/partials/user-panel.hbs",
+		"/Applications/MAMP/htdocs/tripsplitsy/views/partials/share-trip.hbs",
+		"/Applications/MAMP/htdocs/tripsplitsy/node_modules/.bin/gravatar",
+		"/Applications/MAMP/htdocs/tripsplitsy/config/config.js",
+		"/Applications/MAMP/htdocs/tripsplitsy/sass/buttons.scss",
+		"/Applications/MAMP/htdocs/tripsplitsy/models/User.js",
+		"/Applications/MAMP/htdocs/tripsplitsy/views/partials/badges-list.hbs",
+		"/Applications/MAMP/htdocs/tripsplitsy/views/partials/badge-list.hbs",
+		"/Applications/MAMP/htdocs/tripsplitsy/views/badges/index.hbs",
+		"/Applications/MAMP/htdocs/tripsplitsy/views/partials/user-popover.hbs",
+		"/Applications/MAMP/htdocs/tripsplitsy/views/partials/modal-find-flights.hbs",
+		"/Applications/MAMP/htdocs/tripsplitsy/views/partials/price.hbs",
+		"/Applications/MAMP/htdocs/tripsplitsy/config/middlewares.js",
+		"/Applications/MAMP/htdocs/tripsplitsy/views/partials/modal-add-expense.hbs",
+		"/Applications/MAMP/htdocs/tripsplitsy/views/partials/social-icons.hbs",
+		"/Applications/MAMP/htdocs/tripsplitsy/views/auth/login.hbs",
+		"/Applications/MAMP/htdocs/tripsplitsy/views/partials/modal-login.hbs",
+		"/Applications/MAMP/htdocs/tripsplitsy/views/partials/login-form.hbs",
+		"/Applications/MAMP/htdocs/tripsplitsy/views/countries/index.hbs",
+		"/Applications/MAMP/htdocs/tripsplitsy/models/Badge.js",
+		"/Applications/MAMP/htdocs/tripsplitsy/views/partials/upcoming-trips.hbs",
+		"/Users/rsilva/Desktop/platypus/config/config.js",
+		"/Users/rsilva/Desktop/platypus/views/articles/edit.hbs",
+		"/Applications/MAMP/htdocs/hbsPollUI/src/app/app.component.ts",
+		"/Applications/MAMP/htdocs/skipti-components/components/blog/blog.html",
+		"/Applications/MAMP/htdocs/skipti-components/scss/blog.scss",
+		"/Applications/MAMP/htdocs/skipti-components/components/item-details/item-details.html",
+		"/Applications/MAMP/htdocs/select2/index.html",
+		"/Users/rsilva/Desktop/platypus/public/js/main.js",
+		"/Applications/MAMP/htdocs/skipti-components/scss/utilities.scss",
+		"/Applications/MAMP/htdocs/skipti-components/components/wizard/wizard.html",
+		"/Applications/MAMP/htdocs/skipti-components/scss/typography.scss",
+		"/Applications/MAMP/htdocs/skipti-components/scss/wizard.scss",
+		"/Applications/MAMP/htdocs/skipti-components/js/main.js",
+		"/Applications/MAMP/htdocs/skipti-components/components/blog/related-item.html",
+		"/Applications/MAMP/htdocs/skipti-components/components/blog/blog.php",
+		"/Applications/MAMP/htdocs/skipti-components/components/tiles/tiles.php",
+		"/Applications/MAMP/htdocs/skipti-components/components/tiles/tile1.html",
+		"/Applications/MAMP/htdocs/skipti-components/components/heros/hero3.html",
+		"/Applications/MAMP/htdocs/skipti-components/scss/hero.scss",
+		"/Applications/MAMP/htdocs/skipti-components/scss/category-list.scss",
+		"/Applications/MAMP/htdocs/skipti-components/components/heros/hero2.html",
+		"/Users/rsilva/Desktop/platypus/public/js/src/main.js",
+		"/Users/rsilva/Desktop/platypus/views/partials/navbar.hbs",
+		"/Users/rsilva/Desktop/platypus/sass/datatables.scss",
+		"/Users/rsilva/Desktop/platypus/sass/modal.scss",
+		"/Users/rsilva/Desktop/platypus/views/partials/modals.hbs",
+		"/Users/rsilva/Desktop/platypus/views/feedback/new.hbs",
+		"/Users/rsilva/Desktop/platypus/sass/bootstrap-reset.scss",
+		"/Users/rsilva/Desktop/platypus/sass/forms.scss",
+		"/Users/rsilva/Desktop/platypus/sass/badge.scss",
+		"/Users/rsilva/Desktop/platypus/sass/buttons.scss",
+		"/Users/rsilva/Desktop/platypus/views/articles/show.hbs",
+		"/Users/rsilva/Desktop/platypus/views/partials/updates.hbs",
+		"/Users/rsilva/Desktop/platypus/views/home.hbs",
+		"/Users/rsilva/Desktop/platypus/sass/progress-bar.scss",
+		"/Users/rsilva/Desktop/platypus/views/partials/patterns.hbs",
+		"/Users/rsilva/Desktop/platypus/sass/carousel.scss",
+		"/Users/rsilva/Desktop/platypus/views/partials/footer.hbs",
+		"/Users/rsilva/Desktop/platypus/views/partials/left-nav.hbs",
+		"/Users/rsilva/Desktop/platypus/views/layouts/2col.hbs",
+		"/Users/rsilva/Desktop/platypus/views/layouts/main.hbs",
+		"/Users/rsilva/Desktop/platypus/sass/left-nav.scss",
+		"/Users/rsilva/Desktop/platypus/sass/navbar.scss",
+		"/Users/rsilva/Desktop/platypus/views/partials/panels.hbs",
+		"/Users/rsilva/Desktop/platypus/views/partials/breadcrumbs.hbs",
+		"/Users/rsilva/Desktop/platypus/views/error.hbs",
+		"/Users/rsilva/Desktop/platypus/views/articles/index.hbs",
+		"/Users/rsilva/Desktop/platypus/views/articles/new.hbs",
+		"/Users/rsilva/Desktop/platypus/views/categories/index.hbs",
+		"/Users/rsilva/Desktop/platypus/views/categories/show.hbs",
+		"/Users/rsilva/Desktop/platypus/views/feedback/index.hbs",
+		"/Users/rsilva/Desktop/platypus/views/support.hbs",
+		"/Users/rsilva/Desktop/platypus/views/categories/edit.hbs",
+		"/Users/rsilva/Desktop/platypus/views/categories/new.hbs",
+		"/Users/rsilva/Desktop/platypus/public/vendor/popper/popper.min.js"
+	],
+	"find":
+	{
+		"height": 39.0
+	},
+	"find_in_files":
+	{
+		"height": 101.0,
+		"where_history":
+		[
+			"/Applications/MAMP/htdocs/hbsPollUI/src",
+			"/Applications/MAMP/htdocs/tripsplitsy/views",
+			"/Applications/MAMP/htdocs/tripsplitsy",
+			"/Applications/MAMP/htdocs/tripsplitsy/views",
+			"/Applications/MAMP/htdocs/tripsplitsy/controllers",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"auth",
+			"api",
+			"Yes, delete it!",
+			"Do you really want to delete poll ",
+			"var",
+			"fa fa-globe",
+			"class=\"card-header\"",
+			"records != null && !records?.length",
+			"document.getElementById",
+			"thead",
+			"mmessages",
+			"host",
+			"articles",
+			"summernote",
+			"wow",
+			"title",
+			"avatarCrop",
+			"fa-2x",
+			"fab",
+			"<li>",
+			"title",
+			"quote",
+			"body",
+			"title",
+			"articles",
+			"title",
+			"articles",
+			"groupedCountries",
+			"Country",
+			"trips",
+			"badgesSchema",
+			"star",
+			"create",
+			"trips",
+			"country",
+			"countries",
+			"search",
+			"trips",
+			"componentForm",
+			"dismiss",
+			"showOrHide",
+			"is_met",
+			".length>0",
+			".length > 0",
+			".length>0",
+			";\n",
+			"length > 0",
+			"autocomplete",
+			"success: function(",
+			";",
+			"let",
+			"declare",
+			"Promise",
+			"typescript",
+			"google",
+			"c3",
+			"opr",
+			"'Promise'",
+			"Email",
+			"\t  \t\t\t\t<a href=\"#\" class=\"btn btn-outline-secondary\"><i class=\"fa fa-map-marker\"></i> Address</a>\n",
+			"<a href=\"#\" class=\"btn btn-outline-secondary\"><i class=\"fa fa-phone\"></i> (617) 123-4567</a>",
+			"<a class=\"btn btn-outline-secondary\">",
+			"default",
+			"col-9",
+			"col-8",
+			"col-2",
+			"col-2>",
+			"-xs-",
+			"col-xs-1 col-xs-1",
+			"col-xs-8 col-sm-10",
+			"col-xs-3 col-sm-1\"",
+			"profile-picture-upload",
+			"$uploadCrop",
+			"uploadCrop",
+			"basic-demo",
+			"findFlights",
+			"with_each",
+			"hidden-md-up d-block",
+			"hidden-sm-down ",
+			"h3",
+			": function()",
+			"slick",
+			"avatar",
+			"users",
+			"avatar",
+			"title",
+			"<p>",
+			"<h5>",
+			"mr-2",
+			"<i class=\"fa",
+			"<i class=\"fa fa-plane mr-2\"></i>",
+			"</i>\n\t</div>",
+			"<div class=\"col-2\">",
+			"eyes",
+			"accomodation",
+			"header-accomodation",
+			"header-see",
+			"see",
+			"do",
+			"header-do",
+			"share-room",
+			"header-share-room",
+			"looking-for",
+			"header-looking-for",
+			"<div class=\"card\">",
+			"dates",
+			"header-dates",
+			"destination",
+			"header-destination",
+			"collapseOne",
+			"headingOne",
+			"data-parent=\"#accordion\"",
+			"find-flights",
+			"spots_available",
+			"<div class=\"row\">",
+			"Bicycle",
+			"Rental Car",
+			"Tuk Tuk",
+			"Rental Car",
+			"do",
+			"accomodation",
+			"flex_date",
+			"share_room",
+			"check",
+			"flex_itinerary",
+			"flexible",
+			"h4",
+			"edit"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"Delete",
+			"Are you sure you want to delete poll "
+		],
+		"reverse": false,
+		"show_context": false,
+		"use_buffer2": false,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "public/js/src/main.ts",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/TypeScript/TypeScript.tmLanguage",
+							"translate_tabs_to_spaces": false,
+							"use_tab_stops": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/Applications/MAMP/htdocs/tripsplitsy/config/routes.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4850,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3881,
+								3881
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1025.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/Applications/MAMP/htdocs/tripsplitsy/controllers/emails.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 818,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								13,
+								13
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "views/home.hbs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1905,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								897,
+								897
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Handlebars/grammars/Handlebars.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 24.0
+	},
+	"input":
+	{
+		"height": 36.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.719987103589,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.doc":
+	{
+		"height": 0.0
+	},
+	"output.find_results":
+	{
+		"height": 317.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 100.0
+	},
+	"pinned_build_system": "",
+	"project": "platypus.sublime-project",
+	"replace":
+	{
+		"height": 44.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"route",
+				"platypus/config/routes.js"
+			],
+			[
+				"home",
+				"platypus/views/home.hbs"
+			],
+			[
+				"main.ts",
+				"platypus/public/js/src/main.ts"
+			],
+			[
+				"hero",
+				"tripsplitsy/views/partials/hero.hbs"
+			],
+			[
+				"trips/sow",
+				"tripsplitsy/views/trips/show.hbs"
+			],
+			[
+				"users/show",
+				"tripsplitsy/views/users/show.hbs"
+			],
+			[
+				"Article",
+				"models/Article.js"
+			],
+			[
+				"articles/inde",
+				"views/articles/index.hbs"
+			],
+			[
+				"articles/show",
+				"views/articles/show.hbs"
+			],
+			[
+				"trips/show",
+				"views/trips/show.hbs"
+			],
+			[
+				"articles",
+				"controllers/articles.js"
+			],
+			[
+				"routes",
+				"config/routes.js"
+			],
+			[
+				"main.s",
+				"public/js/main.js"
+			],
+			[
+				"articles/ed",
+				"views/articles/edit.hbs"
+			],
+			[
+				"main.js",
+				"public/js/main.js"
+			],
+			[
+				"scri",
+				"views/partials/scripts.hbs"
+			],
+			[
+				"head",
+				"views/partials/head.hbs"
+			],
+			[
+				"show",
+				"views/trips/show.hbs"
+			],
+			[
+				"artic",
+				"controllers/articles.js"
+			],
+			[
+				"new",
+				"views/articles/new.hbs"
+			],
+			[
+				"footer",
+				"views/partials/footer.hbs"
+			],
+			[
+				"articles/",
+				"views/articles/show.hbs"
+			],
+			[
+				"typ",
+				"sass/typography.scss"
+			],
+			[
+				"articles/sh",
+				"views/articles/show.hbs"
+			],
+			[
+				"articles.js",
+				"controllers/articles.js"
+			],
+			[
+				"artices",
+				"controllers/articles.js"
+			],
+			[
+				"article",
+				"models/Article.js"
+			],
+			[
+				"index",
+				"node_modules/accepts/index.js"
+			],
+			[
+				"datab",
+				"config/database.js"
+			],
+			[
+				"trip-t",
+				"views/partials/trip-tile.hbs"
+			],
+			[
+				"home.hbs",
+				"views/home.hbs"
+			],
+			[
+				"trips/new",
+				"views/trips/new.hbs"
+			],
+			[
+				"trips.js",
+				"controllers/trips.js"
+			],
+			[
+				"trips/in",
+				"views/trips/index.hbs"
+			],
+			[
+				"countries/show",
+				"views/countries/show.hbs"
+			],
+			[
+				"countries",
+				"controllers/countries.js"
+			],
+			[
+				"countries/sho",
+				"views/countries/show.hbs"
+			],
+			[
+				"coun",
+				"controllers/countries.js"
+			],
+			[
+				"counties/show",
+				"views/countries/show.hbs"
+			],
+			[
+				"nav",
+				"views/partials/navbar.hbs"
+			],
+			[
+				"trips",
+				"controllers/trips.js"
+			],
+			[
+				"trips/n",
+				"views/trips/new.hbs"
+			],
+			[
+				"list-grou",
+				"sass/list-group.scss"
+			],
+			[
+				"users/ed",
+				"views/users/edit.hbs"
+			],
+			[
+				"users/",
+				"views/users/edit.hbs"
+			],
+			[
+				"scripts",
+				"views/partials/scripts.hbs"
+			],
+			[
+				"navbar",
+				"views/partials/navbar.hbs"
+			],
+			[
+				"head.hbs",
+				"views/partials/head.hbs"
+			],
+			[
+				"scrip",
+				"views/partials/scripts.hbs"
+			],
+			[
+				"user/index",
+				"views/users/index.hbs"
+			],
+			[
+				"main.hbs",
+				"views/layouts/main.hbs"
+			],
+			[
+				"details",
+				"views/partials/details.hbs"
+			],
+			[
+				"index.hbs",
+				"views/trips/index.hbs"
+			],
+			[
+				"users",
+				"controllers/users.js"
+			],
+			[
+				"users/edi",
+				"views/users/edit.hbs"
+			],
+			[
+				"Trip",
+				"models/Trip.js"
+			],
+			[
+				"trip",
+				"models/Trip.js"
+			],
+			[
+				"detais",
+				"views/partials/details.hbs"
+			],
+			[
+				"deta",
+				"views/partials/details.hbs"
+			],
+			[
+				"show.",
+				"views/trips/show.hbs"
+			],
+			[
+				"detai",
+				"views/partials/details.hbs"
+			],
+			[
+				"user-",
+				"views/partials/user-panel.hbs"
+			],
+			[
+				"share-",
+				"views/partials/share-trip.hbs"
+			],
+			[
+				"avatar",
+				"node_modules/.bin/gravatar"
+			],
+			[
+				"people",
+				"views/partials/people.hbs"
+			],
+			[
+				"",
+				".gitignore"
+			],
+			[
+				"users.js",
+				"controllers/users.js"
+			],
+			[
+				"usersshow",
+				"views/users/show.hbs"
+			],
+			[
+				"user.js",
+				"models/User.js"
+			],
+			[
+				"config",
+				"config/config.js"
+			],
+			[
+				"trips/sho",
+				"views/trips/show.hbs"
+			],
+			[
+				"Edit",
+				"views/users/edit.hbs"
+			],
+			[
+				"tripsshow",
+				"views/trips/show.hbs"
+			],
+			[
+				"badges",
+				"views/partials/badge-list.hbs"
+			],
+			[
+				"users.",
+				"controllers/users.js"
+			],
+			[
+				"user",
+				"controllers/users.js"
+			],
+			[
+				"User.",
+				"models/User.js"
+			],
+			[
+				"trips/inde",
+				"views/trips/index.hbs"
+			],
+			[
+				"user-pp",
+				"views/partials/user-popover.hbs"
+			],
+			[
+				"price",
+				"views/partials/price.hbs"
+			],
+			[
+				"trips/index",
+				"views/trips/index.hbs"
+			],
+			[
+				" trips/new",
+				"views/trips/new.hbs"
+			],
+			[
+				"modal-find",
+				"views/partials/modal-find-flights.hbs"
+			],
+			[
+				"modal-add",
+				"views/partials/modal-add-expense.hbs"
+			],
+			[
+				"user-pa",
+				"views/partials/user-panel.hbs"
+			],
+			[
+				"login-fo",
+				"views/partials/login-form.hbs"
+			],
+			[
+				"modal-lo",
+				"views/partials/modal-login.hbs"
+			],
+			[
+				"login",
+				"views/auth/login.hbs"
+			],
+			[
+				"badge-l",
+				"views/partials/badge-list.hbs"
+			],
+			[
+				"user-panel",
+				"views/partials/user-panel.hbs"
+			],
+			[
+				"trip/sho",
+				"views/trips/show.hbs"
+			],
+			[
+				"users/ei",
+				"views/users/edit.hbs"
+			],
+			[
+				"countries/in",
+				"views/countries/index.hbs"
+			],
+			[
+				"data",
+				"config/database.js"
+			],
+			[
+				"upcomin",
+				"views/partials/upcoming-trips.hbs"
+			],
+			[
+				"gul",
+				"Gulpfile.js"
+			],
+			[
+				"gulp",
+				"Gulpfile.js"
+			],
+			[
+				"item-de",
+				"components/item-details/item-details.html"
+			],
+			[
+				"blog.s",
+				"scss/blog.scss"
+			],
+			[
+				"blog",
+				"components/blog/blog.html"
+			],
+			[
+				"util",
+				"scss/utilities.scss"
+			],
+			[
+				"typogra",
+				"scss/typography.scss"
+			],
+			[
+				"wizard",
+				"scss/wizard.scss"
+			],
+			[
+				"blog.",
+				"components/blog/blog.php"
+			],
+			[
+				"til1.",
+				"components/tiles/tile1.html"
+			],
+			[
+				"tiles",
+				"components/tiles/tiles.php"
+			],
+			[
+				"datatables",
+				"sass/datatables.scss"
+			],
+			[
+				"modals",
+				"views/partials/modals.hbs"
+			],
+			[
+				"modal",
+				"sass/modal.scss"
+			],
+			[
+				"list-gro",
+				"sass/list-group.scss"
+			],
+			[
+				"bootst",
+				"sass/bootstrap-reset.scss"
+			],
+			[
+				"form",
+				"sass/forms.scss"
+			],
+			[
+				"update",
+				"views/partials/updates.hbs"
+			],
+			[
+				"list-g",
+				"sass/list-group.scss"
+			],
+			[
+				"progres",
+				"sass/progress-bar.scss"
+			],
+			[
+				"patterns",
+				"views/partials/patterns.hbs"
+			],
+			[
+				"carousel",
+				"sass/carousel.scss"
+			],
+			[
+				"leftn",
+				"views/partials/left-nav.hbs"
+			],
+			[
+				"left-n",
+				"views/partials/left-nav.hbs"
+			],
+			[
+				"navbr",
+				"views/partials/navbar.hbs"
+			],
+			[
+				"panels",
+				"views/partials/panels.hbs"
+			],
+			[
+				"bread",
+				"views/partials/breadcrumbs.hbs"
+			],
+			[
+				"left-nav",
+				"views/partials/left-nav.hbs"
+			],
+			[
+				"left-na",
+				"views/partials/left-nav.hbs"
+			],
+			[
+				"auth",
+				"controllers/auth.js"
+			],
+			[
+				"layout",
+				"views/layouts/main.hbs"
+			],
+			[
+				"home.",
+				"views/home.hbs"
+			],
+			[
+				"auth.js",
+				"controllers/auth.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 244.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

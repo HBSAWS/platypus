@@ -16,6 +16,7 @@ let Platypus: any,
 	_: any;
 
 
+
 ;(function ($) {
 
   	let load = (function() {
@@ -283,7 +284,7 @@ let Platypus: any,
 						</li>
 					`;				},
 
-				dropdownItem: function(classes, label, href) {
+				dropdownItem: function(classes: any, label: string, href: string) {
 					if (!href) {
 						return `
 							<li class="${classes.dropdownItemClass} ${classes.dropdownItemDisableClass}">
@@ -370,11 +371,11 @@ let Platypus: any,
 				        }
 				    };
 					
-					$tbl.on('init.dt', function (e, settings, json) {
+					$tbl.on('init.dt', function (e: any, settings: any, json: any) {
 			            var api = new $.fn.dataTable.Api(settings);
 			            if (api.buttons().length) {
 			 
-			                $("a", api.buttons().container(0)).each(function (index) {
+			                $("a", api.buttons().container(0)).each(function () {
 			                    $(this).attr('data-toggle', 'tooltip');
 			                    $(this).attr('data-placement', 'top');
 			                });
@@ -495,11 +496,11 @@ let Platypus: any,
 
 			$('.datatable').each(function() {
 
-				let $tbl = $(this);
-				let src = ($tbl.data('src') && $tbl.data('src') !== '') ? $tbl.data('src') : false;
-				let cols = ($tbl.data('cols') && $tbl.data('cols') !== '') ? $tbl.data('cols').split(',') : false;
-				let buttons = ($tbl.data('buttons') && $tbl.data('buttons') !== '') ? $tbl.data('buttons').split(',') : false;
-				let p;
+				let $tbl: any = $(this);
+				let src: string = ($tbl.data('src') && $tbl.data('src') !== '') ? $tbl.data('src') : false;
+				let cols: any = ($tbl.data('cols') && $tbl.data('cols') !== '') ? $tbl.data('cols').split(',') : false;
+				let buttons: any = ($tbl.data('buttons') && $tbl.data('buttons') !== '') ? $tbl.data('buttons').split(',') : false;
+				let p: any;
 				
 				if(buttons) {
 					// TODO - load only necessary dependencies
@@ -579,7 +580,7 @@ let Platypus: any,
 		},
 		printArea: function(){
 			
-			function printArea($el) {
+			function printArea($el: any) {
 			   var area = document.getElementById( $el );
 			   var title = document.title;
 			   var newWin= window.open('','','width=800,height=800');
@@ -604,7 +605,7 @@ let Platypus: any,
 
 			var browser = Platypus.detectBrowsers();
 			
-			function templateResult (item) {
+			function templateResult (item: any) {
 		    	var markup = `
 			    	<div class="row">
 			    		<div class="col-sm-4">${item.text}</div>
@@ -614,7 +615,7 @@ let Platypus: any,
 		    	return markup;
 		  	}
 
-		  	function templateSelection (item) {
+		  	function templateSelection (item: any) {
 		    	return item.text;
 		  	}
 
@@ -636,7 +637,7 @@ let Platypus: any,
 					          		page: params.page
 					        	};
 					      	},
-					      	processResults: function (data, params) {
+					      	processResults: function (data: any, params: any) {
 					        	params.page = params.page || 1;
 
 					        	return {
@@ -719,13 +720,13 @@ let Platypus: any,
 		avatar: function(){
 			var palette = ["red", "pink", "purple", "indigo", "blue", "light-blue", "cyan", "teal", "green", "lime", "yellow", "amber", "orange", "deep-orange", "brown", "grey", "blue-grey"];
 			$('.avatar').each(function(){
-				var name = _.trim($(this).text());
-				var initials = name.split(" ").map((n)=>n[0]).join("");
-				var personId = $(this).data('person-id');
-				var personRole = $(this).data('person-role');
+				let name: string = _.trim($(this).text());
+				let initials: string = name.split(" ").map((n)=>n[0]).join("");
+				let personId: number = $(this).data('person-id');
+				let personRole: string = $(this).data('person-role');
 
 				if ( !isNaN(personId) && (personRole == 'facstaff' || 'mba') ) {
-					var url = `http://sands.hbs.edu/photos/${personRole}/Ent${personId}.jpg`;
+					let url = `http://sands.hbs.edu/photos/${personRole}/Ent${personId}.jpg`;
 					$(this).css({
 						"background-image": `url(${url})`
 					});
@@ -758,14 +759,14 @@ let Platypus: any,
 				var $form = $wizard.closest('form[data-parsley-validate]');
 
 				if($form.length) {
-					$wizard.on('actionclicked.fu.wizard', function (evt, data) {
+					$wizard.on('actionclicked.fu.wizard', function (evt: any, data: any) {
 						if ( data.direction === 'next' && !$form.parsley().validate({group: 'block'+data.step}) ) {
 							evt.preventDefault();
 							return;
 						}
 					});
 
-					$wizard.on('finished.fu.wizard', function (evt, data) {
+					$wizard.on('finished.fu.wizard', function (evt: any, data: any) {
 						$form.submit();
 						console.log("submit");
 					});
@@ -1344,7 +1345,7 @@ let Platypus: any,
 			      // Replace fields names/ids by $().val()
 			      for (name in inputs) {
 			        e = inputs[name];
-			        tmp_re = new RegExp("(" + name + ")\\b","g")
+			        let tmp_re = new RegExp("(" + name + ")\\b","g")
 			        if ( ($(e).attr('type')=='radio') || ($(e).attr('type')=='checkbox') ) {
 			          cond = cond.replace(tmp_re,"$('" + e + ":checked').val()");
 			        }
@@ -1379,8 +1380,6 @@ let Platypus: any,
 			// This example displays an address form, using the autocomplete feature
 			// of the Google Places API to help users fill in the information.
 
-			$('.confirm-edit-address').hide();
-
 			$("input.address-autocomplete").on('focus', function () {
 			    geolocate();
 			});
@@ -1411,20 +1410,19 @@ let Platypus: any,
 			    }
 			}
 
-			// [START region_fillform]
 			function fillInAddress() {
 
-				$('.confirm-edit-address').show();
+				$('.confirm-edit-address').removeClass('d-none').addClass('d-block');
 
 			    // Get the place details from the autocomplete object.
 			    var place = autocomplete.getPlace();
 
-			    document.getElementById("latitude").value = place.geometry.location.lat();
-			    document.getElementById("longitude").value = place.geometry.location.lng();
+			    $("#latitude").val(place.geometry.location.lat());
+			    $("#longitude").val(place.geometry.location.lng());
 
 			    for (var component in componentForm) {
-			        document.getElementById(component).value = '';
-			        document.getElementById(component).disabled = false;
+			        $('#'+component).val('');
+			        $('#'+component).prop('disabled', false);
 			    }
 
 			    // Get each component of the address from the place details
@@ -1433,7 +1431,7 @@ let Platypus: any,
 			        var addressType = place.address_components[i].types[0];
 			        if (componentForm[addressType]) {
 			            var val = place.address_components[i][componentForm[addressType]];
-			            document.getElementById(addressType).value = val;
+			            $('#'+addressType).val(val);
 			        }
 			    }
 			}
@@ -1448,8 +1446,8 @@ let Platypus: any,
 
 			            var latitude = position.coords.latitude;
 			            var longitude = position.coords.longitude;
-			            document.getElementById("latitude").value = latitude;
-			            document.getElementById("longitude").value = longitude;
+			            $("#latitude").val(latitude);
+			            $("#longitude").val(longitude);
 
 			            autocomplete.setBounds(new google.maps.LatLngBounds(geolocation, geolocation));
 			        });
@@ -1886,7 +1884,7 @@ let Platypus: any,
 					  	data-modal-size="lg"
 					  	data-modal-header="true"
 					  	data-modal-footer="false">
-					  		<i class="fa fa-comment-o" data-toggle="tooltip" data-placement="left" title="Feedback"></i>
+					  		<i class="fa fa-comment-alt" data-toggle="tooltip" data-placement="left" title="Feedback"></i>
 					</a>
 				`);
 
@@ -2328,7 +2326,7 @@ let Platypus: any,
 					switch(searchParams.get('debug')) {
 						case 'accessibility':
 							console.log("Debugging accessibility... The page might become unresponsive for a few seconds. Please stand by.");
-							p = Promise.all([
+							let p = Promise.all([
 								load.js("https://cdnjs.cloudflare.com/ajax/libs/axe-core/2.6.1/axe.min.js"),
 							]).then(function(){
 								let opts = {
@@ -2359,6 +2357,6 @@ let Platypus: any,
 
 	$(document).ready(Platypus.ondomready);
 
-	window.Platypus = Platypus;
+	window['Platypus'] = Platypus;
 
 })(jQuery);
