@@ -4420,6 +4420,12 @@ span.btn-label.btn-label-right {
 .custom-file-control::after {
   content: "Choose file..."; }
 
+/* Input preview */
+.fileinput-preview img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%; }
+
 /* fixes select2 responsive width problem */
 .select2-container[style] {
   width: 100% !important;
@@ -4466,6 +4472,9 @@ fieldset.bordered {
   .bootstrap-datetimepicker-widget.dropdown-menu table thead tr:first-child th {
     background: grey;
     color: white; }
+
+.iti-flag {
+  background-image: url("https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/13.0.2/img/flags.png"); }
 
 /* List / Grid Switcher */
 .item.col-xs-12 .img-container {

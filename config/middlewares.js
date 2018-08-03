@@ -10,8 +10,8 @@ var mongoose = require('mongoose'),
 module.exports = {
 	getVersion: function(req, res, next) {
 		console.log("Determining article version to show");
-        res.locals.versions = ['0.1', '0.2', '0.3', '0.4', '0.5','0.6','0.7','0.8','0.9','0.10','0.11'];
-        res.locals.current = "0.11";
+        res.locals.versions = ['0.1', '0.2', '0.3', '0.4', '0.5','0.6','0.7','0.8','0.9','0.10','0.11', '1.0'];
+        res.locals.current = "1.0";
         res.locals.ver_selected = (req.session.ver_selected && req.session.ver_selected !== '') ? req.session.ver_selected : res.locals.current;
         res.locals.browsers = [
             "Chrome", "Internet Explorer", "Firefox", "Opera", "Safari",

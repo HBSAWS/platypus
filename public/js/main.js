@@ -65,6 +65,7 @@ var Platypus, jQuery, d3, c3, toastr, swal, Ladda, Waves, hljs, ClipboardJS, axe
             Platypus.formRendering();
             Platypus.formConditionize();
             Platypus.formAddress();
+            Platypus.formPhoneNumbers();
             Platypus.slimScroll();
             Platypus.gallery();
             Platypus.AZList();
@@ -195,8 +196,8 @@ var Platypus, jQuery, d3, c3, toastr, swal, Ladda, Waves, hljs, ClipboardJS, axe
                     showOnReady: false,
                     // threshold: 10,
                     appendToParent: true,
-                    warningClass: "tag tag-success",
-                    limitReachedClass: "tag tag-danger"
+                    warningClass: "badge badge-success",
+                    limitReachedClass: "badge badge-danger"
                 }).on('blur', function () {
                     $input.siblings('span.bootstrap-maxlength').hide();
                 });
@@ -1307,6 +1308,38 @@ var Platypus, jQuery, d3, c3, toastr, swal, Ladda, Waves, hljs, ClipboardJS, axe
                         autocomplete.setBounds(new google.maps.LatLngBounds(geolocation, geolocation));
                     });
                 }
+            }
+        },
+        formPhoneNumbers: function () {
+            if ($('.phone').length)
+                initPhoneInput();
+            function initPhoneInput() {
+                var telInput = $(".phone"), errorMsg = $("#phone-error-msg"), validMsg = $("#phone-valid-msg");
+                // initialise plugin
+                telInput.intlTelInput({
+                    utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/13.0.2/js/utils.js"
+                });
+                var reset = function () {
+                    telInput.removeClass("error");
+                    errorMsg.addClass("d-none");
+                    validMsg.addClass("d-none");
+                };
+                telInput.blur(function () {
+                    reset();
+                    if ($.trim(telInput.val())) {
+                        if (telInput.intlTelInput("isValidNumber")) {
+                            console.log("valid!");
+                            validMsg.removeClass("d-none");
+                        }
+                        else {
+                            console.log("not valid!");
+                            validMsg.removeClass("invalid");
+                            telInput.addClass("error");
+                            errorMsg.removeClass("d-none");
+                        }
+                    }
+                });
+                telInput.on("keyup change", reset);
             }
         },
         slimScroll: function () {

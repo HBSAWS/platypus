@@ -64,6 +64,8 @@ var opts = {
         'public/vendor/jquery.matchHeight/jquery.matchHeight.js',
         'public/vendor/d3/d3.v3.min.js',
         'public/vendor/c3/c3.min.js',
+        'public/vendor/intl-tel-input/intlTelInput.min.js',
+        // 'public/vendor/intl-tel-input/utils.js',
         'public/js/main.js',
     ], 
     cssFiles : [
@@ -94,6 +96,7 @@ var opts = {
         'public/vendor/jquery-typeahead/jquery.typeahead.min.css',
         'public/vendor/c3/c3.min.css',
         'public/vendor/strength/strength.css',
+        'public/vendor/intl-tel-input/intlTelInput.min.css',
         'public/css/styles.css',
     ],
     banner: `\n/*! <%= date %> */\n`,

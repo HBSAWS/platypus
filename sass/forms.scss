@@ -42,6 +42,12 @@
 	content: "Choose file...";
 }
 
+/* Input preview */
+.fileinput-preview img {
+	object-fit: cover;
+	width: 100%;
+	height: 100%;
+}
 
 /* fixes select2 responsive width problem */
 .select2-container[style] {
@@ -102,4 +108,9 @@ fieldset.bordered {
 	    
 	    color: white;
 	}
+}
+
+// https://github.com/jackocnr/intl-tel-input
+.iti-flag {
+  background-image: url("https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/13.0.2/img/flags.png");
 }

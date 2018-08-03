@@ -87,6 +87,7 @@ let Platypus: any,
 			Platypus.formRendering();
 			Platypus.formConditionize();
 			Platypus.formAddress();
+			Platypus.formPhoneNumbers();
 			Platypus.slimScroll();
 			Platypus.gallery();
 			Platypus.AZList();
@@ -209,8 +210,8 @@ let Platypus: any,
 					showOnReady: false,
 					// threshold: 10,
 					appendToParent: true,
-					warningClass: "tag tag-success",
-					limitReachedClass: "tag tag-danger"
+					warningClass: "badge badge-success",
+					limitReachedClass: "badge badge-danger"
 				}).on('blur', function () {
 	             	$input.siblings('span.bootstrap-maxlength').hide();
 	          	});
@@ -1453,6 +1454,46 @@ let Platypus: any,
 			        });
 			    }
 
+			}
+
+		},
+		formPhoneNumbers: function(){
+
+			if( $('.phone').length ) initPhoneInput(); 
+
+			function initPhoneInput(){
+
+				let telInput = $(".phone"),
+					errorMsg = $("#phone-error-msg"),
+				  	validMsg = $("#phone-valid-msg");
+
+				// initialise plugin
+				telInput.intlTelInput({
+			  		utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/13.0.2/js/utils.js",
+				});
+
+				let reset = function() {
+			  		telInput.removeClass("error");
+			  		errorMsg.addClass("d-none");
+			  		validMsg.addClass("d-none");
+				};
+
+				telInput.blur(function() {
+			  		reset();
+					if ($.trim(telInput.val())) {
+						if (telInput.intlTelInput("isValidNumber")) {
+							console.log("valid!");
+						  	validMsg.removeClass("d-none");
+						} else {
+							console.log("not valid!");
+							validMsg.removeClass("invalid");
+						  	telInput.addClass("error");
+						  	errorMsg.removeClass("d-none");
+						}
+					}
+				});
+
+				telInput.on("keyup change", reset);
 			}
 
 		},
